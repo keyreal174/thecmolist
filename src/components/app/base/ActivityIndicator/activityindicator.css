@@ -1,0 +1,34 @@
+@keyframes dots-pulse {
+  0% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
+
+.rai-squares {
+  width: 50px;
+}
+
+.rai-square {
+  display: inline-block;
+  margin-right: 2px;
+  background-color: #6688ad;
+  width: 10px;
+  height: 10px;
+  animation: dots-pulse 1s infinite;
+}
+
+.rai-squares .rai-square:nth-child(1) {
+  animation-delay: 0s;
+}
+.rai-squares .rai-square:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.rai-squares .rai-square:nth-child(3) {
+  animation-delay: 0.4s;
+}

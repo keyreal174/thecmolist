@@ -1,0 +1,128 @@
+.filter-wrapper {
+  display: flex;
+  align-items: center;
+  padding-top: 12px;
+}
+
+.section-title {
+  font-size: 24px;
+  margin-right: 20px;
+  margin-bottom: 0;
+}
+
+.filter-btn-group button {
+  color: #434343;
+  background-color: #d9d9d9;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  font-weight: 600;
+  padding: 4px 16px;
+  margin-right: 20px;
+  font-size: 16px;
+  min-width: 50;
+}
+
+.filter-btn-group button:focus {
+  box-shadow: none;
+}
+
+.filter-btn-group .btn-primary:not(:disabled):not(.disabled).active,
+.filter-btn-group .btn-primary:not(:disabled):not(.disabled):active,
+.filter-btn-group .show > .btn-primary.dropdown-toggle {
+  background-color: #434343;
+  color: #fff;
+}
+
+.filter-btn-group .btn-primary:hover,
+.filter-btn-group .btn-primary.focus,
+.filter-btn-group .btn-primary:focus {
+  background-color: #434343;
+  color: #fff;
+  box-shadow: none;
+}
+
+.filter-btn-group .btn-primary:disabled {
+  color: #fff;
+  background-color: #aaaaaa;
+  border-color: #aaaaaa;
+}
+
+.sort {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  white-space: nowrap;
+}
+
+.sort .custom-select {
+  padding: 5px 20px 5px 10px;
+  width: initial;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.sort .select-wrapper {
+  position: relative;
+}
+
+.sort .select-wrapper::after {
+  content: "\25BC";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  cursor: pointer;
+  pointer-events: none;
+}
+
+.sort .custom-select:focus {
+  border: none;
+  box-shadow: none;
+}
+
+.sort span {
+  color: #888888;
+}
+
+.filter-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 991px) {
+  .section-title {
+    font-size: 18px;
+  }
+  .filter-btn-group button {
+    padding: 5px 15px;
+    margin-right: 12px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 767px) {
+  .section-title {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  .filter-wrapper {
+    flex-wrap: wrap;
+  }
+  .filter-btn-group {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .filter-btn-group button {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 575px) {
+  .filter-btn-group button {
+    font-size: 13px;
+  }
+}

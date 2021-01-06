@@ -1,0 +1,77 @@
+.share-module-table {
+  table-layout: fixed;
+  width: 100%;
+  background-color: rgb(241, 248, 255);
+  padding: 10px;
+  margin-left: 0px;
+  margin-right: 0px;
+  border: 1px solid #cccccc;
+  margin-top: 10px;
+}
+
+.share-module-table td {
+  width: 33%;
+  padding-left: 10px;
+  padding-right: 10px;
+  vertical-align: top;
+}
+
+.share-module-table th {
+  padding: 10px;
+  padding-bottom: 0px;
+  vertical-align: top;
+}
+
+.share-module-mid-cell {
+  border-right: 2px solid #ececec;
+  border-left: 2px solid #ececec;
+}
+
+.share-module-textarea {
+  height: 59px !important;
+  margin-top: -20px;
+  margin-bottom: 10px;
+}
+
+.share-module-heading {
+  text-align: center;
+  font-weight: 700;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.btn__share-module-share {
+  font-size: 16px;
+  font-weight: 600;
+  height: 35px;
+  line-height: 1;
+  margin-top: 1px;
+  margin-bottom: 15px;
+  padding-top: 7px;
+  margin-left: auto;
+  width: 150px;
+}
+
+.share-module-center {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+  display: block;
+  line-height: 1.1;
+}
+
+.invite-module-modal {
+  max-width: 700px;
+}
+
+.invite-module-input {
+  height: 40px;
+}
+
+.invite-modal-title-img {
+  width: 30px;
+  float: left;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding-top: 5px;
+}
