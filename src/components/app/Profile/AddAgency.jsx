@@ -13,6 +13,7 @@ import "./profile.css";
 let agencyName = "";
 function AddAgency(props) {
   // agency search
+  const onComponentDidMount = (func) => useEffect(func, []);
   const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState([]);
   const [agencySlug, setAgencySlug] = useState("");
@@ -45,7 +46,7 @@ function AddAgency(props) {
         setFlatCategories(categories);
       });
   };
-  useEffect(() => {
+  onComponentDidMount(() => {
     if (flatCategories.length === 0) {
       fetchFlatCategories();
     }
