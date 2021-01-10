@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-import { connect } from "react-redux";
 import Header from "../base/Header/Header";
 import Banner from "../base/Banner/Banner";
 import Article from "../base/Article/Article";
@@ -15,13 +14,11 @@ import "./profile.css";
 import Website from "./icons/link.svg";
 
 const technologyProfileRequest = (technologyName) => {
-  return (dispatch) => {
-    return axios.get(`/api/technology/${technologyName}`, {
-      headers: {
-        "timezone-offset": new Date().getTimezoneOffset(),
-      },
-    });
-  };
+  return axios.get(`/api/technology/${technologyName}`, {
+    headers: {
+      "timezone-offset": new Date().getTimezoneOffset(),
+    },
+  });
 };
 
 class TechnologyProfile extends React.Component {
@@ -45,8 +42,7 @@ class TechnologyProfile extends React.Component {
 
   fetchTechnologyProfile(technologyName) {
     if (!technologyName) technologyName = "";
-    this.props
-      .technologyProfileRequest(technologyName)
+    technologyProfileRequest(technologyName)
       .then(({ data }) => {
         this.setState({
           technologyName: data.technology.technologyName || "",
@@ -248,4 +244,4 @@ class TechnologyProfile extends React.Component {
   }
 }
 
-export default connect(null, { technologyProfileRequest })(TechnologyProfile);
+export default TechnologyProfile;

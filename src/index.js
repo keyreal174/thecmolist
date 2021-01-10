@@ -1,21 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
+import { init } from "@rematch/core";
 import { BrowserRouter as Router } from "react-router-dom";
-import { createStore, applyMiddleware, combineReducers } from "redux";
-import thunk from "redux-thunk";
 import "./index.css";
 import App from "./App";
-import rootReducer from "./rootReducer";
 import * as serviceWorker from "./serviceWorker";
 import ReactGA from "react-ga";
+import feedModel from "./models/feed";
+import networkModel from "./models/network";
+import userModel from "./models/user";
 
-const store = createStore(
-  combineReducers({
-    rootReducer,
-  }),
-  applyMiddleware(thunk)
-);
+const store = init({
+  models: {
+    feedModel,
+    networkModel,
+    userModel,
+  },
+});
 
 ReactGA.initialize("UA-175211100-1");
 

@@ -1,7 +1,6 @@
 import React from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import axios from "axios";
-import { connect } from "react-redux";
 import Header from "../base/Header/Header";
 import Banner from "../base/Banner/Banner";
 import Filter from "../base/Filter/Filter";
@@ -23,51 +22,37 @@ import Website from "./icons/link.svg";
 import Chat from "./icons/mail.svg";
 
 const profileRequest = (userName) => {
-  return (dispatch) => {
-    return axios.get(`/api/profile/${userName}`, {
-      headers: {
-        "timezone-offset": new Date().getTimezoneOffset(),
-      },
-    });
-  };
+  return axios.get(`/api/profile/${userName}`, {
+    headers: {
+      "timezone-offset": new Date().getTimezoneOffset(),
+    },
+  });
 };
 
 const getimageUploadUrlRequest = (fileName, fileType) => {
-  return (dispatch) => {
-    return axios.get(
-      `/api/image_upload_url?fileName=${fileName}&fileType=${fileType}&displayWidth=200`
-    );
-  };
+  return axios.get(
+    `/api/image_upload_url?fileName=${fileName}&fileType=${fileType}&displayWidth=200`
+  );
 };
 
 const uploadImageRequest = (file, url) => {
-  return (dispatch) => {
-    return axios.put(url, file, { headers: { "Content-Type": file.type } });
-  };
+  return axios.put(url, file, { headers: { "Content-Type": file.type } });
 };
 
 const saveProfileRequest = (profile) => {
-  return (dispatch) => {
-    return axios.post("/api/profile", profile);
-  };
+  return axios.post("/api/profile", profile);
 };
 
 const addAgencyRequest = (agencyReview) => {
-  return (dispatch) => {
-    return axios.post("/api/agencyreview", agencyReview);
-  };
+  return axios.post("/api/agencyreview", agencyReview);
 };
 
 const addTechnologyRequest = (agency) => {
-  return (dispatch) => {
-    return axios.post("/api/technologyreview", agency);
-  };
+  return axios.post("/api/technologyreview", agency);
 };
 
 const connectUserRequest = (user) => {
-  return (dispatch) => {
-    return axios.post("/api/connect_user", user);
-  };
+  return axios.post("/api/connect_user", user);
 };
 
 class Profile extends React.Component {
@@ -106,8 +91,7 @@ class Profile extends React.Component {
   fetchProfile(userName) {
     let self = this;
     if (!userName) userName = "";
-    this.props
-      .profileRequest(userName)
+    profileRequest(userName)
       .then(({ data }) => {
         let dialogState = {};
         let urlParsed = Util.parsePath(window.location.href);
@@ -204,8 +188,7 @@ class Profile extends React.Component {
   }
 
   updateProfile(profile, setEditProfileModalShow) {
-    this.props
-      .saveProfileRequest(profile)
+    saveProfileRequest(profile)
       .then(({ data }) => {
         window.location.reload(false);
       })
@@ -216,9 +199,7 @@ class Profile extends React.Component {
   }
 
   uploadProfileImage(file, callback) {
-    let uploadImageRequest = this.props.uploadImageRequest;
-    this.props
-      .getimageUploadUrlRequest(file.name, file.type)
+    getimageUploadUrlRequest(file.name, file.type)
       .then(({ data }) => {
         uploadImageRequest(file, data.signedRequest)
           .then(() => {
@@ -237,8 +218,7 @@ class Profile extends React.Component {
 
   addAgency(agencyReview, setAddAgencyModalShow) {
     let self = this;
-    this.props
-      .addAgencyRequest(agencyReview)
+    addAgencyRequest(agencyReview)
       .then(({ data }) => {
         self.fetchProfile();
         setAddAgencyModalShow(false);
@@ -258,8 +238,7 @@ class Profile extends React.Component {
 
   addTechnology(technologyReview, setAddTechnologyModalShow) {
     let self = this;
-    this.props
-      .addTechnologyRequest(technologyReview)
+    addTechnologyRequest(technologyReview)
       .then(({ data }) => {
         self.fetchProfile();
         setAddTechnologyModalShow(false);
@@ -284,8 +263,7 @@ class Profile extends React.Component {
     Analytics.sendClickEvent(
       `Connected with user ${userName} from profile page`
     );
-    this.props
-      .connectUserRequest({ user: userName })
+    connectUserRequest({ user: userName })
       .then(({ data }) => {
         self.setState({
           enableAnimations: false,
@@ -782,12 +760,4 @@ class Profile extends React.Component {
   }
 }
 
-export default connect(null, {
-  profileRequest,
-  saveProfileRequest,
-  addAgencyRequest,
-  addTechnologyRequest,
-  getimageUploadUrlRequest,
-  uploadImageRequest,
-  connectUserRequest,
-})(Profile);
+export default Profile;

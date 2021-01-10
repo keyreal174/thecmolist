@@ -1,12 +1,9 @@
 import React from "react";
 import axios from "axios";
-import { connect } from "react-redux";
 import Util from "../util/Util";
 
 export const logoutRequest = (dispatch) => {
-  return (dispatch) => {
-    return axios.get("/api/logout");
-  };
+  return axios.get("/api/logout");
 };
 
 class Logout extends React.Component {
@@ -17,8 +14,7 @@ class Logout extends React.Component {
 
     document.title = "Logging out...";
 
-    this.props
-      .logoutRequest()
+    logoutRequest()
       .then(({ data }) => {
         if (Util.inLocalDevelopment()) {
           document.cookie = "";
@@ -56,4 +52,4 @@ class Logout extends React.Component {
   }
 }
 
-export default connect(null, { logoutRequest })(Logout);
+export default Logout;

@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-import { connect } from "react-redux";
 import Spinner from "react-spinner-material";
 import querySearch from "stringquery";
 import Util from "../util/Util";
@@ -10,15 +9,11 @@ const loginRequest = (user, password) => {
     user: user,
     pass: password,
   };
-  return (dispatch) => {
-    return axios.post("/api/login", postBody);
-  };
+  return axios.post("/api/login", postBody);
 };
 
 const linkedinAuthUrl = () => {
-  return (dispatch) => {
-    return axios.get("/api/lnkd_auth_url");
-  };
+  return axios.get("/api/lnkd_auth_url");
 };
 
 class Login extends React.Component {
@@ -38,7 +33,7 @@ class Login extends React.Component {
   }
 
   componentDidMount() {
-    this.props.linkedinAuthUrl().then(({ data }) => {
+    linkedinAuthUrl().then(({ data }) => {
       this.setState({
         linkedInUrl: data.url,
       });
@@ -55,8 +50,7 @@ class Login extends React.Component {
       });
     }
     e.preventDefault();
-    this.props
-      .loginRequest(username, password)
+    loginRequest(username, password)
       .then(({ data }) => {
         if (data.success) {
           if (Util.inLocalDevelopment()) {
@@ -185,4 +179,4 @@ class Login extends React.Component {
   }
 }
 
-export default connect(null, { loginRequest, linkedinAuthUrl })(Login);
+export default Login;

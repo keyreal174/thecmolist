@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import axios from "axios";
-import { connect } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Header from "../base/Header/Header";
@@ -10,9 +9,7 @@ import Banner from "../base/Banner/Banner";
 import "./directory.css";
 
 const directoryRequest = () => {
-  return (dispatch) => {
-    return axios.get("/api/directory");
-  };
+  return axios.get("/api/directory");
 };
 
 class Directory extends React.Component {
@@ -29,7 +26,7 @@ class Directory extends React.Component {
   }
 
   fetchDirectory() {
-    this.props.directoryRequest().then(({ data }) => {
+    directoryRequest().then(({ data }) => {
       this.setState({
         directoryData: data.directoryData,
       });
@@ -152,4 +149,4 @@ class Directory extends React.Component {
   }
 }
 
-export default connect(null, { directoryRequest })(Directory);
+export default Directory;
