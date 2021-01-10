@@ -13,7 +13,7 @@ import "./profile.css";
 let technologyName = "";
 function AddTechnology(props) {
   // technology search
-  const onComponentDidMount = (func) => useEffect(func, []);
+  const OnComponentDidMount = (func) => useEffect(func, []);
   const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState([]);
   const [technologySlug, setTechnologySlug] = useState("");
@@ -46,7 +46,7 @@ function AddTechnology(props) {
         setFlatCategories(categories);
       });
   };
-  onComponentDidMount(() => {
+  OnComponentDidMount(() => {
     if (flatCategories.length === 0) {
       fetchFlatCategories();
     }

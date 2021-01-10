@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import axios from "axios";
-import { connect } from "react-redux";
 import { Container, Button } from "react-bootstrap";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
@@ -9,13 +8,11 @@ import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
 import "./discussion.css";
 
 const discussionListRequest = () => {
-  return (dispatch) => {
-    return axios.get(`/api/discussions`, {
-      headers: {
-        "timezone-offset": new Date().getTimezoneOffset(),
-      },
-    });
-  };
+  return axios.get(`/api/discussions`, {
+    headers: {
+      "timezone-offset": new Date().getTimezoneOffset(),
+    },
+  });
 };
 
 class DiscussionList extends React.Component {
@@ -38,8 +35,7 @@ class DiscussionList extends React.Component {
     this.setState({
       discussionListLoading: true,
     });
-    this.props
-      .discussionListRequest()
+    discussionListRequest()
       .then(({ data }) => {
         console.log(data);
         self.setState({
@@ -266,4 +262,4 @@ class DiscussionList extends React.Component {
   }
 }
 
-export default connect(null, { discussionListRequest })(DiscussionList);
+export default DiscussionList;

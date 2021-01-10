@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-import { connect } from "react-redux";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Button, Container, Row, Col } from "react-bootstrap";
 import Filter from "../base/Filter/Filter";
@@ -18,9 +17,7 @@ import Analytics from "../../util/Analytics";
 import "./directory.css";
 
 const categoryDiscussionsRequest = (category) => {
-  return (dispatch) => {
-    return axios.get(`/api/directory/${category}?filter=discussions`);
-  };
+  return axios.get(`/api/directory/${category}?filter=discussions`);
 };
 
 const categoryReviewsRequest = (category, vendorFilter, token) => {
@@ -36,17 +33,13 @@ const categoryReviewsRequest = (category, vendorFilter, token) => {
     requestUrl += `&vendor=${vendorFilter}`;
   }
 
-  return (dispatch) => {
-    return axios.get(requestUrl, {
-      headers: headers,
-    });
-  };
+  return axios.get(requestUrl, {
+    headers: headers,
+  });
 };
 
 const saveUserInviteRequest = (data) => {
-  return (dispatch) => {
-    return axios.post("/api/userinvite", data);
-  };
+  return axios.post("/api/userinvite", data);
 };
 
 class Category extends React.Component {
@@ -76,7 +69,7 @@ class Category extends React.Component {
   fetchCategory(category) {
     let self = this;
     // fetch discussions
-    this.props.categoryDiscussionsRequest(category).then(({ data }) => {
+    categoryDiscussionsRequest(category).then(({ data }) => {
       let categoryData = Object.assign({}, self.state.categoryData);
       categoryData.discussions = data.discussions;
       self.setState({
@@ -85,7 +78,7 @@ class Category extends React.Component {
     });
 
     // fetch vendors
-    this.props.categoryReviewsRequest(category).then(({ data }) => {
+    categoryReviewsRequest(category).then(({ data }) => {
       let categoryData = Object.assign({}, self.state.categoryData);
       categoryData.vendors = data.vendors;
       categoryData.vendors.forEach((vendor) => {
@@ -102,9 +95,8 @@ class Category extends React.Component {
     let category = this.props.match.params.category;
     if (vendorFilterIdx < this.state.categoryData.vendors.length) {
       let vendorData = this.state.categoryData.vendors[vendorFilterIdx];
-      this.props
-        .categoryReviewsRequest(category, vendorData.title, vendorData.token)
-        .then(({ data }) => {
+      categoryReviewsRequest(category, vendorData.title, vendorData.token).then(
+        ({ data }) => {
           if (data.vendors && data.vendors.length > 0) {
             let returnedVendorList = data.vendors[0];
             let categoryData = Object.assign({}, self.state.categoryData);
@@ -130,12 +122,13 @@ class Category extends React.Component {
               }
             }
           }
-        });
+        }
+      );
     }
   }
 
   sendUserInvite(inviteList) {
-    this.props.saveUserInviteRequest(inviteList).then(({ data }) => {
+    saveUserInviteRequest(inviteList).then(({ data }) => {
       console.log(data);
     });
   }
@@ -506,8 +499,4 @@ class Category extends React.Component {
   }
 }
 
-export default connect(null, {
-  categoryDiscussionsRequest,
-  categoryReviewsRequest,
-  saveUserInviteRequest,
-})(Category);
+export default Category;

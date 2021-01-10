@@ -49,6 +49,11 @@ function MockRequests() {
     ];
   });
 
+  // user invite
+  mock.onPost("/api/connect_user").reply(() => {
+    return [200, { success: true, error: null }];
+  });
+
   GetResponses.forEach((getResponse) => {
     mock.onGet(getResponse.path).reply((config) => {
       return [getResponse.responseCode, getResponse.response];

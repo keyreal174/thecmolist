@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-import { connect } from "react-redux";
 import Header from "../base/Header/Header";
 import Banner from "../base/Banner/Banner";
 import Article from "../base/Article/Article";
@@ -19,33 +18,25 @@ import "./profile.css";
 import Website from "./icons/link.svg";
 
 const agencyProfileRequest = (agencyName) => {
-  return (dispatch) => {
-    return axios.get(`/api/agency/${agencyName}`, {
-      headers: {
-        "timezone-offset": new Date().getTimezoneOffset(),
-      },
-    });
-  };
+  return axios.get(`/api/agency/${agencyName}`, {
+    headers: {
+      "timezone-offset": new Date().getTimezoneOffset(),
+    },
+  });
 };
 
 const getimageUploadUrlRequest = (fileName, fileType) => {
-  return (dispatch) => {
-    return axios.get(
-      `/api/image_upload_url?fileName=${fileName}&fileType=${fileType}&displayWidth=200`
-    );
-  };
+  return axios.get(
+    `/api/image_upload_url?fileName=${fileName}&fileType=${fileType}&displayWidth=200`
+  );
 };
 
 const uploadImageRequest = (file, url) => {
-  return (dispatch) => {
-    return axios.put(url, file, { headers: { "Content-Type": file.type } });
-  };
+  return axios.put(url, file, { headers: { "Content-Type": file.type } });
 };
 
 const updateAgencyRequest = (profile) => {
-  return (dispatch) => {
-    return axios.post("/api/agency", profile);
-  };
+  return axios.post("/api/agency", profile);
 };
 
 class AgencyProfile extends React.Component {
@@ -73,8 +64,7 @@ class AgencyProfile extends React.Component {
 
   fetchAgencyProfile(agencyName) {
     if (!agencyName) agencyName = "";
-    this.props
-      .agencyProfileRequest(agencyName)
+    agencyProfileRequest(agencyName)
       .then(({ data }) => {
         this.setState({
           agencyName: data.agency.agencyName || "",
@@ -94,8 +84,7 @@ class AgencyProfile extends React.Component {
   }
 
   updateAgency(profile) {
-    this.props
-      .updateAgencyRequest(profile)
+    updateAgencyRequest(profile)
       .then(({ data }) => {
         window.location.reload(false);
       })
@@ -106,9 +95,7 @@ class AgencyProfile extends React.Component {
   }
 
   uploadProfileImage(file, callback) {
-    let uploadImageRequest = this.props.uploadImageRequest;
-    this.props
-      .getimageUploadUrlRequest(file.name, file.type)
+    getimageUploadUrlRequest(file.name, file.type)
       .then(({ data }) => {
         uploadImageRequest(file, data.signedRequest)
           .then(() => {
@@ -440,9 +427,4 @@ class AgencyProfile extends React.Component {
   }
 }
 
-export default connect(null, {
-  agencyProfileRequest,
-  updateAgencyRequest,
-  getimageUploadUrlRequest,
-  uploadImageRequest,
-})(AgencyProfile);
+export default AgencyProfile;
