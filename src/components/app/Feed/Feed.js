@@ -253,7 +253,7 @@ function RenderDashboard(props) {
             <RenderCategories directoryData={dashboardData.directory} />
           )}
         </Col>
-        <Col md="9">
+        <Col md="6">
           {dashboardData.modules &&
             dashboardData.modules.map((module, idx) => {
               return (
@@ -318,6 +318,53 @@ function RenderDashboard(props) {
                 </div>
               );
             })}
+        </Col>
+        <Col md="3" style={{ paddingRight: "0px" }}>
+          <div className="feed-category-box">
+            <div className="feed-category-box-title">Build your network</div>
+            <div className="feed-category-content">
+              {[
+                { checked: false, content: "example" },
+                { checked: true, content: "example1" },
+                { checked: false, content: "example2" },
+                { checked: true, content: "example3" },
+                { checked: true, content: "example4" },
+              ].map((item) => {
+                return (
+                  <div
+                    className="feed-category-content-item"
+                    style={{ borderBottom: "1px solid grey" }}
+                  >
+                    {item.checked ? (
+                      <span style={{ color: "green" }}>✓</span>
+                    ) : (
+                      <input type="checkbox" checked={item.checked} />
+                    )}
+                    <span
+                      style={
+                        item.checked
+                          ? {
+                              textDecoration: "line-through",
+                              paddingLeft: "10px",
+                            }
+                          : { paddingLeft: "10px" }
+                      }
+                    >
+                      {item.content}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div className="feed-category-box">
+            <div className="feed-category-box-title">
+              People in similar roles
+            </div>
+          </div>
+          <div className="feed-category-box">
+            <div className="feed-category-box-title">New members</div>
+          </div>
         </Col>
       </Row>
     </div>
