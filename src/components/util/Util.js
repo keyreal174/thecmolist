@@ -91,10 +91,7 @@ export default class Util {
   };
 
   static inLocalDevelopment() {
-    return (
-      process.env.NODE_ENV !== "production" &&
-      process.env.REACT_APP_LOCAL_DEV === "true"
-    );
+    return window.location.host === "localhost:3000";
   }
 
   static inTestContainer() {
