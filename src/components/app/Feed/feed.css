@@ -177,3 +177,51 @@
   margin-bottom: 10px;
   font-weight: 600;
 }
+
+.feed-box {
+  border: 1px solid #cccccc;
+  background: white;
+}
+
+.feed-box-margin-top {
+  margin-top: 10px;
+}
+
+.feed-box-title {
+  color: black;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.feed-box-content-item {
+  padding: 10px 20px;
+  border-top: 1px solid #cccccc;
+}
+
+.feed-box-content-item-special {
+  border-top: none;
+  padding: 5px 10px;
+}
+
+.feed-box-content-icon {
+  color: green;
+}
+
+.feed-box-content-text {
+  padding-left: 20px;
+  color: black;
+}
+
+.feed-box-content-text-checked {
+  text-decoration: line-through;
+  color: grey;
+}
+
+.feed-box-content-name {
+  font-weight: bold;
+}
+
+.feed-box-content-role {
+  color: gray;
+  margin-top: -5px;
+}
