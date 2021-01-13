@@ -142,21 +142,9 @@ function RenderDashboard(props) {
       props.setShowDashboard && props.setShowDashboard(false);
     }
   };
-  let buildYourNetworkItems = [
-    { checked: false, content: "Invite your team" },
-    { checked: true, content: "Invite your peers" },
-    { checked: false, content: "Fill out your profile" },
-    { checked: true, content: "Ask your first question" },
-    { checked: true, content: "Answer a question" },
-  ];
-  let peopleInSimilarRoles = [
-    { name: "John Smith", role: "CMO at Moder Media" },
-    { name: "John Smith", role: "CMO at Moder Media" },
-    { name: "John Smith", role: "CMO at Moder Media" },
-    { name: "John Smith", role: "CMO at Moder Media" },
-    { name: "John Smith", role: "CMO at Moder Media" },
-  ];
-  let newMembers = peopleInSimilarRoles;
+  let buildYourNetworkItems = dashboardData.buildYourNetwork;
+  let peopleInSimilarRoles = dashboardData.peopleInSimilarRoles;
+  let newMembers = dashboardData.newMembers;
   return dashboardLoading ? (
     <div className="mt-3 mb-5">
       <ActivityIndicator className="element-center feed-activity-indicator" />
@@ -337,13 +325,13 @@ function RenderDashboard(props) {
           <div className="feed-box">
             <div className="feed-box-title">Build your network</div>
             <div className="feed-box-content">
-              {buildYourNetworkItems.map((item) => {
+              {buildYourNetworkItems.map((item, index) => {
                 return (
-                  <div className="feed-box-content-item">
+                  <div className="feed-box-content-item" key={index}>
                     {item.checked ? (
                       <span className="feed-box-content-icon">✓</span>
                     ) : (
-                      <input type="checkbox" checked={item.checked} />
+                      <input type="checkbox" defaultChecked={item.checked} />
                     )}
                     <span
                       className={`feed-box-content-text ${
@@ -360,9 +348,12 @@ function RenderDashboard(props) {
           <div className="feed-box feed-box-margin-top">
             <div className="feed-box-title">People in similar roles</div>
             <div className="feed-box-content">
-              {peopleInSimilarRoles.map(({ name, role }) => {
+              {peopleInSimilarRoles.map(({ name, role }, index) => {
                 return (
-                  <div className="feed-box-content-item feed-box-content-item-special">
+                  <div
+                    className="feed-box-content-item feed-box-content-item-special"
+                    key={index}
+                  >
                     <div className="feed-box-content-name">{name}</div>
                     <div className="feed-box-content-role">{role}</div>
                   </div>
@@ -373,9 +364,12 @@ function RenderDashboard(props) {
           <div className="feed-box feed-box-margin-top">
             <div className="feed-box-title">New members</div>
             <div className="feed-box-content">
-              {newMembers.map(({ name, role }) => {
+              {newMembers.map(({ name, role }, index) => {
                 return (
-                  <div className="feed-box-content-item feed-box-content-item-special">
+                  <div
+                    className="feed-box-content-item feed-box-content-item-special"
+                    key={index}
+                  >
                     <div className="feed-box-content-name">{name}</div>
                     <div className="feed-box-content-role">{role}</div>
                   </div>
@@ -429,7 +423,7 @@ function RenderFeed(props) {
 
       {moreData && (
         <div className="row">
-          <div class="col-md-2 mt-2 mx-auto">
+          <div className="col-md-2 mt-2 mx-auto">
             <button
               className="btn btn__load-more"
               type="button"
