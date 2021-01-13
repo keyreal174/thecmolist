@@ -1,0 +1,28 @@
+.account-settings {
+  background-color: #ffffff;
+  border: 2px solid #cccccc;
+  padding: 10px 15px 20px 15px;
+}
+
+.account-settings .section-title {
+  font-weight: 400;
+  font-size: 22px;
+}
+
+.account-settings-info {
+  padding: 0 0 0 100px;
+}
+
+.account-settings-info .section-sub-title {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.account-settings-info .form-group {
+  margin: 0;
+}
+
+.account-settings-sub-info {
+  padding: 20px 100px 20px 0;
+  max-width: 800px;
+}
