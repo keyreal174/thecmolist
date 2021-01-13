@@ -142,7 +142,21 @@ function RenderDashboard(props) {
       props.setShowDashboard && props.setShowDashboard(false);
     }
   };
-
+  let buildYourNetworkItems = [
+    { checked: false, content: "Invite your team" },
+    { checked: true, content: "Invite your peers" },
+    { checked: false, content: "Fill out your profile" },
+    { checked: true, content: "Ask your first question" },
+    { checked: true, content: "Answer a question" },
+  ];
+  let peopleInSimilarRoles = [
+    { name: "John Smith", role: "CMO at Moder Media" },
+    { name: "John Smith", role: "CMO at Moder Media" },
+    { name: "John Smith", role: "CMO at Moder Media" },
+    { name: "John Smith", role: "CMO at Moder Media" },
+    { name: "John Smith", role: "CMO at Moder Media" },
+  ];
+  let newMembers = peopleInSimilarRoles;
   return dashboardLoading ? (
     <div className="mt-3 mb-5">
       <ActivityIndicator className="element-center feed-activity-indicator" />
@@ -320,35 +334,21 @@ function RenderDashboard(props) {
             })}
         </Col>
         <Col md="3" style={{ paddingRight: "0px" }}>
-          <div className="feed-category-box">
-            <div className="feed-category-box-title">Build your network</div>
-            <div className="feed-category-content">
-              {[
-                { checked: false, content: "example" },
-                { checked: true, content: "example1" },
-                { checked: false, content: "example2" },
-                { checked: true, content: "example3" },
-                { checked: true, content: "example4" },
-              ].map((item) => {
+          <div className="feed-box">
+            <div className="feed-box-title">Build your network</div>
+            <div className="feed-box-content">
+              {buildYourNetworkItems.map((item) => {
                 return (
-                  <div
-                    className="feed-category-content-item"
-                    style={{ borderBottom: "1px solid grey" }}
-                  >
+                  <div className="feed-box-content-item">
                     {item.checked ? (
-                      <span style={{ color: "green" }}>✓</span>
+                      <span className="feed-box-content-icon">✓</span>
                     ) : (
                       <input type="checkbox" checked={item.checked} />
                     )}
                     <span
-                      style={
-                        item.checked
-                          ? {
-                              textDecoration: "line-through",
-                              paddingLeft: "10px",
-                            }
-                          : { paddingLeft: "10px" }
-                      }
+                      className={`feed-box-content-text ${
+                        item.checked ? "feed-box-content-text-checked" : ""
+                      }`}
                     >
                       {item.content}
                     </span>
@@ -357,13 +357,31 @@ function RenderDashboard(props) {
               })}
             </div>
           </div>
-          <div className="feed-category-box">
-            <div className="feed-category-box-title">
-              People in similar roles
+          <div className="feed-box feed-box-margin-top">
+            <div className="feed-box-title">People in similar roles</div>
+            <div className="feed-box-content">
+              {peopleInSimilarRoles.map(({ name, role }) => {
+                return (
+                  <div className="feed-box-content-item feed-box-content-item-special">
+                    <div className="feed-box-content-name">{name}</div>
+                    <div className="feed-box-content-role">{role}</div>
+                  </div>
+                );
+              })}
             </div>
           </div>
-          <div className="feed-category-box">
-            <div className="feed-category-box-title">New members</div>
+          <div className="feed-box feed-box-margin-top">
+            <div className="feed-box-title">New members</div>
+            <div className="feed-box-content">
+              {newMembers.map(({ name, role }) => {
+                return (
+                  <div className="feed-box-content-item feed-box-content-item-special">
+                    <div className="feed-box-content-name">{name}</div>
+                    <div className="feed-box-content-role">{role}</div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </Col>
       </Row>
