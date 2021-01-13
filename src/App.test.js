@@ -1,20 +1,23 @@
 import React from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
-import { createStore, applyMiddleware, combineReducers } from "redux";
-import thunk from "redux-thunk";
-import rootReducer from "./rootReducer";
+import { init } from "@rematch/core";
 import { render } from "@testing-library/react";
 import "jest-canvas-mock";
 import App from "./App";
+import feedModel from "./models/feed";
+import networkModel from "./models/network";
+import userModel from "./models/user";
 
 test("renders app without crashing", () => {
-  const store = createStore(
-    combineReducers({
-      rootReducer,
-    }),
-    applyMiddleware(thunk)
-  );
+  const store = init({
+    models: {
+      feedModel,
+      networkModel,
+      userModel,
+    },
+  });
+
   const { getAllByText } = render(
     <Provider store={store}>
       <Router>
