@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import axios from "axios";
 import { Button, Container, Form, Col } from "react-bootstrap";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Separator from "../base/Separator/Separator";
 
 import "./settings.css";
+
+const getAccountInfo = () => {
+  return axios.get(`/api/settings/`);
+};
 
 const Settings = ({ settings, saveSetting, getSetting }) => {
   const [account, setAccount] = useState({
@@ -20,7 +25,11 @@ const Settings = ({ settings, saveSetting, getSetting }) => {
     e.preventDefault();
 
     if (account.new_password === account.confirm_password) {
-      await saveSetting(account);
+      await saveSetting({
+        email: account.email,
+        allowDiscussions: account.allowDiscussions,
+        allowActivity: account.allowActivity,
+      });
     }
   };
 
@@ -58,7 +67,9 @@ const Settings = ({ settings, saveSetting, getSetting }) => {
   useEffect(() => {
     const fetch = async () => {
       try {
-        await getSetting();
+        const response = await getAccountInfo();
+        const { settings } = response.data;
+        await saveSetting(settings);
       } catch (err) {
         console.log(err);
       }
