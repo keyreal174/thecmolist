@@ -90,7 +90,7 @@ function AskQuestionModal(props) {
                   placeholder="Be specific and imagine you’re asking a question to another person"
                 />
               </Col>
-              <Col md="9">
+              <Col md="10">
                 <div className="modal-section-title">Body</div>
                 <textarea
                   className="modal-section-body-left-content"
@@ -98,12 +98,48 @@ function AskQuestionModal(props) {
                   placeholder="Include all the information, @people and @vendors someone would need to answer your question"
                 />
               </Col>
-              <Col md="3">
+              <Col md="2">
                 <ul className="modal-section-body-right-content">
-                  <li>@Person</li>
-                  <li>@Vendor</li>
-                  <li>Photo</li>
-                  <li>Video</li>
+                  <li>
+                    <img className="modal-section-body-image" />
+                    <Button
+                      className="modal-section-body-content"
+                      variant="link"
+                      size="sm"
+                    >
+                      @Person
+                    </Button>
+                  </li>
+                  <li>
+                    <img className="modal-section-body-image" />
+                    <Button
+                      className="modal-section-body-content"
+                      variant="link"
+                      size="sm"
+                    >
+                      @Vendor
+                    </Button>
+                  </li>
+                  <li>
+                    <img className="modal-section-body-image" />
+                    <Button
+                      className="modal-section-body-content"
+                      variant="link"
+                      size="sm"
+                    >
+                      Photo
+                    </Button>
+                  </li>
+                  <li>
+                    <img className="modal-section-body-image" />
+                    <Button
+                      className="modal-section-body-content"
+                      variant="link"
+                      size="sm"
+                    >
+                      Video
+                    </Button>
+                  </li>
                 </ul>
               </Col>
             </Row>
@@ -124,6 +160,12 @@ function AskQuestionModal(props) {
             className="btn-white"
             variant="outline-primary"
             onClick={props.handleClose}
+            size="sm"
+            style={{
+              borderWidth: "1px",
+              fontSize: ".875rem",
+              padding: ".25rem .5rem",
+            }}
           >
             {props.firstButtonText}
           </Button>
@@ -131,6 +173,7 @@ function AskQuestionModal(props) {
             className="btn__homepage-blue"
             variant="primary"
             onClick={props.handleClose}
+            size="sm"
           >
             {props.secondButtonText}
           </Button>
