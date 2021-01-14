@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import { Button, Container, Form, Col } from "react-bootstrap";
+import { Button, Container, Form, Col, Alert } from "react-bootstrap";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Separator from "../base/Separator/Separator";
@@ -20,20 +20,29 @@ const Settings = ({ settings, saveSetting, getSetting }) => {
     allowDiscussions: false,
     allowActivity: false,
   });
+  const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
+    setError(null);
     e.preventDefault();
 
     if (account.new_password === account.confirm_password) {
-      await saveSetting({
-        email: account.email,
-        allowDiscussions: account.allowDiscussions,
-        allowActivity: account.allowActivity,
-      });
+      try {
+        await saveSetting({
+          email: account.email,
+          allowDiscussions: account.allowDiscussions,
+          allowActivity: account.allowActivity,
+        });
+      } catch (err) {
+        setError(err);
+      }
+    } else {
+      setError("Passwords must be matched");
     }
   };
 
   const handleCancel = (e) => {
+    setError(null);
     setAccount({
       new_password: "",
       confirm_password: "",
@@ -71,7 +80,7 @@ const Settings = ({ settings, saveSetting, getSetting }) => {
         const { settings } = response.data;
         await saveSetting(settings);
       } catch (err) {
-        console.log(err);
+        setError(err);
       }
     };
 
@@ -100,6 +109,11 @@ const Settings = ({ settings, saveSetting, getSetting }) => {
           <Separator />
           <Form onSubmit={handleSubmit}>
             <div className="account-settings-info">
+              {error && (
+                <Alert variant="danger" className="mb-0 mt-2">
+                  {error}
+                </Alert>
+              )}
               <div className="account-settings-sub-info">
                 <h3 className="section-sub-title mb-2">Change Password</h3>
                 <Form.Row>
