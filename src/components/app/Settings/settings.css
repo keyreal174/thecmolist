@@ -26,3 +26,19 @@
   padding: 20px 100px 20px 0;
   max-width: 800px;
 }
+
+.account-settings-submit-info .btn__homepage-white {
+  color: #0073b2 !important;
+}
+
+.account-settings-submit-info .btn__homepage-blue {
+  color: white !important;
+}
+
+.account-settings-submit-info .btn__homepage-blue:hover {
+  color: #0073b2 !important;
+}
+
+.account-settings-submit-info button.btn__homepage {
+  outline: none;
+}
