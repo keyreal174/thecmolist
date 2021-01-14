@@ -28,10 +28,10 @@ export default {
           await saveSettings(data);
           dispatch.settingsModel.updateSettings(data);
         } else {
-          throw "Data is empty.";
+          throw new Error("Data is empty.");
         }
       } catch (err) {
-        throw "exceptionError";
+        throw new Error("Could not save settings");
       }
     },
 
@@ -41,7 +41,7 @@ export default {
         const { settings } = response.data;
         dispatch.settingsModel.updateSettings(settings);
       } catch (err) {
-        throw new Error("exceptionError");
+        throw new Error("Could not get settings");
       }
     },
   }),

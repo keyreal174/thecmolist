@@ -35,7 +35,7 @@ describe("settingsModel model", () => {
 
       const validate = store.dispatch.settingsModel.saveSetting();
 
-      await expect(validate).rejects.toEqual("exceptionError");
+      await expect(validate).rejects.toThrow("Could not save settings");
     }),
     it("effect: settingsModel saveSetting", async () => {
       const store = init({
