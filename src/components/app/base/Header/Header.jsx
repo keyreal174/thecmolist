@@ -114,6 +114,9 @@ function Header() {
             <NavDropdown.Item className="profile-dropdown" href="/profile">
               Profile
             </NavDropdown.Item>
+            <NavDropdown.Item className="profile-dropdown" href="/settings">
+              Settings
+            </NavDropdown.Item>
             <NavDropdown.Item className="profile-dropdown" href="/logout">
               Logout
             </NavDropdown.Item>

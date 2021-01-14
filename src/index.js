@@ -10,12 +10,14 @@ import ReactGA from "react-ga";
 import feedModel from "./models/feed";
 import networkModel from "./models/network";
 import userModel from "./models/user";
+import settingsModel from "./models/settings";
 
 const store = init({
   models: {
     feedModel,
     networkModel,
     userModel,
+    settingsModel,
   },
 });
 

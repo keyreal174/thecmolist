@@ -4,7 +4,8 @@ var MockAdapter,
   MockedApiFeed,
   MockedApiFeedDashboard,
   MockedApiProfile,
-  MockedApiAgency;
+  MockedApiAgency,
+  MockedApiSettings;
 if (process.env.NODE_ENV !== "production") {
   MockAdapter = require("axios-mock-adapter");
   MockedApiNetwork = require("./api_network.json");
@@ -12,6 +13,7 @@ if (process.env.NODE_ENV !== "production") {
   MockedApiFeedDashboard = require("./api_feeddashboard.json");
   MockedApiProfile = require("./api_profile.json");
   MockedApiAgency = require("./api_agency.json");
+  MockedApiSettings = require("./api_settings.json");
 }
 function MockRequests() {
   if (process.env.NODE_ENV === "production") return;
@@ -27,6 +29,11 @@ function MockRequests() {
     { path: /\/api\/feed.*/, responseCode: 200, response: MockedApiFeed },
     { path: /\/api\/profile.*/, responseCode: 200, response: MockedApiProfile },
     { path: /\/api\/agency.*/, responseCode: 200, response: MockedApiAgency },
+    {
+      path: /\/api\/settings.*/,
+      responseCode: 200,
+      response: MockedApiSettings,
+    },
   ];
 
   // login/logout
@@ -51,6 +58,10 @@ function MockRequests() {
 
   // user invite
   mock.onPost("/api/connect_user").reply(() => {
+    return [200, { success: true, error: null }];
+  });
+
+  mock.onPost("/api/settings").reply(() => {
     return [200, { success: true, error: null }];
   });
 

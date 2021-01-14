@@ -1,0 +1,7 @@
+{
+  "settings": {
+    "email": "foo@foo.com",
+    "allowDiscussions": true,
+    "allowActivity": true
+  }
+}
