@@ -1,0 +1,43 @@
+.modal {
+  font-size: 14px;
+}
+
+.modal-title {
+  color: black;
+  font-size: 18px;
+  padding-left: 15px;
+}
+
+.modal-section-title {
+  color: black;
+  font-weight: bold;
+  padding: 0;
+  margin: 0;
+}
+
+.modal-section-title-content {
+  margin: 10px 0;
+  width: 90%;
+}
+
+.modal-section-separator {
+  border-top: 1px solid #cccccc;
+  padding-top: 10px;
+}
+
+.modal-section-body-left-content {
+  min-height: 60%;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.modal-section-body-right-content {
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+.modal-section-checkbox,
+.modal-section-checkbox-content,
+.modal-section-radio-content {
+  margin-right: 10px;
+}

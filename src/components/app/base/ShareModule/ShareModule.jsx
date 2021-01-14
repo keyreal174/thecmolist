@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import AskQuestionModal from "../AskQuestionModal/AskQuestionModal";
 import "./sharemodule.css";
 
 function ShareModule(props) {
@@ -9,6 +10,9 @@ function ShareModule(props) {
         ? props.newPostLink
         : "https://forum.thecmolist.com/new-topic";
   };
+  const [show, setShow] = useState(false);
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
   return (
     <table className="mt-3 share-module-table">
       <tbody>
@@ -70,12 +74,19 @@ function ShareModule(props) {
           </td>
           <td className="share-module-mid-cell">
             <Button
-              onClick={newPostClick}
+              onClick={handleShow}
               className="btn-white share-module-center"
               variant="outline-primary"
             >
               Ask a question
             </Button>
+            <AskQuestionModal
+              firstButtonText={"Cancel"}
+              handleClose={handleClose}
+              secondButtonText={"Ask a question"}
+              show={show}
+              title="Ask a marketing question"
+            />
           </td>
           <td>
             <div>
