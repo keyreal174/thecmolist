@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import axios from "axios";
 import { Button, Container, Form, Col, Alert } from "react-bootstrap";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Separator from "../base/Separator/Separator";
 
 import "./settings.css";
-
-const getAccountInfo = () => {
-  return axios.get(`/api/settings/`);
-};
 
 const Settings = ({ settings, saveSetting, getSetting }) => {
   const [account, setAccount] = useState({
@@ -76,9 +71,7 @@ const Settings = ({ settings, saveSetting, getSetting }) => {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const response = await getAccountInfo();
-        const { settings } = response.data;
-        await saveSetting(settings);
+        await getSetting();
       } catch (err) {
         setError(err);
       }

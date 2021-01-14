@@ -28,9 +28,22 @@ describe("settingsModel model", () => {
       allowActivity: true,
     });
   }),
+    it("effect: settingsModel saveSetting error catch", async () => {
+      const store = init({
+        models: { settingsModel },
+      });
+
+      const validate = store.dispatch.settingsModel.saveSetting();
+
+      await expect(validate).rejects.toEqual("exceptionError");
+    }),
     it("effect: settingsModel saveSetting", async () => {
       const store = init({
         models: { settingsModel },
+      });
+
+      axios.post.mockImplementation((path, data) => {
+        Promise.resolve({ data: { success: true } });
       });
 
       await store.dispatch.settingsModel.saveSetting({
