@@ -21,6 +21,7 @@ function AskQuestionModal(props) {
   const [body, setBody] = useState("");
   const [topics, setTopics] = useState("");
   const [person, setPerson] = useState("");
+  const [role, setRole] = useState("");
   const [photo, setPhoto] = useState("");
   const [video, setVideo] = useState("");
   return (
@@ -107,18 +108,22 @@ function AskQuestionModal(props) {
               <Row>
                 <Col className="modal-section-separator" md="12">
                   <div className="modal-section-title">Title</div>
-                  <input
+                  <Form.Control
+                    as="input"
                     className="modal-section-title-content"
-                    type="text"
                     placeholder="Be specific and imagine you’re asking a question to another person"
+                    onChange={(e) => setTitle(e.target.value)}
+                    value={title}
                   />
                 </Col>
                 <Col md="10">
                   <div className="modal-section-title">Body</div>
-                  <textarea
+                  <Form.Control
+                    as="textarea"
                     className="modal-section-body-left-content"
-                    type="text"
                     placeholder="Include all the information, @people and @vendors someone would need to answer your question"
+                    onChange={(e) => setBody(e.target.value)}
+                    value={body}
                   />
                 </Col>
                 <Col md="2">
@@ -211,18 +216,20 @@ function AskQuestionModal(props) {
                   >
                     <div className="modal-person-section">
                       <label htmlFor="person">Person</label>
-                      <input
+                      <Form.Control
+                        as="input"
                         className="modal-person-section-input"
-                        type="text"
-                        name="person"
+                        onChange={(person) => setPerson(person)}
+                        value={person}
                       />
                     </div>
                     <div className="modal-person-section-role">
                       <label htmlFor="role">Role</label>
-                      <input
+                      <Form.Control
+                        as="input"
                         className="modal-person-section-input"
-                        type="text"
-                        name="role"
+                        onChange={(role) => setRole(role)}
+                        value={role}
                       />
                     </div>
                     <div className="modal-person-section-actions">
@@ -250,10 +257,12 @@ function AskQuestionModal(props) {
               <Row>
                 <Col>
                   <div className="modal-section-title">#Topics</div>
-                  <input
+                  <Form.Control
+                    as="input"
                     className="modal-section-title-content"
-                    type="text"
                     placeholder="Choose one or more #topics or #locations that describe what your question is about"
+                    onChange={(e) => setTopics(e.target.value)}
+                    value={topics}
                   />
                 </Col>
               </Row>
