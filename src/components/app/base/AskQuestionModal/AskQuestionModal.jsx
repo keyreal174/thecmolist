@@ -2,6 +2,11 @@ import React from "react";
 import { Button, Container, Modal, Row, Col } from "react-bootstrap";
 import "./askQuestionModal.css";
 
+import CompanyIcon from "../icons/company.svg";
+import PersonIcon from "../icons/person2.svg";
+import PhotoIcon from "../icons/image.svg";
+import VideoIcon from "../icons/video.svg";
+
 function AskQuestionModal(props) {
   return (
     <>
@@ -101,7 +106,10 @@ function AskQuestionModal(props) {
               <Col md="2">
                 <ul className="modal-section-body-right-content">
                   <li>
-                    <img className="modal-section-body-image" />
+                    <img
+                      className="modal-section-body-image"
+                      src={PersonIcon}
+                    />
                     <Button
                       className="modal-section-body-content"
                       variant="link"
@@ -111,7 +119,10 @@ function AskQuestionModal(props) {
                     </Button>
                   </li>
                   <li>
-                    <img className="modal-section-body-image" />
+                    <img
+                      className="modal-section-body-image"
+                      src={CompanyIcon}
+                    />
                     <Button
                       className="modal-section-body-content"
                       variant="link"
@@ -121,7 +132,7 @@ function AskQuestionModal(props) {
                     </Button>
                   </li>
                   <li>
-                    <img className="modal-section-body-image" />
+                    <img className="modal-section-body-image" src={PhotoIcon} />
                     <Button
                       className="modal-section-body-content"
                       variant="link"
@@ -131,7 +142,7 @@ function AskQuestionModal(props) {
                     </Button>
                   </li>
                   <li>
-                    <img className="modal-section-body-image" />
+                    <img className="modal-section-body-image" src={VideoIcon} />
                     <Button
                       className="modal-section-body-content"
                       variant="link"
