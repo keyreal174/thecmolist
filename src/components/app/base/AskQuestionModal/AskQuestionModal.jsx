@@ -107,6 +107,7 @@ function AskQuestionModal(props) {
                 <ul className="modal-section-body-right-content">
                   <li>
                     <img
+                      alt="person icon"
                       className="modal-section-body-image"
                       src={PersonIcon}
                     />
@@ -120,6 +121,7 @@ function AskQuestionModal(props) {
                   </li>
                   <li>
                     <img
+                      alt="company icon"
                       className="modal-section-body-image"
                       src={CompanyIcon}
                     />
@@ -132,7 +134,11 @@ function AskQuestionModal(props) {
                     </Button>
                   </li>
                   <li>
-                    <img className="modal-section-body-image" src={PhotoIcon} />
+                    <img
+                      alt="photograph icon"
+                      className="modal-section-body-image"
+                      src={PhotoIcon}
+                    />
                     <Button
                       className="modal-section-body-content"
                       variant="link"
@@ -142,7 +148,11 @@ function AskQuestionModal(props) {
                     </Button>
                   </li>
                   <li>
-                    <img className="modal-section-body-image" src={VideoIcon} />
+                    <img
+                      alt="video icon"
+                      className="modal-section-body-image"
+                      src={VideoIcon}
+                    />
                     <Button
                       className="modal-section-body-content"
                       variant="link"
@@ -155,7 +165,7 @@ function AskQuestionModal(props) {
               </Col>
               <Col md="12">
                 <div className="modal-image-wrapper hidden">
-                  <img src="#"></img>
+                  <img src="#" alt=""></img>
                 </div>
               </Col>
               <Col md="12">
