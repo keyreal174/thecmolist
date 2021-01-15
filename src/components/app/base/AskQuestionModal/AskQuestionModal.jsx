@@ -142,6 +142,36 @@ function AskQuestionModal(props) {
                   </li>
                 </ul>
               </Col>
+              <Col md="12">Image and video</Col>
+              <Col md="12">
+                <div>
+                  <div>
+                    <label htmlFor="person">
+                      Person <input type="text" name="person" />
+                    </label>
+                  </div>
+                  <div>
+                    <label htmlFor="role">
+                      Role <input type="text" name="role" />
+                    </label>
+                  </div>
+                  <Button
+                    className="btn-white modal-cancel-button"
+                    variant="outline-primary"
+                    size="sm"
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    className="btn-white modal-cancel-button"
+                    variant="outline-primary"
+                    onClick={props.handleClose}
+                    size="sm"
+                  >
+                    Add Person
+                  </Button>
+                </div>
+              </Col>
             </Row>
             <Row>
               <Col>
@@ -157,15 +187,10 @@ function AskQuestionModal(props) {
         </Modal.Body>
         <Modal.Footer>
           <Button
-            className="btn-white"
+            className="btn-white modal-cancel-button"
             variant="outline-primary"
             onClick={props.handleClose}
             size="sm"
-            style={{
-              borderWidth: "1px",
-              fontSize: ".875rem",
-              padding: ".25rem .5rem",
-            }}
           >
             {props.firstButtonText}
           </Button>
