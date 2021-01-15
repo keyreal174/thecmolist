@@ -24,6 +24,10 @@ function AskQuestionModal(props) {
   const [role, setRole] = useState("");
   const [photo, setPhoto] = useState("");
   const [video, setVideo] = useState("");
+  const submit = () => {
+    // handle props submit and send to service
+    props.handleClose();
+  };
   return (
     <>
       <Modal
@@ -280,7 +284,7 @@ function AskQuestionModal(props) {
           <Button
             className="btn__homepage-blue"
             variant="primary"
-            onClick={props.handleClose}
+            onClick={submit}
           >
             {props.secondButtonText}
           </Button>
