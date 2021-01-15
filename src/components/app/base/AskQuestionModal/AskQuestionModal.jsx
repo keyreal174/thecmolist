@@ -245,7 +245,6 @@ function AskQuestionModal(props) {
             className="btn-white modal-cancel-button"
             variant="outline-primary"
             onClick={props.handleClose}
-            size="sm"
           >
             {props.firstButtonText}
           </Button>
@@ -253,7 +252,6 @@ function AskQuestionModal(props) {
             className="btn__homepage-blue"
             variant="primary"
             onClick={props.handleClose}
-            size="sm"
           >
             {props.secondButtonText}
           </Button>
