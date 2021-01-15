@@ -85,3 +85,8 @@
   opacity: 0;
   display: none;
 }
+
+.modal-video-wrapper.hidden {
+  opacity: 0;
+  display: none;
+}

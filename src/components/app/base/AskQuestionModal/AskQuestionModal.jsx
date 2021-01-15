@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Container, Modal, Row, Col } from "react-bootstrap";
 import "./askQuestionModal.css";
 
@@ -8,6 +8,9 @@ import PhotoIcon from "../icons/image.svg";
 import VideoIcon from "../icons/video.svg";
 
 function AskQuestionModal(props) {
+  const [showPersonSection, setShowPersonSection] = useState(false);
+  const [showPhoto, setShowPhoto] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
   return (
     <>
       <Modal
@@ -113,8 +116,9 @@ function AskQuestionModal(props) {
                     />
                     <Button
                       className="modal-section-body-content"
-                      variant="link"
+                      onClick={() => setShowPersonSection(true)}
                       size="sm"
+                      variant="link"
                     >
                       @Person
                     </Button>
@@ -127,8 +131,9 @@ function AskQuestionModal(props) {
                     />
                     <Button
                       className="modal-section-body-content"
-                      variant="link"
+                      onClick={() => setShowPersonSection(true)}
                       size="sm"
+                      variant="link"
                     >
                       @Vendor
                     </Button>
@@ -141,6 +146,7 @@ function AskQuestionModal(props) {
                     />
                     <Button
                       className="modal-section-body-content"
+                      onClick={() => setShowPhoto(true)}
                       variant="link"
                       size="sm"
                     >
@@ -155,6 +161,7 @@ function AskQuestionModal(props) {
                     />
                     <Button
                       className="modal-section-body-content"
+                      onClick={() => setShowVideo(true)}
                       variant="link"
                       size="sm"
                     >
@@ -164,12 +171,25 @@ function AskQuestionModal(props) {
                 </ul>
               </Col>
               <Col md="12">
-                <div className="modal-image-wrapper hidden">
-                  <img src="#" alt=""></img>
+                <div
+                  className={`modal-image-wrapper ${showPhoto ? "" : "hidden"}`}
+                >
+                  <img src="#" alt="" />
+                  Photo
+                </div>
+                <div
+                  className={`modal-video-wrapper ${showVideo ? "" : "hidden"}`}
+                >
+                  <img src="#" alt="" />
+                  Video
                 </div>
               </Col>
               <Col md="12">
-                <div className="modal-person hidden">
+                <div
+                  className={`modal-person ${
+                    showPersonSection ? "" : "hidden"
+                  }`}
+                >
                   <div className="modal-person-section">
                     <label htmlFor="person">Person</label>
                     <input
@@ -189,17 +209,18 @@ function AskQuestionModal(props) {
                   <div className="modal-person-section-actions">
                     <Button
                       className="btn-white modal-cancel-button"
-                      variant="outline-primary"
+                      onClick={() => setShowPersonSection(false)}
                       size="sm"
+                      variant="outline-primary"
                     >
                       Cancel
                     </Button>
                     <Button
                       className="btn-white modal-cancel-button"
-                      variant="outline-primary"
-                      onClick={props.handleClose}
+                      onClick={() => setShowPersonSection(false)}
                       size="sm"
                       style={{ marginLeft: "10px" }}
+                      variant="outline-primary"
                     >
                       Add Person
                     </Button>
