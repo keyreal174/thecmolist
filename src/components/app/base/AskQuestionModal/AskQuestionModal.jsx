@@ -153,34 +153,47 @@ function AskQuestionModal(props) {
                   </li>
                 </ul>
               </Col>
-              <Col md="12">Image and video</Col>
               <Col md="12">
-                <div>
-                  <div>
-                    <label htmlFor="person">
-                      Person <input type="text" name="person" />
-                    </label>
+                <div className="modal-image-wrapper hidden">
+                  <img src="#"></img>
+                </div>
+              </Col>
+              <Col md="12">
+                <div className="modal-person hidden">
+                  <div className="modal-person-section">
+                    <label htmlFor="person">Person</label>
+                    <input
+                      className="modal-person-section-input"
+                      type="text"
+                      name="person"
+                    />
                   </div>
-                  <div>
-                    <label htmlFor="role">
-                      Role <input type="text" name="role" />
-                    </label>
+                  <div className="modal-person-section-role">
+                    <label htmlFor="role">Role</label>
+                    <input
+                      className="modal-person-section-input"
+                      type="text"
+                      name="role"
+                    />
                   </div>
-                  <Button
-                    className="btn-white modal-cancel-button"
-                    variant="outline-primary"
-                    size="sm"
-                  >
-                    Cancel
-                  </Button>
-                  <Button
-                    className="btn-white modal-cancel-button"
-                    variant="outline-primary"
-                    onClick={props.handleClose}
-                    size="sm"
-                  >
-                    Add Person
-                  </Button>
+                  <div className="modal-person-section-actions">
+                    <Button
+                      className="btn-white modal-cancel-button"
+                      variant="outline-primary"
+                      size="sm"
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      className="btn-white modal-cancel-button"
+                      variant="outline-primary"
+                      onClick={props.handleClose}
+                      size="sm"
+                      style={{ marginLeft: "10px" }}
+                    >
+                      Add Person
+                    </Button>
+                  </div>
                 </div>
               </Col>
             </Row>

@@ -58,3 +58,30 @@
   font-size: 0.875rem !important;
   padding: 0.25rem 0.5rem !important;
 }
+
+.modal-person-section,
+.modal-person-section-role {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 5px 0;
+}
+.modal-person-section-input {
+  width: 94%;
+}
+
+.modal-person-section-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.modal-person.hidden {
+  opacity: 0;
+  display: none;
+}
+
+.modal-image-wrapper.hidden {
+  opacity: 0;
+  display: none;
+}
