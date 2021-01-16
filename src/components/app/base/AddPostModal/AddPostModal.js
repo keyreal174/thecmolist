@@ -2,12 +2,8 @@ import React, { useState } from "react";
 import { Button, Container, Form, Modal, Row, Col } from "react-bootstrap";
 import "./addPostModal.css";
 
-import CompanyIcon from "../icons/company.svg";
-import PersonIcon from "../icons/person2.svg";
-import PhotoIcon from "../icons/image.svg";
-import VideoIcon from "../icons/video.svg";
-
 function AddPostModal(props) {
+  const cdnBaseUrl = "https://d3k6hg21rt7gsh.cloudfront.net/icons/";
   const [showPersonSection, setShowPersonSection] = useState(false);
   const [showPhoto, setShowPhoto] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
@@ -136,7 +132,7 @@ function AddPostModal(props) {
                       <img
                         alt="person icon"
                         className="modal-section-body-image"
-                        src={PersonIcon}
+                        src={cdnBaseUrl + "person.png"}
                       />
                       <Button
                         className="modal-section-body-content"
@@ -151,7 +147,7 @@ function AddPostModal(props) {
                       <img
                         alt="company icon"
                         className="modal-section-body-image"
-                        src={CompanyIcon}
+                        src={cdnBaseUrl + "company.png"}
                       />
                       <Button
                         className="modal-section-body-content"
@@ -166,7 +162,7 @@ function AddPostModal(props) {
                       <img
                         alt="photograph icon"
                         className="modal-section-body-image"
-                        src={PhotoIcon}
+                        src={cdnBaseUrl + "image.png"}
                       />
                       <Button
                         className="modal-section-body-content"
@@ -181,7 +177,7 @@ function AddPostModal(props) {
                       <img
                         alt="video icon"
                         className="modal-section-body-image"
-                        src={VideoIcon}
+                        src={cdnBaseUrl + "video.png"}
                       />
                       <Button
                         className="modal-section-body-content"
