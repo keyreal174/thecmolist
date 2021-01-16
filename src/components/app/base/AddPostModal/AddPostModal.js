@@ -22,7 +22,6 @@ function AddPostModal(props) {
   const [role, setRole] = useState("");
   const submit = () => {
     // handle props submit and send to service
-    debugger;
     props.handleClose();
   };
   return (
@@ -47,6 +46,7 @@ function AddPostModal(props) {
                   <Form.Check
                     className="modal-section-radio-content"
                     name="members"
+                    id="allCMOlist"
                     label="All CMOlist members"
                     type="radio"
                     checked={allMembers}
@@ -58,6 +58,7 @@ function AddPostModal(props) {
                   <Form.Check
                     className="modal-section-radio-content"
                     name="members"
+                    id="onlyMyNetwork"
                     label="Only my networks"
                     type="radio"
                     checked={onlyMyNetwork}
@@ -73,6 +74,7 @@ function AddPostModal(props) {
                           className="modal-section-checkbox-content"
                           disabled={allMembers}
                           name={groupKey}
+                          id={groupKey}
                           label={groupKey}
                           type="checkbox"
                           defaultChecked={groups[groupKey]}
@@ -88,6 +90,7 @@ function AddPostModal(props) {
                   <Form.Control
                     as="input"
                     className="modal-section-title-content"
+                    id="title"
                     placeholder="Be specific and imagine you’re asking a question to another person"
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}
@@ -98,6 +101,7 @@ function AddPostModal(props) {
                   <Form.Control
                     as="textarea"
                     className="modal-section-body-left-content"
+                    id="body"
                     placeholder="Include all the information, @people and @vendors someone would need to answer your question"
                     onChange={(e) => setBody(e.target.value)}
                     value={body}
@@ -237,6 +241,7 @@ function AddPostModal(props) {
                   <Form.Control
                     as="input"
                     className="modal-section-title-content"
+                    id="topics"
                     placeholder="Choose one or more #topics or #locations that describe what your question is about"
                     onChange={(e) => setTopics(e.target.value)}
                     value={topics}
