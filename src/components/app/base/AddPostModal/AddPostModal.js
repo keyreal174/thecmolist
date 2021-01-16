@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Button, Container, Form, Modal, Row, Col } from "react-bootstrap";
-import "./askQuestionModal.css";
+import "./addPostModal.css";
 
 import CompanyIcon from "../icons/company.svg";
 import PersonIcon from "../icons/person2.svg";
 import PhotoIcon from "../icons/image.svg";
 import VideoIcon from "../icons/video.svg";
 
-function AskQuestionModal(props) {
+function AddPostModal(props) {
   const [showPersonSection, setShowPersonSection] = useState(false);
   const [showPhoto, setShowPhoto] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
@@ -294,4 +294,4 @@ function AskQuestionModal(props) {
   );
 }
 
-export default AskQuestionModal;
+export default AddPostModal;

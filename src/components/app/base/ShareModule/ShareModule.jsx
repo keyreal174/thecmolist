@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import AskQuestionModal from "../AskQuestionModal/AskQuestionModal";
+import AddPostModal from "../AddPostModal/AddPostModal";
 import "./sharemodule.css";
 
 function ShareModule(props) {
@@ -80,7 +80,7 @@ function ShareModule(props) {
             >
               Ask a question
             </Button>
-            <AskQuestionModal
+            <AddPostModal
               firstButtonText={"Cancel"}
               handleClose={handleClose}
               secondButtonText={"Ask a question"}
