@@ -9,19 +9,20 @@ function AddPostModal(props) {
   const [showVideo, setShowVideo] = useState(false);
   const [allMembers, setAllMembers] = useState(false);
   const [onlyMyNetwork, setOnlyMyNetwork] = useState(true);
-  const [myPeers, setMyPeers] = useState(true);
-  const [pagerDuty, setPagerDuty] = useState(true);
-  const [dropbox, setDropbox] = useState(false);
-  const [signalFire, setSignalFire] = useState(false);
+  const groups = {
+    "My Peers": true,
+    "PagerDuty-Makerting": true,
+    Dropbox: false,
+    "SignalFire-Marketing": false,
+  };
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [topics, setTopics] = useState("");
   const [person, setPerson] = useState("");
   const [role, setRole] = useState("");
-  const [photo, setPhoto] = useState("");
-  const [video, setVideo] = useState("");
   const submit = () => {
     // handle props submit and send to service
+    debugger;
     props.handleClose();
   };
   return (
@@ -66,42 +67,18 @@ function AddPostModal(props) {
                     }}
                   />
                   <div style={{ display: "flex", marginBottom: "10px" }}>
-                    <Form.Check
-                      className="modal-section-checkbox-content"
-                      disabled={allMembers}
-                      name="members"
-                      label="My peers"
-                      type="checkbox"
-                      checked={myPeers}
-                      onClick={() => setMyPeers(!myPeers)}
-                    />
-                    <Form.Check
-                      className="modal-section-checkbox-content"
-                      disabled={allMembers}
-                      name="members"
-                      label="PagerDuty-Makerting"
-                      type="checkbox"
-                      checked={pagerDuty}
-                      onClick={() => setPagerDuty(!pagerDuty)}
-                    />
-                    <Form.Check
-                      className="modal-section-checkbox-content"
-                      disabled={allMembers}
-                      name="members"
-                      label="Dropbox"
-                      type="checkbox"
-                      checked={dropbox}
-                      onClick={() => setDropbox(!dropbox)}
-                    />
-                    <Form.Check
-                      className="modal-section-checkbox-content"
-                      name="members"
-                      disabled={allMembers}
-                      label="SignalFire-Marketing"
-                      type="checkbox"
-                      checked={signalFire}
-                      onClick={() => setSignalFire(!signalFire)}
-                    />
+                    {Object.keys(groups).map((groupKey) => {
+                      return (
+                        <Form.Check
+                          className="modal-section-checkbox-content"
+                          disabled={allMembers}
+                          name={groupKey}
+                          label={groupKey}
+                          type="checkbox"
+                          defaultChecked={groups[groupKey]}
+                        />
+                      );
+                    })}
                   </div>
                 </Col>
               </Row>
@@ -280,7 +257,7 @@ function AddPostModal(props) {
           <Button
             className="btn__homepage-blue"
             variant="primary"
-            onClick={submit}
+            onClick={() => submit()}
           >
             {props.secondButtonText}
           </Button>
