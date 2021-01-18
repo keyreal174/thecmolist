@@ -27,12 +27,7 @@ function AddPostModal({
   const [showVideo, setShowVideo] = useState(false);
   const [allMembers, setAllMembers] = useState(false);
   const [onlyMyNetwork, setOnlyMyNetwork] = useState(true);
-  const [groups, setGroups] = useState({
-    "My Peers": true,
-    "PagerDuty-Makerting": true,
-    Dropbox: false,
-    "SignalFire-Marketing": false,
-  });
+  const [groups, setGroups] = useState(content);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [topics, setTopics] = useState("");
@@ -40,7 +35,7 @@ function AddPostModal({
   const [role, setRole] = useState("");
   const [error, setError] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     const content = {
       allMembers,
       onlyMyNetwork,
@@ -56,20 +51,28 @@ function AddPostModal({
     e.preventDefault();
 
     try {
-      shareContent(content);
+      await shareContent(content);
       handleClose();
+      cleanFields();
     } catch (error) {
       setError(error);
     }
   };
 
+  const getGroupsObject = (groups) => {
+    let aux = {};
+
+    if (groups && groups.length > 0) {
+      groups.forEach(({ name, checked }) => {
+        aux[name] = checked;
+      });
+    }
+
+    return aux;
+  };
+
   const cleanFields = () => {
-    setGroups({
-      "My Peers": true,
-      "PagerDuty-Makerting": true,
-      Dropbox: false,
-      "SignalFire-Marketing": false,
-    });
+    setGroups(getGroupsObject(groups));
     setTitle("");
     setBody("");
     setTopics("");
@@ -89,7 +92,9 @@ function AddPostModal({
     const fetch = async () => {
       try {
         await getContent();
+        console.log("getting content");
       } catch (err) {
+        console.log("error", err);
         setError(err);
       }
       setError(new Error("problem detected"));
@@ -99,25 +104,9 @@ function AddPostModal({
   }, []);
 
   useEffect(() => {
-    if (content && Object.keys(content).length > 0) {
-      const {
-        allMembers,
-        onlyMyNetwork,
-        groups,
-        title,
-        body,
-        topics,
-        person,
-        role,
-      } = content;
-      setGroups(groups);
-      setTitle(title);
-      setBody(body);
-      setTopics(topics);
-      setPerson(person);
-      setRole(role);
-      setAllMembers(allMembers);
-      setOnlyMyNetwork(onlyMyNetwork);
+    if (content && content.groups && content.groups.length > 0) {
+      const { groups: actualGroups } = content;
+      setGroups(getGroupsObject(actualGroups));
     }
   }, [content]);
 
@@ -370,14 +359,14 @@ function AddPostModal({
 
 const mapState = (state) => {
   return {
-    content: state.feedModel.content,
+    content: state.contentModel.content,
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
-    shareContent: dispatch.feedModel.shareContent,
-    getContent: dispatch.feedModel.getContent,
+    shareContent: dispatch.contentModel.shareContent,
+    getContent: dispatch.contentModel.getContent,
   };
 };
 
