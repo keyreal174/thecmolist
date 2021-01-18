@@ -72,7 +72,7 @@ function AddPostModal({
   };
 
   const cleanFields = () => {
-    setGroups(getGroupsObject(groups));
+    setGroups(getGroupsObject(content.groups));
     setTitle("");
     setBody("");
     setTopics("");
@@ -285,7 +285,7 @@ function AddPostModal({
                       <Form.Control
                         as="input"
                         className="modal-person-section-input"
-                        onChange={(person) => setPerson(person)}
+                        onChange={(e) => setPerson(e.target.value)}
                         value={person}
                       />
                     </div>
@@ -294,7 +294,7 @@ function AddPostModal({
                       <Form.Control
                         as="input"
                         className="modal-person-section-input"
-                        onChange={(role) => setRole(role)}
+                        onChange={(e) => setRole(e.target.value)}
                         value={role}
                       />
                     </div>
