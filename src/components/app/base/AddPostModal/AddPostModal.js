@@ -80,6 +80,9 @@ function AddPostModal({
     setRole("");
     setAllMembers(false);
     setOnlyMyNetwork(true);
+    setShowPersonSection(false);
+    setShowPhoto(false);
+    setShowVideo(false);
   };
 
   const handleCancel = () => {
@@ -92,12 +95,9 @@ function AddPostModal({
     const fetch = async () => {
       try {
         await getContent();
-        console.log("getting content");
       } catch (err) {
-        console.log("error", err);
         setError(err);
       }
-      setError(new Error("problem detected"));
     };
 
     fetch();
@@ -119,6 +119,17 @@ function AddPostModal({
         <Modal.Body>
           <Container>
             <Form>
+              <Row>
+                {error && (
+                  <Alert
+                    variant="danger"
+                    className="mb-0 mt-2"
+                    style={{ width: "100%" }}
+                  >
+                    {error}
+                  </Alert>
+                )}
+              </Row>
               <Row>
                 <Col>
                   <div className="modal-section-title">
