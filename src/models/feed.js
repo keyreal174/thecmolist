@@ -18,9 +18,32 @@ const feedRequest = (filter, token) => {
   return axios.get(`/api/feed?filter=${filter}`, { headers });
 };
 
+const saveContent = (data) => {
+  return axios.post("/api/feed", data);
+};
+
+const getContent = () => {
+  return axios.get(`/api/feed/`);
+};
+
 export default {
   name: "feedModel",
   state: {
+    content: {
+      allMembers: false,
+      onlyMyNetwork: true,
+      groups: {
+        "My Peers": true,
+        "PagerDuty-Makerting": true,
+        Dropbox: false,
+        "SignalFire-Marketing": false,
+      },
+      title: "",
+      body: "",
+      topics: "",
+      person: {},
+      role: "",
+    },
     dashboardData: {},
     feedData: [
       {
@@ -99,6 +122,12 @@ export default {
         filterIdx: filterIdx,
       };
     },
+    setContent: (rootState, content) => {
+      return {
+        ...rootState,
+        content: content,
+      };
+    },
   },
   effects: (dispatch) => ({
     async fetchDashboard() {
@@ -116,6 +145,27 @@ export default {
     },
     async changeFilterIndex(filterIdx) {
       dispatch.feedModel.setFilterIndex(filterIdx);
+    },
+    async shareContent(content) {
+      try {
+        if (content) {
+          await saveContent(content);
+          dispatch.feedModel.setContent(content);
+        } else {
+          throw new Error("Content is empty.");
+        }
+      } catch (error) {
+        throw new Error("Could not save content.");
+      }
+    },
+    async getContent() {
+      try {
+        const response = await getContent();
+        const { content } = response.data;
+        dispatch.feedModel.setcontent(content);
+      } catch (error) {
+        throw new Error("Could not get content");
+      }
     },
   }),
 };

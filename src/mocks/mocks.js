@@ -65,6 +65,10 @@ function MockRequests() {
     return [200, { success: true, error: null }];
   });
 
+  mock.onPost("/api/feed").reply(() => {
+    return [200, { success: true, error: null }];
+  });
+
   GetResponses.forEach((getResponse) => {
     mock.onGet(getResponse.path).reply((config) => {
       return [getResponse.responseCode, getResponse.response];

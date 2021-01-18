@@ -83,9 +83,9 @@ function ShareModule(props) {
             <AddPostModal
               firstButtonText={"Cancel"}
               handleClose={handleClose}
+              modalTitle="Ask a marketing question"
               secondButtonText={"Ask a question"}
               show={show}
-              title="Ask a marketing question"
             />
           </td>
           <td>

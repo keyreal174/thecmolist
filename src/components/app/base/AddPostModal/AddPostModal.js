@@ -1,39 +1,131 @@
-import React, { useState } from "react";
-import { Button, Container, Form, Modal, Row, Col } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import {
+  Alert,
+  Button,
+  Container,
+  Form,
+  Modal,
+  Row,
+  Col,
+} from "react-bootstrap";
 import "./addPostModal.css";
 
-function AddPostModal(props) {
+function AddPostModal({
+  content,
+  firstButtonText,
+  getContent,
+  handleClose,
+  modalTitle,
+  secondButtonText,
+  shareContent,
+  show,
+}) {
   const cdnBaseUrl = "https://d3k6hg21rt7gsh.cloudfront.net/icons/";
   const [showPersonSection, setShowPersonSection] = useState(false);
   const [showPhoto, setShowPhoto] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
   const [allMembers, setAllMembers] = useState(false);
   const [onlyMyNetwork, setOnlyMyNetwork] = useState(true);
-  const groups = {
+  const [groups, setGroups] = useState({
     "My Peers": true,
     "PagerDuty-Makerting": true,
     Dropbox: false,
     "SignalFire-Marketing": false,
-  };
+  });
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [topics, setTopics] = useState("");
   const [person, setPerson] = useState("");
   const [role, setRole] = useState("");
-  const submit = () => {
-    // handle props submit and send to service
-    props.handleClose();
+  const [error, setError] = useState(null);
+
+  const handleSubmit = (e) => {
+    const content = {
+      allMembers,
+      onlyMyNetwork,
+      groups,
+      title,
+      body,
+      topics,
+      person,
+      role,
+    };
+
+    setError(null);
+    e.preventDefault();
+
+    try {
+      shareContent(content);
+      handleClose();
+    } catch (error) {
+      setError(error);
+    }
   };
+
+  const cleanFields = () => {
+    setGroups({
+      "My Peers": true,
+      "PagerDuty-Makerting": true,
+      Dropbox: false,
+      "SignalFire-Marketing": false,
+    });
+    setTitle("");
+    setBody("");
+    setTopics("");
+    setPerson("");
+    setRole("");
+    setAllMembers(false);
+    setOnlyMyNetwork(true);
+  };
+
+  const handleCancel = () => {
+    handleClose();
+    setError(null);
+    cleanFields();
+  };
+
+  useEffect(() => {
+    const fetch = async () => {
+      try {
+        await getContent();
+      } catch (err) {
+        setError(err);
+      }
+      setError(new Error("problem detected"));
+    };
+
+    fetch();
+  }, []);
+
+  useEffect(() => {
+    if (content && Object.keys(content).length > 0) {
+      const {
+        allMembers,
+        onlyMyNetwork,
+        groups,
+        title,
+        body,
+        topics,
+        person,
+        role,
+      } = content;
+      setGroups(groups);
+      setTitle(title);
+      setBody(body);
+      setTopics(topics);
+      setPerson(person);
+      setRole(role);
+      setAllMembers(allMembers);
+      setOnlyMyNetwork(onlyMyNetwork);
+    }
+  }, [content]);
+
   return (
     <>
-      <Modal
-        className="modal"
-        show={props.show}
-        onHide={props.handleClose}
-        size="lg"
-      >
+      <Modal className="modal" show={show} onHide={handleClose} size="lg">
         <Modal.Header closeButton as="h4">
-          <Modal.Title className="modal-title">{props.title}</Modal.Title>
+          <Modal.Title className="modal-title">{modalTitle}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Container>
@@ -68,16 +160,23 @@ function AddPostModal(props) {
                     }}
                   />
                   <div style={{ display: "flex", marginBottom: "10px" }}>
-                    {Object.keys(groups).map((groupKey) => {
+                    {Object.keys(groups).map((groupKey, index) => {
                       return (
                         <Form.Check
                           className="modal-section-checkbox-content"
-                          disabled={allMembers}
-                          name={groupKey}
-                          id={groupKey}
-                          label={groupKey}
-                          type="checkbox"
                           defaultChecked={groups[groupKey]}
+                          disabled={allMembers}
+                          id={groupKey}
+                          key={index}
+                          label={groupKey}
+                          name={groupKey}
+                          onChange={(e) => {
+                            setGroups({
+                              ...groups,
+                              [groupKey]: e.target.checked,
+                            });
+                          }}
+                          type="checkbox"
                         />
                       );
                     })}
@@ -184,10 +283,7 @@ function AddPostModal(props) {
                     className={`modal-video-wrapper ${
                       showVideo ? "" : "hidden"
                     }`}
-                  >
-                    <img src="#" alt="" />
-                    Video
-                  </div>
+                  />
                 </Col>
                 <Col md="12">
                   <div
@@ -255,16 +351,16 @@ function AddPostModal(props) {
           <Button
             className="btn-white modal-cancel-button"
             variant="outline-primary"
-            onClick={props.handleClose}
+            onClick={() => handleCancel()}
           >
-            {props.firstButtonText}
+            {firstButtonText}
           </Button>
           <Button
             className="btn__homepage-blue"
             variant="primary"
-            onClick={() => submit()}
+            onClick={handleSubmit}
           >
-            {props.secondButtonText}
+            {secondButtonText}
           </Button>
         </Modal.Footer>
       </Modal>
@@ -272,4 +368,17 @@ function AddPostModal(props) {
   );
 }
 
-export default AddPostModal;
+const mapState = (state) => {
+  return {
+    content: state.feedModel.content,
+  };
+};
+
+const mapDispatch = (dispatch) => {
+  return {
+    shareContent: dispatch.feedModel.shareContent,
+    getContent: dispatch.feedModel.getContent,
+  };
+};
+
+export default connect(mapState, mapDispatch)(AddPostModal);
