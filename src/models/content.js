@@ -18,7 +18,7 @@ export default {
       return {
         ...rootState,
         content: {
-          groups: groups,
+          groups,
         },
       };
     },
@@ -28,7 +28,6 @@ export default {
       try {
         if (content) {
           await saveContent(content);
-          dispatch.contentModel.setGroups(content);
         } else {
           throw new Error("Content is empty.");
         }
