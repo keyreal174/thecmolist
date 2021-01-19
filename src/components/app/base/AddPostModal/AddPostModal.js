@@ -22,18 +22,19 @@ function AddPostModal({
   show,
 }) {
   const cdnBaseUrl = "https://d3k6hg21rt7gsh.cloudfront.net/icons/";
+  const [allMembers, setAllMembers] = useState(false);
+  const [body, setBody] = useState("");
+  const [error, setError] = useState(null);
+  const [groups, setGroups] = useState(content);
+  const [onlyMyNetwork, setOnlyMyNetwork] = useState(true);
+  const [person, setPerson] = useState("");
+  const [photo, setPhoto] = useState("");
+  const [role, setRole] = useState("");
   const [showPersonSection, setShowPersonSection] = useState(false);
   const [showPhoto, setShowPhoto] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
-  const [allMembers, setAllMembers] = useState(false);
-  const [onlyMyNetwork, setOnlyMyNetwork] = useState(true);
-  const [groups, setGroups] = useState(content);
   const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
   const [topics, setTopics] = useState("");
-  const [person, setPerson] = useState("");
-  const [role, setRole] = useState("");
-  const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     const content = {
@@ -44,6 +45,7 @@ function AddPostModal({
       body,
       topics,
       person,
+      photo,
       role,
     };
 
@@ -77,6 +79,7 @@ function AddPostModal({
     setBody("");
     setTopics("");
     setPerson("");
+    setPhoto("");
     setRole("");
     setAllMembers(false);
     setOnlyMyNetwork(true);
@@ -110,6 +113,57 @@ function AddPostModal({
     }
   }, [content]);
 
+  const handlePhotoClick = () => {
+    const file = document.getElementById("file");
+
+    file.click();
+  };
+
+  const handleFileChange = (e) => {
+    const preview = document.getElementById("preview");
+    const files = e.target.files;
+
+    setPhoto(files[0]);
+
+    for (var i = 0; i < files.length; i++) {
+      const file = files[i];
+      const imageType = /image.*/;
+
+      if (!file.type.match(imageType)) {
+        continue;
+      }
+      const div = document.createElement("div");
+      const img = document.createElement("img");
+      const divId = Math.ceil(Math.random() * 50);
+      const deleteButton = document.createElement("button");
+
+      deleteButton.textContent = "X";
+      deleteButton.onSubmit = function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const div = document.getElementById(divId);
+        div.style.display = "none";
+      };
+
+      img.classList.add("modal-image-preview");
+      img.file = file;
+      div.id = divId;
+      deleteButton.classList.add("modal-close-preview-button");
+
+      div.appendChild(deleteButton);
+      div.appendChild(img);
+      preview.appendChild(div);
+
+      const reader = new FileReader();
+      reader.onload = (function (aImg) {
+        return function (e) {
+          aImg.src = e.target.result;
+        };
+      })(img);
+      reader.readAsDataURL(file);
+      setShowPhoto(true);
+    }
+  };
   return (
     <>
       <Modal className="modal" show={show} onHide={handleClose} size="lg">
@@ -246,12 +300,18 @@ function AddPostModal({
                       />
                       <Button
                         className="modal-section-body-content"
-                        onClick={() => setShowPhoto(true)}
+                        onClick={() => handlePhotoClick()}
                         variant="link"
                         size="sm"
                       >
                         Photo
                       </Button>
+                      <input
+                        type="file"
+                        id="file"
+                        style={{ display: "none" }}
+                        onChange={handleFileChange}
+                      />
                     </li>
                     <li>
                       <img
@@ -276,8 +336,7 @@ function AddPostModal({
                       showPhoto ? "" : "hidden"
                     }`}
                   >
-                    <img src="#" alt="" />
-                    Photo
+                    <div id="preview" />
                   </div>
                   <div
                     className={`modal-video-wrapper ${

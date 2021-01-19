@@ -85,3 +85,20 @@
   opacity: 0;
   display: none;
 }
+
+.modal-image-wrapper {
+  height: 150px;
+}
+
+.modal-image-preview {
+  width: 140px;
+  height: 140px;
+}
+
+.modal-close-preview-button {
+  background: white;
+  border: none;
+  color: black;
+  left: 135px;
+  position: absolute;
+}
