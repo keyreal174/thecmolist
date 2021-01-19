@@ -1,0 +1,80 @@
+.profile-stats__user {
+  border: 1px solid #cccccc;
+  padding: 10px 10px 20px;
+  background: white;
+  min-height: 306px;
+}
+
+.profile-stats__user-name {
+  text-align: center;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: black;
+  font-size: 22px;
+}
+
+.profile-stats__user-company {
+  color: #777;
+  font-size: 16px;
+  line-height: 0.7;
+}
+
+.profile-stats__edit-button {
+  line-height: 2.5;
+  font-weight: 600;
+}
+
+.profile-stats__edit-button a {
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.profile-stats__community {
+  text-align: center;
+  font-size: 18px;
+  color: black;
+}
+
+.profile-stats__community-table {
+  font-size: 15px;
+  padding: 0 30px;
+  line-height: 1.7;
+}
+
+.profile-stats__spaces {
+  border: 1px solid #cccccc;
+  padding: 10px 10px 20px;
+  background: white;
+  margin-top: 10px;
+  min-height: 384px;
+}
+
+.profile-stats__spaces-title {
+  font-size: 20px;
+  color: black;
+  font-weight: 500;
+  padding: 0 25px 5px;
+}
+
+.profile-stats__spaces-title span {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.profile-stats__spaces-section {
+  padding: 0 25px;
+}
+
+.profile-stats__space-title {
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 17px;
+}
+
+.profile-stats__spaces-badge {
+  width: 40px;
+}

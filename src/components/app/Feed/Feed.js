@@ -9,6 +9,7 @@ import Article from "../base/Article/Article";
 import ShareModule from "../base/ShareModule/ShareModule";
 import InviteModal from "../base/ShareModule/InviteModal";
 import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
+import ProfileStats from "../ProfileStats/ProfileStats";
 import Analytics from "../../util/Analytics";
 import Arrow from "../base/icons/arrow.svg";
 import "./feed.css";
@@ -142,6 +143,7 @@ function RenderDashboard(props) {
       props.setShowDashboard && props.setShowDashboard(false);
     }
   };
+  let { profileStats } = props;
 
   return dashboardLoading ? (
     <div className="mt-3 mb-5">
@@ -151,107 +153,7 @@ function RenderDashboard(props) {
     <div>
       <Row>
         <Col md="3" style={{ paddingRight: "0px" }}>
-          {profileData && (
-            <div
-              style={{
-                border: "1px solid #cccccc",
-                padding: "10px",
-                background: "white",
-              }}
-            >
-              <div className="article-img">
-                <img
-                  className="element-center"
-                  src={profileData.image}
-                  alt=""
-                />
-              </div>
-              <div
-                style={{
-                  textAlign: "center",
-                  fontWeight: 600,
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                <span>
-                  {profileData.first_name} {profileData.last_name}
-                </span>
-                <img
-                  alt="verified"
-                  className="feed-profile-check"
-                  src="https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg"
-                />
-              </div>
-              <div style={{ textAlign: "center" }}>
-                <span style={{ color: "#777", fontSize: "15px" }}>
-                  {profileData.title} at {profileData.company}
-                </span>
-              </div>
-              <div className="feed-profile-card-divider" />
-              <div
-                style={{
-                  textAlign: "center",
-                  fontSize: "17px",
-                  marginLeft: "-5px",
-                }}
-              >
-                <span>Community Contribution</span>
-              </div>
-              <div
-                style={{
-                  paddingLeft: "20px",
-                  fontSize: "13px",
-                }}
-              >
-                <table style={{ width: "100%" }}>
-                  <tbody>
-                    <tr>
-                      <td>Connections</td>
-                      <td>0</td>
-                    </tr>
-                    <tr>
-                      <td>Posts</td>
-                      <td>0</td>
-                    </tr>
-                    <tr>
-                      <td>Views</td>
-                      <td>0</td>
-                    </tr>
-                    <tr>
-                      <td>Invitations</td>
-                      <td>0</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div
-                style={{
-                  textAlign: "center",
-                  fontSize: "15px",
-                  fontWeight: 600,
-                  marginTop: "5px",
-                }}
-              >
-                <Button
-                  className="button-as-link"
-                  onClick={() => {
-                    Analytics.sendClickEvent(
-                      "Clicked top subscribers on feed page"
-                    );
-                    window.location.href = "/network";
-                  }}
-                >
-                  Top contributors
-                </Button>
-              </div>
-            </div>
-          )}
-
-          {dashboardData.directory && (
-            <RenderCategories directoryData={dashboardData.directory} />
-          )}
+          <ProfileStats profileStats={profileStats} />
         </Col>
         <Col md="9">
           {dashboardData.modules &&
@@ -385,7 +287,9 @@ const Feed = (props) => {
   const OnComponentDidMount = (func) => useEffect(func, []);
   OnComponentDidMount(() => {
     const fetchDashboard = async () => props.fetchDashboard();
+    const getProfileStats = async () => props.getProfileStats();
     fetchDashboard();
+    getProfileStats();
   });
 
   const showFeed = !showDashboard;
@@ -466,6 +370,7 @@ const mapState = (state) => {
     dashboardData: state.feedModel.dashboardData,
     feedData: state.feedModel.feedData,
     filterIdx: state.feedModel.filterIdx,
+    profileStats: state.profileStatsModel.profileStats,
   };
 };
 
@@ -475,6 +380,7 @@ const mapDispatch = (dispatch) => {
     fetchFeed: dispatch.feedModel.fetchFeed,
     changeFilterIndex: dispatch.feedModel.changeFilterIndex,
     saveUserInvite: dispatch.userModel.saveInvite,
+    getProfileStats: dispatch.profileStatsModel.getProfileStats,
   };
 };
 
