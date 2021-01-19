@@ -4,12 +4,12 @@ import { AsyncTypeahead, TypeaheadMenu } from "react-bootstrap-typeahead";
 import { NavLink } from "react-router-dom";
 import "./header.css";
 
-import HomeIcon from "./icons/home.svg";
-import Group from "./icons/group.svg";
-import Forum from "./icons/forum.svg";
-import Apps from "./icons/apps.svg";
-import Person from "./icons/person.svg";
-import Search from "./icons/search.svg";
+import HomeIcon from "../icons/home.svg";
+import Group from "../icons/group.svg";
+import Forum from "../icons/forum.svg";
+import Apps from "../icons/apps.svg";
+import Person from "../icons/person.svg";
+import Search from "../icons/search.svg";
 
 function Header() {
   let PersonHeader = (props) => (

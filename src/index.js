@@ -7,6 +7,7 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import ReactGA from "react-ga";
+import contentModel from "./models/content";
 import feedModel from "./models/feed";
 import networkModel from "./models/network";
 import userModel from "./models/user";
@@ -14,10 +15,11 @@ import settingsModel from "./models/settings";
 
 const store = init({
   models: {
+    contentModel,
     feedModel,
     networkModel,
-    userModel,
     settingsModel,
+    userModel,
   },
 });
 
