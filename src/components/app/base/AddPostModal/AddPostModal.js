@@ -138,11 +138,13 @@ function AddPostModal({
       const deleteButton = document.createElement("button");
 
       deleteButton.textContent = "X";
-      deleteButton.onSubmit = function (e) {
+      deleteButton.type = "button";
+      deleteButton.onclick = function (e) {
         e.preventDefault();
         e.stopPropagation();
         const div = document.getElementById(divId);
-        div.style.display = "none";
+        div.remove();
+        setShowPhoto(false);
       };
 
       img.classList.add("modal-image-preview");
