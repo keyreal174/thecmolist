@@ -20,7 +20,6 @@ const SpaceItem = ({ space }) => {
 };
 
 const ProfileStats = ({ profileStats }) => {
-  console.log(profileStats);
   return (
     <Fragment>
       <div className="profile-stats__user">

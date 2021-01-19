@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const getProfile = () => {
+export const getProfile = () => {
   return axios.get(`/api/profilestats/`);
 };
 

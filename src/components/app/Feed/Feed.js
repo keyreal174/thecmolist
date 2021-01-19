@@ -122,10 +122,6 @@ function RenderCategories(props) {
 function RenderDashboard(props) {
   let dashboardData = props.dashboardData;
   let dashboardLoading = !dashboardData.directory;
-  let profileData =
-    dashboardData.profile && dashboardData.profile.first_name
-      ? dashboardData.profile
-      : {};
   let moduleShowMore = (filter) => {
     let idx = -1;
     for (let i = 0; i < props.feedData.length; i++) {
