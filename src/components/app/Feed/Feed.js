@@ -141,6 +141,9 @@ function RenderDashboard(props) {
   };
   let { profileStats } = props;
 
+  let buildYourNetworkItems = dashboardData.buildYourNetwork;
+  let peopleInSimilarRoles = dashboardData.peopleInSimilarRoles;
+  let newMembers = dashboardData.newMembers;
   return dashboardLoading ? (
     <div className="mt-3 mb-5">
       <ActivityIndicator className="element-center feed-activity-indicator" />
@@ -151,7 +154,7 @@ function RenderDashboard(props) {
         <Col md="3" style={{ paddingRight: "0px" }}>
           <ProfileStats profileStats={profileStats} />
         </Col>
-        <Col md="9">
+        <Col md="6">
           {dashboardData.modules &&
             dashboardData.modules.map((module, idx) => {
               return (
@@ -217,6 +220,63 @@ function RenderDashboard(props) {
               );
             })}
         </Col>
+        <Col md="3" style={{ paddingRight: "0px" }}>
+          <div className="feed-box">
+            <div className="feed-box-title">Build your network</div>
+            <div className="feed-box-content">
+              {buildYourNetworkItems.map((item, index) => {
+                return (
+                  <div className="feed-box-content-item" key={index}>
+                    {item.checked ? (
+                      <span className="feed-box-content-icon">✓</span>
+                    ) : (
+                      <input type="checkbox" defaultChecked={item.checked} />
+                    )}
+                    <span
+                      className={`feed-box-content-text ${
+                        item.checked ? "feed-box-content-text-checked" : ""
+                      }`}
+                    >
+                      {item.content}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div className="feed-box feed-box-margin-top">
+            <div className="feed-box-title">People in similar roles</div>
+            <div className="feed-box-content">
+              {peopleInSimilarRoles.map(({ name, role }, index) => {
+                return (
+                  <div
+                    className="feed-box-content-item feed-box-content-item-special"
+                    key={index}
+                  >
+                    <div className="feed-box-content-name">{name}</div>
+                    <div className="feed-box-content-role">{role}</div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div className="feed-box feed-box-margin-top">
+            <div className="feed-box-title">New members</div>
+            <div className="feed-box-content">
+              {newMembers.map(({ name, role }, index) => {
+                return (
+                  <div
+                    className="feed-box-content-item feed-box-content-item-special"
+                    key={index}
+                  >
+                    <div className="feed-box-content-name">{name}</div>
+                    <div className="feed-box-content-role">{role}</div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </Col>
       </Row>
     </div>
   );
@@ -262,7 +322,7 @@ function RenderFeed(props) {
 
       {moreData && (
         <div className="row">
-          <div class="col-md-2 mt-2 mx-auto">
+          <div className="col-md-2 mt-2 mx-auto">
             <button
               className="btn btn__load-more"
               type="button"

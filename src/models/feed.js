@@ -18,6 +18,14 @@ const feedRequest = (filter, token) => {
   return axios.get(`/api/feed?filter=${filter}`, { headers });
 };
 
+const saveContent = (data) => {
+  return axios.post("/api/feed", data);
+};
+
+const getContent = () => {
+  return axios.get(`/api/feed/`);
+};
+
 export default {
   name: "feedModel",
   state: {
