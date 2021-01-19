@@ -1,0 +1,44 @@
+{
+  "profile": {
+    "name": "Jennifer Smith",
+    "headline": "Brand at Modern Media",
+    "stats": {
+      "posts": 14,
+      "views": 2345,
+      "thanks": 34,
+      "insightful": 11
+    }
+  },
+  "spaces": [
+    {
+      "title": "#advertising",
+      "count": 12
+    },
+    {
+      "title": "#social-media-marketing"
+    },
+    {
+      "title": "#performance-marketing",
+      "count": 8
+    },
+    {
+      "title": "#public-relations"
+    },
+    {
+      "title": "#design",
+      "count": 6
+    },
+    {
+      "title": "#account-based-marketing"
+    },
+    {
+      "title": "#content-marketing"
+    },
+    {
+      "title": "#conversion-ratio"
+    },
+    {
+      "title": "#demand-generation"
+    }
+  ]
+}
