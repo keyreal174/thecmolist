@@ -12,6 +12,7 @@ import feedModel from "./models/feed";
 import networkModel from "./models/network";
 import userModel from "./models/user";
 import settingsModel from "./models/settings";
+import profileStatsModel from "./models/profile_stats";
 
 const store = init({
   models: {
@@ -19,6 +20,7 @@ const store = init({
     feedModel,
     networkModel,
     settingsModel,
+    profileStatsModel,
     userModel,
   },
 });
