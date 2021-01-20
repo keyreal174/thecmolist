@@ -27,7 +27,7 @@ export default {
         if (id) {
           const response = await getQuestion(id);
           const data = response.data;
-          dispatch.questionModel.setQuestion(data.question);
+          dispatch.questionModel.setQuestion(data);
         } else {
           throw new Error("Id not provided.");
         }

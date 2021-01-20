@@ -5,7 +5,7 @@ import Signup from "./components/home/Signup";
 import Signedup from "./components/home/Signedup";
 import Login from "./components/login/Login";
 import Logout from "./components/login/Logout";
-import Questions from "./components/app/Questions/Questions";
+import Question from "./components/app/Question/Question";
 import Feed from "./components/app/Feed/Feed";
 import Profile from "./components/app/Profile/Profile";
 import Settings from "./components/app/Settings/Settings";
@@ -101,10 +101,10 @@ class App extends React.Component {
             }
           />
           <Route
-            path="/questions/:id"
+            path="/question/:id"
             render={(props) =>
               this.state.authed ? (
-                <Questions {...props} />
+                <Question {...props} />
               ) : (
                 <Redirect to="/login" />
               )
