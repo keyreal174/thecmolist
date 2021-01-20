@@ -469,7 +469,9 @@ class Profile extends React.Component {
                   <Button
                     className="btn-white edit-profile"
                     variant="outline-primary"
-                    onClick={() => setEditProfileModalShow(true)}
+                    onClick={() =>
+                      window.history.pushState(null, "", "/profile/edit")
+                    }
                   >
                     Edit Profile
                   </Button>
