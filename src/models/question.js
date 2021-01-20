@@ -1,11 +1,11 @@
 import axios from "axios";
 
 const saveQuestion = (data) => {
-  return axios.post("/api/question/id", data);
+  return axios.post(`/api/question`, data);
 };
 
 const getQuestion = (id) => {
-  return axios.get(`/api/question/id`);
+  return axios.get(`/api/question/${id}`);
 };
 
 export default {
@@ -27,12 +27,21 @@ export default {
         if (id) {
           const response = await getQuestion(id);
           const data = response.data;
-          dispatch.settingsModel.setQuestion(data.question);
+          dispatch.questionModel.setQuestion(data.question);
         } else {
           throw new Error("Id not provided.");
         }
       } catch (err) {
         throw new Error("Could not fetch question.");
+      }
+    },
+    async saveQuestion() {
+      try {
+        const response = await saveQuestion();
+        const data = response.data;
+        dispatch.questionModel.setQuestion(data.question);
+      } catch (err) {
+        throw new Error("Could not save question.");
       }
     },
   }),
