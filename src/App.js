@@ -7,6 +7,7 @@ import Login from "./components/login/Login";
 import Logout from "./components/login/Logout";
 import Feed from "./components/app/Feed/Feed";
 import Profile from "./components/app/Profile/Profile";
+import ProfileEdit from "./components/app/ProfileEdit/ProfileEdit";
 import Settings from "./components/app/Settings/Settings";
 import AgencyProfile from "./components/app/Profile/AgencyProfile";
 import TechnologyProfile from "./components/app/Profile/TechnologyProfile";
@@ -88,9 +89,17 @@ class App extends React.Component {
             }
           />
           <Route
+            exact
             path="/profile"
             render={(props) =>
               this.state.authed ? <Profile /> : <Redirect to="/login" />
+            }
+          />
+          <Route
+            exact
+            path="/profile/edit"
+            render={(props) =>
+              this.state.authed ? <ProfileEdit /> : <Redirect to="/login" />
             }
           />
           <Route
