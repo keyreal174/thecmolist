@@ -52,7 +52,7 @@ const ProfileEdit = (props) => {
 
   useEffect(() => {
     const fetch = async () => {
-      await props.fetchProfile("julie");
+      await props.fetchProfile();
     };
 
     fetch();

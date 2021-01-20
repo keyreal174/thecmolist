@@ -151,7 +151,7 @@ describe("profileModel model", () => {
     it("fetches successfully data from an API", async () => {
       axios.get.mockImplementationOnce(() => Promise.resolve(data));
 
-      await expect(profileRequest("jille")).resolves.toEqual(data);
+      await expect(profileRequest()).resolves.toEqual(data);
     }),
     it("fetches erroneously data from an API", async () => {
       const errorMessage = "Could not get profile";
@@ -160,7 +160,7 @@ describe("profileModel model", () => {
         Promise.reject(new Error(errorMessage))
       );
 
-      await expect(profileRequest("jille")).rejects.toThrow(errorMessage);
+      await expect(profileRequest()).rejects.toThrow(errorMessage);
     }),
     it("save successfully data through an API", async () => {
       axios.post.mockImplementationOnce(() => Promise.resolve(data));
