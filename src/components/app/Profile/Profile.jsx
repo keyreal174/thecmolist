@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import axios from "axios";
 import Header from "../base/Header/Header";
@@ -469,9 +470,7 @@ class Profile extends React.Component {
                   <Button
                     className="btn-white edit-profile"
                     variant="outline-primary"
-                    onClick={() =>
-                      window.history.pushState(null, "", "/profile/edit")
-                    }
+                    onClick={() => this.props.history.push("/profile/edit")}
                   >
                     Edit Profile
                   </Button>
@@ -762,4 +761,4 @@ class Profile extends React.Component {
   }
 }
 
-export default Profile;
+export default withRouter(Profile);

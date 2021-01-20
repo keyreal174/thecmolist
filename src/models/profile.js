@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const profileRequest = (userName) => {
+export const profileRequest = (userName) => {
   return axios.get(`/api/profile/${userName}`, {
     headers: {
       "timezone-offset": new Date().getTimezoneOffset(),
@@ -8,8 +8,8 @@ const profileRequest = (userName) => {
   });
 };
 
-const saveProfileRequest = (profile) => {
-  return axios.post("/api/profile/", profile);
+export const saveProfileRequest = (data) => {
+  return axios.post("/api/profile", data);
 };
 
 export default {
@@ -38,7 +38,7 @@ export default {
 
     async saveProfile(profile) {
       try {
-        await saveProfileRequest(profile);
+        await saveProfileRequest({ profile });
         dispatch.profileModel.updateProfile(profile);
       } catch (err) {
         throw new Error("Could not save profile");
