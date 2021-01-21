@@ -81,12 +81,12 @@ const ProfileEdit = (props) => {
     setWebsite(profile.website);
     setHeadline(profile.headline);
     setImage(profile.image);
-    setAreasOfExpertise(profile.areasOfExpertise);
-    setAreasOfInterest(profile.areasOfInterest);
-    setNetworking(profile.networking);
-    setNetworkingOpportunities(profile.networkingOpportunities);
-    setAdvising(profile.advising);
-    setAdvisingOpportunities(profile.advisingOpportunities);
+    setAreasOfExpertise(profile.about.areasOfExpertise.join(", "));
+    setAreasOfInterest(profile.about.areasOfInterest.join(", "));
+    setNetworking(profile.about.networking);
+    setNetworkingOpportunities(profile.about.networkingOpportunities);
+    setAdvising(profile.about.advising);
+    setAdvisingOpportunities(profile.about.advisingOpportunities);
     setCompanyLinkedin(profile.companyLinkedin);
     setCompanyIndustry(profile.companyIndustry);
     setCompanyStage(profile.companyStage);
@@ -123,12 +123,14 @@ const ProfileEdit = (props) => {
       website,
       headline,
       image,
-      areasOfExpertise,
-      areasOfInterest,
-      networking,
-      networkingOpportunities,
-      advising,
-      advisingOpportunities,
+      about: {
+        areasOfExpertise: areasOfExpertise.split(", "),
+        areasOfInterest: areasOfInterest.split(", "),
+        networking,
+        networkingOpportunities,
+        advising,
+        advisingOpportunities,
+      },
       companyLinkedin,
       companyIndustry,
       companyStage,

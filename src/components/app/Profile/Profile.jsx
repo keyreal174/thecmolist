@@ -9,7 +9,7 @@ import Filter from "../base/Filter/Filter";
 import Article from "../base/Article/Article";
 import Footer from "../base/Footer/Footer";
 import { Link } from "react-router-dom";
-import { Button, Row, Col, Container } from "react-bootstrap";
+import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import ShowMoreText from "react-show-more-text";
 import AddAgency from "./AddAgency";
 import AddTechnology from "./AddTechnology";
@@ -45,6 +45,15 @@ const connectUserRequest = (user) => {
   return axios.post("/api/connect_user", user);
 };
 
+const ShowAList = ({ arr }) => {
+  return arr.map((item, index) => (
+    <React.Fragment key={index}>
+      <a href="#">{item}</a>
+      {index < arr.length - 1 && <span>{", "}</span>}
+    </React.Fragment>
+  ));
+};
+
 class Profile extends React.Component {
   constructor(props) {
     super(props);
@@ -53,6 +62,7 @@ class Profile extends React.Component {
       isMyProfile: false,
       profileFirstName: "",
       profileLastName: "",
+      profileUserName: "",
       profileImage: "",
       profileTitle: "",
       profileCompany: "",
@@ -128,6 +138,7 @@ class Profile extends React.Component {
             isMyProfile: nextProps.profile.isMyProfile,
             profileFirstName: nextProps.profile.firstName || "",
             profileLastName: nextProps.profile.lastName || "",
+            profileUserName: nextProps.profile.userName || "",
             profileImage: nextProps.profile.image || "",
             profileTitle: nextProps.profile.title || "",
             profileCompany: nextProps.profile.company || "",
@@ -452,90 +463,73 @@ class Profile extends React.Component {
               )}
             </Banner>
 
-            <div className="overview">
-              <Row className="border">
-                <Col
-                  md="8"
-                  className="mt-3 mb-4"
-                  style={{ marginLeft: "20px" }}
-                >
-                  <ShowMoreText
-                    keepNewLines={true}
-                    lines={1}
-                    more="See more"
-                    less=""
-                    width={0}
-                  >
-                    {this.state.profileHeadline}
-                  </ShowMoreText>
-                </Col>
-                <Col md="4"></Col>
-              </Row>
-            </div>
-
-            {/* HACK: hardcode this for now (for the demo) */}
-            {this.state.profileAbout.length > 0 && (
-              <div className="profile-about mt-2">
-                <Row className="border">
+            {Object.keys(this.state.profileAbout).length > 0 && (
+              <div className="profile-about mt-2 px-4">
+                <Row>
                   <Col md="12">
-                    <h2>About</h2>
-                    <table className="about-table">
-                      <tr>
-                        <td>
-                          <strong>Team size</strong>
-                        </td>
-                        <td>50+</td>
-                        <td>
-                          <strong>Networking areas</strong>
-                        </td>
-                        <td>
-                          <ShowMoreText
-                            keepNewLines={false}
-                            lines={1}
-                            more="See more"
-                            less=""
-                            width={0}
-                          >
-                            B2B SaaS CMOs at late stage or public companies
-                          </ShowMoreText>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <strong>Business accountability</strong>
-                        </td>
-                        <td>$10-$100 million</td>
-                        <td>
-                          <strong>Advising areas</strong>
-                        </td>
-                        <td>
-                          <ShowMoreText
-                            keepNewLines={false}
-                            lines={1}
-                            more="See more"
-                            less=""
-                            width={0}
-                          >
-                            Series A/B/ C B2B or B2C companies
-                          </ShowMoreText>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <strong>Expertise</strong>
-                        </td>
-                        <td>
-                          <span className="about-tag">Leadership</span>,{" "}
-                          <span className="about-tag">Advertising</span>,{" "}
-                          <span className="about-tag">Public Relations</span>,{" "}
-                          <span className="about-tag">Saas</span>
-                        </td>
-                      </tr>
-                    </table>
+                    <h2 className="mb-3 mt-2">About</h2>
+                    <ShowMoreText
+                      keepNewLines={true}
+                      lines={2}
+                      more="See more"
+                      less="See less"
+                      width={0}
+                    >
+                      {this.state.profileAbout.description}
+                    </ShowMoreText>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col md="6">
+                    <Form.Label>Marketing expertise</Form.Label>
+                    <div>
+                      <ShowAList
+                        arr={this.state.profileAbout.areasOfExpertise}
+                      />
+                    </div>
+                  </Col>
+                  <Col md="6">
+                    <Form.Label>Marketing interests</Form.Label>
+                    <div>
+                      <ShowAList
+                        arr={this.state.profileAbout.areasOfInterest}
+                      />
+                    </div>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col md="6">
+                    <Form.Label>Open to networking</Form.Label>
+                    <div>
+                      <span>
+                        {this.state.profileAbout.networking ? "Yes" : "No"}
+                      </span>
+                    </div>
+                  </Col>
+                  <Col md="6">
+                    <Form.Label>Open to advising</Form.Label>
+                    <div>
+                      <span>
+                        {this.state.profileAbout.advising ? "Yes" : "No"}
+                      </span>
+                    </div>
                   </Col>
                 </Row>
               </div>
             )}
+
+            <div
+              className="d-flex m-auto pt-4 pb-2 align-items-center"
+              style={{ width: "60%" }}
+            >
+              <Form.Control placeholder="" className="mr-3" />
+              <Button
+                className="btn__homepage btn__homepage-blue btn__nux_share"
+                style={{ float: "right", width: "220px" }}
+              >
+                Search {this.state.profileUserName}'s knowledge
+              </Button>
+            </div>
 
             {this.state.profileFirstName && (
               <Filter
