@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const saveQuestion = (data) => {
-  return axios.post(`/api/question`, data);
+const saveComment = (id, data) => {
+  return axios.post(`/api/question/${id}`, data);
 };
 
 const getQuestion = (id) => {
@@ -20,6 +20,12 @@ export default {
         question: data,
       };
     },
+    updateReplies: (oldState, data) => {
+      return {
+        ...oldState,
+        replies: [...oldState.replies, data],
+      };
+    },
   },
   effects: (dispatch) => ({
     async fetchQuestion(id) {
@@ -35,11 +41,14 @@ export default {
         throw new Error("Could not fetch question.");
       }
     },
-    async saveQuestion() {
+    async saveCommentToQuestion(id, data) {
       try {
-        const response = await saveQuestion();
-        const data = response.data;
-        dispatch.questionModel.setQuestion(data.question);
+        if (data) {
+          await saveComment(id, data);
+          dispatch.questionModel.updateReplies(data);
+        } else {
+          throw new Error("Error saving the data");
+        }
       } catch (err) {
         throw new Error("Could not save question.");
       }
