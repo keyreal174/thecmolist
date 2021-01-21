@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const profileRequest = (userName) => {
-  return axios.get(`/api/profile/${userName}`, {
+  return axios.get(`/api/profile/${userName ? userName : ""}`, {
     headers: {
       "timezone-offset": new Date().getTimezoneOffset(),
     },
