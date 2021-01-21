@@ -10,6 +10,7 @@ import ReactGA from "react-ga";
 import contentModel from "./models/content";
 import feedModel from "./models/feed";
 import networkModel from "./models/network";
+import questionModel from "./models/question";
 import userModel from "./models/user";
 import settingsModel from "./models/settings";
 import profileStatsModel from "./models/profile_stats";
@@ -20,6 +21,7 @@ const store = init({
     contentModel,
     feedModel,
     networkModel,
+    questionModel,
     settingsModel,
     profileStatsModel,
     userModel,

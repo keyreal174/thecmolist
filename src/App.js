@@ -5,6 +5,7 @@ import Signup from "./components/home/Signup";
 import Signedup from "./components/home/Signedup";
 import Login from "./components/login/Login";
 import Logout from "./components/login/Logout";
+import Question from "./components/app/Question/Question";
 import Feed from "./components/app/Feed/Feed";
 import Profile from "./components/app/Profile/Profile";
 import ProfileEdit from "./components/app/ProfileEdit/ProfileEdit";
@@ -109,6 +110,16 @@ class App extends React.Component {
             }
           />
           <Route
+            path="/question/:id"
+            render={(props) =>
+              this.state.authed ? (
+                <Question {...props} />
+              ) : (
+                <Redirect to="/login" />
+              )
+            }
+          />
+          <Route
             path="/agency/:agencyName"
             render={(props) =>
               this.state.authed ? (
@@ -153,6 +164,7 @@ class App extends React.Component {
               this.state.authed ? <Network /> : <Redirect to="/login" />
             }
           />
+
           <Route path="/login">
             <Login />
           </Route>

@@ -1,0 +1,28 @@
+.question-anwer-section {
+  margin-top: 20px;
+}
+
+.question-anwer-section-replies {
+  margin-top: 20px;
+  padding: 10px 0;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.question-related-section {
+  background: white;
+  border: 1px solid #cccccc;
+  height: 250px;
+  padding: 10px 20px;
+  margin-top: 22px;
+}
+
+.question-related-section-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.question-related-section-item {
+  color: black;
+}
