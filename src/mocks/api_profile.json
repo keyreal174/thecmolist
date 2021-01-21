@@ -118,6 +118,7 @@
         "data": []
       }
     ],
-    "isMyProfile": true
+    "isMyProfile": true,
+    "isNewUser": true
   }
 }

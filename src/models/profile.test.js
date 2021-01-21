@@ -132,6 +132,7 @@ const data = {
       },
     ],
     isMyProfile: true,
+    isNewuser: false,
   },
 };
 
