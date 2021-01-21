@@ -11,9 +11,6 @@ import Footer from "../base/Footer/Footer";
 import { Link } from "react-router-dom";
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import ShowMoreText from "react-show-more-text";
-import AddAgency from "./AddAgency";
-import AddTechnology from "./AddTechnology";
-import EditProfile from "./EditProfile";
 import Util from "../../util/Util";
 import RatingBadgeProfile from "../base/Rating/RatingBadgeProfile";
 import Analytics from "../../util/Analytics";
@@ -31,14 +28,6 @@ const getimageUploadUrlRequest = (fileName, fileType) => {
 
 const uploadImageRequest = (file, url) => {
   return axios.put(url, file, { headers: { "Content-Type": file.type } });
-};
-
-const addAgencyRequest = (agencyReview) => {
-  return axios.post("/api/agencyreview", agencyReview);
-};
-
-const addTechnologyRequest = (agency) => {
-  return axios.post("/api/technologyreview", agency);
 };
 
 const connectUserRequest = (user) => {
@@ -185,47 +174,6 @@ class Profile extends React.Component {
     });
   }
 
-  addAgency(agencyReview, setAddAgencyModalShow) {
-    let self = this;
-    addAgencyRequest(agencyReview)
-      .then(({ data }) => {
-        self.fetchProfile();
-        setAddAgencyModalShow(false);
-        // reset url to default (agencies tab)
-        let windowUrl = window.location.href.substring(
-          0,
-          window.location.href.lastIndexOf("#")
-        );
-        window.history.pushState(null, "", windowUrl);
-      })
-      .catch((error) => {
-        alert("An error occurred. Please try again later.");
-        console.log(error);
-        setAddAgencyModalShow(false);
-      });
-  }
-
-  addTechnology(technologyReview, setAddTechnologyModalShow) {
-    let self = this;
-    addTechnologyRequest(technologyReview)
-      .then(({ data }) => {
-        self.fetchProfile();
-        setAddTechnologyModalShow(false);
-        // reset url to #technologies tab
-        let windowUrl = window.location.href.substring(
-          0,
-          window.location.href.lastIndexOf("#")
-        );
-        windowUrl += "#technologies";
-        window.history.pushState(null, "", windowUrl);
-      })
-      .catch((error) => {
-        alert("An error occurred. Please try again later.");
-        console.log(error);
-        setAddTechnologyModalShow(false);
-      });
-  }
-
   connectUser() {
     let self = this;
     let userName = Util.parsePath(window.location.href).trailingPath;
@@ -287,15 +235,6 @@ class Profile extends React.Component {
       }
     }
     let self = this;
-    let setEditProfileModalShow = (e) => {
-      self.setState({ editProfileModalShow: e });
-    };
-    let setAddAgencyModalShow = (e) => {
-      self.setState({ addAgencyModalShow: e });
-    };
-    let setAddTechnologyModalShow = (e) => {
-      self.setState({ addTechnologyModalShow: e });
-    };
     let setFilterIdx = (idx) => {
       // clear subfilter
       let prevFeedData = self.state.feedData.slice();
@@ -317,42 +256,6 @@ class Profile extends React.Component {
       });
     };
     let noFeedContentCopy = null;
-    let noFeedContentButton = <div />;
-    if (this.state.profileFirstName.length > 0 && feedData.length === 0) {
-      if (activeFilterTitle.includes("Agencies")) {
-        if (isMyProfile) {
-          noFeedContentCopy =
-            "Support and share your favorite agencies with your network";
-          noFeedContentButton = (
-            <Button
-              className="btn-white no-review-button"
-              variant="outline-primary"
-              onClick={() => setAddAgencyModalShow(true)}
-            >
-              Share Agency
-            </Button>
-          );
-        } else {
-          noFeedContentCopy = `${this.state.profileFirstName} has not yet shared any agencies with the CMOlist community`;
-        }
-      } else if (activeFilterTitle.includes("Tech")) {
-        if (isMyProfile) {
-          noFeedContentCopy =
-            "Support and share your favorite technologies with your network";
-          noFeedContentButton = (
-            <Button
-              className="btn-white no-review-button"
-              variant="outline-primary"
-              onClick={() => setAddTechnologyModalShow(true)}
-            >
-              Share Technology
-            </Button>
-          );
-        } else {
-          noFeedContentCopy = `${this.state.profileFirstName} has not yet shared any technologies with the CMOlist community`;
-        }
-      }
-    }
 
     const FadeTransition = (props) => (
       <CSSTransition {...props} classNames="profile-article-transition" />
@@ -537,30 +440,7 @@ class Profile extends React.Component {
                 filterIdx={this.state.filterIdx}
                 filters={filters}
                 onChange={(idx) => setFilterIdx(idx)}
-              >
-                {isMyProfile && (
-                  <div className="filter-btn">
-                    {activeFilterTitle.includes("Tech") && (
-                      <Button
-                        className="btn-white"
-                        variant="outline-primary"
-                        onClick={() => setAddTechnologyModalShow(true)}
-                      >
-                        Share Technology
-                      </Button>
-                    )}
-                    {activeFilterTitle.includes("Agencies") && (
-                      <Button
-                        className="btn-white"
-                        variant="outline-primary"
-                        onClick={() => setAddAgencyModalShow(true)}
-                      >
-                        Share Agency
-                      </Button>
-                    )}
-                  </div>
-                )}
-              </Filter>
+              ></Filter>
             )}
           </div>
           {subfilterKeys.length > 0 && (
@@ -585,20 +465,6 @@ class Profile extends React.Component {
             </div>
           )}
           <div style={{ clear: "both" }}></div>
-          <AddAgency
-            show={this.state.addAgencyModalShow}
-            onSuccess={(agencyreview) =>
-              self.addAgency(agencyreview, setAddAgencyModalShow)
-            }
-            onHide={() => setAddAgencyModalShow(false)}
-          />
-          <AddTechnology
-            show={this.state.addTechnologyModalShow}
-            onSuccess={(technologyreview) =>
-              self.addTechnology(technologyreview, setAddTechnologyModalShow)
-            }
-            onHide={() => setAddTechnologyModalShow(false)}
-          />
 
           <TransitionGroup
             enter={this.state.enableAnimations}
@@ -674,10 +540,7 @@ class Profile extends React.Component {
           {noFeedContentCopy && (
             <div className="wrapper article-wrapper">
               <div className="no-reviews-header">No reviews yet</div>
-              <div className="no-reviews-body">
-                {noFeedContentCopy}
-                {noFeedContentButton}
-              </div>
+              <div className="no-reviews-body">{noFeedContentCopy}</div>
             </div>
           )}
 
