@@ -3,19 +3,18 @@ import { Button, Form } from "react-bootstrap";
 
 import "./comment.css";
 
-const Comment = (props) => {
+const Comment = ({ onSubmit, className, placeholder }) => {
   const [comment, setComment] = useState("");
   const [show, setShow] = useState("");
-  const submit = props.submit;
 
   return (
-    <div className="comment-wrapper">
+    <div className={`comment-wrapper ${className}`}>
       <img alt="profile" className="comment-image" src="#" />
       <Form.Control
         as="input"
         className="comment-input"
         id="textarea"
-        placeholder="Add a comment..."
+        placeholder={placeholder ? placeholder : "Add a comment..."}
         onChange={(e) => {
           const value = e.target.value;
           setComment(value);
@@ -26,7 +25,11 @@ const Comment = (props) => {
       {
         <Button
           className={`comment-button ${show ? "show" : ""}`}
-          onClick={() => submit(comment)}
+          onClick={(e) => {
+            e.preventDefault();
+            console.log(comment);
+            onSubmit(comment);
+          }}
           variant="primary"
         >
           Post
