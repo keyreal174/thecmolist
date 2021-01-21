@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import axios from "axios";
@@ -22,14 +23,6 @@ import LinkedIn from "./icons/linkedin.svg";
 import Website from "./icons/link.svg";
 import Chat from "./icons/mail.svg";
 
-const profileRequest = (userName) => {
-  return axios.get(`/api/profile/${userName}`, {
-    headers: {
-      "timezone-offset": new Date().getTimezoneOffset(),
-    },
-  });
-};
-
 const getimageUploadUrlRequest = (fileName, fileType) => {
   return axios.get(
     `/api/image_upload_url?fileName=${fileName}&fileType=${fileType}&displayWidth=200`
@@ -38,10 +31,6 @@ const getimageUploadUrlRequest = (fileName, fileType) => {
 
 const uploadImageRequest = (file, url) => {
   return axios.put(url, file, { headers: { "Content-Type": file.type } });
-};
-
-const saveProfileRequest = (profile) => {
-  return axios.post("/api/profile", profile);
 };
 
 const addAgencyRequest = (agencyReview) => {
@@ -86,30 +75,30 @@ class Profile extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchProfile(Util.parsePath(window.location.href).trailingPath);
+    this.props.fetchProfile(Util.parsePath(window.location.href).trailingPath);
   }
 
-  fetchProfile(userName) {
-    let self = this;
-    if (!userName) userName = "";
-    profileRequest(userName)
-      .then(({ data }) => {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps && nextProps.profile) {
+      if (
+        JSON.stringify(nextProps.profile) !== JSON.stringify(this.props.profile)
+      ) {
         let dialogState = {};
         let urlParsed = Util.parsePath(window.location.href);
         if (urlParsed.hash) {
           let urlHash = urlParsed.hash;
           let matchTitle = "";
-          if (data.profile.isMyProfile && urlHash.includes("addagency")) {
+          if (nextProps.profile.isMyProfile && urlHash.includes("addagency")) {
             dialogState.addAgencyModalShow = true;
             matchTitle = "Agencies";
           } else if (
-            data.profile.isMyProfile &&
+            nextProps.profile.isMyProfile &&
             urlHash.includes("addtechnology")
           ) {
             dialogState.addTechnologyModalShow = true;
             matchTitle = "Tech";
           } else if (
-            data.profile.isMyProfile &&
+            nextProps.profile.isMyProfile &&
             urlHash.includes("editprofile")
           ) {
             dialogState.editProfileModalShow = true;
@@ -123,9 +112,9 @@ class Profile extends React.Component {
               matchTitle = "Tech";
             }
           }
-          if (matchTitle.length > 0 && data.profile.feedData) {
-            for (let i = 0; i < data.profile.feedData.length; i++) {
-              const filterTitle = data.profile.feedData[i].title;
+          if (matchTitle.length > 0 && nextProps.profile.feedData) {
+            for (let i = 0; i < nextProps.profile.feedData.length; i++) {
+              const filterTitle = nextProps.profile.feedData[i].title;
               if (filterTitle && filterTitle.includes(matchTitle)) {
                 dialogState.filterIdx = i;
                 break;
@@ -136,33 +125,30 @@ class Profile extends React.Component {
 
         this.setState(
           {
-            isMyProfile: data.profile.isMyProfile,
-            profileFirstName: data.profile.firstName || "",
-            profileLastName: data.profile.lastName || "",
-            profileImage: data.profile.image || "",
-            profileTitle: data.profile.title || "",
-            profileCompany: data.profile.company || "",
-            profileCity: data.profile.city || "",
-            profileState: data.profile.state || "",
-            profileCountry: data.profile.country || "",
-            profileHeadline: data.profile.headline || "",
-            profileLinkedin: data.profile.linkedin || "",
-            profileWebsite: data.profile.website || "",
-            profileMail: data.profile.mail || "",
-            profileAbout: data.profile.about || [],
-            feedData: data.profile.feedData || [],
-            connectedUser: data.profile.connectedUser || false,
+            isMyProfile: nextProps.profile.isMyProfile,
+            profileFirstName: nextProps.profile.firstName || "",
+            profileLastName: nextProps.profile.lastName || "",
+            profileImage: nextProps.profile.image || "",
+            profileTitle: nextProps.profile.title || "",
+            profileCompany: nextProps.profile.company || "",
+            profileCity: nextProps.profile.city || "",
+            profileState: nextProps.profile.state || "",
+            profileCountry: nextProps.profile.country || "",
+            profileHeadline: nextProps.profile.headline || "",
+            profileLinkedin: nextProps.profile.linkedin || "",
+            profileWebsite: nextProps.profile.website || "",
+            profileMail: nextProps.profile.mail || "",
+            profileAbout: nextProps.profile.about || [],
+            feedData: nextProps.profile.feedData || [],
+            connectedUser: nextProps.profile.connectedUser || false,
             ...dialogState,
           },
           () => {
-            self.createSubfilters();
+            this.createSubfilters();
           }
         );
-      })
-      .catch((error) => {
-        alert("An error occurred. Please try again later.");
-        console.log(error);
-      });
+      }
+    }
   }
 
   createSubfilters() {
@@ -186,35 +172,6 @@ class Profile extends React.Component {
     this.setState({
       feedData: newFeedData,
     });
-  }
-
-  updateProfile(profile, setEditProfileModalShow) {
-    saveProfileRequest(profile)
-      .then(({ data }) => {
-        window.location.reload(false);
-      })
-      .catch((error) => {
-        alert("An error occurred. Please try again later.");
-        console.log(error);
-      });
-  }
-
-  uploadProfileImage(file, callback) {
-    getimageUploadUrlRequest(file.name, file.type)
-      .then(({ data }) => {
-        uploadImageRequest(file, data.signedRequest)
-          .then(() => {
-            callback(data.url);
-          })
-          .catch((err) => {
-            console.log(err);
-            callback(false);
-          });
-      })
-      .catch((err) => {
-        console.log(err);
-        callback(false);
-      });
   }
 
   addAgency(agencyReview, setAddAgencyModalShow) {
@@ -634,30 +591,6 @@ class Profile extends React.Component {
             </div>
           )}
           <div style={{ clear: "both" }}></div>
-          {/* Modals */}
-          {isMyProfile && (
-            <EditProfile
-              show={this.state.editProfileModalShow}
-              onSuccess={(profile) =>
-                self.updateProfile(profile, setEditProfileModalShow)
-              }
-              onHide={() => setEditProfileModalShow(false)}
-              onImageChange={(file, callback) =>
-                self.uploadProfileImage(file, callback)
-              }
-              profileImage={this.state.profileImage}
-              profileFirstName={this.state.profileFirstName}
-              profileLastName={this.state.profileLastName}
-              profileTitle={this.state.profileTitle}
-              profileCompany={this.state.profileCompany}
-              profileCity={this.state.profileCity}
-              profileState={this.state.profileState}
-              profileCountry={this.state.profileCountry}
-              profileLinkedin={this.state.profileLinkedin}
-              profileWebsite={this.state.profileWebsite}
-              profileHeadline={this.state.profileHeadline}
-            />
-          )}
           <AddAgency
             show={this.state.addAgencyModalShow}
             onSuccess={(agencyreview) =>
@@ -761,4 +694,17 @@ class Profile extends React.Component {
   }
 }
 
-export default withRouter(Profile);
+const mapState = (state) => {
+  return {
+    profile: state.profileModel.profile,
+  };
+};
+
+const mapDispatch = (dispatch) => {
+  return {
+    fetchProfile: dispatch.profileModel.fetchProfile,
+    saveProfile: dispatch.profileModel.saveProfile,
+  };
+};
+
+export default connect(mapState, mapDispatch)(withRouter(Profile));
