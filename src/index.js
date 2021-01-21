@@ -14,6 +14,7 @@ import questionModel from "./models/question";
 import userModel from "./models/user";
 import settingsModel from "./models/settings";
 import profileStatsModel from "./models/profile_stats";
+import profileModel from "./models/profile";
 
 const store = init({
   models: {
@@ -24,6 +25,7 @@ const store = init({
     settingsModel,
     profileStatsModel,
     userModel,
+    profileModel,
   },
 });
 
