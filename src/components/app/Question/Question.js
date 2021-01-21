@@ -26,10 +26,7 @@ const Question = ({
   const cdn = "https://d3k6hg21rt7gsh.cloudfront.net/icons";
 
   const handleSubmit = (comment) => {
-    const {
-      params: { id },
-    } = match;
-    saveCommentToQuestion(id, comment);
+    saveCommentToQuestion(comment);
   };
 
   return (
@@ -93,8 +90,8 @@ const Question = ({
                 {question.related_questions &&
                   question.related_questions.map((relatedQuestion, index) => {
                     return (
-                      <div>
-                        <a href={relatedQuestion.link} key={index}>
+                      <div key={index}>
+                        <a href={relatedQuestion.link}>
                           {relatedQuestion.title}
                         </a>
                       </div>

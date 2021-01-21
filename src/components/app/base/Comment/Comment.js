@@ -27,8 +27,8 @@ const Comment = ({ onSubmit, className, placeholder }) => {
           className={`comment-button ${show ? "show" : ""}`}
           onClick={(e) => {
             e.preventDefault();
-            console.log(comment);
             onSubmit(comment);
+            setComment("");
           }}
           variant="primary"
         >
