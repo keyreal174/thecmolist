@@ -41,8 +41,20 @@
   ],
   "related_questions": [
     {
-      "title": "First question",
+      "title": "First question and test text",
       "link": "/question/123"
+    },
+    {
+      "title": "This is the second question",
+      "link": "/question/213"
+    },
+    {
+      "title": "Next question",
+      "link": "/question/253"
+    },
+    {
+      "title": "Next question",
+      "link": "/question/255"
     }
   ]
 }

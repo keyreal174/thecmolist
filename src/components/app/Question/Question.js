@@ -93,9 +93,11 @@ const Question = ({
                 {question.related_questions &&
                   question.related_questions.map((relatedQuestion, index) => {
                     return (
-                      <a href={relatedQuestion.link} key={index}>
-                        {relatedQuestion.title}
-                      </a>
+                      <div>
+                        <a href={relatedQuestion.link} key={index}>
+                          {relatedQuestion.title}
+                        </a>
+                      </div>
                     );
                   })}
               </div>
