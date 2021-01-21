@@ -14,3 +14,17 @@
   color: black;
   font-weight: 600;
 }
+
+.profile-edit-progress {
+  width: 90%;
+}
+
+.profile-edit-progress span {
+  font-size: 20px;
+  font-weight: 600;
+  color: black;
+}
+
+.welcome-message {
+  color: black;
+}

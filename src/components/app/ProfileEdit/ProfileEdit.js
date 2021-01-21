@@ -3,7 +3,15 @@ import { connect } from "react-redux";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Separator from "../base/Separator/Separator";
-import { Container, Button, Form, Row, Col } from "react-bootstrap";
+import {
+  Alert,
+  Container,
+  Button,
+  Form,
+  Row,
+  Col,
+  ProgressBar,
+} from "react-bootstrap";
 import "./profileEdit.css";
 
 const getBase64 = (file) => {
@@ -38,6 +46,9 @@ const ProfileEdit = (props) => {
   const [companyIndustry, setCompanyIndustry] = useState("");
   const [companyStage, setCompanyStage] = useState("");
   const [revenue, setRevenue] = useState("");
+  const [isNewUser, setIsNewUser] = useState(false);
+  const [now, setNow] = useState(50);
+  const [firstTime, setFirstTime] = useState(false);
   // props to control profile image
   const inputFile = useRef(null);
 
@@ -80,11 +91,16 @@ const ProfileEdit = (props) => {
     setCompanyIndustry(profile.companyIndustry);
     setCompanyStage(profile.companyStage);
     setRevenue(profile.revenue);
+    setIsNewUser(profile.isNewUser);
   };
 
   useEffect(() => {
     if (Object.keys(props.profile).length > 0) {
       setProfileInfo(props.profile);
+
+      if (props.profile.isNewUser) {
+        setFirstTime(props.profile.isNewUser);
+      }
     }
   }, [props.profile]);
 
@@ -117,7 +133,9 @@ const ProfileEdit = (props) => {
       companyIndustry,
       companyStage,
       revenue,
+      isNewUser: false,
     };
+    setNow(100);
     await props.saveProfile(updated_profile);
   };
 
@@ -125,6 +143,24 @@ const ProfileEdit = (props) => {
     <Container className="height-100">
       <Header />
       <Form>
+        {firstTime && (
+          <div className="card-box mt-2">
+            <div className="profile-edit-progress d-flex align-items-center">
+              <span className="mr-3">Start</span>
+              <ProgressBar
+                now={now}
+                className="w-100 mt-1"
+                style={{ height: 15 }}
+              />
+              <span className="ml-3">Finish</span>
+            </div>
+          </div>
+        )}
+        {isNewUser && (
+          <Alert variant="success" className="mt-2 mb-0 welcome-message">
+            <Alert.Heading className="mb-1 px-3">One Last Step</Alert.Heading>
+          </Alert>
+        )}
         <div className="card-box mt-2">
           <div className="d-flex align-items-center px-3">
             <img
@@ -405,20 +441,32 @@ const ProfileEdit = (props) => {
               <Separator />
             </div>
             <div className="d-flex justify-content-end">
-              <Button
-                className="btn-white mr-2"
-                variant="outline-primary"
-                onClick={handleCancel}
-              >
-                Cancel
-              </Button>
-              <Button
-                className="btn-white modal-primary-button"
-                variant="outline-primary"
-                onClick={handleSubmit}
-              >
-                Save
-              </Button>
+              {isNewUser ? (
+                <Button
+                  className="btn-white modal-primary-button"
+                  variant="outline-primary"
+                  onClick={handleSubmit}
+                >
+                  Done
+                </Button>
+              ) : (
+                <>
+                  <Button
+                    className="btn-white mr-2"
+                    variant="outline-primary"
+                    onClick={handleCancel}
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    className="btn-white modal-primary-button"
+                    variant="outline-primary"
+                    onClick={handleSubmit}
+                  >
+                    Save
+                  </Button>
+                </>
+              )}
             </div>
           </div>
         </div>
