@@ -314,12 +314,12 @@ describe("profileModel model", () => {
       );
 
       await expect(saveProfileRequest()).rejects.toThrow(errorMessage);
-    });
-  it("delete post successfully through an API", async () => {
-    axios.delete.mockImplementationOnce(() => Promise.resolve(data));
+    }),
+    it("delete post successfully through an API", async () => {
+      axios.delete.mockImplementationOnce(() => Promise.resolve(data));
 
-    await expect(deletePostRequest()).resolves.toEqual(data);
-  }),
+      await expect(deletePostRequest("slug")).resolves.toEqual(data);
+    }),
     it("delete erroneously post through an API", async () => {
       const errorMessage = "Could not delete post";
 
@@ -327,6 +327,6 @@ describe("profileModel model", () => {
         Promise.reject(new Error(errorMessage))
       );
 
-      await expect(deletePostRequest()).rejects.toThrow(errorMessage);
+      await expect(deletePostRequest("slug")).rejects.toThrow(errorMessage);
     });
 });
