@@ -1,18 +1,16 @@
 import React from "react";
+import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import axios from "axios";
 import Header from "../base/Header/Header";
 import Banner from "../base/Banner/Banner";
 import Filter from "../base/Filter/Filter";
 import Article from "../base/Article/Article";
 import Footer from "../base/Footer/Footer";
+import DeletePost from "./DeletePost";
 import { Link } from "react-router-dom";
-import { Button, Row, Col, Container } from "react-bootstrap";
+import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import ShowMoreText from "react-show-more-text";
-import AddAgency from "./AddAgency";
-import AddTechnology from "./AddTechnology";
-import EditProfile from "./EditProfile";
 import Util from "../../util/Util";
 import RatingBadgeProfile from "../base/Rating/RatingBadgeProfile";
 import Analytics from "../../util/Analytics";
@@ -22,38 +20,13 @@ import LinkedIn from "./icons/linkedin.svg";
 import Website from "./icons/link.svg";
 import Chat from "./icons/mail.svg";
 
-const profileRequest = (userName) => {
-  return axios.get(`/api/profile/${userName}`, {
-    headers: {
-      "timezone-offset": new Date().getTimezoneOffset(),
-    },
-  });
-};
-
-const getimageUploadUrlRequest = (fileName, fileType) => {
-  return axios.get(
-    `/api/image_upload_url?fileName=${fileName}&fileType=${fileType}&displayWidth=200`
-  );
-};
-
-const uploadImageRequest = (file, url) => {
-  return axios.put(url, file, { headers: { "Content-Type": file.type } });
-};
-
-const saveProfileRequest = (profile) => {
-  return axios.post("/api/profile", profile);
-};
-
-const addAgencyRequest = (agencyReview) => {
-  return axios.post("/api/agencyreview", agencyReview);
-};
-
-const addTechnologyRequest = (agency) => {
-  return axios.post("/api/technologyreview", agency);
-};
-
-const connectUserRequest = (user) => {
-  return axios.post("/api/connect_user", user);
+const RenderList = ({ arr }) => {
+  return arr.map((item, index) => (
+    <React.Fragment key={index}>
+      <a href="#">{item}</a>
+      {index < arr.length - 1 && <span>{", "}</span>}
+    </React.Fragment>
+  ));
 };
 
 class Profile extends React.Component {
@@ -64,6 +37,7 @@ class Profile extends React.Component {
       isMyProfile: false,
       profileFirstName: "",
       profileLastName: "",
+      profileUserName: "",
       profileImage: "",
       profileTitle: "",
       profileCompany: "",
@@ -76,93 +50,46 @@ class Profile extends React.Component {
       profileMail: "",
       profileAbout: [],
       feedData: [],
-      connectedUser: false,
-      editProfileModalShow: false,
-      addAgencyModalShow: false,
-      addTechnologyModalShow: false,
       filterIdx: 0,
       enableAnimations: true,
+      showDeletePost: false,
     };
   }
 
   componentDidMount() {
-    this.fetchProfile(Util.parsePath(window.location.href).trailingPath);
+    this.props.fetchProfile(Util.parsePath(window.location.href).trailingPath);
   }
 
-  fetchProfile(userName) {
-    let self = this;
-    if (!userName) userName = "";
-    profileRequest(userName)
-      .then(({ data }) => {
-        let dialogState = {};
-        let urlParsed = Util.parsePath(window.location.href);
-        if (urlParsed.hash) {
-          let urlHash = urlParsed.hash;
-          let matchTitle = "";
-          if (data.profile.isMyProfile && urlHash.includes("addagency")) {
-            dialogState.addAgencyModalShow = true;
-            matchTitle = "Agencies";
-          } else if (
-            data.profile.isMyProfile &&
-            urlHash.includes("addtechnology")
-          ) {
-            dialogState.addTechnologyModalShow = true;
-            matchTitle = "Tech";
-          } else if (
-            data.profile.isMyProfile &&
-            urlHash.includes("editprofile")
-          ) {
-            dialogState.editProfileModalShow = true;
-          } else if (
-            urlHash.includes("agencies") ||
-            urlHash.includes("technologies")
-          ) {
-            if (urlHash.includes("agencies")) {
-              matchTitle = "Agencies";
-            } else if (urlHash.includes("technologies")) {
-              matchTitle = "Tech";
-            }
-          }
-          if (matchTitle.length > 0 && data.profile.feedData) {
-            for (let i = 0; i < data.profile.feedData.length; i++) {
-              const filterTitle = data.profile.feedData[i].title;
-              if (filterTitle && filterTitle.includes(matchTitle)) {
-                dialogState.filterIdx = i;
-                break;
-              }
-            }
-          }
-        }
-
+  componentWillReceiveProps(nextProps) {
+    if (nextProps && nextProps.profile) {
+      if (
+        JSON.stringify(nextProps.profile) !== JSON.stringify(this.props.profile)
+      ) {
         this.setState(
           {
-            isMyProfile: data.profile.isMyProfile,
-            profileFirstName: data.profile.firstName || "",
-            profileLastName: data.profile.lastName || "",
-            profileImage: data.profile.image || "",
-            profileTitle: data.profile.title || "",
-            profileCompany: data.profile.company || "",
-            profileCity: data.profile.city || "",
-            profileState: data.profile.state || "",
-            profileCountry: data.profile.country || "",
-            profileHeadline: data.profile.headline || "",
-            profileLinkedin: data.profile.linkedin || "",
-            profileWebsite: data.profile.website || "",
-            profileMail: data.profile.mail || "",
-            profileAbout: data.profile.about || [],
-            feedData: data.profile.feedData || [],
-            connectedUser: data.profile.connectedUser || false,
-            ...dialogState,
+            isMyProfile: nextProps.profile.isMyProfile,
+            profileFirstName: nextProps.profile.firstName || "",
+            profileLastName: nextProps.profile.lastName || "",
+            profileUserName: nextProps.profile.userName || "",
+            profileImage: nextProps.profile.image || "",
+            profileTitle: nextProps.profile.title || "",
+            profileCompany: nextProps.profile.company || "",
+            profileCity: nextProps.profile.city || "",
+            profileState: nextProps.profile.state || "",
+            profileCountry: nextProps.profile.country || "",
+            profileHeadline: nextProps.profile.headline || "",
+            profileLinkedin: nextProps.profile.linkedin || "",
+            profileWebsite: nextProps.profile.website || "",
+            profileMail: nextProps.profile.mail || "",
+            profileAbout: nextProps.profile.about || [],
+            feedData: nextProps.profile.feedData || [],
           },
           () => {
-            self.createSubfilters();
+            this.createSubfilters();
           }
         );
-      })
-      .catch((error) => {
-        alert("An error occurred. Please try again later.");
-        console.log(error);
-      });
+      }
+    }
   }
 
   createSubfilters() {
@@ -188,94 +115,16 @@ class Profile extends React.Component {
     });
   }
 
-  updateProfile(profile, setEditProfileModalShow) {
-    saveProfileRequest(profile)
-      .then(({ data }) => {
-        window.location.reload(false);
-      })
-      .catch((error) => {
-        alert("An error occurred. Please try again later.");
-        console.log(error);
-      });
-  }
+  showDeletePostModal = (feed) => {
+    this.setState({
+      showDeletePost: true,
+      postSlug: feed.slug,
+    });
+  };
 
-  uploadProfileImage(file, callback) {
-    getimageUploadUrlRequest(file.name, file.type)
-      .then(({ data }) => {
-        uploadImageRequest(file, data.signedRequest)
-          .then(() => {
-            callback(data.url);
-          })
-          .catch((err) => {
-            console.log(err);
-            callback(false);
-          });
-      })
-      .catch((err) => {
-        console.log(err);
-        callback(false);
-      });
-  }
-
-  addAgency(agencyReview, setAddAgencyModalShow) {
-    let self = this;
-    addAgencyRequest(agencyReview)
-      .then(({ data }) => {
-        self.fetchProfile();
-        setAddAgencyModalShow(false);
-        // reset url to default (agencies tab)
-        let windowUrl = window.location.href.substring(
-          0,
-          window.location.href.lastIndexOf("#")
-        );
-        window.history.pushState(null, "", windowUrl);
-      })
-      .catch((error) => {
-        alert("An error occurred. Please try again later.");
-        console.log(error);
-        setAddAgencyModalShow(false);
-      });
-  }
-
-  addTechnology(technologyReview, setAddTechnologyModalShow) {
-    let self = this;
-    addTechnologyRequest(technologyReview)
-      .then(({ data }) => {
-        self.fetchProfile();
-        setAddTechnologyModalShow(false);
-        // reset url to #technologies tab
-        let windowUrl = window.location.href.substring(
-          0,
-          window.location.href.lastIndexOf("#")
-        );
-        windowUrl += "#technologies";
-        window.history.pushState(null, "", windowUrl);
-      })
-      .catch((error) => {
-        alert("An error occurred. Please try again later.");
-        console.log(error);
-        setAddTechnologyModalShow(false);
-      });
-  }
-
-  connectUser() {
-    let self = this;
-    let userName = Util.parsePath(window.location.href).trailingPath;
-    Analytics.sendClickEvent(
-      `Connected with user ${userName} from profile page`
-    );
-    connectUserRequest({ user: userName })
-      .then(({ data }) => {
-        self.setState({
-          enableAnimations: false,
-          connectedUser: true,
-        });
-      })
-      .catch((e) => {
-        console.log(`An error occurred connecting with user: ${userName}`);
-        console.log(e);
-      });
-  }
+  closeDeletePostModal = (idx) => {
+    this.setState({ showDeletePost: false });
+  };
 
   render() {
     let filters = [];
@@ -319,15 +168,6 @@ class Profile extends React.Component {
       }
     }
     let self = this;
-    let setEditProfileModalShow = (e) => {
-      self.setState({ editProfileModalShow: e });
-    };
-    let setAddAgencyModalShow = (e) => {
-      self.setState({ addAgencyModalShow: e });
-    };
-    let setAddTechnologyModalShow = (e) => {
-      self.setState({ addTechnologyModalShow: e });
-    };
     let setFilterIdx = (idx) => {
       // clear subfilter
       let prevFeedData = self.state.feedData.slice();
@@ -349,46 +189,11 @@ class Profile extends React.Component {
       });
     };
     let noFeedContentCopy = null;
-    let noFeedContentButton = <div />;
-    if (this.state.profileFirstName.length > 0 && feedData.length === 0) {
-      if (activeFilterTitle.includes("Agencies")) {
-        if (isMyProfile) {
-          noFeedContentCopy =
-            "Support and share your favorite agencies with your network";
-          noFeedContentButton = (
-            <Button
-              className="btn-white no-review-button"
-              variant="outline-primary"
-              onClick={() => setAddAgencyModalShow(true)}
-            >
-              Share Agency
-            </Button>
-          );
-        } else {
-          noFeedContentCopy = `${this.state.profileFirstName} has not yet shared any agencies with the CMOlist community`;
-        }
-      } else if (activeFilterTitle.includes("Tech")) {
-        if (isMyProfile) {
-          noFeedContentCopy =
-            "Support and share your favorite technologies with your network";
-          noFeedContentButton = (
-            <Button
-              className="btn-white no-review-button"
-              variant="outline-primary"
-              onClick={() => setAddTechnologyModalShow(true)}
-            >
-              Share Technology
-            </Button>
-          );
-        } else {
-          noFeedContentCopy = `${this.state.profileFirstName} has not yet shared any technologies with the CMOlist community`;
-        }
-      }
-    }
 
     const FadeTransition = (props) => (
       <CSSTransition {...props} classNames="profile-article-transition" />
     ); // define here to pass props down from parent -> child
+
     return (
       <>
         <Container className="height-100">
@@ -476,109 +281,75 @@ class Profile extends React.Component {
                   </Button>
                 </div>
               )}
-              {!isMyProfile && this.state.profileFirstName && (
-                <div className="btn-wrapper">
-                  {!this.state.connectedUser ? (
-                    <Button
-                      className="btn-white edit-profile"
-                      variant="outline-primary"
-                      onClick={() => {
-                        self.connectUser();
-                      }}
-                    >
-                      Connect
-                    </Button>
-                  ) : (
-                    <span className="profile-connected-label">Connected</span>
-                  )}
-                </div>
-              )}
             </Banner>
 
-            <div className="overview">
-              <Row className="border">
-                <Col
-                  md="8"
-                  className="mt-3 mb-4"
-                  style={{ marginLeft: "20px" }}
-                >
-                  <ShowMoreText
-                    keepNewLines={true}
-                    lines={1}
-                    more="See more"
-                    less=""
-                    width={0}
-                  >
-                    {this.state.profileHeadline}
-                  </ShowMoreText>
-                </Col>
-                <Col md="4"></Col>
-              </Row>
-            </div>
-
-            {/* HACK: hardcode this for now (for the demo) */}
-            {this.state.profileAbout.length > 0 && (
-              <div className="profile-about mt-2">
-                <Row className="border">
+            {Object.keys(this.state.profileAbout).length > 0 && (
+              <div className="profile-about mt-2 px-4">
+                <Row>
                   <Col md="12">
-                    <h2>About</h2>
-                    <table className="about-table">
-                      <tr>
-                        <td>
-                          <strong>Team size</strong>
-                        </td>
-                        <td>50+</td>
-                        <td>
-                          <strong>Networking areas</strong>
-                        </td>
-                        <td>
-                          <ShowMoreText
-                            keepNewLines={false}
-                            lines={1}
-                            more="See more"
-                            less=""
-                            width={0}
-                          >
-                            B2B SaaS CMOs at late stage or public companies
-                          </ShowMoreText>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <strong>Business accountability</strong>
-                        </td>
-                        <td>$10-$100 million</td>
-                        <td>
-                          <strong>Advising areas</strong>
-                        </td>
-                        <td>
-                          <ShowMoreText
-                            keepNewLines={false}
-                            lines={1}
-                            more="See more"
-                            less=""
-                            width={0}
-                          >
-                            Series A/B/ C B2B or B2C companies
-                          </ShowMoreText>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <strong>Expertise</strong>
-                        </td>
-                        <td>
-                          <span className="about-tag">Leadership</span>,{" "}
-                          <span className="about-tag">Advertising</span>,{" "}
-                          <span className="about-tag">Public Relations</span>,{" "}
-                          <span className="about-tag">Saas</span>
-                        </td>
-                      </tr>
-                    </table>
+                    <h2 className="mb-3 mt-2">About</h2>
+                    <ShowMoreText
+                      keepNewLines={true}
+                      lines={2}
+                      more="See more"
+                      less="See less"
+                      width={0}
+                    >
+                      {this.state.profileAbout.description}
+                    </ShowMoreText>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col md="6">
+                    <Form.Label>Marketing expertise</Form.Label>
+                    <div>
+                      <RenderList
+                        arr={this.state.profileAbout.areasOfExpertise}
+                      />
+                    </div>
+                  </Col>
+                  <Col md="6">
+                    <Form.Label>Marketing interests</Form.Label>
+                    <div>
+                      <RenderList
+                        arr={this.state.profileAbout.areasOfInterest}
+                      />
+                    </div>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col md="6">
+                    <Form.Label>Open to networking</Form.Label>
+                    <div>
+                      <span>
+                        {this.state.profileAbout.networking ? "Yes" : "No"}
+                      </span>
+                    </div>
+                  </Col>
+                  <Col md="6">
+                    <Form.Label>Open to advising</Form.Label>
+                    <div>
+                      <span>
+                        {this.state.profileAbout.advising ? "Yes" : "No"}
+                      </span>
+                    </div>
                   </Col>
                 </Row>
               </div>
             )}
+
+            <div
+              className="d-flex m-auto pt-4 pb-2 align-items-center"
+              style={{ width: "60%" }}
+            >
+              <Form.Control placeholder="" className="mr-3" />
+              <Button
+                className="btn__homepage btn__homepage-blue btn__nux_share"
+                style={{ float: "right", width: "220px" }}
+              >
+                Search {this.state.profileUserName}'s knowledge
+              </Button>
+            </div>
 
             {this.state.profileFirstName && (
               <Filter
@@ -586,30 +357,7 @@ class Profile extends React.Component {
                 filterIdx={this.state.filterIdx}
                 filters={filters}
                 onChange={(idx) => setFilterIdx(idx)}
-              >
-                {isMyProfile && (
-                  <div className="filter-btn">
-                    {activeFilterTitle.includes("Tech") && (
-                      <Button
-                        className="btn-white"
-                        variant="outline-primary"
-                        onClick={() => setAddTechnologyModalShow(true)}
-                      >
-                        Share Technology
-                      </Button>
-                    )}
-                    {activeFilterTitle.includes("Agencies") && (
-                      <Button
-                        className="btn-white"
-                        variant="outline-primary"
-                        onClick={() => setAddAgencyModalShow(true)}
-                      >
-                        Share Agency
-                      </Button>
-                    )}
-                  </div>
-                )}
-              </Filter>
+              ></Filter>
             )}
           </div>
           {subfilterKeys.length > 0 && (
@@ -634,103 +382,21 @@ class Profile extends React.Component {
             </div>
           )}
           <div style={{ clear: "both" }}></div>
-          {/* Modals */}
-          {isMyProfile && (
-            <EditProfile
-              show={this.state.editProfileModalShow}
-              onSuccess={(profile) =>
-                self.updateProfile(profile, setEditProfileModalShow)
-              }
-              onHide={() => setEditProfileModalShow(false)}
-              onImageChange={(file, callback) =>
-                self.uploadProfileImage(file, callback)
-              }
-              profileImage={this.state.profileImage}
-              profileFirstName={this.state.profileFirstName}
-              profileLastName={this.state.profileLastName}
-              profileTitle={this.state.profileTitle}
-              profileCompany={this.state.profileCompany}
-              profileCity={this.state.profileCity}
-              profileState={this.state.profileState}
-              profileCountry={this.state.profileCountry}
-              profileLinkedin={this.state.profileLinkedin}
-              profileWebsite={this.state.profileWebsite}
-              profileHeadline={this.state.profileHeadline}
-            />
-          )}
-          <AddAgency
-            show={this.state.addAgencyModalShow}
-            onSuccess={(agencyreview) =>
-              self.addAgency(agencyreview, setAddAgencyModalShow)
-            }
-            onHide={() => setAddAgencyModalShow(false)}
-          />
-          <AddTechnology
-            show={this.state.addTechnologyModalShow}
-            onSuccess={(technologyreview) =>
-              self.addTechnology(technologyreview, setAddTechnologyModalShow)
-            }
-            onHide={() => setAddTechnologyModalShow(false)}
-          />
 
           <TransitionGroup
             enter={this.state.enableAnimations}
             exit={this.state.enableAnimations}
           >
             {feedData.map((feed, idx) => {
-              let badge = null;
-              if (
-                isMyProfile &&
-                feed.review_scores &&
-                feed.review_scores.length > 0
-              ) {
-                let reviewVendor = "agency";
-                if (activeFilterTitle.includes("Tech")) {
-                  reviewVendor = "technology";
-                }
-                let npsScore = Util.calculateAverage(feed.review_scores);
-                badge = (
-                  <RatingBadgeProfile
-                    npsScore={npsScore}
-                    tooltipText={`You rated this ${reviewVendor} a ${npsScore} (not visible to others)`}
-                  />
-                );
-              } else {
-                if (!isMyProfile) {
-                  if (feed.invited) {
-                    badge = (
-                      <span className="profile-connected-label">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Done ✓
-                      </span>
-                    );
-                  } else {
-                    badge = (
-                      <Button
-                        className="btn-white edit-profile"
-                        variant="outline-primary"
-                        onClick={() => {
-                          let userName = Util.parsePath(window.location.href)
-                            .trailingPath;
-                          Analytics.sendClickEvent(
-                            `Thanked ${userName} for review ${feed.slug} from profile page`
-                          );
-                          let newFeedData = this.state.feedData.slice();
-                          feed.invited = true;
-                          self.setState({
-                            enableAnimations: false,
-                            feedData: newFeedData,
-                          });
-                        }}
-                      >
-                        Say thanks{" "}
-                        <span role="img" aria-label="Thanks">
-                          🙏
-                        </span>
-                      </Button>
-                    );
-                  }
-                }
-              }
+              let badge = (
+                <span
+                  className="cursor-pointer noselect"
+                  onClick={() => this.showDeletePostModal(feed)}
+                >
+                  ✖️
+                </span>
+              );
+
               return (
                 <FadeTransition key={idx}>
                   <Article
@@ -747,13 +413,15 @@ class Profile extends React.Component {
           {noFeedContentCopy && (
             <div className="wrapper article-wrapper">
               <div className="no-reviews-header">No reviews yet</div>
-              <div className="no-reviews-body">
-                {noFeedContentCopy}
-                {noFeedContentButton}
-              </div>
+              <div className="no-reviews-body">{noFeedContentCopy}</div>
             </div>
           )}
-
+          <DeletePost
+            show={this.state.showDeletePost}
+            closeModal={this.closeDeletePostModal}
+            deletePost={this.props.deletePost}
+            slug={this.state.postSlug}
+          />
           <Footer />
         </Container>
       </>
@@ -761,4 +429,18 @@ class Profile extends React.Component {
   }
 }
 
-export default withRouter(Profile);
+const mapState = (state) => {
+  return {
+    profile: state.profileModel.profile,
+  };
+};
+
+const mapDispatch = (dispatch) => {
+  return {
+    fetchProfile: dispatch.profileModel.fetchProfile,
+    saveProfile: dispatch.profileModel.saveProfile,
+    deletePost: dispatch.profileModel.deletePost,
+  };
+};
+
+export default connect(mapState, mapDispatch)(withRouter(Profile));

@@ -12,6 +12,10 @@ export const saveProfileRequest = (data) => {
   return axios.post("/api/profile", data);
 };
 
+export const deletePostRequest = (id) => {
+  return axios.delete(`/api/post/${id}`);
+};
+
 export default {
   name: "profileModel",
   state: {
@@ -22,6 +26,21 @@ export default {
       return {
         ...oldState,
         profile: data,
+      };
+    },
+
+    removePost: (oldState, id) => {
+      return {
+        ...oldState,
+        profile: {
+          ...oldState.profile,
+          feedData: oldState.profile.feedData.map((feed) => {
+            return {
+              ...feed,
+              data: feed.data.filter((item) => item.slug !== id),
+            };
+          }),
+        },
       };
     },
   },
@@ -42,6 +61,15 @@ export default {
         dispatch.profileModel.updateProfile(profile);
       } catch (err) {
         throw new Error("Could not save profile");
+      }
+    },
+
+    async deletePost(id) {
+      try {
+        await deletePostRequest(id);
+        dispatch.profileModel.removePost(id);
+      } catch (err) {
+        throw new Error("Could not delete post");
       }
     },
   }),
