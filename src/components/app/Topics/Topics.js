@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { connect } from "react-redux";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import ShowMoreText from "react-show-more-text";
@@ -52,55 +52,41 @@ const RenderColumn = ({ topic, followTopic }) => {
   );
 };
 
-class Topics extends React.Component {
-  constructor(props) {
-    super(props);
+const Topics = (props) => {
+  useEffect(() => {
     document.title = "Topics";
-    this.state = {
-      topics: [],
-    };
-  }
+    props.fetchTopics();
+  }, []);
 
-  componentDidMount() {
-    this.props.fetchTopics();
-  }
-
-  render() {
-    let { topics } = this.props;
-
-    return (
-      <>
-        <Container className="height-100">
-          <Header />
-          <div className="wrapper">
-            <div className="topic-wrapper d-flex align-items-center px-4 py-3 mb-3">
-              <div className="topics-square-logo">
-                <img
-                  src="https://d3k6hg21rt7gsh.cloudfront.net/directory.png"
-                  alt=""
-                />
-              </div>
-              <h2 className="topcis-header mb-0 ml-4">Topics</h2>
+  return (
+    <>
+      <Container className="height-100">
+        <Header />
+        <div className="wrapper">
+          <div className="topic-wrapper d-flex align-items-center px-4 py-3 mb-3">
+            <div className="topics-square-logo">
+              <img
+                src="https://d3k6hg21rt7gsh.cloudfront.net/directory.png"
+                alt=""
+              />
             </div>
-            <Row>
-              {topics.map((topic) => {
-                return (
-                  <Col key={topic.id} lg={3} md={4} sm={6} className="mb-4">
-                    <RenderColumn
-                      topic={topic}
-                      followTopic={this.props.followTopic}
-                    />
-                  </Col>
-                );
-              })}
-            </Row>
-            <Footer />
+            <h2 className="topcis-header mb-0 ml-4">Topics</h2>
           </div>
-        </Container>
-      </>
-    );
-  }
-}
+          <Row>
+            {props.topics.map((topic) => {
+              return (
+                <Col key={topic.id} lg={3} md={4} sm={6} className="mb-4">
+                  <RenderColumn topic={topic} followTopic={props.followTopic} />
+                </Col>
+              );
+            })}
+          </Row>
+          <Footer />
+        </div>
+      </Container>
+    </>
+  );
+};
 
 const mapState = (state) => {
   return {
