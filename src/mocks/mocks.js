@@ -47,7 +47,7 @@ function MockRequests() {
     },
     { path: /\/api\/content.*/, responseCode: 200, response: MockedApiContent },
     {
-      path: /\/api\/question.*/,
+      path: /\/api\/question\/\d+.*/,
       responseCode: 200,
       response: MockedApiQuestion,
     },
@@ -90,7 +90,7 @@ function MockRequests() {
     return [200, { success: true, error: null }];
   });
 
-  mock.onPost(/\/api\/question.*/).reply(() => {
+  mock.onPost(/\/api\/question\/\d+.*/).reply(() => {
     return [200, { success: true, error: null }];
   });
 

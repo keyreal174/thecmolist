@@ -23,7 +23,7 @@ export default {
     updateReplies: (oldState, data) => {
       return {
         ...oldState,
-        replies: [...oldState.replies, data],
+        replies: [...oldState.question.replies, data],
       };
     },
   },
