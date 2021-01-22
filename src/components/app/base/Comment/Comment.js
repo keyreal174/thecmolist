@@ -3,8 +3,8 @@ import { Button, Form } from "react-bootstrap";
 
 import "./comment.css";
 
-const Comment = ({ onSubmit, className, placeholder }) => {
-  const [comment, setComment] = useState("");
+const Comment = ({ onSubmit, className, placeholder, value }) => {
+  const [comment, setComment] = useState(value || "");
   const [show, setShow] = useState("");
 
   return (

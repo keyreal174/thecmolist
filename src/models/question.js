@@ -8,6 +8,10 @@ const getQuestion = (id) => {
   return axios.get(`/api/question/${id}`);
 };
 
+const postComment = (id, comment) => {
+  return axios.post(`/api/comment/${id}`, comment);
+};
+
 export default {
   name: "questionModel",
   state: {
@@ -24,6 +28,18 @@ export default {
       return {
         ...oldState,
         replies: [...oldState.question.replies, data],
+      };
+    },
+    saveComment(oldState, data) {
+      const { comment, replyId } = data;
+      const newReplies = oldState.question.replies.map((reply) => {
+        if (reply["reply_id"] === replyId) {
+          reply.comments.push(comment);
+        }
+      });
+      return {
+        ...oldState,
+        replies: newReplies,
       };
     },
   },
@@ -53,6 +69,19 @@ export default {
       } catch (err) {
         console.log("err", err);
         throw new Error("Could not save question.");
+      }
+    },
+    async saveCommentToReply(data) {
+      const {
+        comment,
+        reply: { reply_id: replyId },
+      } = data;
+      try {
+        await postComment(replyId, comment);
+        dispatch.questionModel.saveComment({ replyId, comment });
+      } catch (error) {
+        console.log("error", error);
+        throw new Error("Could not set comment");
       }
     },
   }),

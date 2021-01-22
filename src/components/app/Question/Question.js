@@ -12,6 +12,7 @@ const Question = ({
   question,
   fetchQuestion,
   saveCommentToQuestion,
+  saveCommentToReply,
   match,
 }) => {
   useEffect(() => {
@@ -27,6 +28,10 @@ const Question = ({
 
   const handleSubmit = (comment) => {
     saveCommentToQuestion(comment);
+  };
+
+  const handleSubmitToReply = (reply, comment) => {
+    saveCommentToReply({ comment, reply });
   };
 
   return (
@@ -69,16 +74,23 @@ const Question = ({
                         ]}
                         onEngagementButtonClick={(i) => console.log(i)}
                       >
+                        {
+                          <div className="question-comments-section">
+                            {(reply.comments || []).map((comment) => {
+                              return <Article {...comment} />;
+                            })}
+                          </div>
+                        }
                         <Comment
                           className="question-article-comment"
-                          onSubmit={handleSubmit}
+                          onSubmit={handleSubmitToReply.bind(this, reply)}
                         />
                       </Article>
                     );
                   })}
                 <div className="question-your-answer-section">
                   <div>Your answer</div>
-                  <Comment className="" />
+                  <Comment className="" onSubmit={handleSubmit} />
                 </div>
               </div>
             </Col>
@@ -121,6 +133,7 @@ const mapDispatch = (dispatch) => {
   return {
     fetchQuestion: dispatch.questionModel.fetchQuestion,
     saveCommentToQuestion: dispatch.questionModel.saveCommentToQuestion,
+    saveCommentToReply: dispatch.questionModel.saveCommentToReply,
   };
 };
 
