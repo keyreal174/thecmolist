@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const saveComment = (id, comment) => {
+const postAnswer = (id, comment) => {
   return axios.post(`/api/question/${id}`, comment);
 };
 
@@ -108,7 +108,7 @@ export default {
       try {
         if (data) {
           const { question_id: questionId } = data.questionModel.question;
-          await saveComment(questionId, comment);
+          await postAnswer(questionId, comment);
           dispatch.questionModel.saveAnswer({ questionId, comment });
         } else {
           throw new Error("Error saving the data");
