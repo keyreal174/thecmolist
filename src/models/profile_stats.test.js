@@ -7,7 +7,7 @@ const data = {
   profile: {
     name: "Jennifer Smith",
     image:
-      "https://i.kinja-img.com/gawker-media/image/upload/t_original/ijsi5fzb1nbkbhxa2gc1.png",
+      "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5OTA2NzA1OTQ0NzAxNy1IZWFkc2hvdHMocHBfdzc2OF9oNjE0KS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
     headline: "Brand at Modern Media",
     stats: {
       posts: 14,
