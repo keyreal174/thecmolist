@@ -7,6 +7,7 @@ import Banner from "../base/Banner/Banner";
 import Filter from "../base/Filter/Filter";
 import Article from "../base/Article/Article";
 import Footer from "../base/Footer/Footer";
+import DeletePost from "./DeletePost";
 import { Link } from "react-router-dom";
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import ShowMoreText from "react-show-more-text";
@@ -51,6 +52,7 @@ class Profile extends React.Component {
       feedData: [],
       filterIdx: 0,
       enableAnimations: true,
+      showDeletePost: false,
     };
   }
 
@@ -112,6 +114,17 @@ class Profile extends React.Component {
       feedData: newFeedData,
     });
   }
+
+  showDeletePostModal = (feed) => {
+    this.setState({
+      showDeletePost: true,
+      postSlug: feed.slug,
+    });
+  };
+
+  closeDeletePostModal = (idx) => {
+    this.setState({ showDeletePost: false });
+  };
 
   render() {
     let filters = [];
@@ -180,6 +193,7 @@ class Profile extends React.Component {
     const FadeTransition = (props) => (
       <CSSTransition {...props} classNames="profile-article-transition" />
     ); // define here to pass props down from parent -> child
+
     return (
       <>
         <Container className="height-100">
@@ -374,59 +388,15 @@ class Profile extends React.Component {
             exit={this.state.enableAnimations}
           >
             {feedData.map((feed, idx) => {
-              let badge = null;
-              if (
-                isMyProfile &&
-                feed.review_scores &&
-                feed.review_scores.length > 0
-              ) {
-                let reviewVendor = "agency";
-                if (activeFilterTitle.includes("Tech")) {
-                  reviewVendor = "technology";
-                }
-                let npsScore = Util.calculateAverage(feed.review_scores);
-                badge = (
-                  <RatingBadgeProfile
-                    npsScore={npsScore}
-                    tooltipText={`You rated this ${reviewVendor} a ${npsScore} (not visible to others)`}
-                  />
-                );
-              } else {
-                if (!isMyProfile) {
-                  if (feed.invited) {
-                    badge = (
-                      <span className="profile-connected-label">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Done ✓
-                      </span>
-                    );
-                  } else {
-                    badge = (
-                      <Button
-                        className="btn-white edit-profile"
-                        variant="outline-primary"
-                        onClick={() => {
-                          let userName = Util.parsePath(window.location.href)
-                            .trailingPath;
-                          Analytics.sendClickEvent(
-                            `Thanked ${userName} for review ${feed.slug} from profile page`
-                          );
-                          let newFeedData = this.state.feedData.slice();
-                          feed.invited = true;
-                          self.setState({
-                            enableAnimations: false,
-                            feedData: newFeedData,
-                          });
-                        }}
-                      >
-                        Say thanks{" "}
-                        <span role="img" aria-label="Thanks">
-                          🙏
-                        </span>
-                      </Button>
-                    );
-                  }
-                }
-              }
+              let badge = (
+                <span
+                  className="cursor-pointer noselect"
+                  onClick={() => this.showDeletePostModal(feed)}
+                >
+                  ✖️
+                </span>
+              );
+
               return (
                 <FadeTransition key={idx}>
                   <Article
@@ -446,7 +416,12 @@ class Profile extends React.Component {
               <div className="no-reviews-body">{noFeedContentCopy}</div>
             </div>
           )}
-
+          <DeletePost
+            show={this.state.showDeletePost}
+            closeModal={this.closeDeletePostModal}
+            deletePost={this.props.deletePost}
+            slug={this.state.postSlug}
+          />
           <Footer />
         </Container>
       </>
@@ -464,6 +439,7 @@ const mapDispatch = (dispatch) => {
   return {
     fetchProfile: dispatch.profileModel.fetchProfile,
     saveProfile: dispatch.profileModel.saveProfile,
+    deletePost: dispatch.profileModel.deletePost,
   };
 };
 
