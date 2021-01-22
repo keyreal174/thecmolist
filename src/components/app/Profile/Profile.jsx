@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import axios from "axios";
 import Header from "../base/Header/Header";
 import Banner from "../base/Banner/Banner";
 import Filter from "../base/Filter/Filter";
@@ -20,21 +19,7 @@ import LinkedIn from "./icons/linkedin.svg";
 import Website from "./icons/link.svg";
 import Chat from "./icons/mail.svg";
 
-const getimageUploadUrlRequest = (fileName, fileType) => {
-  return axios.get(
-    `/api/image_upload_url?fileName=${fileName}&fileType=${fileType}&displayWidth=200`
-  );
-};
-
-const uploadImageRequest = (file, url) => {
-  return axios.put(url, file, { headers: { "Content-Type": file.type } });
-};
-
-const connectUserRequest = (user) => {
-  return axios.post("/api/connect_user", user);
-};
-
-const ShowAList = ({ arr }) => {
+const RenderList = ({ arr }) => {
   return arr.map((item, index) => (
     <React.Fragment key={index}>
       <a href="#">{item}</a>
@@ -64,10 +49,6 @@ class Profile extends React.Component {
       profileMail: "",
       profileAbout: [],
       feedData: [],
-      connectedUser: false,
-      editProfileModalShow: false,
-      addAgencyModalShow: false,
-      addTechnologyModalShow: false,
       filterIdx: 0,
       enableAnimations: true,
     };
@@ -82,46 +63,6 @@ class Profile extends React.Component {
       if (
         JSON.stringify(nextProps.profile) !== JSON.stringify(this.props.profile)
       ) {
-        let dialogState = {};
-        let urlParsed = Util.parsePath(window.location.href);
-        if (urlParsed.hash) {
-          let urlHash = urlParsed.hash;
-          let matchTitle = "";
-          if (nextProps.profile.isMyProfile && urlHash.includes("addagency")) {
-            dialogState.addAgencyModalShow = true;
-            matchTitle = "Agencies";
-          } else if (
-            nextProps.profile.isMyProfile &&
-            urlHash.includes("addtechnology")
-          ) {
-            dialogState.addTechnologyModalShow = true;
-            matchTitle = "Tech";
-          } else if (
-            nextProps.profile.isMyProfile &&
-            urlHash.includes("editprofile")
-          ) {
-            dialogState.editProfileModalShow = true;
-          } else if (
-            urlHash.includes("agencies") ||
-            urlHash.includes("technologies")
-          ) {
-            if (urlHash.includes("agencies")) {
-              matchTitle = "Agencies";
-            } else if (urlHash.includes("technologies")) {
-              matchTitle = "Tech";
-            }
-          }
-          if (matchTitle.length > 0 && nextProps.profile.feedData) {
-            for (let i = 0; i < nextProps.profile.feedData.length; i++) {
-              const filterTitle = nextProps.profile.feedData[i].title;
-              if (filterTitle && filterTitle.includes(matchTitle)) {
-                dialogState.filterIdx = i;
-                break;
-              }
-            }
-          }
-        }
-
         this.setState(
           {
             isMyProfile: nextProps.profile.isMyProfile,
@@ -140,8 +81,6 @@ class Profile extends React.Component {
             profileMail: nextProps.profile.mail || "",
             profileAbout: nextProps.profile.about || [],
             feedData: nextProps.profile.feedData || [],
-            connectedUser: nextProps.profile.connectedUser || false,
-            ...dialogState,
           },
           () => {
             this.createSubfilters();
@@ -172,25 +111,6 @@ class Profile extends React.Component {
     this.setState({
       feedData: newFeedData,
     });
-  }
-
-  connectUser() {
-    let self = this;
-    let userName = Util.parsePath(window.location.href).trailingPath;
-    Analytics.sendClickEvent(
-      `Connected with user ${userName} from profile page`
-    );
-    connectUserRequest({ user: userName })
-      .then(({ data }) => {
-        self.setState({
-          enableAnimations: false,
-          connectedUser: true,
-        });
-      })
-      .catch((e) => {
-        console.log(`An error occurred connecting with user: ${userName}`);
-        console.log(e);
-      });
   }
 
   render() {
@@ -347,23 +267,6 @@ class Profile extends React.Component {
                   </Button>
                 </div>
               )}
-              {!isMyProfile && this.state.profileFirstName && (
-                <div className="btn-wrapper">
-                  {!this.state.connectedUser ? (
-                    <Button
-                      className="btn-white edit-profile"
-                      variant="outline-primary"
-                      onClick={() => {
-                        self.connectUser();
-                      }}
-                    >
-                      Connect
-                    </Button>
-                  ) : (
-                    <span className="profile-connected-label">Connected</span>
-                  )}
-                </div>
-              )}
             </Banner>
 
             {Object.keys(this.state.profileAbout).length > 0 && (
@@ -386,7 +289,7 @@ class Profile extends React.Component {
                   <Col md="6">
                     <Form.Label>Marketing expertise</Form.Label>
                     <div>
-                      <ShowAList
+                      <RenderList
                         arr={this.state.profileAbout.areasOfExpertise}
                       />
                     </div>
@@ -394,7 +297,7 @@ class Profile extends React.Component {
                   <Col md="6">
                     <Form.Label>Marketing interests</Form.Label>
                     <div>
-                      <ShowAList
+                      <RenderList
                         arr={this.state.profileAbout.areasOfInterest}
                       />
                     </div>
