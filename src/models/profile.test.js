@@ -24,13 +24,26 @@ const data = {
     linkedin: "(blank)1",
     website: "(blank)1",
     mail: "mailto:julie@waltherfamily.com",
-    about: [""],
-    areasOfExpertise: "Expertise",
-    areasOfInterest: "Interest",
-    networking: true,
-    networkingOpportunities: "Networking Opportunities",
-    advising: false,
-    advisingOpportunities: "Advising Opportunities",
+    about: {
+      description:
+        "Business leader and CMO with 25+ years of experience launching and scaling enduring technology brands, managing global businesses and building high performance marketing and product team. My passion, across companies big aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      networking: true,
+      networkingOpportunities: "Networking Opportunities",
+      advising: false,
+      advisingOpportunities: "Advising Opportunities",
+      areasOfExpertise: [
+        "#leadership",
+        "#advertising",
+        "#public-relations",
+        "#branding",
+      ],
+      areasOfInterest: [
+        "#event-marketing",
+        "#performance-marketing",
+        "#account-based-marketing",
+        "#account-based-marketing",
+      ],
+    },
     feedData: [
       {
         title: "My Agencies",
