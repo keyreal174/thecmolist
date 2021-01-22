@@ -35,7 +35,7 @@
 
 .profile-about h2 {
   font-size: 22px;
-  font-weight: 400;
+  font-weight: 600;
   color: rgba(0, 0, 0, 0.9);
   margin-bottom: 5px;
 }
@@ -67,10 +67,9 @@
 
 .profile-banner {
   position: relative;
-  height: 140px;
+  height: 200px;
   background-color: #ffffff;
-  border-left: 2px solid #cccccc;
-  border-right: 2px solid #cccccc;
+  border: 2px solid #cccccc;
 }
 
 .overview--padding {
@@ -351,4 +350,17 @@
   height: 1px;
   color: black;
   width: 100%;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
