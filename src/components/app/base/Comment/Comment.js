@@ -9,7 +9,11 @@ const Comment = ({ onSubmit, className, placeholder, value }) => {
 
   return (
     <div className={`comment-wrapper ${className}`}>
-      <img alt="profile" className="comment-image" src="#" />
+      <img
+        alt="profile"
+        className="comment-image"
+        src="https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NTgxMDIzMjMwOWltYWdlLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ=="
+      />
       <Form.Control
         as="input"
         className="comment-input"
