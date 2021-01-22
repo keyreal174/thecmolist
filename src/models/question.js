@@ -14,7 +14,6 @@ const postComment = (id, comment) => {
 
 const getNewReplyStructure = (comment) => {
   return {
-    reply_id: 1,
     header: {
       markdown:
         "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) created a new post in [TV Advertising](https://forum.thecmolist.com/t/110)",

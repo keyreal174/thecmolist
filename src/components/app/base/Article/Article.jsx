@@ -22,16 +22,25 @@ function Article(props) {
     >
       {props.header && (
         <div className="article-wrapper-header">
-          <div className="article-wrapper-title">
-            {props.header.markdown ? (
-              <Markdown>{props.header.markdown}</Markdown>
-            ) : (
-              <a href={props.header.link} className="mr-1 mb-1">
-                {props.header.text}
-              </a>
-            )}
+          <img
+            alt="profile"
+            className="article-wrapper-image"
+            src={props.header.image}
+          />
+          <div>
+            <div className="article-wrapper-title">
+              {props.header.markdown ? (
+                <Markdown>{props.header.markdown}</Markdown>
+              ) : (
+                <a href={props.header.link} className="mr-1 mb-1">
+                  {props.header.text}
+                </a>
+              )}
+            </div>
+            <div className="article-wrapper-subtitle">
+              {props.header.subtext}
+            </div>
           </div>
-          <div className="article-wrapper-subtitle">{props.header.subtext}</div>
         </div>
       )}
       {articleBodyContentPresent && (
