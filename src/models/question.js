@@ -16,7 +16,7 @@ const getNewReplyStructure = (comment) => {
   return {
     header: {
       markdown:
-        "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) created a new post in [TV Advertising](https://forum.thecmolist.com/t/110)",
+        "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg)",
       subtext: "Posted an answer",
       image:
         "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NTgxMDIzMjMwOWltYWdlLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
@@ -25,6 +25,24 @@ const getNewReplyStructure = (comment) => {
       markdown: " ",
     },
     articletext: comment,
+  };
+};
+
+const getNewAnswerStructure = (comment) => {
+  return {
+    reply_id: Math.ceil(Math.random() * 1000),
+    header: {
+      markdown:
+        "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg)",
+      subtext: "Posted an answer",
+      image:
+        "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NTgxMDIzMjMwOWltYWdlLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
+    },
+    headline: {
+      markdown: " ",
+    },
+    articletext: comment,
+    comments: [],
   };
 };
 
@@ -40,10 +58,15 @@ export default {
         question: data,
       };
     },
-    updateReplies: (oldState, data) => {
+    saveAnswer: (oldState, data) => {
+      const { comment } = data;
+      const newAnswer = getNewAnswerStructure(comment);
+
       return {
         ...oldState,
-        replies: [...oldState.question.replies, data],
+        question: {
+          replies: [...oldState.question.replies, newAnswer],
+        },
       };
     },
     saveComment(oldState, data) {
@@ -86,7 +109,7 @@ export default {
         if (data) {
           const { question_id: questionId } = data.questionModel.question;
           await saveComment(questionId, comment);
-          dispatch.questionModel.updateReplies(comment);
+          dispatch.questionModel.saveAnswer({ questionId, comment });
         } else {
           throw new Error("Error saving the data");
         }
