@@ -12,6 +12,23 @@ const postComment = (id, comment) => {
   return axios.post(`/api/comment/${id}`, comment);
 };
 
+const getNewReplyStructure = (comment) => {
+  return {
+    reply_id: 1,
+    header: {
+      markdown:
+        "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) created a new post in [TV Advertising](https://forum.thecmolist.com/t/110)",
+      subtext: "Posted an answer",
+      image:
+        "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NTgxMDIzMjMwOWltYWdlLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
+    },
+    headline: {
+      markdown: " ",
+    },
+    articletext: comment,
+  };
+};
+
 export default {
   name: "questionModel",
   state: {
@@ -32,14 +49,22 @@ export default {
     },
     saveComment(oldState, data) {
       const { comment, replyId } = data;
+      const newReply = getNewReplyStructure(comment);
       const newReplies = oldState.question.replies.map((reply) => {
         if (reply["reply_id"] === replyId) {
-          reply.comments.push(comment);
+          if (reply.comments instanceof Array) {
+            reply.comments.push(newReply);
+          } else {
+            reply.comments = [newReply];
+          }
         }
+        return reply;
       });
       return {
         ...oldState,
-        replies: newReplies,
+        question: {
+          replies: newReplies,
+        },
       };
     },
   },
