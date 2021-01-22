@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 
-import "./comment.css";
+import "./addComment.css";
 
-const Comment = ({ onSubmit, className, placeholder, value }) => {
+const AddComment = ({ onSubmit, className, placeholder, value }) => {
   const [comment, setComment] = useState(value || "");
   const [show, setShow] = useState("");
 
@@ -15,7 +15,7 @@ const Comment = ({ onSubmit, className, placeholder, value }) => {
         src="https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NTgxMDIzMjMwOWltYWdlLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ=="
       />
       <Form.Control
-        as="input"
+        as="textarea"
         className="comment-input"
         id="textarea"
         placeholder={placeholder ? placeholder : "Add a comment..."}
@@ -25,6 +25,7 @@ const Comment = ({ onSubmit, className, placeholder, value }) => {
           setShow(!!value);
         }}
         value={comment}
+        rows={1}
       />
       {
         <Button
@@ -43,4 +44,4 @@ const Comment = ({ onSubmit, className, placeholder, value }) => {
   );
 };
 
-export default Comment;
+export default AddComment;

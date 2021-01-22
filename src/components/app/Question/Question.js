@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Container, Col, Row } from "react-bootstrap";
 import Article from "../base/Article/Article";
-import Comment from "../base/Comment/Comment";
+import AddComment from "../base/AddComment/AddComment";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 
@@ -81,7 +81,7 @@ const Question = ({
                             })}
                           </div>
                         }
-                        <Comment
+                        <AddComment
                           className="question-article-comment"
                           onSubmit={handleSubmitToReply.bind(this, reply)}
                         />
@@ -90,7 +90,7 @@ const Question = ({
                   })}
                 <div className="question-your-answer-section">
                   <div>Your answer</div>
-                  <Comment className="" onSubmit={handleSubmit} />
+                  <AddComment className="" onSubmit={handleSubmit} />
                 </div>
               </div>
             </Col>
