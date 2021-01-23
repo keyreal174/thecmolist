@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
+import { Button, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ShowMoreText from "react-show-more-text";
 import Markdown from "markdown-to-jsx";
@@ -14,22 +14,33 @@ function Article(props) {
     props.articletext ||
     props.subtext ||
     props.images;
+  let engagementButtons = props.engagementButtons;
+  let onEngagementButtonClick = props.onEngagementButtonClick;
   return (
     <div
       className={`article-wrapper ${props.className ? props.className : ""}`}
     >
       {props.header && (
         <div className="article-wrapper-header">
-          <div className="article-wrapper-title">
-            {props.header.markdown ? (
-              <Markdown>{props.header.markdown}</Markdown>
-            ) : (
-              <a href={props.header.link} className="mr-1 mb-1">
-                {props.header.text}
-              </a>
-            )}
+          <img
+            alt="profile"
+            className="article-wrapper-image"
+            src={props.header.image}
+          />
+          <div>
+            <div className="article-wrapper-title">
+              {props.header.markdown ? (
+                <Markdown>{props.header.markdown}</Markdown>
+              ) : (
+                <a href={props.header.link} className="mr-1 mb-1">
+                  {props.header.text}
+                </a>
+              )}
+            </div>
+            <div className="article-wrapper-subtitle">
+              {props.header.subtext}
+            </div>
           </div>
-          <div className="article-wrapper-subtitle">{props.header.subtext}</div>
         </div>
       )}
       {articleBodyContentPresent && (
@@ -148,6 +159,31 @@ function Article(props) {
               <Gallery images={props.images} />
             </Col>
           </Row>
+          <div className="article-engagement-buttons">
+            {engagementButtons &&
+              engagementButtons.map(({ text, icon }, index) => {
+                return (
+                  <div key={text}>
+                    <Button
+                      variant="light"
+                      onClick={onEngagementButtonClick.bind(this, text)}
+                      style={{ margin: "0 10px" }}
+                    >
+                      <img
+                        alt={`Icon for button ${index}`}
+                        src={icon}
+                        style={{
+                          paddingRight: "5px",
+                          width: "20px",
+                          height: "20px",
+                        }}
+                      />
+                      <span>{text}</span>
+                    </Button>
+                  </div>
+                );
+              })}
+          </div>
           {props.children && (
             <Row>
               <Col sm="10" lg="11" style={{ paddingLeft: "0px" }}>

@@ -2,12 +2,19 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Container, Col, Row } from "react-bootstrap";
 import Article from "../base/Article/Article";
+import AddComment from "../base/AddComment/AddComment";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 
 import "./question.css";
 
-const Question = ({ question, fetchQuestion, match }) => {
+const Question = ({
+  question,
+  fetchQuestion,
+  saveCommentToQuestion,
+  saveCommentToReply,
+  match,
+}) => {
   useEffect(() => {
     const {
       params: { id },
@@ -16,6 +23,16 @@ const Question = ({ question, fetchQuestion, match }) => {
 
     fetch();
   }, []);
+
+  const cdn = "https://d3k6hg21rt7gsh.cloudfront.net/icons";
+
+  const handleSubmit = (comment) => {
+    saveCommentToQuestion(comment);
+  };
+
+  const handleSubmitToReply = (reply, comment) => {
+    saveCommentToReply({ comment, reply });
+  };
 
   return (
     <>
@@ -26,17 +43,55 @@ const Question = ({ question, fetchQuestion, match }) => {
               <Header />
             </Col>
           </Row>
-          <Row>
-            <Col className="question-anwer-section" md="9">
-              <Article className={"mt-1"} {...question.question} />
-              <div className="question-anwer-section-replies">{`${
+          <Row className="question-answer-section-wrapper">
+            <Col className="question-answer-section" md="8">
+              <Article
+                articletextlines={1}
+                className={"mt-1"}
+                {...question.question}
+                engagementButtons={[
+                  { text: "Answer", icon: `${cdn}/Answer.png` },
+                  { text: "Thanks", icon: `${cdn}/Thanks.png` },
+                  { text: "Insighful", icon: `${cdn}/Insightful.png` },
+                ]}
+                onEngagementButtonClick={(i) => console.log(i)}
+              />
+              <div className="question-answer-section-replies">{`${
                 question.replies && question.replies.length
               } answers`}</div>
               <div>
                 {question.replies &&
                   question.replies.map((reply, index) => {
-                    return <Article {...reply} key={index} />;
+                    return (
+                      <Article
+                        articletextlines={2}
+                        {...reply}
+                        key={index}
+                        engagementButtons={[
+                          { text: "Comment", icon: `${cdn}/Comment.png` },
+                          { text: "Thanks", icon: `${cdn}/Thanks.png` },
+                          { text: "Insighful", icon: `${cdn}/Insightful.png` },
+                        ]}
+                        onEngagementButtonClick={(i) => console.log(i)}
+                      >
+                        {
+                          <div className="question-comments-section">
+                            {(reply.comments || []).map((comment) => {
+                              return <Article {...comment} />;
+                            })}
+                          </div>
+                        }
+                        <AddComment
+                          className="question-article-comment"
+                          onSubmit={handleSubmitToReply.bind(this, reply)}
+                        />
+                      </Article>
+                    );
                   })}
+                <div className="question-your-answer-section">
+                  <div>Your answer</div>
+                  <AddComment className="" onSubmit={handleSubmit} />
+                </div>
               </div>
             </Col>
             <Col className="question-related-section" md="3">
@@ -47,9 +102,11 @@ const Question = ({ question, fetchQuestion, match }) => {
                 {question.related_questions &&
                   question.related_questions.map((relatedQuestion, index) => {
                     return (
-                      <a href={relatedQuestion.link} key={index}>
-                        {relatedQuestion.title}
-                      </a>
+                      <div key={index}>
+                        <a href={relatedQuestion.link}>
+                          {relatedQuestion.title}
+                        </a>
+                      </div>
                     );
                   })}
               </div>
@@ -75,6 +132,8 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     fetchQuestion: dispatch.questionModel.fetchQuestion,
+    saveCommentToQuestion: dispatch.questionModel.saveCommentToQuestion,
+    saveCommentToReply: dispatch.questionModel.saveCommentToReply,
   };
 };
 
