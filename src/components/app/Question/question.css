@@ -1,8 +1,12 @@
-.question-anwer-section {
+.question-answer-section-wrapper {
+  justify-content: space-between;
+}
+
+.question-answer-section {
   margin-top: 20px;
 }
 
-.question-anwer-section-replies {
+.question-answer-section-replies {
   margin-top: 20px;
   padding: 10px 0;
   font-weight: 700;
@@ -15,6 +19,7 @@
   height: 250px;
   padding: 10px 20px;
   margin-top: 22px;
+  margin-right: 15px;
 }
 
 .question-related-section-title {
@@ -25,4 +30,20 @@
 
 .question-related-section-item {
   color: black;
+}
+
+.question-your-answer-section {
+  border: 1px solid #cccccc;
+  padding: 5px;
+  background: white;
+  font-size: 20px;
+}
+
+.question-article-comment {
+  margin-left: 80px;
+}
+
+.question-comments-section {
+  padding: 20px;
+  margin-left: 60px;
 }

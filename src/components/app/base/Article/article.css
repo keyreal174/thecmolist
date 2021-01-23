@@ -24,6 +24,14 @@
 
 .article-wrapper-header {
   padding: 12px 16px;
+  display: flex;
+}
+
+.article-wrapper-image {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
 }
 
 .article-wrapper-title {
@@ -210,4 +218,9 @@
 .gallery-link-icon {
   width: 18px;
   margin-left: 3px;
+}
+
+.article-engagement-buttons {
+  display: flex;
+  margin-left: 50px;
 }

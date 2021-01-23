@@ -1,0 +1,25 @@
+.comment-wrapper {
+  display: flex;
+  margin-left: 30px;
+  margin-top: 15px;
+}
+
+.comment-input {
+  width: 70%;
+  margin-right: 10px;
+}
+
+.comment-button {
+  opacity: 0;
+}
+
+.comment-button.show {
+  opacity: 1;
+  justify-self: flex-end;
+}
+.comment-image {
+  border-radius: 50%;
+  height: 40px;
+  margin-right: 5px;
+  width: 40px;
+}
