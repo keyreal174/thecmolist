@@ -24,7 +24,7 @@ const RenderList = ({ arr }) => {
   return arr.map((item, index) => (
     <React.Fragment key={index}>
       <a href="#">{item}</a>
-      {index < arr.length - 1 && <span>{", "}</span>}
+      {index < arr.length - 1 && <span> </span>}
     </React.Fragment>
   ));
 };
