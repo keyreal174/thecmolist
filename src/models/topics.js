@@ -5,7 +5,7 @@ export const getTopicsRequest = () => {
 };
 
 export const followTopicRequest = (id) => {
-  return axios.get(`/api/topics/${id}`);
+  return axios.post(`/api/topics/${id}`);
 };
 
 export default {
@@ -50,7 +50,6 @@ export default {
     async followTopic(id) {
       try {
         const response = await followTopicRequest(id);
-        console.log(response);
         dispatch.topicsModel.updateFollowTopic(id);
       } catch (err) {
         throw new Error("Could not follow topic");

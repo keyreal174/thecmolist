@@ -117,9 +117,9 @@ describe("topicsModel model", () => {
       await expect(getTopicsRequest()).rejects.toThrow(errorMessage);
     }),
     it("follow successfully data through an API", async () => {
-      axios.post.mockImplementationOnce(() => Promise.resolve(data));
+      axios.post.mockImplementation(() => Promise.resolve(data));
 
-      await expect(followTopicRequest()).resolves.toEqual();
+      await expect(followTopicRequest("1")).resolves.toEqual(data);
     }),
     it("follow erroneously data through an API", async () => {
       const errorMessage = "Could not follow topic";
@@ -128,6 +128,6 @@ describe("topicsModel model", () => {
         Promise.reject(new Error(errorMessage))
       );
 
-      await expect(followTopicRequest()).rejects.toThrow(errorMessage);
+      await expect(followTopicRequest("1")).rejects.toThrow(errorMessage);
     });
 });
