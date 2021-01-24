@@ -10,6 +10,7 @@ import Feed from "./components/app/Feed/Feed";
 import Profile from "./components/app/Profile/Profile";
 import ProfileEdit from "./components/app/ProfileEdit/ProfileEdit";
 import Settings from "./components/app/Settings/Settings";
+import Topics from "./components/app/Topics/Topics";
 import AgencyProfile from "./components/app/Profile/AgencyProfile";
 import TechnologyProfile from "./components/app/Profile/TechnologyProfile";
 import Directory from "./components/app/Directory/Directory";
@@ -107,6 +108,13 @@ class App extends React.Component {
             path="/settings"
             render={(props) =>
               this.state.authed ? <Settings /> : <Redirect to="/login" />
+            }
+          />
+          <Route
+            exact
+            path="/topics"
+            render={(props) =>
+              this.state.authed ? <Topics /> : <Redirect to="/login" />
             }
           />
           <Route
