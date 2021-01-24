@@ -95,9 +95,9 @@ function Header() {
             <img src={Group} alt="" />
             My Network
           </Nav.Link>
-          <Nav.Link as={NavLink} to="/directory">
+          <Nav.Link as={NavLink} to="/topics">
             <img src={Apps} alt="" />
-            Vendors
+            Topics
           </Nav.Link>
           <a className="nav-link" href="https://forum.thecmolist.com">
             <img className="forum-icon" src={Forum} alt="" />

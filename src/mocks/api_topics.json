@@ -1,0 +1,58 @@
+{
+  "topics": [
+    {
+      "name": "#advertising",
+      "description": "Category description text -two lines of text and display show more and less",
+      "followed": false,
+      "id": 123
+    },
+    {
+      "name": "#SEO",
+      "description": "Category description text -two lines of text and display show more and less",
+      "followed": true,
+      "id": 456
+    },
+    {
+      "name": "#corporate-communication",
+      "description": "Category description text -two lines of text and display show more and less",
+      "followed": true,
+      "id": 234
+    },
+    {
+      "name": "#digital-strategy",
+      "description": "Category description text -two lines of text and display show more and less",
+      "followed": false,
+      "id": 345
+    },
+    {
+      "name": "#expertise",
+      "description": "Category description text -two lines of text and display show more and less",
+      "followed": true,
+      "id": 567
+    },
+    {
+      "name": "#topics",
+      "description": "Category description text -two lines of text and display show more and less",
+      "followed": false,
+      "id": 678
+    },
+    {
+      "name": "#commercial-experience",
+      "description": "Category description text -two lines of text and display show more and less",
+      "followed": true,
+      "id": 789
+    },
+    {
+      "name": "#basic-understanding",
+      "description": "Category description text -two lines of text and display show more and less",
+      "followed": true,
+      "id": 890
+    },
+    {
+      "name": "#strategy",
+      "description": "Category description text -two lines of text and display show more and less",
+      "followed": false,
+      "id": 213
+    }
+  ]
+}

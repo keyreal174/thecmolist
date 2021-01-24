@@ -8,7 +8,8 @@ var MockAdapter,
   MockedApiSettings,
   MockedApiProfileStats,
   MockedApiContent,
-  MockedApiQuestion;
+  MockedApiQuestion,
+  MockedApiTopics;
 if (process.env.NODE_ENV !== "production") {
   MockAdapter = require("axios-mock-adapter");
   MockedApiNetwork = require("./api_network.json");
@@ -20,6 +21,7 @@ if (process.env.NODE_ENV !== "production") {
   MockedApiProfileStats = require("./api_profilestats.json");
   MockedApiContent = require("./api_content.json");
   MockedApiQuestion = require("./api_question.json");
+  MockedApiTopics = require("./api_topics.json");
 }
 function MockRequests() {
   if (process.env.NODE_ENV === "production") return;
@@ -51,6 +53,7 @@ function MockRequests() {
       responseCode: 200,
       response: MockedApiQuestion,
     },
+    { path: /\/api\/topics.*/, responseCode: 200, response: MockedApiTopics },
   ];
 
   // login/logout
@@ -87,6 +90,10 @@ function MockRequests() {
   });
 
   mock.onPost("/api/profile").reply(() => {
+    return [200, { success: true, error: null }];
+  });
+
+  mock.onPost(new RegExp("/api/topics/*")).reply(() => {
     return [200, { success: true, error: null }];
   });
 
