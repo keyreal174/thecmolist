@@ -12,13 +12,14 @@ import "./network.css";
 const Network = (props) => {
   const [sortOrder, setSortOrder] = useState("Top");
   const [inviteModalShow, setInviteModalShow] = useState(false);
-  const OnComponentDidMount = (func) => useEffect(func, []);
-  const fetchData = () => props.fetchNetwork(sortOrder);
+  const fetchData = async () => await props.fetchNetwork(sortOrder);
   const formFilterChange = (event) => {
     setSortOrder(event.target.value);
     props.fetchNetwork(event.target.value);
   };
-  OnComponentDidMount(() => fetchData());
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   let feedData = props.feedData;
   return (
