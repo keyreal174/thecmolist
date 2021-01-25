@@ -12,14 +12,13 @@ const AddComment = ({ onSubmit, className, placeholder, value, ...props }) => {
   const [show, setShow] = useState("");
   console.log(props);
   let articleBodyContentPresent =
-    props.image ||
-    props.headline ||
-    props.subheadlines ||
-    props.articletext ||
-    props.subtext ||
-    props.images;
+    props.image || props.headline || props.articletext || props.images;
   return (
-    <div className="article-wrapper">
+    <div
+      className={`article-wrapper ${
+        props.onlyComment ? "article-only-comment" : ""
+      }`}
+    >
       {props.header && (
         <div className="article-wrapper-header">
           <img
@@ -53,6 +52,13 @@ const AddComment = ({ onSubmit, className, placeholder, value, ...props }) => {
                 props.image && props.image.length > 0 ? "article-body-left" : ""
               }
             >
+              <h2 className="article-title">
+                {props.headline.markdown ? (
+                  <Markdown>{props.headline.markdown}</Markdown>
+                ) : (
+                  props.headline
+                )}
+              </h2>
               {props.articletext && props.articletext.length > 0 && (
                 <div className="article-text">
                   <ShowMoreText

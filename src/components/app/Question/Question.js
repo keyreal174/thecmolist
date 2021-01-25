@@ -88,11 +88,7 @@ const Question = ({
                   })}
                 <div className="question-your-answer-section">
                   <div>Your answer</div>
-                  <AddComment
-                    className=""
-                    onSubmit={handleSubmit}
-                    showComment
-                  />
+                  <AddComment onSubmit={handleSubmit} showComment onlyComment />
                 </div>
               </div>
             </Col>
