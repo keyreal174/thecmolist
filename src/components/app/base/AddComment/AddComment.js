@@ -1,18 +1,17 @@
-import React, { useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
-import ShowMoreText from "react-show-more-text";
-import Markdown from "markdown-to-jsx";
 import Gallery from "../Gallery/Gallery";
-import { Link } from "react-router-dom";
+import Markdown from "markdown-to-jsx";
+import React, { useState } from "react";
+import ShowMoreText from "react-show-more-text";
 
 import "./addComment.css";
 
 const AddComment = ({ onSubmit, className, placeholder, value, ...props }) => {
   const [comment, setComment] = useState(value || "");
   const [show, setShow] = useState("");
-  console.log(props);
-  let articleBodyContentPresent =
-    props.image || props.headline || props.articletext || props.images;
+  const articleBodyContentPresent =
+    props.headline || props.articletext || props.images;
+
   return (
     <div
       className={`article-wrapper ${
