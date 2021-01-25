@@ -1,14 +1,14 @@
 import axios from "axios";
 
-const postAnswer = (id, comment) => {
+export const postAnswer = (id, comment) => {
   return axios.post(`/api/question/${id}`, comment);
 };
 
-const getQuestion = (id) => {
+export const getQuestion = (id) => {
   return axios.get(`/api/question/${id}`);
 };
 
-const postComment = (id, comment) => {
+export const postComment = (id, comment) => {
   return axios.post(`/api/comment/${id}`, comment);
 };
 
@@ -114,20 +114,23 @@ export default {
           throw new Error("Error saving the data");
         }
       } catch (err) {
-        console.log("err", err);
         throw new Error("Could not save question.");
       }
     },
     async saveCommentToReply(data) {
-      const {
-        comment,
-        reply: { reply_id: replyId },
-      } = data;
       try {
-        await postComment(replyId, comment);
-        dispatch.questionModel.saveComment({ replyId, comment });
+        if (data) {
+          const {
+            comment,
+            reply: { reply_id: replyId },
+          } = data;
+
+          await postComment(replyId, comment);
+          dispatch.questionModel.saveComment({ replyId, comment });
+        } else {
+          throw new Error("Could not save comment");
+        }
       } catch (error) {
-        console.log("error", error);
         throw new Error("Could not set comment");
       }
     },

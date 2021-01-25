@@ -1,6 +1,6 @@
 import { init } from "@rematch/core";
 import questionModel from "./question";
-import { postAnswer, getQuestion, postComment } from "./question";
+import { postAnswer } from "./question";
 const axios = require("axios");
 
 jest.mock("axios");
@@ -68,19 +68,21 @@ const data = {
   ],
 };
 
+const comment = {
+  header: {
+    markdown:
+      "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) ",
+    subtext: "Posted a comment",
+    image:
+      "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NTgxMDIzMjMwOWltYWdlLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
+  },
+  headline: {
+    markdown: " ",
+  },
+  articletext: "Comment 2",
+};
+
 describe("question model", () => {
-  /*
-    reducer
-    setQuestion
-    saveAnswer
-    saveComment
-
-    effects
-    fetchQuestion
-    saveCommentToQuestion
-    saveCommentToReply
-
-  */
   it("reducer: setQuestion", () => {
     const store = init({
       models: { questionModel },
@@ -123,5 +125,87 @@ describe("question model", () => {
 
     questionModelData = store.getState().questionModel;
     expect(questionModelData.question.replies[0].comments.length).toEqual(2);
+  });
+
+  it("effect: fetchQuestion", async () => {
+    const store = init({
+      models: { questionModel },
+    });
+
+    axios.get.mockResolvedValue({
+      data: data,
+    });
+
+    await store.dispatch.questionModel.fetchQuestion("123");
+
+    const questionModelData = store.getState().questionModel;
+    expect(questionModelData.question).toEqual(data);
+  });
+
+  it("effect: fetchQuestion no id", async () => {
+    const store = init({
+      models: { questionModel },
+    });
+
+    const result = store.dispatch.questionModel.fetchQuestion();
+
+    await expect(result).rejects.toThrow("Could not fetch question");
+  });
+
+  it("effect: saveCommentToReply", async () => {
+    const newData = { ...data };
+    const store = init({
+      models: { questionModel },
+    });
+
+    axios.get.mockResolvedValue({
+      data: data,
+    });
+
+    await store.dispatch.questionModel.fetchQuestion(123);
+    await store.dispatch.questionModel.saveCommentToReply({
+      comment: "Comment 2",
+      reply: { reply_id: 123 },
+    });
+
+    newData.replies[0].comments.push(comment);
+    const questionModelData = store.getState().questionModel;
+
+    expect(questionModelData.question.replies).toEqual(newData.replies);
+  });
+
+  it("effect: saveCommentToReply no data", async () => {
+    const store = init({
+      models: { questionModel },
+    });
+
+    const result = store.dispatch.questionModel.saveCommentToReply();
+
+    await expect(result).rejects.toThrow("Could not set comment");
+  });
+
+  it("effect: fetchQuestion no id", async () => {
+    const store = init({
+      models: { questionModel },
+    });
+
+    const result = store.dispatch.questionModel.fetchQuestion();
+
+    await expect(result).rejects.toThrow("Could not fetch question");
+  });
+
+  it("effect: postAnswer", async () => {
+    axios.post.mockImplementationOnce(() => Promise.resolve(data));
+
+    await expect(postAnswer({ a: "MOCK" })).resolves.toEqual(data);
+  });
+
+  it("effect: postAnswer with error", async () => {
+    const errorMessage = "Could not post an answer";
+    axios.post.mockImplementationOnce(() =>
+      Promise.reject(new Error(errorMessage))
+    );
+
+    await expect(postAnswer()).rejects.toThrow(errorMessage);
   });
 });
