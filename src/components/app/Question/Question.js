@@ -45,7 +45,7 @@ const Question = ({
           </Row>
           <Row className="question-answer-section-wrapper">
             <Col className="question-answer-section" md="8">
-              <Article
+              <AddComment
                 articletextlines={1}
                 className={"mt-1"}
                 {...question.question}
@@ -63,7 +63,7 @@ const Question = ({
                 {question.replies &&
                   question.replies.map((reply, index) => {
                     return (
-                      <Article
+                      <AddComment
                         articletextlines={2}
                         {...reply}
                         key={index}
@@ -73,24 +73,26 @@ const Question = ({
                           { text: "Insighful", icon: `${cdn}/Insightful.png` },
                         ]}
                         onEngagementButtonClick={(i) => console.log(i)}
+                        onSubmit={handleSubmitToReply.bind(this, reply)}
+                        showComment
                       >
                         {
                           <div className="question-comments-section">
                             {(reply.comments || []).map((comment) => {
-                              return <Article {...comment} />;
+                              return <AddComment {...comment} />;
                             })}
                           </div>
                         }
-                        <AddComment
-                          className="question-article-comment"
-                          onSubmit={handleSubmitToReply.bind(this, reply)}
-                        />
-                      </Article>
+                      </AddComment>
                     );
                   })}
                 <div className="question-your-answer-section">
                   <div>Your answer</div>
-                  <AddComment className="" onSubmit={handleSubmit} />
+                  <AddComment
+                    className=""
+                    onSubmit={handleSubmit}
+                    showComment
+                  />
                 </div>
               </div>
             </Col>
