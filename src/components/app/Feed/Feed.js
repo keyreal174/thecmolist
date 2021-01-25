@@ -319,7 +319,7 @@ const mapState = (state) => {
     dashboardData: state.feedModel.dashboardData,
     feedData: state.feedModel.feedData,
     filterIdx: state.feedModel.filterIdx,
-    profileStats: state.profileStatsModel.profileStats,
+    profileStats: state.profileModel.profileStats,
   };
 };
 
@@ -329,7 +329,7 @@ const mapDispatch = (dispatch) => {
     fetchFeed: dispatch.feedModel.fetchFeed,
     changeFilterIndex: dispatch.feedModel.changeFilterIndex,
     saveUserInvite: dispatch.userModel.saveInvite,
-    getProfileStats: dispatch.profileStatsModel.getProfileStats,
+    getProfileStats: dispatch.profileModel.getProfileStats,
   };
 };
 
