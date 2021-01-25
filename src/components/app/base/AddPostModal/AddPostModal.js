@@ -12,9 +12,9 @@ import {
 import "./addPostModal.css";
 
 function AddPostModal({
-  content,
+  profileStats,
   firstButtonText,
-  getContent,
+  getProfileStats,
   handleClose,
   modalTitle,
   secondButtonText,
@@ -25,7 +25,7 @@ function AddPostModal({
   const [allMembers, setAllMembers] = useState(false);
   const [body, setBody] = useState("");
   const [error, setError] = useState(null);
-  const [groups, setGroups] = useState(content);
+  const [groups, setGroups] = useState(profileStats.groups);
   const [onlyMyNetwork, setOnlyMyNetwork] = useState(true);
   const [person, setPerson] = useState("");
   const [photo, setPhoto] = useState("");
@@ -74,7 +74,7 @@ function AddPostModal({
   };
 
   const cleanFields = () => {
-    setGroups(getGroupsObject(content.groups));
+    setGroups(getGroupsObject(profileStats.groups));
     setTitle("");
     setBody("");
     setTopics("");
@@ -97,7 +97,7 @@ function AddPostModal({
   useEffect(() => {
     const fetch = async () => {
       try {
-        await getContent();
+        await getProfileStats();
       } catch (err) {
         setError(err);
       }
@@ -107,11 +107,11 @@ function AddPostModal({
   }, []);
 
   useEffect(() => {
-    if (content && content.groups && content.groups.length > 0) {
-      const { groups: actualGroups } = content;
+    if (profileStats && profileStats.groups && profileStats.groups.length > 0) {
+      const { groups: actualGroups } = profileStats;
       setGroups(getGroupsObject(actualGroups));
     }
-  }, [content]);
+  }, [profileStats]);
 
   const handlePhotoClick = () => {
     const file = document.getElementById("file");
@@ -216,26 +216,27 @@ function AddPostModal({
                     }}
                   />
                   <div style={{ display: "flex", marginBottom: "10px" }}>
-                    {Object.keys(groups).map((groupKey, index) => {
-                      return (
-                        <Form.Check
-                          className="modal-section-checkbox-content"
-                          defaultChecked={groups[groupKey]}
-                          disabled={allMembers}
-                          id={groupKey}
-                          key={index}
-                          label={groupKey}
-                          name={groupKey}
-                          onChange={(e) => {
-                            setGroups({
-                              ...groups,
-                              [groupKey]: e.target.checked,
-                            });
-                          }}
-                          type="checkbox"
-                        />
-                      );
-                    })}
+                    {groups &&
+                      Object.keys(groups).map((groupKey, index) => {
+                        return (
+                          <Form.Check
+                            className="modal-section-checkbox-content"
+                            defaultChecked={groups[groupKey]}
+                            disabled={allMembers}
+                            id={groupKey}
+                            key={index}
+                            label={groupKey}
+                            name={groupKey}
+                            onChange={(e) => {
+                              setGroups({
+                                ...groups,
+                                [groupKey]: e.target.checked,
+                              });
+                            }}
+                            type="checkbox"
+                          />
+                        );
+                      })}
                   </div>
                 </Col>
               </Row>
@@ -431,14 +432,14 @@ function AddPostModal({
 
 const mapState = (state) => {
   return {
-    content: state.contentModel.content,
+    profileStats: state.profileModel.profileStats,
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
     shareContent: dispatch.contentModel.shareContent,
-    getContent: dispatch.contentModel.getContent,
+    getProfileStats: dispatch.profileModel.getProfileStats,
   };
 };
 

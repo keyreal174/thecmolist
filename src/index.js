@@ -13,8 +13,8 @@ import networkModel from "./models/network";
 import questionModel from "./models/question";
 import userModel from "./models/user";
 import settingsModel from "./models/settings";
-import profileStatsModel from "./models/profile_stats";
 import profileModel from "./models/profile";
+import topicsModel from "./models/topics";
 
 const store = init({
   models: {
@@ -23,9 +23,9 @@ const store = init({
     networkModel,
     questionModel,
     settingsModel,
-    profileStatsModel,
     userModel,
     profileModel,
+    topicsModel,
   },
 });
 

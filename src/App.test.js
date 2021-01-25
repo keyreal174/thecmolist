@@ -5,16 +5,26 @@ import { init } from "@rematch/core";
 import { render } from "@testing-library/react";
 import "jest-canvas-mock";
 import App from "./App";
+import contentModel from "./models/content";
 import feedModel from "./models/feed";
 import networkModel from "./models/network";
+import questionModel from "./models/question";
 import userModel from "./models/user";
+import settingsModel from "./models/settings";
+import profileModel from "./models/profile";
+import topicsModel from "./models/topics";
 
 test("renders app without crashing", () => {
   const store = init({
     models: {
+      contentModel,
       feedModel,
       networkModel,
+      questionModel,
+      settingsModel,
       userModel,
+      profileModel,
+      topicsModel,
     },
   });
 

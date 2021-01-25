@@ -1,0 +1,50 @@
+.topics-square-logo {
+  padding: 2px;
+  background-color: rgba(243, 246, 248, 0.94);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 1.5px 3px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px 1.5px 3px 0px;
+  border-radius: 2px;
+  border: 4px solid #fff;
+}
+
+.topics-square-logo img {
+  width: 120px;
+  height: 120px;
+}
+
+.topcis-header {
+  color: black;
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.btn_following {
+  padding: 4px 15px;
+}
+
+.topic-wrapper {
+  background-color: #ffffff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 2px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+}
+
+.topic-link {
+  font-weight: 500;
+  font-size: 17px;
+  display: block;
+  line-height: 1.2;
+}
+
+.topic-description {
+  font-size: 15px;
+  line-height: 1.4;
+  display: block;
+}
+
+.border-radius-15 {
+  border-radius: 15px;
+}
+
+.sharp-symbol {
+  font-size: 50px;
+}

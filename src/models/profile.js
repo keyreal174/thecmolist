@@ -16,10 +16,15 @@ export const deletePostRequest = (id) => {
   return axios.delete(`/api/post/${id}`);
 };
 
+export const getProfileStatsRequest = () => {
+  return axios.get(`/api/profilestats/`);
+};
+
 export default {
   name: "profileModel",
   state: {
     profile: {},
+    profileStats: {},
   },
   reducers: {
     updateProfile: (oldState, data) => {
@@ -41,6 +46,13 @@ export default {
             };
           }),
         },
+      };
+    },
+
+    updateProfileStats: (oldState, data) => {
+      return {
+        ...oldState,
+        profileStats: data,
       };
     },
   },
@@ -70,6 +82,16 @@ export default {
         dispatch.profileModel.removePost(id);
       } catch (err) {
         throw new Error("Could not delete post");
+      }
+    },
+
+    async getProfileStats() {
+      try {
+        const response = await getProfileStatsRequest();
+        const profileStats = response.data;
+        dispatch.profileModel.updateProfileStats(profileStats);
+      } catch (err) {
+        throw new Error("Could not get profilestats");
       }
     },
   }),

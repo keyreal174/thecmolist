@@ -3,6 +3,7 @@ import profileModel, {
   profileRequest,
   saveProfileRequest,
   deletePostRequest,
+  getProfileStatsRequest,
 } from "./profile";
 
 const axios = require("axios");
@@ -264,6 +265,36 @@ const deletedData = {
   },
 };
 
+const profileStatsData = {
+  profile: {
+    name: "Jennifer Smith",
+    image:
+      "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5OTA2NzA1OTQ0NzAxNy1IZWFkc2hvdHMocHBfdzc2OF9oNjE0KS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
+    headline: "Brand at Modern Media",
+    stats: {
+      posts: 14,
+      views: 2345,
+      thanks: 34,
+      insightful: 11,
+    },
+  },
+  spaces: [
+    {
+      title: "#advertising",
+      count: 12,
+    },
+    {
+      title: "#social-media-marketing",
+    },
+  ],
+  groups: [
+    { name: "My Peers", checked: true },
+    { name: "Signal Fire Marketing", checked: true },
+    { name: "Dropbox", checked: false },
+    { name: "Pagerduty Marketing", checked: false },
+  ],
+};
+
 jest.mock("axios");
 
 describe("profileModel model", () => {
@@ -314,12 +345,12 @@ describe("profileModel model", () => {
       );
 
       await expect(saveProfileRequest()).rejects.toThrow(errorMessage);
-    });
-  it("delete post successfully through an API", async () => {
-    axios.delete.mockImplementationOnce(() => Promise.resolve(data));
+    }),
+    it("delete post successfully through an API", async () => {
+      axios.delete.mockImplementationOnce(() => Promise.resolve(data));
 
-    await expect(deletePostRequest()).resolves.toEqual(data);
-  }),
+      await expect(deletePostRequest("slug")).resolves.toEqual(data);
+    }),
     it("delete erroneously post through an API", async () => {
       const errorMessage = "Could not delete post";
 
@@ -327,6 +358,30 @@ describe("profileModel model", () => {
         Promise.reject(new Error(errorMessage))
       );
 
-      await expect(deletePostRequest()).rejects.toThrow(errorMessage);
+      await expect(deletePostRequest("slug")).rejects.toThrow(errorMessage);
+    });
+  it("reducer: updateProfileStats", () => {
+    const store = init({
+      models: { profileModel },
+    });
+
+    store.dispatch.profileModel.updateProfileStats(profileStatsData);
+
+    const profileStatsModelData = store.getState().profileModel;
+    expect(profileStatsModelData.profileStats).toEqual(profileStatsData);
+  }),
+    it("fetches successfully stats data from an API", async () => {
+      axios.get.mockImplementationOnce(() => Promise.resolve(profileStatsData));
+
+      await expect(getProfileStatsRequest()).resolves.toEqual(profileStatsData);
+    }),
+    it("fetches erroneously data from an API", async () => {
+      const errorMessage = "Could not get profilestats";
+
+      axios.get.mockImplementationOnce(() =>
+        Promise.reject(new Error(errorMessage))
+      );
+
+      await expect(getProfileStatsRequest()).rejects.toThrow(errorMessage);
     });
 });

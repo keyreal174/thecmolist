@@ -28,7 +28,7 @@ const ProfileStats = ({ profileStats }) => {
             <div className="article-img">
               <img
                 className="element-center"
-                src="https://i.kinja-img.com/gawker-media/image/upload/t_original/ijsi5fzb1nbkbhxa2gc1.png"
+                src={profileStats.profile.image}
                 alt=""
               />
             </div>
