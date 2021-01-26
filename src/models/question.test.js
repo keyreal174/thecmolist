@@ -1,5 +1,4 @@
 import { init } from "@rematch/core";
-import { initialize } from "react-ga";
 import questionModel from "./question";
 import { postAnswer } from "./question";
 const axios = require("axios");
