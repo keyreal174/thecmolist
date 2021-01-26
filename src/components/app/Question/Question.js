@@ -45,9 +45,8 @@ const Question = ({
           </Row>
           <Row className="question-answer-section-wrapper">
             <Col className="question-answer-section" md="8">
-              <AddComment
+              <Article
                 articletextlines={1}
-                className={"mt-1"}
                 {...question.question}
                 engagementButtons={[
                   { text: "Answer", icon: `${cdn}/Answer.png` },
@@ -55,6 +54,7 @@ const Question = ({
                   { text: "Insighful", icon: `${cdn}/Insightful.png` },
                 ]}
                 onEngagementButtonClick={(i) => console.log(i)}
+                style={{ paddingBottom: "10px" }}
               />
               <div className="question-answer-section-replies">{`${
                 question.replies && question.replies.length
@@ -63,7 +63,7 @@ const Question = ({
                 {question.replies &&
                   question.replies.map((reply, index) => {
                     return (
-                      <Article
+                      <AddComment
                         articletextlines={2}
                         {...reply}
                         key={index}
@@ -74,6 +74,8 @@ const Question = ({
                         ]}
                         onEngagementButtonClick={(i) => console.log(i)}
                         onSubmit={handleSubmitToReply.bind(this, reply)}
+                        showComment
+                        withMargin
                       >
                         {
                           <div className="question-comments-section">
@@ -83,12 +85,17 @@ const Question = ({
                               })}
                           </div>
                         }
-                      </Article>
+                      </AddComment>
                     );
                   })}
                 <div className="question-your-answer-section">
                   <div>Your answer</div>
-                  <AddComment onSubmit={handleSubmit} showComment onlyComment />
+                  <AddComment
+                    placeholder="Answer John's question..."
+                    onSubmit={handleSubmit}
+                    showComment
+                    onlyComment
+                  />
                 </div>
               </div>
             </Col>

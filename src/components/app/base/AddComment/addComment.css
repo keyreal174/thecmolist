@@ -1,6 +1,5 @@
 .comment-wrapper {
   display: flex;
-  margin-left: 65px;
   padding-bottom: 20px;
 }
 
@@ -43,5 +42,8 @@
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 2px 3px rgba(0, 0, 0, 0.2);
   border-radius: 2px;
   margin: 0 0px 8px;
-  padding-bottom: 20px;
+}
+
+.comment-wrapper-with-margin {
+  margin-left: 66px;
 }

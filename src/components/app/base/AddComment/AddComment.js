@@ -74,7 +74,12 @@ const AddComment = ({ onSubmit, className, placeholder, value, ...props }) => {
           </Row>
         </div>
       )}
-      <div className="article-engagement-buttons">
+
+      <div
+        className={`article-engagement-buttons ${
+          props.withMargin ? "article-engagement-buttons-with-margin" : ""
+        }`}
+      >
         {props.engagementButtons &&
           props.engagementButtons.map(({ text, icon }, index) => {
             return (
@@ -107,7 +112,11 @@ const AddComment = ({ onSubmit, className, placeholder, value, ...props }) => {
         </Row>
       )}
       {props.showComment && (
-        <div className={`comment-wrapper ${className}`}>
+        <div
+          className={`comment-wrapper ${className} ${
+            props.withMargin ? "comment-wrapper-with-margin" : ""
+          }`}
+        >
           <img
             alt="profile"
             className="comment-image"
