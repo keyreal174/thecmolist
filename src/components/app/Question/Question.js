@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Container, Col, Row } from "react-bootstrap";
 import Article from "../base/Article/Article";
-import AddComment from "../base/AddComment/AddComment";
+import DiscussionReply from "../base/DiscussionReply/DiscussionReply";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 
@@ -63,7 +63,7 @@ const Question = ({
                 {question.replies &&
                   question.replies.map((reply, index) => {
                     return (
-                      <AddComment
+                      <DiscussionReply
                         articletextlines={2}
                         {...reply}
                         key={index}
@@ -81,16 +81,16 @@ const Question = ({
                           <div className="question-comments-section">
                             {reply.comments &&
                               reply.comments.map((comment) => {
-                                return <AddComment {...comment} />;
+                                return <DiscussionReply {...comment} />;
                               })}
                           </div>
                         }
-                      </AddComment>
+                      </DiscussionReply>
                     );
                   })}
                 <div className="question-your-answer-section">
                   <div>Your answer</div>
-                  <AddComment
+                  <DiscussionReply
                     placeholder="Answer John's question..."
                     onSubmit={handleSubmit}
                     showComment

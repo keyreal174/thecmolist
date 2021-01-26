@@ -4,9 +4,15 @@ import React, { useState } from "react";
 import ShowMoreText from "react-show-more-text";
 import EngagementButtons from "../EngagementButtons/EngagementButtons";
 
-import "./addComment.css";
+import "./discussionReply.css";
 
-const AddComment = ({ onSubmit, className, placeholder, value, ...props }) => {
+const DiscussionReply = ({
+  onSubmit,
+  className,
+  placeholder,
+  value,
+  ...props
+}) => {
   const [comment, setComment] = useState(value || "");
   const [show, setShow] = useState("");
   const articleBodyContentPresent =
@@ -136,4 +142,4 @@ const AddComment = ({ onSubmit, className, placeholder, value, ...props }) => {
   );
 };
 
-export default AddComment;
+export default DiscussionReply;
