@@ -1,7 +1,9 @@
 import axios from "axios";
 
 export const postAnswer = (id, comment) => {
-  return axios.post(`/api/question/${id}`, comment);
+  return axios.post(`/api/reply_question/${id}`, {
+    data: comment,
+  });
 };
 
 export const getQuestion = (id) => {
@@ -9,7 +11,9 @@ export const getQuestion = (id) => {
 };
 
 export const postComment = (id, comment) => {
-  return axios.post(`/api/comment/${id}`, comment);
+  return axios.post(`/api/reply_comment/${id}`, {
+    data: comment,
+  });
 };
 
 export default {

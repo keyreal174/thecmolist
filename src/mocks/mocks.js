@@ -106,8 +106,8 @@ function MockRequests() {
     return [200, { success: true, error: null }];
   });
 
-  mock.onPost(/\/api\/question\/\d+.*/).reply((data) => {
-    console.log("data", data);
+  mock.onPost(/\/api\/reply_question\/\d+.*/).reply((postBody) => {
+    console.log("data", postBody);
     return [
       200,
       {
@@ -122,13 +122,13 @@ function MockRequests() {
         headline: {
           markdown: " ",
         },
-        articletext: data.data,
+        articletext: JSON.parse(postBody.data).data,
         comments: [],
       },
     ];
   });
 
-  mock.onPost(/\/api\/comment\/\d+.*/).reply((data) => {
+  mock.onPost(/\/api\/reply_comment\/\d+.*/).reply((postBody) => {
     return [
       200,
       {
@@ -142,7 +142,7 @@ function MockRequests() {
         headline: {
           markdown: " ",
         },
-        articletext: data.data,
+        articletext: JSON.parse(postBody.data).data,
       },
     ];
   });
