@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Container, Form } from "react-bootstrap";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
-import ShareModule from "../base/ShareModule/ShareModule";
+import Banner from "../base/Banner/Banner";
 import InviteModal from "../base/ShareModule/InviteModal";
 import Article from "../base/Article/Article";
 import Analytics from "../../util/Analytics";
@@ -27,11 +27,9 @@ const Network = (props) => {
       <Container className="height-100">
         <div className="wrapper">
           <Header />
-          <ShareModule
-            onInvite={() => {
-              Analytics.sendClickEvent("Clicked Invite from network page");
-              setInviteModalShow(true);
-            }}
+          <Banner
+            title="CMOlist Members"
+            img="https://d3k6hg21rt7gsh.cloudfront.net/directory.png"
           />
           <div className="sort">
             <div className="section-break" />

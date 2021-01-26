@@ -99,10 +99,10 @@ function Header() {
             <img src={Apps} alt="" />
             Topics
           </Nav.Link>
-          <a className="nav-link" href="/notifications">
-            <img className="forum-icon" src={Notification} alt="" />
+          <Nav.Link as={NavLink} to="/notifications">
+            <img src={Notification} alt="" />
             Notifications
-          </a>
+          </Nav.Link>
           <NavDropdown
             className={
               window.location.href.includes("/profile/") ? "active" : ""

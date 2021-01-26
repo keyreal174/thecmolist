@@ -3,20 +3,14 @@ import { connect } from "react-redux";
 import { Container, Form } from "react-bootstrap";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
-import ShareModule from "../base/ShareModule/ShareModule";
 import InviteModal from "../base/ShareModule/InviteModal";
 import Article from "../base/Article/Article";
 import Analytics from "../../util/Analytics";
 import "./notifications.css";
 
 const Notifications = (props) => {
-  const [sortOrder, setSortOrder] = useState("Top");
   const [inviteModalShow, setInviteModalShow] = useState(false);
-  const fetchData = async () => await props.fetchNotifications(sortOrder);
-  const formFilterChange = (event) => {
-    setSortOrder(event.target.value);
-    props.fetchNotifications(event.target.value);
-  };
+  const fetchData = async () => await props.fetchNotifications();
   useEffect(() => {
     fetchData();
   }, []);
@@ -27,57 +21,14 @@ const Notifications = (props) => {
       <Container className="height-100">
         <div className="wrapper">
           <Header />
-          <ShareModule
-            onInvite={() => {
-              Analytics.sendClickEvent("Clicked Invite from network page");
-              setInviteModalShow(true);
-            }}
-          />
-          <div className="sort">
-            <div className="section-break" />
-            <span>Sort by:</span>
-            <div className="select-wrapper">
-              <Form.Control
-                as="select"
-                defaultValue={sortOrder}
-                onChange={formFilterChange}
-                custom
-              >
-                <option>Top</option>
-                <option>Recent</option>
-                <option>Name</option>
-              </Form.Control>
-            </div>
-          </div>
 
           {feedData &&
             feedData.map((feed, idx) => {
-              let badge = null;
-              const isLocallyConnected = props.localConnectedUsers.includes(
-                feed.username
-              );
-              const isConnected = feed.isConnected || isLocallyConnected;
-              if (!feed.disableConnect) {
-                badge = !isConnected ? (
-                  <button
-                    className="btn connect-button"
-                    type="button"
-                    onClick={() => {
-                      props.connectUser(feed);
-                    }}
-                  >
-                    Connect
-                  </button>
-                ) : (
-                  <span className="connected-label">Connected</span>
-                );
-              }
               return (
                 <Article
                   key={idx}
                   className={idx !== 0 ? "mt-1" : ""}
                   {...feed}
-                  badge={badge}
                 />
               );
             })}

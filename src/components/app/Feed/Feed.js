@@ -5,7 +5,7 @@ import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Filter from "../base/Filter/Filter";
 import Article from "../base/Article/Article";
-import ShareModule from "../base/ShareModule/ShareModule";
+import Banner from "../base/Banner/Banner";
 import InviteModal from "../base/ShareModule/InviteModal";
 import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
 import ProfileStats from "../ProfileStats/ProfileStats";
@@ -16,23 +16,7 @@ import "./feed.css";
 function RenderDashboard(props) {
   let dashboardData = props.dashboardData;
   let dashboardLoading = !dashboardData.directory;
-  let moduleShowMore = (filter) => {
-    let idx = -1;
-    for (let i = 0; i < props.feedData.length; i++) {
-      if (props.feedData[i].title.toLowerCase() === filter) {
-        idx = i;
-        break;
-      }
-    }
-    if (idx > 0) {
-      props.changeFilterIndex(idx).then(() => {
-        if (props.feedData[idx].data.length === 0) {
-          props.fetchFeed();
-        }
-      });
-      props.setShowDashboard && props.setShowDashboard(false);
-    }
-  };
+  let moduleShowMore = (filter) => {};
   let { profileStats } = props;
 
   let buildYourNetworkItems = dashboardData.buildYourNetwork;
@@ -114,7 +98,7 @@ function RenderDashboard(props) {
               );
             })}
         </Col>
-        <Col md="3" style={{ paddingRight: "0px" }}>
+        <Col md="3" className="feed-right-container">
           <div className="feed-box">
             <div className="feed-box-title">Build your network</div>
             <div className="feed-box-content">
@@ -176,64 +160,16 @@ function RenderDashboard(props) {
   );
 }
 
-function RenderFeed(props) {
-  let filters = props.feedData
-    ? props.feedData.map((fd) => {
-        return {
-          title: fd.title,
-          enabled: fd.enabled,
-        };
-      })
-    : [];
-  let feedData =
-    props && props.feedData ? props.feedData[props.filterIdx].data : [];
-  let moreData =
-    props && props.feedData ? props.feedData[props.filterIdx].moreData : false;
-  let setFilterIdx = (idx) => {
-    props.changeFilterIndex(idx).then(() => {
-      if (props.feedData[idx].data.length === 0) {
-        props.fetchFeed();
-      }
-    });
-  };
-  let onLoadMoreClick = (e) => {
-    e.preventDefault();
-    e.target && e.target.blur && e.target.blur();
-    props.fetchFeed();
-  };
-  return (
-    <div>
-      <Filter
-        className="pb-2"
-        filterIdx={props.filterIdx}
-        filters={filters}
-        onChange={(idx) => setFilterIdx(idx)}
-      />
-
-      {feedData.map((feed, idx) => {
-        return <Article className={idx !== 0 ? "mt-1" : ""} {...feed} />;
-      })}
-
-      {moreData && (
-        <div className="row">
-          <div className="col-md-2 mt-2 mx-auto">
-            <button
-              className="btn btn__load-more"
-              type="button"
-              onClick={onLoadMoreClick}
-            >
-              Show more
-            </button>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
 const Feed = (props) => {
-  const [showDashboard, setShowDashboard] = useState(true);
+  const subSelectors = [
+    "Questions & Answers",
+    "Projects & Vendors",
+    "Articles & News",
+    "All",
+  ];
+
   const [inviteModalShow, setInviteModalShow] = useState(false);
+  const [activeSelector, setActiveSelector] = useState(0);
   useEffect(() => {
     const fetchDashboard = async () => props.fetchDashboard();
     const getProfileStats = async () => props.getProfileStats();
@@ -241,60 +177,85 @@ const Feed = (props) => {
     getProfileStats();
   }, []);
 
-  const showFeed = !showDashboard;
+  let filters = [
+    { title: "All members", enabled: true },
+    { title: "My Peers", enabled: true },
+    { title: "My Experts", enabled: true },
+    { title: "SignalFire-CMOs", enabled: true },
+  ];
+
   return (
     <>
       <Container className="height-100">
         <div className="wrapper">
           <Header />
-          <ShareModule
-            onInvite={() => {
-              Analytics.sendClickEvent("Clicked Invite from feed page");
-              setInviteModalShow(true);
-            }}
-          />
+          <Banner
+            title="CMOlist"
+            img="https://d3k6hg21rt7gsh.cloudfront.net/directory.png"
+          >
+            <div className="btn-wrapper d-flex flex-column">
+              <Button
+                className="btn-white modal-primary-button mb-2"
+                variant="outline-primary"
+              >
+                Ask Question
+              </Button>
+              <Button
+                className="btn-white modal-primary-button mb-2"
+                variant="outline-primary"
+              >
+                Share Experience
+              </Button>
+              <Button
+                className="btn-white modal-primary-button mb-2"
+                variant="outline-primary"
+              >
+                Share Article
+              </Button>
+            </div>
+          </Banner>
+
+          <div style={{ width: "100%" }}>
+            <Filter
+              className="mt-1"
+              filterIdx={0}
+              filters={filters}
+              onChange={(idx) => console.log(idx)}
+            />
+          </div>
 
           <div className="feed-divider">
             <div className="section-break" />
-            <span>&nbsp;</span>
-            {showDashboard ? (
-              <span style={{ fontWeight: 600, lineHeight: "25px" }}>
-                Dashboard
-              </span>
-            ) : (
-              <Button
-                className="button-as-link"
-                style={{ paddingTop: "0px", paddingBottom: "0px" }}
-                onClick={() => {
-                  setShowDashboard(true);
-                }}
-              >
-                Dashboard
-              </Button>
-            )}
-            <span>&nbsp;|&nbsp;</span>
-            {!showDashboard ? (
-              <span style={{ fontWeight: 600, lineHeight: "25px" }}>Feed</span>
-            ) : (
-              <Button
-                className="button-as-link"
-                style={{ paddingTop: "0px", paddingBottom: "0px" }}
-                onClick={() => {
-                  setShowDashboard(false);
-                  props.fetchFeed();
-                }}
-              >
-                Feed
-              </Button>
-            )}
+            {subSelectors.map((sel, idx) => {
+              return (
+                <Fragment key={idx}>
+                  {idx === 0 ? <span>&nbsp;</span> : <span>&nbsp;|&nbsp;</span>}
+                  {idx === activeSelector ? (
+                    <span style={{ fontWeight: 600, lineHeight: "25px" }}>
+                      {sel}
+                    </span>
+                  ) : (
+                    <Button
+                      className="button-as-link"
+                      style={{ paddingTop: "0px", paddingBottom: "0px" }}
+                      onClick={() => {
+                        setActiveSelector(idx);
+                      }}
+                    >
+                      {sel}
+                    </Button>
+                  )}
+                </Fragment>
+              );
+            })}
           </div>
 
-          {showDashboard &&
-            RenderDashboard({
-              ...props,
-              setShowDashboard: (e) => setShowDashboard(e),
-            })}
-          {showFeed && RenderFeed(props)}
+          {props.dashboardData && (
+            <RenderDashboard
+              profileStats={props.profileStats}
+              dashboardData={props.dashboardData}
+            />
+          )}
 
           <InviteModal
             show={inviteModalShow}
