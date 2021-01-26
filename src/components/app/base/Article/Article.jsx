@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
+import { Button, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ShowMoreText from "react-show-more-text";
 import Markdown from "markdown-to-jsx";
@@ -14,6 +14,8 @@ function Article(props) {
     props.articletext ||
     props.subtext ||
     props.images;
+  let engagementButtons = props.engagementButtons;
+  let onEngagementButtonClick = props.onEngagementButtonClick;
   return (
     <div
       className={`article-wrapper ${props.className ? props.className : ""}`}
@@ -157,6 +159,31 @@ function Article(props) {
               <Gallery images={props.images} />
             </Col>
           </Row>
+          <div className="article-engagement-buttons">
+            {engagementButtons &&
+              engagementButtons.map(({ text, icon }, index) => {
+                return (
+                  <div key={text}>
+                    <Button
+                      variant="light"
+                      onClick={onEngagementButtonClick.bind(this, text)}
+                      style={{ margin: "0 10px" }}
+                    >
+                      <img
+                        alt={`Icon for button ${index}`}
+                        src={icon}
+                        style={{
+                          paddingRight: "5px",
+                          width: "20px",
+                          height: "20px",
+                        }}
+                      />
+                      <span>{text}</span>
+                    </Button>
+                  </div>
+                );
+              })}
+          </div>
           {props.children && (
             <Row>
               <Col sm="10" lg="11" style={{ paddingLeft: "0px" }}>
