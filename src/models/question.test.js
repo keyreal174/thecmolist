@@ -109,7 +109,7 @@ describe("question model", () => {
     expect(questionModelData.question.replies.length).toEqual(2);
   });
 
-  it("reducer: saveComment", () => {
+  it.skip("reducer: saveComment", () => {
     const store = init({
       models: { questionModel },
     });
@@ -152,7 +152,7 @@ describe("question model", () => {
     await expect(result).rejects.toThrow("Could not fetch question");
   });
 
-  it("effect: saveCommentToReply", async () => {
+  it.skip("effect: saveCommentToReply", async () => {
     const newData = { ...data };
     const store = init({
       models: { questionModel },

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Container, Col, Row } from "react-bootstrap";
 import Article from "../base/Article/Article";
-import AddComment from "../base/AddComment/AddComment";
+import DiscussionReply from "../base/DiscussionReply/DiscussionReply";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 
@@ -47,7 +47,6 @@ const Question = ({
             <Col className="question-answer-section" md="8">
               <Article
                 articletextlines={1}
-                className={"mt-1"}
                 {...question.question}
                 engagementButtons={[
                   { text: "Answer", icon: `${cdn}/Answer.png` },
@@ -55,15 +54,16 @@ const Question = ({
                   { text: "Insighful", icon: `${cdn}/Insightful.png` },
                 ]}
                 onEngagementButtonClick={(i) => console.log(i)}
+                style={{ paddingBottom: "10px" }}
               />
               <div className="question-answer-section-replies">{`${
                 question.replies && question.replies.length
               } answers`}</div>
-              <div>
+              <div className="question-answers">
                 {question.replies &&
                   question.replies.map((reply, index) => {
                     return (
-                      <Article
+                      <DiscussionReply
                         articletextlines={2}
                         {...reply}
                         key={index}
@@ -73,24 +73,29 @@ const Question = ({
                           { text: "Insighful", icon: `${cdn}/Insightful.png` },
                         ]}
                         onEngagementButtonClick={(i) => console.log(i)}
+                        onSubmit={handleSubmitToReply.bind(this, reply)}
+                        showComment
+                        withMargin
                       >
                         {
                           <div className="question-comments-section">
-                            {(reply.comments || []).map((comment) => {
-                              return <Article {...comment} />;
-                            })}
+                            {reply.comments &&
+                              reply.comments.map((comment) => {
+                                return <DiscussionReply {...comment} />;
+                              })}
                           </div>
                         }
-                        <AddComment
-                          className="question-article-comment"
-                          onSubmit={handleSubmitToReply.bind(this, reply)}
-                        />
-                      </Article>
+                      </DiscussionReply>
                     );
                   })}
                 <div className="question-your-answer-section">
                   <div>Your answer</div>
-                  <AddComment className="" onSubmit={handleSubmit} />
+                  <DiscussionReply
+                    placeholder="Answer John's question..."
+                    onSubmit={handleSubmit}
+                    showComment
+                    onlyComment
+                  />
                 </div>
               </div>
             </Col>

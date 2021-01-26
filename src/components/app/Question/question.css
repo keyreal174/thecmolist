@@ -34,7 +34,7 @@
 
 .question-your-answer-section {
   border: 1px solid #cccccc;
-  padding: 5px;
+  padding: 10px;
   background: white;
   font-size: 20px;
 }
@@ -43,7 +43,15 @@
   margin-left: 80px;
 }
 
+.article-engagement-buttons-with-margin {
+  display: flex;
+  margin-left: 50px;
+}
+
 .question-comments-section {
-  padding: 20px;
   margin-left: 60px;
+}
+
+.question-answers {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 2px 3px rgba(0, 0, 0, 0.2);
 }
