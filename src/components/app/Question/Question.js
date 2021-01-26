@@ -24,10 +24,6 @@ const Question = ({
     fetch();
   }, []);
 
-  useEffect(() => {
-    console.log("question changed");
-  }, [question]);
-
   const cdn = "https://d3k6hg21rt7gsh.cloudfront.net/icons";
 
   const handleSubmit = (comment) => {
@@ -37,7 +33,7 @@ const Question = ({
   const handleSubmitToReply = (reply, comment) => {
     saveCommentToReply({ comment, reply });
   };
-  console.log("question", JSON.stringify(question));
+
   return (
     <>
       <Container className="height-100">
