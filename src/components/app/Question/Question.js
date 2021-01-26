@@ -63,7 +63,7 @@ const Question = ({
                 {question.replies &&
                   question.replies.map((reply, index) => {
                     return (
-                      <AddComment
+                      <Article
                         articletextlines={2}
                         {...reply}
                         key={index}
@@ -74,7 +74,6 @@ const Question = ({
                         ]}
                         onEngagementButtonClick={(i) => console.log(i)}
                         onSubmit={handleSubmitToReply.bind(this, reply)}
-                        showComment
                       >
                         {
                           <div className="question-comments-section">
@@ -84,7 +83,7 @@ const Question = ({
                               })}
                           </div>
                         }
-                      </AddComment>
+                      </Article>
                     );
                   })}
                 <div className="question-your-answer-section">
