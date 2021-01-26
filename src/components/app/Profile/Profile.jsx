@@ -2,15 +2,16 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { Link } from "react-router-dom";
+import { Form, Button, Row, Col, Container } from "react-bootstrap";
+import ShowMoreText from "react-show-more-text";
 import Header from "../base/Header/Header";
 import Banner from "../base/Banner/Banner";
 import Filter from "../base/Filter/Filter";
 import Article from "../base/Article/Article";
 import Footer from "../base/Footer/Footer";
 import DeletePost from "./DeletePost";
-import { Link } from "react-router-dom";
-import { Form, Button, Row, Col, Container } from "react-bootstrap";
-import ShowMoreText from "react-show-more-text";
+import FollowUserModal from "./FollowUser";
 import Util from "../../util/Util";
 import RatingBadgeProfile from "../base/Rating/RatingBadgeProfile";
 import Analytics from "../../util/Analytics";
@@ -47,15 +48,19 @@ const Profile = (props) => {
   const [profileMail, setProfileMail] = useState("");
   const [profileAbout, setProfileAbout] = useState([]);
   const [feedData, setFeedData] = useState([]);
+  const [connectedUser, setConnectedUser] = useState(false);
+
   const [filterIdx, setFilterIdx] = useState(0);
   const [enableAnimations, setEnableAnimations] = useState(true);
-  const [showDeletePost, setShowDeletePost] = useState(false);
   const [postSlug, setPostSlug] = useState("");
   const [filters, setFilters] = useState([]);
   const [feedFilter, setFeedFilter] = useState("");
   const [subfilterKeys, setSubfilterKeys] = useState([]);
   const [subfilters, setSubfilters] = useState({});
   const [filteredFeedData, setFilteredFeedData] = useState([]);
+
+  const [showDeletePost, setShowDeletePost] = useState(false);
+  const [showFollowModal, setShowFollowModal] = useState(false);
   let isVerified = true;
 
   useEffect(() => {
@@ -81,6 +86,7 @@ const Profile = (props) => {
       setProfileMail(props.profile.mail || "");
       setProfileAbout(props.profile.about || {});
       setFeedData(props.profile.feedData || []);
+      setConnectedUser(props.profile.connectedUser);
       createSubfilters(props.profile.feedData);
     }
   }, [props.profile]);
@@ -133,6 +139,25 @@ const Profile = (props) => {
     setFeedData(prevFeedData);
   };
 
+  const connectUser = async () => {
+    let userName = Util.parsePath(window.location.href).trailingPath;
+    Analytics.sendClickEvent(
+      `Connected with user ${userName} from profile page`
+    );
+    try {
+      await props.connectUser({ username: userName });
+      setEnableAnimations(false);
+      setConnectedUser(true);
+    } catch (err) {
+      console.log(`An error occurred connecting with user: ${userName}`);
+      console.log(err);
+    }
+  };
+
+  const toggleFollowModal = () => {
+    setShowFollowModal((value) => !value);
+  };
+
   useEffect(() => {
     if (feedData.length > 0) {
       const f = feedData.map((feed) => ({
@@ -172,6 +197,7 @@ const Profile = (props) => {
       setFilteredFeedData(feed_data);
     }
   }, [feedData]);
+
   return (
     <>
       <Container className="height-100">
@@ -244,7 +270,7 @@ const Profile = (props) => {
                 </div>
               </div>
             )}
-            {isMyProfile && (
+            {isMyProfile ? (
               <div className="btn-wrapper">
                 <Button
                   className="btn-white edit-profile"
@@ -252,6 +278,31 @@ const Profile = (props) => {
                   onClick={() => history.push("/profile/edit")}
                 >
                   Edit Profile
+                </Button>
+              </div>
+            ) : (
+              <div className="btn-wrapper d-flex flex-column">
+                {!connectedUser ? (
+                  <Button
+                    className="btn-white edit-profile mb-2"
+                    variant="outline-primary"
+                    onClick={() => {
+                      connectUser();
+                    }}
+                  >
+                    + Connect
+                  </Button>
+                ) : (
+                  <span className="profile-connected-label mb-2">
+                    Connected
+                  </span>
+                )}
+                <Button
+                  className="btn-white edit-profile"
+                  variant="outline-primary"
+                  onClick={() => toggleFollowModal()}
+                >
+                  + Follow
                 </Button>
               </div>
             )}
@@ -379,6 +430,12 @@ const Profile = (props) => {
           deletePost={props.deletePost}
           slug={postSlug}
         />
+        <FollowUserModal
+          show={showFollowModal}
+          username={profileUserName}
+          toggle={toggleFollowModal}
+          followUser={props.followUser}
+        />
         <Footer />
       </Container>
     </>
@@ -396,6 +453,8 @@ const mapDispatch = (dispatch) => {
     fetchProfile: dispatch.profileModel.fetchProfile,
     saveProfile: dispatch.profileModel.saveProfile,
     deletePost: dispatch.profileModel.deletePost,
+    connectUser: dispatch.userModel.connectUser,
+    followUser: dispatch.userModel.followUser,
   };
 };
 
