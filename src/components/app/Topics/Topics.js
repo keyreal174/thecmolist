@@ -54,7 +54,6 @@ const RenderColumn = ({ topic, followTopic }) => {
 
 const Topics = (props) => {
   useEffect(() => {
-    document.title = "Topics";
     props.fetchTopics();
   }, []);
 
@@ -63,16 +62,11 @@ const Topics = (props) => {
       <Container className="height-100">
         <Header />
         <div className="wrapper">
-          <div className="topic-wrapper d-flex align-items-center px-4 py-3 mb-3">
-            <div className="topics-square-logo">
-              <img
-                src="https://d3k6hg21rt7gsh.cloudfront.net/directory.png"
-                alt=""
-              />
-            </div>
-            <h2 className="topcis-header mb-0 ml-4">Topics</h2>
-          </div>
-          <Row>
+          <Banner
+            title="Topics"
+            img="https://d3k6hg21rt7gsh.cloudfront.net/directory.png"
+          />
+          <Row className="mt-3">
             {props.topics.map((topic) => {
               return (
                 <Col key={topic.id} lg={3} md={4} sm={6} className="mb-4">

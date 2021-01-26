@@ -1,8 +1,8 @@
 .banner-app {
   position: relative;
-  height: 140px;
-  background: url("https://d3k6hg21rt7gsh.cloudfront.net/header4.png") 50% /
-    cover;
+  height: 180px;
+  background-color: #ffffff;
+  border: 2px solid #cccccc;
 }
 
 .btn-white {
@@ -27,4 +27,35 @@
   position: absolute;
   top: 19px;
   right: 18px;
+}
+
+.banner-logo-wrapper {
+  position: absolute;
+  left: 35px;
+  top: 6px;
+  max-width: 160px;
+  /* background-color: #fff; */
+  padding: 2px;
+  background-color: rgba(243, 246, 248, 0.94);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 1.5px 3px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px 1.5px 3px 0px;
+  margin: auto;
+}
+
+.banner-logo-wrapper img {
+  width: 150px;
+  height: 150px;
+  border: 3px solid white;
+}
+
+.banner-summary {
+  position: absolute;
+  left: 210px;
+  top: 60px;
+}
+
+.banner-header {
+  color: black;
+  font-size: 32px;
+  font-weight: 500;
 }
