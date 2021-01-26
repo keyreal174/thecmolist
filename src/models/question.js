@@ -55,7 +55,10 @@ export default {
     },
     saveComment(oldState, data) {
       const { newReply, replyId } = data;
-      const newReplies = oldState.question.replies.map((reply) => {
+      const newState = {
+        question: { ...oldState.question },
+      };
+      newState.question.replies.map((reply) => {
         if (reply["reply_id"] === replyId) {
           if (reply.comments instanceof Array) {
             reply.comments.push(newReply);
@@ -66,10 +69,7 @@ export default {
         return reply;
       });
       return {
-        ...oldState,
-        question: {
-          replies: newReplies,
-        },
+        ...newState,
       };
     },
   },
