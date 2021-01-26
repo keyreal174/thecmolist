@@ -1,0 +1,13 @@
+.engagement-buttons {
+  display: flex;
+}
+
+.engagement-buttons-button {
+  margin-right: 10px;
+}
+
+.engagement-buttons-image {
+  padding-right: 5px;
+  width: 20px;
+  height: 20px;
+}

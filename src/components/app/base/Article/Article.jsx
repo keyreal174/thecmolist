@@ -1,10 +1,11 @@
 import React from "react";
-import { Button, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ShowMoreText from "react-show-more-text";
 import Markdown from "markdown-to-jsx";
 import Gallery from "../Gallery/Gallery";
 import "./article.css";
+import EngagementButtons from "../EngagementButtons/EngagementButtons";
 
 function Article(props) {
   let articleBodyContentPresent =
@@ -159,31 +160,10 @@ function Article(props) {
               <Gallery images={props.images} />
             </Col>
           </Row>
-          <div className="article-engagement-buttons">
-            {engagementButtons &&
-              engagementButtons.map(({ text, icon }, index) => {
-                return (
-                  <div key={text}>
-                    <Button
-                      variant="light"
-                      onClick={onEngagementButtonClick.bind(this, text)}
-                      style={{ margin: "0 10px 0 0" }}
-                    >
-                      <img
-                        alt={`Icon for button ${index}`}
-                        src={icon}
-                        style={{
-                          paddingRight: "5px",
-                          width: "20px",
-                          height: "20px",
-                        }}
-                      />
-                      <span>{text}</span>
-                    </Button>
-                  </div>
-                );
-              })}
-          </div>
+          <EngagementButtons
+            engagementButtons={engagementButtons}
+            onEngagementButtonClick={onEngagementButtonClick}
+          />
           {props.children && (
             <Row>
               <Col sm="10" lg="11" style={{ paddingLeft: "0px" }}>
