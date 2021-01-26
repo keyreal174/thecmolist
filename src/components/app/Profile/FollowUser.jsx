@@ -24,7 +24,10 @@ function FollowUserModal(props) {
   const [selectedOptions, setSelectedOptions] = useState([]);
 
   const follow = () => {
-    props.followUser(selectedOptions);
+    props.followUser({
+      user: props.username,
+      data: selectedOptions,
+    });
     props.toggle();
   };
 

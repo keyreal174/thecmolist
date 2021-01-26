@@ -6,7 +6,7 @@ import "./header.css";
 
 import HomeIcon from "../icons/home.svg";
 import Group from "../icons/group.svg";
-import Forum from "../icons/forum.svg";
+import Notification from "../icons/notification.svg";
 import Apps from "../icons/apps.svg";
 import Person from "../icons/person.svg";
 import Search from "../icons/search.svg";
@@ -99,9 +99,9 @@ function Header() {
             <img src={Apps} alt="" />
             Topics
           </Nav.Link>
-          <a className="nav-link" href="https://forum.thecmolist.com">
-            <img className="forum-icon" src={Forum} alt="" />
-            Forum
+          <a className="nav-link" href="/notifications">
+            <img className="forum-icon" src={Notification} alt="" />
+            Notifications
           </a>
           <NavDropdown
             className={

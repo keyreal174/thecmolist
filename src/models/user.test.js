@@ -68,14 +68,16 @@ describe("userModel model", () => {
         Promise.resolve({ data: { success: true } });
       });
 
-      await store.dispatch.userModel.followUser([
-        { name: "agency", value: "agency" },
-      ]);
+      await store.dispatch.userModel.followUser({
+        user: "julie",
+        data: [{ name: "agency", value: "agency" }],
+      });
 
       expect(followUserData).not.toBeNull();
-      expect(followUserData.length).toBe(1);
-      expect(followUserData[0].name).toBe("agency");
-      expect(followUserData[0].value).toBe("agency");
+      expect(followUserData.user).toBe("julie");
+      expect(followUserData.data).not.toBeNull();
+      expect(followUserData.data[0].name).toBe("agency");
+      expect(followUserData.data[0].value).toBe("agency");
     }),
     it("follow erroneously user through an API", async () => {
       const store = init({

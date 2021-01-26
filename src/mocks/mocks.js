@@ -30,6 +30,11 @@ function MockRequests() {
   let GetResponses = [
     { path: /\/api\/network.*/, responseCode: 200, response: MockedApiNetwork },
     {
+      path: /\/api\/notifications.*/,
+      responseCode: 200,
+      response: MockedApiNetwork,
+    },
+    {
       path: /\/api\/feed_dashboard.*/,
       responseCode: 200,
       response: MockedApiFeedDashboard,

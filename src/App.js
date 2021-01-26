@@ -16,6 +16,7 @@ import TechnologyProfile from "./components/app/Profile/TechnologyProfile";
 import Directory from "./components/app/Directory/Directory";
 import Category from "./components/app/Directory/Category";
 import Network from "./components/app/Network/Network";
+import Notifications from "./components/app/Notifications/Notifications";
 import Util from "./components/util/Util";
 import ReactGA from "react-ga";
 import Cookies from "js-cookie";
@@ -170,6 +171,13 @@ class App extends React.Component {
             path="/network"
             render={(props) =>
               this.state.authed ? <Network /> : <Redirect to="/login" />
+            }
+          />
+          <Route
+            exact
+            path="/notifications"
+            render={(props) =>
+              this.state.authed ? <Notifications /> : <Redirect to="/login" />
             }
           />
 
