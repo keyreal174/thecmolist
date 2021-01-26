@@ -12,22 +12,6 @@ export const postComment = (id, comment) => {
   return axios.post(`/api/comment/${id}`, comment);
 };
 
-const getNewReplyStructure = (comment) => {
-  return {
-    header: {
-      markdown:
-        "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg)",
-      subtext: "Posted an answer",
-      image:
-        "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NTgxMDIzMjMwOWltYWdlLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
-    },
-    headline: {
-      markdown: " ",
-    },
-    articletext: comment,
-  };
-};
-
 const getNewAnswerStructure = (comment) => {
   return {
     reply_id: Math.ceil(Math.random() * 1000),
@@ -70,8 +54,7 @@ export default {
       };
     },
     saveComment(oldState, data) {
-      const { comment, replyId } = data;
-      const newReply = getNewReplyStructure(comment);
+      const { newReply, replyId } = data;
       const newReplies = oldState.question.replies.map((reply) => {
         if (reply["reply_id"] === replyId) {
           if (reply.comments instanceof Array) {
@@ -124,9 +107,11 @@ export default {
             comment,
             reply: { reply_id: replyId },
           } = data;
-
-          await postComment(replyId, comment);
-          dispatch.questionModel.saveComment({ replyId, comment });
+          const response = await postComment(replyId, comment);
+          dispatch.questionModel.saveComment({
+            newReply: response.data,
+            replyId,
+          });
         } else {
           throw new Error("Could not save comment");
         }
