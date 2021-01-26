@@ -59,7 +59,7 @@ const Question = ({
               <div className="question-answer-section-replies">{`${
                 question.replies && question.replies.length
               } answers`}</div>
-              <div>
+              <div className="question-answers">
                 {question.replies &&
                   question.replies.map((reply, index) => {
                     return (

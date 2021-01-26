@@ -13,7 +13,7 @@ const AddComment = ({ onSubmit, className, placeholder, value, ...props }) => {
 
   return (
     <div
-      className={`article-wrapper ${
+      className={` comment-article-wrapper ${
         props.onlyComment ? "article-only-comment" : ""
       }`}
     >
@@ -41,7 +41,7 @@ const AddComment = ({ onSubmit, className, placeholder, value, ...props }) => {
         </div>
       )}
       {articleBodyContentPresent && (
-        <div className="article-body article-wrap">
+        <div className="comment-body">
           <Row>
             <Col
               sm="10"
