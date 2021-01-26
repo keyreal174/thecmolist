@@ -49,3 +49,9 @@
 .comment-body {
   padding-left: 65px;
 }
+
+.comment-wrapper-header {
+  padding: 15px 16px 0 15px;
+  margin-top: 15px;
+  display: flex;
+}

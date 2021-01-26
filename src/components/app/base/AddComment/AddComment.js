@@ -18,7 +18,7 @@ const AddComment = ({ onSubmit, className, placeholder, value, ...props }) => {
       }`}
     >
       {props.header && (
-        <div className="article-wrapper-header">
+        <div className="comment-wrapper-header">
           <img
             alt="profile"
             className="article-wrapper-image"
