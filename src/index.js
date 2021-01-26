@@ -10,6 +10,7 @@ import ReactGA from "react-ga";
 import contentModel from "./models/content";
 import feedModel from "./models/feed";
 import networkModel from "./models/network";
+import notificationsModel from "./models/notifications";
 import questionModel from "./models/question";
 import userModel from "./models/user";
 import settingsModel from "./models/settings";
@@ -26,6 +27,7 @@ const store = init({
     userModel,
     profileModel,
     topicsModel,
+    notificationsModel,
   },
 });
 

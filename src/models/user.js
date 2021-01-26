@@ -1,5 +1,9 @@
 import axios from "axios";
 
+const followUserRequest = (data) => {
+  return axios.post("/api/follow_user", data);
+};
+
 const connectUserRequest = (user) => {
   return axios.post("/api/connect_user", user);
 };
@@ -33,6 +37,13 @@ export default {
       const userData = { user: data.username };
       await connectUserRequest(userData);
       dispatch.userModel.addConnectedUser(userData);
+    },
+    async followUser(data) {
+      try {
+        await followUserRequest(data);
+      } catch (err) {
+        throw new Error("Could not follow user");
+      }
     },
   }),
 };

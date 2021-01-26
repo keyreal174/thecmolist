@@ -30,6 +30,11 @@ function MockRequests() {
   let GetResponses = [
     { path: /\/api\/network.*/, responseCode: 200, response: MockedApiNetwork },
     {
+      path: /\/api\/notifications.*/,
+      responseCode: 200,
+      response: MockedApiNetwork,
+    },
+    {
       path: /\/api\/feed_dashboard.*/,
       responseCode: 200,
       response: MockedApiFeedDashboard,
@@ -78,6 +83,10 @@ function MockRequests() {
 
   // user invite
   mock.onPost("/api/connect_user").reply(() => {
+    return [200, { success: true, error: null }];
+  });
+
+  mock.onPost("/api/follow_user").reply(() => {
     return [200, { success: true, error: null }];
   });
 
