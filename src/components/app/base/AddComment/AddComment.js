@@ -1,5 +1,4 @@
 import { Button, Col, Form, Row } from "react-bootstrap";
-import Gallery from "../Gallery/Gallery";
 import Markdown from "markdown-to-jsx";
 import React, { useState } from "react";
 import ShowMoreText from "react-show-more-text";
@@ -71,7 +70,6 @@ const AddComment = ({ onSubmit, className, placeholder, value, ...props }) => {
                   </ShowMoreText>
                 </div>
               )}
-              <Gallery images={props.images} />
             </Col>
           </Row>
         </div>
