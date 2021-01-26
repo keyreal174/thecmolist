@@ -167,7 +167,7 @@ function Article(props) {
                     <Button
                       variant="light"
                       onClick={onEngagementButtonClick.bind(this, text)}
-                      style={{ margin: "0 10px" }}
+                      style={{ margin: "0 10px 0 0" }}
                     >
                       <img
                         alt={`Icon for button ${index}`}
