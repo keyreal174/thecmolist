@@ -6,7 +6,7 @@ const EngagementButtons = ({ engagementButtons, onEngagementButtonClick }) => {
   return (
     <div className="engagement-buttons">
       {engagementButtons &&
-        engagementButtons.map(({ text, icon }, index) => {
+        engagementButtons.map(({ text, icon, number }, index) => {
           return (
             <div key={text}>
               <Button
@@ -21,6 +21,7 @@ const EngagementButtons = ({ engagementButtons, onEngagementButtonClick }) => {
                   src={icon}
                 />
                 <span>{text}</span>
+                {number && <span>{` (${number}) `}</span>}
               </Button>
             </div>
           );

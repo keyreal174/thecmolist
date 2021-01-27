@@ -208,4 +208,36 @@ describe("question model", () => {
 
     await expect(postAnswer()).rejects.toThrow(errorMessage);
   });
+
+  it("effect: saveReactionToCallerType error", async () => {
+    const store = init({
+      models: { questionModel },
+    });
+
+    const result = store.dispatch.questionModel.saveReactionToCallerType();
+    await expect(result).rejects.toThrow("Could not save the reaction");
+  });
+
+  it("reducer: saveReaction", async () => {
+    const store = init({
+      models: { questionModel },
+    });
+
+    axios.get.mockResolvedValue({
+      data: data,
+    });
+
+    await store.dispatch.questionModel.fetchQuestion(123);
+    await store.dispatch.questionModel.saveReaction({
+      id: 123,
+      callerType: "question",
+      engagementType: "answer",
+    });
+    const newData = { ...data };
+
+    newData.question.num_thanks = 6;
+
+    const questionModelData = store.getState().questionModel;
+    expect(questionModelData.question).toEqual(newData);
+  });
 });

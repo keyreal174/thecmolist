@@ -161,6 +161,14 @@ function MockRequests() {
     ];
   });
 
+  mock.onPost(/\/api\/post_reaction\/question.*/).reply(() => {
+    return [200, { success: true, error: null }];
+  });
+
+  mock.onPost(/\/api\/post_reaction\/reply.*/).reply(() => {
+    return [200, { success: true, error: null }];
+  });
+
   mock.onDelete(new RegExp("/api/post/*")).reply(() => {
     return [200, { success: true, error: null }];
   });
