@@ -208,4 +208,13 @@ describe("question model", () => {
 
     await expect(postAnswer()).rejects.toThrow(errorMessage);
   });
+
+  it("effect: saveReactionToCallerType error", async () => {
+    const store = init({
+      models: { questionModel },
+    });
+
+    const result = store.dispatch.questionModel.saveReactionToCallerType();
+    await expect(result).rejects.toThrow("Could not save the reaction");
+  });
 });
