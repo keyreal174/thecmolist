@@ -9,7 +9,9 @@ var MockAdapter,
   MockedApiProfileStats,
   MockedApiContent,
   MockedApiQuestion,
-  MockedApiTopics;
+  MockedApiTopics,
+  MockedApiFullSearch,
+  MockedApiRefinedSearch;
 if (process.env.NODE_ENV !== "production") {
   MockAdapter = require("axios-mock-adapter");
   MockedApiNetwork = require("./api_network.json");
