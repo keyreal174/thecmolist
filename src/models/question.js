@@ -16,6 +16,15 @@ export const postComment = (id, comment) => {
   });
 };
 
+export const postReaction = (id, callerType, engagementType) => {
+  return axios.post(`/api/post_reaction/${callerType}`, {
+    data: {
+      id,
+      engagementType,
+    },
+  });
+};
+
 export default {
   name: "questionModel",
   state: {
@@ -54,6 +63,42 @@ export default {
         }
         return reply;
       });
+      return {
+        ...newState,
+      };
+    },
+    saveReaction(oldState, data) {
+      const { id, callerType, engagement: engagementType } = data;
+      const newState = { ...oldState };
+      if (callerType === "question") {
+        switch (engagementType) {
+          case "thanks":
+            newState.question.question.num_thanks++;
+            break;
+          case "insightful":
+            newState.question.question.num_insightful++;
+            break;
+          default:
+            break;
+        }
+      } else {
+        newState.question.replies.map((reply) => {
+          if (reply.reply_id === id) {
+            switch (engagementType) {
+              case "thanks":
+                reply.num_thanks++;
+                break;
+              case "insightful":
+                reply.num_insightful++;
+                break;
+              default:
+                break;
+            }
+          }
+          return reply;
+        });
+      }
+
       return {
         ...newState,
       };
@@ -106,6 +151,20 @@ export default {
         }
       } catch (error) {
         throw new Error("Could not set comment");
+      }
+    },
+    async saveReactionToCallerType(data) {
+      const { id, callerType, engagementType } = data;
+      try {
+        if (data) {
+          await postReaction(id, callerType, engagementType);
+          dispatch.questionModel.saveReaction(data);
+        } else {
+          throw new Error("Could not save reaction");
+        }
+      } catch (err) {
+        console.log("err", err);
+        throw new Error("Could not save the reaction");
       }
     },
   }),

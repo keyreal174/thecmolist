@@ -13,6 +13,7 @@ const Question = ({
   fetchQuestion,
   saveCommentToQuestion,
   saveCommentToReply,
+  saveReactionToCallerType,
   match,
 }) => {
   useEffect(() => {
@@ -34,6 +35,22 @@ const Question = ({
     saveCommentToReply({ comment, reply });
   };
 
+  const handleEngagementButtonClick = async (caller, engagementType) => {
+    const isQuestion = !!caller["question_id"];
+    const id = isQuestion ? caller["question_id"] : caller["reply_id"];
+    const callerType = isQuestion ? "question" : "reply";
+    const engagement = engagementType.toLowerCase();
+
+    await saveReactionToCallerType({ id, callerType, engagement });
+  };
+
+  const numberOfReplies =
+    question && question.replies && question.replies.length;
+  const numberOfThanks =
+    question && question.question && question.question["num_thanks"];
+  const numberOfInsightful =
+    question && question.question && question.question["num_insightful"];
+
   return (
     <>
       <Container className="height-100">
@@ -49,16 +66,29 @@ const Question = ({
                 articletextlines={1}
                 {...question.question}
                 engagementButtons={[
-                  { text: "Answer", icon: `${cdn}/Answer.png` },
-                  { text: "Thanks", icon: `${cdn}/Thanks.png` },
-                  { text: "Insighful", icon: `${cdn}/Insightful.png` },
+                  {
+                    text: "Answer",
+                    icon: `${cdn}/Answer.png`,
+                    number: numberOfReplies,
+                  },
+                  {
+                    text: "Thanks",
+                    icon: `${cdn}/Thanks.png`,
+                    number: numberOfThanks,
+                  },
+                  {
+                    text: "Insightful",
+                    icon: `${cdn}/Insightful.png`,
+                    number: numberOfInsightful,
+                  },
                 ]}
-                onEngagementButtonClick={(i) => console.log(i)}
+                onEngagementButtonClick={handleEngagementButtonClick.bind(
+                  this,
+                  question
+                )}
                 style={{ paddingBottom: "10px" }}
               />
-              <div className="question-answer-section-replies">{`${
-                question.replies && question.replies.length
-              } answers`}</div>
+              <div className="question-answer-section-replies">{`${numberOfReplies} answers`}</div>
               <div className="question-answers">
                 {question.replies &&
                   question.replies.map((reply, index) => {
@@ -68,11 +98,26 @@ const Question = ({
                         {...reply}
                         key={index}
                         engagementButtons={[
-                          { text: "Comment", icon: `${cdn}/Comment.png` },
-                          { text: "Thanks", icon: `${cdn}/Thanks.png` },
-                          { text: "Insighful", icon: `${cdn}/Insightful.png` },
+                          {
+                            text: "Comment",
+                            icon: `${cdn}/Comment.png`,
+                            number: reply.comments && reply.comments.length,
+                          },
+                          {
+                            text: "Thanks",
+                            icon: `${cdn}/Thanks.png`,
+                            number: reply["num_thanks"],
+                          },
+                          {
+                            text: "Insightful",
+                            icon: `${cdn}/Insightful.png`,
+                            number: reply["num_insightful"],
+                          },
                         ]}
-                        onEngagementButtonClick={(i) => console.log(i)}
+                        onEngagementButtonClick={handleEngagementButtonClick.bind(
+                          this,
+                          reply
+                        )}
                         onSubmit={handleSubmitToReply.bind(this, reply)}
                         showComment
                         withMargin
@@ -139,6 +184,7 @@ const mapDispatch = (dispatch) => {
     fetchQuestion: dispatch.questionModel.fetchQuestion,
     saveCommentToQuestion: dispatch.questionModel.saveCommentToQuestion,
     saveCommentToReply: dispatch.questionModel.saveCommentToReply,
+    saveReactionToCallerType: dispatch.questionModel.saveReactionToCallerType,
   };
 };
 
