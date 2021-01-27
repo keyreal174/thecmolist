@@ -69,7 +69,9 @@ export default {
     },
     saveReaction(oldState, data) {
       const { id, callerType, engagement: engagementType } = data;
-      const newState = { ...oldState };
+      const newState = {
+        question: { ...oldState.question },
+      };
       if (callerType === "question") {
         switch (engagementType) {
           case "thanks":
