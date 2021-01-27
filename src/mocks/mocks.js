@@ -22,6 +22,8 @@ if (process.env.NODE_ENV !== "production") {
   MockedApiContent = require("./api_content.json");
   MockedApiQuestion = require("./api_question.json");
   MockedApiTopics = require("./api_topics.json");
+  MockedApiFullSearch = require("./api_fullsearch.json");
+  MockedApiRefinedSearch = require("./api_refinedsearch.json");
 }
 function MockRequests() {
   if (process.env.NODE_ENV === "production") return;
@@ -59,6 +61,16 @@ function MockRequests() {
       response: MockedApiQuestion,
     },
     { path: /\/api\/topics.*/, responseCode: 200, response: MockedApiTopics },
+    {
+      path: /\/api\/full_search.*/,
+      responseCode: 200,
+      response: MockedApiFullSearch,
+    },
+    {
+      path: /\/api\/refined_search.*/,
+      responseCode: 200,
+      response: MockedApiRefinedSearch,
+    },
   ];
 
   // login/logout
