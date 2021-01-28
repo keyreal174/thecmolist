@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export const getReactions = (contentId) => {
-  return axios.get(`/api/change_reaction/${contentId}`);
+export const getReactions = () => {
+  return axios.get("/api/reactions");
 };
 
 export const setReaction = (contentId, reactions) => {
@@ -23,14 +23,18 @@ export default {
       };
     },
     setReaction: (oldState, data) => {
-      const { id } = data;
+      const { id, type } = data;
       const newState = {
         reactions: [...oldState.reactions],
       };
 
       newState.reactions.map((reaction) => {
         if (reaction.id === id) {
-          reaction.checked = !reaction.checked;
+          reaction.reactions.map((r) => {
+            if (r.type === type) {
+              r.state = !r.state;
+            }
+          });
         }
       });
 
@@ -40,19 +44,19 @@ export default {
     },
   },
   effects: (dispatch) => ({
-    async fetchReactions(id) {
+    async fetchReactions() {
       try {
-        const response = await getReactions(id);
+        const response = await getReactions();
         const data = response.data;
         dispatch.reactionModel.setReactions(data);
       } catch (error) {
-        throw new Error(`Could not fetch reactions for content id: ${id}`);
+        throw new Error("Could not fetch reactions");
       }
     },
-    async changeReaction(id) {
+    async changeReaction(id, type) {
       try {
-        if (id) {
-          const response = await setReaction(id);
+        if ((id, type)) {
+          const response = await setReaction({ id, type });
           const data = response.data;
           dispatch.reactionModel.setReaction(data);
         } else {
