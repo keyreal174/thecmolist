@@ -13,7 +13,6 @@ import userModel from "./models/user";
 import settingsModel from "./models/settings";
 import profileModel from "./models/profile";
 import topicsModel from "./models/topics";
-import { exportAllDeclaration } from "@babel/types";
 
 test("renders app without crashing", async () => {
   const store = init({
