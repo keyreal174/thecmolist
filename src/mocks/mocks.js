@@ -176,8 +176,17 @@ function MockRequests() {
     return [200, { success: true, error: null }];
   });
 
-  mock.onPost(/\/api\/change_reaction\/d+.*/).reply(() => {
-    return [200, { success: true, error: null }];
+  mock.onPost(/\/api\/change_reaction\/\d+.*/).reply((data) => {
+    console.log("data", data);
+    return [
+      200,
+      {
+        success: true,
+        error: null,
+        id: data.contentId,
+        type: data.type,
+      },
+    ];
   });
 
   mock.onDelete(new RegExp("/api/post/*")).reply(() => {

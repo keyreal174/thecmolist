@@ -4,6 +4,11 @@
 
 .engagement-buttons-button {
   margin-right: 10px;
+  opacity: 0.5;
+}
+
+.engagement-buttons-button.checked {
+  opacity: 1;
 }
 
 .engagement-buttons-image {

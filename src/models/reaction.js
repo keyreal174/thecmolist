@@ -4,9 +4,12 @@ export const getReactions = () => {
   return axios.get("/api/reactions");
 };
 
-export const setReaction = (contentId, reactions) => {
+export const setReaction = (contentId, type) => {
   return axios.post(`/api/change_reaction/${contentId}`, {
-    data: reactions,
+    data: {
+      type,
+      contentId,
+    },
   });
 };
 
@@ -27,12 +30,11 @@ export default {
       const newState = {
         reactions: [...oldState.reactions],
       };
-
       newState.reactions.map((reaction) => {
-        if (reaction.id === id) {
+        if (reaction.content_id === id) {
           reaction.reactions.map((r) => {
             if (r.type === type) {
-              r.state = !r.state;
+              r.checked = !r.checked;
             }
           });
         }
@@ -53,16 +55,18 @@ export default {
         throw new Error("Could not fetch reactions");
       }
     },
-    async changeReaction(id, type) {
+    async changeReaction(data) {
       try {
-        if ((id, type)) {
-          const response = await setReaction({ id, type });
-          const data = response.data;
-          dispatch.reactionModel.setReaction(data);
+        const { id, engagement } = data;
+        if (id) {
+          await setReaction(id, engagement);
+          dispatch.reactionModel.setReaction({ id, type: engagement });
         } else {
           throw new Error("Could not change reaction without id");
         }
-      } catch (err) {}
+      } catch (err) {
+        throw new Error("Could not change reaction");
+      }
     },
   }),
 };
