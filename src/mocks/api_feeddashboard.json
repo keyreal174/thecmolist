@@ -574,25 +574,5 @@
       ],
       "filter": "vendors"
     }
-  ],
-  "buildYourNetwork": [
-    { "checked": false, "content": "Invite your team" },
-    { "checked": true, "content": "Invite your peers" },
-    { "checked": false, "content": "Fill out your profile" },
-    { "checked": true, "content": "Ask your first question" },
-    { "checked": true, "content": "Answer a question" }
-  ],
-  "peopleInSimilarRoles": [
-    { "name": "John Smith", "role": "CMO at Moder Media" },
-    { "name": "John Smith", "role": "CMO at Moder Media" },
-    { "name": "John Smith", "role": "CMO at Moder Media" },
-    { "name": "John Smith", "role": "CMO at Moder Media" },
-    { "name": "John Smith", "role": "CMO at Moder Media" }
-  ],
-  "newMembers": [
-    { "name": "John Smith", "role": "CMO at Moder Media" },
-    { "name": "John Smith", "role": "CMO at Moder Media" },
-    { "name": "John Smith", "role": "CMO at Moder Media" },
-    { "name": "John Smith", "role": "CMO at Moder Media" }
   ]
 }

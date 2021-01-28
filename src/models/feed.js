@@ -1,13 +1,5 @@
 import axios from "axios";
 
-const dashboardRequest = () => {
-  return axios.get("/api/feed_dashboard", {
-    headers: {
-      "timezone-offset": new Date().getTimezoneOffset(),
-    },
-  });
-};
-
 const feedRequest = (filter, token) => {
   let headers = {
     "timezone-offset": new Date().getTimezoneOffset(),
@@ -18,112 +10,102 @@ const feedRequest = (filter, token) => {
   return axios.get(`/api/feed?filter=${filter}`, { headers });
 };
 
-const saveContent = (data) => {
-  return axios.post("/api/feed", data);
-};
-
-const getContent = () => {
-  return axios.get(`/api/feed/`);
-};
-
 export default {
   name: "feedModel",
   state: {
-    dashboardData: {},
-    feedData: [
-      {
-        title: "All",
-        token: "",
-        data: [],
-        moreData: false,
-        enabled: true,
-      },
-      {
-        title: "Vendors",
-        token: "",
-        data: [],
-        moreData: false,
-        enabled: true,
-      },
-      {
-        title: "News",
-        token: "",
-        data: [],
-        moreData: false,
-        enabled: true,
-      },
-      {
-        title: "Discussions",
-        token: "",
-        data: [],
-        moreData: false,
-        enabled: true,
-      },
-      {
-        title: "Members",
-        token: "",
-        data: [],
-        moreData: false,
-        enabled: true,
-      },
-    ],
-    filterIdx: 0,
-    showNux: false,
+    feedLoading: false,
+    dashboardFeedData: {},
+    activeFeed: [],
+    activeFilter: "",
   },
   reducers: {
-    setDashboardData: (rootState, dashboardData) => {
-      return {
-        ...rootState,
-        dashboardData: dashboardData,
+    initFeedDataForKey: (rootState, filterKey) => {
+      if (!filterKey) {
+        throw new Error("Expected filterKey");
+      }
+      let newState = { ...rootState };
+      newState.dashboardFeedData[filterKey] = {
+        title: filterKey,
+        token: "",
+        data: [],
+        moreData: false,
+        enabled: true,
       };
+      return newState;
     },
-    setFeedData: (rootState, data) => {
+    setFeedDataForKey: (rootState, filterKey, data) => {
+      if (!(filterKey in rootState.dashboardFeedData)) {
+        throw new Error("No feed data for specified key!");
+      }
       let newState = {
         ...rootState,
+        activeFilter: filterKey,
       };
       const feedData = data.feedData;
       const token = data.token;
-      const filterIdx = rootState.filterIdx;
-      const filter = rootState.feedData[filterIdx].title;
-      for (let i = 0; i < rootState.feedData.length; i++) {
-        if (rootState.feedData[i].title === filter) {
-          let currentFeed = rootState.feedData[i];
-          if (feedData != null && feedData.length > 0) {
-            currentFeed.moreData = true;
-            currentFeed.token = token;
-            currentFeed.data = currentFeed.data.concat(feedData);
-          } else {
-            currentFeed.moreData = false;
-          }
-          newState.feedData = rootState.feedData.slice();
-          break;
-        }
+      const currentFeed = rootState.dashboardFeedData[filterKey];
+      if (feedData != null && feedData.length > 0) {
+        currentFeed.moreData = true;
+        currentFeed.token = token;
+        currentFeed.data = currentFeed.data.concat(feedData);
+      } else {
+        currentFeed.moreData = false;
       }
+      newState.activeFeed = currentFeed.data.slice();
       return newState;
     },
-    setFilterIndex: (rootState, filterIdx) => {
+    setActiveFeed: (rootState, filterKey) => {
+      if (!(filterKey in rootState.dashboardFeedData)) {
+        throw new Error("No feed data for specified key!");
+      }
       return {
         ...rootState,
-        filterIdx: filterIdx,
+        activeFilter: filterKey,
+        activeFeed: rootState.dashboardFeedData[filterKey].data,
+      };
+    },
+    setLoading: (rootState, loading) => {
+      return {
+        ...rootState,
+        feedLoading: loading,
       };
     },
   },
   effects: (dispatch) => ({
-    async fetchDashboard() {
-      const response = await dashboardRequest();
+    async fetchActiveFeed(_, rootState) {
+      const filterKey = rootState.feedModel.activeFilter;
+      const dataForFilter = rootState.feedModel.dashboardFeedData[filterKey];
+      const response = await feedRequest(
+        filterKey.toLowerCase(),
+        dataForFilter.token
+      );
       const data = response.data;
-      dispatch.feedModel.setDashboardData(data);
+      dispatch.feedModel.setFeedDataForKey(filterKey, data);
     },
-    async fetchFeed(_, rootState) {
-      const filterIdx = rootState.feedModel.filterIdx;
-      const filter = rootState.feedModel.feedData[filterIdx].title;
-      const fetchToken = rootState.feedModel.feedData[filterIdx].token;
-      const response = await feedRequest(filter.toLowerCase(), fetchToken);
-      const data = response.data;
-      dispatch.feedModel.setFeedData(data);
-    },
-    async changeFilterIndex(filterIdx) {
-      dispatch.feedModel.setFilterIndex(filterIdx);
+    async changeDashboardFilter(payload, rootState) {
+      // filter = Group (All Members, etc), subfilter = Type of content (Q/A, Posts, etc)
+      let { filter, subfilter } = payload;
+      let filterKey = `${filter}_${subfilter}`;
+      if (!(filterKey in rootState.feedModel.dashboardFeedData)) {
+        dispatch.feedModel.initFeedDataForKey(filterKey);
+      }
+      let dataForFilter = rootState.feedModel.dashboardFeedData[filterKey];
+      if (dataForFilter.data.length == 0) {
+        // kick off a fetch for this
+        try {
+          dispatch.feedModel.setLoading(true);
+          const response = await feedRequest(
+            filterKey.toLowerCase(),
+            dataForFilter.token
+          );
+          const data = response.data;
+          dispatch.feedModel.setFeedDataForKey(filterKey, data);
+        } finally {
+          dispatch.feedModel.setLoading(false);
+        }
+      } else {
+        dispatch.feedModel.setActiveFeed(filterKey);
+      }
     },
   }),
 };
