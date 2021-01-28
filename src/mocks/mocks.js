@@ -128,7 +128,6 @@ function MockRequests() {
   });
 
   mock.onPost(/\/api\/reply_question\/\d+.*/).reply((postBody) => {
-    console.log("data", postBody);
     return [
       200,
       {
@@ -177,7 +176,6 @@ function MockRequests() {
   });
 
   mock.onPost(/\/api\/change_reaction\/\d+.*/).reply((data) => {
-    console.log("data", data);
     return [
       200,
       {

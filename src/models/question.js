@@ -68,37 +68,24 @@ export default {
       };
     },
     saveReaction(oldState, data) {
-      const { id, callerType, engagement: engagementType } = data;
-      const newState = {
-        question: { ...oldState.question },
-      };
+      const { id, callerType, engagement: engagementType, checked } = data;
+      let newState = { ...oldState };
+      let aux;
       if (callerType === "question") {
-        switch (engagementType) {
-          case "thanks":
-            newState.question.question.num_thanks++;
-            break;
-          case "insightful":
-            newState.question.question.num_insightful++;
-            break;
-          default:
-            break;
+        if (id === newState.question.question_id) {
+          aux = newState.question.question;
         }
       } else {
         newState.question.replies.map((reply) => {
           if (reply.reply_id === id) {
-            switch (engagementType) {
-              case "thanks":
-                reply.num_thanks++;
-                break;
-              case "insightful":
-                reply.num_insightful++;
-                break;
-              default:
-                break;
-            }
+            aux = reply;
           }
-          return reply;
         });
+      }
+      if (aux && checked) {
+        aux[`num_${engagementType}`]--;
+      } else if (aux && !checked) {
+        aux[`num_${engagementType}`]++;
       }
 
       return {

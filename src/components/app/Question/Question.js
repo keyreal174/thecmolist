@@ -48,8 +48,9 @@ const Question = ({
     const id = isQuestion ? caller["question_id"] : caller["reply_id"];
     const callerType = isQuestion ? "question" : "reply";
     const engagement = engagementType.toLowerCase();
+    const checked = getCheckedForEngagementType(id, engagement);
 
-    await saveReactionToCallerType({ id, callerType, engagement });
+    await saveReactionToCallerType({ id, callerType, engagement, checked });
   };
 
   const numberOfReplies =
