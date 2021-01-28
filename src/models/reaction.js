@@ -13,21 +13,7 @@ export const setReaction = (contentId, reactions) => {
 export default {
   name: "reactionModel",
   state: {
-    reactions: [
-      {
-        contentId: 25,
-        reactions: [
-          {
-            type: "thanks",
-            checked: false,
-          },
-          {
-            type: "insigthful",
-            checked: true,
-          },
-        ],
-      },
-    ],
+    reactions: [],
   },
   reducers: {
     setReactions: (oldState, data) => {

@@ -1,0 +1,43 @@
+{
+  "reactions": [
+    {
+      "content_id": 12102948,
+      "reactions": [
+        {
+          "type": "thanks",
+          "checked": true
+        },
+        {
+          "type": "insightful",
+          "checked": false
+        }
+      ]
+    },
+    {
+      "content_id": 123,
+      "reactions": [
+        {
+          "type": "thanks",
+          "checked": true
+        },
+        {
+          "type": "insightful",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "content_id": 456,
+      "reactions": [
+        {
+          "type": "thanks",
+          "checked": false
+        },
+        {
+          "type": "insightful",
+          "checked": false
+        }
+      ]
+    }
+  ]
+}
