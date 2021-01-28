@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Button, Form } from "react-bootstrap";
+import { Badge, Container, Row, Col, Button, Form } from "react-bootstrap";
 import "./filter.css";
 
 function Filter(props) {
@@ -30,6 +30,11 @@ function Filter(props) {
                       }}
                     >
                       {filter.title}
+                      {filter.count && (
+                        <Badge pill variant="danger" className="filter-badge">
+                          {filter.count}
+                        </Badge>
+                      )}
                     </Button>
                   );
                 })}
