@@ -11,7 +11,6 @@ import "./question.css";
 const Question = ({
   question,
   fetchQuestion,
-  fetchReactions,
   reactions,
   saveCommentToQuestion,
   saveCommentToReply,
@@ -23,12 +22,6 @@ const Question = ({
       params: { id },
     } = match;
     const fetch = async () => await fetchQuestion(id);
-
-    fetch();
-  }, []);
-
-  useEffect(() => {
-    const fetch = async () => await fetchReactions();
 
     fetch();
   }, []);
@@ -222,7 +215,6 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     fetchQuestion: dispatch.questionModel.fetchQuestion,
-    fetchReactions: dispatch.reactionModel.fetchReactions,
     saveCommentToQuestion: dispatch.questionModel.saveCommentToQuestion,
     saveCommentToReply: dispatch.questionModel.saveCommentToReply,
     saveReactionToCallerType: dispatch.questionModel.saveReactionToCallerType,

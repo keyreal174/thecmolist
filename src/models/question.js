@@ -100,6 +100,7 @@ export default {
           const response = await getQuestion(id);
           const data = response.data;
           dispatch.questionModel.setQuestion(data);
+          dispatch.reactionModel.setReactions(data);
         } else {
           throw new Error("Id not provided.");
         }

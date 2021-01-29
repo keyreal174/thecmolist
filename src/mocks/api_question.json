@@ -62,7 +62,6 @@
         }
       ],
       "reactions": {
-        "content_id": 123,
         "reactions": [
           {
             "type": "thanks",
@@ -89,7 +88,6 @@
       "num_thanks": 1,
       "num_insightful": 2,
       "reactions": {
-        "content_id": 456,
         "reactions": [
           {
             "type": "thanks",

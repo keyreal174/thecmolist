@@ -58,15 +58,6 @@ export default {
     },
   },
   effects: (dispatch) => ({
-    async fetchReactions() {
-      try {
-        const response = await getReactions();
-        const data = response.data;
-        dispatch.reactionModel.setReactions(data);
-      } catch (error) {
-        throw new Error("Could not fetch reactions");
-      }
-    },
     async changeReaction(data) {
       try {
         const { id, engagement } = data;
