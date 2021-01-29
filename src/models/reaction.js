@@ -27,10 +27,12 @@ export default {
         },
       ];
       (data.replies || []).forEach((reply) => {
-        reactions.push({
-          content_id: reply.reply_id,
-          reactions: reply.reactions.reactions,
-        });
+        if (reply && reply.reactions) {
+          reactions.push({
+            content_id: reply.reply_id,
+            reactions: reply.reactions.reactions,
+          });
+        }
       });
       return {
         ...oldState,
