@@ -148,8 +148,8 @@ export default {
         if (data) {
           const { id, callerType, engagement } = data;
           await postReaction(id, callerType, engagement);
-          dispatch.reactionModel.changeReaction({ id, engagement });
           dispatch.questionModel.saveReaction(data);
+          dispatch.reactionModel.changeReaction({ id, engagement });
         } else {
           throw new Error("Could not save reaction");
         }
