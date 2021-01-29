@@ -13,176 +13,193 @@ import Analytics from "../../util/Analytics";
 import Arrow from "../base/icons/arrow.svg";
 import "./feed.css";
 
-function RenderDashboard(props) {
-  let dashboardData = props.dashboardData;
-  let dashboardLoading = !dashboardData.directory;
-  let moduleShowMore = (filter) => {};
-  let { profileStats } = props;
-
-  let buildYourNetworkItems = dashboardData.buildYourNetwork;
-  let peopleInSimilarRoles = dashboardData.peopleInSimilarRoles;
-  let newMembers = dashboardData.newMembers;
-  return dashboardLoading ? (
-    <div className="mt-3 mb-5">
-      <ActivityIndicator className="element-center feed-activity-indicator" />
-    </div>
-  ) : (
-    <div>
-      <Row>
-        <Col md="3" style={{ paddingRight: "0px" }}>
-          <ProfileStats profileStats={profileStats} />
-        </Col>
-        <Col md="6">
-          {dashboardData.modules &&
-            dashboardData.modules.map((module, idx) => {
+function RenderRightContainer({
+  buildYourNetworkItems,
+  peopleInSimilarRoles,
+  newMembers,
+}) {
+  return (
+    <Col md="3" className="feed-right-container">
+      <div className="feed-box">
+        <div className="feed-box-title">Build your network</div>
+        <div className="feed-box-content">
+          {buildYourNetworkItems &&
+            buildYourNetworkItems.map((item, index) => {
               return (
-                <div key={idx}>
-                  <div className="feed-dashboard-header">
-                    <span style={{ fontSize: "18px", fontWeight: 600 }}>
-                      {module.title}
-                    </span>
-                    {module.subscribed ? (
-                      <span className="feed-subscribed-label">
-                        Subscribed ✓
-                      </span>
-                    ) : (
-                      <a
-                        href="/#"
-                        className="btn__homepage btn__homepage-blue btn__nux_share"
-                        style={{ float: "right", width: "220px" }}
-                        onClick={() => {
-                          Analytics.sendClickEvent(
-                            "Clicked subscribed to: " +
-                              module.title +
-                              " from feed page"
-                          );
-                        }}
-                      >
-                        Subscribe to weekly summary
-                      </a>
-                    )}
-                  </div>
-                  {module.data &&
-                    module.data.map((feed, idx) => {
-                      return (
-                        <Article
-                          key={idx}
-                          className="feed-dashboard-cell"
-                          {...feed}
-                        />
-                      );
-                    })}
-                  <div className="feed-dashboard-show-more">
-                    <div
-                      style={{
-                        textAlign: "center",
-                        width: "100%",
-                        paddingTop: "10px",
-                      }}
-                    >
-                      <Button
-                        style={{
-                          color: "#0175b0",
-                          textDecoration: "none",
-                          backgroundColor: "transparent",
-                          borderColor: "transparent",
-                        }}
-                        onClick={() => moduleShowMore(module.filter)}
-                      >
-                        Show more
-                        <img alt="arrow" src={Arrow} />
-                      </Button>
-                    </div>
-                  </div>
+                <div className="feed-box-content-item" key={index}>
+                  {item.checked ? (
+                    <span className="feed-box-content-icon">✓</span>
+                  ) : (
+                    <input type="checkbox" defaultChecked={item.checked} />
+                  )}
+                  <span
+                    className={`feed-box-content-text ${
+                      item.checked ? "feed-box-content-text-checked" : ""
+                    }`}
+                  >
+                    {item.content}
+                  </span>
                 </div>
               );
             })}
+        </div>
+      </div>
+      <div className="feed-box feed-box-margin-top">
+        <div className="feed-box-title">People in similar roles</div>
+        <div className="feed-box-content">
+          {peopleInSimilarRoles &&
+            peopleInSimilarRoles.map(({ name, role }, index) => {
+              return (
+                <div
+                  className="feed-box-content-item feed-box-content-item-special"
+                  key={index}
+                >
+                  <div className="feed-box-content-name">{name}</div>
+                  <div className="feed-box-content-role">{role}</div>
+                </div>
+              );
+            })}
+        </div>
+      </div>
+      <div className="feed-box feed-box-margin-top">
+        <div className="feed-box-title">New members</div>
+        <div className="feed-box-content">
+          {newMembers &&
+            newMembers.map(({ name, role }, index) => {
+              return (
+                <div
+                  className="feed-box-content-item feed-box-content-item-special"
+                  key={index}
+                >
+                  <div className="feed-box-content-name">{name}</div>
+                  <div className="feed-box-content-role">{role}</div>
+                </div>
+              );
+            })}
+        </div>
+      </div>
+    </Col>
+  );
+}
+
+function RenderFeed({ feedData, fetchActiveFeed }) {
+  let onLoadMoreClick = (e) => {
+    e.preventDefault();
+    e.target && e.target.blur && e.target.blur();
+    fetchActiveFeed();
+  };
+  let moreData = true;
+  return (
+    <Col md="6">
+      {feedData &&
+        feedData.map((feed, idx) => {
+          return (
+            <Article
+              key={idx}
+              className={
+                idx !== 0 ? "mt-1 feed-dashboard-cell" : "feed-dashboard-cell"
+              }
+              {...feed}
+            />
+          );
+        })}
+
+      {moreData && (
+        <div className="row">
+          <div className="col-md-2 mt-2 mx-auto">
+            <button
+              className="btn btn__load-more"
+              type="button"
+              onClick={onLoadMoreClick}
+            >
+              Show more
+            </button>
+          </div>
+        </div>
+      )}
+    </Col>
+  );
+}
+
+function RenderDashboard(props) {
+  const feedLoading = props.feedLoading;
+  const profileStats = props.profileStats;
+  return (
+    <Row>
+      <Col md="3" style={{ paddingRight: "0px" }}>
+        {profileStats && <ProfileStats profileStats={profileStats} />}
+      </Col>
+      {feedLoading ? (
+        <Col md="6">
+          <div className="mt-3 mb-5">
+            <ActivityIndicator className="element-center feed-activity-indicator" />
+          </div>
         </Col>
-        <Col md="3" className="feed-right-container">
-          <div className="feed-box">
-            <div className="feed-box-title">Build your network</div>
-            <div className="feed-box-content">
-              {buildYourNetworkItems.map((item, index) => {
-                return (
-                  <div className="feed-box-content-item" key={index}>
-                    {item.checked ? (
-                      <span className="feed-box-content-icon">✓</span>
-                    ) : (
-                      <input type="checkbox" defaultChecked={item.checked} />
-                    )}
-                    <span
-                      className={`feed-box-content-text ${
-                        item.checked ? "feed-box-content-text-checked" : ""
-                      }`}
-                    >
-                      {item.content}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-          <div className="feed-box feed-box-margin-top">
-            <div className="feed-box-title">People in similar roles</div>
-            <div className="feed-box-content">
-              {peopleInSimilarRoles.map(({ name, role }, index) => {
-                return (
-                  <div
-                    className="feed-box-content-item feed-box-content-item-special"
-                    key={index}
-                  >
-                    <div className="feed-box-content-name">{name}</div>
-                    <div className="feed-box-content-role">{role}</div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-          <div className="feed-box feed-box-margin-top">
-            <div className="feed-box-title">New members</div>
-            <div className="feed-box-content">
-              {newMembers.map(({ name, role }, index) => {
-                return (
-                  <div
-                    className="feed-box-content-item feed-box-content-item-special"
-                    key={index}
-                  >
-                    <div className="feed-box-content-name">{name}</div>
-                    <div className="feed-box-content-role">{role}</div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </Col>
-      </Row>
-    </div>
+      ) : (
+        <RenderFeed
+          feedData={props.feedData}
+          fetchActiveFeed={props.fetchActiveFeed}
+        />
+      )}
+      <RenderRightContainer
+        buildYourNetworkItems={profileStats.buildYourNetwork}
+        peopleInSimilarRoles={profileStats.peopleInSimilarRoles}
+        newMembers={profileStats.newMembers}
+      />
+    </Row>
   );
 }
 
 const Feed = (props) => {
   const subSelectors = [
-    "Questions & Answers",
-    "Projects & Vendors",
-    "Articles & News",
-    "All",
+    { title: "Questions & Answers", slug: "qa" },
+    { title: "Projects & Vendors", slug: "projects" },
+    { title: "Articles & News", slug: "articles" },
+    { title: "All", slug: "all" },
   ];
-
   const [inviteModalShow, setInviteModalShow] = useState(false);
   const [activeSelector, setActiveSelector] = useState(0);
+  const [filterIdx, setFilterIdx] = useState(0);
+  const [filters, setFilters] = useState([]);
+  const changeDashboardFilter = async (filter, subfilter) =>
+    props.changeDashboardFilter({ filter, subfilter });
   useEffect(() => {
-    const fetchDashboard = async () => props.fetchDashboard();
     const getProfileStats = async () => props.getProfileStats();
-    fetchDashboard();
-    getProfileStats();
+    getProfileStats().then((profileStats) => {
+      if (profileStats && profileStats.groups) {
+        let newFilters = [
+          { title: "All members", slug: "all-members", enabled: true },
+        ];
+        newFilters = newFilters.concat(
+          profileStats.groups.map((group) => {
+            return {
+              title: group.name,
+              slug: group.slug,
+              enabled: true,
+            };
+          })
+        );
+        setFilters(newFilters);
+        changeDashboardFilter(
+          newFilters[filterIdx].slug,
+          subSelectors[activeSelector].slug
+        );
+      } else {
+        console.log(
+          "Unexpected response for profileStats: " +
+            JSON.stringify(profileStats)
+        );
+      }
+    });
   }, []);
-
-  let filters = [
-    { title: "All members", enabled: true },
-    { title: "My Peers", enabled: true },
-    { title: "My Experts", enabled: true },
-    { title: "SignalFire-CMOs", enabled: true },
-  ];
+  const changeFilter = (idx) => {
+    setFilterIdx(idx);
+    changeDashboardFilter(filters[idx].slug, subSelectors[activeSelector].slug);
+  };
+  const changeSubFilter = (idx) => {
+    setActiveSelector(idx);
+    changeDashboardFilter(filters[filterIdx].slug, subSelectors[idx].slug);
+  };
 
   return (
     <>
@@ -218,9 +235,9 @@ const Feed = (props) => {
           <div style={{ width: "100%" }}>
             <Filter
               className="mt-1"
-              filterIdx={0}
+              filterIdx={filterIdx}
               filters={filters}
-              onChange={(idx) => console.log(idx)}
+              onChange={(idx) => changeFilter(idx)}
             />
           </div>
 
@@ -232,17 +249,17 @@ const Feed = (props) => {
                   {idx === 0 ? <span>&nbsp;</span> : <span>&nbsp;|&nbsp;</span>}
                   {idx === activeSelector ? (
                     <span style={{ fontWeight: 600, lineHeight: "25px" }}>
-                      {sel}
+                      {sel.title}
                     </span>
                   ) : (
                     <Button
                       className="button-as-link"
                       style={{ paddingTop: "0px", paddingBottom: "0px" }}
                       onClick={() => {
-                        setActiveSelector(idx);
+                        changeSubFilter(idx);
                       }}
                     >
-                      {sel}
+                      {sel.title}
                     </Button>
                   )}
                 </Fragment>
@@ -250,12 +267,11 @@ const Feed = (props) => {
             })}
           </div>
 
-          {props.dashboardData && (
-            <RenderDashboard
-              profileStats={props.profileStats}
-              dashboardData={props.dashboardData}
-            />
-          )}
+          <RenderDashboard
+            profileStats={props.profileStats}
+            feedData={props.activeFeed}
+            fetchActiveFeed={props.fetchActiveFeed}
+          />
 
           <InviteModal
             show={inviteModalShow}
@@ -277,7 +293,8 @@ const Feed = (props) => {
 
 const mapState = (state) => {
   return {
-    dashboardData: state.feedModel.dashboardData,
+    feedLoading: state.feedModel.feedLoading,
+    activeFeed: state.feedModel.activeFeed,
     feedData: state.feedModel.feedData,
     filterIdx: state.feedModel.filterIdx,
     profileStats: state.profileModel.profileStats,
@@ -286,9 +303,8 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    fetchDashboard: dispatch.feedModel.fetchDashboard,
-    fetchFeed: dispatch.feedModel.fetchFeed,
-    changeFilterIndex: dispatch.feedModel.changeFilterIndex,
+    fetchActiveFeed: dispatch.feedModel.fetchActiveFeed,
+    changeDashboardFilter: dispatch.feedModel.changeDashboardFilter,
     saveUserInvite: dispatch.userModel.saveInvite,
     getProfileStats: dispatch.profileModel.getProfileStats,
   };

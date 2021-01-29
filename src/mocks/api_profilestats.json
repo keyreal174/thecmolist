@@ -43,9 +43,37 @@
     }
   ],
   "groups": [
-    { "name": "My Peers", "checked": true },
-    { "name": "Signal Fire Marketing", "checked": true },
-    { "name": "Dropbox", "checked": false },
-    { "name": "Pagerduty Marketing", "checked": false }
+    { "name": "My Peers", "slug": "my-peers", "checked": true },
+    {
+      "name": "Signal Fire Marketing",
+      "slug": "signal-fire-marketing",
+      "checked": true
+    },
+    { "name": "Dropbox", "slug": "dropbox", "checked": false },
+    {
+      "name": "Pagerduty Marketing",
+      "slug": "pagerduty-marketing",
+      "checked": false
+    }
+  ],
+  "buildYourNetwork": [
+    { "checked": false, "content": "Invite your team" },
+    { "checked": true, "content": "Invite your peers" },
+    { "checked": false, "content": "Fill out your profile" },
+    { "checked": true, "content": "Ask your first question" },
+    { "checked": true, "content": "Answer a question" }
+  ],
+  "peopleInSimilarRoles": [
+    { "name": "John Smith", "role": "CMO at Moder Media" },
+    { "name": "John Smith", "role": "CMO at Moder Media" },
+    { "name": "John Smith", "role": "CMO at Moder Media" },
+    { "name": "John Smith", "role": "CMO at Moder Media" },
+    { "name": "John Smith", "role": "CMO at Moder Media" }
+  ],
+  "newMembers": [
+    { "name": "John Smith", "role": "CMO at Moder Media" },
+    { "name": "John Smith", "role": "CMO at Moder Media" },
+    { "name": "John Smith", "role": "CMO at Moder Media" },
+    { "name": "John Smith", "role": "CMO at Moder Media" }
   ]
 }

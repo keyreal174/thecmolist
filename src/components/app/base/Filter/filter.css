@@ -126,3 +126,8 @@
     font-size: 13px;
   }
 }
+
+.filter-badge {
+  width: 40px;
+  margin-left: 10px;
+}

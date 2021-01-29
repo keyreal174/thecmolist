@@ -90,6 +90,7 @@ export default {
         const response = await getProfileStatsRequest();
         const profileStats = response.data;
         dispatch.profileModel.updateProfileStats(profileStats);
+        return profileStats;
       } catch (err) {
         throw new Error("Could not get profilestats");
       }
