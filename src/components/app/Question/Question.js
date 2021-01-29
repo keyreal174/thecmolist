@@ -64,16 +64,15 @@ const Question = ({
   const getCheckedForEngagementType = (contentId, engagementType) => {
     let checked = false;
 
-    reactions.forEach((reaction) => {
+    (reactions || []).forEach((reaction) => {
       if (reaction.content_id === contentId) {
-        reaction.reactions.forEach((r) => {
+        ((reaction && reaction.reactions) || []).forEach((r) => {
           if (r.type === engagementType) {
             checked = r.checked;
           }
         });
       }
     });
-
     return checked;
   };
   return (

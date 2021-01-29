@@ -27,7 +27,7 @@ if (process.env.NODE_ENV !== "production") {
   MockedApiTopics = require("./api_topics.json");
   MockedApiFullSearch = require("./api_fullsearch.json");
   MockedApiRefinedSearch = require("./api_refinedsearch.json");
-  MockedApiReactions = require("./api_reactions.json");
+  MockedApiReactions = require("./api_question.json");
 }
 function MockRequests() {
   if (process.env.NODE_ENV === "production") return;

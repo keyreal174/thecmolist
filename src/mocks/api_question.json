@@ -13,6 +13,16 @@
     "num_thanks": 5,
     "num_insightful": 10
   },
+  "reactions": [
+    {
+      "type": "thanks",
+      "checked": true
+    },
+    {
+      "type": "insightful",
+      "checked": false
+    }
+  ],
   "replies": [
     {
       "reply_id": 123,
@@ -50,7 +60,20 @@
           },
           "articletext": "Comment 2"
         }
-      ]
+      ],
+      "reactions": {
+        "content_id": 123,
+        "reactions": [
+          {
+            "type": "thanks",
+            "checked": true
+          },
+          {
+            "type": "insightful",
+            "checked": true
+          }
+        ]
+      }
     },
     {
       "reply_id": 456,
@@ -64,7 +87,20 @@
       },
       "articletext": "We have used Hubspot extensively for our businessm and are generally very happy with them. We started with a custom solution, and it took us a month to switch. The results have been dramatic, and feel free to",
       "num_thanks": 1,
-      "num_insightful": 2
+      "num_insightful": 2,
+      "reactions": {
+        "content_id": 456,
+        "reactions": [
+          {
+            "type": "thanks",
+            "checked": false
+          },
+          {
+            "type": "insightful",
+            "checked": false
+          }
+        ]
+      }
     }
   ],
   "related_questions": [

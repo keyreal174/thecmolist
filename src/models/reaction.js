@@ -20,9 +20,21 @@ export default {
   },
   reducers: {
     setReactions: (oldState, data) => {
+      let reactions = [
+        {
+          content_id: data.question_id,
+          reactions: data.reactions,
+        },
+      ];
+      (data.replies || []).forEach((reply) => {
+        reactions.push({
+          content_id: reply.reply_id,
+          reactions: reply.reactions.reactions,
+        });
+      });
       return {
         ...oldState,
-        reactions: data.reactions,
+        reactions,
       };
     },
     setReaction: (oldState, data) => {
