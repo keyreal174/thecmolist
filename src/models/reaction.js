@@ -20,7 +20,6 @@ export default {
   },
   reducers: {
     setReactions: (oldState, data) => {
-      console.log("data", data);
       let reactions = {
         [data.question_id]: data.reactions,
       };
