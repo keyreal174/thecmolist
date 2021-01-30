@@ -16,22 +16,17 @@ export const setReaction = (contentId, type) => {
 export default {
   name: "reactionModel",
   state: {
-    reactions: [],
+    reactions: {},
   },
   reducers: {
     setReactions: (oldState, data) => {
-      let reactions = [
-        {
-          content_id: data.question_id,
-          reactions: data.reactions,
-        },
-      ];
+      console.log("data", data);
+      let reactions = {
+        [data.question_id]: data.reactions,
+      };
       (data.replies || []).forEach((reply) => {
         if (reply && reply.reactions) {
-          reactions.push({
-            content_id: reply.reply_id,
-            reactions: reply.reactions.reactions,
-          });
+          reactions[reply.reply_id] = reply.reactions.reactions;
         }
       });
       return {
@@ -42,17 +37,16 @@ export default {
     setReaction: (oldState, data) => {
       const { id, type } = data;
       const newState = {
-        reactions: [...oldState.reactions],
+        reactions: { ...oldState.reactions },
       };
-      newState.reactions.map((reaction) => {
-        if (reaction.content_id === id) {
-          reaction.reactions.map((r) => {
-            if (r.type === type) {
-              r.checked = !r.checked;
-            }
-          });
-        }
-      });
+      const newReaction = newState.reactions[id];
+      if (newReaction) {
+        newReaction.map((r) => {
+          if (r.type === type) {
+            r.checked = !r.checked;
+          }
+        });
+      }
 
       return {
         ...newState,
