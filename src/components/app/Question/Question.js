@@ -11,6 +11,7 @@ import "./question.css";
 const Question = ({
   question,
   fetchQuestion,
+  reactions,
   saveCommentToQuestion,
   saveCommentToReply,
   saveReactionToCallerType,
@@ -40,8 +41,9 @@ const Question = ({
     const id = isQuestion ? caller["question_id"] : caller["reply_id"];
     const callerType = isQuestion ? "question" : "reply";
     const engagement = engagementType.toLowerCase();
+    const checked = getCheckedForEngagementType(id, engagement);
 
-    await saveReactionToCallerType({ id, callerType, engagement });
+    await saveReactionToCallerType({ id, callerType, engagement, checked });
   };
 
   const numberOfReplies =
@@ -50,7 +52,22 @@ const Question = ({
     question && question.question && question.question["num_thanks"];
   const numberOfInsightful =
     question && question.question && question.question["num_insightful"];
+  const questionId = question && question.question_id;
 
+  const getCheckedForEngagementType = (contentId, engagementType) => {
+    let checked = false;
+
+    (reactions || []).forEach((reaction) => {
+      if (reaction.content_id === contentId) {
+        ((reaction && reaction.reactions) || []).forEach((r) => {
+          if (r.type === engagementType) {
+            checked = r.checked;
+          }
+        });
+      }
+    });
+    return checked;
+  };
   return (
     <>
       <Container className="height-100">
@@ -67,16 +84,22 @@ const Question = ({
                 {...question.question}
                 engagementButtons={[
                   {
+                    checked: true,
                     text: "Answer",
                     icon: `${cdn}/Answer.png`,
                     number: numberOfReplies,
                   },
                   {
+                    checked: getCheckedForEngagementType(questionId, "thanks"),
                     text: "Thanks",
                     icon: `${cdn}/Thanks.png`,
                     number: numberOfThanks,
                   },
                   {
+                    checked: getCheckedForEngagementType(
+                      questionId,
+                      "insightful"
+                    ),
                     text: "Insightful",
                     icon: `${cdn}/Insightful.png`,
                     number: numberOfInsightful,
@@ -99,16 +122,25 @@ const Question = ({
                         key={index}
                         engagementButtons={[
                           {
+                            checked: true,
                             text: "Comment",
                             icon: `${cdn}/Comment.png`,
                             number: reply.comments && reply.comments.length,
                           },
                           {
+                            checked: getCheckedForEngagementType(
+                              reply.reply_id,
+                              "thanks"
+                            ),
                             text: "Thanks",
                             icon: `${cdn}/Thanks.png`,
                             number: reply["num_thanks"],
                           },
                           {
+                            checked: getCheckedForEngagementType(
+                              reply.reply_id,
+                              "insightful"
+                            ),
                             text: "Insightful",
                             icon: `${cdn}/Insightful.png`,
                             number: reply["num_insightful"],
@@ -176,6 +208,7 @@ const Question = ({
 const mapState = (state) => {
   return {
     question: state.questionModel.question,
+    reactions: state.reactionModel.reactions,
   };
 };
 

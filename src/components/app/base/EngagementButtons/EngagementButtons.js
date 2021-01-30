@@ -6,14 +6,15 @@ const EngagementButtons = ({ engagementButtons, onEngagementButtonClick }) => {
   return (
     <div className="engagement-buttons">
       {engagementButtons &&
-        engagementButtons.map(({ text, icon, number }, index) => {
+        engagementButtons.map(({ text, icon, number, checked }, index) => {
           return (
             <div key={text}>
               <Button
-                className="engagement-buttons-button"
+                className={`engagement-buttons-button ${
+                  checked ? "checked" : ""
+                }`}
                 variant="light"
                 onClick={onEngagementButtonClick.bind(this, text)}
-                style={{ margin: "0 10px 0 0" }}
               >
                 <img
                   alt={`Icon for button ${index}`}

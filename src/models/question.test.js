@@ -1,5 +1,6 @@
 import { init } from "@rematch/core";
 import questionModel from "./question";
+import reactionModel from "./reaction";
 import { postAnswer } from "./question";
 const axios = require("axios");
 
@@ -129,7 +130,7 @@ describe("question model", () => {
 
   it("effect: fetchQuestion", async () => {
     const store = init({
-      models: { questionModel },
+      models: { questionModel, reactionModel },
     });
 
     axios.get.mockResolvedValue({
@@ -220,7 +221,7 @@ describe("question model", () => {
 
   it("reducer: saveReaction", async () => {
     const store = init({
-      models: { questionModel },
+      models: { questionModel, reactionModel },
     });
 
     axios.get.mockResolvedValue({
@@ -231,11 +232,12 @@ describe("question model", () => {
     await store.dispatch.questionModel.saveReaction({
       id: 123,
       callerType: "question",
-      engagementType: "answer",
+      engagement: "answer",
+      checked: true,
     });
     const newData = { ...data };
 
-    newData.question.num_thanks = 6;
+    newData.question.num_thanks = 5;
 
     const questionModelData = store.getState().questionModel;
     expect(questionModelData.question).toEqual(newData);

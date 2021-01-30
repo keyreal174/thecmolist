@@ -68,37 +68,24 @@ export default {
       };
     },
     saveReaction(oldState, data) {
-      const { id, callerType, engagement: engagementType } = data;
-      const newState = {
-        question: { ...oldState.question },
-      };
+      const { id, callerType, engagement: engagementType, checked } = data;
+      let newState = { ...oldState };
+      let aux;
       if (callerType === "question") {
-        switch (engagementType) {
-          case "thanks":
-            newState.question.question.num_thanks++;
-            break;
-          case "insightful":
-            newState.question.question.num_insightful++;
-            break;
-          default:
-            break;
+        if (id === newState.question.question_id) {
+          aux = newState.question.question;
         }
       } else {
         newState.question.replies.map((reply) => {
           if (reply.reply_id === id) {
-            switch (engagementType) {
-              case "thanks":
-                reply.num_thanks++;
-                break;
-              case "insightful":
-                reply.num_insightful++;
-                break;
-              default:
-                break;
-            }
+            aux = reply;
           }
-          return reply;
         });
+      }
+      if (aux && checked) {
+        aux[`num_${engagementType}`]--;
+      } else if (aux && !checked) {
+        aux[`num_${engagementType}`]++;
       }
 
       return {
@@ -113,6 +100,7 @@ export default {
           const response = await getQuestion(id);
           const data = response.data;
           dispatch.questionModel.setQuestion(data);
+          dispatch.reactionModel.setReactions(data);
         } else {
           throw new Error("Id not provided.");
         }
@@ -158,9 +146,10 @@ export default {
     async saveReactionToCallerType(data) {
       try {
         if (data) {
-          const { id, callerType, engagementType } = data;
-          await postReaction(id, callerType, engagementType);
+          const { id, callerType, engagement } = data;
+          await postReaction(id, callerType, engagement);
           dispatch.questionModel.saveReaction(data);
+          dispatch.reactionModel.changeReaction({ id, engagement });
         } else {
           throw new Error("Could not save reaction");
         }
