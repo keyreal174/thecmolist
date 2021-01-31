@@ -141,47 +141,38 @@ const data = {
     },
   ],
 };
-const reactions = [
-  {
-    content_id: 12102948,
-    reactions: [
-      {
-        type: "thanks",
-        checked: true,
-      },
-      {
-        type: "insightful",
-        checked: false,
-      },
-    ],
-  },
-  {
-    content_id: 123,
-    reactions: [
-      {
-        type: "thanks",
-        checked: true,
-      },
-      {
-        type: "insightful",
-        checked: true,
-      },
-    ],
-  },
-  {
-    content_id: 456,
-    reactions: [
-      {
-        type: "thanks",
-        checked: false,
-      },
-      {
-        type: "insightful",
-        checked: false,
-      },
-    ],
-  },
-];
+const reactions = {
+  12102948: [
+    {
+      type: "thanks",
+      checked: true,
+    },
+    {
+      type: "insightful",
+      checked: false,
+    },
+  ],
+  123: [
+    {
+      type: "thanks",
+      checked: true,
+    },
+    {
+      type: "insightful",
+      checked: true,
+    },
+  ],
+  456: [
+    {
+      type: "thanks",
+      checked: false,
+    },
+    {
+      type: "insightful",
+      checked: false,
+    },
+  ],
+};
 
 describe("reactionModel model", () => {
   it("reducer: setReactions", () => {
@@ -202,20 +193,20 @@ describe("reactionModel model", () => {
 
     const id = 123;
     const engagement = "thanks";
-    let reactions2 = [...reactions];
+    let reactions2 = { ...reactions };
 
     store.dispatch.reactionModel.setReactions(data);
 
     let reactionModelData = store.getState().reactionModel;
 
-    expect(reactionModelData.reactions[1].reactions[0].checked).toEqual(true);
+    expect(reactionModelData.reactions[123][0].checked).toEqual(true);
 
     store.dispatch.reactionModel.setReaction({ id, type: engagement });
     reactionModelData = store.getState().reactionModel;
 
-    reactions2[1].reactions[0].checked = false;
+    reactions2[123][0].checked = false;
     expect(reactionModelData.reactions).toEqual(reactions2);
-    expect(reactionModelData.reactions[1].reactions[0].checked).toEqual(false);
+    expect(reactionModelData.reactions[123][0].checked).toEqual(false);
   });
 
   it("effect: change reaction error", async () => {

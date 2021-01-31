@@ -53,17 +53,12 @@ const Question = ({
   const numberOfInsightful =
     question && question.question && question.question["num_insightful"];
   const questionId = question && question.question_id;
-
   const getCheckedForEngagementType = (contentId, engagementType) => {
     let checked = false;
 
-    (reactions || []).forEach((reaction) => {
-      if (reaction.content_id === contentId) {
-        ((reaction && reaction.reactions) || []).forEach((r) => {
-          if (r.type === engagementType) {
-            checked = r.checked;
-          }
-        });
+    (reactions[contentId] || []).forEach((r) => {
+      if (r.type === engagementType) {
+        checked = r.checked;
       }
     });
     return checked;
