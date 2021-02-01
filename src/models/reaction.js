@@ -66,6 +66,7 @@ export default {
         reactions: { ...oldState.reactions },
       };
       const newReaction = newState.reactions[id];
+      console.log(newReaction);
       if (newReaction) {
         newReaction.reactions.map((r) => {
           if (r.type === type) {
@@ -86,9 +87,7 @@ export default {
         });
       }
 
-      return {
-        ...newState,
-      };
+      return newState;
     },
   },
   effects: (dispatch) => ({
