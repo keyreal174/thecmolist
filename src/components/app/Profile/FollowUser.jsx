@@ -42,7 +42,7 @@ function FollowUserModal(props) {
       >
         <Modal.Header>
           <Modal.Title>
-            Add <span className="text-capitalize">{props.username}</span> to
+            Add <span className="text-capitalize">{props.firstname}</span> to
             your list of <b>Experts</b>
           </Modal.Title>
         </Modal.Header>
@@ -56,8 +56,8 @@ function FollowUserModal(props) {
             </Form.Label>
             <Form.Label className="mt-3">
               Choose one or more <b>topics</b> for which you consider{" "}
-              <span className="text-capitalize">{props.username}</span> to be an
-              expert
+              <span className="text-capitalize">{props.firstname}</span> to be
+              an expert
             </Form.Label>
             <Typeahead
               clearButton
@@ -68,7 +68,7 @@ function FollowUserModal(props) {
               onChange={(selectedOption) => {
                 setSelectedOptions(selectedOption);
               }}
-              placeholder="Choose one or more topcis"
+              placeholder="Choose one or more topics"
             />
           </Fragment>
         </Modal.Body>

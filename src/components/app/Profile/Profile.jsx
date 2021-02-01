@@ -49,6 +49,7 @@ const Profile = (props) => {
   const [profileAbout, setProfileAbout] = useState([]);
   const [feedData, setFeedData] = useState([]);
   const [connectedUser, setConnectedUser] = useState(false);
+  const [followedUser, setFollowedUser] = useState(false);
 
   const [filterIdx, setFilterIdx] = useState(0);
   const [enableAnimations, setEnableAnimations] = useState(true);
@@ -87,7 +88,8 @@ const Profile = (props) => {
       setProfileAbout(props.profile.about || {});
       setFeedData(props.profile.feedData || []);
       setConnectedUser(props.profile.connectedUser);
-      createSubfilters(props.profile.feedData);
+      setFollowedUser(props.profile.followedUser);
+      props.profile.feedData && createSubfilters(props.profile.feedData);
     }
   }, [props.profile]);
 
@@ -148,6 +150,19 @@ const Profile = (props) => {
       await props.connectUser({ username: userName });
       setEnableAnimations(false);
       setConnectedUser(true);
+    } catch (err) {
+      console.log(`An error occurred connecting with user: ${userName}`);
+      console.log(err);
+    }
+  };
+
+  const followUser = async (payload) => {
+    let userName = Util.parsePath(window.location.href).trailingPath;
+    Analytics.sendClickEvent(`Followed user ${userName} from profile page`);
+    try {
+      await props.followUser(payload);
+      setEnableAnimations(false);
+      setFollowedUser(true);
     } catch (err) {
       console.log(`An error occurred connecting with user: ${userName}`);
       console.log(err);
@@ -281,30 +296,40 @@ const Profile = (props) => {
                 </Button>
               </div>
             ) : (
-              <div className="btn-wrapper d-flex flex-column">
-                {!connectedUser ? (
-                  <Button
-                    className="btn-white edit-profile mb-2"
-                    variant="outline-primary"
-                    onClick={() => {
-                      connectUser();
-                    }}
-                  >
-                    + Connect
-                  </Button>
-                ) : (
-                  <span className="profile-connected-label mb-2">
-                    Connected
-                  </span>
+              <React.Fragment>
+                {profileFirstName && (
+                  <div className="btn-wrapper d-flex flex-column">
+                    {!connectedUser ? (
+                      <Button
+                        className="btn-white edit-profile mb-2"
+                        variant="outline-primary"
+                        onClick={() => {
+                          connectUser();
+                        }}
+                      >
+                        + Connect
+                      </Button>
+                    ) : (
+                      <span className="profile-connected-label mb-2">
+                        Connected
+                      </span>
+                    )}
+                    {!followedUser ? (
+                      <Button
+                        className="btn-white edit-profile"
+                        variant="outline-primary"
+                        onClick={() => toggleFollowModal()}
+                      >
+                        + Follow
+                      </Button>
+                    ) : (
+                      <span className="profile-connected-label mb-2">
+                        Followed
+                      </span>
+                    )}
+                  </div>
                 )}
-                <Button
-                  className="btn-white edit-profile"
-                  variant="outline-primary"
-                  onClick={() => toggleFollowModal()}
-                >
-                  + Follow
-                </Button>
-              </div>
+              </React.Fragment>
             )}
           </Banner>
 
@@ -364,7 +389,7 @@ const Profile = (props) => {
               className="btn__homepage btn__homepage-blue btn__nux_share"
               style={{ float: "right", width: "220px" }}
             >
-              Search {profileUserName}'s knowledge
+              Search {profileFirstName}'s knowledge
             </Button>
           </div>
 
@@ -432,9 +457,10 @@ const Profile = (props) => {
         />
         <FollowUserModal
           show={showFollowModal}
+          firstname={profileFirstName}
           username={profileUserName}
           toggle={toggleFollowModal}
-          followUser={props.followUser}
+          followUser={followUser}
         />
         <Footer />
       </Container>

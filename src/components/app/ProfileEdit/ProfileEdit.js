@@ -81,12 +81,19 @@ const ProfileEdit = (props) => {
     setWebsite(profile.website);
     setHeadline(profile.headline);
     setImage(profile.image);
-    setAreasOfExpertise(profile.about.areasOfExpertise.join(", "));
-    setAreasOfInterest(profile.about.areasOfInterest.join(", "));
-    setNetworking(profile.about.networking);
-    setNetworkingOpportunities(profile.about.networkingOpportunities);
-    setAdvising(profile.about.advising);
-    setAdvisingOpportunities(profile.about.advisingOpportunities);
+    if (profile.about) {
+      let pfa = profile.about;
+      pfa.areasOfExpertise &&
+        setAreasOfExpertise(pfa.areasOfExpertise.join(", "));
+      pfa.areasOfInterest && setAreasOfInterest(pfa.areasOfInterest.join(", "));
+      pfa.networking && setNetworking(pfa.networking);
+      pfa.networkingOpportunities &&
+        setNetworkingOpportunities(pfa.networkingOpportunities);
+      pfa.advising && setAdvising(pfa.advising);
+      pfa.advisingOpportunities &&
+        setAdvisingOpportunities(pfa.advisingOpportunities);
+    }
+
     setCompanyLinkedin(profile.companyLinkedin);
     setCompanyIndustry(profile.companyIndustry);
     setCompanyStage(profile.companyStage);
