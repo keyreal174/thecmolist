@@ -16,11 +16,13 @@ const getReactionsByType = (contentType, data) => {
   let reactions = {};
   switch (contentType) {
     case "content":
-      reactions[data.content_id] = {
-        reactions: data.reactions,
-        num_thanks: data.content.num_thanks,
-        num_insightful: data.content.num_insightful,
-      };
+      if (data.reactions && data.content) {
+        reactions[data.content_id] = {
+          reactions: data.reactions,
+          num_thanks: data.content.num_thanks,
+          num_insightful: data.content.num_insightful,
+        };
+      }
       break;
     case "reply":
       (data.replies || []).forEach((reply) => {

@@ -6,8 +6,8 @@ const axios = require("axios");
 jest.mock("axios");
 
 const data = {
-  question_id: 12102948,
-  question: {
+  content_id: 12102948,
+  content: {
     header: {
       markdown:
         "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) ",
@@ -79,18 +79,16 @@ const data = {
           articletext: "Comment 2",
         },
       ],
-      reactions: {
-        reactions: [
-          {
-            type: "thanks",
-            checked: true,
-          },
-          {
-            type: "insightful",
-            checked: true,
-          },
-        ],
-      },
+      reactions: [
+        {
+          type: "thanks",
+          checked: true,
+        },
+        {
+          type: "insightful",
+          checked: true,
+        },
+      ],
     },
     {
       reply_id: 456,
@@ -108,18 +106,16 @@ const data = {
         "We have used Hubspot extensively for our businessm and are generally very happy with them. We started with a custom solution, and it took us a month to switch. The results have been dramatic, and feel free to",
       num_thanks: 1,
       num_insightful: 2,
-      reactions: {
-        reactions: [
-          {
-            type: "thanks",
-            checked: false,
-          },
-          {
-            type: "insightful",
-            checked: false,
-          },
-        ],
-      },
+      reactions: [
+        {
+          type: "thanks",
+          checked: false,
+        },
+        {
+          type: "insightful",
+          checked: false,
+        },
+      ],
     },
   ],
   related_questions: [
@@ -142,36 +138,48 @@ const data = {
   ],
 };
 const reactions = {
-  12102948: [
-    {
-      type: "thanks",
-      checked: true,
-    },
-    {
-      type: "insightful",
-      checked: false,
-    },
-  ],
-  123: [
-    {
-      type: "thanks",
-      checked: true,
-    },
-    {
-      type: "insightful",
-      checked: true,
-    },
-  ],
-  456: [
-    {
-      type: "thanks",
-      checked: false,
-    },
-    {
-      type: "insightful",
-      checked: false,
-    },
-  ],
+  12102948: {
+    reactions: [
+      {
+        type: "thanks",
+        checked: true,
+      },
+      {
+        type: "insightful",
+        checked: false,
+      },
+    ],
+    num_insightful: 10,
+    num_thanks: 5,
+  },
+  123: {
+    reactions: [
+      {
+        type: "thanks",
+        checked: true,
+      },
+      {
+        type: "insightful",
+        checked: true,
+      },
+    ],
+    num_insightful: 4,
+    num_thanks: 2,
+  },
+  456: {
+    reactions: [
+      {
+        type: "thanks",
+        checked: false,
+      },
+      {
+        type: "insightful",
+        checked: false,
+      },
+    ],
+    num_insightful: 2,
+    num_thanks: 1,
+  },
 };
 
 describe("reactionModel model", () => {
@@ -198,15 +206,17 @@ describe("reactionModel model", () => {
     store.dispatch.reactionModel.setReactions(data);
 
     let reactionModelData = store.getState().reactionModel;
-
-    expect(reactionModelData.reactions[123][0].checked).toEqual(true);
+    expect(reactionModelData.reactions[id].reactions[0].checked).toEqual(true);
+    expect(reactionModelData.reactions[id]["num_thanks"]).toEqual(2);
 
     store.dispatch.reactionModel.setReaction({ id, type: engagement });
     reactionModelData = store.getState().reactionModel;
 
-    reactions2[123][0].checked = false;
+    reactions2[id].reactions[0].checked = false;
+    reactions2[id]["num_thanks"] = 1;
     expect(reactionModelData.reactions).toEqual(reactions2);
-    expect(reactionModelData.reactions[123][0].checked).toEqual(false);
+    expect(reactionModelData.reactions[id].reactions[0].checked).toEqual(false);
+    expect(reactionModelData.reactions[id]["num_thanks"]).toEqual(1);
   });
 
   it("effect: change reaction error", async () => {
