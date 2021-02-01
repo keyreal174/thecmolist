@@ -86,9 +86,7 @@ export default {
         });
       }
 
-      return {
-        ...newState,
-      };
+      return newState;
     },
   },
   effects: (dispatch) => ({

@@ -37,17 +37,15 @@ const Content = ({
   };
 
   const handleEngagementButtonClick = async (caller, engagementType) => {
-    const isQuestion = !!caller["question_id"];
-    const id = isQuestion ? caller["question_id"] : caller["reply_id"];
-    const callerType = isQuestion ? "question" : "reply";
+    const isContent = !!caller["content_id"];
+    const id = isContent ? caller["content_id"] : caller["reply_id"];
     const engagement = engagementType.toLowerCase();
-    const checked = getCheckedForEngagementType(id, engagement);
 
-    await saveReactionToCallerType({ id, callerType, engagement, checked });
+    await saveReactionToCallerType({ id, engagement });
   };
 
   const numberOfReplies = content && content.replies && content.replies.length;
-  const questionId = content && content.question_id;
+  const questionId = content && content.content_id;
   const getCheckedForEngagementType = (contentId, engagementType) => {
     let checked = false;
 
