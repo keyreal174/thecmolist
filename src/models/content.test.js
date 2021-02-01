@@ -1,7 +1,7 @@
 import { init } from "@rematch/core";
 import contentModel from "./content";
 import reactionModel from "./reaction";
-import { postAnswer } from "./content";
+import { replyContent } from "./content";
 const axios = require("axios");
 
 jest.mock("axios");
@@ -83,31 +83,16 @@ const comment = {
   articletext: "Comment 2",
 };
 
-describe("question model", () => {
+describe("content model", () => {
   it("reducer: setQuestion", () => {
     const store = init({
       models: { contentModel },
     });
 
-    store.dispatch.contentModel.setQuestion(data);
+    store.dispatch.contentModel.setContent(data);
     const contentModelData = store.getState().contentModel;
 
-    expect(contentModelData.question).toEqual(data);
-  });
-
-  it("reducer: saveAnswer", () => {
-    const store = init({
-      models: { contentModel },
-    });
-
-    store.dispatch.contentModel.setQuestion(data);
-    let contentModelData = store.getState().contentModel;
-
-    expect(contentModelData.question.replies.length).toEqual(1);
-    store.dispatch.contentModel.saveAnswer("Comment 2");
-
-    contentModelData = store.getState().contentModel;
-    expect(contentModelData.question.replies.length).toEqual(2);
+    expect(contentModelData.content).toEqual(data);
   });
 
   it.skip("reducer: saveComment", () => {
@@ -115,7 +100,7 @@ describe("question model", () => {
       models: { contentModel },
     });
 
-    store.dispatch.contentModel.setQuestion(data);
+    store.dispatch.contentModel.setContent(data);
     let contentModelData = store.getState().contentModel;
 
     expect(contentModelData.question.replies[0].comments.length).toEqual(1);
@@ -128,7 +113,7 @@ describe("question model", () => {
     expect(contentModelData.question.replies[0].comments.length).toEqual(2);
   });
 
-  it("effect: fetchQuestion", async () => {
+  it("effect: fetchContent", async () => {
     const store = init({
       models: { contentModel, reactionModel },
     });
@@ -137,20 +122,20 @@ describe("question model", () => {
       data: data,
     });
 
-    await store.dispatch.contentModel.fetchQuestion("123");
+    await store.dispatch.contentModel.fetchContent("123");
 
     const contentModelData = store.getState().contentModel;
-    expect(contentModelData.question).toEqual(data);
+    expect(contentModelData.content).toEqual(data);
   });
 
-  it("effect: fetchQuestion no id", async () => {
+  it("effect: fetchContent no id", async () => {
     const store = init({
       models: { contentModel },
     });
 
-    const result = store.dispatch.contentModel.fetchQuestion();
+    const result = store.dispatch.contentModel.fetchContent();
 
-    await expect(result).rejects.toThrow("Could not fetch question");
+    await expect(result).rejects.toThrow("Could not fetch content");
   });
 
   it.skip("effect: saveCommentToReply", async () => {
@@ -163,7 +148,7 @@ describe("question model", () => {
       data: data,
     });
 
-    await store.dispatch.contentModel.fetchQuestion(123);
+    await store.dispatch.contentModel.fetchContent(123);
     await store.dispatch.contentModel.saveCommentToReply({
       comment: "Comment 2",
       reply: { reply_id: 123 },
@@ -185,20 +170,20 @@ describe("question model", () => {
     await expect(result).rejects.toThrow("Could not set comment");
   });
 
-  it("effect: fetchQuestion no id", async () => {
+  it("effect: fetchContent no id", async () => {
     const store = init({
       models: { contentModel },
     });
 
-    const result = store.dispatch.contentModel.fetchQuestion();
+    const result = store.dispatch.contentModel.fetchContent();
 
-    await expect(result).rejects.toThrow("Could not fetch question");
+    await expect(result).rejects.toThrow("Could not fetch content");
   });
 
   it("effect: postAnswer", async () => {
     axios.post.mockImplementationOnce(() => Promise.resolve(data));
 
-    await expect(postAnswer({ a: "MOCK" })).resolves.toEqual(data);
+    await expect(replyContent({ a: "MOCK" })).resolves.toEqual(data);
   });
 
   it("effect: postAnswer with error", async () => {
@@ -207,7 +192,7 @@ describe("question model", () => {
       Promise.reject(new Error(errorMessage))
     );
 
-    await expect(postAnswer()).rejects.toThrow(errorMessage);
+    await expect(replyContent()).rejects.toThrow(errorMessage);
   });
 
   it("effect: saveReactionToCallerType error", async () => {
@@ -217,29 +202,5 @@ describe("question model", () => {
 
     const result = store.dispatch.contentModel.saveReactionToCallerType();
     await expect(result).rejects.toThrow("Could not save the reaction");
-  });
-
-  it("reducer: saveReaction", async () => {
-    const store = init({
-      models: { contentModel, reactionModel },
-    });
-
-    axios.get.mockResolvedValue({
-      data: data,
-    });
-
-    await store.dispatch.contentModel.fetchQuestion(123);
-    await store.dispatch.contentModel.saveReaction({
-      id: 123,
-      callerType: "question",
-      engagement: "answer",
-      checked: true,
-    });
-    const newData = { ...data };
-
-    newData.question.num_thanks = 5;
-
-    const contentModelData = store.getState().contentModel;
-    expect(contentModelData.question).toEqual(newData);
   });
 });
