@@ -6,9 +6,9 @@ import DiscussionReply from "../base/DiscussionReply/DiscussionReply";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 
-import "./question.css";
+import "./content.css";
 
-const Question = ({
+const Content = ({
   question,
   fetchQuestion,
   reactions,
@@ -48,21 +48,29 @@ const Question = ({
 
   const numberOfReplies =
     question && question.replies && question.replies.length;
-  const numberOfThanks =
-    question && question.question && question.question["num_thanks"];
-  const numberOfInsightful =
-    question && question.question && question.question["num_insightful"];
   const questionId = question && question.question_id;
   const getCheckedForEngagementType = (contentId, engagementType) => {
     let checked = false;
 
-    (reactions[contentId] || []).forEach((r) => {
-      if (r.type === engagementType) {
-        checked = r.checked;
+    ((reactions[contentId] && reactions[contentId].reactions) || []).forEach(
+      (r) => {
+        if (r.type === engagementType) {
+          checked = r.checked;
+        }
       }
-    });
+    );
     return checked;
   };
+
+  const getEngagementForId = (contentId, engagementType) => {
+    console.log(reactions);
+    return (
+      reactions &&
+      reactions[contentId] &&
+      reactions[contentId][`num_${engagementType}`]
+    );
+  };
+
   return (
     <>
       <Container className="height-100">
@@ -88,7 +96,7 @@ const Question = ({
                     checked: getCheckedForEngagementType(questionId, "thanks"),
                     text: "Thanks",
                     icon: `${cdn}/Thanks.png`,
-                    number: numberOfThanks,
+                    number: getEngagementForId(questionId, "thanks"),
                   },
                   {
                     checked: getCheckedForEngagementType(
@@ -97,7 +105,7 @@ const Question = ({
                     ),
                     text: "Insightful",
                     icon: `${cdn}/Insightful.png`,
-                    number: numberOfInsightful,
+                    number: getEngagementForId(questionId, "insightful"),
                   },
                 ]}
                 onEngagementButtonClick={handleEngagementButtonClick.bind(
@@ -110,6 +118,8 @@ const Question = ({
               <div className="question-answers">
                 {question.replies &&
                   question.replies.map((reply, index) => {
+                    const replyId = reply.reply_id;
+
                     return (
                       <DiscussionReply
                         articletextlines={2}
@@ -124,21 +134,21 @@ const Question = ({
                           },
                           {
                             checked: getCheckedForEngagementType(
-                              reply.reply_id,
+                              replyId,
                               "thanks"
                             ),
                             text: "Thanks",
                             icon: `${cdn}/Thanks.png`,
-                            number: reply["num_thanks"],
+                            number: getEngagementForId(replyId, "thanks"),
                           },
                           {
                             checked: getCheckedForEngagementType(
-                              reply.reply_id,
+                              replyId,
                               "insightful"
                             ),
                             text: "Insightful",
                             icon: `${cdn}/Insightful.png`,
-                            number: reply["num_insightful"],
+                            number: getEngagementForId(replyId, "insightful"),
                           },
                         ]}
                         onEngagementButtonClick={handleEngagementButtonClick.bind(
@@ -216,4 +226,4 @@ const mapDispatch = (dispatch) => {
   };
 };
 
-export default connect(mapState, mapDispatch)(Question);
+export default connect(mapState, mapDispatch)(Content);

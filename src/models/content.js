@@ -25,6 +25,12 @@ export const postReaction = (id, callerType, engagementType) => {
   });
 };
 
+export const postContent = (content) => {
+  return axios.post("/api/content", {
+    data: content,
+  });
+};
+
 export default {
   name: "contentModel",
   state: {
@@ -65,31 +71,6 @@ export default {
         }
         return reply;
       });
-      return {
-        ...newState,
-      };
-    },
-    saveReaction(oldState, data) {
-      const { id, callerType, engagement: engagementType, checked } = data;
-      let newState = { ...oldState };
-      let aux;
-      if (callerType === "question") {
-        if (id === newState.question.question_id) {
-          aux = newState.question.question;
-        }
-      } else {
-        newState.question.replies.map((reply) => {
-          if (reply.reply_id === id) {
-            aux = reply;
-          }
-        });
-      }
-      if (aux && checked) {
-        aux[`num_${engagementType}`]--;
-      } else if (aux && !checked) {
-        aux[`num_${engagementType}`]++;
-      }
-
       return {
         ...newState,
       };
@@ -150,7 +131,7 @@ export default {
         if (data) {
           const { id, callerType, engagement } = data;
           await postReaction(id, callerType, engagement);
-          dispatch.contentModel.saveReaction(data);
+          //dispatch.contentModel.saveReaction(data);
           dispatch.reactionModel.changeReaction({ id, engagement });
         } else {
           throw new Error("Could not save reaction");
