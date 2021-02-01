@@ -22,7 +22,7 @@ const EngagementButtons = ({ engagementButtons, onEngagementButtonClick }) => {
                   src={icon}
                 />
                 <span>{text}</span>
-                {number && <span>{` (${number}) `}</span>}
+                {number > 0 && <span>{` (${number}) `}</span>}
               </Button>
             </div>
           );

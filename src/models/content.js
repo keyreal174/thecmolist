@@ -1,27 +1,18 @@
 import axios from "axios";
 
-export const postAnswer = (id, comment) => {
-  return axios.post(`/api/reply_question/${id}`, {
+export const replyContent = (id, comment) => {
+  return axios.post(`/api/reply_content/${id}`, {
     data: comment,
   });
 };
 
-export const getQuestion = (id) => {
-  return axios.get(`/api/question/${id}`);
+export const getContent = (id) => {
+  return axios.get(`/api/content/${id}`);
 };
 
-export const postComment = (id, comment) => {
+export const replyComment = (id, comment) => {
   return axios.post(`/api/reply_comment/${id}`, {
     data: comment,
-  });
-};
-
-export const postReaction = (id, callerType, engagementType) => {
-  return axios.post(`/api/post_reaction/${callerType}`, {
-    data: {
-      id,
-      engagementType,
-    },
   });
 };
 
@@ -34,34 +25,30 @@ export const postContent = (content) => {
 export default {
   name: "contentModel",
   state: {
-    question: {},
+    content: {},
   },
   reducers: {
-    setQuestion: (oldState, data) => {
+    setContent: (oldState, data) => {
       return {
         ...oldState,
-        question: data,
+        content: data,
       };
     },
-    saveAnswer: (oldState, data) => {
+    saveReply: (oldState, data) => {
       const { newAnswer } = data;
-      debugger;
       const newState = {
-        question: { ...oldState.question },
+        content: { ...oldState.content },
       };
-      debugger;
-      newState.question.replies.push(newAnswer);
+      newState.content.replies.push(newAnswer);
 
-      return {
-        ...newState,
-      };
+      return newState;
     },
     saveComment(oldState, data) {
       const { newReply, replyId } = data;
       const newState = {
-        question: { ...oldState.question },
+        content: { ...oldState.content },
       };
-      newState.question.replies.map((reply) => {
+      newState.content.replies.map((reply) => {
         if (reply["reply_id"] === replyId) {
           if (reply.comments instanceof Array) {
             reply.comments.push(newReply);
@@ -77,34 +64,37 @@ export default {
     },
   },
   effects: (dispatch) => ({
-    async fetchQuestion(id) {
+    async fetchContent(id) {
       try {
         if (id) {
-          const response = await getQuestion(id);
+          const response = await getContent(id);
           const data = response.data;
-          dispatch.contentModel.setQuestion(data);
+          dispatch.contentModel.setContent(data);
           dispatch.reactionModel.setReactions(data);
         } else {
           throw new Error("Id not provided.");
         }
       } catch (err) {
-        throw new Error("Could not fetch question.");
+        throw new Error("Could not fetch content.");
       }
     },
-    async saveCommentToQuestion(comment, data) {
+    async saveCommentToContent(comment, data) {
       try {
         if (data) {
-          const { question_id: questionId } = data.contentModel.question;
-          const response = await postAnswer(questionId, comment);
-          dispatch.contentModel.saveAnswer({
-            questionId,
+          const { content_id: contentId } = data.contentModel.content;
+          const response = await replyContent(contentId, comment);
+          dispatch.contentModel.saveReply({
             newAnswer: response.data,
           });
+          dispatch.reactionModel.setReactions({
+            ...data.contentModel.content,
+            ...response.data,
+          });
         } else {
-          throw new Error("Error saving the data");
+          throw new Error("Data not provided");
         }
       } catch (err) {
-        throw new Error("Could not save question.");
+        throw new Error("Could not save content.");
       }
     },
     async saveCommentToReply(data) {
@@ -114,7 +104,7 @@ export default {
             comment,
             reply: { reply_id: replyId },
           } = data;
-          const response = await postComment(replyId, comment);
+          const response = await replyComment(replyId, comment);
           dispatch.contentModel.saveComment({
             newReply: response.data,
             replyId,
@@ -129,9 +119,7 @@ export default {
     async saveReactionToCallerType(data) {
       try {
         if (data) {
-          const { id, callerType, engagement } = data;
-          await postReaction(id, callerType, engagement);
-          //dispatch.contentModel.saveReaction(data);
+          const { id, engagement } = data;
           dispatch.reactionModel.changeReaction({ id, engagement });
         } else {
           throw new Error("Could not save reaction");

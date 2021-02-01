@@ -8,7 +8,6 @@ export const setReaction = (contentId, type) => {
   return axios.post(`/api/change_reaction/${contentId}`, {
     data: {
       type,
-      contentId,
     },
   });
 };
@@ -16,18 +15,18 @@ export const setReaction = (contentId, type) => {
 const getReactionsByType = (contentType, data) => {
   let reactions = {};
   switch (contentType) {
-    case "question":
-      reactions[data.question_id] = {
+    case "content":
+      reactions[data.content_id] = {
         reactions: data.reactions,
-        num_thanks: data.question.num_thanks,
-        num_insightful: data.question.num_insightful,
+        num_thanks: data.content.num_thanks,
+        num_insightful: data.content.num_insightful,
       };
       break;
     case "reply":
       (data.replies || []).forEach((reply) => {
         if (reply && reply.reactions) {
           reactions[reply.reply_id] = {
-            reactions: reply.reactions.reactions,
+            reactions: reply.reactions,
             num_thanks: reply.num_thanks,
             num_insightful: reply.num_insightful,
           };
@@ -39,6 +38,7 @@ const getReactionsByType = (contentType, data) => {
   }
   return reactions;
 };
+
 export default {
   name: "reactionModel",
   state: {
@@ -47,7 +47,7 @@ export default {
   reducers: {
     setReactions: (oldState, data) => {
       // TODO: Review this code once new type of content is added.
-      const questionReactions = getReactionsByType("question", data);
+      const questionReactions = getReactionsByType("content", data);
       const repliesReactions = getReactionsByType("reply", data);
 
       return {
@@ -73,6 +73,13 @@ export default {
             } else {
               newReaction[`num_${type}`]--;
             }
+          }
+        });
+      } else {
+        newState.reactions[id][`num_${type}`]++;
+        newState.reactions[id].reactions.forEach((reaction) => {
+          if (reaction.type === type) {
+            reaction.checked = !reaction.checked;
           }
         });
       }

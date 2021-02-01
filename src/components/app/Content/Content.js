@@ -9,10 +9,10 @@ import Footer from "../base/Footer/Footer";
 import "./content.css";
 
 const Content = ({
-  question,
-  fetchQuestion,
+  content,
+  fetchContent,
   reactions,
-  saveCommentToQuestion,
+  saveCommentToContent,
   saveCommentToReply,
   saveReactionToCallerType,
   match,
@@ -21,7 +21,7 @@ const Content = ({
     const {
       params: { id },
     } = match;
-    const fetch = async () => await fetchQuestion(id);
+    const fetch = async () => await fetchContent(id);
 
     fetch();
   }, []);
@@ -29,7 +29,7 @@ const Content = ({
   const cdn = "https://d3k6hg21rt7gsh.cloudfront.net/icons";
 
   const handleSubmit = (comment) => {
-    saveCommentToQuestion(comment);
+    saveCommentToContent(comment);
   };
 
   const handleSubmitToReply = (reply, comment) => {
@@ -46,9 +46,8 @@ const Content = ({
     await saveReactionToCallerType({ id, callerType, engagement, checked });
   };
 
-  const numberOfReplies =
-    question && question.replies && question.replies.length;
-  const questionId = question && question.question_id;
+  const numberOfReplies = content && content.replies && content.replies.length;
+  const questionId = content && content.question_id;
   const getCheckedForEngagementType = (contentId, engagementType) => {
     let checked = false;
 
@@ -63,14 +62,12 @@ const Content = ({
   };
 
   const getEngagementForId = (contentId, engagementType) => {
-    console.log(reactions);
     return (
       reactions &&
       reactions[contentId] &&
       reactions[contentId][`num_${engagementType}`]
     );
   };
-
   return (
     <>
       <Container className="height-100">
@@ -84,7 +81,7 @@ const Content = ({
             <Col className="question-answer-section" md="8">
               <Article
                 articletextlines={1}
-                {...question.question}
+                {...content.content}
                 engagementButtons={[
                   {
                     checked: true,
@@ -110,14 +107,14 @@ const Content = ({
                 ]}
                 onEngagementButtonClick={handleEngagementButtonClick.bind(
                   this,
-                  question
+                  content
                 )}
                 style={{ paddingBottom: "10px" }}
               />
               <div className="question-answer-section-replies">{`${numberOfReplies} answers`}</div>
               <div className="question-answers">
-                {question.replies &&
-                  question.replies.map((reply, index) => {
+                {content.replies &&
+                  content.replies.map((reply, index) => {
                     const replyId = reply.reply_id;
 
                     return (
@@ -130,7 +127,10 @@ const Content = ({
                             checked: true,
                             text: "Comment",
                             icon: `${cdn}/Comment.png`,
-                            number: reply.comments && reply.comments.length,
+                            number:
+                              reply.comments && reply.comments.length > 0
+                                ? reply.comments.length
+                                : null,
                           },
                           {
                             checked: getCheckedForEngagementType(
@@ -186,8 +186,8 @@ const Content = ({
                 Related Questions
               </div>
               <div className="question-related-section-item">
-                {question.related_questions &&
-                  question.related_questions.map((relatedQuestion, index) => {
+                {content.related_questions &&
+                  content.related_questions.map((relatedQuestion, index) => {
                     return (
                       <div key={index}>
                         <a href={relatedQuestion.link}>
@@ -212,15 +212,15 @@ const Content = ({
 
 const mapState = (state) => {
   return {
-    question: state.contentModel.question,
+    content: state.contentModel.content,
     reactions: state.reactionModel.reactions,
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
-    fetchQuestion: dispatch.contentModel.fetchQuestion,
-    saveCommentToQuestion: dispatch.contentModel.saveCommentToQuestion,
+    fetchContent: dispatch.contentModel.fetchContent,
+    saveCommentToContent: dispatch.contentModel.saveCommentToContent,
     saveCommentToReply: dispatch.contentModel.saveCommentToReply,
     saveReactionToCallerType: dispatch.contentModel.saveReactionToCallerType,
   };
