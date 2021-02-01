@@ -166,10 +166,12 @@ const Feed = (props) => {
   useEffect(() => {
     const getProfileStats = async () => props.getProfileStats();
     getProfileStats().then((profileStats) => {
+      let newFilters = [
+        { title: "All members", slug: "all-members", enabled: true },
+        { title: "My Peers", slug: "my-peers", enabled: true },
+        { title: "My Experts", slug: "my-experts", enabled: true },
+      ];
       if (profileStats && profileStats.groups) {
-        let newFilters = [
-          { title: "All members", slug: "all-members", enabled: true },
-        ];
         newFilters = newFilters.concat(
           profileStats.groups.map((group) => {
             return {
@@ -179,17 +181,12 @@ const Feed = (props) => {
             };
           })
         );
-        setFilters(newFilters);
-        changeDashboardFilter(
-          newFilters[filterIdx].slug,
-          subSelectors[activeSelector].slug
-        );
-      } else {
-        console.log(
-          "Unexpected response for profileStats: " +
-            JSON.stringify(profileStats)
-        );
       }
+      setFilters(newFilters);
+      changeDashboardFilter(
+        newFilters[filterIdx].slug,
+        subSelectors[activeSelector].slug
+      );
     });
   }, []);
   const changeFilter = (idx) => {

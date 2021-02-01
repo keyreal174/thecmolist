@@ -2,7 +2,6 @@
   border: 1px solid #cccccc;
   padding: 10px 10px 20px;
   background: white;
-  min-height: 306px;
 }
 
 .profile-stats__user-name {
@@ -48,7 +47,6 @@
   padding: 10px 10px 20px;
   background: white;
   margin-top: 10px;
-  min-height: 384px;
 }
 
 .profile-stats__spaces-title {
