@@ -202,17 +202,17 @@ const Question = ({
 
 const mapState = (state) => {
   return {
-    question: state.questionModel.question,
+    question: state.contentModel.question,
     reactions: state.reactionModel.reactions,
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
-    fetchQuestion: dispatch.questionModel.fetchQuestion,
-    saveCommentToQuestion: dispatch.questionModel.saveCommentToQuestion,
-    saveCommentToReply: dispatch.questionModel.saveCommentToReply,
-    saveReactionToCallerType: dispatch.questionModel.saveReactionToCallerType,
+    fetchQuestion: dispatch.contentModel.fetchQuestion,
+    saveCommentToQuestion: dispatch.contentModel.saveCommentToQuestion,
+    saveCommentToReply: dispatch.contentModel.saveCommentToReply,
+    saveReactionToCallerType: dispatch.contentModel.saveReactionToCallerType,
   };
 };
 
