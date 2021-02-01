@@ -6,13 +6,13 @@ import DiscussionReply from "../base/DiscussionReply/DiscussionReply";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 
-import "./question.css";
+import "./content.css";
 
-const Question = ({
-  question,
-  fetchQuestion,
+const Content = ({
+  content,
+  fetchContent,
   reactions,
-  saveCommentToQuestion,
+  saveCommentToContent,
   saveCommentToReply,
   saveReactionToCallerType,
   match,
@@ -21,7 +21,7 @@ const Question = ({
     const {
       params: { id },
     } = match;
-    const fetch = async () => await fetchQuestion(id);
+    const fetch = async () => await fetchContent(id);
 
     fetch();
   }, []);
@@ -29,7 +29,7 @@ const Question = ({
   const cdn = "https://d3k6hg21rt7gsh.cloudfront.net/icons";
 
   const handleSubmit = (comment) => {
-    saveCommentToQuestion(comment);
+    saveCommentToContent(comment);
   };
 
   const handleSubmitToReply = (reply, comment) => {
@@ -46,22 +46,27 @@ const Question = ({
     await saveReactionToCallerType({ id, callerType, engagement, checked });
   };
 
-  const numberOfReplies =
-    question && question.replies && question.replies.length;
-  const numberOfThanks =
-    question && question.question && question.question["num_thanks"];
-  const numberOfInsightful =
-    question && question.question && question.question["num_insightful"];
-  const questionId = question && question.question_id;
+  const numberOfReplies = content && content.replies && content.replies.length;
+  const questionId = content && content.question_id;
   const getCheckedForEngagementType = (contentId, engagementType) => {
     let checked = false;
 
-    (reactions[contentId] || []).forEach((r) => {
-      if (r.type === engagementType) {
-        checked = r.checked;
+    ((reactions[contentId] && reactions[contentId].reactions) || []).forEach(
+      (r) => {
+        if (r.type === engagementType) {
+          checked = r.checked;
+        }
       }
-    });
+    );
     return checked;
+  };
+
+  const getEngagementForId = (contentId, engagementType) => {
+    return (
+      reactions &&
+      reactions[contentId] &&
+      reactions[contentId][`num_${engagementType}`]
+    );
   };
   return (
     <>
@@ -76,7 +81,7 @@ const Question = ({
             <Col className="question-answer-section" md="8">
               <Article
                 articletextlines={1}
-                {...question.question}
+                {...content.content}
                 engagementButtons={[
                   {
                     checked: true,
@@ -88,7 +93,7 @@ const Question = ({
                     checked: getCheckedForEngagementType(questionId, "thanks"),
                     text: "Thanks",
                     icon: `${cdn}/Thanks.png`,
-                    number: numberOfThanks,
+                    number: getEngagementForId(questionId, "thanks"),
                   },
                   {
                     checked: getCheckedForEngagementType(
@@ -97,19 +102,21 @@ const Question = ({
                     ),
                     text: "Insightful",
                     icon: `${cdn}/Insightful.png`,
-                    number: numberOfInsightful,
+                    number: getEngagementForId(questionId, "insightful"),
                   },
                 ]}
                 onEngagementButtonClick={handleEngagementButtonClick.bind(
                   this,
-                  question
+                  content
                 )}
                 style={{ paddingBottom: "10px" }}
               />
               <div className="question-answer-section-replies">{`${numberOfReplies} answers`}</div>
               <div className="question-answers">
-                {question.replies &&
-                  question.replies.map((reply, index) => {
+                {content.replies &&
+                  content.replies.map((reply, index) => {
+                    const replyId = reply.reply_id;
+
                     return (
                       <DiscussionReply
                         articletextlines={2}
@@ -120,25 +127,28 @@ const Question = ({
                             checked: true,
                             text: "Comment",
                             icon: `${cdn}/Comment.png`,
-                            number: reply.comments && reply.comments.length,
+                            number:
+                              reply.comments && reply.comments.length > 0
+                                ? reply.comments.length
+                                : null,
                           },
                           {
                             checked: getCheckedForEngagementType(
-                              reply.reply_id,
+                              replyId,
                               "thanks"
                             ),
                             text: "Thanks",
                             icon: `${cdn}/Thanks.png`,
-                            number: reply["num_thanks"],
+                            number: getEngagementForId(replyId, "thanks"),
                           },
                           {
                             checked: getCheckedForEngagementType(
-                              reply.reply_id,
+                              replyId,
                               "insightful"
                             ),
                             text: "Insightful",
                             icon: `${cdn}/Insightful.png`,
-                            number: reply["num_insightful"],
+                            number: getEngagementForId(replyId, "insightful"),
                           },
                         ]}
                         onEngagementButtonClick={handleEngagementButtonClick.bind(
@@ -176,8 +186,8 @@ const Question = ({
                 Related Questions
               </div>
               <div className="question-related-section-item">
-                {question.related_questions &&
-                  question.related_questions.map((relatedQuestion, index) => {
+                {content.related_questions &&
+                  content.related_questions.map((relatedQuestion, index) => {
                     return (
                       <div key={index}>
                         <a href={relatedQuestion.link}>
@@ -202,18 +212,18 @@ const Question = ({
 
 const mapState = (state) => {
   return {
-    question: state.questionModel.question,
+    content: state.contentModel.content,
     reactions: state.reactionModel.reactions,
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
-    fetchQuestion: dispatch.questionModel.fetchQuestion,
-    saveCommentToQuestion: dispatch.questionModel.saveCommentToQuestion,
-    saveCommentToReply: dispatch.questionModel.saveCommentToReply,
-    saveReactionToCallerType: dispatch.questionModel.saveReactionToCallerType,
+    fetchContent: dispatch.contentModel.fetchContent,
+    saveCommentToContent: dispatch.contentModel.saveCommentToContent,
+    saveCommentToReply: dispatch.contentModel.saveCommentToReply,
+    saveReactionToCallerType: dispatch.contentModel.saveReactionToCallerType,
   };
 };
 
-export default connect(mapState, mapDispatch)(Question);
+export default connect(mapState, mapDispatch)(Content);

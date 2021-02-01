@@ -8,7 +8,6 @@ var MockAdapter,
   MockedApiSettings,
   MockedApiProfileStats,
   MockedApiContent,
-  MockedApiQuestion,
   MockedApiTopics,
   MockedApiFullSearch,
   MockedApiRefinedSearch;
@@ -22,7 +21,6 @@ if (process.env.NODE_ENV !== "production") {
   MockedApiSettings = require("./api_settings.json");
   MockedApiProfileStats = require("./api_profilestats.json");
   MockedApiContent = require("./api_content.json");
-  MockedApiQuestion = require("./api_question.json");
   MockedApiTopics = require("./api_topics.json");
   MockedApiFullSearch = require("./api_fullsearch.json");
   MockedApiRefinedSearch = require("./api_refinedsearch.json");
@@ -57,11 +55,6 @@ function MockRequests() {
       response: MockedApiSettings,
     },
     { path: /\/api\/content.*/, responseCode: 200, response: MockedApiContent },
-    {
-      path: /\/api\/question\/\d+.*/,
-      responseCode: 200,
-      response: MockedApiQuestion,
-    },
     { path: /\/api\/topics.*/, responseCode: 200, response: MockedApiTopics },
     {
       path: /\/api\/full_search.*/,
@@ -120,7 +113,7 @@ function MockRequests() {
     return [200, { success: true, error: null }];
   });
 
-  mock.onPost(/\/api\/reply_question\/\d+.*/).reply((postBody) => {
+  mock.onPost(/\/api\/reply_content\/\d+.*/).reply((postBody) => {
     return [
       200,
       {
@@ -137,6 +130,12 @@ function MockRequests() {
         },
         articletext: JSON.parse(postBody.data).data,
         comments: [],
+        reactions: [
+          { type: "thanks", checked: false },
+          { type: "insightful", checked: false },
+        ],
+        num_thanks: 0,
+        num_insightful: 0,
       },
     ];
   });

@@ -1,23 +1,131 @@
 import axios from "axios";
 
-const saveContent = (data) => {
-  return axios.post("/api/content", data);
+export const replyContent = (id, comment) => {
+  return axios.post(`/api/reply_content/${id}`, {
+    data: comment,
+  });
+};
+
+export const getContent = (id) => {
+  return axios.get(`/api/content/${id}`);
+};
+
+export const replyComment = (id, comment) => {
+  return axios.post(`/api/reply_comment/${id}`, {
+    data: comment,
+  });
+};
+
+export const postContent = (content) => {
+  return axios.post("/api/content", {
+    data: content,
+  });
 };
 
 export default {
   name: "contentModel",
-  state: {},
-  reducers: {},
+  state: {
+    content: {},
+  },
+  reducers: {
+    setContent: (oldState, data) => {
+      return {
+        ...oldState,
+        content: data,
+      };
+    },
+    saveReply: (oldState, data) => {
+      const { newAnswer } = data;
+      const newState = {
+        content: { ...oldState.content },
+      };
+      newState.content.replies.push(newAnswer);
+
+      return newState;
+    },
+    saveComment(oldState, data) {
+      const { newReply, replyId } = data;
+      const newState = {
+        content: { ...oldState.content },
+      };
+      newState.content.replies.map((reply) => {
+        if (reply["reply_id"] === replyId) {
+          if (reply.comments instanceof Array) {
+            reply.comments.push(newReply);
+          } else {
+            reply.comments = [newReply];
+          }
+        }
+        return reply;
+      });
+      return {
+        ...newState,
+      };
+    },
+  },
   effects: (dispatch) => ({
-    async shareContent(content) {
+    async fetchContent(id) {
       try {
-        if (content) {
-          await saveContent(content);
+        if (id) {
+          const response = await getContent(id);
+          const data = response.data;
+          dispatch.contentModel.setContent(data);
+          dispatch.reactionModel.setReactions(data);
         } else {
-          throw new Error("Content is empty.");
+          throw new Error("Id not provided.");
+        }
+      } catch (err) {
+        throw new Error("Could not fetch content.");
+      }
+    },
+    async saveCommentToContent(comment, data) {
+      try {
+        if (data) {
+          const { content_id: contentId } = data.contentModel.content;
+          const response = await replyContent(contentId, comment);
+          dispatch.contentModel.saveReply({
+            newAnswer: response.data,
+          });
+          dispatch.reactionModel.setReactions({
+            ...data.contentModel.content,
+            ...response.data,
+          });
+        } else {
+          throw new Error("Data not provided");
+        }
+      } catch (err) {
+        throw new Error("Could not save content.");
+      }
+    },
+    async saveCommentToReply(data) {
+      try {
+        if (data) {
+          const {
+            comment,
+            reply: { reply_id: replyId },
+          } = data;
+          const response = await replyComment(replyId, comment);
+          dispatch.contentModel.saveComment({
+            newReply: response.data,
+            replyId,
+          });
+        } else {
+          throw new Error("Could not save comment");
         }
       } catch (error) {
-        throw new Error("Could not save content.");
+        throw new Error("Could not set comment");
+      }
+    },
+    async saveReactionToCallerType(data) {
+      try {
+        if (data) {
+          const { id, engagement } = data;
+          dispatch.reactionModel.changeReaction({ id, engagement });
+        } else {
+          throw new Error("Could not save reaction");
+        }
+      } catch (err) {
+        throw new Error("Could not save the reaction");
       }
     },
   }),

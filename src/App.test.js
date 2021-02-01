@@ -8,10 +8,10 @@ import App from "./App";
 import contentModel from "./models/content";
 import feedModel from "./models/feed";
 import networkModel from "./models/network";
-import questionModel from "./models/question";
 import userModel from "./models/user";
 import settingsModel from "./models/settings";
 import profileModel from "./models/profile";
+import reactionModel from "./models/reaction";
 import topicsModel from "./models/topics";
 
 test("renders app without crashing", async () => {
@@ -20,10 +20,10 @@ test("renders app without crashing", async () => {
       contentModel,
       feedModel,
       networkModel,
-      questionModel,
       settingsModel,
       userModel,
       profileModel,
+      reactionModel,
       topicsModel,
     },
   });

@@ -1,24 +1,24 @@
 import React, { useEffect } from "react";
 import { Route, Switch, Redirect, useLocation } from "react-router-dom";
+import AgencyProfile from "./components/app/Profile/AgencyProfile";
+import Category from "./components/app/Directory/Category";
+import Content from "./components/app/Content/Content";
+import Directory from "./components/app/Directory/Directory";
+import Feed from "./components/app/Feed/Feed";
 import Homepage from "./components/home/Homepage";
-import Signup from "./components/home/Signup";
-import Signedup from "./components/home/Signedup";
 import Login from "./components/login/Login";
 import Logout from "./components/login/Logout";
-import Question from "./components/app/Question/Question";
-import Feed from "./components/app/Feed/Feed";
-import Profile from "./components/app/Profile/Profile";
-import ProfileEdit from "./components/app/ProfileEdit/ProfileEdit";
-import Settings from "./components/app/Settings/Settings";
-import Topics from "./components/app/Topics/Topics";
-import AgencyProfile from "./components/app/Profile/AgencyProfile";
-import TechnologyProfile from "./components/app/Profile/TechnologyProfile";
-import Directory from "./components/app/Directory/Directory";
-import Category from "./components/app/Directory/Category";
 import Network from "./components/app/Network/Network";
 import Notifications from "./components/app/Notifications/Notifications";
-import Util from "./components/util/Util";
+import Profile from "./components/app/Profile/Profile";
+import ProfileEdit from "./components/app/ProfileEdit/ProfileEdit";
 import ReactGA from "react-ga";
+import Settings from "./components/app/Settings/Settings";
+import Signedup from "./components/home/Signedup";
+import Signup from "./components/home/Signup";
+import TechnologyProfile from "./components/app/Profile/TechnologyProfile";
+import Topics from "./components/app/Topics/Topics";
+import Util from "./components/util/Util";
 import Cookies from "js-cookie";
 import SetupMocks from "./mocks/mocks";
 
@@ -122,7 +122,7 @@ class App extends React.Component {
             path="/question/:id"
             render={(props) =>
               this.state.authed ? (
-                <Question {...props} />
+                <Content {...props} />
               ) : (
                 <Redirect to="/login" />
               )

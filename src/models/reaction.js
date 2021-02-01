@@ -8,9 +8,35 @@ export const setReaction = (contentId, type) => {
   return axios.post(`/api/change_reaction/${contentId}`, {
     data: {
       type,
-      contentId,
     },
   });
+};
+
+const getReactionsByType = (contentType, data) => {
+  let reactions = {};
+  switch (contentType) {
+    case "content":
+      reactions[data.content_id] = {
+        reactions: data.reactions,
+        num_thanks: data.content.num_thanks,
+        num_insightful: data.content.num_insightful,
+      };
+      break;
+    case "reply":
+      (data.replies || []).forEach((reply) => {
+        if (reply && reply.reactions) {
+          reactions[reply.reply_id] = {
+            reactions: reply.reactions,
+            num_thanks: reply.num_thanks,
+            num_insightful: reply.num_insightful,
+          };
+        }
+      });
+      break;
+    default:
+      break;
+  }
+  return reactions;
 };
 
 export default {
@@ -20,17 +46,16 @@ export default {
   },
   reducers: {
     setReactions: (oldState, data) => {
-      let reactions = {
-        [data.question_id]: data.reactions,
-      };
-      (data.replies || []).forEach((reply) => {
-        if (reply && reply.reactions) {
-          reactions[reply.reply_id] = reply.reactions.reactions;
-        }
-      });
+      // TODO: Review this code once new type of content is added.
+      const questionReactions = getReactionsByType("content", data);
+      const repliesReactions = getReactionsByType("reply", data);
+
       return {
         ...oldState,
-        reactions,
+        reactions: {
+          ...questionReactions,
+          ...repliesReactions,
+        },
       };
     },
     setReaction: (oldState, data) => {
@@ -40,9 +65,21 @@ export default {
       };
       const newReaction = newState.reactions[id];
       if (newReaction) {
-        newReaction.map((r) => {
+        newReaction.reactions.map((r) => {
           if (r.type === type) {
             r.checked = !r.checked;
+            if (r.checked) {
+              newReaction[`num_${type}`]++;
+            } else {
+              newReaction[`num_${type}`]--;
+            }
+          }
+        });
+      } else {
+        newState.reactions[id][`num_${type}`]++;
+        newState.reactions[id].reactions.forEach((reaction) => {
+          if (reaction.type === type) {
+            reaction.checked = !reaction.checked;
           }
         });
       }
