@@ -200,9 +200,9 @@ const Feed = (props) => {
     changeDashboardFilter(filters[filterIdx].slug, subSelectors[idx].slug);
   };
 
-  const [show, setShow] = useState(false);
-  const handleShow = () => setShow(true);
-  const handleClose = () => setShow(false);
+  const [showContentModal, setShowContentModal] = useState(false);
+  const handleShow = () => setShowContentModal(true);
+  const handleClose = () => setShowContentModal(false);
 
   const history = useHistory();
 
@@ -233,7 +233,7 @@ const Feed = (props) => {
                 modalTitle="Ask a marketing question"
                 onSubmit={handleSubmit}
                 secondButtonText={"Ask a question"}
-                show={show}
+                show={showContentModal}
               />
               <Button
                 className="btn-white modal-primary-button mb-2"
