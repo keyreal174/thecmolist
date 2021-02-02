@@ -238,12 +238,14 @@ const Feed = (props) => {
               <Button
                 className="btn-white modal-primary-button mb-2"
                 variant="outline-primary"
+                onClick={handleShow}
               >
                 Share Experience
               </Button>
               <Button
                 className="btn-white modal-primary-button mb-2"
                 variant="outline-primary"
+                onClick={handleShow}
               >
                 Share Article
               </Button>
