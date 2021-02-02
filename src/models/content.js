@@ -132,8 +132,9 @@ export default {
       try {
         if (data) {
           const response = await postContent(data);
-          const { id } = response.data;
-          return id;
+          const content = response.data;
+          dispatch.contentModel.setContent(content);
+          return content.content_id;
         } else {
           throw new Error("Could not save content without data");
         }
