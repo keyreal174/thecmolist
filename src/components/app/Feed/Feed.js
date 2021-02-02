@@ -8,9 +8,11 @@ import Article from "../base/Article/Article";
 import Banner from "../base/Banner/Banner";
 import InviteModal from "../base/ShareModule/InviteModal";
 import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
+import AddPostModal from "../base/AddPostModal/AddPostModal";
 import ProfileStats from "../ProfileStats/ProfileStats";
 import Analytics from "../../util/Analytics";
 import Arrow from "../base/icons/arrow.svg";
+import { useHistory } from "react-router";
 import "./feed.css";
 
 function RenderRightContainer({
@@ -198,6 +200,16 @@ const Feed = (props) => {
     changeDashboardFilter(filters[filterIdx].slug, subSelectors[idx].slug);
   };
 
+  const [showContentModal, setShowContentModal] = useState(false);
+  const handleShow = () => setShowContentModal(true);
+  const handleClose = () => setShowContentModal(false);
+
+  const history = useHistory();
+
+  const handleSubmit = async (content) => {
+    const id = await props.saveContent(content);
+    history.push(`question/${id}`);
+  };
   return (
     <>
       <Container className="height-100">
@@ -211,18 +223,29 @@ const Feed = (props) => {
               <Button
                 className="btn-white modal-primary-button mb-2"
                 variant="outline-primary"
+                onClick={handleShow}
               >
                 Ask Question
               </Button>
+              <AddPostModal
+                firstButtonText={"Cancel"}
+                handleClose={handleClose}
+                modalTitle="Ask a marketing question"
+                onSubmit={handleSubmit}
+                secondButtonText={"Ask a question"}
+                show={showContentModal}
+              />
               <Button
                 className="btn-white modal-primary-button mb-2"
                 variant="outline-primary"
+                onClick={handleShow}
               >
                 Share Experience
               </Button>
               <Button
                 className="btn-white modal-primary-button mb-2"
                 variant="outline-primary"
+                onClick={handleShow}
               >
                 Share Article
               </Button>
@@ -304,6 +327,7 @@ const mapDispatch = (dispatch) => {
     changeDashboardFilter: dispatch.feedModel.changeDashboardFilter,
     saveUserInvite: dispatch.userModel.saveInvite,
     getProfileStats: dispatch.profileModel.getProfileStats,
+    saveContent: dispatch.contentModel.saveContent,
   };
 };
 

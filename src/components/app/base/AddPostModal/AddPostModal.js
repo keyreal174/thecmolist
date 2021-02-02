@@ -18,7 +18,7 @@ function AddPostModal({
   handleClose,
   modalTitle,
   secondButtonText,
-  shareContent,
+  onSubmit,
   show,
 }) {
   const cdnBaseUrl = "https://d3k6hg21rt7gsh.cloudfront.net/icons/";
@@ -48,12 +48,12 @@ function AddPostModal({
       photo,
       role,
     };
-
     setError(null);
     e.preventDefault();
 
     try {
-      await shareContent(content);
+      await onSubmit(content);
+
       handleClose();
       cleanFields();
     } catch (error) {
@@ -165,6 +165,12 @@ function AddPostModal({
       reader.readAsDataURL(file);
       setShowPhoto(true);
     }
+  };
+
+  const handleClosePersonSection = () => {
+    setShowPersonSection(false);
+    setPerson("");
+    setRole("");
   };
   return (
     <>
@@ -374,7 +380,7 @@ function AddPostModal({
                     <div className="modal-person-section-actions">
                       <Button
                         className="btn-white modal-cancel-button"
-                        onClick={() => setShowPersonSection(false)}
+                        onClick={handleClosePersonSection}
                         size="sm"
                         variant="outline-primary"
                       >
@@ -382,7 +388,7 @@ function AddPostModal({
                       </Button>
                       <Button
                         className="btn-white modal-cancel-button"
-                        onClick={() => setShowPersonSection(false)}
+                        onClick={handleClosePersonSection}
                         size="sm"
                         style={{ marginLeft: "10px" }}
                         variant="outline-primary"
@@ -438,7 +444,6 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    shareContent: dispatch.contentModel.shareContent,
     getProfileStats: dispatch.profileModel.getProfileStats,
   };
 };
