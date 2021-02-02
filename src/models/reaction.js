@@ -12,32 +12,36 @@ export const setReaction = (contentId, type) => {
   });
 };
 
-const getReactionsByType = (contentType, data) => {
-  let reactions = {};
-  switch (contentType) {
-    case "content":
-      if (data.reactions && data.content) {
-        reactions[data.content_id] = {
-          reactions: data.reactions,
-          num_thanks: data.content.num_thanks,
-          num_insightful: data.content.num_insightful,
-        };
+const getReactionsForContent = (data) => {
+  let getReactions = (contentData) => {
+    let reactionsForContent = {};
+    if (contentData.content) {
+      if (contentData.content.num_thanks) {
+        reactionsForContent.num_thanks = contentData.content.num_thanks;
       }
-      break;
-    case "reply":
-      (data.replies || []).forEach((reply) => {
-        if (reply && reply.reactions) {
-          reactions[reply.reply_id] = {
-            reactions: reply.reactions,
-            num_thanks: reply.num_thanks,
-            num_insightful: reply.num_insightful,
-          };
-        }
-      });
-      break;
-    default:
-      break;
+      if (contentData.content.num_insightful) {
+        reactionsForContent.num_insightful = contentData.content.num_insightful;
+      }
+    }
+    if (contentData.reactions) {
+      reactionsForContent.reactions = contentData.reactions;
+    }
+    return reactionsForContent;
+  };
+
+  let reactions = {};
+  // set reactions data for root content
+  let reactionsForContent = getReactions(data);
+  if (Object.keys(reactionsForContent).length > 0) {
+    reactions[data.content_id] = reactionsForContent;
   }
+  // set reactions data for replies
+  (data.replies || []).forEach((reply) => {
+    let reactionsForReply = getReactions(reply);
+    if (Object.keys(reactionsForReply).length > 0) {
+      reactions[reply.content_id] = reactionsForReply;
+    }
+  });
   return reactions;
 };
 
@@ -48,15 +52,11 @@ export default {
   },
   reducers: {
     setReactions: (oldState, data) => {
-      // TODO: Review this code once new type of content is added.
-      const questionReactions = getReactionsByType("content", data);
-      const repliesReactions = getReactionsByType("reply", data);
-
+      const reactions = getReactionsForContent(data);
       return {
         ...oldState,
         reactions: {
-          ...questionReactions,
-          ...repliesReactions,
+          ...reactions,
         },
       };
     },

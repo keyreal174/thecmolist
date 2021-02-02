@@ -37,8 +37,7 @@ const Content = ({
   };
 
   const handleEngagementButtonClick = async (caller, engagementType) => {
-    const isContent = !!caller["content_id"];
-    const id = isContent ? caller["content_id"] : caller["reply_id"];
+    const id = caller["content_id"];
     const engagement = engagementType.toLowerCase();
 
     await saveReactionToCallerType({ id, engagement });
@@ -113,12 +112,12 @@ const Content = ({
               <div className="question-answers">
                 {content.replies &&
                   content.replies.map((reply, index) => {
-                    const replyId = reply.reply_id;
+                    const replyId = reply.content_id;
 
                     return (
                       <DiscussionReply
                         articletextlines={2}
-                        {...reply}
+                        {...reply.content}
                         key={index}
                         engagementButtons={[
                           {
@@ -161,7 +160,7 @@ const Content = ({
                           <div className="question-comments-section">
                             {reply.comments &&
                               reply.comments.map((comment) => {
-                                return <DiscussionReply {...comment} />;
+                                return <DiscussionReply {...comment.content} />;
                               })}
                           </div>
                         }
