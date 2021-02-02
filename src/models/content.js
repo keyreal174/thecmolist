@@ -128,5 +128,18 @@ export default {
         throw new Error("Could not save the reaction");
       }
     },
+    async saveContent(data) {
+      try {
+        if (data) {
+          const response = await postContent(data);
+          const { id } = response.data;
+          return id;
+        } else {
+          throw new Error("Could not save content without data");
+        }
+      } catch (error) {
+        throw new Error("Could not save content");
+      }
+    },
   }),
 };

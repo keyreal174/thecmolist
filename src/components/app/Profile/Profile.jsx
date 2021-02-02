@@ -13,7 +13,6 @@ import Footer from "../base/Footer/Footer";
 import DeletePost from "./DeletePost";
 import FollowUserModal from "./FollowUser";
 import Util from "../../util/Util";
-import RatingBadgeProfile from "../base/Rating/RatingBadgeProfile";
 import Analytics from "../../util/Analytics";
 import "./profile.css";
 

@@ -102,7 +102,14 @@ function MockRequests() {
   });
 
   mock.onPost("/api/content").reply(() => {
-    return [200, { success: true, error: null }];
+    return [
+      200,
+      {
+        success: true,
+        error: null,
+        id: Math.ceil(Math.random() * 100000),
+      },
+    ];
   });
 
   mock.onPost("/api/profile").reply(() => {
