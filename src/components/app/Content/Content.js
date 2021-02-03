@@ -244,7 +244,7 @@ const Content = ({ contentLoading, fetchContent, match, ...rest }) => {
             )}
             {contentLoading ? (
               <Col md="12">
-                <ActivityIndicator />
+                <ActivityIndicator className="element-center question-activity-indicator" />
               </Col>
             ) : (
               renderAnswer(rest)
