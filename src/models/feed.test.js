@@ -123,31 +123,31 @@ describe("feedModel model", () => {
       });
 
       const feedModelData = store.getState().feedModel;
-      expect(feedModelData.dashboardFeedData["a_b"].data).toEqual([1, 2]);
-      expect(feedModelData.dashboardFeedData["a_b"].token).toBe("bar22");
-      expect(feedModelData.dashboardFeedData["a_b"].moreData).toBe(true);
-      expect(feedModelData.dashboardFeedData["a_b"].enabled).toBe(true);
+      expect(feedModelData.dashboardFeedData["a%%b"].data).toEqual([1, 2]);
+      expect(feedModelData.dashboardFeedData["a%%b"].token).toBe("bar22");
+      expect(feedModelData.dashboardFeedData["a%%b"].moreData).toBe(true);
+      expect(feedModelData.dashboardFeedData["a%%b"].enabled).toBe(true);
     }),
     it("effect: feedModel fetch data, existing data", async () => {
       const store = init({
         models: { feedModel },
       });
 
-      store.dispatch.feedModel.initFeedDataForKey("c_d");
-      store.dispatch.feedModel.setFeedDataForKey("c_d", {
+      store.dispatch.feedModel.initFeedDataForKey("c%%d");
+      store.dispatch.feedModel.setFeedDataForKey("c%%d", {
         feedData: [1, 2, 3],
         token: "bar",
       });
 
-      store.dispatch.feedModel.initFeedDataForKey("e_f");
-      store.dispatch.feedModel.setFeedDataForKey("e_f", {
+      store.dispatch.feedModel.initFeedDataForKey("e%%f");
+      store.dispatch.feedModel.setFeedDataForKey("e%%f", {
         feedData: [4, 5],
         token: "bar44",
       });
 
       let feedModelData = store.getState().feedModel;
       expect(feedModelData.activeFeed).toEqual([4, 5]);
-      expect(feedModelData.activeFilter).toEqual("e_f");
+      expect(feedModelData.activeFilter).toEqual("e%%f");
 
       // change filter effect
       await store.dispatch.feedModel.changeDashboardFilter({
@@ -157,6 +157,6 @@ describe("feedModel model", () => {
 
       feedModelData = store.getState().feedModel;
       expect(feedModelData.activeFeed).toEqual([1, 2, 3]);
-      expect(feedModelData.activeFilter).toEqual("c_d");
+      expect(feedModelData.activeFilter).toEqual("c%%d");
     });
 });
