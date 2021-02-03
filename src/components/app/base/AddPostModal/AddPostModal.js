@@ -107,8 +107,13 @@ function AddPostModal({
   }, []);
 
   useEffect(() => {
-    if (profileStats && profileStats.groups && profileStats.groups.length > 0) {
-      const { groups: actualGroups } = profileStats;
+    if (
+      profileStats &&
+      profileStats.profile &&
+      profileStats.profile.groups &&
+      profileStats.profile.groups.length > 0
+    ) {
+      const { groups: actualGroups } = profileStats.profile;
       setGroups(getGroupsObject(actualGroups));
     }
   }, [profileStats]);

@@ -103,7 +103,7 @@ export default {
           });
           dispatch.reactionModel.setReactions({
             ...data.contentModel.content,
-            ...response.data,
+            ...response.data.content,
           });
         } else {
           throw new Error("Data not provided");
