@@ -1,16 +1,23 @@
 import React, { useState } from "react";
+import { Button } from "react-bootstrap";
 import Article from "../base/Article/Article";
+import Arrow from "../base/icons/arrow.svg";
+
 const cdn = "https://d3k6hg21rt7gsh.cloudfront.net/icons";
 
-const RenderList = ({ modules }) => {
+const RenderList = ({ modules, filterObject, showMore }) => {
   const handleEngagementButtonClick = async (caller, engagementType) => {
     const id = caller["content_id"];
     const engagement = engagementType.toLowerCase();
   };
 
+  const moduleShowMore = (filter) => {
+    showMore(filter);
+  };
+
   const List = Object.entries(modules).map(([key, value], i) => {
     return (
-      <div key={i}>
+      <div key={i} className="search-filter-board">
         {value.map((item, j) => {
           return (
             <Article
@@ -45,9 +52,32 @@ const RenderList = ({ modules }) => {
             />
           );
         })}
+        <div className="feed-dashboard-show-more">
+          <div
+            style={{
+              textAlign: "center",
+              width: "100%",
+              paddingTop: "10px",
+            }}
+          >
+            <Button
+              style={{
+                color: "#0175b0",
+                textDecoration: "none",
+                backgroundColor: "transparent",
+                borderColor: "transparent",
+              }}
+              onClick={() => moduleShowMore(key)}
+            >
+              Show more
+              <img alt="arrow" src={Arrow} />
+            </Button>
+          </div>
+        </div>
       </div>
     );
   });
+
   return <div>{List}</div>;
 };
 

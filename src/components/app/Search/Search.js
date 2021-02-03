@@ -5,14 +5,31 @@ import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Filter from "../base/Filter/Filter";
 import RenderList from "./RenderList";
+import "./search.css";
+
+const filterObject = {
+  qa: "Questions & Answers",
+  projects: "Projects",
+  articles: "Articles",
+  people: "People",
+  vendors: "vendors",
+};
 
 const Search = (props) => {
   const [filters, setFilters] = useState([]);
   const [modules, setModules] = useState(null);
   const [filterIdx, setFilterIdx] = useState(null);
+  const [filter, setFilter] = useState(null);
 
   const changeFilter = (idx) => {
     setFilterIdx(idx);
+  };
+
+  const showMore = (filter) => {
+    var index = filters.map((item) => item.slug).indexOf(filter);
+    changeFilter(index);
+    setFilter(filter);
+    props.fetchRefinedSearch(filter);
   };
 
   useEffect(() => {
@@ -50,6 +67,24 @@ const Search = (props) => {
 
         setModules({ ...newModules });
       }
+
+      if (props.searchResult.feedData) {
+        let newModules = {};
+        newModules = {
+          [filter]: props.searchResult.feedData.map((data) => {
+            return {
+              header: {
+                ...data.header,
+                image: data.image,
+              },
+              headline: data.headline,
+              articletext: data.articletext,
+            };
+          }),
+        };
+
+        setModules({ ...newModules });
+      }
     }
   }, [props.searchResult]);
 
@@ -64,7 +99,15 @@ const Search = (props) => {
             filters={filters}
             onChange={(idx) => changeFilter(idx)}
           />
-          <div>{modules && <RenderList modules={modules} />}</div>
+          <div>
+            {modules && (
+              <RenderList
+                modules={modules}
+                filterObject={filterObject}
+                showMore={showMore}
+              />
+            )}
+          </div>
         </div>
       </div>
     </Container>
@@ -80,6 +123,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     fetchFullSearch: dispatch.searchModel.fetchFullSearch,
+    fetchRefinedSearch: dispatch.searchModel.fetchRefinedSearch,
   };
 };
 
