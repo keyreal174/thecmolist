@@ -27,7 +27,7 @@ export default {
         const response = await getFullSearchRequest();
         dispatch.searchModel.updateSearchResult(response.data);
       } catch (err) {
-        throw new Error("Could not get topics");
+        throw new Error("Could not get search full data");
       }
     },
 
@@ -36,7 +36,7 @@ export default {
         const response = await getRefinedSearchRequest(filter);
         dispatch.searchModel.updateSearchResult(response.data);
       } catch (err) {
-        throw new Error("Could not get topics");
+        throw new Error("Could not get search refined data");
       }
     },
   }),

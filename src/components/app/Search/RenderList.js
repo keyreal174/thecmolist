@@ -18,10 +18,12 @@ const RenderList = ({ modules, filterObject, showMore }) => {
   const List = Object.entries(modules).map(([key, value], i) => {
     return (
       <div key={i} className="search-filter-board">
+        <h4 className="search-filter-title">{filterObject[key]}</h4>
         {value.map((item, j) => {
           return (
             <Article
               key={j}
+              className="feed-dashboard-cell"
               articletextlines={1}
               {...item}
               engagementButtons={[

@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import { useHistory } from "react-router";
 import { Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
 import { AsyncTypeahead, TypeaheadMenu } from "react-bootstrap-typeahead";
 import { NavLink } from "react-router-dom";
@@ -12,6 +13,7 @@ import Person from "../icons/person.svg";
 import Search from "../icons/search.svg";
 
 function Header() {
+  const history = useHistory();
   let PersonHeader = (props) => (
     <Fragment>
       <img src={props.icon} alt="" />
@@ -53,6 +55,11 @@ function Header() {
           labelKey="name"
           minLength={3}
           onSearch={handleSearch}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              history.push("/search");
+            }
+          }}
           options={options}
           emptyLabel=""
           renderMenu={(results, menuProps) => {
@@ -64,7 +71,6 @@ function Header() {
             );
           }}
           onChange={(selectedOption) => {
-            console.log("=====");
             window.location.href = selectedOption[0].link;
           }}
           placeholder="Search"
