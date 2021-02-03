@@ -159,8 +159,13 @@ const Content = ({
                         {
                           <div className="question-comments-section">
                             {reply.comments &&
-                              reply.comments.map((comment) => {
-                                return <DiscussionReply {...comment.content} />;
+                              reply.comments.map((comment, index) => {
+                                return (
+                                  <DiscussionReply
+                                    {...comment.content}
+                                    key={index}
+                                  />
+                                );
                               })}
                           </div>
                         }

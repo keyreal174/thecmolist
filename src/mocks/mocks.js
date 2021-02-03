@@ -163,14 +163,14 @@ function MockRequests() {
             markdown: " ",
           },
           articletext: JSON.parse(postBody.data).data,
+          num_thanks: 0,
+          num_insightful: 0,
         },
         comments: [],
         reactions: [
           { type: "thanks", checked: false },
           { type: "insightful", checked: false },
         ],
-        num_thanks: 0,
-        num_insightful: 0,
       },
     ];
   });

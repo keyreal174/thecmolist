@@ -16,10 +16,10 @@ const getReactionsForContent = (data) => {
   let getReactions = (contentData) => {
     let reactionsForContent = {};
     if (contentData.content) {
-      if (contentData.content.num_thanks) {
+      if (contentData.content.num_thanks >= 0) {
         reactionsForContent.num_thanks = contentData.content.num_thanks;
       }
-      if (contentData.content.num_insightful) {
+      if (contentData.content.num_insightful >= 0) {
         reactionsForContent.num_insightful = contentData.content.num_insightful;
       }
     }
