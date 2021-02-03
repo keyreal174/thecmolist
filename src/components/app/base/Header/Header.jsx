@@ -64,6 +64,7 @@ function Header() {
             );
           }}
           onChange={(selectedOption) => {
+            console.log("=====");
             window.location.href = selectedOption[0].link;
           }}
           placeholder="Search"

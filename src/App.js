@@ -18,6 +18,7 @@ import Signedup from "./components/home/Signedup";
 import Signup from "./components/home/Signup";
 import TechnologyProfile from "./components/app/Profile/TechnologyProfile";
 import Topics from "./components/app/Topics/Topics";
+import Search from "./components/app/Search/Search";
 import Util from "./components/util/Util";
 import Cookies from "js-cookie";
 import SetupMocks from "./mocks/mocks";
@@ -84,6 +85,13 @@ class App extends React.Component {
           <Route exact path="/signedup">
             <Signedup />
           </Route>
+          <Route
+            exact
+            path="/search"
+            render={(props) =>
+              this.state.authed ? <Search /> : <Redirect to="/login" />
+            }
+          />
           <Route
             exact
             path="/feed"
