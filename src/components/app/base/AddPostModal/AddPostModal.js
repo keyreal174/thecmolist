@@ -172,6 +172,7 @@ function AddPostModal({
     setPerson("");
     setRole("");
   };
+
   return (
     <>
       <Modal className="modal" show={show} onHide={handleClose} size="lg">
@@ -180,7 +181,7 @@ function AddPostModal({
         </Modal.Header>
         <Modal.Body>
           <Container>
-            <Form>
+            <Form id="form-add-post-modal" onSubmit={handleSubmit}>
               <Row>
                 {error && (
                   <Alert
@@ -256,6 +257,8 @@ function AddPostModal({
                     placeholder="Be specific and imagine you’re asking a question to another person"
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}
+                    required={true}
+                    controlId="validation01"
                   />
                 </Col>
                 <Col md="10">
@@ -267,6 +270,8 @@ function AddPostModal({
                     placeholder="Include all the information, @people and @vendors someone would need to answer your question"
                     onChange={(e) => setBody(e.target.value)}
                     value={body}
+                    required={true}
+                    controldId="validation02"
                   />
                 </Col>
                 <Col md="2">
@@ -426,7 +431,8 @@ function AddPostModal({
           <Button
             className="btn__homepage-blue"
             variant="primary"
-            onClick={handleSubmit}
+            type="submit"
+            form="form-add-post-modal"
           >
             {secondButtonText}
           </Button>
