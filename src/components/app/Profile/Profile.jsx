@@ -379,22 +379,8 @@ const Profile = (props) => {
             </div>
           )}
 
-          <div
-            className="d-flex m-auto pt-4 pb-2 align-items-center"
-            style={{ width: "60%" }}
-          >
-            <Form.Control placeholder="" className="mr-3" />
-            <Button
-              className="btn__homepage btn__homepage-blue btn__nux_share"
-              style={{ float: "right", width: "220px" }}
-            >
-              Search {profileFirstName}'s knowledge
-            </Button>
-          </div>
-
           {profileFirstName && (
             <Filter
-              title="Vendors"
               filterIdx={filterIdx}
               filters={filters}
               onChange={(idx) => setFilterId(idx)}
