@@ -150,25 +150,27 @@ function MockRequests() {
     return [
       200,
       {
-        reply_id: Math.ceil(Math.random() * 1000),
-        header: {
-          markdown:
-            "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg)",
-          subtext: "Posted an answer",
-          image:
-            "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NTgxMDIzMjMwOWltYWdlLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
+        content_id: Math.ceil(Math.random() * 1000),
+        content: {
+          header: {
+            markdown:
+              "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg)",
+            subtext: "Posted an answer",
+            image:
+              "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NTgxMDIzMjMwOWltYWdlLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
+          },
+          headline: {
+            markdown: " ",
+          },
+          articletext: JSON.parse(postBody.data).data,
+          num_thanks: 0,
+          num_insightful: 0,
         },
-        headline: {
-          markdown: " ",
-        },
-        articletext: JSON.parse(postBody.data).data,
         comments: [],
         reactions: [
           { type: "thanks", checked: false },
           { type: "insightful", checked: false },
         ],
-        num_thanks: 0,
-        num_insightful: 0,
       },
     ];
   });
@@ -177,17 +179,19 @@ function MockRequests() {
     return [
       200,
       {
-        header: {
-          markdown:
-            "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg)",
-          subtext: "Posted an answer",
-          image:
-            "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NTgxMDIzMjMwOWltYWdlLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
+        content: {
+          header: {
+            markdown:
+              "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg)",
+            subtext: "Posted an answer",
+            image:
+              "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NTgxMDIzMjMwOWltYWdlLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
+          },
+          headline: {
+            markdown: " ",
+          },
+          articletext: JSON.parse(postBody.data).data,
         },
-        headline: {
-          markdown: " ",
-        },
-        articletext: JSON.parse(postBody.data).data,
       },
     ];
   });

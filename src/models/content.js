@@ -39,6 +39,9 @@ export default {
       const newState = {
         content: { ...oldState.content },
       };
+      if (!newState.content.replies) {
+        newState.content.replies = [];
+      }
       newState.content.replies.push(newAnswer);
 
       return newState;
@@ -49,7 +52,7 @@ export default {
         content: { ...oldState.content },
       };
       newState.content.replies.map((reply) => {
-        if (reply["reply_id"] === replyId) {
+        if (reply["content_id"] === replyId) {
           if (reply.comments instanceof Array) {
             reply.comments.push(newReply);
           } else {
@@ -88,7 +91,7 @@ export default {
           });
           dispatch.reactionModel.setReactions({
             ...data.contentModel.content,
-            ...response.data,
+            ...response.data.content,
           });
         } else {
           throw new Error("Data not provided");
@@ -100,10 +103,8 @@ export default {
     async saveCommentToReply(data) {
       try {
         if (data) {
-          const {
-            comment,
-            reply: { reply_id: replyId },
-          } = data;
+          let comment = data.comment;
+          let replyId = data.reply.content_id;
           const response = await replyComment(replyId, comment);
           dispatch.contentModel.saveComment({
             newReply: response.data,
