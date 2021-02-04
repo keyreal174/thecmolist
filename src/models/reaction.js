@@ -14,7 +14,14 @@ export const setReaction = (contentId, type) => {
 
 const getReactionsForContent = (data) => {
   let getReactions = (contentData) => {
-    let reactionsForContent = {};
+    let reactionsForContent = {
+      num_thanks: 0,
+      num_insightful: 0,
+      reactions: ["thanks", "insightful"].map((r) => ({
+        type: r,
+        checked: false,
+      })),
+    };
     if (contentData.content) {
       if (contentData.content.num_thanks >= 0) {
         reactionsForContent.num_thanks = contentData.content.num_thanks;
@@ -24,23 +31,25 @@ const getReactionsForContent = (data) => {
       }
     }
     if (contentData.reactions) {
-      reactionsForContent.reactions = contentData.reactions;
+      contentData.reactions.forEach((serverReaction) => {
+        let idx = reactionsForContent.reactions.findIndex(
+          (r) => r.type === serverReaction.type
+        );
+        if (idx >= 0) {
+          reactionsForContent.reactions[idx] = { ...serverReaction };
+        }
+      });
     }
     return reactionsForContent;
   };
 
   let reactions = {};
   // set reactions data for root content
-  let reactionsForContent = getReactions(data);
-  if (Object.keys(reactionsForContent).length > 0) {
-    reactions[data.content_id] = reactionsForContent;
-  }
+  reactions[data.content_id] = getReactions(data);
+
   // set reactions data for replies
   (data.replies || []).forEach((reply) => {
-    let reactionsForReply = getReactions(reply);
-    if (Object.keys(reactionsForReply).length > 0) {
-      reactions[reply.content_id] = reactionsForReply;
-    }
+    reactions[reply.content_id] = getReactions(reply);
   });
   return reactions;
 };
@@ -93,14 +102,10 @@ export default {
     async changeReaction(data) {
       try {
         const { id, engagement } = data;
-        if (id) {
-          await setReaction(id, engagement);
-          dispatch.reactionModel.setReaction({ id, type: engagement });
-        } else {
-          throw new Error("Could not change reaction without id");
-        }
+        await setReaction(id, engagement);
+        dispatch.reactionModel.setReaction({ id, type: engagement });
       } catch (err) {
-        throw new Error("Could not change reaction");
+        throw new Error("Could not change reaction: " + err.toString());
       }
     },
   }),

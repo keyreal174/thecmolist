@@ -202,6 +202,44 @@ describe("reactionModel model", () => {
     expect(reactionModelData.reactions).toEqual(reactions);
   });
 
+  it("reducer: setReactions without any reaction data", () => {
+    const store = init({
+      models: { reactionModel },
+    });
+
+    // clone the data object and remove all references to reactions
+    let dataNoReactions = JSON.parse(JSON.stringify(data));
+    delete dataNoReactions.content.num_insightful;
+    delete dataNoReactions.content.num_thanks;
+    delete dataNoReactions.reactions;
+    dataNoReactions.replies.forEach((reply) => {
+      delete reply.content.num_insightful;
+      delete reply.content.num_thanks;
+      delete reply.reactions;
+    });
+    store.dispatch.reactionModel.setReactions(dataNoReactions);
+
+    // we expect reaction model to set all reaction data to 0
+    const reactionModelData = store.getState().reactionModel;
+    let reactionKeys = Object.keys(reactionModelData.reactions);
+    reactionKeys.forEach((key) => {
+      let modelReactions = reactionModelData.reactions[key];
+      expect(modelReactions.num_insightful).toEqual(0);
+      expect(modelReactions.num_thanks).toEqual(0);
+      expect(modelReactions.reactions.length).toEqual(2);
+      expect(
+        modelReactions.reactions.findIndex(
+          (r) => r.type === "thanks" && !r.checked
+        ) >= 0
+      ).toEqual(true);
+      expect(
+        modelReactions.reactions.findIndex(
+          (r) => r.type === "insightful" && !r.checked
+        ) >= 0
+      ).toEqual(true);
+    });
+  });
+
   it("reducer: setReaction", () => {
     const store = init({
       models: { reactionModel },
