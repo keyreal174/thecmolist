@@ -12,16 +12,22 @@ export const setReaction = (contentId, type) => {
   });
 };
 
+const initReactionModelForContent = () => {
+  return {
+    num_thanks: 0,
+    num_insightful: 0,
+    reactions: ["thanks", "insightful"].map((r) => ({
+      type: r,
+      checked: false,
+    })),
+  };
+};
 const getReactionsForContent = (data) => {
   let getReactions = (contentData) => {
-    let reactionsForContent = {
-      num_thanks: 0,
-      num_insightful: 0,
-      reactions: ["thanks", "insightful"].map((r) => ({
-        type: r,
-        checked: false,
-      })),
-    };
+    // init to default values (0 for everything)
+    let reactionsForContent = initReactionModelForContent();
+
+    // merge in values from contentData
     if (contentData.content) {
       if (contentData.content.num_thanks >= 0) {
         reactionsForContent.num_thanks = contentData.content.num_thanks;
@@ -87,6 +93,7 @@ export default {
           }
         });
       } else {
+        newState.reactions[id] = initReactionModelForContent();
         newState.reactions[id][`num_${type}`]++;
         newState.reactions[id].reactions.forEach((reaction) => {
           if (reaction.type === type) {

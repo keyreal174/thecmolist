@@ -101,10 +101,6 @@ export default {
           dispatch.contentModel.saveReply({
             newAnswer: response.data,
           });
-          dispatch.reactionModel.setReactions({
-            ...data.contentModel.content,
-            ...response.data.content,
-          });
         } else {
           throw new Error("Data not provided");
         }
