@@ -35,6 +35,7 @@ function AddPostModal({
   const [showVideo, setShowVideo] = useState(false);
   const [title, setTitle] = useState("");
   const [topics, setTopics] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     const content = {
@@ -49,15 +50,17 @@ function AddPostModal({
       role,
     };
     setError(null);
+    setIsLoading(true);
     e.preventDefault();
 
     try {
       await onSubmit(content);
-
-      handleClose();
-      cleanFields();
     } catch (error) {
       setError(error);
+    } finally {
+      setIsLoading(false);
+      handleClose();
+      cleanFields();
     }
   };
 
@@ -430,11 +433,13 @@ function AddPostModal({
             className="btn-white modal-cancel-button"
             variant="outline-primary"
             onClick={() => handleCancel()}
+            disabled={isLoading}
           >
             {firstButtonText}
           </Button>
           <Button
             className="btn__homepage-blue"
+            disabled={isLoading}
             variant="primary"
             type="submit"
             form="form-add-post-modal"
