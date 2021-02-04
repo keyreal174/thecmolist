@@ -18,7 +18,6 @@ const feedRequest = (filter, token) => {
     }
   }
   if (subfilter.length > 0) {
-    alert(`/api/feed?filter=${filter}&subfilter=${subfilter}`);
     return axios.get(`/api/feed?filter=${filter}&subfilter=${subfilter}`, {
       headers,
     });
