@@ -14,6 +14,7 @@ const Search = (props) => {
   const [modules, setModules] = useState(null);
   const [filterIdx, setFilterIdx] = useState(null);
   const [filter, setFilter] = useState(null);
+  const [isFull, setIsFull] = useState(false);
 
   const changeFilter = (idx) => {
     setFilterIdx(idx);
@@ -23,6 +24,10 @@ const Search = (props) => {
     var index = filters.map((item) => item.slug).indexOf(filter);
     changeFilter(index);
     setFilter(filter);
+    props.fetchRefinedSearch(filter);
+  };
+
+  const fetchMoreRefinedData = (filter) => {
     props.fetchRefinedSearch(filter);
   };
 
@@ -61,27 +66,31 @@ const Search = (props) => {
         });
 
         setModules({ ...newModules });
-      }
-
-      if (props.searchResult.feedData) {
-        let newModules = {};
-        newModules = {
-          [filter]: props.searchResult.feedData.map((data) => {
-            return {
-              header: {
-                ...data.header,
-                image: data.image,
-              },
-              headline: data.headline,
-              articletext: data.articletext,
-            };
-          }),
-        };
-
-        setModules({ ...newModules });
+        setIsFull(true);
       }
     }
   }, [props.searchResult]);
+
+  useEffect(() => {
+    if (props.modules.length > 0) {
+      let newModules = {};
+      newModules = {
+        [filter]: props.modules.map((data) => {
+          return {
+            header: {
+              ...data.header,
+              image: data.image,
+            },
+            headline: data.headline,
+            articletext: data.articletext,
+          };
+        }),
+      };
+
+      setModules({ ...newModules });
+      setIsFull(false);
+    }
+  }, [props.modules]);
 
   return (
     <Container className="height-100">
@@ -100,6 +109,9 @@ const Search = (props) => {
                 modules={modules}
                 filters={filters}
                 showMore={showMore}
+                moreData={props.moreData}
+                isFull={isFull}
+                fetchMoreRefinedData={fetchMoreRefinedData}
               />
             )}
           </div>
@@ -112,6 +124,8 @@ const Search = (props) => {
 const mapState = (state) => {
   return {
     searchResult: state.searchModel.searchResult,
+    modules: state.searchModel.modules,
+    moreData: state.searchModel.moreData,
   };
 };
 

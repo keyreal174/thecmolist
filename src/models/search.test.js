@@ -21,6 +21,16 @@ describe("searchModel model", () => {
     const searchModelData = store.getState().searchModel;
     expect(searchModelData.searchResult).toEqual(fullSearch);
   }),
+    it("reducer: updateModule", () => {
+      const store = init({
+        models: { searchModel },
+      });
+
+      store.dispatch.searchModel.updateModule(refinedSearch);
+
+      const searchModelData = store.getState().searchModel;
+      expect(searchModelData.modules).toEqual(refinedSearch.feedData);
+    }),
     it("search successfully full data from an API", async () => {
       axios.get.mockImplementationOnce(() => Promise.resolve(fullSearch));
 

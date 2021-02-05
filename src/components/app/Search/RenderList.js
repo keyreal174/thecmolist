@@ -5,14 +5,25 @@ import Arrow from "../base/icons/arrow.svg";
 
 const cdn = "https://d3k6hg21rt7gsh.cloudfront.net/icons";
 
-const RenderList = ({ modules, filters, showMore }) => {
+const RenderList = ({
+  modules,
+  filters,
+  showMore,
+  moreData,
+  isFull,
+  fetchMoreRefinedData,
+}) => {
   const handleEngagementButtonClick = async (caller, engagementType) => {
     const id = caller["content_id"];
     const engagement = engagementType.toLowerCase();
   };
 
   const moduleShowMore = (filter) => {
-    showMore(filter);
+    if (isFull) {
+      showMore(filter);
+    } else {
+      fetchMoreRefinedData(filter);
+    }
   };
 
   const List = Object.entries(modules).map(([key, value], i) => {
@@ -64,18 +75,20 @@ const RenderList = ({ modules, filters, showMore }) => {
               paddingTop: "10px",
             }}
           >
-            <Button
-              style={{
-                color: "#0175b0",
-                textDecoration: "none",
-                backgroundColor: "transparent",
-                borderColor: "transparent",
-              }}
-              onClick={() => moduleShowMore(key)}
-            >
-              Show more
-              <img alt="arrow" src={Arrow} />
-            </Button>
+            {(moreData || isFull) && (
+              <Button
+                style={{
+                  color: "#0175b0",
+                  textDecoration: "none",
+                  backgroundColor: "transparent",
+                  borderColor: "transparent",
+                }}
+                onClick={() => moduleShowMore(key)}
+              >
+                Show more
+                <img alt="arrow" src={Arrow} />
+              </Button>
+            )}
           </div>
         </div>
       </div>
