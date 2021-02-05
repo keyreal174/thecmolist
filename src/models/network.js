@@ -14,7 +14,6 @@ const networkRequest = (sort, filter, token) => {
   if (token) {
     headers.token = token;
   }
-  console.info("--URL", url);
   return axios.get(url, { headers });
 };
 
@@ -132,8 +131,10 @@ export default {
         const { activeFilter, sortOrder, token } = rootState.networkModel;
         const newToken = sortOrder === sort ? token : null;
         dispatch.networkModel.setLoading(true);
-        const response = networkRequest(sort, activeFilter, newToken);
-        dispatch.networkModel.setFeedDataForKey(activeFilter, response.data);
+        const response = await networkRequest(sort, activeFilter, newToken);
+        let data = response.data;
+        data.sortOrder = sort;
+        dispatch.networkModel.setFeedDataForKey(activeFilter, data);
       } catch (error) {
         throw new Error("Can not change sort order");
       } finally {

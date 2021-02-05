@@ -5,75 +5,78 @@ const axios = require("axios");
 jest.mock("axios");
 
 describe("networkModel model", () => {
-  it("reducer: basic networkModel reducer", () => {
+  it("reducer: initFeedDataForKey", () => {
     const store = init({
       models: { networkModel },
     });
+    const DATA_KEY = "TEST";
+    store.dispatch.networkModel.initFeedDataForKey(DATA_KEY);
+    const networkModelData = store.getState().networkModel;
 
-    store.dispatch.networkModel.setData({
-      feedData: [1, 2, 3],
-      token: "a",
-      sortOrder: "Top",
+    expect(networkModelData.feedData[DATA_KEY].title).toEqual(DATA_KEY);
+    expect(networkModelData.feedData[DATA_KEY].data).toEqual([]);
+    expect(networkModelData.feedData[DATA_KEY].enabled).toEqual(true);
+  });
+
+  it("reducer: setLoading", () => {
+    const store = init({
+      models: { networkModel },
     });
+    store.dispatch.networkModel.setLoading(true);
+    const networkModelData = store.getState().networkModel;
+
+    expect(networkModelData.loadingNetwork).toEqual(true);
+  });
+
+  it("reducer: setFeedDataForKey", () => {
+    const store = init({
+      models: { networkModel },
+    });
+    const DATA = {
+      sortOrder: "recent",
+      token: "ab",
+      feedData: [1, 2],
+    };
+    const FILTER_KEY = "FOO";
+
+    store.dispatch.networkModel.initFeedDataForKey(FILTER_KEY);
+    store.dispatch.networkModel.setFeedDataForKey(FILTER_KEY, DATA);
 
     const networkModelData = store.getState().networkModel;
-    expect(networkModelData.feedData).toEqual([1, 2, 3]);
-    expect(networkModelData.token).toBe("a");
-    expect(networkModelData.moreData).toBe(true);
-    expect(networkModelData.sortOrder).toBe("Top");
-  }),
-    it("reducer: networkModel should set moreData false if no data is passed", () => {
-      const store = init({
-        models: { networkModel },
-      });
 
-      store.dispatch.networkModel.setData({
-        feedData: [],
-        token: "a",
-        sortOrder: "Top",
-      });
+    expect(networkModelData.activeFeed).toEqual(DATA.feedData);
+    expect(networkModelData.activeFilter).toEqual(FILTER_KEY);
+    expect(networkModelData.sortOrder).toEqual(DATA.sortOrder);
+    expect(networkModelData.token).toEqual(DATA.token);
+    expect(networkModelData.feedData[FILTER_KEY].title).toEqual(FILTER_KEY);
+    expect(networkModelData.feedData[FILTER_KEY].data).toEqual(DATA.feedData);
+    expect(networkModelData.feedData[FILTER_KEY].enabled).toEqual(true);
+  });
 
-      const networkModelData = store.getState().networkModel;
-      expect(networkModelData.feedData).toEqual([]);
-      expect(networkModelData.moreData).toBe(false);
-    }),
-    it("reducer: networkModel should append data if prior data exists", () => {
-      const store = init({
-        models: { networkModel },
-      });
-
-      store.dispatch.networkModel.setData({
-        feedData: [1, 2, 3],
-        token: "a",
-        sortOrder: "Top",
-      });
-      store.dispatch.networkModel.setData({
-        feedData: [4, 5],
-        token: "a",
-        sortOrder: "Top",
-      });
-
-      const networkModelData = store.getState().networkModel;
-      expect(networkModelData.feedData).toEqual([1, 2, 3, 4, 5]);
-      expect(networkModelData.moreData).toBe(true);
-    }),
-    it("effect: networkModel fetch data", async () => {
-      const store = init({
-        models: { networkModel },
-      });
-
-      // mock data
-      axios.get.mockResolvedValue({
-        data: {
-          feedData: [1, 2],
-          token: "e6a47504c76140880e6466f23eead514",
-        },
-      });
-      await store.dispatch.networkModel.fetchNetwork("Top");
-
-      const networkModelData = store.getState().networkModel;
-      expect(networkModelData.feedData.length).toEqual(2);
-      expect(networkModelData.moreData).toBe(true);
-      expect(networkModelData.token).toBe("e6a47504c76140880e6466f23eead514");
+  it("reducer: setActiveFilter", () => {
+    const store = init({
+      models: { networkModel },
     });
+    const FILTER_KEY = "BAR";
+
+    store.dispatch.networkModel.initFeedDataForKey(FILTER_KEY);
+    store.dispatch.networkModel.setActiveFilter(FILTER_KEY);
+
+    const networkModelData = store.getState().networkModel;
+
+    expect(networkModelData.activeFilter).toEqual(FILTER_KEY);
+  });
+
+  it("reducer: setActiveSortOrder", () => {
+    const store = init({
+      models: { networkModel },
+    });
+    const SORT_ORDER = "FANCY";
+
+    store.dispatch.networkModel.setActiveSortOrder(SORT_ORDER);
+
+    const networkModelData = store.getState().networkModel;
+
+    expect(networkModelData.sortOrder).toEqual(SORT_ORDER);
+  });
 });
