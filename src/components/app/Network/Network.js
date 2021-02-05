@@ -12,8 +12,8 @@ import Analytics from "../../util/Analytics";
 import "./network.css";
 
 const renderFeed = (props, fetchData) => {
-  const feedData = props.activeFeed;
-  const moreData = true;
+  const feedData = props.feedData;
+  const moreData = props.moreData;
 
   return (
     <>
@@ -70,16 +70,14 @@ const renderFeed = (props, fetchData) => {
 const Network = (props) => {
   const [sortOrder, setSortOrder] = useState("Top");
   const [inviteModalShow, setInviteModalShow] = useState(false);
-  const fetchData = async () => await props.fetchNetwork(sortOrder);
+  const fetchData = async () => await props.fetchActiveNetwork();
   const formFilterChange = (event) => {
-    setSortOrder(event.target.value);
-    props.fetchNetwork(event.target.value);
+    const value = event.target.value;
+    setSortOrder(value);
+    props.changeSortOrder(value);
   };
   const [filterIdx, setFilterIdx] = useState(0);
   const [filters, setFilters] = useState([]);
-  const changeNetworkFilter = (filter) => {
-    props.changeNetworkFilter(filter);
-  };
   useEffect(() => {
     const getProfileStats = async () => props.getProfileStats();
     getProfileStats().then((profileStats) => {
@@ -100,12 +98,12 @@ const Network = (props) => {
         );
       }
       setFilters(newFilters);
-      changeNetworkFilter(newFilters[filterIdx].slug);
+      props.changeFilter(newFilters[filterIdx].slug);
     });
   }, []);
   const changeFilter = (idx) => {
     setFilterIdx(idx);
-    changeNetworkFilter(filters[idx].slug);
+    props.changeFilter(filters[idx].slug);
   };
   return (
     <>
@@ -166,8 +164,7 @@ const Network = (props) => {
 const mapState = (state) => {
   return {
     activeFilter: state.networkModel.activeFilter,
-    activeFeed: state.networkModel.activeFeed,
-    feedData: state.networkModel.feedData,
+    feedData: state.networkModel.activeFeed,
     moreData: state.networkModel.moreData,
     localConnectedUsers: state.userModel.localConnectedUsers,
     loadingNetwork: state.networkModel.loadingNetwork,
@@ -176,11 +173,12 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    fetchNetwork: dispatch.networkModel.fetchNetwork,
+    fetchActiveNetwork: dispatch.networkModel.fetchActiveNetwork,
+    changeFilter: dispatch.networkModel.changeFilter,
+    changeSortOrder: dispatch.networkModel.changeSortOrder,
     saveUserInvite: dispatch.userModel.saveInvite,
     connectUser: dispatch.userModel.connectUser,
     getProfileStats: dispatch.profileModel.getProfileStats,
-    changeNetworkFilter: dispatch.networkModel.changeNetworkFilter,
   };
 };
 

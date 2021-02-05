@@ -4,13 +4,17 @@ const networkRequest = (sort, filter, token) => {
   let headers = {
     "timezone-offset": new Date().getTimezoneOffset(),
   };
-  let url = `/api/network?sort=${sort.toLowerCase()}`;
+  let url = "/api/network?";
+  if (sort) {
+    url += `sort=${sort.toLowerCase()}`;
+  }
   if (filter) {
     url += `&filter=${filter}`;
   }
   if (token) {
     headers.token = token;
   }
+  console.info("--URL", url);
   return axios.get(url, { headers });
 };
 
@@ -19,10 +23,10 @@ export default {
   state: {
     activeFeed: "",
     activeFilter: "",
-    feedData: [],
+    feedData: {},
     loadingNetwork: false,
     moreData: false,
-    sortOrder: "",
+    sortOrder: "Top",
     token: null,
   },
   reducers: {
@@ -33,9 +37,7 @@ export default {
       let newState = { ...oldState };
       newState.feedData[filterKey] = {
         title: filterKey,
-        token: "",
         data: [],
-        moreData: false,
         enabled: true,
       };
       return newState;
@@ -46,24 +48,26 @@ export default {
         loadingNetwork: data,
       };
     },
-    setFeedDataForKey: (oldState, filter, data) => {
-      if (!(filter in oldState.feedData)) {
+    setFeedDataForKey: (oldState, filterKey, data) => {
+      if (!(filterKey in oldState.feedData)) {
         throw new Error("No feed data for specified key!");
       }
       let newState = {
         ...oldState,
-        activeFilter: filter,
+        activeFilter: filterKey,
+        sortOrder: data.sortOrder,
+        token: data.token,
       };
       const feedData = data.feedData;
-      const token = data.token;
-      const currentFeed = oldState.feedData[filter];
+      const currentFeed = oldState.feedData[filterKey];
+
       if (feedData != null && feedData.length > 0) {
-        currentFeed.moreData = true;
-        currentFeed.token = token;
+        newState.moreData = true;
         currentFeed.data = currentFeed.data.concat(feedData);
       } else {
-        currentFeed.moreData = false;
+        newState.moreData = false;
       }
+
       newState.activeFeed = currentFeed.data.slice();
       return newState;
     },
@@ -77,43 +81,63 @@ export default {
         activeFeed: oldState.feedData[filterKey].data,
       };
     },
+    setActiveSortOrder: (oldState, sortOrder) => {
+      return {
+        ...oldState,
+        sortOrder,
+      };
+    },
   },
   effects: (dispatch) => ({
-    async fetchNetwork(sort, rootState) {
-      let token =
-        rootState.networkModel.sortOrder === sort
-          ? rootState.networkModel.token
-          : null; // reset token if sort order changed
-      let filter = rootState.networkModel.activeFilter;
-      const response = await networkRequest(sort, filter, token);
-      const data = response.data;
-      data.sortOrder = sort;
-      dispatch.networkModel.setFeedDataForKey(filter, data);
-    },
-    async changeNetworkFilter(filter, rootState) {
-      if (!(filter in rootState.networkModel.feedData)) {
-        await dispatch.networkModel.initFeedDataForKey(filter);
+    async fetchActiveNetwork(_, rootState) {
+      try {
+        const { activeFilter, sortOrder, token } = rootState.networkModel;
+        dispatch.networkModel.setLoading(true);
+        const response = await networkRequest(sortOrder, activeFilter, token);
+        let data = response.data;
+        data.sortOrder = sortOrder;
+        dispatch.networkModel.setFeedDataForKey(activeFilter, response.data);
+      } catch (error) {
+        throw new Error("Can not fetch active network");
+      } finally {
+        dispatch.networkModel.setLoading(false);
       }
-      let dataForFilter = rootState.networkModel.feedData[filter];
-      if (
-        dataForFilter &&
-        dataForFilter.data &&
-        dataForFilter.data.length === 0
-      ) {
+    },
+    async changeFilter(filterKey, rootState) {
+      const filterExists = filterKey in rootState.networkModel.feedData;
+
+      if (filterExists) {
+        dispatch.networkModel.setActiveFilter(filterKey);
+      } else {
+        await dispatch.networkModel.initFeedDataForKey(filterKey);
+
         try {
           dispatch.networkModel.setLoading(true);
+          const { token, sortOrder } = rootState.networkModel;
           const response = await networkRequest(
-            rootState.networkModel.sortOrder,
-            filter.toLowerCase(),
-            dataForFilter.token
+            sortOrder,
+            filterKey.toLowerCase(),
+            token
           );
-          const data = response.data;
-          dispatch.networkModel.setFeedDataForKey(filter, data);
+          let data = response.data;
+          data.sortOrder = sortOrder;
+          dispatch.networkModel.setFeedDataForKey(filterKey, data);
         } finally {
           dispatch.networkModel.setLoading(false);
         }
-      } else {
-        dispatch.networkModel.setActiveFilter(filter);
+      }
+    },
+    async changeSortOrder(sort, rootState) {
+      try {
+        const { activeFilter, sortOrder, token } = rootState.networkModel;
+        const newToken = sortOrder === sort ? token : null;
+        dispatch.networkModel.setLoading(true);
+        const response = networkRequest(sort, activeFilter, newToken);
+        dispatch.networkModel.setFeedDataForKey(activeFilter, response.data);
+      } catch (error) {
+        throw new Error("Can not change sort order");
+      } finally {
+        dispatch.networkModel.setLoading(false);
       }
     },
   }),
