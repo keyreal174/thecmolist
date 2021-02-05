@@ -40,18 +40,6 @@ export default {
       };
       return newState;
     },
-    setData: (oldState, data) => {
-      return {
-        ...oldState,
-        feedData:
-          oldState.token && data.feedData
-            ? oldState.feedData.concat(data.feedData)
-            : data.feedData,
-        moreData: data.feedData && data.feedData.length > 0,
-        token: data.token,
-        sortOrder: data.sortOrder,
-      };
-    },
     setLoading: (oldState, data) => {
       return {
         ...oldState,
@@ -100,7 +88,7 @@ export default {
       const response = await networkRequest(sort, filter, token);
       const data = response.data;
       data.sortOrder = sort;
-      dispatch.networkModel.setData(data);
+      dispatch.networkModel.setFeedDataForKey(filter, data);
     },
     async changeNetworkFilter(filter, rootState) {
       if (!(filter in rootState.networkModel.feedData)) {

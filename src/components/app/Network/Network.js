@@ -13,6 +13,7 @@ import "./network.css";
 
 const renderFeed = (props, fetchData) => {
   const feedData = props.activeFeed;
+  const moreData = true;
 
   return (
     <>
@@ -49,7 +50,7 @@ const renderFeed = (props, fetchData) => {
             />
           );
         })}
-      {props.moreData && (
+      {moreData && (
         <div className="row">
           <div className="col-md-2 mt-2 mx-auto">
             <button
@@ -74,9 +75,6 @@ const Network = (props) => {
     setSortOrder(event.target.value);
     props.fetchNetwork(event.target.value);
   };
-  useEffect(() => {
-    fetchData();
-  }, []);
   const [filterIdx, setFilterIdx] = useState(0);
   const [filters, setFilters] = useState([]);
   const changeNetworkFilter = (filter) => {
