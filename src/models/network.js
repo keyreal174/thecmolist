@@ -9,7 +9,10 @@ const networkRequest = (sort, filter, token) => {
     url += `sort=${sort.toLowerCase()}`;
   }
   if (filter) {
-    url += `&filter=${filter}`;
+    if (sort) {
+      url += "&";
+    }
+    url += `filter=${filter}`;
   }
   if (token) {
     headers.token = token;
