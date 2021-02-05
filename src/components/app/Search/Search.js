@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router";
 import { connect } from "react-redux";
 import { Container } from "react-bootstrap";
 import Header from "../base/Header/Header";
@@ -7,15 +8,8 @@ import Filter from "../base/Filter/Filter";
 import RenderList from "./RenderList";
 import "./search.css";
 
-const filterObject = {
-  qa: "Questions & Answers",
-  projects: "Projects",
-  articles: "Articles",
-  people: "People",
-  vendors: "vendors",
-};
-
 const Search = (props) => {
+  const location = useLocation();
   const [filters, setFilters] = useState([]);
   const [modules, setModules] = useState(null);
   const [filterIdx, setFilterIdx] = useState(null);
@@ -33,7 +27,8 @@ const Search = (props) => {
   };
 
   useEffect(() => {
-    props.fetchFullSearch();
+    const { query } = location.state;
+    props.fetchFullSearch(query);
   }, []);
 
   useEffect(() => {
@@ -103,7 +98,7 @@ const Search = (props) => {
             {modules && (
               <RenderList
                 modules={modules}
-                filterObject={filterObject}
+                filters={filters}
                 showMore={showMore}
               />
             )}

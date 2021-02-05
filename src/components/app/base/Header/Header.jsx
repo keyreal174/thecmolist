@@ -23,8 +23,10 @@ function Header() {
   );
   const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
   const SEARCH_URI = "/api/globalsearch";
   const handleSearch = (query) => {
+    setSearchQuery(query);
     setIsLoading(true);
     fetch(`${SEARCH_URI}?q=${query}&page=1&per_page=50`)
       .then((resp) => resp.json())
@@ -39,6 +41,15 @@ function Header() {
         setOptions(options);
         setIsLoading(false);
       });
+  };
+
+  const goSearchPage = () => {
+    history.push({
+      pathname: "/search",
+      state: {
+        query: searchQuery,
+      },
+    });
   };
 
   return (
@@ -57,7 +68,7 @@ function Header() {
           onSearch={handleSearch}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
-              history.push("/search");
+              goSearchPage();
             }
           }}
           options={options}

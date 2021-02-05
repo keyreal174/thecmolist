@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export const getFullSearchRequest = () => {
-  return axios.get("/api/full_search");
+export const getFullSearchRequest = (query) => {
+  return axios.get(query ? "/api/full_search/${query}" : "/api/full_search");
 };
 
 export const getRefinedSearchRequest = (filter) => {
@@ -22,12 +22,12 @@ export default {
     },
   },
   effects: (dispatch) => ({
-    async fetchFullSearch() {
+    async fetchFullSearch(query) {
       try {
-        const response = await getFullSearchRequest();
+        const response = await getFullSearchRequest(query);
         dispatch.searchModel.updateSearchResult(response.data);
       } catch (err) {
-        throw new Error("Could not get search full data");
+        throw new Error("Could not get search full data" + err.toString());
       }
     },
 
@@ -36,7 +36,7 @@ export default {
         const response = await getRefinedSearchRequest(filter);
         dispatch.searchModel.updateSearchResult(response.data);
       } catch (err) {
-        throw new Error("Could not get search refined data");
+        throw new Error("Could not get search refined data" + err.toString());
       }
     },
   }),

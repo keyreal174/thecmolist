@@ -5,7 +5,7 @@ import Arrow from "../base/icons/arrow.svg";
 
 const cdn = "https://d3k6hg21rt7gsh.cloudfront.net/icons";
 
-const RenderList = ({ modules, filterObject, showMore }) => {
+const RenderList = ({ modules, filters, showMore }) => {
   const handleEngagementButtonClick = async (caller, engagementType) => {
     const id = caller["content_id"];
     const engagement = engagementType.toLowerCase();
@@ -18,7 +18,9 @@ const RenderList = ({ modules, filterObject, showMore }) => {
   const List = Object.entries(modules).map(([key, value], i) => {
     return (
       <div key={i} className="search-filter-board">
-        <h4 className="search-filter-title">{filterObject[key]}</h4>
+        <h4 className="search-filter-title">
+          {filters.filter((item) => item.slug === key)[0]["title"]}
+        </h4>
         {value.map((item, j) => {
           return (
             <Article
