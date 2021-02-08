@@ -71,11 +71,8 @@ function Article(props) {
               </Col>
             )}
             <Col
-              sm="10"
-              lg="11"
-              className={
-                props.image && props.image.length > 0 ? "article-body-left" : ""
-              }
+              sm={props.image && props.image.length > 0 ? "10" : "12"}
+              lg={props.image && props.image.length > 0 ? "11" : "12"}
             >
               <h2 className="article-title">
                 {props.headline.markdown ? (

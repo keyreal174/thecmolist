@@ -202,21 +202,22 @@ const Content = ({ contentLoading, fetchContent, match, ...rest }) => {
             </div>
           </div>
         </Col>
-        <Col className="question-related-section" md="3">
-          <div className="question-related-section-title">
-            Related Questions
-          </div>
-          <div className="question-related-section-item">
-            {content.related_questions &&
-              content.related_questions.map((relatedQuestion, index) => {
+        {content.related_questions && (
+          <Col className="question-related-section" md="3">
+            <div className="question-related-section-title">
+              Related Questions
+            </div>
+            <div className="question-related-section-item">
+              {content.related_questions.map((relatedQuestion, index) => {
                 return (
                   <div key={index}>
                     <a href={relatedQuestion.link}>{relatedQuestion.title}</a>
                   </div>
                 );
               })}
-          </div>
-        </Col>
+            </div>
+          </Col>
+        )}
       </>
     );
   };

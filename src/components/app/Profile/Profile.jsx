@@ -425,9 +425,10 @@ const Profile = (props) => {
               badge = (
                 <span
                   className="cursor-pointer noselect"
+                  style={{ display: "block", marginTop: "-10px" }}
                   onClick={() => showDeletePostModal(feed)}
                 >
-                  ✖️
+                  ✖
                 </span>
               );
             }

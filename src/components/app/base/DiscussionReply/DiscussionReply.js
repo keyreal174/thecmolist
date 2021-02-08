@@ -26,11 +26,13 @@ const DiscussionReply = ({
     >
       {props.header && (
         <div className="comment-wrapper-header">
-          <img
-            alt="profile"
-            className="article-wrapper-image"
-            src={props.header.image}
-          />
+          {props.header.image && (
+            <img
+              alt="profile"
+              className="article-wrapper-image"
+              src={props.header.image}
+            />
+          )}
           <div>
             <div className="article-wrapper-title">
               {props.header.markdown ? (
@@ -41,9 +43,15 @@ const DiscussionReply = ({
                 </a>
               )}
             </div>
-            <div className="article-wrapper-subtitle">
-              {props.header.subtext}
-            </div>
+            {props.header.subtext && (
+              <div className="article-wrapper-subtitle">
+                {props.header.subtext.markdown ? (
+                  <Markdown>{props.header.subtext.markdown}</Markdown>
+                ) : (
+                  <span>{props.header.subtext}</span>
+                )}
+              </div>
+            )}
           </div>
         </div>
       )}
