@@ -15,6 +15,7 @@
     "js-cookie": "^2.2.1",
     "markdown-to-jsx": "^6.11.4",
     "nan": "^2.14.1",
+    "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-bootstrap-typeahead": "^5.1.0",
@@ -46,13 +47,16 @@
   "eslintConfig": {
     "extends": "react-app",
     "overrides": [
-        {
-            "files": ["*.test.js", "*.spec.js"],
-            "rules": {
-                "no-unused-expressions": "off",
-                "no-sequences": "off"
-            }
+      {
+        "files": [
+          "*.test.js",
+          "*.spec.js"
+        ],
+        "rules": {
+          "no-unused-expressions": "off",
+          "no-sequences": "off"
         }
+      }
     ]
   },
   "husky": {
