@@ -228,3 +228,10 @@
   color: gray;
   margin-top: -5px;
 }
+
+.no-feed-data-header {
+  text-align: center;
+  font-weight: 600;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
