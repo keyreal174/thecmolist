@@ -52,10 +52,25 @@
   margin-left: 60px;
 }
 
-.question-answers {
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 2px 3px rgba(0, 0, 0, 0.2);
-}
-
 .question-activity-indicator {
   margin: 50%;
+}
+
+.article__type-comment {
+  border: none;
+  box-shadow: none;
+}
+
+.article__type-comment .article-wrap {
+  border: none;
+  padding: 0 0 0 50px;
+}
+
+.article__type-comment .article-wrapper {
+  margin: 0;
+}
+
+.article__type-comment .article-wrapper-header {
+  padding: 4px 0px;
+  margin-top: 20px;
 }

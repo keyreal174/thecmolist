@@ -2,9 +2,13 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import "./engagementButtons.css";
 
-const EngagementButtons = ({ engagementButtons, onEngagementButtonClick }) => {
+const EngagementButtons = ({
+  className,
+  engagementButtons,
+  onEngagementButtonClick,
+}) => {
   return (
-    <div className="engagement-buttons">
+    <div className={`engagement-buttons ${className}`}>
       {engagementButtons &&
         engagementButtons.map(({ text, icon, number, checked }, index) => {
           return (
