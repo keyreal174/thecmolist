@@ -58,6 +58,7 @@ const Profile = (props) => {
   const [subfilterKeys, setSubfilterKeys] = useState([]);
   const [subfilters, setSubfilters] = useState({});
   const [filteredFeedData, setFilteredFeedData] = useState([]);
+  const [hasDataOnCurrentFeed, setHasDataOnCurrentFeed] = useState(false);
 
   const [showDeletePost, setShowDeletePost] = useState(false);
   const [showFollowModal, setShowFollowModal] = useState(false);
@@ -98,16 +99,17 @@ const Profile = (props) => {
       feed.subfilters = {};
       let feed_data = feed.data;
       feed_data.forEach((data) => {
-        data.subheadlines.forEach((sh) => {
-          if (sh.categorytitles && Array.isArray(sh.categorytitles)) {
-            sh.categorytitles.forEach((categoryTitle) => {
-              if (!(categoryTitle in feed.subfilters)) {
-                feed.subfilters[categoryTitle] = 0;
-              }
-              feed.subfilters[categoryTitle] += 1;
-            });
-          }
-        });
+        data.subheadlines &&
+          data.subheadlines.forEach((sh) => {
+            if (sh.categorytitles && Array.isArray(sh.categorytitles)) {
+              sh.categorytitles.forEach((categoryTitle) => {
+                if (!(categoryTitle in feed.subfilters)) {
+                  feed.subfilters[categoryTitle] = 0;
+                }
+                feed.subfilters[categoryTitle] += 1;
+              });
+            }
+          });
       });
     });
     setFeedData(newFeedData);
@@ -131,6 +133,9 @@ const Profile = (props) => {
     prevFeedData[filterIdx].subfilter = "";
     setFeedData(prevFeedData);
     setFilterIdx(idx);
+    setHasDataOnCurrentFeed(
+      feedData[idx] && feedData[idx].data && feedData[idx].data.length > 0
+    );
   };
 
   const onSubfilterChange = (key) => {
@@ -208,6 +213,9 @@ const Profile = (props) => {
           });
         }
       }
+      setHasDataOnCurrentFeed(
+        currentFeed && currentFeed.data && currentFeed.data.length > 0
+      );
       setFilteredFeedData(feed_data);
     }
   }, [feedData]);
@@ -412,15 +420,17 @@ const Profile = (props) => {
 
         <TransitionGroup enter={enableAnimations} exit={enableAnimations}>
           {filteredFeedData.map((feed, idx) => {
-            let badge = (
-              <span
-                className="cursor-pointer noselect"
-                onClick={() => showDeletePostModal(feed)}
-              >
-                ✖️
-              </span>
-            );
-
+            let badge = null;
+            if (isMyProfile) {
+              badge = (
+                <span
+                  className="cursor-pointer noselect"
+                  onClick={() => showDeletePostModal(feed)}
+                >
+                  ✖️
+                </span>
+              );
+            }
             return (
               <FadeTransition key={idx}>
                 <Article
@@ -433,6 +443,15 @@ const Profile = (props) => {
             );
           })}
         </TransitionGroup>
+        {profileFirstName && !hasDataOnCurrentFeed && (
+          <div className="wrapper article-wrapper">
+            <div className="no-feed-data-header">
+              {profileFirstName} hasn't shared anything in{" "}
+              {filters[filterIdx] ? filters[filterIdx].title : "this category"}{" "}
+              yet
+            </div>
+          </div>
+        )}
 
         <DeletePost
           show={showDeletePost}
