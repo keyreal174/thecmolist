@@ -17,6 +17,8 @@ function Article(props) {
     props.images;
   let engagementButtons = props.engagementButtons;
   let onEngagementButtonClick = props.onEngagementButtonClick;
+  const withMargin = props.withMargin;
+
   return (
     <div
       className={`article-wrapper ${props.className ? props.className : ""}`}
@@ -169,6 +171,9 @@ function Article(props) {
             </Col>
           </Row>
           <EngagementButtons
+            className={
+              withMargin ? "article-engagement-buttons__with-margin" : ""
+            }
             engagementButtons={engagementButtons}
             onEngagementButtonClick={onEngagementButtonClick}
           />

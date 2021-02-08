@@ -219,3 +219,7 @@
   width: 18px;
   margin-left: 3px;
 }
+
+.article-engagement-buttons__with-margin {
+  margin-left: 40px;
+}

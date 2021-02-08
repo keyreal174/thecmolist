@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Alert, Container, Col, Row } from "react-bootstrap";
 import Article from "../base/Article/Article";
 import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
-import DiscussionReply from "../base/DiscussionReply/DiscussionReply";
+import DiscussionComment from "../base/DiscussionComment/DiscussionComment";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 
@@ -135,9 +135,8 @@ const Content = ({ contentLoading, fetchContent, match, ...rest }) => {
             {content.replies &&
               content.replies.map((reply, index) => {
                 const replyId = reply.content_id;
-
                 return (
-                  <DiscussionReply
+                  <Article
                     articletextlines={2}
                     {...reply.content}
                     key={index}
@@ -171,29 +170,30 @@ const Content = ({ contentLoading, fetchContent, match, ...rest }) => {
                       this,
                       reply
                     )}
-                    onSubmit={handleSubmitToReply.bind(this, reply)}
-                    showComment
                     withMargin
                   >
-                    {
-                      <div className="question-comments-section">
-                        {reply.comments &&
-                          reply.comments.map((comment, index) => {
-                            return (
-                              <DiscussionReply
-                                {...comment.content}
-                                key={index}
-                              />
-                            );
-                          })}
-                      </div>
-                    }
-                  </DiscussionReply>
+                    <div className="question-comments-section">
+                      {reply.comments &&
+                        reply.comments.map((comment, index) => {
+                          return (
+                            <Article
+                              className="article__type-comment"
+                              {...comment.content}
+                              key={index}
+                            />
+                          );
+                        })}
+                    </div>
+                    <DiscussionComment
+                      withMargin
+                      onSubmit={handleSubmitToReply.bind(this, reply)}
+                    />
+                  </Article>
                 );
               })}
             <div className="question-your-answer-section">
               <div>Your answer</div>
-              <DiscussionReply
+              <DiscussionComment
                 placeholder="Answer John's question..."
                 onSubmit={handleSubmit}
                 showComment
