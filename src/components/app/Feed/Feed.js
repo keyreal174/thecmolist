@@ -208,7 +208,7 @@ const Feed = (props) => {
 
   const handleSubmit = async (content) => {
     const id = await props.saveContent(content);
-    history.push(`question/${id}`);
+    history.push(`content/${id}`);
   };
   return (
     <>
