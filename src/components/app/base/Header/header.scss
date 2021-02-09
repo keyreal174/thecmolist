@@ -82,6 +82,14 @@
   font-weight: 700;
   line-height: 16px;
   border-bottom: 2px solid $brand;
+
+  span.inbox--number {
+    top: 3px;
+  }
+
+  span.notifications--number {
+    top: 5px;
+  }
 }
 
 .nav-link.active img {
@@ -265,7 +273,7 @@
     color: $white;
     position: absolute;
     right: 5px;
-    top: 4px;
+    top: 3px;
   }
 }
 
