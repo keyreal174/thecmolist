@@ -95,7 +95,7 @@ const Settings = ({ settings, saveSetting, getSetting }) => {
   return (
     <Container className="height-100">
       <Header />
-      <div className="wrapper">
+      <div className="wrapper settings">
         <h2 className="section-title pt-4 py-3">Settings</h2>
         <div className="account-settings mt-2">
           <h2 className="section-title mb-2">Account Settings</h2>

@@ -14,6 +14,9 @@
     color: #0175B0;
   } */
 
+.notifications--feed {
+  margin-top: 98px;
+}
 .section-break {
   float: left;
   margin-right: 20px;
