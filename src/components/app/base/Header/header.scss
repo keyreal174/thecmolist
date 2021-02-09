@@ -48,11 +48,13 @@
 }
 
 .navbar-nav .nav-link {
-  background: $text-3;
+  //background: $text-3;
+  align-items: center;
   color: $text-2;
   display: flex;
   flex-direction: column;
   font-size: 12px;
+  font-weight: 500;
   margin-right: 25px;
   position: relative;
   text-align: center;
@@ -63,6 +65,8 @@
 
 .nav-link img {
   margin-bottom: 10px;
+  height: 24px;
+  width: 24px;
 }
 
 .navbar-dark .navbar-nav .nav-link img {
@@ -80,7 +84,7 @@
 }
 
 .nav-link.active img {
-  background: $brand;
+  //background: $brand;
   opacity: 1 !important;
 }
 
@@ -233,4 +237,33 @@
   position: absolute;
   top: 9px;
   left: 18px;
+}
+
+.inbox {
+  &--rectangle {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  &--number {
+    color: $white;
+    position: absolute;
+    top: 1px;
+    right: 8px;
+  }
+}
+
+.notifications {
+  &--rectangle {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &--number {
+    color: $white;
+    position: absolute;
+    right: 5px;
+    top: 4px;
+  }
 }

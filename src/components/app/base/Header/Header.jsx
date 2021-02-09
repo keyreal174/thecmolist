@@ -10,6 +10,9 @@ import Notification from "../icons/notification.svg";
 import Apps from "../icons/apps.svg";
 import Person from "../icons/person.svg";
 import Search from "../icons/search.svg";
+import Message from "../icons/message.svg";
+import Rectangle from "../icons/rectangle.svg";
+import Rectangle2 from "../icons/rectangle2.svg";
 
 function Header() {
   let PersonHeader = (props) => (
@@ -42,7 +45,7 @@ function Header() {
   return (
     <Navbar expand="md" variant="white">
       <Navbar.Brand href="/feed">
-        <div className="navbar-brand--item">C</div>
+        <img src="/images/cmo.png" alt="CMOList brand logo" />
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse className="nav-app" id="basic-navbar-nav">
@@ -95,6 +98,18 @@ function Header() {
             <img src={Group} alt="" />
             My Network
           </Nav.Link>
+          <Nav.Link as={NavLink} to="/inbox">
+            <img src={Message} alt="" />
+            Inbox
+            <div className="inbox--wrapper">
+              <img
+                className="inbox--rectangle"
+                src={Rectangle}
+                alt="Amount rectangle"
+              />
+              <span className="inbox--number">3</span>
+            </div>
+          </Nav.Link>
           <Nav.Link as={NavLink} to="/topics">
             <img src={Apps} alt="" />
             Topics
@@ -102,6 +117,14 @@ function Header() {
           <Nav.Link as={NavLink} to="/notifications">
             <img src={Notification} alt="" />
             Notifications
+            <div className="notifications--wrapper">
+              <img
+                className="notifications--rectangle"
+                src={Rectangle2}
+                alt="Amount rectangle"
+              />
+              <span className="notifications--number">12</span>
+            </div>
           </Nav.Link>
           <NavDropdown
             className={
