@@ -8,11 +8,7 @@ const Inbox = () => {
     <>
       <Container className="height-100">
         <div className="wrapper">
-          <Row>
-            <Col md="12">
-              <Header />
-            </Col>
-          </Row>
+          <Header />
           <Row className="inbox--wrapper" style={{ marginTop: "98px" }}>
             Work in progress
           </Row>

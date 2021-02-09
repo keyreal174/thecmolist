@@ -225,11 +225,7 @@ const Content = ({ contentLoading, fetchContent, match, ...rest }) => {
     <>
       <Container className="height-100">
         <div className="wrapper">
-          <Row>
-            <Col md="12">
-              <Header />
-            </Col>
-          </Row>
+          <Header />
           <Row className="question-answer-section-wrapper">
             {error && (
               <Col md="12">
