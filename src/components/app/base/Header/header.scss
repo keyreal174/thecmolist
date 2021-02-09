@@ -67,6 +67,7 @@
   margin-bottom: 10px;
   height: 24px;
   width: 24px;
+  border-radius: 50%;
 }
 
 .navbar-dark .navbar-nav .nav-link img {
@@ -265,5 +266,16 @@
     position: absolute;
     right: 5px;
     top: 4px;
+  }
+}
+
+.dropdown-toggle {
+  &::after {
+    border-top: 0.5em solid;
+    border-right: 0.5em solid transparent;
+    border-left: 0.5em solid transparent;
+    top: 30%;
+    right: -4px;
+    position: absolute;
   }
 }

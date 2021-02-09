@@ -1,8 +1,9 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
 import { AsyncTypeahead, TypeaheadMenu } from "react-bootstrap-typeahead";
 import { NavLink } from "react-router-dom";
 import "./header.scss";
+import { connect } from "react-redux";
 
 import HomeIcon from "../icons/home.svg";
 import Group from "../icons/group.svg";
@@ -14,14 +15,26 @@ import Message from "../icons/message.svg";
 import Rectangle from "../icons/rectangle.svg";
 import Rectangle2 from "../icons/rectangle2.svg";
 
-function Header() {
-  let PersonHeader = (props) => (
-    <Fragment>
-      <img src={props.icon} alt="" />
-      <br />
-      <span>Me</span>
-    </Fragment>
-  );
+function Header({ getProfileStats, profileStats }) {
+  useEffect(() => {
+    const fetch = async () => await getProfileStats();
+
+    fetch();
+  }, []);
+  let PersonHeader = (props) => {
+    return (
+      <Fragment>
+        <img
+          alt=""
+          src={
+            profileStats && profileStats.profile && profileStats.profile.image
+          }
+        />
+        <br />
+        <span>Saif</span>
+      </Fragment>
+    );
+  };
   const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState([]);
   const SEARCH_URI = "/api/globalsearch";
@@ -149,5 +162,16 @@ function Header() {
     </Navbar>
   );
 }
+const mapState = (state) => {
+  return {
+    profileStats: state.profileModel.profileStats,
+  };
+};
 
-export default Header;
+const mapDispatch = (dispatch) => {
+  return {
+    getProfileStats: dispatch.profileModel.getProfileStats,
+  };
+};
+
+export default connect(mapState, mapDispatch)(Header);
