@@ -37,6 +37,7 @@ function Header({ getProfileStats, profileStats }) {
   const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState([]);
   const SEARCH_URI = "/api/globalsearch";
+  const isSmall = window.innerWidth < 767;
   const handleSearch = (query) => {
     setIsLoading(true);
     fetch(`${SEARCH_URI}?q=${query}&page=1&per_page=50`)
@@ -104,15 +105,15 @@ function Header({ getProfileStats, profileStats }) {
         <Nav>
           <Nav.Link as={NavLink} to="/feed">
             <img src={HomeIcon} alt="" />
-            Home
+            {isSmall ? "" : "Home"}
           </Nav.Link>
           <Nav.Link as={NavLink} to="/network">
             <img src={Group} alt="" />
-            My Network
+            {isSmall ? "" : "My Network"}
           </Nav.Link>
           <Nav.Link as={NavLink} to="/inbox">
             <img src={Message} alt="" />
-            Inbox
+            {isSmall ? "" : "Inbox"}
             <div className="inbox--wrapper">
               <img
                 className="inbox--rectangle"
@@ -124,11 +125,11 @@ function Header({ getProfileStats, profileStats }) {
           </Nav.Link>
           <Nav.Link as={NavLink} to="/topics">
             <img src={Apps} alt="" />
-            Topics
+            {isSmall ? "" : "Topics"}
           </Nav.Link>
           <Nav.Link as={NavLink} to="/notifications">
             <img src={Notification} alt="" />
-            Notifications
+            {isSmall ? "" : "Notifications"}
             <div className="notifications--wrapper">
               <img
                 className="notifications--rectangle"
