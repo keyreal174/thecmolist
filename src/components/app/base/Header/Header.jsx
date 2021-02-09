@@ -22,16 +22,15 @@ function Header({ getProfileStats, profileStats }) {
     fetch();
   }, []);
   let PersonHeader = (props) => {
+    const profile = profileStats && profileStats.profile;
+    const image = profile && profile.image;
+    const name = profile && profile.name;
+
     return (
       <Fragment>
-        <img
-          alt=""
-          src={
-            profileStats && profileStats.profile && profileStats.profile.image
-          }
-        />
+        <img alt="" src={image} />
         <br />
-        <span>Saif</span>
+        <span>{name && name.split(" ")[0]}</span>
       </Fragment>
     );
   };
