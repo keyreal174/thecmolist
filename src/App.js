@@ -4,7 +4,6 @@ import AgencyProfile from "./components/app/Profile/AgencyProfile";
 import Category from "./components/app/Directory/Category";
 import Content from "./components/app/Content/Content";
 import Directory from "./components/app/Directory/Directory";
-import Inbox from "./components/app/Inbox/Inbox";
 import Feed from "./components/app/Feed/Feed";
 import Homepage from "./components/home/Homepage";
 import Login from "./components/login/Login";
