@@ -383,7 +383,12 @@
   }
   &--item {
     margin-bottom: 20px;
-    margin-left: 50px;
+    &-img {
+      width: 18px;
+      height: 18px;
+      margin-right: 10px;
+      margin-left: 20px;
+    }
   }
   &--email {
     color: $brand;

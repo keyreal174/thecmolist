@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import ShowMoreText from "react-show-more-text";
 import Header from "../base/Header/Header";
-import Banner from "../base/Banner/Banner";
 import Filter from "../base/Filter/Filter";
 import Article from "../base/Article/Article";
 import Footer from "../base/Footer/Footer";
@@ -18,7 +17,10 @@ import "./profile.scss";
 
 import LinkedIn from "./icons/linkedin.svg";
 import Website from "./icons/link.svg";
-import Chat from "./icons/mail.svg";
+import Mail from "./icons/mail.svg";
+import Education from "./icons/education.svg";
+import Location from "./icons/location.svg";
+import Group from "../../app/base/icons/group.svg";
 
 const RenderList = ({ arr }) => {
   return arr.map((item, index) => (
@@ -221,13 +223,8 @@ const Profile = (props) => {
   }, [feedData]);
 
   const profileData = {
-    work: "Visual Designer",
-    work_place: "Nurency",
     university: "Cambridge International",
-    country: "San Francisco, CA",
     followers: "657",
-    email: "jennifer@contact.com",
-    linkdin: "@jeniffer_S",
   };
 
   const profileBackgroundUrl =
@@ -326,42 +323,74 @@ const Profile = (props) => {
             <Col md="4">
               <div className="profile--right-section">
                 <div className="right-section--intro">Intro</div>
-                {profileData && (
-                  <div className="right-section--details">
-                    {profileData.work && (
-                      <div className="right-section--job right-section--item">
-                        {`${profileData.work} at `}
-                        <strong>{profileData.work_place}</strong>
-                      </div>
-                    )}
-                    {profileData.university && (
-                      <div className="right-section--education right-section--item">
-                        Went to <strong>{profileData.university}</strong>
-                      </div>
-                    )}
-                    {profileData.country && (
-                      <div className="right-section--live right-section--item">
-                        Lives in <strong>{profileData.country}</strong>
-                      </div>
-                    )}
-                    {profileData.followers && (
-                      <div className="right-section--followers right-section--item">
-                        Followed by{" "}
-                        <strong>{`${profileData.followers} people`}</strong>
-                      </div>
-                    )}
-                    {profileData.email && (
-                      <div className="right-section--email right-section--item">
-                        Email <strong>{profileData.email}</strong>
-                      </div>
-                    )}
-                    {profileData.linkdin && (
-                      <div className="right-section--linkdin right-section--item">
-                        Linkdin <strong>{profileData.linkdin}</strong>
-                      </div>
-                    )}
-                  </div>
-                )}
+                <div className="right-section--details">
+                  {profileCompany && (
+                    <div className="right-section--job right-section--item">
+                      <img
+                        className="right-section--item-img"
+                        alt="work"
+                        src={Education}
+                      />
+                      {`${profileTitle} at `}
+                      <strong>{profileCompany}</strong>
+                    </div>
+                  )}
+                  {profileData.university && (
+                    <div className="right-section--education right-section--item">
+                      <img
+                        className="right-section--item-img"
+                        alt="education"
+                        src={Education}
+                      />
+                      Went to <strong>{profileData.university}</strong>
+                    </div>
+                  )}
+                  {profileCity && (
+                    <div className="right-section--live right-section--item">
+                      <img
+                        className="right-section--item-img"
+                        alt="location"
+                        src={Location}
+                      />
+                      Lives in{" "}
+                      <strong>
+                        {profileCity}, {profileState}
+                      </strong>
+                    </div>
+                  )}
+                  {profileData.followers && (
+                    <div className="right-section--followers right-section--item">
+                      <img
+                        className="right-section--item-img"
+                        alt="followers"
+                        src={Group}
+                      />
+                      Followed by{" "}
+                      <strong>{`${profileData.followers} people`}</strong>
+                    </div>
+                  )}
+                  {profileMail && (
+                    <div className="right-section--email right-section--item">
+                      <img
+                        className="right-section--item-img"
+                        alt="mail"
+                        src={Mail}
+                      />
+                      Email{" "}
+                      <strong>{profileMail.replace("mailto:", "")}</strong>
+                    </div>
+                  )}
+                  {profileLinkedin && (
+                    <div className="right-section--linkdin right-section--item">
+                      <img
+                        className="right-section--item-img"
+                        alt="linkedin"
+                        src={LinkedIn}
+                      />
+                      Linkdin <strong>{profileLinkedin}</strong>
+                    </div>
+                  )}
+                </div>
               </div>
             </Col>
           </Row>
