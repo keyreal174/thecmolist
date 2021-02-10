@@ -14,7 +14,7 @@ import DeletePost from "./DeletePost";
 import FollowUserModal from "./FollowUser";
 import Util from "../../util/Util";
 import Analytics from "../../util/Analytics";
-import "./profile.css";
+import "./profile.scss";
 
 import LinkedIn from "./icons/linkedin.svg";
 import Website from "./icons/link.svg";

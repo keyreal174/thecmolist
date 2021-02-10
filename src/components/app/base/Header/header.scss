@@ -17,7 +17,7 @@
   top: 0;
   width: 100%;
   &-nav {
-    margin-right: 140px;
+    margin-right: 11%;
   }
 }
 
@@ -33,7 +33,7 @@
   height: 45px;
   position: relative;
   border-radius: 11px;
-  margin-left: 145px;
+  margin-left: 10%;
 }
 
 .navbar-brand--item {
@@ -48,11 +48,12 @@
 }
 
 .navbar-nav .nav-link {
-  background: $text-3;
+  align-items: center;
   color: $text-2;
   display: flex;
   flex-direction: column;
   font-size: 12px;
+  font-weight: 500;
   margin-right: 25px;
   position: relative;
   text-align: center;
@@ -63,6 +64,9 @@
 
 .nav-link img {
   margin-bottom: 10px;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
 }
 
 .navbar-dark .navbar-nav .nav-link img {
@@ -77,10 +81,17 @@
   font-weight: 700;
   line-height: 16px;
   border-bottom: 2px solid $brand;
+
+  span.inbox--number {
+    top: 3px;
+  }
+
+  span.notifications--number {
+    top: 5px;
+  }
 }
 
 .nav-link.active img {
-  background: $brand;
   opacity: 1 !important;
 }
 
@@ -162,7 +173,12 @@
     max-width: 180px;
   }
   .navbar-nav .nav-link {
-    width: 89px;
+    width: 55px;
+    padding: 0;
+    margin-right: 10px;
+  }
+  .navbar-expand-md .navbar-nav .nav-link {
+    padding: 0;
   }
   .form-inline .form-control {
     font-size: 14px;
@@ -170,7 +186,7 @@
   .navbar-dark .navbar-nav .nav-link.active::after,
   .navbar-dark .navbar-nav .nav-link.active:hover::after {
     content: "";
-    width: 89px;
+    width: 55px;
   }
 }
 
@@ -187,7 +203,8 @@
     justify-content: space-between;
   }
   .navbar-nav .nav-link {
-    width: initial;
+    width: 30px;
+    margin-right: 5px;
   }
   .navbar-collapse {
     padding: 15px 0;
@@ -203,7 +220,12 @@
   .navbar-dark .navbar-nav .nav-link.active::after,
   .navbar-dark .navbar-nav .nav-link.active:hover::after {
     content: "";
-    width: 100%;
+  }
+
+  .navbar-dark .navbar-nav .nav-link img {
+    height: 16px;
+    width: 16px;
+    opacity: 0.25;
   }
 }
 
@@ -213,7 +235,7 @@
 }
 
 .header-search {
-  width: 476px;
+  width: 40%;
   font-size: 14px;
   font-weight: 400;
   border-radius: 2px;
@@ -233,4 +255,44 @@
   position: absolute;
   top: 9px;
   left: 18px;
+}
+
+.inbox {
+  &--rectangle {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  &--number {
+    color: $white;
+    position: absolute;
+    top: 1px;
+    right: 8px;
+  }
+}
+
+.notifications {
+  &--rectangle {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &--number {
+    color: $white;
+    position: absolute;
+    right: 5px;
+    top: 3px;
+  }
+}
+
+.dropdown-toggle {
+  &::after {
+    border-top: 0.5em solid;
+    border-right: 0.5em solid transparent;
+    border-left: 0.5em solid transparent;
+    top: 30%;
+    right: -4px;
+    position: absolute;
+  }
 }

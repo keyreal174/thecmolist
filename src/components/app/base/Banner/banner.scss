@@ -1,9 +1,11 @@
+@import "../../../../sass/globals.scss";
+
 .banner-app {
   position: relative;
   height: 180px;
   background-color: #ffffff;
   border: 2px solid #cccccc;
-  margin-top: 98px;
+  margin-top: $margin-top-header;
 }
 
 .btn-white {
