@@ -47,6 +47,7 @@ const Profile = (props) => {
   const [profileMail, setProfileMail] = useState("");
   const [profileAbout, setProfileAbout] = useState([]);
   const [feedData, setFeedData] = useState([]);
+  const [connectedUser, setConnectedUser] = useState(false);
   const [followedUser, setFollowedUser] = useState(false);
 
   const [filterIdx, setFilterIdx] = useState(0);
@@ -91,7 +92,7 @@ const Profile = (props) => {
       props.profile.feedData && createSubfilters(props.profile.feedData);
     }
   }, [props.profile]);
-  console.log("props.profile", props.profile);
+
   const createSubfilters = (feedDa) => {
     let newFeedData = feedDa.slice();
     newFeedData.forEach((feed) => {
@@ -112,6 +113,21 @@ const Profile = (props) => {
       });
     });
     setFeedData(newFeedData);
+  };
+
+  const connectUser = async () => {
+    let userName = Util.parsePath(window.location.href).trailingPath;
+    Analytics.sendClickEvent(
+      `Connected with user ${userName} from profile page`
+    );
+    try {
+      await props.connectUser({ username: userName });
+      setEnableAnimations(false);
+      setConnectedUser(true);
+    } catch (err) {
+      console.log(`An error occurred connecting with user: ${userName}`);
+      console.log(err);
+    }
   };
 
   const showDeletePostModal = (feed) => {
