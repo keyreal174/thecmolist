@@ -11,8 +11,6 @@ import Notification from "../icons/notification.svg";
 import Apps from "../icons/apps.svg";
 import Person from "../icons/person.svg";
 import Search from "../icons/search.svg";
-import Message from "../icons/message.svg";
-import Rectangle from "../icons/rectangle.svg";
 import Rectangle2 from "../icons/rectangle2.svg";
 
 function Header({ getProfileStats, profileStats }) {
@@ -110,18 +108,6 @@ function Header({ getProfileStats, profileStats }) {
           <Nav.Link as={NavLink} to="/network">
             <img src={Group} alt="" />
             {isSmall ? "" : "My Network"}
-          </Nav.Link>
-          <Nav.Link as={NavLink} to="/inbox">
-            <img src={Message} alt="" />
-            {isSmall ? "" : "Inbox"}
-            <div className="inbox--wrapper">
-              <img
-                className="inbox--rectangle"
-                src={Rectangle}
-                alt="Amount rectangle"
-              />
-              <span className="inbox--number">3</span>
-            </div>
           </Nav.Link>
           <Nav.Link as={NavLink} to="/topics">
             <img src={Apps} alt="" />

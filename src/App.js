@@ -125,13 +125,6 @@ class App extends React.Component {
             }
           />
           <Route
-            exact
-            path="/inbox"
-            render={(props) =>
-              this.state.authed ? <Inbox /> : <Redirect to="/login" />
-            }
-          />
-          <Route
             path="/content/:id"
             render={(props) =>
               this.state.authed ? (
