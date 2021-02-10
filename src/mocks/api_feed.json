@@ -11,7 +11,20 @@
       "subtitle": "NY",
       "articletext": "zz",
       "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjg4NDEyNG1hZHMtLXByb2ZpbGUuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
-      "imageDisplay": "square"
+      "imageDisplay": "square",
+      "content_id": 12102948,
+      "num_thanks": 5,
+      "num_insightful": 10,
+      "reactions": [
+        {
+          "type": "thanks",
+          "checked": true
+        },
+        {
+          "type": "insightful",
+          "checked": false
+        }
+      ]
     },
     {
       "header": {
@@ -35,7 +48,20 @@
       "subtitle": "San Francisco, CA!!!",
       "articletext": "cbx",
       "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjgwODQyNnNhbGVlbC0tcHJvZmlsZS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
-      "imageDisplay": "square"
+      "imageDisplay": "square",
+      "content_id": 12102941,
+      "num_thanks": 3,
+      "num_insightful": 10,
+      "reactions": [
+        {
+          "type": "thanks",
+          "checked": true
+        },
+        {
+          "type": "insightful",
+          "checked": false
+        }
+      ]
     },
     {
       "header": {
@@ -58,7 +84,20 @@
       },
       "articletext": "xxv",
       "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5Ijoic210cGNvbS0tcHJvZmlsZS5zdmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEwMCwiaGVpZ2h0IjoxMDAsImZpdCI6ImNvdmVyIn19fQ==",
-      "imageDisplay": "square"
+      "imageDisplay": "square",
+      "content_id": 12102940,
+      "num_thanks": 2,
+      "num_insightful": 1,
+      "reactions": [
+        {
+          "type": "thanks",
+          "checked": false
+        },
+        {
+          "type": "insightful",
+          "checked": false
+        }
+      ]
     },
     {
       "header": {
