@@ -17,17 +17,21 @@ function Article(props) {
     props.images;
   let engagementButtons = props.engagementButtons;
   let onEngagementButtonClick = props.onEngagementButtonClick;
+  const withMargin = props.withMargin;
+
   return (
     <div
       className={`article-wrapper ${props.className ? props.className : ""}`}
     >
       {props.header && (
         <div className="article-wrapper-header">
-          <img
-            alt="profile"
-            className="article-wrapper-image"
-            src={props.header.image}
-          />
+          {props.header.image && (
+            <img
+              alt="profile"
+              className="article-wrapper-image"
+              src={props.header.image}
+            />
+          )}
           <div>
             <div className="article-wrapper-title">
               {props.header.markdown ? (
@@ -38,9 +42,15 @@ function Article(props) {
                 </a>
               )}
             </div>
-            <div className="article-wrapper-subtitle">
-              {props.header.subtext}
-            </div>
+            {props.header.subtext && (
+              <div className="article-wrapper-subtitle">
+                {props.header.subtext.markdown ? (
+                  <Markdown>{props.header.subtext.markdown}</Markdown>
+                ) : (
+                  <span>{props.header.subtext}</span>
+                )}
+              </div>
+            )}
           </div>
         </div>
       )}
@@ -63,11 +73,8 @@ function Article(props) {
               </Col>
             )}
             <Col
-              sm="10"
-              lg="11"
-              className={
-                props.image && props.image.length > 0 ? "article-body-left" : ""
-              }
+              sm={props.image && props.image.length > 0 ? "10" : "12"}
+              lg={props.image && props.image.length > 0 ? "11" : "12"}
             >
               <h2 className="article-title">
                 {props.headline.markdown ? (
@@ -161,6 +168,9 @@ function Article(props) {
             </Col>
           </Row>
           <EngagementButtons
+            className={
+              withMargin ? "article-engagement-buttons__with-margin" : ""
+            }
             engagementButtons={engagementButtons}
             onEngagementButtonClick={onEngagementButtonClick}
           />

@@ -1,11 +1,26 @@
 import axios from "axios";
 
+const FEED_KEY_DELIMITER = "%%";
+
 const feedRequest = (filter, token) => {
   let headers = {
     "timezone-offset": new Date().getTimezoneOffset(),
   };
   if (token) {
     headers.token = token;
+  }
+  let subfilter = "";
+  if (filter.indexOf(FEED_KEY_DELIMITER) >= 0) {
+    let split = filter.split(FEED_KEY_DELIMITER);
+    if (split.length == 2) {
+      filter = split[0];
+      subfilter = split[1];
+    }
+  }
+  if (subfilter.length > 0) {
+    return axios.get(`/api/feed?filter=${filter}&subfilter=${subfilter}`, {
+      headers,
+    });
   }
   return axios.get(`/api/feed?filter=${filter}`, { headers });
 };
@@ -86,7 +101,7 @@ export default {
     async changeDashboardFilter(payload, rootState) {
       // filter = Group (All Members, etc), subfilter = Type of content (Q/A, Posts, etc)
       let { filter, subfilter } = payload;
-      let filterKey = `${filter}_${subfilter}`;
+      let filterKey = `${filter}${FEED_KEY_DELIMITER}${subfilter}`;
       if (!(filterKey in rootState.feedModel.dashboardFeedData)) {
         dispatch.feedModel.initFeedDataForKey(filterKey);
       }

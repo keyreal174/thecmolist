@@ -12,35 +12,50 @@ export const setReaction = (contentId, type) => {
   });
 };
 
+const initReactionModelForContent = () => {
+  return {
+    num_thanks: 0,
+    num_insightful: 0,
+    reactions: ["thanks", "insightful"].map((r) => ({
+      type: r,
+      checked: false,
+    })),
+  };
+};
 const getReactionsForContent = (data) => {
   let getReactions = (contentData) => {
-    let reactionsForContent = {};
+    // init to default values (0 for everything)
+    let reactionsForContent = initReactionModelForContent();
+
+    // merge in values from contentData
     if (contentData.content) {
-      if (contentData.content.num_thanks) {
+      if (contentData.content.num_thanks >= 0) {
         reactionsForContent.num_thanks = contentData.content.num_thanks;
       }
-      if (contentData.content.num_insightful) {
+      if (contentData.content.num_insightful >= 0) {
         reactionsForContent.num_insightful = contentData.content.num_insightful;
       }
     }
     if (contentData.reactions) {
-      reactionsForContent.reactions = contentData.reactions;
+      contentData.reactions.forEach((serverReaction) => {
+        let idx = reactionsForContent.reactions.findIndex(
+          (r) => r.type === serverReaction.type
+        );
+        if (idx >= 0) {
+          reactionsForContent.reactions[idx] = { ...serverReaction };
+        }
+      });
     }
     return reactionsForContent;
   };
 
   let reactions = {};
   // set reactions data for root content
-  let reactionsForContent = getReactions(data);
-  if (Object.keys(reactionsForContent).length > 0) {
-    reactions[data.content_id] = reactionsForContent;
-  }
+  reactions[data.content_id] = getReactions(data);
+
   // set reactions data for replies
   (data.replies || []).forEach((reply) => {
-    let reactionsForReply = getReactions(reply);
-    if (Object.keys(reactionsForReply).length > 0) {
-      reactions[reply.content_id] = reactionsForReply;
-    }
+    reactions[reply.content_id] = getReactions(reply);
   });
   return reactions;
 };
@@ -78,6 +93,7 @@ export default {
           }
         });
       } else {
+        newState.reactions[id] = initReactionModelForContent();
         newState.reactions[id][`num_${type}`]++;
         newState.reactions[id].reactions.forEach((reaction) => {
           if (reaction.type === type) {
@@ -93,14 +109,10 @@ export default {
     async changeReaction(data) {
       try {
         const { id, engagement } = data;
-        if (id) {
-          await setReaction(id, engagement);
-          dispatch.reactionModel.setReaction({ id, type: engagement });
-        } else {
-          throw new Error("Could not change reaction without id");
-        }
+        await setReaction(id, engagement);
+        dispatch.reactionModel.setReaction({ id, type: engagement });
       } catch (err) {
-        throw new Error("Could not change reaction");
+        throw new Error("Could not change reaction: " + err.toString());
       }
     },
   }),

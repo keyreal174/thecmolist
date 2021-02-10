@@ -11,9 +11,11 @@ import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
 import AddPostModal from "../base/AddPostModal/AddPostModal";
 import ProfileStats from "../ProfileStats/ProfileStats";
 import Analytics from "../../util/Analytics";
-import Arrow from "../base/icons/arrow.svg";
+import Util from "../../util/Util";
 import { useHistory } from "react-router";
 import "./feed.css";
+
+const cdn = "https://d3k6hg21rt7gsh.cloudfront.net/icons";
 
 function RenderRightContainer({
   buildYourNetworkItems,
@@ -84,13 +86,13 @@ function RenderRightContainer({
   );
 }
 
-function RenderFeed({ feedData, fetchActiveFeed }) {
+function RenderFeed({ feedData, moreData, fetchActiveFeed }) {
   let onLoadMoreClick = (e) => {
     e.preventDefault();
     e.target && e.target.blur && e.target.blur();
     fetchActiveFeed();
   };
-  let moreData = true;
+  let feedMoreData = feedData.length > 0 && moreData;
   return (
     <Col md="6">
       {feedData &&
@@ -102,11 +104,36 @@ function RenderFeed({ feedData, fetchActiveFeed }) {
                 idx !== 0 ? "mt-1 feed-dashboard-cell" : "feed-dashboard-cell"
               }
               {...feed}
+              engagementButtons={[
+                {
+                  checked: true,
+                  text: "Answer",
+                  icon: `${cdn}/Answer.png`,
+                },
+                {
+                  checked: true,
+                  text: "Thanks",
+                  icon: `${cdn}/Thanks.png`,
+                  number: feed.num_thanks || 0,
+                },
+                {
+                  checked: true,
+                  text: "Insightful",
+                  icon: `${cdn}/Insightful.png`,
+                  number: feed.num_insightful || 0,
+                },
+              ]}
+              onEngagementButtonClick={() => console.log("a")}
             />
           );
         })}
 
-      {moreData && (
+      {feedData.length === 0 && (
+        <div className="wrapper article-wrapper">
+          <div className="no-feed-data-header">No content yet</div>
+        </div>
+      )}
+      {feedMoreData && (
         <div className="row">
           <div className="col-md-2 mt-2 mx-auto">
             <button
@@ -139,6 +166,7 @@ function RenderDashboard(props) {
         </Col>
       ) : (
         <RenderFeed
+          moreData={props.moreData}
           feedData={props.feedData}
           fetchActiveFeed={props.fetchActiveFeed}
         />
@@ -163,42 +191,78 @@ const Feed = (props) => {
   const [activeSelector, setActiveSelector] = useState(0);
   const [filterIdx, setFilterIdx] = useState(0);
   const [filters, setFilters] = useState([]);
+  const [bannerTitle, setBannerTitle] = useState("");
+  const [bannerImage, setBannerImage] = useState("");
+
+  const changeDashboardHeader = (idx) => {
+    if (idx < filters.length) {
+      setBannerTitle(filters[idx].title);
+      setBannerImage(
+        filters[idx].image ||
+          "https://d3k6hg21rt7gsh.cloudfront.net/directory.png"
+      );
+    }
+  };
   const changeDashboardFilter = async (filter, subfilter) =>
     props.changeDashboardFilter({ filter, subfilter });
+  const changeFilter = (idx) => {
+    setFilterIdx(idx);
+    changeDashboardFilter(filters[idx].slug, subSelectors[activeSelector].slug);
+    changeDashboardHeader(idx);
+    // rewrite the url
+    if (idx < 3) {
+      window.history.pushState({}, filters[idx].name, "/feed");
+    } else {
+      window.history.pushState(
+        {},
+        filters[idx].name,
+        `/group/${filters[idx].slug}`
+      );
+    }
+  };
+  const changeSubFilter = (idx) => {
+    setActiveSelector(idx);
+    changeDashboardFilter(filters[filterIdx].slug, subSelectors[idx].slug);
+  };
   useEffect(() => {
     const getProfileStats = async () => props.getProfileStats();
     getProfileStats().then((profileStats) => {
       let newFilters = [
-        { title: "All members", slug: "all-members", enabled: true },
+        { title: "My Network", slug: "my-network", enabled: true },
         { title: "My Peers", slug: "my-peers", enabled: true },
         { title: "My Experts", slug: "my-experts", enabled: true },
       ];
-      if (profileStats && profileStats.groups) {
+      if (profileStats && profileStats.profile && profileStats.profile.groups) {
         newFilters = newFilters.concat(
-          profileStats.groups.map((group) => {
+          profileStats.profile.groups.map((group) => {
             return {
               title: group.name,
               slug: group.slug,
+              image: group.image || null,
               enabled: true,
             };
           })
         );
       }
       setFilters(newFilters);
+      let groupIdx = -1;
+      if (window.location.href.includes("/group/")) {
+        let groupSlug = Util.parsePath(window.location.href).trailingPath;
+        groupIdx = newFilters.findIndex((f) => f.slug === groupSlug);
+      }
+      let idx = groupIdx > 0 ? groupIdx : filterIdx;
+      setFilterIdx(idx);
+      setBannerTitle(newFilters[idx].title);
+      setBannerImage(
+        newFilters[idx].image ||
+          "https://d3k6hg21rt7gsh.cloudfront.net/directory.png"
+      );
       changeDashboardFilter(
-        newFilters[filterIdx].slug,
+        newFilters[idx].slug,
         subSelectors[activeSelector].slug
       );
     });
   }, []);
-  const changeFilter = (idx) => {
-    setFilterIdx(idx);
-    changeDashboardFilter(filters[idx].slug, subSelectors[activeSelector].slug);
-  };
-  const changeSubFilter = (idx) => {
-    setActiveSelector(idx);
-    changeDashboardFilter(filters[filterIdx].slug, subSelectors[idx].slug);
-  };
 
   const [showContentModal, setShowContentModal] = useState(false);
   const handleShow = () => setShowContentModal(true);
@@ -208,17 +272,14 @@ const Feed = (props) => {
 
   const handleSubmit = async (content) => {
     const id = await props.saveContent(content);
-    history.push(`question/${id}`);
+    history.push(`content/${id}`);
   };
   return (
     <>
       <Container className="height-100">
         <div className="wrapper">
           <Header />
-          <Banner
-            title="CMOlist"
-            img="https://d3k6hg21rt7gsh.cloudfront.net/directory.png"
-          >
+          <Banner title={bannerTitle} img={bannerImage}>
             <div className="btn-wrapper d-flex flex-column">
               <Button
                 className="btn-white modal-primary-button mb-2"
@@ -289,6 +350,7 @@ const Feed = (props) => {
 
           <RenderDashboard
             profileStats={props.profileStats}
+            moreData={props.moreData}
             feedData={props.activeFeed}
             fetchActiveFeed={props.fetchActiveFeed}
           />
@@ -316,6 +378,7 @@ const mapState = (state) => {
     feedLoading: state.feedModel.feedLoading,
     activeFeed: state.feedModel.activeFeed,
     feedData: state.feedModel.feedData,
+    moreData: state.feedModel.moreData,
     filterIdx: state.feedModel.filterIdx,
     profileStats: state.profileModel.profileStats,
   };

@@ -3,7 +3,7 @@ import { useHistory } from "react-router";
 import { Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
 import { AsyncTypeahead, TypeaheadMenu } from "react-bootstrap-typeahead";
 import { NavLink } from "react-router-dom";
-import "./header.css";
+import "./header.scss";
 
 import HomeIcon from "../icons/home.svg";
 import Group from "../icons/group.svg";
@@ -53,9 +53,9 @@ function Header() {
   };
 
   return (
-    <Navbar expand="md" variant="dark">
+    <Navbar expand="md" variant="white">
       <Navbar.Brand href="/feed">
-        CMO<span>list</span>
+        <div className="navbar-brand--item">C</div>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse className="nav-app" id="basic-navbar-nav">

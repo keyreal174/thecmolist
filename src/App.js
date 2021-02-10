@@ -100,6 +100,12 @@ class App extends React.Component {
             }
           />
           <Route
+            path="/group"
+            render={(props) =>
+              this.state.authed ? <Feed /> : <Redirect to="/login" />
+            }
+          />
+          <Route
             path="/profile"
             render={(props) =>
               this.state.authed ? <Profile /> : <Redirect to="/login" />
@@ -126,7 +132,7 @@ class App extends React.Component {
             }
           />
           <Route
-            path="/question/:id"
+            path="/content/:id"
             render={(props) =>
               this.state.authed ? (
                 <Content {...props} />

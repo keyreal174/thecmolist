@@ -1,3 +1,5 @@
+@import "../../../../sass/globals.scss";
+
 .nav-app {
   justify-content: flex-end;
 }
@@ -7,19 +9,37 @@
 }
 
 .navbar {
-  background-color: #28404a;
+  background-color: $white;
+  height: 80px;
+  left: 0;
   padding: 0 0 0 22px;
-  height: 54px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  &-nav {
+    margin-right: 140px;
+  }
 }
 
 .navbar-brand:focus,
 .navbar-brand:hover,
 .navbar-brand {
-  color: #ffffff;
+  background: $brand;
+  color: $white;
   font-weight: bold;
   font-size: 26px;
-  margin-right: 74px;
   font-family: "Montserrat";
+  width: 45px;
+  height: 45px;
+  position: relative;
+  border-radius: 11px;
+  margin-left: 145px;
+}
+
+.navbar-brand--item {
+  position: absolute;
+  left: 13px;
+  top: 3px;
 }
 
 .navbar-brand span {
@@ -28,29 +48,45 @@
 }
 
 .navbar-nav .nav-link {
-  position: relative;
+  background: $text-3;
+  color: $text-2;
   display: flex;
   flex-direction: column;
-  color: #aab6be;
   font-size: 12px;
-  width: 100px;
+  margin-right: 25px;
+  position: relative;
   text-align: center;
-  white-space: nowrap;
   transition: color 0.2s ease-in-out;
+  white-space: nowrap;
+  width: 55px;
+}
+
+.nav-link img {
+  margin-bottom: 10px;
 }
 
 .navbar-dark .navbar-nav .nav-link img {
-  height: 27px;
+  height: 24px;
+  width: 24px;
   opacity: 0.25;
 }
 
+.nav-link.active {
+  color: $brand;
+  background: $white;
+  font-weight: 700;
+  line-height: 16px;
+  border-bottom: 2px solid $brand;
+}
+
 .nav-link.active img {
+  background: $brand;
   opacity: 1 !important;
 }
 
 .navbar-dark .navbar-nav .nav-link:focus,
 .navbar-dark .navbar-nav .nav-link:hover {
-  color: #ffffff;
+  color: $white;
 }
 
 .nav-link:hover img {
@@ -100,8 +136,8 @@
 
 .form-inline .form-control:focus {
   color: #495057;
-  background-color: #ffffff;
-  border-color: #ffffff;
+  background-color: $white;
+  border-color: $white;
   outline: 0;
   box-shadow: none;
 }
@@ -177,17 +213,24 @@
 }
 
 .header-search {
-  width: 100%;
+  width: 476px;
   font-size: 14px;
   font-weight: 400;
   border-radius: 2px;
-  height: 34px;
+  height: 45px;
   transition: 0.2s ease;
 }
 
 .header-search > div > .rbt-input-main {
-  padding-left: 30px;
+  padding-left: 54px;
   padding-right: 8px;
   padding-bottom: 0px;
   padding-top: 0px;
+  background: $gray-4;
+}
+
+.search-btn {
+  position: absolute;
+  top: 9px;
+  left: 18px;
 }

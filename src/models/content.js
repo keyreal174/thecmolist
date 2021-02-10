@@ -26,6 +26,7 @@ export default {
   name: "contentModel",
   state: {
     content: {},
+    contentLoading: false,
   },
   reducers: {
     setContent: (oldState, data) => {
@@ -65,13 +66,22 @@ export default {
         ...newState,
       };
     },
+    setLoading: (oldState, data) => {
+      return {
+        ...oldState,
+        contentLoading: data,
+      };
+    },
   },
   effects: (dispatch) => ({
     async fetchContent(id) {
       try {
         if (id) {
+          dispatch.contentModel.setLoading(true);
+
           const response = await getContent(id);
           const data = response.data;
+
           dispatch.contentModel.setContent(data);
           dispatch.reactionModel.setReactions(data);
         } else {
@@ -79,6 +89,8 @@ export default {
         }
       } catch (err) {
         throw new Error("Could not fetch content.");
+      } finally {
+        dispatch.contentModel.setLoading(false);
       }
     },
     async saveCommentToContent(comment, data) {
@@ -88,10 +100,6 @@ export default {
           const response = await replyContent(contentId, comment);
           dispatch.contentModel.saveReply({
             newAnswer: response.data,
-          });
-          dispatch.reactionModel.setReactions({
-            ...data.contentModel.content,
-            ...response.data,
           });
         } else {
           throw new Error("Data not provided");

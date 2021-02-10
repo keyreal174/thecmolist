@@ -35,6 +35,7 @@ function AddPostModal({
   const [showVideo, setShowVideo] = useState(false);
   const [title, setTitle] = useState("");
   const [topics, setTopics] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     const content = {
@@ -49,15 +50,17 @@ function AddPostModal({
       role,
     };
     setError(null);
+    setIsLoading(true);
     e.preventDefault();
 
     try {
       await onSubmit(content);
-
-      handleClose();
-      cleanFields();
     } catch (error) {
       setError(error);
+    } finally {
+      setIsLoading(false);
+      handleClose();
+      cleanFields();
     }
   };
 
@@ -107,8 +110,13 @@ function AddPostModal({
   }, []);
 
   useEffect(() => {
-    if (profileStats && profileStats.groups && profileStats.groups.length > 0) {
-      const { groups: actualGroups } = profileStats;
+    if (
+      profileStats &&
+      profileStats.profile &&
+      profileStats.profile.groups &&
+      profileStats.profile.groups.length > 0
+    ) {
+      const { groups: actualGroups } = profileStats.profile;
       setGroups(getGroupsObject(actualGroups));
     }
   }, [profileStats]);
@@ -172,6 +180,7 @@ function AddPostModal({
     setPerson("");
     setRole("");
   };
+
   return (
     <>
       <Modal className="modal" show={show} onHide={handleClose} size="lg">
@@ -180,7 +189,7 @@ function AddPostModal({
         </Modal.Header>
         <Modal.Body>
           <Container>
-            <Form>
+            <Form id="form-add-post-modal" onSubmit={handleSubmit}>
               <Row>
                 {error && (
                   <Alert
@@ -256,6 +265,8 @@ function AddPostModal({
                     placeholder="Be specific and imagine you’re asking a question to another person"
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}
+                    required={true}
+                    controlId="validation01"
                   />
                 </Col>
                 <Col md="10">
@@ -267,6 +278,8 @@ function AddPostModal({
                     placeholder="Include all the information, @people and @vendors someone would need to answer your question"
                     onChange={(e) => setBody(e.target.value)}
                     value={body}
+                    required={true}
+                    controldId="validation02"
                   />
                 </Col>
                 <Col md="2">
@@ -420,13 +433,16 @@ function AddPostModal({
             className="btn-white modal-cancel-button"
             variant="outline-primary"
             onClick={() => handleCancel()}
+            disabled={isLoading}
           >
             {firstButtonText}
           </Button>
           <Button
             className="btn__homepage-blue"
+            disabled={isLoading}
             variant="primary"
-            onClick={handleSubmit}
+            type="submit"
+            form="form-add-post-modal"
           >
             {secondButtonText}
           </Button>
