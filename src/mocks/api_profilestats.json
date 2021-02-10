@@ -8,6 +8,20 @@
       { "name": "Views", "count": 2345 },
       { "name": "Thanks", "count": 34 },
       { "name": "Insightful", "count": 11 }
+    ],
+    "groups": [
+      { "name": "My Peers", "slug": "my-peers", "checked": true },
+      {
+        "name": "Signal Fire Marketing",
+        "slug": "signal-fire-marketing",
+        "checked": true
+      },
+      { "name": "Dropbox", "slug": "dropbox", "checked": false },
+      {
+        "name": "Pagerduty Marketing",
+        "slug": "pagerduty-marketing",
+        "checked": false
+      }
     ]
   },
   "spaces": [
@@ -40,20 +54,6 @@
     },
     {
       "title": "#demand-generation"
-    }
-  ],
-  "groups": [
-    { "name": "My Peers", "slug": "my-peers", "checked": true },
-    {
-      "name": "Signal Fire Marketing",
-      "slug": "signal-fire-marketing",
-      "checked": true
-    },
-    { "name": "Dropbox", "slug": "dropbox", "checked": false },
-    {
-      "name": "Pagerduty Marketing",
-      "slug": "pagerduty-marketing",
-      "checked": false
     }
   ],
   "buildYourNetwork": [
