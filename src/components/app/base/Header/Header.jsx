@@ -54,98 +54,105 @@ function Header({ getProfileStats, profileStats }) {
   };
 
   return (
-    <Navbar expand="md" variant="white">
-      <Navbar.Brand href="/feed">
-        <img src="/images/cmo.png" alt="CMOList brand logo" />
-      </Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse className="nav-app" id="basic-navbar-nav">
-        <AsyncTypeahead
-          className="header-search"
-          id="async-global-search"
-          isLoading={isLoading}
-          labelKey="name"
-          minLength={3}
-          onSearch={handleSearch}
-          options={options}
-          emptyLabel=""
-          renderMenu={(results, menuProps) => {
-            if (!results.length) {
-              return null;
-            }
-            return (
-              <TypeaheadMenu options={results} labelKey="name" {...menuProps} />
-            );
-          }}
-          onChange={(selectedOption) => {
-            window.location.href = selectedOption[0].link;
-          }}
-          placeholder="Search"
-          renderMenuItemChildren={(option) => (
-            <Fragment>
-              <img
-                alt="avatar"
-                src={option.avatar_url}
-                style={{
-                  height: "24px",
-                  marginRight: "10px",
-                  width: "24px",
-                }}
-              />
-              <span>{option.name}</span>
-            </Fragment>
-          )}
-        >
-          <Button className="search-btn" variant="submit">
-            <img src={Search} alt="" />
-          </Button>
-        </AsyncTypeahead>
-        <Nav>
-          <Nav.Link as={NavLink} to="/feed">
-            <img src={HomeIcon} alt="" />
-            {isSmall ? "" : "Home"}
-          </Nav.Link>
-          <Nav.Link as={NavLink} to="/network">
-            <img src={Group} alt="" />
-            {isSmall ? "" : "My Network"}
-          </Nav.Link>
-          <Nav.Link as={NavLink} to="/topics">
-            <img src={Apps} alt="" />
-            {isSmall ? "" : "Topics"}
-          </Nav.Link>
-          <Nav.Link as={NavLink} to="/notifications">
-            <img src={Notification} alt="" />
-            {isSmall ? "" : "Notifications"}
-            <div className="notifications--wrapper">
-              <img
-                className="notifications--rectangle"
-                src={Rectangle2}
-                alt="Amount rectangle"
-              />
-              <span className="notifications--number">12</span>
-            </div>
-          </Nav.Link>
-          <NavDropdown
-            className={
-              window.location.href.includes("/profile/") ? "active" : ""
-            }
-            alignRight
-            title={<PersonHeader icon={Person} />}
-            id="basic-nav-dropdown"
+    <div>
+      <div className="container-fullwidth"></div>
+      <Navbar expand="md" variant="white">
+        <Navbar.Brand href="/feed">
+          <img src="/images/cmo.png" alt="CMOList brand logo" />
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse className="nav-app" id="basic-navbar-nav">
+          <AsyncTypeahead
+            className="header-search"
+            id="async-global-search"
+            isLoading={isLoading}
+            labelKey="name"
+            minLength={3}
+            onSearch={handleSearch}
+            options={options}
+            emptyLabel=""
+            renderMenu={(results, menuProps) => {
+              if (!results.length) {
+                return null;
+              }
+              return (
+                <TypeaheadMenu
+                  options={results}
+                  labelKey="name"
+                  {...menuProps}
+                />
+              );
+            }}
+            onChange={(selectedOption) => {
+              window.location.href = selectedOption[0].link;
+            }}
+            placeholder="Search"
+            renderMenuItemChildren={(option) => (
+              <Fragment>
+                <img
+                  alt="avatar"
+                  src={option.avatar_url}
+                  style={{
+                    height: "24px",
+                    marginRight: "10px",
+                    width: "24px",
+                  }}
+                />
+                <span>{option.name}</span>
+              </Fragment>
+            )}
           >
-            <NavDropdown.Item className="profile-dropdown" href="/profile">
-              Profile
-            </NavDropdown.Item>
-            <NavDropdown.Item className="profile-dropdown" href="/settings">
-              Settings
-            </NavDropdown.Item>
-            <NavDropdown.Item className="profile-dropdown" href="/logout">
-              Logout
-            </NavDropdown.Item>
-          </NavDropdown>
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
+            <Button className="search-btn" variant="submit">
+              <img src={Search} alt="" />
+            </Button>
+          </AsyncTypeahead>
+          <Nav>
+            <Nav.Link as={NavLink} to="/feed">
+              <img src={HomeIcon} alt="" />
+              {isSmall ? "" : "Home"}
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/network">
+              <img src={Group} alt="" />
+              {isSmall ? "" : "My Network"}
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/topics">
+              <img src={Apps} alt="" />
+              {isSmall ? "" : "Topics"}
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/notifications">
+              <img src={Notification} alt="" />
+              {isSmall ? "" : "Notifications"}
+              <div className="notifications--wrapper">
+                <img
+                  className="notifications--rectangle"
+                  src={Rectangle2}
+                  alt="Amount rectangle"
+                />
+                <span className="notifications--number">12</span>
+              </div>
+            </Nav.Link>
+            <NavDropdown
+              className={
+                window.location.href.includes("/profile/") ? "active" : ""
+              }
+              alignRight
+              title={<PersonHeader icon={Person} />}
+              id="basic-nav-dropdown"
+            >
+              <NavDropdown.Item className="profile-dropdown" href="/profile">
+                Profile
+              </NavDropdown.Item>
+              <NavDropdown.Item className="profile-dropdown" href="/settings">
+                Settings
+              </NavDropdown.Item>
+              <NavDropdown.Item className="profile-dropdown" href="/logout">
+                Logout
+              </NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+    </div>
   );
 }
 const mapState = (state) => {
