@@ -5,7 +5,7 @@ import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Separator from "../base/Separator/Separator";
 
-import "./settings.css";
+import "./settings.scss";
 
 const Settings = ({ settings, saveSetting, getSetting }) => {
   const [account, setAccount] = useState({

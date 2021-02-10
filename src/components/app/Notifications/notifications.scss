@@ -1,3 +1,5 @@
+@import "../../../sass/globals.scss";
+
 /* .btn__load-more {
     display: block;
     width: 136px;
@@ -15,7 +17,7 @@
   } */
 
 .notifications--feed {
-  margin-top: 98px;
+  margin-top: $margin-top-header;
 }
 .section-break {
   float: left;

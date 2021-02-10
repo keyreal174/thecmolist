@@ -1,3 +1,5 @@
+@import "../../../sass/globals.scss";
+
 .logo-wrapper {
   position: absolute;
   left: 35px;
@@ -70,7 +72,7 @@
   height: 200px;
   background-color: #ffffff;
   border: 2px solid #cccccc;
-  margin-top: 98px;
+  margin-top: $margin-top-header;
 }
 
 .overview--padding {

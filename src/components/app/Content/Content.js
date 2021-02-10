@@ -7,7 +7,7 @@ import DiscussionComment from "../base/DiscussionComment/DiscussionComment";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 
-import "./content.css";
+import "./content.scss";
 
 const Content = ({ contentLoading, fetchContent, match, ...rest }) => {
   const [error, setError] = useState("");

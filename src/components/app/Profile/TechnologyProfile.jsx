@@ -9,7 +9,7 @@ import { Row, Col, Container } from "react-bootstrap";
 import ShowMoreText from "react-show-more-text";
 import RatingBadgeProfile from "../base/Rating/RatingBadgeProfile";
 import Util from "../../util/Util";
-import "./profile.css";
+import "./profile.scss";
 
 import Website from "./icons/link.svg";
 

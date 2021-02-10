@@ -6,7 +6,7 @@ import Footer from "../base/Footer/Footer";
 import InviteModal from "../base/ShareModule/InviteModal";
 import Article from "../base/Article/Article";
 import Analytics from "../../util/Analytics";
-import "./notifications.css";
+import "./notifications.scss";
 
 const Notifications = (props) => {
   const [inviteModalShow, setInviteModalShow] = useState(false);

@@ -1,6 +1,6 @@
 import React, { useState, useRef, Fragment } from "react";
 import { Button, Form, Modal, Row, Col } from "react-bootstrap";
-import "./profile.css";
+import "./profile.scss";
 
 function EditAgency(props) {
   const [agencyName, setAgencyName] = useState(props.agencyName);

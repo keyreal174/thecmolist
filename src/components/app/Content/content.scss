@@ -1,3 +1,5 @@
+@import "../../../sass/globals.scss";
+
 .question-answer-section-wrapper {
   justify-content: space-between;
 }
@@ -76,5 +78,5 @@
 }
 
 .question-answer-section-wrapper {
-  margin-top: 98px;
+  margin-top: $margin-top-header;
 }
