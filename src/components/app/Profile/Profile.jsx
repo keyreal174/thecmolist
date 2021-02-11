@@ -68,6 +68,7 @@ const Profile = (props) => {
 
   const [showDeletePost, setShowDeletePost] = useState(false);
   const [showFollowModal, setShowFollowModal] = useState(false);
+  const [showMore, setShowMore] = useState(false);
   let isVerified = true;
 
   useEffect(() => {
@@ -458,7 +459,7 @@ const Profile = (props) => {
               <div className="popular-topics--content">
                 <div>
                   {subfilterKeys.map((subfilter, idx) => {
-                    if (idx < 5) {
+                    if (idx < 5 || showMore) {
                       return (
                         <div className="popular-topics--content-item">
                           <Link
@@ -483,8 +484,13 @@ const Profile = (props) => {
                   {subfilterKeys.length > 5 && (
                     <>
                       <div className="popular-topics--divider" />
-                      <div className="popular-topics--show-more">
-                        <Button variant="link">Show More</Button>
+                      <div className="popular-topics--button">
+                        <Button
+                          variant="link"
+                          onClick={() => setShowMore(!showMore)}
+                        >
+                          {showMore ? "Show less" : "Show more"}
+                        </Button>
                       </div>
                     </>
                   )}

@@ -437,14 +437,15 @@
 }
 
 .profile--popular-topics {
-  height: 354px;
+  min-height: 354px;
   position: relative;
 
   .popular-topics {
     &--content {
       display: flex;
       flex-direction: column;
-      padding: 15px;
+      padding: 10px 15px;
+      margin-bottom: 60px;
 
       &-item {
         padding-bottom: 40px;
@@ -455,11 +456,13 @@
       position: absolute;
       width: 100%;
       left: 0;
-      bottom: 50px;
+      bottom: 60px;
     }
-    &--show-more {
-      padding: 20px 0;
+    &--button {
       text-align: center;
+      position: absolute;
+      bottom: 15px;
+      left: 115px;
       > button {
         color: $brand;
       }
