@@ -15,6 +15,7 @@ const Search = (props) => {
   const [filterIdx, setFilterIdx] = useState(null);
   const [filter, setFilter] = useState(null);
   const [isFull, setIsFull] = useState(false);
+  const [query, setQuery] = useState("");
 
   const changeFilter = (idx) => {
     setFilterIdx(idx);
@@ -24,15 +25,16 @@ const Search = (props) => {
     var index = filters.map((item) => item.slug).indexOf(filter);
     changeFilter(index);
     setFilter(filter);
-    props.fetchRefinedSearch(filter);
+    props.fetchRefinedSearch(query, filter);
   };
 
   const fetchMoreRefinedData = (filter) => {
-    props.fetchRefinedSearch(filter);
+    props.fetchRefinedSearch(query, filter);
   };
 
   useEffect(() => {
-    const { query } = location.state;
+    const query = location.state ? location.state.query : "";
+    setQuery(query);
     props.fetchFullSearch(query);
   }, []);
 

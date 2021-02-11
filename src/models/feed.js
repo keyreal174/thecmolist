@@ -90,7 +90,6 @@ export default {
     async fetchActiveFeed(_, rootState) {
       const filterKey = rootState.feedModel.activeFilter;
       const dataForFilter = rootState.feedModel.dashboardFeedData[filterKey];
-      console.log(dataForFilter, "--------------------------");
       const response = await feedRequest(
         filterKey.toLowerCase(),
         dataForFilter.token

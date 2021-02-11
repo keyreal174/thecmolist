@@ -99,6 +99,11 @@ function Header({ getProfileStats, profileStats }) {
             onChange={(selectedOption) => {
               window.location.href = selectedOption[0].link;
             }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                goSearchPage();
+              }
+            }}
             placeholder="Search"
             renderMenuItemChildren={(option) => (
               <Fragment>

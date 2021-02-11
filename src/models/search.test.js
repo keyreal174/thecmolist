@@ -48,7 +48,7 @@ describe("searchModel model", () => {
     it("search successfully refined data through an API", async () => {
       axios.get.mockImplementation(() => Promise.resolve(refinedSearch));
 
-      await expect(getRefinedSearchRequest("qa")).resolves.toEqual(
+      await expect(getRefinedSearchRequest("query", "qa")).resolves.toEqual(
         refinedSearch
       );
     }),
@@ -59,6 +59,8 @@ describe("searchModel model", () => {
         Promise.reject(new Error(errorMessage))
       );
 
-      await expect(getRefinedSearchRequest("qa")).rejects.toThrow(errorMessage);
+      await expect(getRefinedSearchRequest("query", "qa")).rejects.toThrow(
+        errorMessage
+      );
     });
 });
