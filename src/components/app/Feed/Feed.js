@@ -10,6 +10,7 @@ import InviteModal from "../base/ShareModule/InviteModal";
 import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
 import AddPostModal from "../base/AddPostModal/AddPostModal";
 import ProfileStats from "../ProfileStats/ProfileStats";
+import AskQuestion from "../base/AskQuestion/AskQuestion";
 import Analytics from "../../util/Analytics";
 import Util from "../../util/Util";
 import { useHistory } from "react-router";
@@ -94,7 +95,7 @@ function RenderFeed({ feedData, moreData, fetchActiveFeed }) {
   };
   let feedMoreData = feedData.length > 0 && moreData;
   return (
-    <Col md="6">
+    <div>
       {feedData &&
         feedData.map((feed, idx) => {
           return (
@@ -146,7 +147,7 @@ function RenderFeed({ feedData, moreData, fetchActiveFeed }) {
           </div>
         </div>
       )}
-    </Col>
+    </div>
   );
 }
 
@@ -158,19 +159,20 @@ function RenderDashboard(props) {
       <Col md="3" style={{ paddingRight: "0px" }}>
         {profileStats && <ProfileStats profileStats={profileStats} />}
       </Col>
-      {feedLoading ? (
-        <Col md="6">
+      <Col md="6">
+        <AskQuestion />
+        {feedLoading ? (
           <div className="mt-3 mb-5">
             <ActivityIndicator className="element-center feed-activity-indicator" />
           </div>
-        </Col>
-      ) : (
-        <RenderFeed
-          moreData={props.moreData}
-          feedData={props.feedData}
-          fetchActiveFeed={props.fetchActiveFeed}
-        />
-      )}
+        ) : (
+          <RenderFeed
+            moreData={props.moreData}
+            feedData={props.feedData}
+            fetchActiveFeed={props.fetchActiveFeed}
+          />
+        )}
+      </Col>
       <RenderRightContainer
         buildYourNetworkItems={profileStats.buildYourNetwork}
         peopleInSimilarRoles={profileStats.peopleInSimilarRoles}
