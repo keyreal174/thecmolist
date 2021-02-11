@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
+import { useHistory } from "react-router";
 import { Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
 import { AsyncTypeahead, TypeaheadMenu } from "react-bootstrap-typeahead";
 import { NavLink } from "react-router-dom";
@@ -14,6 +15,7 @@ import Search from "../icons/search.svg";
 import Rectangle2 from "../icons/rectangle2.svg";
 
 function Header({ getProfileStats, profileStats }) {
+  const history = useHistory();
   useEffect(() => {
     const fetch = async () => await getProfileStats();
 
