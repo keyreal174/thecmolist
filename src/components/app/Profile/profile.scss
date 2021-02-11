@@ -26,8 +26,30 @@
 
 .profile-about {
   background-color: #ffffff;
-  border: 2px solid #cccccc;
-  padding: 10px 15px 20px 15px;
+  border: 1px solid #cccccc;
+  padding: 10px 0 20px 0;
+  border-radius: $border-radius;
+  border: $border-card;
+
+  &--title {
+    padding: 28px 0 5px 32px;
+    border-bottom: $border-card;
+  }
+  &--content {
+    padding: 20px 28px;
+  }
+  &--experience,
+  &--open {
+    padding: 0 28px;
+    color: $gray-2;
+  }
+  &--experience-title {
+    font-weight: 700;
+    color: $text-1;
+  }
+  &--open-content {
+    color: $success;
+  }
 }
 
 .profile-about h2 {
@@ -360,13 +382,13 @@
 
 .profile--right-section,
 .profile--left-section {
-  border-radius: 12px;
+  border-radius: $border-radius;
+  border: $border-card;
   background-color: $white;
   height: 350px;
 }
 
 .left-section {
-  border: 1px solid $gray-3;
   &--image {
     height: 215px;
     width: 100%;
@@ -408,4 +430,42 @@
 .edit-profile {
   margin-right: 10px;
   border-radius: 20px;
+}
+
+.profile--feed {
+  margin-top: 25px;
+}
+
+.profile--popular-topics {
+  min-height: 354px;
+  position: relative;
+
+  .popular-topics {
+    &--content {
+      display: flex;
+      flex-direction: column;
+      padding: 10px 15px;
+      margin-bottom: 60px;
+
+      &-item {
+        padding-bottom: 40px;
+      }
+    }
+    &--divider {
+      border-top: $border-card;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      bottom: 60px;
+    }
+    &--button {
+      text-align: center;
+      position: absolute;
+      bottom: 15px;
+      left: 115px;
+      > button {
+        color: $brand;
+      }
+    }
+  }
 }

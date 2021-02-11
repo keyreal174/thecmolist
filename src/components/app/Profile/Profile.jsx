@@ -5,6 +5,7 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Link } from "react-router-dom";
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import ShowMoreText from "react-show-more-text";
+import Card from "../base/Card/Card";
 import Header from "../base/Header/Header";
 import Filter from "../base/Filter/Filter";
 import Article from "../base/Article/Article";
@@ -25,7 +26,10 @@ import Group from "../../app/base/icons/group.svg";
 const RenderList = ({ arr }) => {
   return arr.map((item, index) => (
     <React.Fragment key={index}>
-      <a href="#">{item}</a>
+      <a href="#">
+        {item}
+        {index < arr.length - 1 && ","}
+      </a>
       {index < arr.length - 1 && <span> </span>}
     </React.Fragment>
   ));
@@ -64,6 +68,7 @@ const Profile = (props) => {
 
   const [showDeletePost, setShowDeletePost] = useState(false);
   const [showFollowModal, setShowFollowModal] = useState(false);
+  const [showMore, setShowMore] = useState(false);
   let isVerified = true;
 
   useEffect(() => {
@@ -321,8 +326,7 @@ const Profile = (props) => {
             </Col>
 
             <Col md="4">
-              <div className="profile--right-section">
-                <div className="right-section--intro">Intro</div>
+              <Card title="Intro" className="profile--right-section">
                 <div className="right-section--details">
                   {profileCompany && (
                     <div className="right-section--job right-section--item">
@@ -333,16 +337,6 @@ const Profile = (props) => {
                       />
                       {`${profileTitle} at `}
                       <strong>{profileCompany}</strong>
-                    </div>
-                  )}
-                  {profileData.university && (
-                    <div className="right-section--education right-section--item">
-                      <img
-                        className="right-section--item-img"
-                        alt="education"
-                        src={Education}
-                      />
-                      Went to <strong>{profileData.university}</strong>
                     </div>
                   )}
                   {profileCity && (
@@ -391,44 +385,53 @@ const Profile = (props) => {
                     </div>
                   )}
                 </div>
-              </div>
+              </Card>
             </Col>
           </Row>
           {Object.keys(profileAbout).length > 0 && (
-            <div className="profile-about mt-2 px-4">
+            <Card title="About" className="profile-about mt-2">
               <Row>
                 <Col md="12">
-                  <h2 className="mb-3 mt-2">About</h2>
-                  <ShowMoreText
-                    keepNewLines={true}
-                    lines={2}
-                    more="See more"
-                    less="See less"
-                    width={0}
-                  >
-                    {profileAbout.description}
-                  </ShowMoreText>
+                  <div className="profile-about--content">
+                    <ShowMoreText
+                      keepNewLines={true}
+                      lines={2}
+                      more="See more"
+                      less="See less"
+                      width={0}
+                    >
+                      {profileAbout.description}
+                    </ShowMoreText>
+                  </div>
                 </Col>
               </Row>
-              <Row>
+              <Row className="profile-about--experience">
                 <Col md="6">
-                  <Form.Label>Marketing expertise</Form.Label>
+                  <Form.Label className="profile-about--experience-title">
+                    Marketing expertise
+                  </Form.Label>
                   <div>
                     <RenderList arr={profileAbout.areasOfExpertise} />
                   </div>
                 </Col>
                 <Col md="6">
-                  <Form.Label>Marketing interests</Form.Label>
+                  <Form.Label className="profile-about--experience-title">
+                    Marketing interests
+                  </Form.Label>
                   <div>
                     <RenderList arr={profileAbout.areasOfInterest} />
                   </div>
                 </Col>
               </Row>
-              <Row>
+              <Row className="profile-about--open">
                 <Col md="6">
-                  <Form.Label>Open to networking</Form.Label>
+                  <Form.Label className="profile-about--open-title">
+                    Open to networking
+                  </Form.Label>
                   <div>
-                    <span>{profileAbout.networking ? "Yes" : "No"}</span>
+                    <span className="profile-about--open-content">
+                      {profileAbout.networking ? "Yes" : "No"}
+                    </span>
                   </div>
                 </Col>
                 <Col md="6">
@@ -438,7 +441,7 @@ const Profile = (props) => {
                   </div>
                 </Col>
               </Row>
-            </div>
+            </Card>
           )}
 
           {profileFirstName && (
@@ -449,55 +452,81 @@ const Profile = (props) => {
             ></Filter>
           )}
         </div>
-        {subfilterKeys.length > 0 && (
-          <div className="profile-subfilters">
-            <div style={{ paddingLeft: "10px", paddingRight: "10px" }}>
-              {subfilterKeys.map((subfilter, idx) => (
-                <Link
-                  className={
-                    subfilter === feedFilter
-                      ? "profile-subfilter active"
-                      : "profile-subfilter"
-                  }
-                  onClick={() => {
-                    onSubfilterChange(subfilter);
-                  }}
-                >
-                  {idx !== 0 ? " " : ""}
-                  {subfilter} ({subfilters[subfilter]})
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
-        <div style={{ clear: "both" }}></div>
 
-        <TransitionGroup enter={enableAnimations} exit={enableAnimations}>
-          {filteredFeedData.map((feed, idx) => {
-            let badge = null;
-            if (isMyProfile) {
-              badge = (
-                <span
-                  className="cursor-pointer noselect"
-                  style={{ display: "block", marginTop: "-10px" }}
-                  onClick={() => showDeletePostModal(feed)}
-                >
-                  ✖
-                </span>
-              );
-            }
-            return (
-              <FadeTransition key={idx}>
-                <Article
-                  key={idx}
-                  className={idx !== 0 ? "mt-1" : ""}
-                  {...feed}
-                  badge={badge}
-                />
-              </FadeTransition>
-            );
-          })}
-        </TransitionGroup>
+        <Row className="profile--feed">
+          <Col md="4">
+            <Card className="profile--popular-topics" title="Popular #topics">
+              <div className="popular-topics--content">
+                <div>
+                  {subfilterKeys.map((subfilter, idx) => {
+                    if (idx < 5 || showMore) {
+                      return (
+                        <div className="popular-topics--content-item">
+                          <Link
+                            className={
+                              subfilter === feedFilter
+                                ? "profile-subfilter active"
+                                : "profile-subfilter"
+                            }
+                            onClick={() => {
+                              onSubfilterChange(subfilter);
+                            }}
+                          >
+                            {idx !== 0 ? " " : ""}
+                            {subfilter} ({subfilters[subfilter]})
+                          </Link>
+                        </div>
+                      );
+                    }
+                  })}
+                </div>
+                <div>
+                  {subfilterKeys.length > 5 && (
+                    <>
+                      <div className="popular-topics--divider" />
+                      <div className="popular-topics--button">
+                        <Button
+                          variant="link"
+                          onClick={() => setShowMore(!showMore)}
+                        >
+                          {showMore ? "Show less" : "Show more"}
+                        </Button>
+                      </div>
+                    </>
+                  )}
+                </div>
+              </div>
+            </Card>
+          </Col>
+          <Col md="8">
+            <TransitionGroup enter={enableAnimations} exit={enableAnimations}>
+              {filteredFeedData.map((feed, idx) => {
+                let badge = null;
+                if (isMyProfile) {
+                  badge = (
+                    <span
+                      className="cursor-pointer noselect"
+                      style={{ display: "block", marginTop: "-10px" }}
+                      onClick={() => showDeletePostModal(feed)}
+                    >
+                      ✖
+                    </span>
+                  );
+                }
+                return (
+                  <FadeTransition key={idx}>
+                    <Article
+                      key={idx}
+                      className={idx !== 0 ? "mt-1" : ""}
+                      {...feed}
+                      badge={badge}
+                    />
+                  </FadeTransition>
+                );
+              })}
+            </TransitionGroup>
+          </Col>
+        </Row>
         {profileFirstName && !hasDataOnCurrentFeed && (
           <div className="wrapper article-wrapper">
             <div className="no-feed-data-header">
