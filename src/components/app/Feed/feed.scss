@@ -1,3 +1,5 @@
+@import "../../../sass/globals.scss";
+
 .btn__nux_share {
   font-size: 14px;
   font-weight: 600;
@@ -229,4 +231,13 @@
   font-weight: 600;
   padding-top: 25px;
   padding-bottom: 25px;
+}
+
+/* New Styles */
+.my-network-text {
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 500;
+  color: $text-1;
+  padding: 12px 0;
 }
