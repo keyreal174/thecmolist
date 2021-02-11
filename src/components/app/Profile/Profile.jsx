@@ -395,40 +395,50 @@ const Profile = (props) => {
             </Col>
           </Row>
           {Object.keys(profileAbout).length > 0 && (
-            <div className="profile-about mt-2 px-4">
+            <div className="profile-about mt-2">
               <Row>
                 <Col md="12">
-                  <h2 className="mb-3 mt-2">About</h2>
-                  <ShowMoreText
-                    keepNewLines={true}
-                    lines={2}
-                    more="See more"
-                    less="See less"
-                    width={0}
-                  >
-                    {profileAbout.description}
-                  </ShowMoreText>
+                  <h2 className="profile-about--title">About</h2>
+                  <div className="profile-about--content">
+                    <ShowMoreText
+                      keepNewLines={true}
+                      lines={2}
+                      more="See more"
+                      less="See less"
+                      width={0}
+                    >
+                      {profileAbout.description}
+                    </ShowMoreText>
+                  </div>
                 </Col>
               </Row>
-              <Row>
+              <Row className="profile-about--experience">
                 <Col md="6">
-                  <Form.Label>Marketing expertise</Form.Label>
+                  <Form.Label className="profile-about--experience-title">
+                    Marketing expertise
+                  </Form.Label>
                   <div>
                     <RenderList arr={profileAbout.areasOfExpertise} />
                   </div>
                 </Col>
                 <Col md="6">
-                  <Form.Label>Marketing interests</Form.Label>
+                  <Form.Label className="profile-about--experience-title">
+                    Marketing interests
+                  </Form.Label>
                   <div>
                     <RenderList arr={profileAbout.areasOfInterest} />
                   </div>
                 </Col>
               </Row>
-              <Row>
+              <Row className="profile-about--open">
                 <Col md="6">
-                  <Form.Label>Open to networking</Form.Label>
+                  <Form.Label className="profile-about--open-title">
+                    Open to networking
+                  </Form.Label>
                   <div>
-                    <span>{profileAbout.networking ? "Yes" : "No"}</span>
+                    <span className="profile-about--open-content">
+                      {profileAbout.networking ? "Yes" : "No"}
+                    </span>
                   </div>
                 </Col>
                 <Col md="6">
