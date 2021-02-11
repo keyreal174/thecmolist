@@ -1,3 +1,5 @@
+@import "../../../sass/globals.scss";
+
 /* .btn__load-more {
     display: block;
     width: 136px;
@@ -14,6 +16,9 @@
     color: #0175B0;
   } */
 
+.notifications--feed {
+  margin-top: $margin-top-header;
+}
 .section-break {
   float: left;
   margin-right: 20px;

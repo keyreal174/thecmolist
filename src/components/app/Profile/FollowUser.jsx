@@ -8,7 +8,7 @@ import {
 import Rating from "../base/Rating/Rating";
 import PostVisibility from "../base/PostVisibility/PostVisibility";
 import "react-bootstrap-typeahead/css/Typeahead.css";
-import "./profile.css";
+import "./profile.scss";
 
 let agencyName = "";
 function FollowUserModal(props) {

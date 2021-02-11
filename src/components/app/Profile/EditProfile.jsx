@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { Button, Form, Modal, Row, Col } from "react-bootstrap";
-import "./profile.css";
+import "./profile.scss";
 
 function EditProfile(props) {
   const [firstName, setFirstName] = useState(props.profileFirstName);

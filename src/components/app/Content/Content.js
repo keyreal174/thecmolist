@@ -7,7 +7,7 @@ import DiscussionComment from "../base/DiscussionComment/DiscussionComment";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 
-import "./content.css";
+import "./content.scss";
 
 const Content = ({ contentLoading, fetchContent, match, ...rest }) => {
   const [error, setError] = useState("");
@@ -226,11 +226,7 @@ const Content = ({ contentLoading, fetchContent, match, ...rest }) => {
     <>
       <Container className="height-100">
         <div className="wrapper">
-          <Row>
-            <Col md="12">
-              <Header />
-            </Col>
-          </Row>
+          <Header />
           <Row className="question-answer-section-wrapper">
             {error && (
               <Col md="12">

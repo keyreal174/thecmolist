@@ -6,7 +6,7 @@ import Footer from "../base/Footer/Footer";
 import InviteModal from "../base/ShareModule/InviteModal";
 import Article from "../base/Article/Article";
 import Analytics from "../../util/Analytics";
-import "./notifications.css";
+import "./notifications.scss";
 
 const Notifications = (props) => {
   const [inviteModalShow, setInviteModalShow] = useState(false);
@@ -22,16 +22,18 @@ const Notifications = (props) => {
         <div className="wrapper">
           <Header />
 
-          {feedData &&
-            feedData.map((feed, idx) => {
-              return (
-                <Article
-                  key={idx}
-                  className={idx !== 0 ? "mt-1" : ""}
-                  {...feed}
-                />
-              );
-            })}
+          <div className="notifications--feed">
+            {feedData &&
+              feedData.map((feed, idx) => {
+                return (
+                  <Article
+                    key={idx}
+                    className={idx !== 0 ? "mt-1" : ""}
+                    {...feed}
+                  />
+                );
+              })}
+          </div>
 
           {props.moreData && (
             <div className="row">

@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import ShowMoreText from "react-show-more-text";
 import Header from "../base/Header/Header";
-import Banner from "../base/Banner/Banner";
 import Filter from "../base/Filter/Filter";
 import Article from "../base/Article/Article";
 import Footer from "../base/Footer/Footer";
@@ -14,11 +13,14 @@ import DeletePost from "./DeletePost";
 import FollowUserModal from "./FollowUser";
 import Util from "../../util/Util";
 import Analytics from "../../util/Analytics";
-import "./profile.css";
+import "./profile.scss";
 
 import LinkedIn from "./icons/linkedin.svg";
 import Website from "./icons/link.svg";
-import Chat from "./icons/mail.svg";
+import Mail from "./icons/mail.svg";
+import Education from "./icons/education.svg";
+import Location from "./icons/location.svg";
+import Group from "../../app/base/icons/group.svg";
 
 const RenderList = ({ arr }) => {
   return arr.map((item, index) => (
@@ -115,6 +117,21 @@ const Profile = (props) => {
     setFeedData(newFeedData);
   };
 
+  const connectUser = async () => {
+    let userName = Util.parsePath(window.location.href).trailingPath;
+    Analytics.sendClickEvent(
+      `Connected with user ${userName} from profile page`
+    );
+    try {
+      await props.connectUser({ username: userName });
+      setEnableAnimations(false);
+      setConnectedUser(true);
+    } catch (err) {
+      console.log(`An error occurred connecting with user: ${userName}`);
+      console.log(err);
+    }
+  };
+
   const showDeletePostModal = (feed) => {
     setShowDeletePost(true);
     setPostSlug(feed.slug);
@@ -143,21 +160,6 @@ const Profile = (props) => {
     let prevFeedFilter = prevFeedData[filterIdx].subfilter;
     prevFeedData[filterIdx].subfilter = key === prevFeedFilter ? "" : key;
     setFeedData(prevFeedData);
-  };
-
-  const connectUser = async () => {
-    let userName = Util.parsePath(window.location.href).trailingPath;
-    Analytics.sendClickEvent(
-      `Connected with user ${userName} from profile page`
-    );
-    try {
-      await props.connectUser({ username: userName });
-      setEnableAnimations(false);
-      setConnectedUser(true);
-    } catch (err) {
-      console.log(`An error occurred connecting with user: ${userName}`);
-      console.log(err);
-    }
   };
 
   const followUser = async (payload) => {
@@ -220,126 +222,178 @@ const Profile = (props) => {
     }
   }, [feedData]);
 
+  const profileData = {
+    university: "Cambridge International",
+    followers: "657",
+  };
+
+  const profileBackgroundUrl =
+    "https://d3k6hg21rt7gsh.cloudfront.net/icons/profile--header.png";
   return (
     <>
       <Container className="height-100">
         <Header />
         <div className="wrapper">
-          <Banner className="profile-banner" n>
-            {profileImage && (
-              <div className="logo-wrapper">
-                <img src={profileImage} alt="" />
-              </div>
-            )}
-
-            {profileFirstName && (
-              <div className="overview-summary">
-                <h2 className="overview-header mb-1">
-                  {profileFirstName}&nbsp;
-                  {profileLastName}&nbsp;
-                  {isVerified && (
-                    <img
-                      alt="verified"
-                      className="profile-check"
-                      src="https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg"
-                    />
-                  )}
-                </h2>
-                <div className="overview-subheadline">
-                  {profileTitle} at {profileCompany}
-                </div>
-                <p className="overview-desc">
-                  {profileCity}, {profileState}
-                </p>
-                <div className="overview-link-buttons">
-                  {profileLinkedin.length > 0 && (
-                    <span className="overview-link-button">
-                      <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href={profileLinkedin}
-                      >
-                        <img
-                          className="overview-link-img"
-                          src={LinkedIn}
-                          alt=""
-                        />
-                      </a>
-                    </span>
-                  )}
-                  {profileWebsite.length > 0 && (
-                    <span className="overview-link-button">
-                      <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href={profileWebsite}
-                      >
-                        <img
-                          className="overview-link-img"
-                          src={Website}
-                          alt=""
-                        />
-                      </a>
-                    </span>
-                  )}
-                  {profileMail.length > 0 && (
-                    <span className="overview-link-button">
-                      <a href={profileMail}>
-                        <img className="overview-link-img" src={Chat} alt="" />
-                      </a>
-                    </span>
-                  )}
-                </div>
-              </div>
-            )}
-            {isMyProfile ? (
-              <div className="btn-wrapper">
-                <Button
-                  className="btn-white edit-profile"
-                  variant="outline-primary"
-                  onClick={() => history.push("/profile/edit")}
-                >
-                  Edit Profile
-                </Button>
-              </div>
-            ) : (
-              <React.Fragment>
-                {profileFirstName && (
-                  <div className="btn-wrapper d-flex flex-column">
-                    {!connectedUser ? (
-                      <Button
-                        className="btn-white edit-profile mb-2"
-                        variant="outline-primary"
-                        onClick={() => {
-                          connectUser();
-                        }}
-                      >
-                        + Connect
-                      </Button>
-                    ) : (
-                      <span className="profile-connected-label mb-2">
-                        Connected
-                      </span>
-                    )}
-                    {!followedUser ? (
-                      <Button
-                        className="btn-white edit-profile"
-                        variant="outline-primary"
-                        onClick={() => toggleFollowModal()}
-                      >
-                        + Follow
-                      </Button>
-                    ) : (
-                      <span className="profile-connected-label mb-2">
-                        Followed
-                      </span>
-                    )}
+          <Row className="profile--wrapper">
+            <Col md="8">
+              <div className="profile--left-section">
+                <img
+                  src={profileBackgroundUrl}
+                  className="left-section--image"
+                  alt="profile"
+                />
+                {profileImage && (
+                  <div className="logo-wrapper">
+                    <img src={profileImage} alt="" />
                   </div>
                 )}
-              </React.Fragment>
-            )}
-          </Banner>
 
+                {profileFirstName && (
+                  <div className="overview-summary">
+                    <h2 className="overview-header mb-1">
+                      {profileFirstName}&nbsp;
+                      {profileLastName}&nbsp;
+                      {profileWebsite.length > 0 && (
+                        <span className="overview-link-button">
+                          <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={profileWebsite}
+                          >
+                            <img
+                              className="overview-link-img"
+                              src={Website}
+                              alt=""
+                            />
+                          </a>
+                        </span>
+                      )}
+                    </h2>
+                    <div className="overview-subheadline">
+                      {profileTitle} at {profileCompany}
+                    </div>
+                  </div>
+                )}
+                {isMyProfile ? (
+                  <div className="btn-wrapper">
+                    <Button
+                      className="btn-white edit-profile"
+                      variant="outline-primary"
+                      onClick={() => history.push("/profile/edit")}
+                    >
+                      Edit Profile
+                    </Button>
+                  </div>
+                ) : (
+                  <React.Fragment>
+                    {profileFirstName && (
+                      <div className="btn-wrapper d-flex">
+                        {!followedUser ? (
+                          <Button
+                            className="btn-white edit-profile"
+                            variant="primary"
+                            onClick={() => toggleFollowModal()}
+                          >
+                            + Follow
+                          </Button>
+                        ) : (
+                          <span className="profile-connected-label mb-2">
+                            Followed
+                          </span>
+                        )}
+                        <Button
+                          className="btn-white edit-profile"
+                          variant="outline-primary"
+                        >
+                          Message
+                        </Button>
+                        <Button
+                          className="edit-profile"
+                          variant="outline-secondary"
+                        >
+                          More...
+                        </Button>
+                      </div>
+                    )}
+                  </React.Fragment>
+                )}
+              </div>
+            </Col>
+
+            <Col md="4">
+              <div className="profile--right-section">
+                <div className="right-section--intro">Intro</div>
+                <div className="right-section--details">
+                  {profileCompany && (
+                    <div className="right-section--job right-section--item">
+                      <img
+                        className="right-section--item-img"
+                        alt="work"
+                        src={Education}
+                      />
+                      {`${profileTitle} at `}
+                      <strong>{profileCompany}</strong>
+                    </div>
+                  )}
+                  {profileData.university && (
+                    <div className="right-section--education right-section--item">
+                      <img
+                        className="right-section--item-img"
+                        alt="education"
+                        src={Education}
+                      />
+                      Went to <strong>{profileData.university}</strong>
+                    </div>
+                  )}
+                  {profileCity && (
+                    <div className="right-section--live right-section--item">
+                      <img
+                        className="right-section--item-img"
+                        alt="location"
+                        src={Location}
+                      />
+                      Lives in{" "}
+                      <strong>
+                        {profileCity}, {profileState}
+                      </strong>
+                    </div>
+                  )}
+                  {profileData.followers && (
+                    <div className="right-section--followers right-section--item">
+                      <img
+                        className="right-section--item-img"
+                        alt="followers"
+                        src={Group}
+                      />
+                      Followed by{" "}
+                      <strong>{`${profileData.followers} people`}</strong>
+                    </div>
+                  )}
+                  {profileMail && (
+                    <div className="right-section--email right-section--item">
+                      <img
+                        className="right-section--item-img"
+                        alt="mail"
+                        src={Mail}
+                      />
+                      Email{" "}
+                      <strong>{profileMail.replace("mailto:", "")}</strong>
+                    </div>
+                  )}
+                  {profileLinkedin && (
+                    <div className="right-section--linkdin right-section--item">
+                      <img
+                        className="right-section--item-img"
+                        alt="linkedin"
+                        src={LinkedIn}
+                      />
+                      Linkdin <strong>{profileLinkedin}</strong>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </Col>
+          </Row>
           {Object.keys(profileAbout).length > 0 && (
             <div className="profile-about mt-2 px-4">
               <Row>
@@ -484,7 +538,6 @@ const mapDispatch = (dispatch) => {
     fetchProfile: dispatch.profileModel.fetchProfile,
     saveProfile: dispatch.profileModel.saveProfile,
     deletePost: dispatch.profileModel.deletePost,
-    connectUser: dispatch.userModel.connectUser,
     followUser: dispatch.userModel.followUser,
   };
 };

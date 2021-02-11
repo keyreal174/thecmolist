@@ -1,15 +1,12 @@
+@import "../../../sass/globals.scss";
+
 .logo-wrapper {
   position: absolute;
-  left: 35px;
-  top: 6px;
-  max-width: 160px;
-  /* background-color: #fff; */
-  padding: 2px;
-  background-color: rgba(243, 246, 248, 0.94);
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 1.5px 3px 0px inset,
-    rgba(0, 0, 0, 0.15) 0px 1.5px 3px 0px;
+  left: 45px;
+  top: 100px;
   margin: auto;
-  border-radius: 50%;
+  max-width: 160px;
+  padding: 2px;
 }
 
 .logo-wrapper img {
@@ -52,6 +49,10 @@
   cursor: pointer;
 }
 
+.profile--wrapper {
+  margin-top: $margin-top-header;
+}
+
 .profile-section-title {
   margin-left: 5px;
   margin-top: 20px;
@@ -63,13 +64,6 @@
 .profile-check {
   scale: 1.25;
   margin-top: -2px;
-}
-
-.profile-banner {
-  position: relative;
-  height: 200px;
-  background-color: #ffffff;
-  border: 2px solid #cccccc;
 }
 
 .overview--padding {
@@ -84,9 +78,8 @@
 }
 
 .overview-summary {
-  position: absolute;
-  left: 210px;
-  top: 10px;
+  margin-top: 50px;
+  margin-left: 35px;
 }
 
 .overview-subheadline {
@@ -108,7 +101,7 @@
 .overview-link-button {
   display: inline-block;
   width: 30px;
-  margin-right: 7px;
+  margin-left: 15px;
 }
 
 .overview-link-img {
@@ -363,4 +356,56 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.profile--right-section,
+.profile--left-section {
+  border-radius: 12px;
+  background-color: $white;
+  height: 350px;
+}
+
+.left-section {
+  border: 1px solid $gray-3;
+  &--image {
+    height: 215px;
+    width: 100%;
+  }
+}
+.right-section {
+  &--intro {
+    border-bottom: 1px solid #d8e5f1;
+    padding: 15px 0 22px 24px;
+    font-weight: 700;
+  }
+  &--details {
+    padding: 15px;
+  }
+  &--item {
+    margin-bottom: 20px;
+    &-img {
+      width: 18px;
+      height: 18px;
+      margin-right: 10px;
+      margin-left: 20px;
+    }
+  }
+  &--email {
+    color: $brand;
+  }
+  &--linkdin {
+    > strong {
+      color: $brand;
+    }
+  }
+}
+
+.btn-wrapper {
+  position: absolute;
+  top: 260px;
+}
+
+.edit-profile {
+  margin-right: 10px;
+  border-radius: 20px;
 }

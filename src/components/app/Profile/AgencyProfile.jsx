@@ -13,7 +13,7 @@ import RatingBadgeProfile from "../base/Rating/RatingBadgeProfile";
 import RatingCard from "../base/Rating/RatingCard";
 import Util from "../../util/Util";
 import Analytics from "../../util/Analytics";
-import "./profile.css";
+import "./profile.scss";
 
 import Website from "./icons/link.svg";
 
