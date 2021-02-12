@@ -1,10 +1,9 @@
 import React from "react";
-import { Button } from "react-bootstrap";
 import "./CustomCard.scss";
 
-const CustomCard = ({ heading, seeAll, children }) => {
+const CustomCard = ({ heading, seeAll, className, children }) => {
   return (
-    <div className="custom-card">
+    <div className={`custom-card ${className}`}>
       <div className="custom-card-header">{heading}</div>
       <div className="custom-card-body">{children}</div>
       {seeAll && (
