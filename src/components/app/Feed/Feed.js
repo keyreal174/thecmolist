@@ -147,7 +147,6 @@ const Feed = (props) => {
   const [filters, setFilters] = useState([]);
   const [bannerTitle, setBannerTitle] = useState("");
   const [bannerImage, setBannerImage] = useState("");
-
   const changeDashboardHeader = (idx) => {
     if (idx < filters.length) {
       setBannerTitle(filters[idx].title);
@@ -263,6 +262,7 @@ const Feed = (props) => {
             profileStats={props.profileStats}
             moreData={props.moreData}
             feedData={props.activeFeed}
+            saveContent={props.saveContent}
             fetchActiveFeed={props.fetchActiveFeed}
           />
 
