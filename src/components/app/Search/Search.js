@@ -25,11 +25,11 @@ const Search = (props) => {
     var index = filters.map((item) => item.slug).indexOf(filter);
     changeFilter(index);
     setFilter(filter);
-    props.fetchRefinedSearch(query, filter);
+    props.fetchRefinedSearch({ query, filter });
   };
 
   const fetchMoreRefinedData = (filter) => {
-    props.fetchRefinedSearch(query, filter);
+    props.fetchRefinedSearch({ query, filter });
   };
 
   useEffect(() => {

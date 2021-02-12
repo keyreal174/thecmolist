@@ -52,8 +52,9 @@ export default {
       }
     },
 
-    async fetchRefinedSearch(query, filter, rootState) {
+    async fetchRefinedSearch(data, rootState) {
       try {
+        const { query, filter } = data;
         const token = rootState.searchModel.token;
         const response = await getRefinedSearchRequest(query, filter, token);
         dispatch.searchModel.updateModule(response.data);
