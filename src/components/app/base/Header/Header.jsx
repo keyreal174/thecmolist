@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
+import { useHistory } from "react-router";
 import { Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
 import { AsyncTypeahead, TypeaheadMenu } from "react-bootstrap-typeahead";
 import { NavLink } from "react-router-dom";
@@ -14,6 +15,7 @@ import Search from "../icons/search.svg";
 import Rectangle2 from "../icons/rectangle2.svg";
 
 function Header({ getProfileStats, profileStats }) {
+  const history = useHistory();
   useEffect(() => {
     const fetch = async () => await getProfileStats();
 
@@ -34,9 +36,11 @@ function Header({ getProfileStats, profileStats }) {
   };
   const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
   const SEARCH_URI = "/api/globalsearch";
   const isSmall = window.innerWidth < 767;
   const handleSearch = (query) => {
+    setSearchQuery(query);
     setIsLoading(true);
     fetch(`${SEARCH_URI}?q=${query}&page=1&per_page=50`)
       .then((resp) => resp.json())
@@ -51,6 +55,15 @@ function Header({ getProfileStats, profileStats }) {
         setOptions(options);
         setIsLoading(false);
       });
+  };
+
+  const goSearchPage = () => {
+    history.push({
+      pathname: "/search",
+      state: {
+        query: searchQuery,
+      },
+    });
   };
 
   return (
@@ -85,6 +98,11 @@ function Header({ getProfileStats, profileStats }) {
             }}
             onChange={(selectedOption) => {
               window.location.href = selectedOption[0].link;
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                goSearchPage();
+              }
             }}
             placeholder="Search"
             renderMenuItemChildren={(option) => (

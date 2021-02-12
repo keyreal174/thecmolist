@@ -8,12 +8,17 @@ import Article from "../base/Article/Article";
 import Banner from "../base/Banner/Banner";
 import InviteModal from "../base/ShareModule/InviteModal";
 import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
-import AddPostModal from "../base/AddPostModal/AddPostModal";
 import ProfileStats from "../ProfileStats/ProfileStats";
+import AskQuestion from "../base/AskQuestion/AskQuestion";
+
+import MyNetwork from "./MyNetwork";
+import BuildYourNetwork from "./BuildYourNetwork";
+import AllMembers from "./AllMembers";
+import Vendors from "./Vendors";
+
 import Analytics from "../../util/Analytics";
 import Util from "../../util/Util";
-import { useHistory } from "react-router";
-import "./feed.css";
+import "./feed.scss";
 
 const cdn = "https://d3k6hg21rt7gsh.cloudfront.net/icons";
 
@@ -21,67 +26,14 @@ function RenderRightContainer({
   buildYourNetworkItems,
   peopleInSimilarRoles,
   newMembers,
+  saveContent,
 }) {
   return (
     <Col md="3" className="feed-right-container">
-      <div className="feed-box">
-        <div className="feed-box-title">Build your network</div>
-        <div className="feed-box-content">
-          {buildYourNetworkItems &&
-            buildYourNetworkItems.map((item, index) => {
-              return (
-                <div className="feed-box-content-item" key={index}>
-                  {item.checked ? (
-                    <span className="feed-box-content-icon">✓</span>
-                  ) : (
-                    <input type="checkbox" defaultChecked={item.checked} />
-                  )}
-                  <span
-                    className={`feed-box-content-text ${
-                      item.checked ? "feed-box-content-text-checked" : ""
-                    }`}
-                  >
-                    {item.content}
-                  </span>
-                </div>
-              );
-            })}
-        </div>
-      </div>
-      <div className="feed-box feed-box-margin-top">
-        <div className="feed-box-title">People in similar roles</div>
-        <div className="feed-box-content">
-          {peopleInSimilarRoles &&
-            peopleInSimilarRoles.map(({ name, role }, index) => {
-              return (
-                <div
-                  className="feed-box-content-item feed-box-content-item-special"
-                  key={index}
-                >
-                  <div className="feed-box-content-name">{name}</div>
-                  <div className="feed-box-content-role">{role}</div>
-                </div>
-              );
-            })}
-        </div>
-      </div>
-      <div className="feed-box feed-box-margin-top">
-        <div className="feed-box-title">New members</div>
-        <div className="feed-box-content">
-          {newMembers &&
-            newMembers.map(({ name, role }, index) => {
-              return (
-                <div
-                  className="feed-box-content-item feed-box-content-item-special"
-                  key={index}
-                >
-                  <div className="feed-box-content-name">{name}</div>
-                  <div className="feed-box-content-role">{role}</div>
-                </div>
-              );
-            })}
-        </div>
-      </div>
+      <MyNetwork saveContent={saveContent} />
+      <BuildYourNetwork buildYourNetworkItems={buildYourNetworkItems} />
+      <AllMembers peopleInSimilarRoles={peopleInSimilarRoles} />
+      <Vendors newMembers={newMembers} />
     </Col>
   );
 }
@@ -94,7 +46,7 @@ function RenderFeed({ feedData, moreData, fetchActiveFeed }) {
   };
   let feedMoreData = feedData.length > 0 && moreData;
   return (
-    <Col md="6">
+    <div>
       {feedData &&
         feedData.map((feed, idx) => {
           return (
@@ -146,7 +98,7 @@ function RenderFeed({ feedData, moreData, fetchActiveFeed }) {
           </div>
         </div>
       )}
-    </Col>
+    </div>
   );
 }
 
@@ -158,23 +110,25 @@ function RenderDashboard(props) {
       <Col md="3" style={{ paddingRight: "0px" }}>
         {profileStats && <ProfileStats profileStats={profileStats} />}
       </Col>
-      {feedLoading ? (
-        <Col md="6">
+      <Col md="6">
+        <AskQuestion />
+        {feedLoading ? (
           <div className="mt-3 mb-5">
             <ActivityIndicator className="element-center feed-activity-indicator" />
           </div>
-        </Col>
-      ) : (
-        <RenderFeed
-          moreData={props.moreData}
-          feedData={props.feedData}
-          fetchActiveFeed={props.fetchActiveFeed}
-        />
-      )}
+        ) : (
+          <RenderFeed
+            moreData={props.moreData}
+            feedData={props.feedData}
+            fetchActiveFeed={props.fetchActiveFeed}
+          />
+        )}
+      </Col>
       <RenderRightContainer
         buildYourNetworkItems={profileStats.buildYourNetwork}
         peopleInSimilarRoles={profileStats.peopleInSimilarRoles}
         newMembers={profileStats.newMembers}
+        saveContent={props.saveContent}
       />
     </Row>
   );
@@ -264,54 +218,11 @@ const Feed = (props) => {
     });
   }, []);
 
-  const [showContentModal, setShowContentModal] = useState(false);
-  const handleShow = () => setShowContentModal(true);
-  const handleClose = () => setShowContentModal(false);
-
-  const history = useHistory();
-
-  const handleSubmit = async (content) => {
-    const id = await props.saveContent(content);
-    history.push(`content/${id}`);
-  };
   return (
     <>
       <Container className="height-100">
         <div className="wrapper">
           <Header />
-          <Banner title={bannerTitle} img={bannerImage}>
-            <div className="btn-wrapper d-flex flex-column">
-              <Button
-                className="btn-white modal-primary-button mb-2"
-                variant="outline-primary"
-                onClick={handleShow}
-              >
-                Ask Question
-              </Button>
-              <AddPostModal
-                firstButtonText={"Cancel"}
-                handleClose={handleClose}
-                modalTitle="Ask a marketing question"
-                onSubmit={handleSubmit}
-                secondButtonText={"Ask a question"}
-                show={showContentModal}
-              />
-              <Button
-                className="btn-white modal-primary-button mb-2"
-                variant="outline-primary"
-                onClick={handleShow}
-              >
-                Share Experience
-              </Button>
-              <Button
-                className="btn-white modal-primary-button mb-2"
-                variant="outline-primary"
-                onClick={handleShow}
-              >
-                Share Article
-              </Button>
-            </div>
-          </Banner>
 
           <div style={{ width: "100%" }}>
             <Filter

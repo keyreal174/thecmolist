@@ -1,0 +1,40 @@
+@import "../../../../sass/globals.scss";
+
+.custom-card {
+  background-color: $white;
+  border: 1px solid $gray-4;
+  box-sizing: border-box;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.custom-card-header {
+  padding: 16px 20px;
+  font-size: 17px;
+  line-height: 22px;
+  font-weight: bold;
+  color: $text-1;
+  border-bottom: 1px solid $gray-5;
+}
+
+.custom-card-body {
+  padding: 12px 20px;
+}
+
+.custom-card-footer {
+  text-align: center;
+  padding: 14.5px 0;
+  border-top: 1px solid $gray-5;
+
+  .see-all-button {
+    color: $brand;
+    font-weight: 500;
+    font-size: 16px;
+    text-align: center;
+    line-height: 21px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
