@@ -16,6 +16,7 @@ import settingsModel from "./models/settings";
 import profileModel from "./models/profile";
 import reactionModel from "./models/reaction";
 import topicsModel from "./models/topics";
+import searchModel from "./models/search";
 
 const store = init({
   models: {
@@ -28,6 +29,7 @@ const store = init({
     topicsModel,
     notificationsModel,
     reactionModel,
+    searchModel,
   },
 });
 
