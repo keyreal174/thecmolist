@@ -4,7 +4,7 @@ import Avatar from "../base/Avatar/Avatar";
 
 const AllMembers = ({ peopleInSimilarRoles }) => {
   return (
-    <CustomCard heading="All Members">
+    <CustomCard heading="All Members" seeAll>
       <div className="feed-box-content">
         {peopleInSimilarRoles &&
           peopleInSimilarRoles.map(({ image, name, role }, index) => {
