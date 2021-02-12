@@ -5,7 +5,7 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Link } from "react-router-dom";
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import ShowMoreText from "react-show-more-text";
-import Card from "../base/Card/Card";
+import CustomCard from "../base/CustomCard/CustomCard";
 import Header from "../base/Header/Header";
 import Filter from "../base/Filter/Filter";
 import Article from "../base/Article/Article";
@@ -326,7 +326,7 @@ const Profile = (props) => {
             </Col>
 
             <Col md="4">
-              <Card title="Intro" className="profile--right-section">
+              <CustomCard heading="Intro" className="profile--right-section">
                 <div className="right-section--details">
                   {profileCompany && (
                     <div className="right-section--job right-section--item">
@@ -385,11 +385,11 @@ const Profile = (props) => {
                     </div>
                   )}
                 </div>
-              </Card>
+              </CustomCard>
             </Col>
           </Row>
           {Object.keys(profileAbout).length > 0 && (
-            <Card title="About" className="profile-about mt-2">
+            <CustomCard heading="About" className="profile-about mt-2">
               <Row>
                 <Col md="12">
                   <div className="profile-about--content">
@@ -441,7 +441,7 @@ const Profile = (props) => {
                   </div>
                 </Col>
               </Row>
-            </Card>
+            </CustomCard>
           )}
 
           {profileFirstName && (
@@ -455,7 +455,10 @@ const Profile = (props) => {
 
         <Row className="profile--feed">
           <Col md="4">
-            <Card className="profile--popular-topics" title="Popular #topics">
+            <CustomCard
+              className="profile--popular-topics"
+              heading="Popular #topics"
+            >
               <div className="popular-topics--content">
                 <div>
                   {subfilterKeys.map((subfilter, idx) => {
@@ -496,7 +499,7 @@ const Profile = (props) => {
                   )}
                 </div>
               </div>
-            </Card>
+            </CustomCard>
           </Col>
           <Col md="8">
             <TransitionGroup enter={enableAnimations} exit={enableAnimations}>
