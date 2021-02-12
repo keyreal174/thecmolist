@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import CustomCard from "../base/CustomCard/CustomCard";
+import Avatar from "../base/Avatar/Avatar";
 
 const Vendors = ({ newMembers }) => {
   return (
-    <CustomCard heading="All Members">
+    <CustomCard heading="497 Vendors">
       <div className="feed-box-content">
         {newMembers &&
-          newMembers.map(({ name, role }, index) => {
+          newMembers.map(({ image, name, role }, index) => {
             return (
-              <div
-                className="feed-box-content-item feed-box-content-item-special"
+              <Avatar
                 key={index}
-              >
-                <div className="feed-box-content-name">{name}</div>
-                <div className="feed-box-content-role">{role}</div>
-              </div>
+                image={image}
+                heading={name}
+                subHeading={role}
+              />
             );
           })}
       </div>
