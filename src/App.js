@@ -106,16 +106,16 @@ class App extends React.Component {
             }
           />
           <Route
-            path="/profile"
-            render={(props) =>
-              this.state.authed ? <Profile /> : <Redirect to="/login" />
-            }
-          />
-          <Route
             exact
             path="/profile/edit"
             render={(props) =>
               this.state.authed ? <ProfileEdit /> : <Redirect to="/login" />
+            }
+          />
+          <Route
+            path="/profile"
+            render={(props) =>
+              this.state.authed ? <Profile /> : <Redirect to="/login" />
             }
           />
           <Route
