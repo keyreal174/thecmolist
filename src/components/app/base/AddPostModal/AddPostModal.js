@@ -9,7 +9,7 @@ import {
   Row,
   Col,
 } from "react-bootstrap";
-import "./addPostModal.css";
+import "./addPostModal.scss";
 
 function AddPostModal({
   profileStats,
@@ -269,7 +269,7 @@ function AddPostModal({
                     controlId="validation01"
                   />
                 </Col>
-                <Col md="10">
+                <Col md="9">
                   <div className="modal-section-title">Body</div>
                   <Form.Control
                     as="textarea"
@@ -282,51 +282,57 @@ function AddPostModal({
                     controldId="validation02"
                   />
                 </Col>
-                <Col md="2">
+                <Col md="3">
                   <ul className="modal-section-body-right-content">
                     <li>
-                      <img
-                        alt="person icon"
-                        className="modal-section-body-image"
-                        src={cdnBaseUrl + "person.png"}
-                      />
                       <Button
                         className="modal-section-body-content"
                         onClick={() => setShowPersonSection(true)}
                         size="sm"
-                        variant="link"
+                        variant="light"
                       >
-                        @Person
+                        <div>
+                          <img
+                            alt="person icon"
+                            className="modal-section-body-image"
+                            src={cdnBaseUrl + "person.png"}
+                          />
+                          @Person
+                        </div>
                       </Button>
                     </li>
                     <li>
-                      <img
-                        alt="company icon"
-                        className="modal-section-body-image"
-                        src={cdnBaseUrl + "company.png"}
-                      />
                       <Button
                         className="modal-section-body-content"
                         onClick={() => setShowPersonSection(true)}
                         size="sm"
-                        variant="link"
+                        variant="light"
                       >
-                        @Vendor
+                        <div>
+                          <img
+                            alt="company icon"
+                            className="modal-section-body-image"
+                            src={cdnBaseUrl + "company.png"}
+                          />
+                          @Vendor
+                        </div>
                       </Button>
                     </li>
                     <li>
-                      <img
-                        alt="photograph icon"
-                        className="modal-section-body-image"
-                        src={cdnBaseUrl + "image.png"}
-                      />
                       <Button
                         className="modal-section-body-content"
                         onClick={() => handlePhotoClick()}
-                        variant="link"
+                        variant="light"
                         size="sm"
                       >
-                        Photo
+                        <div>
+                          <img
+                            alt="photograph icon"
+                            className="modal-section-body-image"
+                            src={cdnBaseUrl + "image.png"}
+                          />
+                          Photo
+                        </div>
                       </Button>
                       <input
                         type="file"
@@ -336,18 +342,20 @@ function AddPostModal({
                       />
                     </li>
                     <li>
-                      <img
-                        alt="video icon"
-                        className="modal-section-body-image"
-                        src={cdnBaseUrl + "video.png"}
-                      />
                       <Button
                         className="modal-section-body-content"
                         onClick={() => setShowVideo(true)}
-                        variant="link"
+                        variant="light"
                         size="sm"
                       >
-                        Video
+                        <div>
+                          <img
+                            alt="video icon"
+                            className="modal-section-body-image"
+                            src={cdnBaseUrl + "video.png"}
+                          />
+                          Video
+                        </div>
                       </Button>
                     </li>
                   </ul>
@@ -378,6 +386,7 @@ function AddPostModal({
                         as="input"
                         className="modal-person-section-input"
                         onChange={(e) => setPerson(e.target.value)}
+                        placeholder="Chose a CMOList member"
                         value={person}
                       />
                     </div>
@@ -387,6 +396,7 @@ function AddPostModal({
                         as="input"
                         className="modal-person-section-input"
                         onChange={(e) => setRole(e.target.value)}
+                        placeholder="Chose one or more topics about the role of the person in this post"
                         value={role}
                       />
                     </div>
@@ -406,7 +416,7 @@ function AddPostModal({
                         style={{ marginLeft: "10px" }}
                         variant="outline-primary"
                       >
-                        Add Person
+                        + Add Person
                       </Button>
                     </div>
                   </div>
@@ -438,7 +448,7 @@ function AddPostModal({
             {firstButtonText}
           </Button>
           <Button
-            className="btn__homepage-blue"
+            className="btn__homepage-blue modal-ok-button"
             disabled={isLoading}
             variant="primary"
             type="submit"
