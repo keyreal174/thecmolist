@@ -71,7 +71,10 @@ function Header({ getProfileStats, profileStats }) {
       <div className="container-fullwidth"></div>
       <Navbar expand="md" variant="white">
         <Navbar.Brand href="/feed">
-          <img src="/images/cmo.png" alt="CMOList brand logo" />
+          <img
+            src="https://d3k6hg21rt7gsh.cloudfront.net/icons/CMO.png"
+            alt="CMOList brand logo"
+          />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className="nav-app" id="basic-navbar-nav">
