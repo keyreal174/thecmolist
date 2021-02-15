@@ -1,3 +1,5 @@
+@import "../../../sass/globals.scss";
+
 .profile-stats__user {
   border: 1px solid #cccccc;
   padding: 10px 10px 20px;
@@ -42,37 +44,20 @@
   line-height: 1.7;
 }
 
-.profile-stats__spaces {
-  border: 1px solid #cccccc;
-  padding: 10px 10px 20px;
-  background: white;
-  margin-top: 10px;
-}
-
-.profile-stats__spaces-title {
-  font-size: 20px;
-  color: black;
-  font-weight: 500;
-  padding: 0 25px 5px;
-}
-
-.profile-stats__spaces-title span {
-  font-size: 15px;
-  font-weight: 400;
-}
-
-.profile-stats__spaces-section {
-  padding: 0 25px;
-}
-
 .profile-stats__space-title {
   max-width: 150px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 17px;
+  font-size: 16px;
+  color: $brand;
+  margin-right: 10px;
 }
 
 .profile-stats__spaces-badge {
-  width: 40px;
+  background-color: $red;
+  color: $white;
+  padding: 1px 8px;
+  font-size: 12px;
+  line-height: 15.6px;
 }
