@@ -1,0 +1,143 @@
+@import "../../../../sass/globals.scss";
+
+.modal {
+  font-size: 14px;
+  &-content {
+    background: $white;
+    border-radius: $border-radius;
+    border: $border-card;
+  }
+}
+
+.modal-title {
+  color: $text-1;
+  font-size: 25px;
+  font-weight: 400;
+  padding-left: 15px;
+}
+
+.modal-section {
+  &-title {
+    color: $text-1;
+    font-size: 19px;
+    line-height: 26px;
+    font-weight: 700;
+    margin-top: 5px;
+    margin-bottom: 14px;
+    padding: 0;
+
+    &-content {
+      border-radius: 6px;
+      margin: 10px 0;
+      width: 100%;
+    }
+  }
+  &-separator {
+    border-top: 1px solid #cccccc;
+    padding-top: 10px;
+  }
+  &-body-left-content {
+    border-radius: 6px;
+    min-height: 70%;
+    margin-top: 10px;
+    width: 100%;
+  }
+  &-body-right-content {
+    border-radius: 6px;
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+  &-checkbox,
+  &-checkbox-content,
+  &-radio-content {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    color: $text-1;
+    font-size: 18px;
+    font-weight: 22px;
+  }
+  &-body-image {
+    height: 20px;
+    width: 20px;
+    margin-right: 15px;
+  }
+  &-body-content {
+    border-radius: 8px;
+    color: $text-1;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    padding-left: 5px;
+    text-align: left;
+    width: 156px;
+    height: 43px;
+  }
+}
+
+.modal-person-section,
+.modal-person-section-role {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 5px 0;
+  color: $text-2;
+  font-size: 17px;
+  line-height: 22px;
+}
+.modal-person-section-input {
+  width: 92%;
+  border-radius: 6px;
+}
+
+.modal-person-section-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.modal-person.hidden {
+  opacity: 0;
+  display: none;
+}
+
+.modal-image-wrapper.hidden {
+  opacity: 0;
+  display: none;
+}
+
+.modal-video-wrapper.hidden {
+  opacity: 0;
+  display: none;
+}
+
+.modal-image-wrapper {
+  height: 140px;
+}
+
+.modal-image-preview {
+  border: 2px solid $gray-4;
+  border-radius: 6px;
+  width: 155px;
+  height: 93px;
+}
+
+.modal-close-preview-button {
+  background: $white;
+  border-radius: 50px;
+  border: 2px solid #9597ae;
+  border: none;
+  color: #9597ae;
+  font-weight: bold;
+  height: 20px;
+  left: 158px;
+  position: absolute;
+  top: -10px;
+  width: 20px;
+  font-size: 10px;
+}
+
+.modal-cancel-button,
+.modal-ok-button {
+  border-radius: 20px;
+  margin-top: 10px;
+}

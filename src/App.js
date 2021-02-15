@@ -113,7 +113,7 @@ class App extends React.Component {
           />
           <Route
             exact
-            path="/profile/edit"
+            path="/profile_edit"
             render={(props) =>
               this.state.authed ? <ProfileEdit /> : <Redirect to="/login" />
             }

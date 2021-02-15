@@ -39,7 +39,7 @@ const ProfileStats = ({ profileStats }) => {
               <span>{profileStats.profile.headline}</span>
             </div>
             <div className="profile-stats__edit-button text-center">
-              <a href="/profile/edit">Edit Profile</a>
+              <a href="/profile_edit">Edit Profile</a>
             </div>
             <div className="feed-profile-card-divider" />
             <div className="profile-stats__community">

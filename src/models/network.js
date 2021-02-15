@@ -23,13 +23,11 @@ const networkRequest = (sort, filter, token) => {
 export default {
   name: "networkModel",
   state: {
-    activeFeed: "",
-    activeFilter: "",
-    feedData: {},
     loadingNetwork: false,
-    moreData: false,
+    feedData: {},
+    activeFeed: [],
+    activeFilter: "",
     sortOrder: "Top",
-    token: null,
   },
   reducers: {
     initFeedDataForKey: (oldState, filterKey) => {
@@ -39,7 +37,9 @@ export default {
       let newState = { ...oldState };
       newState.feedData[filterKey] = {
         title: filterKey,
+        token: "",
         data: [],
+        moreData: false,
         enabled: true,
       };
       return newState;
@@ -58,19 +58,30 @@ export default {
         ...oldState,
         activeFilter: filterKey,
         sortOrder: data.sortOrder,
-        token: data.token,
       };
       const feedData = data.feedData;
+      const token = data.token;
       const currentFeed = oldState.feedData[filterKey];
-
       if (feedData != null && feedData.length > 0) {
-        newState.moreData = true;
+        currentFeed.moreData = true;
+        currentFeed.token = token;
         currentFeed.data = currentFeed.data.concat(feedData);
       } else {
-        newState.moreData = false;
+        currentFeed.moreData = false;
       }
-
       newState.activeFeed = currentFeed.data.slice();
+      return newState;
+    },
+    clearFeedData: (oldState) => {
+      let newState = {
+        ...oldState,
+        feedData: {},
+      };
+      Object.keys(oldState.feedData).forEach((k) => {
+        if (k === oldState.activeFilter) {
+          newState.feedData[k] = oldState.feedData[k];
+        }
+      });
       return newState;
     },
     setActiveFilter: (oldState, filterKey) => {
@@ -93,9 +104,15 @@ export default {
   effects: (dispatch) => ({
     async fetchActiveNetwork(_, rootState) {
       try {
-        const { activeFilter, sortOrder, token } = rootState.networkModel;
+        const { activeFilter, sortOrder } = rootState.networkModel;
+        const dataForFilter =
+          rootState.feedModel.dashboardFeedData[activeFilter];
         dispatch.networkModel.setLoading(true);
-        const response = await networkRequest(sortOrder, activeFilter, token);
+        const response = await networkRequest(
+          sortOrder,
+          activeFilter,
+          dataForFilter.token
+        );
         let data = response.data;
         data.sortOrder = sortOrder;
         dispatch.networkModel.setFeedDataForKey(activeFilter, response.data);
@@ -107,19 +124,17 @@ export default {
     },
     async changeFilter(filterKey, rootState) {
       const filterExists = filterKey in rootState.networkModel.feedData;
-
       if (filterExists) {
         dispatch.networkModel.setActiveFilter(filterKey);
       } else {
-        await dispatch.networkModel.initFeedDataForKey(filterKey);
-
+        dispatch.networkModel.initFeedDataForKey(filterKey);
         try {
           dispatch.networkModel.setLoading(true);
-          const { token, sortOrder } = rootState.networkModel;
+          const { sortOrder } = rootState.networkModel;
           const response = await networkRequest(
             sortOrder,
             filterKey.toLowerCase(),
-            token
+            null
           );
           let data = response.data;
           data.sortOrder = sortOrder;
@@ -131,10 +146,10 @@ export default {
     },
     async changeSortOrder(sort, rootState) {
       try {
-        const { activeFilter, sortOrder, token } = rootState.networkModel;
-        const newToken = sortOrder === sort ? token : null;
+        const { activeFilter } = rootState.networkModel;
+        dispatch.networkModel.clearFeedData();
         dispatch.networkModel.setLoading(true);
-        const response = await networkRequest(sort, activeFilter, newToken);
+        const response = await networkRequest(sort, activeFilter, null);
         let data = response.data;
         data.sortOrder = sort;
         dispatch.networkModel.setFeedDataForKey(activeFilter, data);
@@ -143,6 +158,9 @@ export default {
       } finally {
         dispatch.networkModel.setLoading(false);
       }
+    },
+    async invalidateFeed() {
+      dispatch.networkModel.clearFeedData();
     },
   }),
 };
