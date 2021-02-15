@@ -1,10 +1,18 @@
+@import "../../../../sass/globals.scss";
+
 .engagement-buttons {
   display: flex;
+  justify-content: space-around;
+  border-top: $border-card;
+  border-bottom: $border-card;
 }
 
 .engagement-buttons-button {
   margin-right: 10px;
   opacity: 0.5;
+  margin: 5px 10px 5px 0;
+  background: transparent;
+  border: none;
 }
 
 .engagement-buttons-button.checked {

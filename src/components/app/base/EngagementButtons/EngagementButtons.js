@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import "./engagementButtons.css";
+import "./engagementButtons.scss";
 
 const EngagementButtons = ({
   className,

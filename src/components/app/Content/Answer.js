@@ -38,10 +38,17 @@ const Answer = ({
     }
   };
 
+  const handlePassEngagementButtonClick = (id, caller) => {
+    console.log("Pass engagement called with question id:", id);
+    console.log("Caller:", caller);
+  };
+
   const handleEngagementButtonClick = async (caller, engagementType) => {
     const id = caller["content_id"];
     const engagement = engagementType.toLowerCase();
-
+    if (engagement === "pass") {
+      handlePassEngagementButtonClick(id, caller);
+    }
     try {
       setError("");
       await saveReactionToCallerType({ id, engagement });
@@ -87,6 +94,12 @@ const Answer = ({
               number: numberOfReplies,
             },
             {
+              checked: true,
+              text: "Pass",
+              icon: `${cdn}/Answer.png`,
+              number: 0,
+            },
+            {
               checked: getCheckedForEngagementType(questionId, "thanks"),
               text: "Thanks",
               icon: `${cdn}/Thanks.png`,
@@ -104,16 +117,25 @@ const Answer = ({
             content
           )}
           style={{ paddingBottom: "10px" }}
-        />
+        >
+          <DiscussionComment
+            placeholder="Answer John's question..."
+            onSubmit={handleSubmit}
+            showComment
+            onlyComment
+          />
+        </Article>
         <div className="question-answer-section-replies">{`${numberOfReplies} answers`}</div>
         <div className="question-answers">
           {content.replies &&
             content.replies.map((reply, index) => {
               const replyId = reply.content_id;
+
               return (
                 <Article
                   articletextlines={2}
                   {...reply.content}
+                  className="question-answers--item"
                   key={index}
                   engagementButtons={[
                     {
@@ -145,10 +167,9 @@ const Answer = ({
                     this,
                     reply
                   )}
-                  withMargin
                 >
                   <div className="question-comments-section">
-                    {reply.comments &&
+                    {/*reply.comments &&
                       reply.comments.map((comment, index) => {
                         return (
                           <Article
@@ -157,24 +178,14 @@ const Answer = ({
                             key={index}
                           />
                         );
-                      })}
+                      })*/}
                   </div>
                   <DiscussionComment
-                    withMargin
                     onSubmit={handleSubmitToReply.bind(this, reply)}
                   />
                 </Article>
               );
             })}
-          <div className="question-your-answer-section">
-            <div>Your answer</div>
-            <DiscussionComment
-              placeholder="Answer John's question..."
-              onSubmit={handleSubmit}
-              showComment
-              onlyComment
-            />
-          </div>
         </div>
       </Col>
       {content.related_questions && (
