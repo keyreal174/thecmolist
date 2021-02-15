@@ -13,6 +13,11 @@
   margin: 5px 10px 5px 0;
   background: transparent;
   border: none;
+
+  &__higlighted {
+    color: $brand;
+    font-weight: 500;
+  }
 }
 
 .engagement-buttons-button.checked {
