@@ -3,6 +3,14 @@ import Article from "../base/Article/Article";
 import CustomCard from "../base/CustomCard/CustomCard";
 import { Col } from "react-bootstrap";
 
+import AnswerIcon from "../base/icons/answer.svg";
+import InsightfulIcon from "../base/icons/insightful.svg";
+import InsightfulCheckedIcon from "../base/icons/insightful_checked.svg";
+import PassIcon from "../base/icons/pass.svg";
+import PassCheckedIcon from "../base/icons/pass_checked.svg";
+import ThanksIcon from "../base/icons/thanks.svg";
+import ThanksCheckedIcon from "../base/icons/thanks_checked.svg";
+
 const ContentDetail = ({
   content,
   reactions,
@@ -85,25 +93,28 @@ const ContentDetail = ({
             {
               checked: true,
               text: "Answer",
-              icon: `${cdn}/Answer.png`,
+              icon: AnswerIcon,
               number: numberOfReplies,
             },
             {
               checked: getCheckedForEngagementType(questionId, "pass"),
               text: "Pass",
-              icon: `${cdn}/Pass.png`,
+              icon: PassIcon,
+              iconChecked: PassCheckedIcon,
               number: getEngagementForId(questionId, "pass"),
             },
             {
               checked: getCheckedForEngagementType(questionId, "thanks"),
               text: "Thanks",
-              icon: `${cdn}/Thanks.png`,
+              icon: ThanksIcon,
+              iconChecked: ThanksCheckedIcon,
               number: getEngagementForId(questionId, "thanks"),
             },
             {
               checked: getCheckedForEngagementType(questionId, "insightful"),
               text: "Insightful",
-              icon: `${cdn}/Insightful.png`,
+              icon: InsightfulIcon,
+              iconChecked: InsightfulCheckedIcon,
               number: getEngagementForId(questionId, "insightful"),
             },
           ]}
@@ -131,7 +142,6 @@ const ContentDetail = ({
                   key={index}
                   engagementButtons={[
                     {
-                      checked: true,
                       text: "Comment",
                       icon: `${cdn}/Comment.png`,
                       number:
