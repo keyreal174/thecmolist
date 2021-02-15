@@ -80,6 +80,9 @@ const Answer = ({
       reactions[contentId][`num_${engagementType}`]
     );
   };
+
+  const author = content && content.content && content.content.author;
+
   return (
     <>
       <Col className="question-answer-section" md="8">
@@ -119,7 +122,7 @@ const Answer = ({
           style={{ paddingBottom: "10px" }}
         >
           <DiscussionComment
-            placeholder="Answer John's question..."
+            placeholder={`Answer ${author}'s question...`}
             onSubmit={handleSubmit}
             showComment
             onlyComment
