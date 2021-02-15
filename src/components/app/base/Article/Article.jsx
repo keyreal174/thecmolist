@@ -5,6 +5,7 @@ import ShowMoreText from "react-show-more-text";
 import Markdown from "markdown-to-jsx";
 import Gallery from "../Gallery/Gallery";
 import "./article.css";
+import DiscussionComment from "../DiscussionComment/DiscussionComment";
 import EngagementButtons from "../EngagementButtons/EngagementButtons";
 
 function Article(props) {
@@ -172,6 +173,13 @@ function Article(props) {
                   </div>
                 )}
                 <Gallery images={props.images} />
+                {props.children && (
+                  <Row>
+                    <Col sm="9" lg="11" style={{ paddingLeft: "0px" }}>
+                      {props.children}
+                    </Col>
+                  </Row>
+                )}
               </Col>
             </Row>
           </div>
@@ -182,12 +190,11 @@ function Article(props) {
             engagementButtons={engagementButtons}
             onEngagementButtonClick={onEngagementButtonClick}
           />
-          {props.children && (
-            <Row>
-              <Col sm="10" lg="11" style={{ paddingLeft: "0px" }}>
-                {props.children}
-              </Col>
-            </Row>
+          {props.showDiscussionComment && (
+            <DiscussionComment
+              placeholder={props.discussionCommentPlaceholder}
+              onSubmit={props.handleDiscussionCommentSubmit}
+            />
           )}
         </div>
       )}

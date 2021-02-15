@@ -1,6 +1,5 @@
 import React from "react";
 import Article from "../base/Article/Article";
-import DiscussionComment from "../base/DiscussionComment/DiscussionComment";
 import CustomCard from "../base/CustomCard/CustomCard";
 import { Col } from "react-bootstrap";
 
@@ -113,14 +112,11 @@ const ContentDetail = ({
             content
           )}
           style={{ paddingBottom: "10px" }}
-        >
-          <DiscussionComment
-            placeholder={`Answer ${author}'s question...`}
-            onSubmit={handleSubmit}
-            showComment
-            onlyComment
-          />
-        </Article>
+          showDiscussionComment={true}
+          discussionCommentAuthor={author}
+          discussionCommentPlaceholder={`Answer ${author}'s question...`}
+          handleDiscussionCommentSubmit={handleSubmit}
+        />
         <div className="question-answer-section-replies">{`${numberOfReplies} answers`}</div>
         <div className="question-answers">
           {content.replies &&
@@ -163,6 +159,12 @@ const ContentDetail = ({
                     this,
                     reply
                   )}
+                  showDiscussionComment={true}
+                  discussionCommentAuthor={author}
+                  handleDiscussionCommentSubmit={handleSubmitToReply.bind(
+                    this,
+                    reply
+                  )}
                 >
                   <div className="question-comments-section">
                     {reply.comments &&
@@ -176,9 +178,6 @@ const ContentDetail = ({
                         );
                       })}
                   </div>
-                  <DiscussionComment
-                    onSubmit={handleSubmitToReply.bind(this, reply)}
-                  />
                 </Article>
               );
             })}
