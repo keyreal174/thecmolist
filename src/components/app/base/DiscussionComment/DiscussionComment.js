@@ -1,7 +1,7 @@
 import { Button, Form } from "react-bootstrap";
 import React, { useState } from "react";
 
-import "./discussionComment.css";
+import "./discussionComment.scss";
 
 const DiscussionComment = ({
   onSubmit,
@@ -12,7 +12,6 @@ const DiscussionComment = ({
 }) => {
   const [comment, setComment] = useState(value || "");
   const [show, setShow] = useState("");
-
   return (
     <div
       className={`comment-wrapper ${className} ${
