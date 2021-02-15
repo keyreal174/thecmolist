@@ -284,7 +284,7 @@ const Profile = (props) => {
                     <Button
                       className="btn-white edit-profile"
                       variant="outline-primary"
-                      onClick={() => history.push("/profile/edit")}
+                      onClick={() => history.push("/profile_edit")}
                     >
                       Edit Profile
                     </Button>
@@ -453,83 +453,85 @@ const Profile = (props) => {
           )}
         </div>
 
-        <Row className="profile--feed">
-          <Col md="4">
-            <CustomCard
-              className="profile--popular-topics"
-              heading="Popular #topics"
-            >
-              <div className="popular-topics--content">
-                <div>
-                  {subfilterKeys.map((subfilter, idx) => {
-                    if (idx < 5 || showMore) {
-                      return (
-                        <div className="popular-topics--content-item">
-                          <Link
-                            className={
-                              subfilter === feedFilter
-                                ? "profile-subfilter active"
-                                : "profile-subfilter"
-                            }
-                            onClick={() => {
-                              onSubfilterChange(subfilter);
-                            }}
+        {profileFirstName && hasDataOnCurrentFeed && (
+          <Row className="profile--feed">
+            <Col md="4">
+              <CustomCard
+                className="profile--popular-topics"
+                heading="Popular #topics"
+              >
+                <div className="popular-topics--content">
+                  <div>
+                    {subfilterKeys.map((subfilter, idx) => {
+                      if (idx < 5 || showMore) {
+                        return (
+                          <div className="popular-topics--content-item">
+                            <Link
+                              className={
+                                subfilter === feedFilter
+                                  ? "profile-subfilter active"
+                                  : "profile-subfilter"
+                              }
+                              onClick={() => {
+                                onSubfilterChange(subfilter);
+                              }}
+                            >
+                              {idx !== 0 ? " " : ""}
+                              {subfilter} ({subfilters[subfilter]})
+                            </Link>
+                          </div>
+                        );
+                      }
+                    })}
+                  </div>
+                  <div>
+                    {subfilterKeys.length > 5 && (
+                      <>
+                        <div className="popular-topics--divider" />
+                        <div className="popular-topics--button">
+                          <Button
+                            variant="link"
+                            onClick={() => setShowMore(!showMore)}
                           >
-                            {idx !== 0 ? " " : ""}
-                            {subfilter} ({subfilters[subfilter]})
-                          </Link>
+                            {showMore ? "Show less" : "Show more"}
+                          </Button>
                         </div>
-                      );
-                    }
-                  })}
+                      </>
+                    )}
+                  </div>
                 </div>
-                <div>
-                  {subfilterKeys.length > 5 && (
-                    <>
-                      <div className="popular-topics--divider" />
-                      <div className="popular-topics--button">
-                        <Button
-                          variant="link"
-                          onClick={() => setShowMore(!showMore)}
-                        >
-                          {showMore ? "Show less" : "Show more"}
-                        </Button>
-                      </div>
-                    </>
-                  )}
-                </div>
-              </div>
-            </CustomCard>
-          </Col>
-          <Col md="8">
-            <TransitionGroup enter={enableAnimations} exit={enableAnimations}>
-              {filteredFeedData.map((feed, idx) => {
-                let badge = null;
-                if (isMyProfile) {
-                  badge = (
-                    <span
-                      className="cursor-pointer noselect"
-                      style={{ display: "block", marginTop: "-10px" }}
-                      onClick={() => showDeletePostModal(feed)}
-                    >
-                      ✖
-                    </span>
+              </CustomCard>
+            </Col>
+            <Col md="8">
+              <TransitionGroup enter={enableAnimations} exit={enableAnimations}>
+                {filteredFeedData.map((feed, idx) => {
+                  let badge = null;
+                  if (isMyProfile) {
+                    badge = (
+                      <span
+                        className="cursor-pointer noselect"
+                        style={{ display: "block", marginTop: "-10px" }}
+                        onClick={() => showDeletePostModal(feed)}
+                      >
+                        ✖
+                      </span>
+                    );
+                  }
+                  return (
+                    <FadeTransition key={idx}>
+                      <Article
+                        key={idx}
+                        className={idx !== 0 ? "mt-1" : ""}
+                        {...feed}
+                        badge={badge}
+                      />
+                    </FadeTransition>
                   );
-                }
-                return (
-                  <FadeTransition key={idx}>
-                    <Article
-                      key={idx}
-                      className={idx !== 0 ? "mt-1" : ""}
-                      {...feed}
-                      badge={badge}
-                    />
-                  </FadeTransition>
-                );
-              })}
-            </TransitionGroup>
-          </Col>
-        </Row>
+                })}
+              </TransitionGroup>
+            </Col>
+          </Row>
+        )}
         {profileFirstName && !hasDataOnCurrentFeed && (
           <div className="wrapper article-wrapper">
             <div className="no-feed-data-header">
