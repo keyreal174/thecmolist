@@ -4,7 +4,7 @@ import DiscussionComment from "../base/DiscussionComment/DiscussionComment";
 import CustomCard from "../base/CustomCard/CustomCard";
 import { Col } from "react-bootstrap";
 
-const Answer = ({
+const ContentDetail = ({
   content,
   reactions,
   saveCommentToContent,
@@ -38,17 +38,10 @@ const Answer = ({
     }
   };
 
-  const handlePassEngagementButtonClick = (id, caller) => {
-    console.log("Pass engagement called with question id:", id);
-    console.log("Caller:", caller);
-  };
-
   const handleEngagementButtonClick = async (caller, engagementType) => {
     const id = caller["content_id"];
     const engagement = engagementType.toLowerCase();
-    if (engagement === "pass") {
-      handlePassEngagementButtonClick(id, caller);
-    }
+
     try {
       setError("");
       await saveReactionToCallerType({ id, engagement });
@@ -97,10 +90,10 @@ const Answer = ({
               number: numberOfReplies,
             },
             {
-              checked: false,
+              checked: getCheckedForEngagementType(questionId, "pass"),
               text: "Pass",
               icon: `${cdn}/Answer.png`,
-              number: 0,
+              number: getEngagementForId(questionId, "pass"),
             },
             {
               checked: getCheckedForEngagementType(questionId, "thanks"),
@@ -213,4 +206,4 @@ const Answer = ({
   );
 };
 
-export default Answer;
+export default ContentDetail;

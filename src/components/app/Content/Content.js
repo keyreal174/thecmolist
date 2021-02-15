@@ -4,7 +4,7 @@ import { Alert, Container, Col, Row } from "react-bootstrap";
 import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
-import Answer from "./Answer";
+import ContentDetail from "./ContentDetail";
 import "./content.scss";
 
 const Content = ({ contentLoading, fetchContent, match, ...rest }) => {
@@ -48,7 +48,7 @@ const Content = ({ contentLoading, fetchContent, match, ...rest }) => {
                 <ActivityIndicator className="element-center question-activity-indicator" />
               </Col>
             ) : (
-              <Answer {...rest} setError={setError} />
+              <ContentDetail {...rest} setError={setError} />
             )}
           </Row>
           <Row>

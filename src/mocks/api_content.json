@@ -16,6 +16,10 @@
   },
   "reactions": [
     {
+      "type": "pass",
+      "checked": false
+    },
+    {
       "type": "thanks",
       "checked": true
     },
