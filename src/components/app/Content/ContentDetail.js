@@ -152,7 +152,8 @@ const ContentDetail = ({
                     {
                       checked: getCheckedForEngagementType(replyId, "thanks"),
                       text: "Thanks",
-                      icon: `${cdn}/Thanks.png`,
+                      icon: ThanksIcon,
+                      iconChecked: ThanksCheckedIcon,
                       number: getEngagementForId(replyId, "thanks"),
                     },
                     {
@@ -161,7 +162,8 @@ const ContentDetail = ({
                         "insightful"
                       ),
                       text: "Insightful",
-                      icon: `${cdn}/Insightful.png`,
+                      icon: InsightfulIcon,
+                      iconChecked: InsightfulCheckedIcon,
                       number: getEngagementForId(replyId, "insightful"),
                     },
                   ]}
