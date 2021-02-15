@@ -1,11 +1,16 @@
+@import "../../../../sass/globals.scss";
+
 .comment-wrapper {
   display: flex;
   padding-bottom: 20px;
 }
 
 .comment-input {
-  width: 70%;
+  background: $gray-6;
+  border-radius: $border-radius;
   margin-right: 10px;
+  resize: none;
+  width: 100%;
 }
 
 .comment-button {
@@ -38,7 +43,8 @@
 .comment-wrapper {
   background-color: #ffffff;
   border-radius: 2px;
-  margin: 0 0px 8px;
+  padding: 18px 25px 12px 18px;
+  width: 100%;
 }
 
 .comment-wrapper-with-margin {

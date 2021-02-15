@@ -9,6 +9,7 @@
 }
 
 .question-answer-section-replies {
+  color: $text-1;
   margin-top: 20px;
   padding: 10px 0;
   font-weight: 700;
@@ -16,10 +17,7 @@
 }
 
 .question-related-section {
-  background: white;
-  border: 1px solid #cccccc;
-  height: 250px;
-  padding: 10px 20px;
+  min-height: 250px;
   margin-top: 22px;
   margin-right: 15px;
 }
@@ -79,4 +77,8 @@
 
 .question-answer-section-wrapper {
   margin-top: $margin-top-header;
+}
+
+.question-answers--item {
+  margin-bottom: 20px;
 }

@@ -16,7 +16,8 @@ const initReactionModelForContent = () => {
   return {
     num_thanks: 0,
     num_insightful: 0,
-    reactions: ["thanks", "insightful"].map((r) => ({
+    num_pass: 0,
+    reactions: ["pass", "thanks", "insightful"].map((r) => ({
       type: r,
       checked: false,
     })),

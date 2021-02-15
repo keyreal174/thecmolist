@@ -1,0 +1,31 @@
+@import "../../../../sass/globals.scss";
+
+.engagement-buttons {
+  display: flex;
+  justify-content: space-around;
+  border-top: $border-card;
+  border-bottom: $border-card;
+}
+
+.engagement-buttons-button {
+  margin-right: 10px;
+  margin: 5px 10px 5px 0;
+  background: transparent;
+  border: none;
+
+  &__higlighted {
+    color: $brand;
+    font-weight: 500;
+  }
+}
+
+.engagement-buttons-button.checked {
+  color: $brand;
+  font-weight: 500;
+}
+
+.engagement-buttons-image {
+  padding-right: 5px;
+  width: 20px;
+  height: 20px;
+}
