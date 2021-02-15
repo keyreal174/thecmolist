@@ -4,7 +4,7 @@ import "./CustomCard.scss";
 const CustomCard = ({ heading, seeAll, className, children }) => {
   return (
     <div className={`custom-card ${className}`}>
-      <div className="custom-card-header">{heading}</div>
+      {heading && <div className="custom-card-header">{heading}</div>}
       <div className="custom-card-body">{children}</div>
       {seeAll && (
         <div className="custom-card-footer">
