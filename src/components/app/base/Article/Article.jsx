@@ -173,15 +173,15 @@ function Article(props) {
                   </div>
                 )}
                 <Gallery images={props.images} />
-                {props.children && (
-                  <Row>
-                    <Col sm="9" lg="11" style={{ paddingLeft: "0px" }}>
-                      {props.children}
-                    </Col>
-                  </Row>
-                )}
               </Col>
             </Row>
+            {props.children && (
+              <Row>
+                <Col sm="9" lg="11" style={{ paddingLeft: "0px" }}>
+                  {props.children}
+                </Col>
+              </Row>
+            )}
           </div>
           <EngagementButtons
             className={
