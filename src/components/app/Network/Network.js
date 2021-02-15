@@ -31,6 +31,7 @@ const renderFeed = (props, fetchData) => {
                 className="btn connect-button"
                 type="button"
                 onClick={() => {
+                  props.invalidateFeed();
                   props.connectUser(feed);
                 }}
               >
@@ -140,7 +141,9 @@ const Network = (props) => {
           </div>
 
           {props.loadingNetwork ? (
-            <ActivityIndicator />
+            <div className="mt-3 mb-5">
+              <ActivityIndicator className="element-center feed-activity-indicator" />
+            </div>
           ) : (
             renderFeed(props, fetchData)
           )}
@@ -176,6 +179,7 @@ const mapDispatch = (dispatch) => {
     fetchActiveNetwork: dispatch.networkModel.fetchActiveNetwork,
     changeFilter: dispatch.networkModel.changeFilter,
     changeSortOrder: dispatch.networkModel.changeSortOrder,
+    invalidateFeed: dispatch.networkModel.invalidateFeed,
     saveUserInvite: dispatch.userModel.saveInvite,
     connectUser: dispatch.userModel.connectUser,
     getProfileStats: dispatch.profileModel.getProfileStats,
