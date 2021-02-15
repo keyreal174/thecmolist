@@ -172,7 +172,7 @@ const Answer = ({
                   )}
                 >
                   <div className="question-comments-section">
-                    {/*reply.comments &&
+                    {reply.comments &&
                       reply.comments.map((comment, index) => {
                         return (
                           <Article
@@ -181,7 +181,7 @@ const Answer = ({
                             key={index}
                           />
                         );
-                      })*/}
+                      })}
                   </div>
                   <DiscussionComment
                     onSubmit={handleSubmitToReply.bind(this, reply)}

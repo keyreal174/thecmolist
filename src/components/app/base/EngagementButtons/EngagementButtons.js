@@ -7,7 +7,7 @@ const EngagementButtons = ({
   engagementButtons,
   onEngagementButtonClick,
 }) => {
-  return (
+  return engagementButtons && engagementButtons.length ? (
     <div className={`engagement-buttons ${className}`}>
       {engagementButtons &&
         engagementButtons.map(({ text, icon, number, checked }, index) => {
@@ -17,11 +17,11 @@ const EngagementButtons = ({
                 className={`engagement-buttons-button ${
                   checked ? "checked" : ""
                 }
-                  ${
-                    text === "Answer"
-                      ? "engagement-buttons-button__higlighted"
-                      : ""
-                  }`}
+                    ${
+                      text === "Answer"
+                        ? "engagement-buttons-button__higlighted"
+                        : ""
+                    }`}
                 variant="light"
                 onClick={onEngagementButtonClick.bind(this, text)}
               >
@@ -37,7 +37,7 @@ const EngagementButtons = ({
           );
         })}
     </div>
-  );
+  ) : null;
 };
 
 export default EngagementButtons;
