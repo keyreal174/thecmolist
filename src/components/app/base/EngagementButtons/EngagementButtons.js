@@ -16,12 +16,7 @@ const EngagementButtons = ({
               <Button
                 className={`engagement-buttons-button ${
                   checked ? "checked" : ""
-                }
-                    ${
-                      text === "Answer"
-                        ? "engagement-buttons-button__higlighted"
-                        : ""
-                    }`}
+                }`}
                 variant="light"
                 onClick={onEngagementButtonClick.bind(this, text)}
               >

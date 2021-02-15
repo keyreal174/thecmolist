@@ -9,7 +9,6 @@
 
 .engagement-buttons-button {
   margin-right: 10px;
-  opacity: 0.5;
   margin: 5px 10px 5px 0;
   background: transparent;
   border: none;
@@ -21,7 +20,8 @@
 }
 
 .engagement-buttons-button.checked {
-  opacity: 1;
+  color: $brand;
+  font-weight: 500;
 }
 
 .engagement-buttons-image {

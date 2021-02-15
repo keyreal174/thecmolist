@@ -97,7 +97,7 @@ const Answer = ({
               number: numberOfReplies,
             },
             {
-              checked: true,
+              checked: false,
               text: "Pass",
               icon: `${cdn}/Answer.png`,
               number: 0,
