@@ -91,7 +91,7 @@ const ContentDetail = ({
             {
               checked: getCheckedForEngagementType(questionId, "pass"),
               text: "Pass",
-              icon: `${cdn}/Answer.png`,
+              icon: `${cdn}/Pass.png`,
               number: getEngagementForId(questionId, "pass"),
             },
             {
