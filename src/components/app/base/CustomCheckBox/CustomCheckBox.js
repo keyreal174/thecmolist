@@ -1,21 +1,35 @@
+import { check } from "prettier";
 import React from "react";
+import Checkbox from "react-custom-checkbox";
+import * as Icon from "react-icons/fi";
+import clsx from "clsx";
+import "./CustomCheckBox.scss";
 
-const CustomCheckBox = () => {
+const CustomCheckBox = ({ checked, label }) => {
   return (
     <Checkbox
-      icon={<Icon.FiCheck color="#174A41" size={14} />}
+      icon={
+        <div
+          style={{
+            display: "flex",
+            flex: 1,
+            backgroundColor: "#27AC5D",
+            borderRadius: "4px",
+            border: "1px solid #27AC5D",
+          }}
+        >
+          <Icon.FiCheck color="white" size={16} />
+        </div>
+      }
       name="my-input"
-      checked={true}
+      checked={checked}
       onChange={(value) => {
-        let p = {
-          isTrue: value,
-        };
-        return alert(value);
+        console.log(value);
       }}
-      borderColor="#D7C629"
-      style={{ cursor: "pointer" }}
-      labelStyle={{ marginLeft: 5, userSelect: "none" }}
-      label="Have you started using it?"
+      borderColor="#9597AE"
+      containerClassName="custom-checkbox"
+      labelClassName={clsx("custom-checkbox-label", checked && "checked")}
+      label={label}
     />
   );
 };
