@@ -257,6 +257,21 @@
   padding-bottom: 8px;
 }
 
+.top-banner-enter {
+  opacity: 0;
+}
+.top-banner-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+.top-banner-exit {
+  opacity: 1;
+}
+.top-banner-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
+}
+
 .feed-page-top-banner {
   margin-top: 20px;
   margin-bottom: 20px;

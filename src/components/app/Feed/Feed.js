@@ -2,6 +2,7 @@ import React, { useEffect, useState, Fragment } from "react";
 import { connect } from "react-redux";
 import { useLocation } from "react-router";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import { CSSTransition } from "react-transition-group";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Filter from "../base/Filter/Filter";
@@ -240,7 +241,11 @@ const Feed = (props) => {
       <Container className="height-100">
         <div className="wrapper">
           <Header />
-          {isGroup && <TopBanner saveContent={props.saveContent} />}
+          <CSSTransition in={isGroup} timeout={500} classNames="top-banner">
+            <div>
+              {isGroup && <TopBanner saveContent={props.saveContent} />}
+            </div>
+          </CSSTransition>
           <div style={{ width: "100%" }}>
             <Filter
               className="mt-1"
