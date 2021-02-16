@@ -1,8 +1,8 @@
 import { check } from "prettier";
 import React from "react";
 import Checkbox from "react-custom-checkbox";
-import * as Icon from "react-icons/fi";
 import clsx from "clsx";
+import Tick from "../icons/tick.svg";
 import "./CustomCheckBox.scss";
 
 const CustomCheckBox = ({ checked, label }) => {
@@ -14,11 +14,14 @@ const CustomCheckBox = ({ checked, label }) => {
             display: "flex",
             flex: 1,
             backgroundColor: "#27AC5D",
-            borderRadius: "4px",
-            border: "1px solid #27AC5D",
+            borderRadius: "5px",
+            border: "2px solid #27AC5D",
+            height: 18,
+            width: 18,
+            padding: "2px",
           }}
         >
-          <Icon.FiCheck color="white" size={16} />
+          <img src={Tick} alt="tick" style={{ userSelect: "none" }} />
         </div>
       }
       name="my-input"

@@ -1,5 +1,6 @@
 import React, { useEffect, useState, Fragment } from "react";
 import { connect } from "react-redux";
+import { useLocation } from "react-router";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
@@ -15,6 +16,8 @@ import MyNetwork from "./MyNetwork";
 import BuildYourNetwork from "./BuildYourNetwork";
 import AllMembers from "./AllMembers";
 import Vendors from "./Vendors";
+import AboutSpace from "./AboutSpace";
+import TopBanner from "./TopBanner";
 
 import Analytics from "../../util/Analytics";
 import Util from "../../util/Util";
@@ -27,11 +30,18 @@ function RenderRightContainer({
   peopleInSimilarRoles,
   newMembers,
   saveContent,
+  isGroup,
 }) {
   return (
     <Col md="3" className="feed-right-container">
-      <MyNetwork saveContent={saveContent} />
-      <BuildYourNetwork buildYourNetworkItems={buildYourNetworkItems} />
+      {!isGroup ? (
+        <Fragment>
+          <MyNetwork saveContent={saveContent} />
+          <BuildYourNetwork buildYourNetworkItems={buildYourNetworkItems} />
+        </Fragment>
+      ) : (
+        <AboutSpace />
+      )}
       <AllMembers peopleInSimilarRoles={peopleInSimilarRoles} />
       <Vendors newMembers={newMembers} />
     </Col>
@@ -129,12 +139,14 @@ function RenderDashboard(props) {
         peopleInSimilarRoles={profileStats.peopleInSimilarRoles}
         newMembers={profileStats.newMembers}
         saveContent={props.saveContent}
+        isGroup={props.isGroup}
       />
     </Row>
   );
 }
 
 const Feed = (props) => {
+  const location = useLocation();
   const subSelectors = [
     { title: "Questions & Answers", slug: "qa" },
     { title: "Projects & Vendors", slug: "projects" },
@@ -147,6 +159,7 @@ const Feed = (props) => {
   const [filters, setFilters] = useState([]);
   const [bannerTitle, setBannerTitle] = useState("");
   const [bannerImage, setBannerImage] = useState("");
+  const [isGroup, setIsGroup] = useState(false);
   const changeDashboardHeader = (idx) => {
     if (idx < filters.length) {
       setBannerTitle(filters[idx].title);
@@ -165,7 +178,9 @@ const Feed = (props) => {
     // rewrite the url
     if (idx < 3) {
       window.history.pushState({}, filters[idx].name, "/feed");
+      setIsGroup(false);
     } else {
+      setIsGroup(true);
       window.history.pushState(
         {},
         filters[idx].name,
@@ -222,7 +237,7 @@ const Feed = (props) => {
       <Container className="height-100">
         <div className="wrapper">
           <Header />
-
+          {isGroup && <TopBanner saveContent={props.saveContent} />}
           <div style={{ width: "100%" }}>
             <Filter
               className="mt-1"
@@ -264,6 +279,7 @@ const Feed = (props) => {
             feedData={props.activeFeed}
             saveContent={props.saveContent}
             fetchActiveFeed={props.fetchActiveFeed}
+            isGroup={isGroup}
           />
 
           <InviteModal
