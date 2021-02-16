@@ -1,10 +1,6 @@
 @import "../../../../sass/globals.scss";
 
 .article-wrap {
-  background-color: #ffffff;
-  border-top-color: rgb(204, 204, 204);
-  border-top-style: solid;
-  border-top-width: 1px;
   padding: 12px 16px;
 }
 
@@ -21,7 +17,6 @@
   background-color: $white;
   border: $border-card;
   border-radius: $border-radius;
-  //box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 2px 3px rgba(0, 0, 0, 0.2);
   margin: 0 0px 8px;
 }
 
@@ -226,6 +221,12 @@
   margin-left: 3px;
 }
 
-.article-engagement-buttons__with-margin {
-  margin-left: 40px;
+.article-engagement-buttons {
+  &__with-margin {
+    margin-left: 40px;
+  }
+  &__with-border {
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+  }
 }
