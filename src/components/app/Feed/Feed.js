@@ -193,6 +193,9 @@ const Feed = (props) => {
     changeDashboardFilter(filters[filterIdx].slug, subSelectors[idx].slug);
   };
   useEffect(() => {
+    if (location && location.pathname && location.pathname.includes("group")) {
+      setIsGroup(true);
+    }
     const getProfileStats = async () => props.getProfileStats();
     getProfileStats().then((profileStats) => {
       let newFilters = [

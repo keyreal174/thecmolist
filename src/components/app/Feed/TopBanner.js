@@ -43,7 +43,7 @@ const TopBanner = (props) => {
     <div className="feed-page-top-banner">
       <div className="d-flex">
         <CustomCard>
-          <div className="d-flex align-items-center">
+          <div className="d-flex align-items-center py-3 px-1">
             <div className="feed-page-top-banner-img">
               <img src={Logo} alt="Logo" width="58" height="58" />
             </div>
@@ -52,10 +52,7 @@ const TopBanner = (props) => {
               <p>Marketing</p>
               <div className="d-flex align-items-center">
                 <span>1.4k Followers</span>
-                <Button
-                  className="btn-white edit-profile mb-2"
-                  onClick={handleShow}
-                >
+                <Button className="btn-blue mb-2" onClick={handleShow}>
                   + Follow Space
                 </Button>
               </div>
@@ -63,33 +60,33 @@ const TopBanner = (props) => {
           </div>
         </CustomCard>
         <CustomCard>
-          <div>
-            <div className="d-flex flex-column text-center">
-              <Button
-                className="btn-white edit-profile mb-2"
-                variant="outline-primary"
-                onClick={handleShow}
-              >
-                Share Article
-              </Button>
-              <Button
-                className="btn-white edit-profile mb-2"
-                onClick={handleShow}
-              >
-                Share Experience
-              </Button>
-              <a role="button" tabIndex="0" onClick={handleShow}>
-                Ask Question
-              </a>
-              <AddPostModal
-                firstButtonText={"Cancel"}
-                handleClose={handleClose}
-                modalTitle="Ask a marketing question"
-                onSubmit={handleSubmit}
-                secondButtonText={"Ask a question"}
-                show={showContentModal}
-              />
-            </div>
+          <div className="d-flex flex-column text-center py-3 px-1">
+            <Button
+              className="btn-white mb-2"
+              variant="outline-primary"
+              onClick={handleShow}
+            >
+              Share Article
+            </Button>
+            <Button className="btn-blue mb-2" onClick={handleShow}>
+              Share Experience
+            </Button>
+            <a
+              role="button"
+              tabIndex="0"
+              onClick={handleShow}
+              className="a-blue"
+            >
+              Ask Question ?
+            </a>
+            <AddPostModal
+              firstButtonText={"Cancel"}
+              handleClose={handleClose}
+              modalTitle="Ask a marketing question"
+              onSubmit={handleSubmit}
+              secondButtonText={"Ask a question"}
+              show={showContentModal}
+            />
           </div>
         </CustomCard>
       </div>

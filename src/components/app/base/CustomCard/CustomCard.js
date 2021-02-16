@@ -1,9 +1,10 @@
 import React from "react";
+import clsx from "clsx";
 import "./CustomCard.scss";
 
 const CustomCard = ({ heading, seeAll, className, children }) => {
   return (
-    <div className={`custom-card ${className}`}>
+    <div className={clsx("custom-card", className)}>
       {heading && <div className="custom-card-header">{heading}</div>}
       <div className="custom-card-body">{children}</div>
       {seeAll && (

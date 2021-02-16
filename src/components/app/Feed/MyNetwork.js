@@ -25,17 +25,13 @@ const MyNetwork = (props) => {
         </div>
         <p className="my-network-text">Modern Media Marketing</p>
         <div className="d-flex flex-column">
-          <Button
-            className="btn-white edit-profile mb-2"
-            variant="outline-primary"
-            onClick={handleShow}
-          >
+          <Button className="btn-white mb-2" onClick={handleShow}>
             Share Article
           </Button>
-          <Button className="btn-white edit-profile mb-2" onClick={handleShow}>
+          <Button className="btn-blue mb-2" onClick={handleShow}>
             Share Experience
           </Button>
-          <a role="button" tabIndex="0" onClick={handleShow}>
+          <a role="button" tabIndex="0" onClick={handleShow} className="a-blue">
             Ask Question
           </a>
           <AddPostModal

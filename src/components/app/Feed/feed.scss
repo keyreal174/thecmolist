@@ -307,6 +307,17 @@
 
   input {
     border-radius: 100px;
-    padding-left: 42px;
+    padding-left: 50px;
+    font-size: 16px;
+    line-height: 21px;
+    color: $text-3;
+
+    &::placeholder,
+    &::-moz-placeholder,
+    &::-webkit-input-placeholder {
+      font-size: 16px;
+      line-height: 21px;
+      color: $text-3;
+    }
   }
 }
