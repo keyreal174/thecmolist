@@ -1,0 +1,90 @@
+@import "../../../sass/globals.scss";
+
+.profile-stats__user-info {
+  padding: 20px 0 20px;
+
+  .article-img {
+    margin-bottom: 8px;
+
+    img {
+      width: 66.5px;
+      height: 66.5px;
+    }
+  }
+
+  .profile-stats__user-name {
+    text-align: center;
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: $text-1;
+    font-size: 20px;
+    line-height: 26px;
+    margin-bottom: 4px;
+  }
+
+  .profile-stats__user-company {
+    color: $text-3;
+    font-size: 16px;
+    line-height: 20.8px;
+    margin-bottom: 11.5px;
+  }
+
+  .profile-stats__edit-button {
+    a {
+      font-weight: 500;
+      color: $brand;
+      font-size: 16px;
+      line-height: 21px;
+    }
+  }
+}
+
+.profile-card-divider {
+  height: 1px;
+  background-color: $gray-5;
+  margin-left: -20px;
+  margin-right: -20px;
+}
+
+.profile-stats__community {
+  padding: 13px 0 10px;
+
+  .profile-stats__community-title {
+    font-size: 15px;
+    color: $text-1;
+    font-weight: 500;
+    line-height: 19.5px;
+  }
+
+  .profile-stats__community-table {
+    font-size: 17px;
+    line-height: 22px;
+    color: $text-2;
+
+    .count {
+      font-size: 15px;
+      font-weight: bold;
+      color: $text-1;
+    }
+  }
+}
+
+.profile-stats__space-title {
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 16px;
+  color: $brand;
+  margin-right: 10px;
+}
+
+.profile-stats__spaces-badge {
+  background-color: $red;
+  color: $white;
+  padding: 1px 8px;
+  font-size: 12px;
+  line-height: 15.6px;
+}

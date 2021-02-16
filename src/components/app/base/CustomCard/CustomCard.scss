@@ -25,16 +25,16 @@
   text-align: center;
   padding: 14.5px 0;
   border-top: 1px solid $gray-5;
+}
 
-  .see-all-button {
-    color: $brand;
-    font-weight: 500;
-    font-size: 16px;
-    text-align: center;
-    line-height: 21px;
+a.see-all-button {
+  color: $brand;
+  font-weight: 500;
+  font-size: 16px;
+  text-align: center;
+  line-height: 21px;
 
-    &:focus {
-      outline: none;
-    }
+  &:focus {
+    outline: none;
   }
 }

@@ -241,3 +241,83 @@
   color: $text-1;
   padding: 12px 0;
 }
+
+.my-network-img {
+  background-color: $light-blue;
+  padding: 22.5px 23px;
+  border-radius: 100%;
+  max-width: fit-content;
+  margin: auto;
+}
+
+.about-this-space {
+  font-size: 16px;
+  color: $text-2;
+  line-height: 24px;
+  padding-bottom: 8px;
+}
+
+.feed-page-top-banner {
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  .custom-card:first-child {
+    flex: 1;
+    margin-right: 20px;
+  }
+}
+
+.feed-page-top-banner-img {
+  background-color: $light-blue;
+  border-radius: 12px;
+  padding: 27.5px 31.5px 27.5px 27px;
+  margin-right: 23.5px;
+}
+
+.feed-page-top-banner-content {
+  h3 {
+    color: $text-1;
+    font-size: 26px;
+    line-height: 34px;
+    font-weight: bold;
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 23px;
+    color: $gray-1;
+  }
+
+  span {
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 20px;
+    color: $brand;
+    margin-right: 22.5px;
+  }
+}
+
+.feed-page-search-box {
+  img {
+    position: absolute;
+    left: 20px;
+    top: 14px;
+    z-index: 1;
+  }
+
+  input {
+    border-radius: 100px;
+    padding-left: 50px;
+    font-size: 16px;
+    line-height: 21px;
+    color: $text-3;
+
+    &::placeholder,
+    &::-moz-placeholder,
+    &::-webkit-input-placeholder {
+      font-size: 16px;
+      line-height: 21px;
+      color: $text-3;
+    }
+  }
+}
