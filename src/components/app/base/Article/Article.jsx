@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import ShowMoreText from "react-show-more-text";
 import Markdown from "markdown-to-jsx";
 import Gallery from "../Gallery/Gallery";
-import "./article.css";
 import DiscussionComment from "../DiscussionComment/DiscussionComment";
 import EngagementButtons from "../EngagementButtons/EngagementButtons";
+import "./article.scss";
 
 function Article(props) {
   let articleBodyContentPresent =
@@ -184,9 +184,14 @@ function Article(props) {
             )}
           </div>
           <EngagementButtons
-            className={
-              withMargin ? "article-engagement-buttons__with-margin" : ""
-            }
+            className={`
+              ${withMargin ? "article-engagement-buttons__with-margin" : ""}
+              ${
+                !props.showDiscussionComment
+                  ? "article-engagement-buttons__with-border"
+                  : ""
+              }
+            `}
             engagementButtons={engagementButtons}
             onEngagementButtonClick={onEngagementButtonClick}
           />

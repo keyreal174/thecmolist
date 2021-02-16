@@ -1,0 +1,21 @@
+@import "../../../../sass/globals.scss";
+
+.custom-checkbox {
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.custom-checkbox-label {
+  margin-left: 13px !important;
+  user-select: none;
+  color: $text-1;
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+}
+
+.custom-checkbox-label.checked {
+  text-decoration: line-through;
+  color: $gray-1;
+}

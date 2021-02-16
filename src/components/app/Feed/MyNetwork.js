@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import CustomCard from "../base/CustomCard/CustomCard";
 import AddPostModal from "../base/AddPostModal/AddPostModal";
 
-import Logo from "../base/icons/lo_go.svg";
+import Logo from "../base/icons/logo.svg";
 
 const MyNetwork = (props) => {
   const history = useHistory();
@@ -20,20 +20,18 @@ const MyNetwork = (props) => {
   return (
     <CustomCard heading="My Network">
       <div className="text-center">
-        <img src={Logo} alt="Logo" width="75" height="75" />
+        <div className="my-network-img">
+          <img src={Logo} alt="Logo" width="29" height="29" />
+        </div>
         <p className="my-network-text">Modern Media Marketing</p>
         <div className="d-flex flex-column">
-          <Button
-            className="btn-white edit-profile mb-2"
-            variant="outline-primary"
-            onClick={handleShow}
-          >
+          <Button className="btn-white mb-2" onClick={handleShow}>
             Share Article
           </Button>
-          <Button className="btn-white edit-profile mb-2" onClick={handleShow}>
+          <Button className="btn-blue mb-2" onClick={handleShow}>
             Share Experience
           </Button>
-          <a role="button" tabIndex="0" onClick={handleShow}>
+          <a role="button" tabIndex="0" onClick={handleShow} className="a-blue">
             Ask Question
           </a>
           <AddPostModal
