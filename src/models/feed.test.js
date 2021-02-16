@@ -1,5 +1,6 @@
 import { init } from "@rematch/core";
 import feedModel from "./feed";
+import reactionModel from "./reaction";
 const axios = require("axios");
 
 jest.mock("axios");
@@ -7,7 +8,7 @@ jest.mock("axios");
 describe("feedModel model", () => {
   it("reducer: basic feedModel reducer", () => {
     const store = init({
-      models: { feedModel },
+      models: { feedModel, reactionModel },
     });
 
     store.dispatch.feedModel.initFeedDataForKey("foo");
@@ -20,7 +21,7 @@ describe("feedModel model", () => {
   }),
     it("reducer: feedModel reducer setData", () => {
       const store = init({
-        models: { feedModel },
+        models: { feedModel, reactionModel },
       });
 
       store.dispatch.feedModel.initFeedDataForKey("foo2");
@@ -36,7 +37,7 @@ describe("feedModel model", () => {
     }),
     it("reducer: feedModel reducer setData appends data", () => {
       const store = init({
-        models: { feedModel },
+        models: { feedModel, reactionModel },
       });
 
       store.dispatch.feedModel.initFeedDataForKey("foo4");
@@ -66,7 +67,7 @@ describe("feedModel model", () => {
     }),
     it("reducer: feedModel reducer setData sets moreData to false", () => {
       const store = init({
-        models: { feedModel },
+        models: { feedModel, reactionModel },
       });
 
       store.dispatch.feedModel.initFeedDataForKey("foo3");
@@ -93,7 +94,7 @@ describe("feedModel model", () => {
     }),
     it("reducer: feedModel reducer throws on non-existant key", () => {
       const store = init({
-        models: { feedModel },
+        models: { feedModel, reactionModel },
       });
       let caught = false;
       try {
@@ -108,7 +109,7 @@ describe("feedModel model", () => {
     }),
     it("effect: feedModel fetch data, none existing", async () => {
       const store = init({
-        models: { feedModel },
+        models: { feedModel, reactionModel },
       });
       // mock data
       axios.get.mockResolvedValue({
@@ -130,7 +131,7 @@ describe("feedModel model", () => {
     }),
     it("effect: feedModel fetch data, existing data", async () => {
       const store = init({
-        models: { feedModel },
+        models: { feedModel, reactionModel },
       });
 
       store.dispatch.feedModel.initFeedDataForKey("c%%d");
