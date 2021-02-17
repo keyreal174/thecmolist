@@ -22,6 +22,15 @@ import TopBanner from "./TopBanner";
 
 import Analytics from "../../util/Analytics";
 import Util from "../../util/Util";
+
+import AnswerIcon from "../base/icons/answer.svg";
+import InsightfulIcon from "../base/icons/insightful.svg";
+import InsightfulCheckedIcon from "../base/icons/insightful_checked.svg";
+import PassIcon from "../base/icons/pass.svg";
+import PassCheckedIcon from "../base/icons/pass_checked.svg";
+import ThanksIcon from "../base/icons/thanks.svg";
+import ThanksCheckedIcon from "../base/icons/thanks_checked.svg";
+
 import "./feed.scss";
 
 const cdn = "https://d3k6hg21rt7gsh.cloudfront.net/icons";
@@ -49,44 +58,89 @@ function RenderRightContainer({
   );
 }
 
-function RenderFeed({ feedData, moreData, fetchActiveFeed }) {
+function RenderFeed({
+  feedData,
+  moreData,
+  fetchActiveFeed,
+  reactions,
+  changeReaction,
+}) {
   let onLoadMoreClick = (e) => {
     e.preventDefault();
     e.target && e.target.blur && e.target.blur();
     fetchActiveFeed();
   };
   let feedMoreData = feedData.length > 0 && moreData;
+
+  const getCheckedForEngagementType = (contentId, engagementType) => {
+    let checked = false;
+
+    (
+      (reactions && reactions[contentId] && reactions[contentId].reactions) ||
+      []
+    ).forEach((r) => {
+      if (r.type === engagementType) {
+        checked = r.checked;
+      }
+    });
+    return checked;
+  };
+
+  const getEngagementForId = (contentId, engagementType) => {
+    return (
+      reactions &&
+      reactions[contentId] &&
+      reactions[contentId][`num_${engagementType}`]
+    );
+  };
+
+  const handleEngagementButtonClick = async (caller, engagementType) => {
+    const id = caller["content_id"];
+    const engagement = engagementType.toLowerCase();
+    try {
+      await changeReaction({ id, engagement });
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
   return (
     <div>
       {feedData &&
         feedData.map((feed, idx) => {
+          const contentId = feed && feed.content_id;
           return (
             <Article
               key={idx}
               className={
                 idx !== 0 ? "mt-1 feed-dashboard-cell" : "feed-dashboard-cell"
               }
-              {...feed}
+              {...feed.content}
               engagementButtons={[
                 {
                   checked: true,
                   text: "Answer",
-                  icon: `${cdn}/Answer.png`,
+                  icon: AnswerIcon,
+                  number: getEngagementForId(contentId, "answer"),
                 },
                 {
-                  checked: true,
+                  checked: getCheckedForEngagementType(contentId, "thanks"),
                   text: "Thanks",
-                  icon: `${cdn}/Thanks.png`,
-                  number: feed.num_thanks || 0,
+                  icon: ThanksIcon,
+                  iconChecked: ThanksCheckedIcon,
+                  number: getEngagementForId(contentId, "thanks"),
                 },
                 {
-                  checked: true,
+                  checked: getCheckedForEngagementType(contentId, "insightful"),
                   text: "Insightful",
-                  icon: `${cdn}/Insightful.png`,
-                  number: feed.num_insightful || 0,
+                  icon: InsightfulIcon,
+                  iconChecked: InsightfulCheckedIcon,
+                  number: getEngagementForId(contentId, "insightful"),
                 },
               ]}
-              onEngagementButtonClick={() => console.log("a")}
+              onEngagementButtonClick={handleEngagementButtonClick.bind(
+                this,
+                feed
+              )}
             />
           );
         })}
@@ -132,6 +186,8 @@ function RenderDashboard(props) {
             moreData={props.moreData}
             feedData={props.feedData}
             fetchActiveFeed={props.fetchActiveFeed}
+            reactions={props.reactions}
+            changeReaction={props.changeReaction}
           />
         )}
       </Col>
@@ -287,6 +343,8 @@ const Feed = (props) => {
             feedData={props.activeFeed}
             saveContent={props.saveContent}
             fetchActiveFeed={props.fetchActiveFeed}
+            reactions={props.reactions}
+            changeReaction={props.changeReaction}
             isGroup={isGroup}
           />
 
@@ -316,6 +374,7 @@ const mapState = (state) => {
     moreData: state.feedModel.moreData,
     filterIdx: state.feedModel.filterIdx,
     profileStats: state.profileModel.profileStats,
+    reactions: state.reactionModel.reactions,
   };
 };
 
@@ -326,6 +385,7 @@ const mapDispatch = (dispatch) => {
     saveUserInvite: dispatch.userModel.saveInvite,
     getProfileStats: dispatch.profileModel.getProfileStats,
     saveContent: dispatch.contentModel.saveContent,
+    changeReaction: dispatch.reactionModel.changeReaction,
   };
 };
 

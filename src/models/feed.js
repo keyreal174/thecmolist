@@ -115,6 +115,8 @@ export default {
           );
           const data = response.data;
           dispatch.feedModel.setFeedDataForKey(filterKey, data);
+          const filteredData = data.feedData.filter((feed) => feed.content_id);
+          dispatch.reactionModel.setReactions(filteredData);
         } finally {
           dispatch.feedModel.setLoading(false);
         }
