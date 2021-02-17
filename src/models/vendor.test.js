@@ -1,122 +1,109 @@
 import { init } from "@rematch/core";
-import profileModel, {
-  profileRequest,
-  saveProfileRequest,
-  deletePostRequest,
-  getProfileStatsRequest,
-} from "./profile";
-
+import vendorModel from "./vendor";
 const axios = require("axios");
 
 const data = {
   profile: {
-    userId: 8,
-    firstName: "Julie22",
-    lastName: "Herendeen1",
-    userName: "julie",
+    userId: 9,
+    firstName: "Division",
+    lastName: "of Lavor",
+    userName: "Division of lavor",
     image:
       "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiZGVmYXVsdC1wcm9maWxlLWltYWdlLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
-    title: "(blank)1",
-    company: "(blank)1",
+    title: "",
+    company: "",
+    followers: "1.4k",
     companyLinkedin: "(blank)1",
     companyIndustry: "(blank)1",
     companyStage: "(blank)1",
     revenue: "(blank)1",
-    city: "(blank)1",
-    state: "(blank)1",
+    city: "Sausalito",
+    state: "CA",
     country: "(blank)1",
     headline: "(blank)1",
-    linkedin: "(blank)1",
+    linkedin: "@division_L",
     website: "(blank)1",
-    mail: "mailto:julie@waltherfamily.com",
+    mail: "mailto:division@contact.com",
     about: {
       description:
-        "Business leader and CMO with 25+ years of experience launching and scaling enduring technology brands, managing global businesses and building high performance marketing and product team. My passion, across companies big aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "Division of Labor is an independent, San Francisco advertising agency. We develop strategies and creative campaign to promote brands and sell products across all media platforms.",
       networking: true,
       networkingOpportunities: "Networking Opportunities",
       advising: false,
       advisingOpportunities: "Advising Opportunities",
       areasOfExpertise: [
-        "#leadership",
         "#advertising",
-        "#public-relations",
+        "#out-of-home-advertising",
         "#branding",
-      ],
-      areasOfInterest: [
-        "#event-marketing",
-        "#performance-marketing",
-        "#account-based-marketing",
-        "#account-based-marketing",
       ],
     },
     feedData: [
       {
-        title: "My Agencies",
+        title: "Project",
         enabled: true,
         data: [
           {
+            content_id: 12102927,
+            author: "Jonh Smith",
+            header: {
+              markdown: "[John Smith, CMO at Mordern Media](/profile/Jhon)",
+              subtext: "Shared a project #design #content-marketing #branding",
+              image:
+                "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NTgxMDIzMjMwOWltYWdlLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
+            },
             headline: {
-              markdown: "[test16](/agency/test16)",
+              markdown: "Launched redesigned homepage",
             },
             slug: "test16",
             subheadlines: [
               {
-                text:
-                  "Unprecedented levels of change and disruption require new thinking and transformative approaches to growth. From purpose to product, brand to experience, customers to operations, we bring the insight, rigor and expertise needed to both uncover and realize transformative opportunities",
-              },
-              {
-                markdown:
-                  "Services: [Baidu Advertising](/directory/baidu-advertising), [Packaging Design](/directory/packaging-design), [SEM](/directory/sem), [Public Affairs PR](/directory/public-affairs-pr), [Market Research](/directory/market-research), [TV Advertising](/directory/tv-advertising), [Out of Home Advertising](/directory/out-of-home-advertising), [Snapchat Advertising](/directory/snapchat-advertising), [LinkedIn Advertising](/directory/linkedin-advertising)",
+                markdown: "",
                 categorytitles: [
-                  "Baidu Advertising",
-                  "Packaging Design",
-                  "SEM",
-                  "Public Affairs PR",
-                  "Market Research",
-                  "TV Advertising",
-                  "Out of Home Advertising",
-                  "Snapchat Advertising",
-                  "LinkedIn Advertising",
+                  "All Topics",
+                  "Saas",
+                  "LatAm",
+                  "inbound",
+                  "Europe",
+                  "performance-marketing",
+                  "facebook-advertising",
                 ],
               },
             ],
-            subtitle: "North America",
-            articletext: "ngng\nkjki\nhmnhfn\nhjg\nkjh\nzxcgb\ncbcs",
+            articletext:
+              "Great article about new ways to write SaaS landing pages. I think we should in particular look at using Template 3 and Template 7 for our system.",
             articletextlines: 4,
-            image:
-              "https://d3k6hg21rt7gsh.cloudfront.net/default-agency-image.png",
             imageDisplay: "square",
             review_scores: [],
             mostRecentReview: "2020-08-20T16:47:13.769Z",
           },
+        ],
+        content_id: 12102927,
+        content: {
+          num_pass: 0,
+          num_thanks: 5,
+          num_insightful: 10,
+        },
+        reactions: [
           {
-            headline: {
-              markdown: "[Naranja AD](/agency/naranja-ad)",
-            },
-            slug: "naranja-ad",
-            subheadlines: [
-              {
-                markdown:
-                  "Services: [Mobile & App Marketing](/directory/mobile-app-marketing)",
-                categorytitles: ["Mobile & App Marketing"],
-              },
-            ],
-            subtitle: "North America",
-            articletext: "Naranja!",
-            articletextlines: 4,
-            image:
-              "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoibmFyYW5qYS1hZC0tcHJvZmlsZS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEwMCwiaGVpZ2h0IjoxMDAsImZpdCI6ImNvdmVyIn19fQ==",
-            imageDisplay: "square",
-            review_scores: [],
-            mostRecentReview: "2020-08-17T00:37:51.122Z",
+            type: "pass",
+            checked: false,
+          },
+          {
+            type: "thanks",
+            checked: false,
+          },
+          {
+            type: "insightful",
+            checked: false,
           },
         ],
       },
       {
-        title: "My Technologies",
+        title: "Q & A",
         enabled: true,
         data: [
           {
+            content_id: 12102926,
             headline: {
               markdown: "[yo-wassup](/technology/yo-wassup)",
             },
@@ -126,9 +113,13 @@ const data = {
                 markdown:
                   "Technologies: [Social Media Analytics](/directory/social-media-analytics), [Web and Content Software](/directory/web-and-content-software), [Account-Based Analytics](/directory/account-based-analytics)",
                 categorytitles: [
-                  "Social Media Analytics",
-                  "Web and Content Software",
-                  "Account-Based Analytics",
+                  "All Topics",
+                  "Saas",
+                  "LatAm",
+                  "inbound",
+                  "Europe",
+                  "performance-marketing",
+                  "facebook-advertising",
                 ],
               },
             ],
@@ -142,92 +133,34 @@ const data = {
             mostRecentReview: "2020-08-20T16:52:49.031Z",
           },
         ],
-      },
-      {
-        title: "My Contractors",
-        enabled: false,
-        data: [],
-      },
-    ],
-    isMyProfile: true,
-    isNewuser: false,
-  },
-};
 
-const deletedData = {
-  profile: {
-    userId: 8,
-    firstName: "Julie22",
-    lastName: "Herendeen1",
-    userName: "julie",
-    image:
-      "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiZGVmYXVsdC1wcm9maWxlLWltYWdlLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
-    title: "(blank)1",
-    company: "(blank)1",
-    companyLinkedin: "(blank)1",
-    companyIndustry: "(blank)1",
-    companyStage: "(blank)1",
-    revenue: "(blank)1",
-    city: "(blank)1",
-    state: "(blank)1",
-    country: "(blank)1",
-    headline: "(blank)1",
-    linkedin: "(blank)1",
-    website: "(blank)1",
-    mail: "mailto:julie@waltherfamily.com",
-    about: {
-      description:
-        "Business leader and CMO with 25+ years of experience launching and scaling enduring technology brands, managing global businesses and building high performance marketing and product team. My passion, across companies big aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      networking: true,
-      networkingOpportunities: "Networking Opportunities",
-      advising: false,
-      advisingOpportunities: "Advising Opportunities",
-      areasOfExpertise: [
-        "#leadership",
-        "#advertising",
-        "#public-relations",
-        "#branding",
-      ],
-      areasOfInterest: [
-        "#event-marketing",
-        "#performance-marketing",
-        "#account-based-marketing",
-        "#account-based-marketing",
-      ],
-    },
-    feedData: [
-      {
-        title: "My Agencies",
-        enabled: true,
-        data: [
+        content_id: 12102926,
+        content: {
+          num_pass: 2,
+          num_thanks: 2,
+          num_insightful: 2,
+        },
+        reactions: [
           {
-            headline: {
-              markdown: "[Naranja AD](/agency/naranja-ad)",
-            },
-            slug: "naranja-ad",
-            subheadlines: [
-              {
-                markdown:
-                  "Services: [Mobile & App Marketing](/directory/mobile-app-marketing)",
-                categorytitles: ["Mobile & App Marketing"],
-              },
-            ],
-            subtitle: "North America",
-            articletext: "Naranja!",
-            articletextlines: 4,
-            image:
-              "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoibmFyYW5qYS1hZC0tcHJvZmlsZS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEwMCwiaGVpZ2h0IjoxMDAsImZpdCI6ImNvdmVyIn19fQ==",
-            imageDisplay: "square",
-            review_scores: [],
-            mostRecentReview: "2020-08-17T00:37:51.122Z",
+            type: "pass",
+            checked: false,
+          },
+          {
+            type: "thanks",
+            checked: false,
+          },
+          {
+            type: "insightful",
+            checked: false,
           },
         ],
       },
       {
-        title: "My Technologies",
+        title: "Articles",
         enabled: true,
         data: [
           {
+            content_id: 12102925,
             headline: {
               markdown: "[yo-wassup](/technology/yo-wassup)",
             },
@@ -237,9 +170,13 @@ const deletedData = {
                 markdown:
                   "Technologies: [Social Media Analytics](/directory/social-media-analytics), [Web and Content Software](/directory/web-and-content-software), [Account-Based Analytics](/directory/account-based-analytics)",
                 categorytitles: [
-                  "Social Media Analytics",
-                  "Web and Content Software",
-                  "Account-Based Analytics",
+                  "All Topics",
+                  "Saas",
+                  "LatAm",
+                  "inbound",
+                  "Europe",
+                  "performance-marketing",
+                  "facebook-advertising",
                 ],
               },
             ],
@@ -253,46 +190,31 @@ const deletedData = {
             mostRecentReview: "2020-08-20T16:52:49.031Z",
           },
         ],
-      },
-      {
-        title: "My Contractors",
-        enabled: false,
-        data: [],
+        content_id: 12102925,
+        content: {
+          num_pass: 0,
+          num_thanks: 0,
+          num_insightful: 0,
+        },
+        reactions: [
+          {
+            type: "pass",
+            checked: false,
+          },
+          {
+            type: "thanks",
+            checked: false,
+          },
+          {
+            type: "insightful",
+            checked: false,
+          },
+        ],
       },
     ],
-    isMyProfile: true,
-    isNewuser: false,
+    isMyProfile: false,
+    isNewUser: true,
   },
-};
-
-const profileStatsData = {
-  profile: {
-    name: "Jennifer Smith",
-    image:
-      "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5OTA2NzA1OTQ0NzAxNy1IZWFkc2hvdHMocHBfdzc2OF9oNjE0KS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
-    headline: "Brand at Modern Media",
-    stats: {
-      posts: 14,
-      views: 2345,
-      thanks: 34,
-      insightful: 11,
-    },
-  },
-  spaces: [
-    {
-      title: "#advertising",
-      count: 12,
-    },
-    {
-      title: "#social-media-marketing",
-    },
-  ],
-  groups: [
-    { name: "My Peers", checked: true },
-    { name: "Signal Fire Marketing", checked: true },
-    { name: "Dropbox", checked: false },
-    { name: "Pagerduty Marketing", checked: false },
-  ],
 };
 
 jest.mock("axios");
@@ -300,88 +222,12 @@ jest.mock("axios");
 describe("profileModel model", () => {
   it("reducer: updateProfile", () => {
     const store = init({
-      models: { profileModel },
+      models: { vendorModel },
     });
 
-    store.dispatch.profileModel.updateProfile(data.profile);
+    store.dispatch.vendorModel.updateProfile(data.profile);
 
-    const profileModelData = store.getState().profileModel;
-    expect(profileModelData.profile).toEqual(data.profile);
-  }),
-    it("reducer: removePost", () => {
-      const store = init({
-        models: { profileModel },
-      });
-      store.dispatch.profileModel.updateProfile(data.profile);
-      store.dispatch.profileModel.removePost("test16");
-
-      const profileModelData = store.getState().profileModel;
-      expect(profileModelData.profile).toEqual(deletedData.profile);
-    }),
-    it("fetches successfully data from an API", async () => {
-      axios.get.mockImplementationOnce(() => Promise.resolve(data));
-
-      await expect(profileRequest()).resolves.toEqual(data);
-    }),
-    it("fetches erroneously data from an API", async () => {
-      const errorMessage = "Could not get profile";
-
-      axios.get.mockImplementationOnce(() =>
-        Promise.reject(new Error(errorMessage))
-      );
-
-      await expect(profileRequest()).rejects.toThrow(errorMessage);
-    }),
-    it("save successfully data through an API", async () => {
-      axios.post.mockImplementationOnce(() => Promise.resolve(data));
-
-      await expect(saveProfileRequest()).resolves.toEqual(data);
-    }),
-    it("save erroneously data through an API", async () => {
-      const errorMessage = "Could not get profile";
-
-      axios.post.mockImplementationOnce(() =>
-        Promise.reject(new Error(errorMessage))
-      );
-
-      await expect(saveProfileRequest()).rejects.toThrow(errorMessage);
-    }),
-    it("delete post successfully through an API", async () => {
-      axios.delete.mockImplementationOnce(() => Promise.resolve(data));
-
-      await expect(deletePostRequest("slug")).resolves.toEqual(data);
-    }),
-    it("delete erroneously post through an API", async () => {
-      const errorMessage = "Could not delete post";
-
-      axios.delete.mockImplementationOnce(() =>
-        Promise.reject(new Error(errorMessage))
-      );
-
-      await expect(deletePostRequest("slug")).rejects.toThrow(errorMessage);
-    });
-  it("reducer: updateProfileStats", () => {
-    const store = init({
-      models: { profileModel },
-    });
-
-    store.dispatch.profileModel.updateProfileStats(profileStatsData);
-
-    const profileStatsModelData = store.getState().profileModel;
-    expect(profileStatsModelData.profileStats).toEqual(profileStatsData);
-  }),
-    it("fetches successfully stats data from an API", async () => {
-      axios.get.mockImplementationOnce(() => Promise.resolve(profileStatsData));
-
-      await expect(getProfileStatsRequest()).resolves.toEqual(profileStatsData);
-    }),
-    it("fetches erroneously data from an API", async () => {
-      const errorMessage = "Could not get profilestats";
-
-      axios.get.mockImplementationOnce(() =>
-        Promise.reject(new Error(errorMessage))
-      );
-
-      await expect(getProfileStatsRequest()).rejects.toThrow(errorMessage);
-    });
+    const vendorModelData = store.getState().vendorModel;
+    expect(vendorModelData.profile).toEqual(data.profile);
+  });
 });
