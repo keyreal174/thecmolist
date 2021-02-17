@@ -241,14 +241,9 @@ const Feed = (props) => {
       <Container className="height-100">
         <div className="wrapper">
           <Header />
-          <CSSTransition
-            in={isGroup}
-            timeout={500}
-            classNames="top-banner"
-            unmountOnExit
-          >
+          <CSSTransition in={isGroup} timeout={500} classNames="top-banner">
             <div>
-              <TopBanner saveContent={props.saveContent} />
+              {isGroup && <TopBanner saveContent={props.saveContent} />}
             </div>
           </CSSTransition>
           <div style={{ width: "100%" }}>
