@@ -17,6 +17,7 @@ import profileModel from "./models/profile";
 import reactionModel from "./models/reaction";
 import topicsModel from "./models/topics";
 import searchModel from "./models/search";
+import vendorModel from "./models/vendor";
 
 const store = init({
   models: {
@@ -30,6 +31,7 @@ const store = init({
     notificationsModel,
     reactionModel,
     searchModel,
+    vendorModel,
   },
 });
 
