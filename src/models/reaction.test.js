@@ -149,6 +149,10 @@ const reactions = {
   12102948: {
     reactions: [
       {
+        type: "pass",
+        checked: false,
+      },
+      {
         type: "thanks",
         checked: true,
       },
@@ -158,10 +162,15 @@ const reactions = {
       },
     ],
     num_insightful: 10,
+    num_pass: 0,
     num_thanks: 5,
   },
   123: {
     reactions: [
+      {
+        type: "pass",
+        checked: false,
+      },
       {
         type: "thanks",
         checked: true,
@@ -173,9 +182,14 @@ const reactions = {
     ],
     num_insightful: 4,
     num_thanks: 2,
+    num_pass: 0,
   },
   456: {
     reactions: [
+      {
+        type: "pass",
+        checked: false,
+      },
       {
         type: "thanks",
         checked: false,
@@ -187,6 +201,7 @@ const reactions = {
     ],
     num_insightful: 2,
     num_thanks: 1,
+    num_pass: 0,
   },
 };
 
@@ -226,7 +241,8 @@ describe("reactionModel model", () => {
       let modelReactions = reactionModelData.reactions[key];
       expect(modelReactions.num_insightful).toEqual(0);
       expect(modelReactions.num_thanks).toEqual(0);
-      expect(modelReactions.reactions.length).toEqual(2);
+      expect(modelReactions.num_pass).toEqual(0);
+      expect(modelReactions.reactions.length).toEqual(3);
       expect(
         modelReactions.reactions.findIndex(
           (r) => r.type === "thanks" && !r.checked
@@ -252,16 +268,16 @@ describe("reactionModel model", () => {
     store.dispatch.reactionModel.setReactions(data);
 
     let reactionModelData = store.getState().reactionModel;
-    expect(reactionModelData.reactions[id].reactions[0].checked).toEqual(true);
+    expect(reactionModelData.reactions[id].reactions[1].checked).toEqual(true);
     expect(reactionModelData.reactions[id]["num_thanks"]).toEqual(2);
 
     store.dispatch.reactionModel.setReaction({ id, type: engagement });
     reactionModelData = store.getState().reactionModel;
 
-    reactions2[id].reactions[0].checked = false;
+    reactions2[id].reactions[1].checked = false;
     reactions2[id]["num_thanks"] = 1;
     expect(reactionModelData.reactions).toEqual(reactions2);
-    expect(reactionModelData.reactions[id].reactions[0].checked).toEqual(false);
+    expect(reactionModelData.reactions[id].reactions[1].checked).toEqual(false);
     expect(reactionModelData.reactions[id]["num_thanks"]).toEqual(1);
   });
 
