@@ -62,32 +62,6 @@ const ProfileAbout = ({ profileAbout }) => {
               <RenderList arr={profileAbout.areasOfExpertise} />
             </div>
           </Col>
-          <Col md="6">
-            <Form.Label className="profile-about--experience-title">
-              Marketing interests
-            </Form.Label>
-            <div>
-              <RenderList arr={profileAbout.areasOfInterest} />
-            </div>
-          </Col>
-        </Row>
-        <Row className="profile-about--open">
-          <Col md="6">
-            <Form.Label className="profile-about--open-title">
-              Open to networking
-            </Form.Label>
-            <div>
-              <span className="profile-about--open-content">
-                {profileAbout.networking ? "Yes" : "No"}
-              </span>
-            </div>
-          </Col>
-          <Col md="6">
-            <Form.Label>Open to advising</Form.Label>
-            <div>
-              <span>{profileAbout.advising ? "Yes" : "No"}</span>
-            </div>
-          </Col>
         </Row>
       </CustomCard>
     )
@@ -231,6 +205,7 @@ const ProfileOverview = ({
     </Col>
   );
 };
+
 const VendorProfile = (props) => {
   const [isMyProfile, setIsMyProfile] = useState(false);
   const [profileFirstName, setProfileFirstName] = useState("");

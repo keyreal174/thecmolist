@@ -20,22 +20,15 @@
     "website": "(blank)1",
     "mail": "mailto:division@contact.com",
     "about": {
-      "description": "Business leader and CMO with 25+ years of experience launching and scaling enduring technology brands, managing global businesses and building high performance marketing and product team. My passion, across companies big aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "description": "Division of Labor is an independent, San Francisco advertising agency. We develop strategies and creative campaign to promote brands and sell products across all media platforms.",
       "networking": true,
       "networkingOpportunities": "Networking Opportunities",
       "advising": false,
       "advisingOpportunities": "Advising Opportunities",
       "areasOfExpertise": [
-        "#leadership",
         "#advertising",
-        "#public-relations",
+        "#out-of-home-advertising",
         "#branding"
-      ],
-      "areasOfInterest": [
-        "#event-marketing",
-        "#performance-marketing",
-        "#account-based-marketing",
-        "#account-based-marketing"
       ]
     },
     "feedData": [
@@ -44,8 +37,12 @@
         "enabled": true,
         "data": [
           {
+            "header": {
+              "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [Print Advertising](/directory/print-advertising)",
+              "subtext": "19 days ago"
+            },
             "headline": {
-              "markdown": "[test16](/agency/test16)"
+              "markdown": "[test a new agency](/agency/test-a-new-agency)"
             },
             "slug": "test16",
             "subheadlines": [
@@ -74,25 +71,6 @@
             "imageDisplay": "square",
             "review_scores": [],
             "mostRecentReview": "2020-08-20T16:47:13.769Z"
-          },
-          {
-            "headline": {
-              "markdown": "[Naranja AD](/agency/naranja-ad)"
-            },
-            "slug": "naranja-ad",
-            "subheadlines": [
-              {
-                "markdown": "Services: [Mobile & App Marketing](/directory/mobile-app-marketing)",
-                "categorytitles": ["Mobile & App Marketing"]
-              }
-            ],
-            "subtitle": "North America",
-            "articletext": "Naranja!",
-            "articletextlines": 4,
-            "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoibmFyYW5qYS1hZC0tcHJvZmlsZS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEwMCwiaGVpZ2h0IjoxMDAsImZpdCI6ImNvdmVyIn19fQ==",
-            "imageDisplay": "square",
-            "review_scores": [],
-            "mostRecentReview": "2020-08-17T00:37:51.122Z"
           }
         ]
       },
