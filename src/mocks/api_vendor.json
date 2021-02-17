@@ -126,9 +126,9 @@
 
         "content_id": 12102926,
         "content": {
-          "num_pass": 0,
-          "num_thanks": 5,
-          "num_insightful": 10
+          "num_pass": 2,
+          "num_thanks": 2,
+          "num_insightful": 2
         },
         "reactions": [
           {
@@ -181,8 +181,8 @@
         "content_id": 12102925,
         "content": {
           "num_pass": 0,
-          "num_thanks": 5,
-          "num_insightful": 10
+          "num_thanks": 0,
+          "num_insightful": 0
         },
         "reactions": [
           {
