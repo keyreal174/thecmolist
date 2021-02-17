@@ -33,52 +33,69 @@
     },
     "feedData": [
       {
-        "title": "My Agencies",
+        "title": "Project",
         "enabled": true,
         "data": [
           {
+            "content_id": 12102927,
+            "author": "Jonh Smith",
             "header": {
-              "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [Print Advertising](/directory/print-advertising)",
-              "subtext": "19 days ago"
+              "markdown": "[John Smith, CMO at Mordern Media](/profile/Jhon)",
+              "subtext": "Shared a project #design #content-marketing #branding",
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NTgxMDIzMjMwOWltYWdlLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ=="
             },
             "headline": {
-              "markdown": "[test a new agency](/agency/test-a-new-agency)"
+              "markdown": "Launched redesigned homepage"
             },
             "slug": "test16",
             "subheadlines": [
               {
-                "text": "Unprecedented levels of change and disruption require new thinking and transformative approaches to growth. From purpose to product, brand to experience, customers to operations, we bring the insight, rigor and expertise needed to both uncover and realize transformative opportunities"
-              },
-              {
-                "markdown": "Services: [Baidu Advertising](/directory/baidu-advertising), [Packaging Design](/directory/packaging-design), [SEM](/directory/sem), [Public Affairs PR](/directory/public-affairs-pr), [Market Research](/directory/market-research), [TV Advertising](/directory/tv-advertising), [Out of Home Advertising](/directory/out-of-home-advertising), [Snapchat Advertising](/directory/snapchat-advertising), [LinkedIn Advertising](/directory/linkedin-advertising)",
+                "markdown": "",
                 "categorytitles": [
-                  "Baidu Advertising",
-                  "Packaging Design",
-                  "SEM",
-                  "Public Affairs PR",
-                  "Market Research",
-                  "TV Advertising",
-                  "Out of Home Advertising",
-                  "Snapchat Advertising",
-                  "LinkedIn Advertising"
+                  "All Topics",
+                  "Saas",
+                  "LatAm",
+                  "inbound",
+                  "Europe",
+                  "performance-marketing",
+                  "facebook-advertising"
                 ]
               }
             ],
-            "subtitle": "North America",
-            "articletext": "ngng\nkjki\nhmnhfn\nhjg\nkjh\nzxcgb\ncbcs",
+            "articletext": "Great article about new ways to write SaaS landing pages. I think we should in particular look at using Template 3 and Template 7 for our system.",
             "articletextlines": 4,
-            "image": "https://d3k6hg21rt7gsh.cloudfront.net/default-agency-image.png",
             "imageDisplay": "square",
             "review_scores": [],
             "mostRecentReview": "2020-08-20T16:47:13.769Z"
           }
+        ],
+        "content_id": 12102927,
+        "content": {
+          "num_pass": 0,
+          "num_thanks": 5,
+          "num_insightful": 10
+        },
+        "reactions": [
+          {
+            "type": "pass",
+            "checked": false
+          },
+          {
+            "type": "thanks",
+            "checked": false
+          },
+          {
+            "type": "insightful",
+            "checked": false
+          }
         ]
       },
       {
-        "title": "My Technologies",
+        "title": "Q & A",
         "enabled": true,
         "data": [
           {
+            "content_id": 12102926,
             "headline": {
               "markdown": "[yo-wassup](/technology/yo-wassup)"
             },
@@ -87,9 +104,13 @@
               {
                 "markdown": "Technologies: [Social Media Analytics](/directory/social-media-analytics), [Web and Content Software](/directory/web-and-content-software), [Account-Based Analytics](/directory/account-based-analytics)",
                 "categorytitles": [
-                  "Social Media Analytics",
-                  "Web and Content Software",
-                  "Account-Based Analytics"
+                  "All Topics",
+                  "Saas",
+                  "LatAm",
+                  "inbound",
+                  "Europe",
+                  "performance-marketing",
+                  "facebook-advertising"
                 ]
               }
             ],
@@ -101,12 +122,82 @@
             "review_scores": [],
             "mostRecentReview": "2020-08-20T16:52:49.031Z"
           }
+        ],
+
+        "content_id": 12102926,
+        "content": {
+          "num_pass": 0,
+          "num_thanks": 5,
+          "num_insightful": 10
+        },
+        "reactions": [
+          {
+            "type": "pass",
+            "checked": false
+          },
+          {
+            "type": "thanks",
+            "checked": false
+          },
+          {
+            "type": "insightful",
+            "checked": false
+          }
         ]
       },
       {
-        "title": "My Contractors",
-        "enabled": false,
-        "data": []
+        "title": "Articles",
+        "enabled": true,
+        "data": [
+          {
+            "content_id": 12102925,
+            "headline": {
+              "markdown": "[yo-wassup](/technology/yo-wassup)"
+            },
+            "slug": "yo-wassup",
+            "subheadlines": [
+              {
+                "markdown": "Technologies: [Social Media Analytics](/directory/social-media-analytics), [Web and Content Software](/directory/web-and-content-software), [Account-Based Analytics](/directory/account-based-analytics)",
+                "categorytitles": [
+                  "All Topics",
+                  "Saas",
+                  "LatAm",
+                  "inbound",
+                  "Europe",
+                  "performance-marketing",
+                  "facebook-advertising"
+                ]
+              }
+            ],
+            "subtitle": "",
+            "articletext": "nn\nvv\nzzz",
+            "articletextlines": 4,
+            "image": "https://d3k6hg21rt7gsh.cloudfront.net/default-agency-image.png",
+            "imageDisplay": "square",
+            "review_scores": [],
+            "mostRecentReview": "2020-08-20T16:52:49.031Z"
+          }
+        ],
+        "content_id": 12102925,
+        "content": {
+          "num_pass": 0,
+          "num_thanks": 5,
+          "num_insightful": 10
+        },
+        "reactions": [
+          {
+            "type": "pass",
+            "checked": false
+          },
+          {
+            "type": "thanks",
+            "checked": false
+          },
+          {
+            "type": "insightful",
+            "checked": false
+          }
+        ]
       }
     ],
     "isMyProfile": false,

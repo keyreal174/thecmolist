@@ -21,6 +21,13 @@ import Website from "./icons/link.svg";
 import Mail from "./icons/mail.svg";
 import More from "./icons/more.svg";
 import Location from "./icons/location.svg";
+import AnswerIcon from "../base/icons/answer.svg";
+import InsightfulIcon from "../base/icons/insightful.svg";
+import InsightfulCheckedIcon from "../base/icons/insightful_checked.svg";
+import PassIcon from "../base/icons/pass.svg";
+import PassCheckedIcon from "../base/icons/pass_checked.svg";
+import ThanksIcon from "../base/icons/thanks.svg";
+import ThanksCheckedIcon from "../base/icons/thanks_checked.svg";
 
 const RenderList = ({ arr }) => {
   return arr.map((item, index) => (
@@ -382,6 +389,40 @@ const VendorProfile = (props) => {
     followers: "657",
   };
 
+  const getCheckedForEngagementType = (contentId, engagementType) => {
+    let checked = false;
+    const reactions = props.reactions;
+    (
+      (reactions && reactions[contentId] && reactions[contentId].reactions) ||
+      []
+    ).forEach((r) => {
+      if (r.type === engagementType) {
+        checked = r.checked;
+      }
+    });
+    return checked;
+  };
+
+  const getEngagementForId = (contentId, engagementType) => {
+    const reactions = props.reactions;
+    return (
+      reactions &&
+      reactions[contentId] &&
+      reactions[contentId][`num_${engagementType}`]
+    );
+  };
+
+  const handleEngagementButtonClick = async (caller, engagementType) => {
+    const id = caller["content_id"];
+    const engagement = engagementType.toLowerCase();
+    console.log("id", id);
+    try {
+      await props.changeReaction({ id, engagement });
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
   const profileBackgroundUrl =
     "https://d3k6hg21rt7gsh.cloudfront.net/icons/profile--header.png";
   return (
@@ -491,6 +532,57 @@ const VendorProfile = (props) => {
                         className={idx !== 0 ? "mt-1" : ""}
                         {...feed}
                         badge={badge}
+                        engagementButtons={[
+                          {
+                            checked: true,
+                            text: "Answer",
+                            icon: AnswerIcon,
+                            number: getEngagementForId(
+                              feed.content_id,
+                              "answer"
+                            ),
+                          },
+                          {
+                            checked: getCheckedForEngagementType(
+                              feed.content_id,
+                              "pass"
+                            ),
+                            text: "Pass",
+                            icon: PassIcon,
+                            iconChecked: PassCheckedIcon,
+                            number: getEngagementForId(feed.content_id, "pass"),
+                          },
+                          {
+                            checked: getCheckedForEngagementType(
+                              feed.content_id,
+                              "thanks"
+                            ),
+                            text: "Thanks",
+                            icon: ThanksIcon,
+                            iconChecked: ThanksCheckedIcon,
+                            number: getEngagementForId(
+                              feed.content_id,
+                              "thanks"
+                            ),
+                          },
+                          {
+                            checked: getCheckedForEngagementType(
+                              feed.content_id,
+                              "insightful"
+                            ),
+                            text: "Insightful",
+                            icon: InsightfulIcon,
+                            iconChecked: InsightfulCheckedIcon,
+                            number: getEngagementForId(
+                              feed.content_id,
+                              "insightful"
+                            ),
+                          },
+                        ]}
+                        onEngagementButtonClick={handleEngagementButtonClick.bind(
+                          this,
+                          feed
+                        )}
                       />
                     </FadeTransition>
                   );
@@ -508,20 +600,6 @@ const VendorProfile = (props) => {
             </div>
           </div>
         )}
-
-        <DeletePost
-          show={showDeletePost}
-          closeModal={closeDeletePostModal}
-          deletePost={props.deletePost}
-          slug={postSlug}
-        />
-        <FollowUserModal
-          show={showFollowModal}
-          firstname={profileFirstName}
-          username={profileUserName}
-          toggle={toggleFollowModal}
-          followUser={followUser}
-        />
         <Footer />
       </Container>
     </>
@@ -531,15 +609,14 @@ const VendorProfile = (props) => {
 const mapState = (state) => {
   return {
     profile: state.vendorModel.profile,
+    reactions: state.reactionModel.reactions,
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
     fetchProfile: dispatch.vendorModel.fetchProfile,
-    saveProfile: dispatch.vendorModel.saveProfile,
-    deletePost: dispatch.vendorModel.deletePost,
-    followUser: dispatch.userModel.followUser,
+    changeReaction: dispatch.reactionModel.changeReaction,
   };
 };
 

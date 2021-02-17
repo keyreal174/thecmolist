@@ -32,28 +32,6 @@ export default {
         profile: data,
       };
     },
-
-    removePost: (oldState, id) => {
-      return {
-        ...oldState,
-        profile: {
-          ...oldState.profile,
-          feedData: oldState.profile.feedData.map((feed) => {
-            return {
-              ...feed,
-              data: feed.data.filter((item) => item.slug !== id),
-            };
-          }),
-        },
-      };
-    },
-
-    updateProfileStats: (oldState, data) => {
-      return {
-        ...oldState,
-        profileStats: data,
-      };
-    },
   },
   effects: (dispatch) => ({
     async fetchProfile(userName) {
@@ -61,37 +39,9 @@ export default {
         const response = await profileRequest(userName);
         const { profile } = response.data;
         dispatch.vendorModel.updateProfile(profile);
+        dispatch.reactionModel.setReactions(profile.feedData);
       } catch (err) {
         throw new Error("Could not get profile");
-      }
-    },
-
-    async saveProfile(profile) {
-      try {
-        await saveProfileRequest({ profile });
-        dispatch.vendorModel.updateProfile(profile);
-      } catch (err) {
-        throw new Error("Could not save profile");
-      }
-    },
-
-    async deletePost(id) {
-      try {
-        await deletePostRequest(id);
-        dispatch.vendorModel.removePost(id);
-      } catch (err) {
-        throw new Error("Could not delete post");
-      }
-    },
-
-    async getProfileStats() {
-      try {
-        const response = await getProfileStatsRequest();
-        const profileStats = response.data;
-        dispatch.vendorModel.updateProfileStats(profileStats);
-        return profileStats;
-      } catch (err) {
-        throw new Error("Could not get profilestats");
       }
     },
   }),
