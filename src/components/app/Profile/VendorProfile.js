@@ -19,9 +19,8 @@ import "./profile.scss";
 import LinkedIn from "./icons/linkedin.svg";
 import Website from "./icons/link.svg";
 import Mail from "./icons/mail.svg";
-import Education from "./icons/education.svg";
+import More from "./icons/more.svg";
 import Location from "./icons/location.svg";
-import Group from "../../app/base/icons/group.svg";
 
 const RenderList = ({ arr }) => {
   return arr.map((item, index) => (
@@ -140,7 +139,7 @@ const ProfileIntro = ({
   );
 };
 
-const ProfileLeftSection = ({
+const ProfileOverview = ({
   profileBackgroundUrl,
   profileImage,
   profileFirstName,
@@ -148,6 +147,7 @@ const ProfileLeftSection = ({
   profileWebsite,
   profileTitle,
   profileCompany,
+  profileFollowers,
   isMyProfile,
   followedUser,
   toggleFollowModal,
@@ -185,8 +185,11 @@ const ProfileLeftSection = ({
               )}
             </h2>
             <div className="overview-subheadline">
-              {profileTitle} at {profileCompany}
+              {profileTitle && `${profileTitle} at ${profileCompany}`}
             </div>
+            {profileFollowers && (
+              <div className="overview-followers">{`${profileFollowers} Followers`}</div>
+            )}
           </div>
         )}
         {isMyProfile ? (
@@ -214,9 +217,11 @@ const ProfileLeftSection = ({
                 ) : (
                   <span className="profile-connected-label mb-2">Followed</span>
                 )}
-
-                <Button className="edit-profile" variant="outline-secondary">
-                  ...
+                <Button
+                  className="edit-profile edit-profile-more"
+                  variant="outline-secondary"
+                >
+                  <img alt="More icon" src={More} />
                 </Button>
               </div>
             )}
@@ -236,14 +241,12 @@ const VendorProfile = (props) => {
   const [profileCompany, setProfileCompany] = useState("");
   const [profileCity, setProfileCity] = useState("");
   const [profileState, setProfileState] = useState("");
-  const [profileCountry, setProfileCountry] = useState("");
-  const [profileHeadline, setProfileHeadline] = useState("");
   const [profileLinkedin, setProfileLinkedin] = useState("");
   const [profileMail, setProfileMail] = useState("");
   const [profileWebsite, setProfileWebsite] = useState("");
   const [profileAbout, setProfileAbout] = useState([]);
+  const [profileFollowers, setProfileFollowers] = useState("");
   const [feedData, setFeedData] = useState([]);
-  const [connectedUser, setConnectedUser] = useState(false);
   const [followedUser, setFollowedUser] = useState(false);
 
   const [filterIdx, setFilterIdx] = useState(0);
@@ -259,7 +262,6 @@ const VendorProfile = (props) => {
   const [showDeletePost, setShowDeletePost] = useState(false);
   const [showFollowModal, setShowFollowModal] = useState(false);
   const [showMore, setShowMore] = useState(false);
-  let isVerified = true;
 
   useEffect(() => {
     document.title = "Profile";
@@ -277,14 +279,12 @@ const VendorProfile = (props) => {
       setProfileCompany(props.profile.company || "");
       setProfileCity(props.profile.city || "");
       setProfileState(props.profile.state || "");
-      setProfileCountry(props.profile.country || "");
-      setProfileHeadline(props.profile.headline || "");
       setProfileLinkedin(props.profile.linkedin || "");
       setProfileWebsite(props.profile.website || "");
       setProfileMail(props.profile.mail || "");
       setProfileAbout(props.profile.about || {});
       setFeedData(props.profile.feedData || []);
-      setConnectedUser(props.profile.connectedUser);
+      setProfileFollowers(props.profile.followers || "");
       setFollowedUser(props.profile.followedUser);
       props.profile.feedData && createSubfilters(props.profile.feedData);
     }
@@ -310,21 +310,6 @@ const VendorProfile = (props) => {
       });
     });
     setFeedData(newFeedData);
-  };
-
-  const connectUser = async () => {
-    let userName = Util.parsePath(window.location.href).trailingPath;
-    Analytics.sendClickEvent(
-      `Connected with user ${userName} from profile page`
-    );
-    try {
-      await props.connectUser({ username: userName });
-      setEnableAnimations(false);
-      setConnectedUser(true);
-    } catch (err) {
-      console.log(`An error occurred connecting with user: ${userName}`);
-      console.log(err);
-    }
   };
 
   const showDeletePostModal = (feed) => {
@@ -430,7 +415,7 @@ const VendorProfile = (props) => {
         <Header />
         <div className="wrapper">
           <Row className="profile--wrapper">
-            <ProfileLeftSection
+            <ProfileOverview
               profileBackgroundUrl={profileBackgroundUrl}
               profileImage={profileImage}
               profileFirstName={profileFirstName}
@@ -438,6 +423,7 @@ const VendorProfile = (props) => {
               profileWebsite={profileWebsite}
               profileTitle={profileTitle}
               profileCompany={profileCompany}
+              profileFollowers={profileFollowers}
               isMyProfile={isMyProfile}
               followedUser={followedUser}
               toggleFollowModal={toggleFollowModal}
@@ -569,15 +555,15 @@ const VendorProfile = (props) => {
 
 const mapState = (state) => {
   return {
-    profile: state.profileModel.profile,
+    profile: state.vendorModel.profile,
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
-    fetchProfile: dispatch.profileModel.fetchProfile,
-    saveProfile: dispatch.profileModel.saveProfile,
-    deletePost: dispatch.profileModel.deletePost,
+    fetchProfile: dispatch.vendorModel.fetchProfile,
+    saveProfile: dispatch.vendorModel.saveProfile,
+    deletePost: dispatch.vendorModel.deletePost,
     followUser: dispatch.userModel.followUser,
   };
 };

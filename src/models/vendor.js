@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const profileRequest = (userName) => {
-  return axios.get(`/api/profile/${userName ? userName : ""}`, {
+  return axios.get(`/api/vendor/${userName ? userName : ""}`, {
     headers: {
       "timezone-offset": new Date().getTimezoneOffset(),
     },
@@ -9,7 +9,7 @@ export const profileRequest = (userName) => {
 };
 
 export const saveProfileRequest = (data) => {
-  return axios.post("/api/profile", data);
+  return axios.post("/api/vendor", data);
 };
 
 export const deletePostRequest = (id) => {
@@ -24,7 +24,6 @@ export default {
   name: "vendorModel",
   state: {
     profile: {},
-    profileStats: {},
   },
   reducers: {
     updateProfile: (oldState, data) => {
@@ -61,7 +60,7 @@ export default {
       try {
         const response = await profileRequest(userName);
         const { profile } = response.data;
-        dispatch.profileModel.updateProfile(profile);
+        dispatch.vendorModel.updateProfile(profile);
       } catch (err) {
         throw new Error("Could not get profile");
       }
@@ -70,7 +69,7 @@ export default {
     async saveProfile(profile) {
       try {
         await saveProfileRequest({ profile });
-        dispatch.profileModel.updateProfile(profile);
+        dispatch.vendorModel.updateProfile(profile);
       } catch (err) {
         throw new Error("Could not save profile");
       }
@@ -79,7 +78,7 @@ export default {
     async deletePost(id) {
       try {
         await deletePostRequest(id);
-        dispatch.profileModel.removePost(id);
+        dispatch.vendorModel.removePost(id);
       } catch (err) {
         throw new Error("Could not delete post");
       }
@@ -89,7 +88,7 @@ export default {
       try {
         const response = await getProfileStatsRequest();
         const profileStats = response.data;
-        dispatch.profileModel.updateProfileStats(profileStats);
+        dispatch.vendorModel.updateProfileStats(profileStats);
         return profileStats;
       } catch (err) {
         throw new Error("Could not get profilestats");
