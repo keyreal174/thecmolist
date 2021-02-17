@@ -96,11 +96,8 @@ const ProfileAbout = ({ profileAbout }) => {
 };
 
 const ProfileIntro = ({
-  profileCompany,
-  profileTitle,
   profileCity,
   profileState,
-  profileData,
   profileMail,
   profileLinkedin,
 }) => {
@@ -108,17 +105,6 @@ const ProfileIntro = ({
     <Col md="4">
       <CustomCard heading="Intro" className="profile--right-section">
         <div className="right-section--details">
-          {profileCompany && (
-            <div className="right-section--job right-section--item">
-              <img
-                className="right-section--item-img"
-                alt="work"
-                src={Education}
-              />
-              {`${profileTitle} at `}
-              <strong>{profileCompany}</strong>
-            </div>
-          )}
           {profileCity && (
             <div className="right-section--live right-section--item">
               <img
@@ -126,20 +112,10 @@ const ProfileIntro = ({
                 alt="location"
                 src={Location}
               />
-              Lives in{" "}
+              Location{" "}
               <strong>
                 {profileCity}, {profileState}
               </strong>
-            </div>
-          )}
-          {profileData.followers && (
-            <div className="right-section--followers right-section--item">
-              <img
-                className="right-section--item-img"
-                alt="followers"
-                src={Group}
-              />
-              Followed by <strong>{`${profileData.followers} people`}</strong>
             </div>
           )}
           {profileMail && (
@@ -467,11 +443,8 @@ const VendorProfile = (props) => {
               toggleFollowModal={toggleFollowModal}
             />
             <ProfileIntro
-              profileCompany={profileCompany}
-              profileTitle={profileTitle}
               profileCity={profileCity}
               profileState={profileState}
-              profileData={profileData}
               profileMail={profileMail}
               profileLinkedin={profileLinkedin}
             />
