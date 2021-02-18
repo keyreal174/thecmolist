@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Container, Form } from "react-bootstrap";
+import { Row, Col, Container, Form } from "react-bootstrap";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
-import Banner from "../base/Banner/Banner";
 import Filter from "../base/Filter/Filter";
 import InviteModal from "../base/ShareModule/InviteModal";
 import Article from "../base/Article/Article";
 import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
+import TagLists from "../base/TagLists/TagLists";
+
+import TopBanner from "./TopBanner";
 import Analytics from "../../util/Analytics";
-import "./network.css";
+import "./network.scss";
 
 const renderFeed = (props, fetchData) => {
   const feedData = props.feedData;
@@ -79,6 +81,11 @@ const Network = (props) => {
   };
   const [filterIdx, setFilterIdx] = useState(0);
   const [filters, setFilters] = useState([]);
+  const [subfilters, setSubfilters] = useState({});
+  const [subfilterKeys, setSubfilterKeys] = useState([]);
+  const [feedFilter, setFeedFilter] = useState("");
+  const [filteredFeedData, setFilteredFeedData] = useState([]);
+
   useEffect(() => {
     const getProfileStats = async () => props.getProfileStats();
     getProfileStats().then((profileStats) => {
@@ -106,16 +113,85 @@ const Network = (props) => {
     setFilterIdx(idx);
     props.changeFilter(filters[idx].slug);
   };
+
+  const [feedData, setFeedData] = useState([]);
+  const [feedfilters, setFeedFilters] = useState([]);
+
+  useEffect(() => {
+    if (props.feedData) {
+      createSubfilters(props.feedData);
+    }
+  }, [props.feedData]);
+
+  const createSubfilters = (feedDa) => {
+    let newFeedData = feedDa.slice();
+    newFeedData.forEach((feed) => {
+      feed.subfilters = {};
+      feed.subheadlines &&
+        feed.subheadlines.forEach((sh) => {
+          if (sh.categorytitles && Array.isArray(sh.categorytitles)) {
+            sh.categorytitles.forEach((categoryTitle) => {
+              if (!(categoryTitle in feed.subfilters)) {
+                feed.subfilters[categoryTitle] = 0;
+              }
+              feed.subfilters[categoryTitle] += 1;
+            });
+          }
+        });
+    });
+    setFeedData(newFeedData);
+  };
+
+  useEffect(() => {
+    if (feedData.length > 0) {
+      const f = feedData.map((feed) => ({
+        title: feed.title,
+        enabled: feed.enabled || false,
+      }));
+      setFeedFilters(f);
+
+      let currentFeed = feedData[filterIdx];
+      let feed_data = currentFeed.data;
+      // subfilters
+      if (currentFeed) {
+        let subfilters = currentFeed.subfilters || {};
+        setSubfilters(subfilters);
+        let subfilterKeys = Object.keys(subfilters);
+        setSubfilterKeys(subfilterKeys);
+        let feedFilter = currentFeed.subfilter || "";
+        setFeedFilter(feedFilter);
+        if (feedFilter.length > 0) {
+          feed_data = feed_data.filter((data) => {
+            for (let i = 0; i < data.subheadlines.length; i++) {
+              let sh = data.subheadlines[i];
+              if (sh.categorytitles) {
+                for (let j = 0; j < sh.categorytitles.length; j++) {
+                  if (
+                    sh.categorytitles[j] &&
+                    sh.categorytitles[j] === feedFilter
+                  )
+                    return true;
+                }
+              }
+            }
+            return false;
+          });
+        }
+      }
+      // setHasDataOnCurrentFeed(
+      //   currentFeed && currentFeed.data && currentFeed.data.length > 0
+      // );
+      setFilteredFeedData(feed_data);
+    }
+  }, [feedData]);
+
   return (
     <>
       <Container className="height-100">
         <div className="wrapper">
           <Header />
-          <Banner
-            title="CMOlist Members"
-            img="https://d3k6hg21rt7gsh.cloudfront.net/directory.png"
-          />
-          <div>
+          <TopBanner />
+          <div className="mb-4">
             <Filter
               className="mt-1"
               filterIdx={filterIdx}
@@ -123,29 +199,23 @@ const Network = (props) => {
               onChange={(idx) => changeFilter(idx)}
             />
           </div>
-          <div className="sort">
-            <div className="section-break" />
-            <span>Sort by:</span>
-            <div className="select-wrapper">
-              <Form.Control
-                as="select"
-                defaultValue={sortOrder}
-                onChange={formFilterChange}
-                custom
-              >
-                <option>Top</option>
-                <option>Recent</option>
-                <option>Name</option>
-              </Form.Control>
-            </div>
-          </div>
 
           {props.loadingNetwork ? (
             <div className="mt-3 mb-5">
               <ActivityIndicator className="element-center feed-activity-indicator" />
             </div>
           ) : (
-            renderFeed(props, fetchData)
+            <Row>
+              <Col md={4}>
+                <TagLists
+                  subfilterKeys={subfilterKeys}
+                  subfilters={subfilters}
+                  feedFilter={feedFilter}
+                  onSubfilterChange={() => console.log("=====")}
+                />
+              </Col>
+              <Col md={8}>{renderFeed(props, fetchData)}</Col>
+            </Row>
           )}
 
           <InviteModal

@@ -5,7 +5,9 @@
 }
 
 .article-subheadline {
-  color: #000;
+  color: $text-3;
+  font-size: 13px;
+  line-height: 27px;
 }
 
 .article-subheadline a {
@@ -75,8 +77,8 @@
 }
 
 .article-img img {
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   box-sizing: border-box;
   background-clip: content-box;
   border: 2px solid transparent;
@@ -90,10 +92,11 @@
 }
 
 .article-title {
-  font-size: 18px;
-  color: #000000;
-  font-weight: 500;
+  font-size: 14px;
+  color: $text-1;
+  font-weight: 700;
   margin-bottom: 0;
+  line-height: 27px;
 }
 
 .article-title img {
