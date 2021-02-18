@@ -20,6 +20,7 @@ import TechnologyProfile from "./components/app/Profile/TechnologyProfile";
 import Topics from "./components/app/Topics/Topics";
 import Search from "./components/app/Search/Search";
 import Util from "./components/util/Util";
+import VendorProfile from "./components/app/Profile/VendorProfile";
 import Cookies from "js-cookie";
 import SetupMocks from "./mocks/mocks";
 
@@ -191,6 +192,13 @@ class App extends React.Component {
             path="/notifications"
             render={(props) =>
               this.state.authed ? <Notifications /> : <Redirect to="/login" />
+            }
+          />
+          <Route
+            exact
+            path="/vendor"
+            render={(props) =>
+              this.state.authed ? <VendorProfile /> : <Redirect to="/login" />
             }
           />
 

@@ -30,6 +30,9 @@ const getReactionsForContent = (data) => {
 
     // merge in values from contentData
     if (contentData.content) {
+      if (contentData.content.num_pass >= 0) {
+        reactionsForContent.num_pass = contentData.content.num_pass;
+      }
       if (contentData.content.num_thanks >= 0) {
         reactionsForContent.num_thanks = contentData.content.num_thanks;
       }
