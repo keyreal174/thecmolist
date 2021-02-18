@@ -1,23 +1,11 @@
 import axios from "axios";
 
-export const profileRequest = (userName) => {
+export const vendorProfileRequest = (userName) => {
   return axios.get(`/api/vendor/${userName ? userName : ""}`, {
     headers: {
       "timezone-offset": new Date().getTimezoneOffset(),
     },
   });
-};
-
-export const saveProfileRequest = (data) => {
-  return axios.post("/api/vendor", data);
-};
-
-export const deletePostRequest = (id) => {
-  return axios.delete(`/api/post/${id}`);
-};
-
-export const getProfileStatsRequest = () => {
-  return axios.get(`/api/profilestats/`);
 };
 
 export default {
@@ -36,7 +24,7 @@ export default {
   effects: (dispatch) => ({
     async fetchProfile(userName) {
       try {
-        const response = await profileRequest(userName);
+        const response = await vendorProfileRequest(userName);
         const { profile } = response.data;
         dispatch.vendorModel.updateProfile(profile);
         dispatch.reactionModel.setReactions(profile.feedData);

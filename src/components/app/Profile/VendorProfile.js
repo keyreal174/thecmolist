@@ -384,11 +384,6 @@ const VendorProfile = (props) => {
     }
   }, [feedData]);
 
-  const profileData = {
-    university: "Cambridge International",
-    followers: "657",
-  };
-
   const getCheckedForEngagementType = (contentId, engagementType) => {
     let checked = false;
     const reactions = props.reactions;
