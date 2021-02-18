@@ -278,8 +278,8 @@ const VendorProfile = (props) => {
       feed.subfilters = {};
       let feed_data = feed.data;
       feed_data.forEach((data) => {
-        data.subheadlines &&
-          data.subheadlines.forEach((sh) => {
+        data.content.subheadlines &&
+          data.content.subheadlines.forEach((sh) => {
             if (sh.categorytitles && Array.isArray(sh.categorytitles)) {
               sh.categorytitles.forEach((categoryTitle) => {
                 if (!(categoryTitle in feed.subfilters)) {
@@ -361,8 +361,8 @@ const VendorProfile = (props) => {
         setFeedFilter(feedFilter);
         if (feedFilter.length > 0) {
           feed_data = feed_data.filter((data) => {
-            for (let i = 0; i < data.subheadlines.length; i++) {
-              let sh = data.subheadlines[i];
+            for (let i = 0; i < data.content.subheadlines.length; i++) {
+              let sh = data.content.subheadlines[i];
               if (sh.categorytitles) {
                 for (let j = 0; j < sh.categorytitles.length; j++) {
                   if (
@@ -525,7 +525,7 @@ const VendorProfile = (props) => {
                       <Article
                         key={idx}
                         className={idx !== 0 ? "mt-1" : ""}
-                        {...feed}
+                        {...feed.content}
                         badge={badge}
                         engagementButtons={[
                           {
