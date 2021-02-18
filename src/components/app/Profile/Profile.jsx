@@ -10,6 +10,10 @@ import Header from "../base/Header/Header";
 import Filter from "../base/Filter/Filter";
 import Article from "../base/Article/Article";
 import Footer from "../base/Footer/Footer";
+import {
+  getCheckedForEngagementType,
+  getEngagementForId,
+} from "../base/EngagementButtons/EngagementButtons";
 import DeletePost from "./DeletePost";
 import FollowUserModal from "./FollowUser";
 import Util from "../../util/Util";
@@ -22,6 +26,12 @@ import Mail from "./icons/mail.svg";
 import Education from "./icons/education.svg";
 import Location from "./icons/location.svg";
 import Group from "../../app/base/icons/group.svg";
+import InsightfulIcon from "../base/icons/insightful.svg";
+import InsightfulCheckedIcon from "../base/icons/insightful_checked.svg";
+import ThanksIcon from "../base/icons/thanks.svg";
+import ThanksCheckedIcon from "../base/icons/thanks_checked.svg";
+
+const cdn = "https://d3k6hg21rt7gsh.cloudfront.net/icons";
 
 const RenderList = ({ arr }) => {
   return arr.map((item, index) => (
@@ -69,6 +79,7 @@ const Profile = (props) => {
   const [showDeletePost, setShowDeletePost] = useState(false);
   const [showFollowModal, setShowFollowModal] = useState(false);
   const [showMore, setShowMore] = useState(false);
+  const reactions = props.reactions;
   let isVerified = true;
 
   useEffect(() => {
@@ -106,8 +117,8 @@ const Profile = (props) => {
       feed.subfilters = {};
       let feed_data = feed.data;
       feed_data.forEach((data) => {
-        data.subheadlines &&
-          data.subheadlines.forEach((sh) => {
+        data.content &&
+          data.content.subheadlines.forEach((sh) => {
             if (sh.categorytitles && Array.isArray(sh.categorytitles)) {
               sh.categorytitles.forEach((categoryTitle) => {
                 if (!(categoryTitle in feed.subfilters)) {
@@ -204,8 +215,8 @@ const Profile = (props) => {
         setFeedFilter(feedFilter);
         if (feedFilter.length > 0) {
           feed_data = feed_data.filter((data) => {
-            for (let i = 0; i < data.subheadlines.length; i++) {
-              let sh = data.subheadlines[i];
+            for (let i = 0; i < data.content.subheadlines.length; i++) {
+              let sh = data.content.subheadlines[i];
               if (sh.categorytitles) {
                 for (let j = 0; j < sh.categorytitles.length; j++) {
                   if (
@@ -234,6 +245,17 @@ const Profile = (props) => {
 
   const profileBackgroundUrl =
     "https://d3k6hg21rt7gsh.cloudfront.net/icons/profile--header.png";
+
+  const handleEngagementButtonClick = async (caller, engagementType) => {
+    const id = caller["content_id"];
+    const engagement = engagementType.toLowerCase();
+
+    try {
+      await props.changeReaction({ id, engagement });
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
   return (
     <>
       <Container className="height-100">
@@ -522,8 +544,52 @@ const Profile = (props) => {
                       <Article
                         key={idx}
                         className={idx !== 0 ? "mt-1" : ""}
-                        {...feed}
+                        {...feed.content}
                         badge={badge}
+                        engagementButtons={[
+                          {
+                            text: "Comment",
+                            icon: `${cdn}/Comment.png`,
+                            number:
+                              feed.comments && feed.comments.length > 0
+                                ? feed.comments.length
+                                : null,
+                          },
+                          {
+                            checked: getCheckedForEngagementType(
+                              feed.content_id,
+                              "thanks",
+                              reactions
+                            ),
+                            text: "Thanks",
+                            icon: ThanksIcon,
+                            iconChecked: ThanksCheckedIcon,
+                            number: getEngagementForId(
+                              feed.content_id,
+                              "thanks",
+                              reactions
+                            ),
+                          },
+                          {
+                            checked: getCheckedForEngagementType(
+                              feed.content_id,
+                              "insightful",
+                              reactions
+                            ),
+                            text: "Insightful",
+                            icon: InsightfulIcon,
+                            iconChecked: InsightfulCheckedIcon,
+                            number: getEngagementForId(
+                              feed.content_id,
+                              "insightful",
+                              reactions
+                            ),
+                          },
+                        ]}
+                        onEngagementButtonClick={handleEngagementButtonClick.bind(
+                          this,
+                          feed
+                        )}
                       />
                     </FadeTransition>
                   );
@@ -564,6 +630,7 @@ const Profile = (props) => {
 const mapState = (state) => {
   return {
     profile: state.profileModel.profile,
+    reactions: state.reactionModel.reactions,
   };
 };
 
@@ -573,6 +640,7 @@ const mapDispatch = (dispatch) => {
     saveProfile: dispatch.profileModel.saveProfile,
     deletePost: dispatch.profileModel.deletePost,
     followUser: dispatch.userModel.followUser,
+    changeReaction: dispatch.reactionModel.changeReaction,
   };
 };
 

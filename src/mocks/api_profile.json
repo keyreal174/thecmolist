@@ -43,55 +43,85 @@
         "enabled": true,
         "data": [
           {
-            "headline": {
-              "markdown": "[test16](/agency/test16)"
+            "content_id": 768,
+            "content": {
+              "headline": {
+                "markdown": "[test16](/agency/test16)"
+              },
+              "slug": "test16",
+              "subheadlines": [
+                {
+                  "text": "Unprecedented levels of change and disruption require new thinking and transformative approaches to growth. From purpose to product, brand to experience, customers to operations, we bring the insight, rigor and expertise needed to both uncover and realize transformative opportunities"
+                },
+                {
+                  "markdown": "Services: [Baidu Advertising](/directory/baidu-advertising), [Packaging Design](/directory/packaging-design), [SEM](/directory/sem), [Public Affairs PR](/directory/public-affairs-pr), [Market Research](/directory/market-research), [TV Advertising](/directory/tv-advertising), [Out of Home Advertising](/directory/out-of-home-advertising), [Snapchat Advertising](/directory/snapchat-advertising), [LinkedIn Advertising](/directory/linkedin-advertising)",
+                  "categorytitles": [
+                    "Baidu Advertising",
+                    "Packaging Design",
+                    "SEM",
+                    "Public Affairs PR",
+                    "Market Research",
+                    "TV Advertising",
+                    "Out of Home Advertising",
+                    "Snapchat Advertising",
+                    "LinkedIn Advertising"
+                  ]
+                }
+              ],
+              "subtitle": "North America",
+              "articletext": "ngng\nkjki\nhmnhfn\nhjg\nkjh\nzxcgb\ncbcs",
+              "articletextlines": 4,
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/default-agency-image.png",
+              "imageDisplay": "square",
+              "review_scores": [],
+              "mostRecentReview": "2020-08-20T16:47:13.769Z",
+              "num_thanks": 3,
+              "num_insightful": 2
             },
-            "slug": "test16",
-            "subheadlines": [
+            "reactions": [
               {
-                "text": "Unprecedented levels of change and disruption require new thinking and transformative approaches to growth. From purpose to product, brand to experience, customers to operations, we bring the insight, rigor and expertise needed to both uncover and realize transformative opportunities"
+                "type": "thanks",
+                "checked": true
               },
               {
-                "markdown": "Services: [Baidu Advertising](/directory/baidu-advertising), [Packaging Design](/directory/packaging-design), [SEM](/directory/sem), [Public Affairs PR](/directory/public-affairs-pr), [Market Research](/directory/market-research), [TV Advertising](/directory/tv-advertising), [Out of Home Advertising](/directory/out-of-home-advertising), [Snapchat Advertising](/directory/snapchat-advertising), [LinkedIn Advertising](/directory/linkedin-advertising)",
-                "categorytitles": [
-                  "Baidu Advertising",
-                  "Packaging Design",
-                  "SEM",
-                  "Public Affairs PR",
-                  "Market Research",
-                  "TV Advertising",
-                  "Out of Home Advertising",
-                  "Snapchat Advertising",
-                  "LinkedIn Advertising"
-                ]
+                "type": "insightful",
+                "checked": false
               }
-            ],
-            "subtitle": "North America",
-            "articletext": "ngng\nkjki\nhmnhfn\nhjg\nkjh\nzxcgb\ncbcs",
-            "articletextlines": 4,
-            "image": "https://d3k6hg21rt7gsh.cloudfront.net/default-agency-image.png",
-            "imageDisplay": "square",
-            "review_scores": [],
-            "mostRecentReview": "2020-08-20T16:47:13.769Z"
+            ]
           },
           {
-            "headline": {
-              "markdown": "[Naranja AD](/agency/naranja-ad)"
+            "content_id": 780,
+            "content": {
+              "headline": {
+                "markdown": "[Naranja AD](/agency/naranja-ad)"
+              },
+              "slug": "naranja-ad",
+              "subheadlines": [
+                {
+                  "markdown": "Services: [Mobile & App Marketing](/directory/mobile-app-marketing)",
+                  "categorytitles": ["Mobile & App Marketing"]
+                }
+              ],
+              "subtitle": "North America",
+              "articletext": "Naranja!",
+              "articletextlines": 4,
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoibmFyYW5qYS1hZC0tcHJvZmlsZS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEwMCwiaGVpZ2h0IjoxMDAsImZpdCI6ImNvdmVyIn19fQ==",
+              "imageDisplay": "square",
+              "review_scores": [],
+              "mostRecentReview": "2020-08-17T00:37:51.122Z",
+              "num_thanks": 3,
+              "num_insightful": 2
             },
-            "slug": "naranja-ad",
-            "subheadlines": [
+            "reactions": [
               {
-                "markdown": "Services: [Mobile & App Marketing](/directory/mobile-app-marketing)",
-                "categorytitles": ["Mobile & App Marketing"]
+                "type": "thanks",
+                "checked": true
+              },
+              {
+                "type": "insightful",
+                "checked": false
               }
-            ],
-            "subtitle": "North America",
-            "articletext": "Naranja!",
-            "articletextlines": 4,
-            "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoibmFyYW5qYS1hZC0tcHJvZmlsZS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEwMCwiaGVpZ2h0IjoxMDAsImZpdCI6ImNvdmVyIn19fQ==",
-            "imageDisplay": "square",
-            "review_scores": [],
-            "mostRecentReview": "2020-08-17T00:37:51.122Z"
+            ]
           }
         ]
       },
@@ -120,7 +150,9 @@
             "image": "https://d3k6hg21rt7gsh.cloudfront.net/default-agency-image.png",
             "imageDisplay": "square",
             "review_scores": [],
-            "mostRecentReview": "2020-08-20T16:52:49.031Z"
+            "mostRecentReview": "2020-08-20T16:52:49.031Z",
+            "num_thanks": 3,
+            "num_insightful": 2
           }
         ]
       },
