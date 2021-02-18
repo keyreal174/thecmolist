@@ -26,7 +26,7 @@ import TopBanner from "./TopBanner";
 
 import Analytics from "../../util/Analytics";
 import Util from "../../util/Util";
-
+import { cdn } from "../../util/constants";
 import AnswerIcon from "../base/icons/answer.svg";
 import InsightfulIcon from "../base/icons/insightful.svg";
 import InsightfulCheckedIcon from "../base/icons/insightful_checked.svg";
@@ -34,8 +34,6 @@ import ThanksIcon from "../base/icons/thanks.svg";
 import ThanksCheckedIcon from "../base/icons/thanks_checked.svg";
 
 import "./feed.scss";
-
-const cdn = "https://d3k6hg21rt7gsh.cloudfront.net/icons";
 
 function RenderRightContainer({
   buildYourNetworkItems,
@@ -212,10 +210,7 @@ const Feed = (props) => {
   const changeDashboardHeader = (idx) => {
     if (idx < filters.length) {
       setBannerTitle(filters[idx].title);
-      setBannerImage(
-        filters[idx].image ||
-          "https://d3k6hg21rt7gsh.cloudfront.net/directory.png"
-      );
+      setBannerImage(filters[idx].image || `${cdn}/directory.png`);
     }
   };
   const changeDashboardFilter = async (filter, subfilter) =>
@@ -273,10 +268,7 @@ const Feed = (props) => {
       let idx = groupIdx > 0 ? groupIdx : filterIdx;
       setFilterIdx(idx);
       setBannerTitle(newFilters[idx].title);
-      setBannerImage(
-        newFilters[idx].image ||
-          "https://d3k6hg21rt7gsh.cloudfront.net/directory.png"
-      );
+      setBannerImage(newFilters[idx].image || `${cdn}/directory.png`);
       changeDashboardFilter(
         newFilters[idx].slug,
         subSelectors[activeSelector].slug

@@ -13,6 +13,7 @@ import PassIcon from "../base/icons/pass.svg";
 import PassCheckedIcon from "../base/icons/pass_checked.svg";
 import ThanksIcon from "../base/icons/thanks.svg";
 import ThanksCheckedIcon from "../base/icons/thanks_checked.svg";
+import { cdn } from "../../util/constants";
 
 const ContentDetail = ({
   content,
@@ -22,7 +23,6 @@ const ContentDetail = ({
   saveReactionToCallerType,
   setError,
 }) => {
-  const cdn = "https://d3k6hg21rt7gsh.cloudfront.net/icons";
   const focusError = () => {
     const errorSection = document.getElementById("error-section");
     window.scrollTo(0, 0);

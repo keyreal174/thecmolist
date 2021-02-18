@@ -18,6 +18,7 @@ import DeletePost from "./DeletePost";
 import FollowUserModal from "./FollowUser";
 import Util from "../../util/Util";
 import Analytics from "../../util/Analytics";
+import { cdn } from "../../util/constants";
 import "./profile.scss";
 
 import LinkedIn from "./icons/linkedin.svg";
@@ -30,8 +31,6 @@ import InsightfulIcon from "../base/icons/insightful.svg";
 import InsightfulCheckedIcon from "../base/icons/insightful_checked.svg";
 import ThanksIcon from "../base/icons/thanks.svg";
 import ThanksCheckedIcon from "../base/icons/thanks_checked.svg";
-
-const cdn = "https://d3k6hg21rt7gsh.cloudfront.net/icons";
 
 const RenderList = ({ arr }) => {
   return arr.map((item, index) => (
