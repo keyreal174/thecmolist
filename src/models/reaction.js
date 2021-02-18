@@ -30,6 +30,9 @@ const getReactionsForContent = (data) => {
 
     // merge in values from contentData
     if (contentData.content) {
+      if (contentData.content.num_pass >= 0) {
+        reactionsForContent.num_pass = contentData.content.num_pass;
+      }
       if (contentData.content.num_thanks >= 0) {
         reactionsForContent.num_thanks = contentData.content.num_thanks;
       }
@@ -64,9 +67,11 @@ const getReactionsForContent = (data) => {
     // set reactions data for feed array. Exclude to execute this code in Content
     if (Array.isArray(data)) {
       data.forEach((d) => {
-        if (d.content_id) {
-          reactions[d.content_id] = getReactions(d);
-        }
+        d.data.forEach(({ content_id, ...rest }) => {
+          if (content_id) {
+            reactions[content_id] = getReactions(rest);
+          }
+        });
       });
     }
   }

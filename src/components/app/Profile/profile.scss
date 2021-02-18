@@ -134,6 +134,10 @@
   margin-bottom: 10px;
 }
 
+.overview-followers {
+  color: $brand;
+  font-weight: 700;
+}
 .border {
   border: none !important;
   padding: 0 15px;
@@ -428,6 +432,13 @@
 .edit-profile {
   margin-right: 10px;
   border-radius: 20px;
+}
+
+.edit-profile-more {
+  border: none;
+  padding: 0;
+  margin: 10px;
+  margin-right: 22px;
 }
 
 .profile--feed {
