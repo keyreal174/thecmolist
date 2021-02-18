@@ -144,21 +144,30 @@ const ContentDetail = ({
                           : null,
                     },
                     {
-                      checked: getCheckedForEngagementType(replyId, "thanks"),
+                      checked: getCheckedForEngagementType(
+                        replyId,
+                        "thanks",
+                        reactions
+                      ),
                       text: "Thanks",
                       icon: ThanksIcon,
                       iconChecked: ThanksCheckedIcon,
-                      number: getEngagementForId(replyId, "thanks"),
+                      number: getEngagementForId(replyId, "thanks", reactions),
                     },
                     {
                       checked: getCheckedForEngagementType(
                         replyId,
-                        "insightful"
+                        "insightful",
+                        reactions
                       ),
                       text: "Insightful",
                       icon: InsightfulIcon,
                       iconChecked: InsightfulCheckedIcon,
-                      number: getEngagementForId(replyId, "insightful"),
+                      number: getEngagementForId(
+                        replyId,
+                        "insightful",
+                        reactions
+                      ),
                     },
                   ]}
                   onEngagementButtonClick={handleEngagementButtonClick.bind(
