@@ -31,6 +31,9 @@ export default {
     feedLoading: false,
     dashboardFeedData: {},
     activeFeed: [],
+    activeFeedHasMoreData: false,
+    activeFeedMembers: [],
+    activeFeedVendors: [],
     activeFilter: "",
   },
   reducers: {
@@ -63,9 +66,20 @@ export default {
         currentFeed.moreData = true;
         currentFeed.token = token;
         currentFeed.data = currentFeed.data.concat(feedData);
+        newState.activeFeedHasMoreData = true;
       } else {
         currentFeed.moreData = false;
+        newState.activeFeedHasMoreData = false;
       }
+      if (data.members != null) {
+        currentFeed.members = data.members;
+        newState.activeFeedMembers = currentFeed.members;
+      }
+      if (data.vendors != null) {
+        currentFeed.vendors = data.vendors;
+        newState.activeFeedVendors = currentFeed.vendors;
+      }
+
       newState.activeFeed = currentFeed.data.slice();
       return newState;
     },
@@ -77,6 +91,8 @@ export default {
         ...rootState,
         activeFilter: filterKey,
         activeFeed: rootState.dashboardFeedData[filterKey].data,
+        activeFeedMembers: rootState.dashboardFeedData[filterKey].members || [],
+        activeFeedVendors: rootState.dashboardFeedData[filterKey].vendors || [],
       };
     },
     setLoading: (rootState, loading) => {

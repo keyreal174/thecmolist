@@ -37,8 +37,8 @@ import "./feed.scss";
 
 function RenderRightContainer({
   buildYourNetworkItems,
-  peopleInSimilarRoles,
-  newMembers,
+  memberList,
+  vendorList,
   saveContent,
   isGroup,
 }) {
@@ -52,8 +52,8 @@ function RenderRightContainer({
       ) : (
         <AboutSpace />
       )}
-      <AllMembers peopleInSimilarRoles={peopleInSimilarRoles} />
-      <Vendors newMembers={newMembers} />
+      <AllMembers memberList={memberList} />
+      <Vendors vendorList={vendorList} />
     </Col>
   );
 }
@@ -173,8 +173,8 @@ function RenderDashboard(props) {
           </div>
         ) : (
           <RenderFeed
-            moreData={props.moreData}
             feedData={props.feedData}
+            moreData={props.moreData}
             fetchActiveFeed={props.fetchActiveFeed}
             reactions={props.reactions}
             changeReaction={props.changeReaction}
@@ -183,8 +183,8 @@ function RenderDashboard(props) {
       </Col>
       <RenderRightContainer
         buildYourNetworkItems={profileStats.buildYourNetwork}
-        peopleInSimilarRoles={profileStats.peopleInSimilarRoles}
-        newMembers={profileStats.newMembers}
+        memberList={props.memberList}
+        vendorList={props.vendorList}
         saveContent={props.saveContent}
         isGroup={props.isGroup}
       />
@@ -323,8 +323,10 @@ const Feed = (props) => {
 
           <RenderDashboard
             profileStats={props.profileStats}
-            moreData={props.moreData}
             feedData={props.activeFeed}
+            moreData={props.activeFeedHasMoreData}
+            memberList={props.activeFeedMembers}
+            vendorList={props.activeFeedVendors}
             saveContent={props.saveContent}
             fetchActiveFeed={props.fetchActiveFeed}
             reactions={props.reactions}
@@ -354,8 +356,9 @@ const mapState = (state) => {
   return {
     feedLoading: state.feedModel.feedLoading,
     activeFeed: state.feedModel.activeFeed,
-    feedData: state.feedModel.feedData,
-    moreData: state.feedModel.moreData,
+    activeFeedHasMoreData: state.feedModel.activeFeedHasMoreData,
+    activeFeedMembers: state.feedModel.activeFeedMembers,
+    activeFeedVendors: state.feedModel.activeFeedVendors,
     filterIdx: state.feedModel.filterIdx,
     profileStats: state.profileModel.profileStats,
     reactions: state.reactionModel.reactions,
