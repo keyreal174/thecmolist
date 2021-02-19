@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import CustomCard from "../CustomCard/CustomCard";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import "./popularTopics.scss";
 
 const PopularTopics = ({
   subfilterKeys,
@@ -12,19 +13,19 @@ const PopularTopics = ({
   const [showMore, setShowMore] = useState(false);
 
   return (
-    <CustomCard className="profile--popular-topics" heading="Popular #topics">
+    <CustomCard className="popular-topics" heading="Popular #topics">
       <div className="popular-topics--content">
-        <div>
+        <div className="popular-topics--wrapper">
           {subfilterKeys.map((subfilter, idx) => {
             if (idx < 5 || showMore) {
               return (
                 <div className="popular-topics--content-item">
                   <Link
-                    className={
+                    className={`popular-topics--content-item-link ${
                       subfilter === feedFilter
                         ? "profile-subfilter active"
                         : "profile-subfilter"
-                    }
+                    }`}
                     onClick={() => {
                       onSubfilterChange(subfilter);
                     }}
