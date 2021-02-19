@@ -117,6 +117,7 @@ const Profile = (props) => {
       let feed_data = feed.data;
       feed_data.forEach((data) => {
         data.content &&
+          data.content.subheadlines &&
           data.content.subheadlines.forEach((sh) => {
             if (sh.categorytitles && Array.isArray(sh.categorytitles)) {
               sh.categorytitles.forEach((categoryTitle) => {
