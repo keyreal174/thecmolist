@@ -1,101 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Container, Col, Form, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
-import Banner from "../base/Banner/Banner";
 import Filter from "../base/Filter/Filter";
 import InviteModal from "../base/ShareModule/InviteModal";
-import Article from "../base/Article/Article";
 import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
+import TopBanner from "./TopBanner";
+import Feed from "./Feed";
 import Analytics from "../../util/Analytics";
-import "./network.css";
-
-const Badge = ({ localConnectedUsers, feed, invalidateFeed, connectUser }) => {
-  let badge = null;
-  const isLocallyConnected = localConnectedUsers.includes(feed.username);
-  const isConnected = feed.isConnected || isLocallyConnected;
-
-  if (!feed.disableConnect) {
-    badge = isConnected ? (
-      <span className="connected-label">Connected</span>
-    ) : (
-      <button
-        className="btn connect-button"
-        type="button"
-        onClick={() => {
-          invalidateFeed();
-          connectUser(feed);
-        }}
-      >
-        Connect
-      </button>
-    );
-  }
-
-  return badge;
-};
-const Feed = ({
-  feedData,
-  moreData,
-  localConnectedUsers,
-  invalidateFeed,
-  connectUser,
-  fetchData,
-}) => {
-  return (
-    <>
-      <Row>
-        <Col md="4">Popular Topics</Col>
-        <Col md="8">
-          {feedData &&
-            feedData.map((feed, idx) => {
-              return (
-                <Article
-                  key={idx}
-                  className={idx !== 0 ? "mt-1" : ""}
-                  {...feed}
-                  badge={
-                    <Badge
-                      localConnectedUsers={localConnectedUsers}
-                      feed={feed}
-                      invalidateFeed={invalidateFeed}
-                      connectUser={connectUser}
-                    />
-                  }
-                />
-              );
-            })}
-          {moreData && (
-            <div className="row">
-              <div className="col-md-2 mt-2 mx-auto">
-                <button
-                  className="btn btn__load-more"
-                  type="button"
-                  onClick={fetchData}
-                >
-                  Show more
-                </button>
-              </div>
-            </div>
-          )}
-        </Col>
-      </Row>
-    </>
-  );
-};
+import "./network.scss";
 
 const Network = (props) => {
-  const [sortOrder, setSortOrder] = useState("Top");
   const [inviteModalShow, setInviteModalShow] = useState(false);
   const fetchData = async () => await props.fetchActiveNetwork();
-  const formFilterChange = (event) => {
-    const value = event.target.value;
-    setSortOrder(value);
-    props.changeSortOrder(value);
-  };
   const [filterIdx, setFilterIdx] = useState(0);
   const [filters, setFilters] = useState([]);
+
+  const [feedFilter, setFeedFilter] = useState("");
+  const [subfilters, setSubfilters] = useState({});
+  const [subfilterKeys, setSubfilterKeys] = useState([]);
+
   useEffect(() => {
     const getProfileStats = async () => props.getProfileStats();
     getProfileStats().then((profileStats) => {
@@ -128,10 +53,7 @@ const Network = (props) => {
       <Container className="height-100">
         <div className="wrapper">
           <Header />
-          <Banner
-            title="CMOlist Members"
-            img="https://d3k6hg21rt7gsh.cloudfront.net/directory.png"
-          />
+          <TopBanner />
           <div>
             <Filter
               className="mt-1"
@@ -145,7 +67,16 @@ const Network = (props) => {
               <ActivityIndicator className="element-center feed-activity-indicator" />
             </div>
           ) : (
-            <Feed {...props} fetchData={fetchData} />
+            <Feed
+              {...props}
+              fetchData={fetchData}
+              subfilterKeys={subfilterKeys}
+              feedFilter={feedFilter}
+              onSubfilterChange={() => {
+                console.log("subfilter change");
+              }}
+              subfilters={subfilters}
+            />
           )}
 
           <InviteModal
