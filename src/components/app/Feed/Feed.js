@@ -85,7 +85,7 @@ function RenderFeed({
     <div>
       {feedData &&
         feedData.map((feed, idx) => {
-          const contentId = feed && feed.content_id;
+          const contentId = feed && "content_id" in feed ? feed.content_id : 0;
           return (
             <Article
               key={idx}

@@ -57,10 +57,12 @@ const getReactionsForContent = (data) => {
 
   // set reactions data for replies
   (data.replies || []).forEach((reply) => {
-    reactions[reply.content_id] = getReactions(reply);
+    if ("content_id" in reply) {
+      reactions[reply.content_id] = getReactions(reply);
+    }
   });
 
-  if (data.content_id) {
+  if ("content_id" in data) {
     // set reactions data for root content
     reactions[data.content_id] = getReactions(data);
   } else {
@@ -69,7 +71,7 @@ const getReactionsForContent = (data) => {
       data.forEach((d) => {
         const iterator = d.data ? d.data : data;
         iterator.forEach(({ content_id, ...rest }) => {
-          if (content_id) {
+          if (content_id >= 0) {
             reactions[content_id] = getReactions(rest);
           }
         });

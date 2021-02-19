@@ -62,7 +62,7 @@ const ContentDetail = ({
   };
 
   const numberOfReplies = content && content.replies && content.replies.length;
-  const questionId = content && content.content_id;
+  const contentId = content && content.content_id;
   const author = content && content.content && content.content.author;
 
   return (
@@ -80,36 +80,36 @@ const ContentDetail = ({
             },
             {
               checked: getCheckedForEngagementType(
-                questionId,
+                contentId,
                 "pass",
                 reactions
               ),
               text: "Pass",
               icon: PassIcon,
               iconChecked: PassCheckedIcon,
-              number: getEngagementForId(questionId, "pass", reactions),
+              number: getEngagementForId(contentId, "pass", reactions),
             },
             {
               checked: getCheckedForEngagementType(
-                questionId,
+                contentId,
                 "thanks",
                 reactions
               ),
               text: "Thanks",
               icon: ThanksIcon,
               iconChecked: ThanksCheckedIcon,
-              number: getEngagementForId(questionId, "thanks", reactions),
+              number: getEngagementForId(contentId, "thanks", reactions),
             },
             {
               checked: getCheckedForEngagementType(
-                questionId,
+                contentId,
                 "insightful",
                 reactions
               ),
               text: "Insightful",
               icon: InsightfulIcon,
               iconChecked: InsightfulCheckedIcon,
-              number: getEngagementForId(questionId, "insightful", reactions),
+              number: getEngagementForId(contentId, "insightful", reactions),
             },
           ]}
           onEngagementButtonClick={handleEngagementButtonClick.bind(

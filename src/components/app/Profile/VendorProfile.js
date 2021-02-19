@@ -391,7 +391,6 @@ const VendorProfile = (props) => {
   const handleEngagementButtonClick = async (caller, engagementType) => {
     const id = caller["content_id"];
     const engagement = engagementType.toLowerCase();
-    console.log("id", id);
     try {
       await props.changeReaction({ id, engagement });
     } catch (error) {
