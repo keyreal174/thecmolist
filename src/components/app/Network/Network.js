@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Container, Form } from "react-bootstrap";
+import { Container, Col, Form, Row } from "react-bootstrap";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Banner from "../base/Banner/Banner";
@@ -11,59 +11,76 @@ import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
 import Analytics from "../../util/Analytics";
 import "./network.css";
 
-const renderFeed = (props, fetchData) => {
-  const feedData = props.feedData;
-  const moreData = props.moreData;
+const Badge = ({ localConnectedUsers, feed, invalidateFeed, connectUser }) => {
+  let badge = null;
+  const isLocallyConnected = localConnectedUsers.includes(feed.username);
+  const isConnected = feed.isConnected || isLocallyConnected;
 
+  if (!feed.disableConnect) {
+    badge = isConnected ? (
+      <span className="connected-label">Connected</span>
+    ) : (
+      <button
+        className="btn connect-button"
+        type="button"
+        onClick={() => {
+          invalidateFeed();
+          connectUser(feed);
+        }}
+      >
+        Connect
+      </button>
+    );
+  }
+
+  return badge;
+};
+const Feed = ({
+  feedData,
+  moreData,
+  localConnectedUsers,
+  invalidateFeed,
+  connectUser,
+  fetchData,
+}) => {
   return (
     <>
-      {feedData &&
-        feedData.map((feed, idx) => {
-          let badge = null;
-          const isLocallyConnected = props.localConnectedUsers.includes(
-            feed.username
-          );
-          const isConnected = feed.isConnected || isLocallyConnected;
-
-          if (!feed.disableConnect) {
-            badge = !isConnected ? (
-              <button
-                className="btn connect-button"
-                type="button"
-                onClick={() => {
-                  props.invalidateFeed();
-                  props.connectUser(feed);
-                }}
-              >
-                Connect
-              </button>
-            ) : (
-              <span className="connected-label">Connected</span>
-            );
-          }
-
-          return (
-            <Article
-              key={idx}
-              className={idx !== 0 ? "mt-1" : ""}
-              {...feed}
-              badge={badge}
-            />
-          );
-        })}
-      {moreData && (
-        <div className="row">
-          <div className="col-md-2 mt-2 mx-auto">
-            <button
-              className="btn btn__load-more"
-              type="button"
-              onClick={fetchData}
-            >
-              Show more
-            </button>
-          </div>
-        </div>
-      )}
+      <Row>
+        <Col md="4">Popular Topics</Col>
+        <Col md="8">
+          {feedData &&
+            feedData.map((feed, idx) => {
+              return (
+                <Article
+                  key={idx}
+                  className={idx !== 0 ? "mt-1" : ""}
+                  {...feed}
+                  badge={
+                    <Badge
+                      localConnectedUsers={localConnectedUsers}
+                      feed={feed}
+                      invalidateFeed={invalidateFeed}
+                      connectUser={connectUser}
+                    />
+                  }
+                />
+              );
+            })}
+          {moreData && (
+            <div className="row">
+              <div className="col-md-2 mt-2 mx-auto">
+                <button
+                  className="btn btn__load-more"
+                  type="button"
+                  onClick={fetchData}
+                >
+                  Show more
+                </button>
+              </div>
+            </div>
+          )}
+        </Col>
+      </Row>
     </>
   );
 };
@@ -145,7 +162,7 @@ const Network = (props) => {
               <ActivityIndicator className="element-center feed-activity-indicator" />
             </div>
           ) : (
-            renderFeed(props, fetchData)
+            <Feed {...props} fetchData={fetchData} />
           )}
 
           <InviteModal
