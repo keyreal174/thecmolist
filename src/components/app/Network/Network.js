@@ -140,23 +140,6 @@ const Network = (props) => {
               onChange={(idx) => changeFilter(idx)}
             />
           </div>
-          <div className="sort">
-            <div className="section-break" />
-            <span>Sort by:</span>
-            <div className="select-wrapper">
-              <Form.Control
-                as="select"
-                defaultValue={sortOrder}
-                onChange={formFilterChange}
-                custom
-              >
-                <option>Top</option>
-                <option>Recent</option>
-                <option>Name</option>
-              </Form.Control>
-            </div>
-          </div>
-
           {props.loadingNetwork ? (
             <div className="mt-3 mb-5">
               <ActivityIndicator className="element-center feed-activity-indicator" />
