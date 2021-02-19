@@ -12,6 +12,10 @@ import InviteModal from "../base/ShareModule/InviteModal";
 import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
 import ProfileStats from "../ProfileStats/ProfileStats";
 import AskQuestion from "../base/AskQuestion/AskQuestion";
+import {
+  getCheckedForEngagementType,
+  getEngagementForId,
+} from "../base/EngagementButtons/EngagementButtons";
 
 import MyNetwork from "./MyNetwork";
 import BuildYourNetwork from "./BuildYourNetwork";
@@ -22,7 +26,7 @@ import TopBanner from "./TopBanner";
 
 import Analytics from "../../util/Analytics";
 import Util from "../../util/Util";
-
+import { cdn } from "../../util/constants";
 import AnswerIcon from "../base/icons/answer.svg";
 import InsightfulIcon from "../base/icons/insightful.svg";
 import InsightfulCheckedIcon from "../base/icons/insightful_checked.svg";
@@ -30,8 +34,6 @@ import ThanksIcon from "../base/icons/thanks.svg";
 import ThanksCheckedIcon from "../base/icons/thanks_checked.svg";
 
 import "./feed.scss";
-
-const cdn = "https://d3k6hg21rt7gsh.cloudfront.net/icons";
 
 function RenderRightContainer({
   buildYourNetworkItems,
@@ -70,28 +72,6 @@ function RenderFeed({
   };
   let feedMoreData = feedData.length > 0 && moreData;
 
-  const getCheckedForEngagementType = (contentId, engagementType) => {
-    let checked = false;
-
-    (
-      (reactions && reactions[contentId] && reactions[contentId].reactions) ||
-      []
-    ).forEach((r) => {
-      if (r.type === engagementType) {
-        checked = r.checked;
-      }
-    });
-    return checked;
-  };
-
-  const getEngagementForId = (contentId, engagementType) => {
-    return (
-      reactions &&
-      reactions[contentId] &&
-      reactions[contentId][`num_${engagementType}`]
-    );
-  };
-
   const handleEngagementButtonClick = async (caller, engagementType) => {
     const id = caller["content_id"];
     const engagement = engagementType.toLowerCase();
@@ -118,21 +98,33 @@ function RenderFeed({
                   checked: true,
                   text: "Answer",
                   icon: AnswerIcon,
-                  number: getEngagementForId(contentId, "answer"),
+                  number: getEngagementForId(contentId, "answer", reactions),
                 },
                 {
-                  checked: getCheckedForEngagementType(contentId, "thanks"),
+                  checked: getCheckedForEngagementType(
+                    contentId,
+                    "thanks",
+                    reactions
+                  ),
                   text: "Thanks",
                   icon: ThanksIcon,
                   iconChecked: ThanksCheckedIcon,
-                  number: getEngagementForId(contentId, "thanks"),
+                  number: getEngagementForId(contentId, "thanks", reactions),
                 },
                 {
-                  checked: getCheckedForEngagementType(contentId, "insightful"),
+                  checked: getCheckedForEngagementType(
+                    contentId,
+                    "insightful",
+                    reactions
+                  ),
                   text: "Insightful",
                   icon: InsightfulIcon,
                   iconChecked: InsightfulCheckedIcon,
-                  number: getEngagementForId(contentId, "insightful"),
+                  number: getEngagementForId(
+                    contentId,
+                    "insightful",
+                    reactions
+                  ),
                 },
               ]}
               onEngagementButtonClick={handleEngagementButtonClick.bind(
@@ -218,10 +210,7 @@ const Feed = (props) => {
   const changeDashboardHeader = (idx) => {
     if (idx < filters.length) {
       setBannerTitle(filters[idx].title);
-      setBannerImage(
-        filters[idx].image ||
-          "https://d3k6hg21rt7gsh.cloudfront.net/directory.png"
-      );
+      setBannerImage(filters[idx].image || `${cdn}/directory.png`);
     }
   };
   const changeDashboardFilter = async (filter, subfilter) =>
@@ -279,10 +268,7 @@ const Feed = (props) => {
       let idx = groupIdx > 0 ? groupIdx : filterIdx;
       setFilterIdx(idx);
       setBannerTitle(newFilters[idx].title);
-      setBannerImage(
-        newFilters[idx].image ||
-          "https://d3k6hg21rt7gsh.cloudfront.net/directory.png"
-      );
+      setBannerImage(newFilters[idx].image || `${cdn}/directory.png`);
       changeDashboardFilter(
         newFilters[idx].slug,
         subSelectors[activeSelector].slug

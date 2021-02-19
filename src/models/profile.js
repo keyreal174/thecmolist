@@ -62,6 +62,7 @@ export default {
         const response = await profileRequest(userName);
         const { profile } = response.data;
         dispatch.profileModel.updateProfile(profile);
+        dispatch.reactionModel.setReactions(profile.feedData);
       } catch (err) {
         throw new Error("Could not get profile");
       }

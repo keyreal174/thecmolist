@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import Article from "../base/Article/Article";
 import Arrow from "../base/icons/arrow.svg";
-
-const cdn = "https://d3k6hg21rt7gsh.cloudfront.net/icons";
+import { cdn } from "../../util/constants";
 
 const RenderList = ({
   modules,

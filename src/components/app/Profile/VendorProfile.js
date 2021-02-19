@@ -14,6 +14,10 @@ import DeletePost from "./DeletePost";
 import FollowUserModal from "./FollowUser";
 import Util from "../../util/Util";
 import Analytics from "../../util/Analytics";
+import {
+  getCheckedForEngagementType,
+  getEngagementForId,
+} from "../base/EngagementButtons/EngagementButtons";
 import "./profile.scss";
 
 import LinkedIn from "./icons/linkedin.svg";
@@ -384,29 +388,6 @@ const VendorProfile = (props) => {
     }
   }, [feedData]);
 
-  const getCheckedForEngagementType = (contentId, engagementType) => {
-    let checked = false;
-    const reactions = props.reactions;
-    (
-      (reactions && reactions[contentId] && reactions[contentId].reactions) ||
-      []
-    ).forEach((r) => {
-      if (r.type === engagementType) {
-        checked = r.checked;
-      }
-    });
-    return checked;
-  };
-
-  const getEngagementForId = (contentId, engagementType) => {
-    const reactions = props.reactions;
-    return (
-      reactions &&
-      reactions[contentId] &&
-      reactions[contentId][`num_${engagementType}`]
-    );
-  };
-
   const handleEngagementButtonClick = async (caller, engagementType) => {
     const id = caller["content_id"];
     const engagement = engagementType.toLowerCase();
@@ -417,7 +398,7 @@ const VendorProfile = (props) => {
       console.error(error.message);
     }
   };
-
+  const reactions = props.reactions;
   const profileBackgroundUrl =
     "https://d3k6hg21rt7gsh.cloudfront.net/icons/profile--header.png";
   return (
@@ -534,43 +515,53 @@ const VendorProfile = (props) => {
                             icon: AnswerIcon,
                             number: getEngagementForId(
                               feed.content_id,
-                              "answer"
+                              "answer",
+                              reactions
                             ),
                           },
                           {
                             checked: getCheckedForEngagementType(
                               feed.content_id,
-                              "pass"
+                              "pass",
+                              reactions
                             ),
                             text: "Pass",
                             icon: PassIcon,
                             iconChecked: PassCheckedIcon,
-                            number: getEngagementForId(feed.content_id, "pass"),
+                            number: getEngagementForId(
+                              feed.content_id,
+                              "pass",
+                              reactions
+                            ),
                           },
                           {
                             checked: getCheckedForEngagementType(
                               feed.content_id,
-                              "thanks"
+                              "thanks",
+                              reactions
                             ),
                             text: "Thanks",
                             icon: ThanksIcon,
                             iconChecked: ThanksCheckedIcon,
                             number: getEngagementForId(
                               feed.content_id,
-                              "thanks"
+                              "thanks",
+                              reactions
                             ),
                           },
                           {
                             checked: getCheckedForEngagementType(
                               feed.content_id,
-                              "insightful"
+                              "insightful",
+                              reactions
                             ),
                             text: "Insightful",
                             icon: InsightfulIcon,
                             iconChecked: InsightfulCheckedIcon,
                             number: getEngagementForId(
                               feed.content_id,
-                              "insightful"
+                              "insightful",
+                              reactions
                             ),
                           },
                         ]}

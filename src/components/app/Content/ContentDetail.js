@@ -2,7 +2,10 @@ import React from "react";
 import Article from "../base/Article/Article";
 import CustomCard from "../base/CustomCard/CustomCard";
 import { Col } from "react-bootstrap";
-
+import {
+  getCheckedForEngagementType,
+  getEngagementForId,
+} from "../base/EngagementButtons/EngagementButtons";
 import AnswerIcon from "../base/icons/answer.svg";
 import InsightfulIcon from "../base/icons/insightful.svg";
 import InsightfulCheckedIcon from "../base/icons/insightful_checked.svg";
@@ -10,6 +13,7 @@ import PassIcon from "../base/icons/pass.svg";
 import PassCheckedIcon from "../base/icons/pass_checked.svg";
 import ThanksIcon from "../base/icons/thanks.svg";
 import ThanksCheckedIcon from "../base/icons/thanks_checked.svg";
+import { cdn } from "../../util/constants";
 
 const ContentDetail = ({
   content,
@@ -19,7 +23,6 @@ const ContentDetail = ({
   saveReactionToCallerType,
   setError,
 }) => {
-  const cdn = "https://d3k6hg21rt7gsh.cloudfront.net/icons";
   const focusError = () => {
     const errorSection = document.getElementById("error-section");
     window.scrollTo(0, 0);
@@ -60,27 +63,6 @@ const ContentDetail = ({
 
   const numberOfReplies = content && content.replies && content.replies.length;
   const questionId = content && content.content_id;
-  const getCheckedForEngagementType = (contentId, engagementType) => {
-    let checked = false;
-
-    ((reactions[contentId] && reactions[contentId].reactions) || []).forEach(
-      (r) => {
-        if (r.type === engagementType) {
-          checked = r.checked;
-        }
-      }
-    );
-    return checked;
-  };
-
-  const getEngagementForId = (contentId, engagementType) => {
-    return (
-      reactions &&
-      reactions[contentId] &&
-      reactions[contentId][`num_${engagementType}`]
-    );
-  };
-
   const author = content && content.content && content.content.author;
 
   return (
@@ -97,25 +79,37 @@ const ContentDetail = ({
               number: numberOfReplies,
             },
             {
-              checked: getCheckedForEngagementType(questionId, "pass"),
+              checked: getCheckedForEngagementType(
+                questionId,
+                "pass",
+                reactions
+              ),
               text: "Pass",
               icon: PassIcon,
               iconChecked: PassCheckedIcon,
-              number: getEngagementForId(questionId, "pass"),
+              number: getEngagementForId(questionId, "pass", reactions),
             },
             {
-              checked: getCheckedForEngagementType(questionId, "thanks"),
+              checked: getCheckedForEngagementType(
+                questionId,
+                "thanks",
+                reactions
+              ),
               text: "Thanks",
               icon: ThanksIcon,
               iconChecked: ThanksCheckedIcon,
-              number: getEngagementForId(questionId, "thanks"),
+              number: getEngagementForId(questionId, "thanks", reactions),
             },
             {
-              checked: getCheckedForEngagementType(questionId, "insightful"),
+              checked: getCheckedForEngagementType(
+                questionId,
+                "insightful",
+                reactions
+              ),
               text: "Insightful",
               icon: InsightfulIcon,
               iconChecked: InsightfulCheckedIcon,
-              number: getEngagementForId(questionId, "insightful"),
+              number: getEngagementForId(questionId, "insightful", reactions),
             },
           ]}
           onEngagementButtonClick={handleEngagementButtonClick.bind(
@@ -150,21 +144,30 @@ const ContentDetail = ({
                           : null,
                     },
                     {
-                      checked: getCheckedForEngagementType(replyId, "thanks"),
+                      checked: getCheckedForEngagementType(
+                        replyId,
+                        "thanks",
+                        reactions
+                      ),
                       text: "Thanks",
                       icon: ThanksIcon,
                       iconChecked: ThanksCheckedIcon,
-                      number: getEngagementForId(replyId, "thanks"),
+                      number: getEngagementForId(replyId, "thanks", reactions),
                     },
                     {
                       checked: getCheckedForEngagementType(
                         replyId,
-                        "insightful"
+                        "insightful",
+                        reactions
                       ),
                       text: "Insightful",
                       icon: InsightfulIcon,
                       iconChecked: InsightfulCheckedIcon,
-                      number: getEngagementForId(replyId, "insightful"),
+                      number: getEngagementForId(
+                        replyId,
+                        "insightful",
+                        reactions
+                      ),
                     },
                   ]}
                   onEngagementButtonClick={handleEngagementButtonClick.bind(

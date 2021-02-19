@@ -67,7 +67,8 @@ const getReactionsForContent = (data) => {
     // set reactions data for feed array. Exclude to execute this code in Content
     if (Array.isArray(data)) {
       data.forEach((d) => {
-        d.data.forEach(({ content_id, ...rest }) => {
+        const iterator = d.data ? d.data : data;
+        iterator.forEach(({ content_id, ...rest }) => {
           if (content_id) {
             reactions[content_id] = getReactions(rest);
           }
