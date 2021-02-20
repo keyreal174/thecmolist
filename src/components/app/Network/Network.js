@@ -20,6 +20,7 @@ const Network = (props) => {
   const [feedFilter, setFeedFilter] = useState("");
   const [subfilters, setSubfilters] = useState({});
   const [subfilterKeys, setSubfilterKeys] = useState([]);
+  const [feedData, setFeedData] = useState(props.feedData || []);
 
   useEffect(() => {
     const getProfileStats = async () => props.getProfileStats();
@@ -44,10 +45,40 @@ const Network = (props) => {
       props.changeFilter(newFilters[filterIdx].slug);
     });
   }, []);
+
   const changeFilter = (idx) => {
     setFilterIdx(idx);
     props.changeFilter(filters[idx].slug);
   };
+
+  const createSubfilters = (feedData) => {
+    let newFeedData = feedData.slice();
+    newFeedData.forEach((feed) => {
+      feed.subfilters = {};
+      let feed_data = feed.data;
+      feed_data &&
+        feed_data.forEach((data) => {
+          data &&
+            data.subheadlines &&
+            data.subheadlines.forEach((sh) => {
+              if (sh.categorytitles && Array.isArray(sh.categorytitles)) {
+                sh.categorytitles.forEach((categoryTitle) => {
+                  if (!(categoryTitle in feed.subfilters)) {
+                    feed.subfilters[categoryTitle] = 0;
+                  }
+                  feed.subfilters[categoryTitle] += 1;
+                });
+              }
+            });
+        });
+    });
+    setFeedData(newFeedData);
+  };
+
+  useEffect(() => {
+    props.feedData && createSubfilters(props.feedData);
+  }, [props.feedData]);
+
   return (
     <>
       <Container className="height-100">
@@ -76,6 +107,7 @@ const Network = (props) => {
                 console.log("subfilter change");
               }}
               subfilters={subfilters}
+              feedData={feedData}
             />
           )}
 
