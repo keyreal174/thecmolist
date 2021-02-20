@@ -7,7 +7,7 @@ import AddPostModal from "../base/AddPostModal/AddPostModal";
 import Logo from "../base/icons/logo.svg";
 import Search from "../base/icons/search_blue.svg";
 
-const SearchBox = () => {
+const SearchBox = (props) => {
   const [search, setSearch] = useState("");
   const handleInput = (e) => {
     setSearch(e.target.value);
@@ -19,7 +19,7 @@ const SearchBox = () => {
       <Form.Control
         className="ask-question-input"
         type="text"
-        placeholder="Search Modern Media Marketing"
+        placeholder={"Search " + props.placeholder}
         value={search}
         name="search"
         onChange={handleInput}
@@ -44,11 +44,19 @@ const TopBanner = (props) => {
       <div className="d-flex">
         <CustomCard>
           <div className="d-flex align-items-center py-3 px-1">
-            <div className="feed-page-top-banner-img">
-              <img src={Logo} alt="Logo" width="58" height="58" />
-            </div>
+            {props.image ? (
+              <div className="feed-page-top-banner-img">
+                <img src={props.image} alt="Logo" width="100" height="100" />
+              </div>
+            ) : (
+              <div className="feed-page-top-banner-placeholder-img">
+                {props.title && (
+                  <img src={Logo} alt="Logo" width="58" height="58" />
+                )}
+              </div>
+            )}
             <div className="feed-page-top-banner-content">
-              <h3>Modern Media Marketing</h3>
+              <h3>{props.title}</h3>
               <p>Marketing</p>
               <div className="d-flex align-items-center">
                 <span>1.4k Followers</span>
@@ -90,7 +98,7 @@ const TopBanner = (props) => {
           </div>
         </CustomCard>
       </div>
-      <SearchBox />
+      <SearchBox placeholder={props.title} />
     </div>
   );
 };
