@@ -2,10 +2,10 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import CustomCard from "../base/CustomCard/CustomCard";
 
-const TopBanner = () => {
+const NetworkTopBanner = () => {
   return (
     <div className="network-top-banner top-banner-container mt-3">
-      <CustomCard>
+      <CustomCard className="mb-0">
         <div className="py-3 px-1">
           <h3>My Networks Member</h3>
           <Button className="btn-blue mb-2 mt-3">Invite</Button>
@@ -15,4 +15,4 @@ const TopBanner = () => {
   );
 };
 
-export default TopBanner;
+export default NetworkTopBanner;

@@ -18,22 +18,18 @@ const MyNetwork = (props) => {
   };
 
   return (
-    <CustomCard heading="My Network">
+    <CustomCard heading={props.title}>
       <div className="text-center">
-        <div className="my-network-img">
-          <img src={Logo} alt="Logo" width="29" height="29" />
-        </div>
-        <p className="my-network-text">Modern Media Marketing</p>
         <div className="d-flex flex-column">
+          <Button className="btn-blue mb-2" onClick={handleShow}>
+            Ask Question
+          </Button>
+          <Button className="btn-white mb-2" onClick={handleShow}>
+            Share Experience
+          </Button>
           <Button className="btn-white mb-2" onClick={handleShow}>
             Share Article
           </Button>
-          <Button className="btn-blue mb-2" onClick={handleShow}>
-            Share Experience
-          </Button>
-          <a role="button" tabIndex="0" onClick={handleShow} className="a-blue">
-            Ask Question
-          </a>
           <AddPostModal
             firstButtonText={"Cancel"}
             handleClose={handleClose}

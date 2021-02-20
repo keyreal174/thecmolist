@@ -3,6 +3,7 @@ import Article from "../base/Article/Article";
 import { Col, Row } from "react-bootstrap";
 import Badge from "./Badge";
 import PopularTopics from "../base/PopularTopics/PopularTopics";
+import "./network.scss";
 
 const Feed = ({
   feedData,
@@ -32,7 +33,9 @@ const Feed = ({
             return (
               <Article
                 key={idx}
-                className={idx !== 0 ? "mt-1" : ""}
+                className={
+                  idx !== 0 ? "mt-1 network-list-item" : "network-list-item"
+                }
                 {...feed}
                 badge={
                   <Badge

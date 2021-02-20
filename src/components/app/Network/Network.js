@@ -108,7 +108,7 @@ const Network = (props) => {
         <div className="wrapper">
           <Header />
           <NetworkTopBanner />
-          <div className="mt-4 mb-4">
+          <div className="mb-4">
             <Filter
               className="mt-1"
               filterIdx={filterIdx}

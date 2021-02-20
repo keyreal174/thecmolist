@@ -36,6 +36,7 @@ import ThanksCheckedIcon from "../base/icons/thanks_checked.svg";
 import "./feed.scss";
 
 function RenderRightContainer({
+  feedTitle,
   buildYourNetworkItems,
   memberList,
   vendorList,
@@ -46,7 +47,7 @@ function RenderRightContainer({
     <Col md="3" className="feed-right-container">
       {!isGroup ? (
         <Fragment>
-          <MyNetwork saveContent={saveContent} />
+          <MyNetwork title={feedTitle} saveContent={saveContent} />
           <BuildYourNetwork buildYourNetworkItems={buildYourNetworkItems} />
         </Fragment>
       ) : (
@@ -182,6 +183,7 @@ function RenderDashboard(props) {
         )}
       </Col>
       <RenderRightContainer
+        feedTitle={props.feedTitle}
         buildYourNetworkItems={profileStats.buildYourNetwork}
         memberList={props.memberList}
         vendorList={props.vendorList}
@@ -328,6 +330,7 @@ const Feed = (props) => {
           </div>
 
           <RenderDashboard
+            feedTitle={bannerTitle}
             profileStats={props.profileStats}
             feedData={props.activeFeed}
             moreData={props.activeFeedHasMoreData}
