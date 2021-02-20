@@ -5,7 +5,7 @@ import Avatar from "../base/Avatar/Avatar";
 const AllMembers = ({ memberList }) => {
   let membersLink = memberList.link || "";
   let list = Array.isArray(memberList) ? memberList : memberList.list;
-  return list && memberList.list ? (
+  return list && list.length > 0 ? (
     <CustomCard heading="All Members" seeAllLink={membersLink}>
       <div className="feed-box-content">
         {list &&

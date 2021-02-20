@@ -5,7 +5,7 @@ import Avatar from "../base/Avatar/Avatar";
 const Vendors = ({ vendorList }) => {
   let vendorsLink = vendorList.link || "";
   let list = Array.isArray(vendorList) ? vendorList : vendorList.list;
-  return list && list.length ? (
+  return list && list.length > 0 ? (
     <CustomCard heading={list.length + " Vendors"} seeAllLink={vendorsLink}>
       <div className="feed-box-content">
         {list &&
