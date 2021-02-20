@@ -11,7 +11,8 @@ const PopularTopics = ({
   subfilters,
 }) => {
   const [showMore, setShowMore] = useState(false);
-
+  console.log("subfiltersKeys", subfilterKeys);
+  console.log("subfiltersKeys", subfilters);
   return (
     <CustomCard className="popular-topics" heading="Popular #topics">
       <div className="popular-topics--content">

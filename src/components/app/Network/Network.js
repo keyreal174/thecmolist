@@ -18,8 +18,8 @@ const Network = (props) => {
   const [filters, setFilters] = useState([]);
 
   const [feedFilter, setFeedFilter] = useState("");
-  const [subfilters, setSubfilters] = useState({});
-  const [subfilterKeys, setSubfilterKeys] = useState([]);
+  //const [subfilters, setSubfilters] = useState({});
+  //const [subfilterKeys, setSubfilterKeys] = useState([]);
   const [feedData, setFeedData] = useState(props.feedData || []);
 
   useEffect(() => {
@@ -78,6 +78,29 @@ const Network = (props) => {
   useEffect(() => {
     props.feedData && createSubfilters(props.feedData);
   }, [props.feedData]);
+
+  const subfilterKeys = [
+    "Baidu Advertising",
+    "Packaging Design",
+    "SEM",
+    "Saas",
+    "Latam",
+    "TV Advertising",
+    "Out of Home advertising",
+    "Mobile & App Marketing",
+    "LinkedIn Advertising",
+  ];
+  const subfilters = {
+    "Baidu Advertising": 1,
+    "Packaging Design": 1,
+    SEM: 2,
+    Saas: 1,
+    Latam: 3,
+    "TV Advertising": 4,
+    "Out of Home advertising": 1,
+    "Mobile & App Marketing": 2,
+    "LinkedIn Advertising": 1,
+  };
 
   return (
     <>
