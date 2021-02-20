@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { Link } from "react-router-dom";
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import ShowMoreText from "react-show-more-text";
 import CustomCard from "../base/CustomCard/CustomCard";
@@ -10,6 +9,7 @@ import Header from "../base/Header/Header";
 import Filter from "../base/Filter/Filter";
 import Article from "../base/Article/Article";
 import Footer from "../base/Footer/Footer";
+import PopularTopics from "../base/PopularTopics/PopularTopics";
 import {
   getCheckedForEngagementType,
   getEngagementForId,
@@ -478,51 +478,12 @@ const Profile = (props) => {
         {profileFirstName && hasDataOnCurrentFeed && (
           <Row className="profile--feed">
             <Col md="4">
-              <CustomCard
-                className="profile--popular-topics"
-                heading="Popular #topics"
-              >
-                <div className="popular-topics--content">
-                  <div>
-                    {subfilterKeys.map((subfilter, idx) => {
-                      if (idx < 5 || showMore) {
-                        return (
-                          <div className="popular-topics--content-item">
-                            <Link
-                              className={
-                                subfilter === feedFilter
-                                  ? "profile-subfilter active"
-                                  : "profile-subfilter"
-                              }
-                              onClick={() => {
-                                onSubfilterChange(subfilter);
-                              }}
-                            >
-                              {idx !== 0 ? " " : ""}
-                              {subfilter} ({subfilters[subfilter]})
-                            </Link>
-                          </div>
-                        );
-                      }
-                    })}
-                  </div>
-                  <div>
-                    {subfilterKeys.length > 5 && (
-                      <>
-                        <div className="popular-topics--divider" />
-                        <div className="popular-topics--button">
-                          <Button
-                            variant="link"
-                            onClick={() => setShowMore(!showMore)}
-                          >
-                            {showMore ? "Show less" : "Show more"}
-                          </Button>
-                        </div>
-                      </>
-                    )}
-                  </div>
-                </div>
-              </CustomCard>
+              <PopularTopics
+                subfilterKeys={subfilterKeys}
+                feedFilter={feedFilter}
+                onSubfilterChange={onSubfilterChange}
+                subfilters={subfilters}
+              />
             </Col>
             <Col md="8">
               <TransitionGroup enter={enableAnimations} exit={enableAnimations}>

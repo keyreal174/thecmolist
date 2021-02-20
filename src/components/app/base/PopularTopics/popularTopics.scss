@@ -1,0 +1,42 @@
+@import "../../../../sass/globals.scss";
+
+.popular-topics {
+  position: relative;
+
+  &--wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  &--content {
+    padding: 10px 0px;
+    margin-bottom: 60px;
+  }
+
+  &--content-item {
+    display: inline-block;
+    padding: 7px 0;
+
+    &-link {
+      padding: 10px 15px;
+    }
+  }
+
+  &--divider {
+    border-top: $border-card;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 60px;
+  }
+  &--button {
+    text-align: center;
+    position: absolute;
+    bottom: 15px;
+    left: 115px;
+    > button {
+      color: $brand;
+    }
+  }
+}
