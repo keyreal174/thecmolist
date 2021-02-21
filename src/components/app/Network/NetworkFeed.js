@@ -5,29 +5,27 @@ import Badge from "./Badge";
 import PopularTopics from "../base/PopularTopics/PopularTopics";
 import "./network.scss";
 
-const Feed = ({
+const NetworkFeed = ({
   feedData,
   moreData,
   localConnectedUsers,
   invalidateFeed,
   connectUser,
   fetchData,
-  subfilterKeys,
-  feedFilter,
   onSubfilterChange,
   subfilters,
 }) => (
   <>
     <Row>
-      <Col md="4">
-        <PopularTopics
-          subfilterKeys={subfilterKeys}
-          feedFilter={feedFilter}
-          onSubfilterChange={onSubfilterChange}
-          subfilters={subfilters}
-        />
-      </Col>
-      <Col md="8">
+      {subfilters && subfilters.length > 0 && (
+        <Col md="4">
+          <PopularTopics
+            onSubfilterChange={onSubfilterChange}
+            topicList={subfilters}
+          />
+        </Col>
+      )}
+      <Col md={subfilters && subfilters.length > 0 ? "8" : "12"}>
         {feedData &&
           feedData.map((feed, idx) => {
             return (
@@ -66,4 +64,4 @@ const Feed = ({
   </>
 );
 
-export default Feed;
+export default NetworkFeed;

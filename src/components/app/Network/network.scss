@@ -97,6 +97,7 @@
 .network-list-item {
   margin-bottom: 0px;
   box-shadow: none;
+  min-height: 134px;
 }
 
 .network-list-item .article-img img {
@@ -116,4 +117,10 @@
 
 .network-list-item .article-text {
   max-width: 75%;
+}
+
+.network-top-banner-img {
+  border-radius: 12px;
+  margin-right: 23.5px;
+  float: left;
 }

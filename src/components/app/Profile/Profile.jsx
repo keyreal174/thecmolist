@@ -70,8 +70,8 @@ const Profile = (props) => {
   const [postSlug, setPostSlug] = useState("");
   const [filters, setFilters] = useState([]);
   const [feedFilter, setFeedFilter] = useState("");
-  const [subfilterKeys, setSubfilterKeys] = useState([]);
   const [subfilters, setSubfilters] = useState({});
+  const [topicList, setTopicList] = useState([]);
   const [filteredFeedData, setFilteredFeedData] = useState([]);
   const [hasDataOnCurrentFeed, setHasDataOnCurrentFeed] = useState(false);
 
@@ -79,7 +79,6 @@ const Profile = (props) => {
   const [showFollowModal, setShowFollowModal] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const reactions = props.reactions;
-  let isVerified = true;
 
   useEffect(() => {
     document.title = "Profile";
@@ -158,7 +157,11 @@ const Profile = (props) => {
   };
 
   const FadeTransition = (props) => (
-    <CSSTransition {...props} classNames="profile-article-transition" />
+    <CSSTransition
+      {...props}
+      timeout={50}
+      classNames="profile-article-transition"
+    />
   );
 
   const setFilterId = (idx) => {
@@ -174,7 +177,8 @@ const Profile = (props) => {
   const onSubfilterChange = (key) => {
     let prevFeedData = feedData.slice();
     let prevFeedFilter = prevFeedData[filterIdx].subfilter;
-    prevFeedData[filterIdx].subfilter = key === prevFeedFilter ? "" : key;
+    prevFeedData[filterIdx].subfilter =
+      key.title === prevFeedFilter ? "" : key.title;
     setFeedData(prevFeedData);
   };
 
@@ -209,10 +213,16 @@ const Profile = (props) => {
       if (currentFeed) {
         let subfilters = currentFeed.subfilters || {};
         setSubfilters(subfilters);
-        let subfilterKeys = Object.keys(subfilters);
-        setSubfilterKeys(subfilterKeys);
         let feedFilter = currentFeed.subfilter || "";
         setFeedFilter(feedFilter);
+        setTopicList(
+          Object.keys(subfilters)
+            .map((s) => ({
+              title: s,
+              count: subfilters[s],
+            }))
+            .sort((a, b) => b.count - a.count)
+        );
         if (feedFilter.length > 0) {
           feed_data = feed_data.filter((data) => {
             for (let i = 0; i < data.content.subheadlines.length; i++) {
@@ -479,10 +489,8 @@ const Profile = (props) => {
           <Row className="profile--feed">
             <Col md="4">
               <PopularTopics
-                subfilterKeys={subfilterKeys}
-                feedFilter={feedFilter}
+                topicList={topicList}
                 onSubfilterChange={onSubfilterChange}
-                subfilters={subfilters}
               />
             </Col>
             <Col md="8">

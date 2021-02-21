@@ -16,12 +16,15 @@ const Network = (props) => {
   const fetchData = async () => await props.fetchActiveNetwork();
   const [filterIdx, setFilterIdx] = useState(0);
   const [filters, setFilters] = useState([]);
-
-  const [feedFilter, setFeedFilter] = useState("");
-  //const [subfilters, setSubfilters] = useState({});
-  //const [subfilterKeys, setSubfilterKeys] = useState([]);
-  const [feedData, setFeedData] = useState(props.feedData || []);
-
+  const [bannerTitle, setBannerTitle] = useState("");
+  const [bannerImage, setBannerImage] = useState("");
+  const feedData = props.feedData;
+  const changeDashboardHeader = (idx) => {
+    if (idx < filters.length) {
+      setBannerTitle(filters[idx].title);
+      setBannerImage(filters[idx].image);
+    }
+  };
   useEffect(() => {
     const getProfileStats = async () => props.getProfileStats();
     getProfileStats().then((profileStats) => {
@@ -36,12 +39,16 @@ const Network = (props) => {
             return {
               title: group.name,
               slug: group.slug,
+              image: group.image || null,
               enabled: true,
             };
           })
         );
       }
+      let idx = 0;
       setFilters(newFilters);
+      setBannerTitle(newFilters[idx].title);
+      setBannerImage(newFilters[idx].image);
       props.changeFilter(newFilters[filterIdx].slug);
     });
   }, []);
@@ -49,65 +56,14 @@ const Network = (props) => {
   const changeFilter = (idx) => {
     setFilterIdx(idx);
     props.changeFilter(filters[idx].slug);
+    changeDashboardHeader(idx);
   };
-
-  const createSubfilters = (feedData) => {
-    let newFeedData = feedData.slice();
-    newFeedData.forEach((feed) => {
-      feed.subfilters = {};
-      let feed_data = feed.data;
-      feed_data &&
-        feed_data.forEach((data) => {
-          data &&
-            data.subheadlines &&
-            data.subheadlines.forEach((sh) => {
-              if (sh.categorytitles && Array.isArray(sh.categorytitles)) {
-                sh.categorytitles.forEach((categoryTitle) => {
-                  if (!(categoryTitle in feed.subfilters)) {
-                    feed.subfilters[categoryTitle] = 0;
-                  }
-                  feed.subfilters[categoryTitle] += 1;
-                });
-              }
-            });
-        });
-    });
-    setFeedData(newFeedData);
-  };
-
-  useEffect(() => {
-    props.feedData && createSubfilters(props.feedData);
-  }, [props.feedData]);
-
-  const subfilterKeys = [
-    "Baidu Advertising",
-    "Packaging Design",
-    "SEM",
-    "Saas",
-    "Latam",
-    "TV Advertising",
-    "Out of Home advertising",
-    "Mobile & App Marketing",
-    "LinkedIn Advertising",
-  ];
-  const subfilters = {
-    "Baidu Advertising": 1,
-    "Packaging Design": 1,
-    SEM: 2,
-    Saas: 1,
-    Latam: 3,
-    "TV Advertising": 4,
-    "Out of Home advertising": 1,
-    "Mobile & App Marketing": 2,
-    "LinkedIn Advertising": 1,
-  };
-
   return (
     <>
       <Container className="height-100">
         <div className="wrapper">
           <Header />
-          <NetworkTopBanner />
+          <NetworkTopBanner title={bannerTitle} image={bannerImage} />
           <div className="mb-4">
             <Filter
               className="mt-1"
@@ -124,13 +80,11 @@ const Network = (props) => {
             <NetworkFeed
               {...props}
               fetchData={fetchData}
-              subfilterKeys={subfilterKeys}
-              feedFilter={feedFilter}
+              feedData={feedData}
+              subfilters={props.activeFeedSubFilters}
               onSubfilterChange={() => {
                 console.log("subfilter change");
               }}
-              subfilters={subfilters}
-              feedData={feedData}
             />
           )}
 
@@ -153,6 +107,8 @@ const Network = (props) => {
 const mapState = (state) => {
   return {
     activeFilter: state.networkModel.activeFilter,
+    activeSubFilter: state.networkModel.activeSubFilter,
+    activeFeedSubFilters: state.networkModel.activeFeedSubFilters,
     feedData: state.networkModel.activeFeed,
     moreData: state.networkModel.moreData,
     localConnectedUsers: state.userModel.localConnectedUsers,

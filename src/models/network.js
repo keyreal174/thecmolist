@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const networkRequest = (sort, filter, token) => {
+const networkRequest = (sort, filter, subfilter, token) => {
   let headers = {
     "timezone-offset": new Date().getTimezoneOffset(),
   };
@@ -13,6 +13,12 @@ const networkRequest = (sort, filter, token) => {
       url += "&";
     }
     url += `filter=${filter}`;
+  }
+  if (subfilter) {
+    if (!filter) {
+      throw new Error("Cannot have a subfilter without a filter");
+    }
+    url += `&subfilter=${subfilter}`;
   }
   if (token) {
     headers.token = token;
@@ -27,7 +33,9 @@ export default {
     feedData: {},
     activeFeed: [],
     activeFeedHasMoreData: false,
+    activeFeedSubFilters: [],
     activeFilter: "",
+    activeFeedSubFilter: "",
     sortOrder: "Top",
   },
   reducers: {
@@ -72,6 +80,10 @@ export default {
         currentFeed.moreData = false;
         newState.activeFeedHasMoreData = false;
       }
+      if (data.filters != null) {
+        currentFeed.filters = data.filters;
+        newState.activeFeedSubFilters = currentFeed.filters;
+      }
       newState.activeFeed = currentFeed.data.slice();
       return newState;
     },
@@ -94,7 +106,15 @@ export default {
       return {
         ...oldState,
         activeFilter: filterKey,
+        activeFeedSubFilter: "",
         activeFeed: oldState.feedData[filterKey].data,
+        activeFeedSubFilters: oldState.feedData[filterKey].filters || [],
+      };
+    },
+    setActiveSubFilter: (oldState, activeFeedSubFilter) => {
+      return {
+        ...oldState,
+        activeFeedSubFilter,
       };
     },
     setActiveSortOrder: (oldState, sortOrder) => {
@@ -107,13 +127,18 @@ export default {
   effects: (dispatch) => ({
     async fetchActiveNetwork(_, rootState) {
       try {
-        const { activeFilter, sortOrder } = rootState.networkModel;
+        const {
+          activeFilter,
+          activeSubFilter,
+          sortOrder,
+        } = rootState.networkModel;
         const dataForFilter =
           rootState.feedModel.dashboardFeedData[activeFilter];
         dispatch.networkModel.setLoading(true);
         const response = await networkRequest(
           sortOrder,
           activeFilter,
+          activeSubFilter,
           dataForFilter.token
         );
         let data = response.data;
@@ -137,6 +162,7 @@ export default {
           const response = await networkRequest(
             sortOrder,
             filterKey.toLowerCase(),
+            "",
             null
           );
           let data = response.data;
@@ -147,12 +173,37 @@ export default {
         }
       }
     },
+    async changeSubFilter(subfilter, rootState) {
+      try {
+        const { activeFilter, sortOrder } = rootState.networkModel;
+        dispatch.networkModel.clearFeedData();
+        dispatch.networkModel.setActiveSubFilter(subfilter);
+        dispatch.networkModel.setLoading(true);
+        const response = await networkRequest(
+          sortOrder,
+          activeFilter,
+          subfilter,
+          null
+        );
+        let data = response.data;
+        dispatch.networkModel.setFeedDataForKey(activeFilter, data);
+      } catch (error) {
+        throw new Error("Can not change sort order");
+      } finally {
+        dispatch.networkModel.setLoading(false);
+      }
+    },
     async changeSortOrder(sort, rootState) {
       try {
-        const { activeFilter } = rootState.networkModel;
+        const { activeFilter, activeSubFilter } = rootState.networkModel;
         dispatch.networkModel.clearFeedData();
         dispatch.networkModel.setLoading(true);
-        const response = await networkRequest(sort, activeFilter, null);
+        const response = await networkRequest(
+          sort,
+          activeFilter,
+          activeSubFilter,
+          null
+        );
         let data = response.data;
         data.sortOrder = sort;
         dispatch.networkModel.setFeedDataForKey(activeFilter, data);
