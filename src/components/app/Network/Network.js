@@ -82,8 +82,8 @@ const Network = (props) => {
               fetchData={fetchData}
               feedData={feedData}
               subfilters={props.activeFeedSubFilters}
-              onSubfilterChange={() => {
-                console.log("subfilter change");
+              onSubfilterChange={(f) => {
+                props.changeSubFilter(f.slug || f.title);
               }}
             />
           )}
@@ -121,6 +121,7 @@ const mapDispatch = (dispatch) => {
     fetchActiveNetwork: dispatch.networkModel.fetchActiveNetwork,
     changeFilter: dispatch.networkModel.changeFilter,
     changeSortOrder: dispatch.networkModel.changeSortOrder,
+    changeSubFilter: dispatch.networkModel.changeSubFilter,
     invalidateFeed: dispatch.networkModel.invalidateFeed,
     saveUserInvite: dispatch.userModel.saveInvite,
     connectUser: dispatch.userModel.connectUser,
