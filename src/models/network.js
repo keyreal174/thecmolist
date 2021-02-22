@@ -26,6 +26,7 @@ export default {
     loadingNetwork: false,
     feedData: {},
     activeFeed: [],
+    activeFeedHasMoreData: false,
     activeFilter: "",
     sortOrder: "Top",
   },
@@ -66,8 +67,10 @@ export default {
         currentFeed.moreData = true;
         currentFeed.token = token;
         currentFeed.data = currentFeed.data.concat(feedData);
+        newState.activeFeedHasMoreData = true;
       } else {
         currentFeed.moreData = false;
+        newState.activeFeedHasMoreData = false;
       }
       newState.activeFeed = currentFeed.data.slice();
       return newState;

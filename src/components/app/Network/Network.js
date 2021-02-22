@@ -1,90 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Row, Col, Container, Form } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Filter from "../base/Filter/Filter";
 import InviteModal from "../base/ShareModule/InviteModal";
-import Article from "../base/Article/Article";
 import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
-import TagLists from "../base/TagLists/TagLists";
-
-import TopBanner from "./TopBanner";
+import NetworkTopBanner from "./NetworkTopBanner";
+import NetworkFeed from "./NetworkFeed";
 import Analytics from "../../util/Analytics";
 import "./network.scss";
 
-const renderFeed = (props, fetchData) => {
-  const feedData = props.feedData;
-  const moreData = props.moreData;
-
-  return (
-    <>
-      {feedData &&
-        feedData.map((feed, idx) => {
-          let badge = null;
-          const isLocallyConnected = props.localConnectedUsers.includes(
-            feed.username
-          );
-          const isConnected = feed.isConnected || isLocallyConnected;
-
-          if (!feed.disableConnect) {
-            badge = !isConnected ? (
-              <button
-                className="btn connect-button"
-                type="button"
-                onClick={() => {
-                  props.invalidateFeed();
-                  props.connectUser(feed);
-                }}
-              >
-                Connect
-              </button>
-            ) : (
-              <span className="connected-label">Connected</span>
-            );
-          }
-
-          return (
-            <Article
-              key={idx}
-              className={idx !== 0 ? "mt-1" : ""}
-              {...feed}
-              badge={badge}
-            />
-          );
-        })}
-      {moreData && (
-        <div className="row">
-          <div className="col-md-2 mt-2 mx-auto">
-            <button
-              className="btn btn__load-more"
-              type="button"
-              onClick={fetchData}
-            >
-              Show more
-            </button>
-          </div>
-        </div>
-      )}
-    </>
-  );
-};
-
 const Network = (props) => {
-  const [sortOrder, setSortOrder] = useState("Top");
   const [inviteModalShow, setInviteModalShow] = useState(false);
   const fetchData = async () => await props.fetchActiveNetwork();
-  const formFilterChange = (event) => {
-    const value = event.target.value;
-    setSortOrder(value);
-    props.changeSortOrder(value);
-  };
   const [filterIdx, setFilterIdx] = useState(0);
   const [filters, setFilters] = useState([]);
-  const [subfilters, setSubfilters] = useState({});
-  const [subfilterKeys, setSubfilterKeys] = useState([]);
+
   const [feedFilter, setFeedFilter] = useState("");
-  const [filteredFeedData, setFilteredFeedData] = useState([]);
+  //const [subfilters, setSubfilters] = useState({});
+  //const [subfilterKeys, setSubfilterKeys] = useState([]);
+  const [feedData, setFeedData] = useState(props.feedData || []);
 
   useEffect(() => {
     const getProfileStats = async () => props.getProfileStats();
@@ -109,88 +45,69 @@ const Network = (props) => {
       props.changeFilter(newFilters[filterIdx].slug);
     });
   }, []);
+
   const changeFilter = (idx) => {
     setFilterIdx(idx);
     props.changeFilter(filters[idx].slug);
   };
 
-  const [feedData, setFeedData] = useState([]);
-  const [feedfilters, setFeedFilters] = useState([]);
-
-  useEffect(() => {
-    if (props.feedData) {
-      createSubfilters(props.feedData);
-    }
-  }, [props.feedData]);
-
-  const createSubfilters = (feedDa) => {
-    let newFeedData = feedDa.slice();
+  const createSubfilters = (feedData) => {
+    let newFeedData = feedData.slice();
     newFeedData.forEach((feed) => {
       feed.subfilters = {};
-      feed.subheadlines &&
-        feed.subheadlines.forEach((sh) => {
-          if (sh.categorytitles && Array.isArray(sh.categorytitles)) {
-            sh.categorytitles.forEach((categoryTitle) => {
-              if (!(categoryTitle in feed.subfilters)) {
-                feed.subfilters[categoryTitle] = 0;
+      let feed_data = feed.data;
+      feed_data &&
+        feed_data.forEach((data) => {
+          data &&
+            data.subheadlines &&
+            data.subheadlines.forEach((sh) => {
+              if (sh.categorytitles && Array.isArray(sh.categorytitles)) {
+                sh.categorytitles.forEach((categoryTitle) => {
+                  if (!(categoryTitle in feed.subfilters)) {
+                    feed.subfilters[categoryTitle] = 0;
+                  }
+                  feed.subfilters[categoryTitle] += 1;
+                });
               }
-              feed.subfilters[categoryTitle] += 1;
             });
-          }
         });
     });
     setFeedData(newFeedData);
   };
 
   useEffect(() => {
-    if (feedData.length > 0) {
-      const f = feedData.map((feed) => ({
-        title: feed.title,
-        enabled: feed.enabled || false,
-      }));
-      setFeedFilters(f);
+    props.feedData && createSubfilters(props.feedData);
+  }, [props.feedData]);
 
-      let currentFeed = feedData[filterIdx];
-      let feed_data = currentFeed.data;
-      // subfilters
-      if (currentFeed) {
-        let subfilters = currentFeed.subfilters || {};
-        setSubfilters(subfilters);
-        let subfilterKeys = Object.keys(subfilters);
-        setSubfilterKeys(subfilterKeys);
-        let feedFilter = currentFeed.subfilter || "";
-        setFeedFilter(feedFilter);
-        if (feedFilter.length > 0) {
-          feed_data = feed_data.filter((data) => {
-            for (let i = 0; i < data.subheadlines.length; i++) {
-              let sh = data.subheadlines[i];
-              if (sh.categorytitles) {
-                for (let j = 0; j < sh.categorytitles.length; j++) {
-                  if (
-                    sh.categorytitles[j] &&
-                    sh.categorytitles[j] === feedFilter
-                  )
-                    return true;
-                }
-              }
-            }
-            return false;
-          });
-        }
-      }
-      // setHasDataOnCurrentFeed(
-      //   currentFeed && currentFeed.data && currentFeed.data.length > 0
-      // );
-      setFilteredFeedData(feed_data);
-    }
-  }, [feedData]);
+  const subfilterKeys = [
+    "Baidu Advertising",
+    "Packaging Design",
+    "SEM",
+    "Saas",
+    "Latam",
+    "TV Advertising",
+    "Out of Home advertising",
+    "Mobile & App Marketing",
+    "LinkedIn Advertising",
+  ];
+  const subfilters = {
+    "Baidu Advertising": 1,
+    "Packaging Design": 1,
+    SEM: 2,
+    Saas: 1,
+    Latam: 3,
+    "TV Advertising": 4,
+    "Out of Home advertising": 1,
+    "Mobile & App Marketing": 2,
+    "LinkedIn Advertising": 1,
+  };
 
   return (
     <>
       <Container className="height-100">
         <div className="wrapper">
           <Header />
-          <TopBanner />
+          <NetworkTopBanner />
           <div className="mb-4">
             <Filter
               className="mt-1"
@@ -199,23 +116,22 @@ const Network = (props) => {
               onChange={(idx) => changeFilter(idx)}
             />
           </div>
-
           {props.loadingNetwork ? (
             <div className="mt-3 mb-5">
               <ActivityIndicator className="element-center feed-activity-indicator" />
             </div>
           ) : (
-            <Row>
-              <Col md={4}>
-                <TagLists
-                  subfilterKeys={subfilterKeys}
-                  subfilters={subfilters}
-                  feedFilter={feedFilter}
-                  onSubfilterChange={() => console.log("=====")}
-                />
-              </Col>
-              <Col md={8}>{renderFeed(props, fetchData)}</Col>
-            </Row>
+            <NetworkFeed
+              {...props}
+              fetchData={fetchData}
+              subfilterKeys={subfilterKeys}
+              feedFilter={feedFilter}
+              onSubfilterChange={() => {
+                console.log("subfilter change");
+              }}
+              subfilters={subfilters}
+              feedData={feedData}
+            />
           )}
 
           <InviteModal

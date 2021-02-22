@@ -12,6 +12,10 @@ import InviteModal from "../base/ShareModule/InviteModal";
 import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
 import ProfileStats from "../ProfileStats/ProfileStats";
 import AskQuestion from "../base/AskQuestion/AskQuestion";
+import {
+  getCheckedForEngagementType,
+  getEngagementForId,
+} from "../base/EngagementButtons/EngagementButtons";
 
 import MyNetwork from "./MyNetwork";
 import BuildYourNetwork from "./BuildYourNetwork";
@@ -22,23 +26,20 @@ import TopBanner from "./TopBanner";
 
 import Analytics from "../../util/Analytics";
 import Util from "../../util/Util";
-
+import { cdn } from "../../util/constants";
 import AnswerIcon from "../base/icons/answer.svg";
 import InsightfulIcon from "../base/icons/insightful.svg";
 import InsightfulCheckedIcon from "../base/icons/insightful_checked.svg";
-import PassIcon from "../base/icons/pass.svg";
-import PassCheckedIcon from "../base/icons/pass_checked.svg";
 import ThanksIcon from "../base/icons/thanks.svg";
 import ThanksCheckedIcon from "../base/icons/thanks_checked.svg";
 
 import "./feed.scss";
 
-const cdn = "https://d3k6hg21rt7gsh.cloudfront.net/icons";
-
 function RenderRightContainer({
+  feedTitle,
   buildYourNetworkItems,
-  peopleInSimilarRoles,
-  newMembers,
+  memberList,
+  vendorList,
   saveContent,
   isGroup,
 }) {
@@ -46,14 +47,14 @@ function RenderRightContainer({
     <Col md="3" className="feed-right-container">
       {!isGroup ? (
         <Fragment>
-          <MyNetwork saveContent={saveContent} />
+          <MyNetwork title={feedTitle} saveContent={saveContent} />
           <BuildYourNetwork buildYourNetworkItems={buildYourNetworkItems} />
         </Fragment>
       ) : (
         <AboutSpace />
       )}
-      <AllMembers peopleInSimilarRoles={peopleInSimilarRoles} />
-      <Vendors newMembers={newMembers} />
+      <AllMembers memberList={memberList} />
+      <Vendors vendorList={vendorList} />
     </Col>
   );
 }
@@ -72,28 +73,6 @@ function RenderFeed({
   };
   let feedMoreData = feedData.length > 0 && moreData;
 
-  const getCheckedForEngagementType = (contentId, engagementType) => {
-    let checked = false;
-
-    (
-      (reactions && reactions[contentId] && reactions[contentId].reactions) ||
-      []
-    ).forEach((r) => {
-      if (r.type === engagementType) {
-        checked = r.checked;
-      }
-    });
-    return checked;
-  };
-
-  const getEngagementForId = (contentId, engagementType) => {
-    return (
-      reactions &&
-      reactions[contentId] &&
-      reactions[contentId][`num_${engagementType}`]
-    );
-  };
-
   const handleEngagementButtonClick = async (caller, engagementType) => {
     const id = caller["content_id"];
     const engagement = engagementType.toLowerCase();
@@ -107,7 +86,7 @@ function RenderFeed({
     <div>
       {feedData &&
         feedData.map((feed, idx) => {
-          const contentId = feed && feed.content_id;
+          const contentId = feed && "content_id" in feed ? feed.content_id : 0;
           return (
             <Article
               key={idx}
@@ -120,21 +99,33 @@ function RenderFeed({
                   checked: true,
                   text: "Answer",
                   icon: AnswerIcon,
-                  number: getEngagementForId(contentId, "answer"),
+                  number: getEngagementForId(contentId, "answer", reactions),
                 },
                 {
-                  checked: getCheckedForEngagementType(contentId, "thanks"),
+                  checked: getCheckedForEngagementType(
+                    contentId,
+                    "thanks",
+                    reactions
+                  ),
                   text: "Thanks",
                   icon: ThanksIcon,
                   iconChecked: ThanksCheckedIcon,
-                  number: getEngagementForId(contentId, "thanks"),
+                  number: getEngagementForId(contentId, "thanks", reactions),
                 },
                 {
-                  checked: getCheckedForEngagementType(contentId, "insightful"),
+                  checked: getCheckedForEngagementType(
+                    contentId,
+                    "insightful",
+                    reactions
+                  ),
                   text: "Insightful",
                   icon: InsightfulIcon,
                   iconChecked: InsightfulCheckedIcon,
-                  number: getEngagementForId(contentId, "insightful"),
+                  number: getEngagementForId(
+                    contentId,
+                    "insightful",
+                    reactions
+                  ),
                 },
               ]}
               onEngagementButtonClick={handleEngagementButtonClick.bind(
@@ -183,8 +174,8 @@ function RenderDashboard(props) {
           </div>
         ) : (
           <RenderFeed
-            moreData={props.moreData}
             feedData={props.feedData}
+            moreData={props.moreData}
             fetchActiveFeed={props.fetchActiveFeed}
             reactions={props.reactions}
             changeReaction={props.changeReaction}
@@ -192,9 +183,10 @@ function RenderDashboard(props) {
         )}
       </Col>
       <RenderRightContainer
+        feedTitle={props.feedTitle}
         buildYourNetworkItems={profileStats.buildYourNetwork}
-        peopleInSimilarRoles={profileStats.peopleInSimilarRoles}
-        newMembers={profileStats.newMembers}
+        memberList={props.memberList}
+        vendorList={props.vendorList}
         saveContent={props.saveContent}
         isGroup={props.isGroup}
       />
@@ -220,10 +212,7 @@ const Feed = (props) => {
   const changeDashboardHeader = (idx) => {
     if (idx < filters.length) {
       setBannerTitle(filters[idx].title);
-      setBannerImage(
-        filters[idx].image ||
-          "https://d3k6hg21rt7gsh.cloudfront.net/directory.png"
-      );
+      setBannerImage(filters[idx].image || `${cdn}/directory.png`);
     }
   };
   const changeDashboardFilter = async (filter, subfilter) =>
@@ -281,10 +270,7 @@ const Feed = (props) => {
       let idx = groupIdx > 0 ? groupIdx : filterIdx;
       setFilterIdx(idx);
       setBannerTitle(newFilters[idx].title);
-      setBannerImage(
-        newFilters[idx].image ||
-          "https://d3k6hg21rt7gsh.cloudfront.net/directory.png"
-      );
+      setBannerImage(newFilters[idx].image || `${cdn}/directory.png`);
       changeDashboardFilter(
         newFilters[idx].slug,
         subSelectors[activeSelector].slug
@@ -299,7 +285,13 @@ const Feed = (props) => {
           <Header />
           <CSSTransition in={isGroup} timeout={500} classNames="top-banner">
             <div>
-              {isGroup && <TopBanner saveContent={props.saveContent} />}
+              {isGroup && (
+                <TopBanner
+                  title={bannerTitle}
+                  image={bannerImage}
+                  saveContent={props.saveContent}
+                />
+              )}
             </div>
           </CSSTransition>
           <div style={{ width: "100%" }}>
@@ -338,9 +330,12 @@ const Feed = (props) => {
           </div>
 
           <RenderDashboard
+            feedTitle={bannerTitle}
             profileStats={props.profileStats}
-            moreData={props.moreData}
             feedData={props.activeFeed}
+            moreData={props.activeFeedHasMoreData}
+            memberList={props.activeFeedMembers}
+            vendorList={props.activeFeedVendors}
             saveContent={props.saveContent}
             fetchActiveFeed={props.fetchActiveFeed}
             reactions={props.reactions}
@@ -370,8 +365,9 @@ const mapState = (state) => {
   return {
     feedLoading: state.feedModel.feedLoading,
     activeFeed: state.feedModel.activeFeed,
-    feedData: state.feedModel.feedData,
-    moreData: state.feedModel.moreData,
+    activeFeedHasMoreData: state.feedModel.activeFeedHasMoreData,
+    activeFeedMembers: state.feedModel.activeFeedMembers,
+    activeFeedVendors: state.feedModel.activeFeedVendors,
     filterIdx: state.feedModel.filterIdx,
     profileStats: state.profileModel.profileStats,
     reactions: state.reactionModel.reactions,

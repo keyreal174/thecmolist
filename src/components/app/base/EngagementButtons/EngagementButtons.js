@@ -2,6 +2,32 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import "./engagementButtons.scss";
 
+export const getCheckedForEngagementType = (
+  contentId,
+  engagementType,
+  reactions
+) => {
+  let checked = false;
+
+  (
+    (reactions && reactions[contentId] && reactions[contentId].reactions) ||
+    []
+  ).forEach((r) => {
+    if (r.type === engagementType) {
+      checked = r.checked;
+    }
+  });
+  return checked;
+};
+
+export const getEngagementForId = (contentId, engagementType, reactions) => {
+  return (
+    reactions &&
+    reactions[contentId] &&
+    reactions[contentId][`num_${engagementType}`]
+  );
+};
+
 const EngagementButtons = ({
   className,
   engagementButtons,

@@ -134,6 +134,10 @@
   margin-bottom: 10px;
 }
 
+.overview-followers {
+  color: $brand;
+  font-weight: 700;
+}
 .border {
   border: none !important;
   padding: 0 15px;
@@ -430,40 +434,13 @@
   border-radius: 20px;
 }
 
-.profile--feed {
-  margin-top: 25px;
+.edit-profile-more {
+  border: none;
+  padding: 0;
+  margin: 10px;
+  margin-right: 22px;
 }
 
-.profile--popular-topics {
-  min-height: 354px;
-  position: relative;
-
-  .popular-topics {
-    &--content {
-      display: flex;
-      flex-direction: column;
-      padding: 10px 15px;
-      margin-bottom: 60px;
-
-      &-item {
-        padding-bottom: 40px;
-      }
-    }
-    &--divider {
-      border-top: $border-card;
-      position: absolute;
-      width: 100%;
-      left: 0;
-      bottom: 60px;
-    }
-    &--button {
-      text-align: center;
-      position: absolute;
-      bottom: 15px;
-      left: 115px;
-      > button {
-        color: $brand;
-      }
-    }
-  }
+.profile--feed {
+  margin-top: 25px;
 }

@@ -63,49 +63,5 @@
     { "checked": false, "content": "Fill out your profile" },
     { "checked": true, "content": "Ask your first question" },
     { "checked": true, "content": "Answer a question" }
-  ],
-  "peopleInSimilarRoles": [
-    {
-      "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5OTA2NzA1OTQ0NzAxNy1IZWFkc2hvdHMocHBfdzc2OF9oNjE0KS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
-      "name": "John Smith - 1,272",
-      "role": "CMO at Modern Media"
-    },
-    {
-      "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjgwODQyNnNhbGVlbC0tcHJvZmlsZS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
-      "name": "Aya Nicola - 541",
-      "role": "BP Marketing at Pure Digital"
-    },
-    {
-      "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5Ijoic210cGNvbS0tcHJvZmlsZS5zdmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEwMCwiaGVpZ2h0IjoxMDAsImZpdCI6ImNvdmVyIn19fQ==",
-      "name": "Hilary Orteta - 231",
-      "role": "CMO at Songbird"
-    },
-    {
-      "image": "https://d3k6hg21rt7gsh.cloudfront.net/default-agency-image.png",
-      "name": "John Smith",
-      "role": "CMO at Moder Media"
-    },
-    {
-      "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjg4NDEyNG1hZHMtLXByb2ZpbGUuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
-      "name": "John Smith",
-      "role": "CMO at Moder Media"
-    }
-  ],
-  "newMembers": [
-    {
-      "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5OTA2NzA1OTQ0NzAxNy1IZWFkc2hvdHMocHBfdzc2OF9oNjE0KS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
-      "name": "Mixpanel",
-      "role": "San Francisco, CA"
-    },
-    {
-      "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjgwODQyNnNhbGVlbC0tcHJvZmlsZS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
-      "name": "Hubspot",
-      "role": "Buston, MA"
-    },
-    {
-      "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5Ijoic210cGNvbS0tcHJvZmlsZS5zdmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEwMCwiaGVpZ2h0IjoxMDAsImZpdCI6ImNvdmVyIn19fQ==",
-      "name": "Division of Labor",
-      "role": "Sausalito, CA"
-    }
   ]
 }

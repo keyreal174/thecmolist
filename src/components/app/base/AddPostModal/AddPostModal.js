@@ -9,6 +9,7 @@ import {
   Row,
   Col,
 } from "react-bootstrap";
+import { cdn } from "../../../util/constants";
 import "./addPostModal.scss";
 
 function AddPostModal({
@@ -21,7 +22,6 @@ function AddPostModal({
   onSubmit,
   show,
 }) {
-  const cdnBaseUrl = "https://d3k6hg21rt7gsh.cloudfront.net/icons/";
   const [allMembers, setAllMembers] = useState(false);
   const [body, setBody] = useState("");
   const [error, setError] = useState(null);
@@ -180,7 +180,6 @@ function AddPostModal({
     setPerson("");
     setRole("");
   };
-
   return (
     <>
       <Modal className="modal" show={show} onHide={handleClose} size="lg">
@@ -295,7 +294,7 @@ function AddPostModal({
                           <img
                             alt="person icon"
                             className="modal-section-body-image"
-                            src={cdnBaseUrl + "person.png"}
+                            src={`${cdn}/person.png`}
                           />
                           @Person
                         </div>
@@ -312,7 +311,7 @@ function AddPostModal({
                           <img
                             alt="company icon"
                             className="modal-section-body-image"
-                            src={cdnBaseUrl + "company.png"}
+                            src={`${cdn}/company.png`}
                           />
                           @Vendor
                         </div>
@@ -329,7 +328,7 @@ function AddPostModal({
                           <img
                             alt="photograph icon"
                             className="modal-section-body-image"
-                            src={cdnBaseUrl + "image.png"}
+                            src={`${cdn}/image.png`}
                           />
                           Photo
                         </div>
@@ -352,7 +351,7 @@ function AddPostModal({
                           <img
                             alt="video icon"
                             className="modal-section-body-image"
-                            src={cdnBaseUrl + "video.png"}
+                            src={`${cdn}/video.png`}
                           />
                           Video
                         </div>

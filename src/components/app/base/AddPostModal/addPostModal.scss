@@ -9,6 +9,13 @@
   }
 }
 
+@media (min-width: 801px) {
+  .modal-open {
+    overflow: auto !important;
+    padding-right: 0px !important;
+  }
+}
+
 .modal-title {
   color: $text-1;
   font-size: 25px;

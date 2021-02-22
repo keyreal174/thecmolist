@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import CustomCard from "../base/CustomCard/CustomCard";
 import Avatar from "../base/Avatar/Avatar";
 
-const AllMembers = ({ peopleInSimilarRoles }) => {
-  return (
-    <CustomCard heading="All Members" seeAll>
+const AllMembers = ({ memberList }) => {
+  let membersLink = memberList.link || "";
+  let list = Array.isArray(memberList) ? memberList : memberList.list;
+  return list && list.length > 0 ? (
+    <CustomCard heading="All Members" seeAllLink={membersLink}>
       <div className="feed-box-content">
-        {peopleInSimilarRoles &&
-          peopleInSimilarRoles.map(({ image, name, role }, index) => {
+        {list &&
+          list.map(({ image, name, role }, index) => {
             return (
               <Avatar
                 key={index}
@@ -19,6 +21,8 @@ const AllMembers = ({ peopleInSimilarRoles }) => {
           })}
       </div>
     </CustomCard>
+  ) : (
+    <div />
   );
 };
 
