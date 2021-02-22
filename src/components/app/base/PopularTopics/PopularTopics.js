@@ -24,6 +24,14 @@ const PopularTopics = ({ topicList, onSubfilterChange }) => {
       setCachedList(topicList);
     }
   }, [topicList]);
+  const handleClick = (topic, idx) => {
+    if (activeTopicIdx === idx) {
+      setActiveTopicIdx(-1);
+    } else {
+      setActiveTopicIdx(idx);
+    }
+    onSubfilterChange(topic);
+  };
   return (
     <CustomCard className="popular-topics" heading="Popular #topics">
       <div className="popular-topics--content">
@@ -39,14 +47,7 @@ const PopularTopics = ({ topicList, onSubfilterChange }) => {
                           ? "profile-subfilter active"
                           : "profile-subfilter"
                       }`}
-                      onClick={() => {
-                        if (activeTopicIdx === idx) {
-                          setActiveTopicIdx(-1);
-                        } else {
-                          setActiveTopicIdx(idx);
-                        }
-                        onSubfilterChange(topic);
-                      }}
+                      onClick={() => handleClick(topic, idx)}
                     >
                       {idx !== 0 ? " " : ""}
                       {topic.title} ({topic.count})
