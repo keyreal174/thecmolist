@@ -1,0 +1,12 @@
+@import "../../../../sass/globals.scss";
+
+.simple-top-banner {
+  &--img {
+    border-radius: 12px;
+    margin-right: 23.5px;
+    float: left;
+  }
+  &--text {
+    color: $text-1;
+  }
+}

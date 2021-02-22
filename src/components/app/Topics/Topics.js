@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Banner from "../base/Banner/Banner";
+import SimpleTopBanner from "../base/SimpleTopBanner/SimpleTopBanner";
 
 import "./topics.css";
 
@@ -62,7 +63,7 @@ const Topics = (props) => {
       <Container className="height-100">
         <Header />
         <div className="wrapper">
-          <Banner
+          <SimpleTopBanner
             title="Topics"
             img="https://d3k6hg21rt7gsh.cloudfront.net/directory.png"
           />
