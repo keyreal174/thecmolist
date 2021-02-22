@@ -7,7 +7,7 @@ import Filter from "../base/Filter/Filter";
 import InviteModal from "../base/ShareModule/InviteModal";
 import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
 import PopularTopics from "../base/PopularTopics/PopularTopics";
-import NetworkTopBanner from "./NetworkTopBanner";
+import SimpleTopBanner from "../base/SimpleTopBanner/SimpleTopBanner";
 import NetworkFeed from "./NetworkFeed";
 import Analytics from "../../util/Analytics";
 import "./network.scss";
@@ -64,7 +64,11 @@ const Network = (props) => {
       <Container className="height-100">
         <div className="wrapper">
           <Header />
-          <NetworkTopBanner title={bannerTitle} image={bannerImage} />
+          <SimpleTopBanner
+            buttonText="Invite"
+            title={bannerTitle}
+            image={bannerImage}
+          />
           <div className="mb-4">
             <Filter
               className="mt-1"
