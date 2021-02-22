@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import ShowMoreText from "react-show-more-text";
 import { Button } from "react-bootstrap";
 
-const Column = ({ topic, followTopic }) => {
+const TopicColumn = ({ topic, followTopic }) => {
   return (
     <div className="topic-wrapper text-center p-3 h-100 d-flex flex-column">
       <div style={{ flex: 1 }}>
@@ -46,4 +46,4 @@ const Column = ({ topic, followTopic }) => {
   );
 };
 
-export default Column;
+export default TopicColumn;

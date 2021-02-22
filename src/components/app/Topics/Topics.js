@@ -4,7 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import SimpleTopBanner from "../base/SimpleTopBanner/SimpleTopBanner";
-import Column from "./Column";
+import Column from "./TopicColumn";
 import "./topics.scss";
 
 const Topics = (props) => {
