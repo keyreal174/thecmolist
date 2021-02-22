@@ -3,10 +3,10 @@ import { Button } from "react-bootstrap";
 import CustomCard from "../CustomCard/CustomCard";
 import "./simpleTopBanner.scss";
 
-const NetworkTopBanner = ({ buttonText, image, title }) => {
+const NetworkTopBanner = ({ buttonText, className, image, title }) => {
   return (
-    <div className="simple-top-banner simple-top-banner mt-3">
-      <CustomCard className="mb-0">
+    <div className={`simple-top-banner simple-top-banner mt-3 ${className}`}>
+      <CustomCard className="simple-top-banner--wrapper mb-0">
         <div className="py-3 px-1">
           {image && image.length > 0 && (
             <div className="simple-top-banner--img">
