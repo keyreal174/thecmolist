@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const networkRequest = (sort, filter, token) => {
+const networkRequest = (sort, filter, subfilter, token) => {
   let headers = {
     "timezone-offset": new Date().getTimezoneOffset(),
   };
@@ -13,6 +13,12 @@ const networkRequest = (sort, filter, token) => {
       url += "&";
     }
     url += `filter=${filter}`;
+  }
+  if (subfilter) {
+    if (!filter) {
+      throw new Error("Cannot have a subfilter without a filter");
+    }
+    url += `&subfilter=${subfilter}`;
   }
   if (token) {
     headers.token = token;
@@ -27,7 +33,9 @@ export default {
     feedData: {},
     activeFeed: [],
     activeFeedHasMoreData: false,
+    activeFeedSubFilters: [],
     activeFilter: "",
+    activeSubFilter: "",
     sortOrder: "Top",
   },
   reducers: {
@@ -72,10 +80,14 @@ export default {
         currentFeed.moreData = false;
         newState.activeFeedHasMoreData = false;
       }
+      if (data.filters != null) {
+        currentFeed.filters = data.filters;
+        newState.activeFeedSubFilters = currentFeed.filters;
+      }
       newState.activeFeed = currentFeed.data.slice();
       return newState;
     },
-    clearFeedData: (oldState) => {
+    clearInactiveFeedData: (oldState) => {
       let newState = {
         ...oldState,
         feedData: {},
@@ -87,6 +99,17 @@ export default {
       });
       return newState;
     },
+    clearActiveFeedData: (oldState) => {
+      let newState = {
+        ...oldState,
+      };
+      if (oldState.activeFilter in newState.feedData) {
+        let k = oldState.activeFilter;
+        newState.feedData[k].token = "";
+        newState.feedData[k].data = [];
+      }
+      return newState;
+    },
     setActiveFilter: (oldState, filterKey) => {
       if (!(filterKey in oldState.feedData)) {
         throw new Error("No feed data for specified key!");
@@ -94,7 +117,15 @@ export default {
       return {
         ...oldState,
         activeFilter: filterKey,
+        activeSubFilter: "",
         activeFeed: oldState.feedData[filterKey].data,
+        activeFeedSubFilters: oldState.feedData[filterKey].filters || [],
+      };
+    },
+    setActiveSubFilter: (oldState, activeSubFilter) => {
+      return {
+        ...oldState,
+        activeSubFilter,
       };
     },
     setActiveSortOrder: (oldState, sortOrder) => {
@@ -107,27 +138,49 @@ export default {
   effects: (dispatch) => ({
     async fetchActiveNetwork(_, rootState) {
       try {
-        const { activeFilter, sortOrder } = rootState.networkModel;
-        const dataForFilter =
-          rootState.feedModel.dashboardFeedData[activeFilter];
+        const {
+          activeFilter,
+          activeSubFilter,
+          sortOrder,
+          feedData,
+        } = rootState.networkModel;
+        const dataForFilter = feedData[activeFilter];
         dispatch.networkModel.setLoading(true);
         const response = await networkRequest(
           sortOrder,
           activeFilter,
+          activeSubFilter,
           dataForFilter.token
         );
         let data = response.data;
         data.sortOrder = sortOrder;
         dispatch.networkModel.setFeedDataForKey(activeFilter, response.data);
       } catch (error) {
+        console.log(error);
         throw new Error("Can not fetch active network");
       } finally {
         dispatch.networkModel.setLoading(false);
       }
     },
     async changeFilter(filterKey, rootState) {
+      const { activeFilter, activeSubFilter } = rootState.networkModel;
+      if (filterKey === activeFilter) {
+        // changing to the currently active filter
+        return;
+      }
+      if (activeSubFilter && activeSubFilter.length > 0) {
+        // if there's a subfilter active, then invalidate the previous feed
+        // the current subfilter will be removed on the new feed
+        dispatch.networkModel.clearActiveFeedData();
+      }
       const filterExists = filterKey in rootState.networkModel.feedData;
-      if (filterExists) {
+      if (
+        filterExists &&
+        rootState.networkModel.feedData[filterKey].token &&
+        rootState.networkModel.feedData[filterKey].token.length > 0
+      ) {
+        // the filter to change to exists, and has had a fetch attempted
+        // switch to it.
         dispatch.networkModel.setActiveFilter(filterKey);
       } else {
         dispatch.networkModel.initFeedDataForKey(filterKey);
@@ -137,6 +190,7 @@ export default {
           const response = await networkRequest(
             sortOrder,
             filterKey.toLowerCase(),
+            "",
             null
           );
           let data = response.data;
@@ -147,12 +201,44 @@ export default {
         }
       }
     },
+    async changeSubFilter(subfilter, rootState) {
+      try {
+        const { activeSubFilter } = rootState.networkModel;
+        let subFilterToChangeTo = subfilter;
+        if (activeSubFilter === subfilter) {
+          // toggle
+          subFilterToChangeTo = "";
+        }
+        const { activeFilter, sortOrder } = rootState.networkModel;
+        dispatch.networkModel.clearActiveFeedData();
+        dispatch.networkModel.setActiveSubFilter(subFilterToChangeTo);
+        dispatch.networkModel.setLoading(true);
+        const response = await networkRequest(
+          sortOrder,
+          activeFilter,
+          subFilterToChangeTo,
+          null
+        );
+        let data = response.data;
+        dispatch.networkModel.setFeedDataForKey(activeFilter, data);
+      } catch (error) {
+        console.log(error);
+        throw new Error("Can not change sub filter");
+      } finally {
+        dispatch.networkModel.setLoading(false);
+      }
+    },
     async changeSortOrder(sort, rootState) {
       try {
-        const { activeFilter } = rootState.networkModel;
-        dispatch.networkModel.clearFeedData();
+        const { activeFilter, activeSubFilter } = rootState.networkModel;
+        dispatch.networkModel.clearActiveFeedData();
         dispatch.networkModel.setLoading(true);
-        const response = await networkRequest(sort, activeFilter, null);
+        const response = await networkRequest(
+          sort,
+          activeFilter,
+          activeSubFilter,
+          null
+        );
         let data = response.data;
         data.sortOrder = sort;
         dispatch.networkModel.setFeedDataForKey(activeFilter, data);
@@ -163,7 +249,7 @@ export default {
       }
     },
     async invalidateFeed() {
-      dispatch.networkModel.clearFeedData();
+      dispatch.networkModel.clearInactiveFeedData();
     },
   }),
 };
