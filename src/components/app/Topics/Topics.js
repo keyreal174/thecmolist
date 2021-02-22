@@ -17,10 +17,7 @@ const Topics = (props) => {
       <Container className="height-100">
         <Header />
         <div className="wrapper">
-          <SimpleTopBanner
-            title="Topics"
-            image="https://d3k6hg21rt7gsh.cloudfront.net/directory.png"
-          />
+          <SimpleTopBanner title="Topics" />
           <Row className="mt-3">
             {props.topics.map((topic) => {
               return (
