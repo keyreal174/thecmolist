@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Container } from "react-bootstrap";
+import { Col, Row, Container } from "react-bootstrap";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Filter from "../base/Filter/Filter";
 import InviteModal from "../base/ShareModule/InviteModal";
 import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
+import PopularTopics from "../base/PopularTopics/PopularTopics";
 import NetworkTopBanner from "./NetworkTopBanner";
 import NetworkFeed from "./NetworkFeed";
 import Analytics from "../../util/Analytics";
@@ -72,21 +73,39 @@ const Network = (props) => {
               onChange={(idx) => changeFilter(idx)}
             />
           </div>
-          {props.loadingNetwork ? (
-            <div className="mt-3 mb-5">
-              <ActivityIndicator className="element-center feed-activity-indicator" />
-            </div>
-          ) : (
-            <NetworkFeed
-              {...props}
-              fetchData={fetchData}
-              feedData={feedData}
-              subfilters={props.activeFeedSubFilters}
-              onSubfilterChange={(f) => {
-                props.changeSubFilter(f.slug || f.title);
-              }}
-            />
-          )}
+          <Row>
+            {props.activeFeedSubFilters &&
+              props.activeFeedSubFilters.length > 0 && (
+                <Col md="4">
+                  <PopularTopics
+                    onSubfilterChange={(f) => {
+                      props.changeSubFilter(f.slug || f.title);
+                    }}
+                    topicList={props.activeFeedSubFilters}
+                  />
+                </Col>
+              )}
+            <Col
+              md={
+                props.activeFeedSubFilters &&
+                props.activeFeedSubFilters.length > 0
+                  ? "8"
+                  : "12"
+              }
+            >
+              {props.loadingNetwork ? (
+                <div className="mt-3 mb-5">
+                  <ActivityIndicator className="element-center feed-activity-indicator" />
+                </div>
+              ) : (
+                <NetworkFeed
+                  {...props}
+                  fetchData={fetchData}
+                  feedData={feedData}
+                />
+              )}
+            </Col>
+          </Row>
 
           <InviteModal
             show={inviteModalShow}
@@ -110,7 +129,7 @@ const mapState = (state) => {
     activeSubFilter: state.networkModel.activeSubFilter,
     activeFeedSubFilters: state.networkModel.activeFeedSubFilters,
     feedData: state.networkModel.activeFeed,
-    moreData: state.networkModel.moreData,
+    moreData: state.networkModel.activeFeedHasMoreData,
     localConnectedUsers: state.userModel.localConnectedUsers,
     loadingNetwork: state.networkModel.loadingNetwork,
   };
