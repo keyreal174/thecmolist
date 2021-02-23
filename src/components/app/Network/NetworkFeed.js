@@ -10,8 +10,6 @@ const NetworkFeed = ({
   invalidateFeed,
   connectUser,
   fetchData,
-  onSubfilterChange,
-  subfilters,
 }) => (
   <>
     <React.Fragment>
@@ -35,6 +33,13 @@ const NetworkFeed = ({
             />
           );
         })}
+      {feedData && feedData.length === 0 && (
+        <div className="wrapper article-wrapper">
+          <div className="no-feed-data-header">
+            You haven't connected to anyone yet.
+          </div>
+        </div>
+      )}
       {moreData && (
         <div className="row">
           <div className="col-md-2 mt-2 mx-auto">
