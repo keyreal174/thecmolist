@@ -61,9 +61,10 @@ const ContentDetail = ({
     }
   };
 
-  const numberOfReplies = content && content.replies && content.replies.length;
+  const numberOfReplies =
+    content && content.replies ? content.replies.length : 0;
   const contentId = content && content.content_id;
-  const author = content && content.content && content.content.author;
+  const author = content && content.content ? content.content.author : "";
 
   return (
     <>
@@ -119,12 +120,19 @@ const ContentDetail = ({
           style={{ paddingBottom: "10px" }}
           showDiscussionComment={true}
           discussionCommentAuthor={author}
-          discussionCommentPlaceholder={`Answer ${author}'s question...`}
+          discussionCommentPlaceholder={
+            author && author.length > 0
+              ? `Answer ${author}'s question...`
+              : "Answer this question..."
+          }
           handleDiscussionCommentSubmit={handleSubmit}
         />
-        <div className="question-answer-section-replies">{`${numberOfReplies} answers`}</div>
+        {content && content.replies && (
+          <div className="question-answer-section-replies">{`${numberOfReplies} answers`}</div>
+        )}
         <div className="question-answers">
-          {content.replies &&
+          {content &&
+            content.replies &&
             content.replies.map((reply, index) => {
               const replyId = reply.content_id;
 
