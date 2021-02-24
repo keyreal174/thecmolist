@@ -1,46 +1,64 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CustomCard from "../CustomCard/CustomCard";
-import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import "./popularTopics.scss";
 
-const PopularTopics = ({
-  subfilterKeys,
-  feedFilter,
-  onSubfilterChange,
-  subfilters,
-}) => {
+const PopularTopics = ({ topicList, onSubfilterChange }) => {
+  const [cachedList, setCachedList] = useState([]);
   const [showMore, setShowMore] = useState(false);
-  console.log("subfiltersKeys", subfilterKeys);
-  console.log("subfiltersKeys", subfilters);
+  const [activeTopicIdx, setActiveTopicIdx] = useState(-1);
+  useEffect(() => {
+    let match = true;
+    for (let i = 0; i < Math.min(cachedList.length, topicList.length); i++) {
+      if (
+        topicList[i].title !== cachedList[i].title ||
+        topicList[i].count !== cachedList[i].count
+      ) {
+        match = false;
+        break;
+      }
+    }
+    match = match && cachedList.length === topicList.length;
+    if (!match) {
+      setActiveTopicIdx(-1);
+      setCachedList(topicList);
+    }
+  }, [topicList]);
+  const handleClick = (topic, idx) => {
+    if (activeTopicIdx === idx) {
+      setActiveTopicIdx(-1);
+    } else {
+      setActiveTopicIdx(idx);
+    }
+    onSubfilterChange(topic);
+  };
   return (
     <CustomCard className="popular-topics" heading="Popular #topics">
       <div className="popular-topics--content">
         <div className="popular-topics--wrapper">
-          {subfilterKeys.map((subfilter, idx) => {
-            if (idx < 5 || showMore) {
-              return (
-                <div className="popular-topics--content-item">
-                  <Link
-                    className={`popular-topics--content-item-link ${
-                      subfilter === feedFilter
-                        ? "profile-subfilter active"
-                        : "profile-subfilter"
-                    }`}
-                    onClick={() => {
-                      onSubfilterChange(subfilter);
-                    }}
-                  >
-                    {idx !== 0 ? " " : ""}
-                    {subfilter} ({subfilters[subfilter]})
-                  </Link>
-                </div>
-              );
-            }
-          })}
+          {topicList &&
+            topicList.map((topic, idx) => {
+              if (idx < 5 || showMore) {
+                return (
+                  <div key={idx} className="popular-topics--content-item">
+                    <span
+                      className={`popular-topics--content-item-link ${
+                        idx === activeTopicIdx
+                          ? "profile-subfilter active"
+                          : "profile-subfilter"
+                      }`}
+                      onClick={() => handleClick(topic, idx)}
+                    >
+                      {idx !== 0 ? " " : ""}
+                      {topic.title} ({topic.count})
+                    </span>
+                  </div>
+                );
+              }
+            })}
         </div>
         <div>
-          {subfilterKeys.length > 5 && (
+          {topicList && topicList.length > 5 && (
             <>
               <div className="popular-topics--divider" />
               <div className="popular-topics--button">

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Container } from "react-bootstrap";
+import { Col, Row, Container } from "react-bootstrap";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Filter from "../base/Filter/Filter";
 import InviteModal from "../base/ShareModule/InviteModal";
 import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
-import NetworkTopBanner from "./NetworkTopBanner";
+import PopularTopics from "../base/PopularTopics/PopularTopics";
+import SimpleTopBanner from "../base/SimpleTopBanner/SimpleTopBanner";
 import NetworkFeed from "./NetworkFeed";
 import Analytics from "../../util/Analytics";
 import "./network.scss";
@@ -16,12 +17,15 @@ const Network = (props) => {
   const fetchData = async () => await props.fetchActiveNetwork();
   const [filterIdx, setFilterIdx] = useState(0);
   const [filters, setFilters] = useState([]);
-
-  const [feedFilter, setFeedFilter] = useState("");
-  //const [subfilters, setSubfilters] = useState({});
-  //const [subfilterKeys, setSubfilterKeys] = useState([]);
-  const [feedData, setFeedData] = useState(props.feedData || []);
-
+  const [bannerTitle, setBannerTitle] = useState("");
+  const [bannerImage, setBannerImage] = useState("");
+  const feedData = props.feedData;
+  const changeDashboardHeader = (idx) => {
+    if (idx < filters.length) {
+      setBannerTitle(filters[idx].title);
+      setBannerImage(filters[idx].image);
+    }
+  };
   useEffect(() => {
     const getProfileStats = async () => props.getProfileStats();
     getProfileStats().then((profileStats) => {
@@ -36,12 +40,16 @@ const Network = (props) => {
             return {
               title: group.name,
               slug: group.slug,
+              image: group.image || null,
               enabled: true,
             };
           })
         );
       }
+      let idx = 0;
       setFilters(newFilters);
+      setBannerTitle(newFilters[idx].title);
+      setBannerImage(newFilters[idx].image);
       props.changeFilter(newFilters[filterIdx].slug);
     });
   }, []);
@@ -49,65 +57,18 @@ const Network = (props) => {
   const changeFilter = (idx) => {
     setFilterIdx(idx);
     props.changeFilter(filters[idx].slug);
+    changeDashboardHeader(idx);
   };
-
-  const createSubfilters = (feedData) => {
-    let newFeedData = feedData.slice();
-    newFeedData.forEach((feed) => {
-      feed.subfilters = {};
-      let feed_data = feed.data;
-      feed_data &&
-        feed_data.forEach((data) => {
-          data &&
-            data.subheadlines &&
-            data.subheadlines.forEach((sh) => {
-              if (sh.categorytitles && Array.isArray(sh.categorytitles)) {
-                sh.categorytitles.forEach((categoryTitle) => {
-                  if (!(categoryTitle in feed.subfilters)) {
-                    feed.subfilters[categoryTitle] = 0;
-                  }
-                  feed.subfilters[categoryTitle] += 1;
-                });
-              }
-            });
-        });
-    });
-    setFeedData(newFeedData);
-  };
-
-  useEffect(() => {
-    props.feedData && createSubfilters(props.feedData);
-  }, [props.feedData]);
-
-  const subfilterKeys = [
-    "Baidu Advertising",
-    "Packaging Design",
-    "SEM",
-    "Saas",
-    "Latam",
-    "TV Advertising",
-    "Out of Home advertising",
-    "Mobile & App Marketing",
-    "LinkedIn Advertising",
-  ];
-  const subfilters = {
-    "Baidu Advertising": 1,
-    "Packaging Design": 1,
-    SEM: 2,
-    Saas: 1,
-    Latam: 3,
-    "TV Advertising": 4,
-    "Out of Home advertising": 1,
-    "Mobile & App Marketing": 2,
-    "LinkedIn Advertising": 1,
-  };
-
   return (
     <>
       <Container className="height-100">
         <div className="wrapper">
           <Header />
-          <NetworkTopBanner />
+          <SimpleTopBanner
+            buttonText="Invite"
+            title={bannerTitle}
+            image={bannerImage}
+          />
           <div className="mb-4">
             <Filter
               className="mt-1"
@@ -116,23 +77,39 @@ const Network = (props) => {
               onChange={(idx) => changeFilter(idx)}
             />
           </div>
-          {props.loadingNetwork ? (
-            <div className="mt-3 mb-5">
-              <ActivityIndicator className="element-center feed-activity-indicator" />
-            </div>
-          ) : (
-            <NetworkFeed
-              {...props}
-              fetchData={fetchData}
-              subfilterKeys={subfilterKeys}
-              feedFilter={feedFilter}
-              onSubfilterChange={() => {
-                console.log("subfilter change");
-              }}
-              subfilters={subfilters}
-              feedData={feedData}
-            />
-          )}
+          <Row>
+            {props.activeFeedSubFilters &&
+              props.activeFeedSubFilters.length > 0 && (
+                <Col md="4">
+                  <PopularTopics
+                    onSubfilterChange={(f) => {
+                      props.changeSubFilter(f.slug || f.title);
+                    }}
+                    topicList={props.activeFeedSubFilters}
+                  />
+                </Col>
+              )}
+            <Col
+              md={
+                props.activeFeedSubFilters &&
+                props.activeFeedSubFilters.length > 0
+                  ? "8"
+                  : "12"
+              }
+            >
+              {props.loadingNetwork ? (
+                <div className="mt-3 mb-5">
+                  <ActivityIndicator className="element-center feed-activity-indicator" />
+                </div>
+              ) : (
+                <NetworkFeed
+                  {...props}
+                  fetchData={fetchData}
+                  feedData={feedData}
+                />
+              )}
+            </Col>
+          </Row>
 
           <InviteModal
             show={inviteModalShow}
@@ -153,8 +130,10 @@ const Network = (props) => {
 const mapState = (state) => {
   return {
     activeFilter: state.networkModel.activeFilter,
+    activeSubFilter: state.networkModel.activeSubFilter,
+    activeFeedSubFilters: state.networkModel.activeFeedSubFilters,
     feedData: state.networkModel.activeFeed,
-    moreData: state.networkModel.moreData,
+    moreData: state.networkModel.activeFeedHasMoreData,
     localConnectedUsers: state.userModel.localConnectedUsers,
     loadingNetwork: state.networkModel.loadingNetwork,
   };
@@ -165,6 +144,7 @@ const mapDispatch = (dispatch) => {
     fetchActiveNetwork: dispatch.networkModel.fetchActiveNetwork,
     changeFilter: dispatch.networkModel.changeFilter,
     changeSortOrder: dispatch.networkModel.changeSortOrder,
+    changeSubFilter: dispatch.networkModel.changeSubFilter,
     invalidateFeed: dispatch.networkModel.invalidateFeed,
     saveUserInvite: dispatch.userModel.saveInvite,
     connectUser: dispatch.userModel.connectUser,

@@ -88,16 +88,16 @@ function Article(props) {
                 <div>
                   {props.subheadlines && (
                     <div className="article-subheadlines">
-                      {props.subheadlines.map((subheadline) => {
+                      {props.subheadlines.map((subheadline, idx) => {
                         if (subheadline.markdown) {
                           return (
-                            <div className="article-subheadline">
+                            <div key={idx} className="article-subheadline">
                               <Markdown>{subheadline.markdown}</Markdown>
                             </div>
                           );
                         } else {
                           return (
-                            <div className="article-subheadline">
+                            <div key={idx} className="article-subheadline">
                               {subheadline.link ? (
                                 <Link to={subheadline.link}>
                                   {subheadline.text}

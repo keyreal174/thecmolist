@@ -25,7 +25,7 @@ function AddPostModal({
   const [allMembers, setAllMembers] = useState(false);
   const [body, setBody] = useState("");
   const [error, setError] = useState(null);
-  const [groups, setGroups] = useState(profileStats.groups);
+  const [groups, setGroups] = useState({});
   const [onlyMyNetwork, setOnlyMyNetwork] = useState(true);
   const [person, setPerson] = useState("");
   const [photo, setPhoto] = useState("");
@@ -37,6 +37,16 @@ function AddPostModal({
   const [topics, setTopics] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  const groupNameToSlug = (g) => {
+    if (profileStats && profileStats.profile && profileStats.profile.groups) {
+      let profileGroups = profileStats.profile.groups;
+      let gIdx = profileGroups.findIndex((psg) => psg.name === g);
+      if (gIdx >= 0 && profileGroups[gIdx].slug) {
+        return profileGroups[gIdx].slug;
+      }
+    }
+    return g;
+  };
   const handleSubmit = async (e) => {
     const content = {
       allMembers,
@@ -49,6 +59,12 @@ function AddPostModal({
       photo,
       role,
     };
+    if (groups) {
+      content.groups = Object.keys(groups)
+        .filter((g) => groups[g])
+        .map(groupNameToSlug);
+    }
+
     setError(null);
     setIsLoading(true);
     e.preventDefault();
@@ -77,7 +93,7 @@ function AddPostModal({
   };
 
   const cleanFields = () => {
-    setGroups(getGroupsObject(profileStats.groups));
+    setGroups({});
     setTitle("");
     setBody("");
     setTopics("");
