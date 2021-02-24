@@ -1,0 +1,59 @@
+@import "../../sass/globals.scss";
+
+.signup .signup-radio {
+  margin-right: 5px;
+}
+
+.signup-attn {
+  font-size: 14px;
+  text-align: center;
+  display: block;
+  margin: 0 98px;
+}
+
+.signup {
+  &--form {
+    border-radius: 4px;
+    box-shadow: 0px 0px 4px rgba(21, 62, 102, 0.1);
+  }
+  &--logo {
+    display: block;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    text-align: center;
+  }
+  &--header {
+    color: $text-1;
+    font-size: 20px;
+    font-weight: 700;
+    padding-bottom: 14px;
+    padding-top: 21px;
+    &-beta {
+      text-align: center;
+    }
+  }
+  &--radio {
+    margin: 10px 0;
+    display: inline-block;
+  }
+  &--form-input {
+    border-radius: 23px !important;
+    padding-left: 25px !important;
+  }
+  &--form-label {
+    margin: 10px 0 !important;
+    color: $text-1;
+    font-size: 16px;
+  }
+  &--form-apply {
+    border-radius: 23px;
+    height: 45px;
+    margin-top: 24px;
+  }
+  &--form-link {
+    text-align: center;
+    padding-bottom: 30px;
+    padding-top: 27px;
+    font-size: 16px;
+  }
+}

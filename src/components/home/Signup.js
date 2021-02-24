@@ -1,5 +1,5 @@
 import React from "react";
-import "./Signup.css";
+import "./Signup.scss";
 
 function handleSubmit(e) {
   const scriptURL =
@@ -19,69 +19,55 @@ function handleSubmit(e) {
 
 function Signup() {
   return (
-    <div className="container wrapper">
+    <div className="signup--wrapper container wrapper">
       <div className="row no-gutters">
-        <div className="col-md-3"></div>
+        <div className="col-md-3" />
         <div className="col-md-6">
-          <a
-            className="nav__logo"
-            href="/"
-            style={{
-              textAlign: "center",
-              display: "block",
-              "margin-top": "10px",
-            }}
-          >
+          <a className="signup--logo nav__logo" href="/">
             CMO<span>list</span>
           </a>
           <form
+            className="signup--form"
             name="submit-to-google-sheet"
             style={{ background: "white", "margin-top": "10px" }}
             onSubmit={handleSubmit}
           >
             <div className="form-group">
-              <br />
-              <h2 className="signup-header">Apply to join CMOlist as a </h2>
+              <h2 className="signup--header">Apply to join CMOlist as a </h2>
               <input
-                className="input-field signup-radio"
+                className="signup--radio input-field signup-radio"
                 type="radio"
-                id="cmo"
+                id="marketing_leader"
                 name="role"
-                value="cmo"
-                required
+                value="marketing_leader"
               />
-              <label for="cmo">CMO or senior marketing executive</label>
+              <label for="marketing_leader">Marketing leader</label>
               <br />
               <input
-                className="input-field signup-radio"
+                className="signup--radio input-field signup-radio"
                 type="radio"
-                id="agency"
+                id="agency_or_technology_firm"
                 name="role"
-                value="agency"
+                value="agency_or_technology_firm"
               />
-              <label for="agency">Agency or marketing technology firm</label>
-              <br />
-              <input
-                className="input-field signup-radio"
-                type="radio"
-                id="marketing_professional"
-                name="role"
-                value="marketing_professional"
-              />
-              <label for="marketing_professional">Marketing professional</label>
+              <label for="agency_or_technology_firm">
+                Agency or marketign technology firm
+              </label>
             </div>
             <hr
               style={{ "margin-top": "30px", border: "1px solid lightgray" }}
             />
             <div className="form-group">
-              <h2 className="signup-header">Apply for beta access</h2>
+              <h2 className="signup--header signup--header-beta">
+                Sign Up for beta access
+              </h2>
               <span className="signup-attn">
                 Apply below to be notified when CMOlist is available for early
-                access
+                access.
               </span>
             </div>
             <div className="form-group">
-              <label className="label-field" for="name">
+              <label className="label-field signup--form-label" for="name">
                 Name
               </label>
               <br />
@@ -89,49 +75,47 @@ function Signup() {
                 name="name"
                 type="text"
                 placeholder="First name, Last name"
-                className="input-field max-input-width"
+                className="input-field max-input-width signup--form-input"
                 required
               />
             </div>
             <div className="form-group">
-              <label className="label-field" for="company">
-                Company
-              </label>
-              <br />
-              <input
-                name="company"
-                type="text"
-                placeholder="Acme Inc."
-                className="input-field max-input-width"
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label className="label-field" for="email">
+              <label className="label-field signup--form-label" for="email">
                 Email
               </label>
               <br />
               <input
                 name="email"
                 type="email"
-                placeholder="Email"
-                className="input-field max-input-width"
+                placeholder="name@company.com"
+                className="input-field max-input-width signup--form-input"
                 required
               />
             </div>
             <div className="form-group">
+              <label className="label-field signup--form-label" for="linkedIn">
+                LinkedIn URL
+              </label>
+              <br />
+              <input
+                name="linkedIn"
+                type="linkedIn"
+                placeholder="https://linkedin/.com/in/linkedIn"
+                className="input-field max-input-width signup--form-input"
+                required
+              />
+            </div>
+
+            <div className="form-group">
               <button
                 type="submit"
-                className="btn__homepage btn__homepage-blue"
+                className="btn__homepage btn__homepage-blue signup--form-apply"
               >
                 Apply
               </button>
             </div>
-            <div
-              className="form-group"
-              style={{ "text-align": "center", "padding-bottom": "30px" }}
-            >
-              <span className="signup-attn">
+            <div className="form-group">
+              <span className="signup-attn signup--form-link">
                 Already on CMOlist? <a href="/login">Sign in</a>
               </span>
             </div>
