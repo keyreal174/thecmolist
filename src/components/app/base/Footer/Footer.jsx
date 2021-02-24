@@ -3,9 +3,9 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./footer.css";
 
-function Footer() {
+function Footer({ className }) {
   return (
-    <Container>
+    <Container className={`footer ${className}`}>
       <Row className="align-items-center footer">
         <Col md={{ span: 9, order: "last" }}>
           <ul className="footer__menu">

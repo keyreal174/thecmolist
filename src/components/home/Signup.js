@@ -124,7 +124,7 @@ function Signup() {
         </div>
         <div className="col-md-3"></div>
       </div>
-      <Footer />
+      <Footer className="signup--footer" />
     </div>
   );
 }
