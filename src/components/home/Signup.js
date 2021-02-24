@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "../app/base/Footer/Footer";
 import "./Signup.scss";
 
 function handleSubmit(e) {
@@ -123,12 +124,7 @@ function Signup() {
         </div>
         <div className="col-md-3"></div>
       </div>
-
-      <footer className="footer">
-        <div className="footer__wrapper">
-          <div className="row" />
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
