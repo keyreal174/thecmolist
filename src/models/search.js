@@ -41,6 +41,15 @@ export default {
         token: data.token,
       };
     },
+
+    setModule: (oldState, data) => {
+      return {
+        ...oldState,
+        modules: data.feedData,
+        moreData: data.feedData && data.feedData.length > 0,
+        token: data.token,
+      };
+    },
   },
   effects: (dispatch) => ({
     async fetchFullSearch(query) {
@@ -54,10 +63,12 @@ export default {
 
     async fetchRefinedSearch(data, rootState) {
       try {
-        const { query, filter } = data;
+        const { query, filter, isReset } = data;
         const token = rootState.searchModel.token;
         const response = await getRefinedSearchRequest(query, filter, token);
-        dispatch.searchModel.updateModule(response.data);
+        !isReset
+          ? dispatch.searchModel.updateModule(response.data)
+          : dispatch.searchModel.setModule(response.data);
       } catch (err) {
         throw new Error("Could not get search refined data" + err.toString());
       }

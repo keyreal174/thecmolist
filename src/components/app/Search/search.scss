@@ -1,0 +1,86 @@
+@import "../../../sass/globals.scss";
+
+.search-page-article {
+  .custom-card-header {
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 27px;
+    color: $text-1;
+  }
+
+  .custom-card-body {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .see-more-button {
+    color: #0175b0;
+    text-decoration: none;
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  .article-badge {
+    top: 35px;
+  }
+
+  div.col-lg-12.col-sm-12 {
+    position: initial;
+  }
+}
+
+.feed-dashboard-cell.noBorder {
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid $gray-5;
+  padding-top: 12px;
+  position: relative;
+
+  .article-wrapper-header {
+    align-items: center;
+
+    .article-wrapper-title {
+      span {
+        a:first-child {
+          font-weight: bold;
+          font-size: 17px;
+          line-height: 27px;
+          color: $text-1;
+        }
+      }
+    }
+
+    .article-wrapper-subtitle {
+      font-weight: normal;
+      font-size: 15px;
+      line-height: 27px;
+      color: $text-2;
+    }
+  }
+
+  .article-title {
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 27px;
+    color: $text-1;
+  }
+
+  .article-text {
+    font-weight: normal;
+    font-size: 17px;
+    line-height: 20px;
+    color: $text-2;
+  }
+
+  .article-body.article-wrap {
+    padding: 0 16px;
+  }
+
+  .engagement-buttons {
+    border: none;
+    border-radius: 0;
+    justify-content: flex-start;
+
+    padding: 16px 4px;
+  }
+}
