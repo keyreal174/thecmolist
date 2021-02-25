@@ -56,6 +56,7 @@ function Header({ getProfileStats, profileStats }) {
         setIsLoading(false);
       });
   };
+  const notificationCount = 0; // FUTURE: fetch this from a model
 
   const goSearchPage = () => {
     history.push({
@@ -143,14 +144,18 @@ function Header({ getProfileStats, profileStats }) {
             <Nav.Link as={NavLink} to="/notifications">
               <img src={Notification} alt="" />
               {isSmall ? "" : "Notifications"}
-              <div className="notifications--wrapper">
-                <img
-                  className="notifications--rectangle"
-                  src={Rectangle2}
-                  alt="Amount rectangle"
-                />
-                <span className="notifications--number">12</span>
-              </div>
+              {notificationCount > 0 && (
+                <div className="notifications--wrapper">
+                  <img
+                    className="notifications--rectangle"
+                    src={Rectangle2}
+                    alt="Amount rectangle"
+                  />
+                  <span className="notifications--number">
+                    {notificationCount}
+                  </span>
+                </div>
+              )}
             </Nav.Link>
             <NavDropdown
               className={
