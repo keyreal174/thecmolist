@@ -1,0 +1,32 @@
+@import "../../../sass/globals.scss";
+
+.layout {
+  position: relative;
+
+  &--header {
+    height: 184px;
+    display: flex;
+    &-background {
+      background: $white;
+      position: absolute;
+      left: 0;
+      height: 184px;
+      width: 100%;
+    }
+    &-logo {
+      color: $brand;
+      align-self: center;
+    }
+  }
+  &--title {
+    color: $text-1;
+    font-size: 35px;
+    line-height: 45px;
+    text-align: center;
+    margin-top: 45px;
+  }
+  &--children {
+    margin-top: 42px;
+    margin-bottom: 30px;
+  }
+}
