@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import CustomCard from "../base/CustomCard/CustomCard";
-import ConnectBadge from "../base/ConnectBadge/ConntectBadge";
+import ConnectBadge from "../base/ConnectBadge/ConnectBadge";
+import {
+  getCheckedForEngagementType,
+  getEngagementForId,
+} from "../base/EngagementButtons/EngagementButtons";
 import Article from "../base/Article/Article";
 import Arrow from "../base/icons/arrow.svg";
 import { cdn } from "../../util/constants";
@@ -16,6 +20,8 @@ const RenderList = ({
   localConnectedUsers,
   invalidateFeed,
   connectUser,
+  content,
+  reactions,
 }) => {
   const handleEngagementButtonClick = async (caller, engagementType) => {
     const id = caller["content_id"];
@@ -32,7 +38,9 @@ const RenderList = ({
 
   const List = Object.entries(modules).map(([key, value], i) => {
     const f = filters.filter((item) => item.slug === key)[0];
-    const heading = f ? f["title"] : "";
+    const heading = f && f["title"] ? f["title"] : "";
+
+    const contentId = content && content.content_id;
     return (
       <CustomCard key={i} heading={heading}>
         {value.map((item, j) => {
@@ -49,19 +57,23 @@ const RenderList = ({
                     checked: true,
                     text: "Answer",
                     icon: `${cdn}/Answer.png`,
-                    number: 2,
+                    number: getEngagementForId(contentId, "answer", reactions),
                   },
                   {
                     checked: true,
                     text: "Thanks",
                     icon: `${cdn}/Thanks.png`,
-                    number: 4,
+                    number: getEngagementForId(contentId, "thanks", reactions),
                   },
                   {
                     checked: true,
                     text: "Insightful",
                     icon: `${cdn}/Insightful.png`,
-                    number: 3,
+                    number: getEngagementForId(
+                      contentId,
+                      "insightful",
+                      reactions
+                    ),
                   },
                 ]
               }

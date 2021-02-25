@@ -3,7 +3,7 @@ import { useHistory } from "react-router";
 import { Button, Form } from "react-bootstrap";
 import CustomCard from "../base/CustomCard/CustomCard";
 
-const TopBanner = () => {
+const NetworkTopBanner = () => {
   return (
     <div className="network-top-banner top-banner-container">
       <CustomCard>
@@ -16,4 +16,4 @@ const TopBanner = () => {
   );
 };
 
-export default TopBanner;
+export default NetworkTopBanner;

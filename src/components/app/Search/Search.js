@@ -120,6 +120,8 @@ const Search = (props) => {
                 localConnectedUsers={props.localConnectedUsers}
                 invalidateFeed={props.invalidateFeed}
                 connectUser={props.connectUser}
+                content={props.content}
+                reactions={props.reactions}
               />
             )}
           </div>
@@ -135,6 +137,8 @@ const mapState = (state) => {
     modules: state.searchModel.modules,
     moreData: state.searchModel.moreData,
     localConnectedUsers: state.userModel.localConnectedUsers,
+    content: state.contentModel.content,
+    reactions: state.reactionModel.reactions,
   };
 };
 
