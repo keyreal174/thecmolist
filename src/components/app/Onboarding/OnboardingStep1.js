@@ -7,10 +7,21 @@ import "./onboardingStep1.scss";
 const OnboardingStep1 = () => {
   const history = useHistory();
   const handleSubmit = (e) => {
-    console.log("submit");
-    debugger;
+    setLoading(true);
+    const formData = {
+      title,
+      companyName,
+      companyIndustry,
+      companyStage,
+      headline,
+      networking: networkingYes ? true : false,
+      adviding: advidingYes ? true : false,
+    };
+    console.log(formData);
     history.push("onboarding_step2");
+    setLoading(false);
   };
+
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState("");
   const [companyName, setCompanyName] = useState("");
@@ -26,38 +37,39 @@ const OnboardingStep1 = () => {
     const { value } = e.target;
     setTitle(value);
   };
-
   const handleCompanyNameChange = (e) => {
     const { value } = e.target;
     setCompanyName(value);
   };
-
   const handleCompanyIndustryChange = (e) => {
     const { value } = e.target;
     setCompanyIndustry(value);
   };
-
   const handleCompanyStageChange = (e) => {
     const { value } = e.target;
     setCompanyStage(value);
   };
-
   const handleHeadlineChange = (e) => {
     const { value } = e.target;
     setHeadline(value);
   };
-
   const handleNetworkingYesChange = () => {
     setNetworkingYes(true);
     setNetworkingNo(false);
   };
-
   const handleNetworkingNoChange = () => {
     setNetworkingYes(false);
     setNetworkingNo(true);
   };
+  const handleAdvidingYesChange = () => {
+    setAdvidingYes(true);
+    setAdvidingNo(false);
+  };
+  const handleAdvidingNoChange = () => {
+    setAdvidingYes(false);
+    setAdvidingNo(true);
+  };
 
-  const handleAdvidingYesChange = () => {};
   return (
     <OnboardingLayout
       now={50}
@@ -66,10 +78,11 @@ const OnboardingStep1 = () => {
       }
     >
       <>
-        <Form
+        <form
           className="onboarding--form"
           id="onboarding_step-1"
-          onSubmit={() => handleSubmit()}
+          name="onboarding_step-1"
+          onSubmit={(e) => handleSubmit(e)}
         >
           <Row>
             <Col md="6">
@@ -143,8 +156,8 @@ const OnboardingStep1 = () => {
                   label="Yes"
                   required
                   name="networking"
-                  onChange={handleNetworkingChange}
-                  value={networking}
+                  onChange={handleNetworkingYesChange}
+                  checked={networkingYes}
                 />
                 <Form.Check
                   className="onboarding--radio"
@@ -152,8 +165,8 @@ const OnboardingStep1 = () => {
                   label="No"
                   required
                   name="networking"
-                  onChange={handleNetworkingChange}
-                  value={networking}
+                  onChange={handleNetworkingNoChange}
+                  checked={networkingNo}
                 />
               </div>
             </Col>
@@ -166,8 +179,8 @@ const OnboardingStep1 = () => {
                   label="Yes"
                   required
                   name="adviding"
-                  onChange={handleAdvidingChange}
-                  value={adviding}
+                  onChange={handleAdvidingYesChange}
+                  checked={advidingYes}
                 />
                 <Form.Check
                   className="onboarding--radio"
@@ -175,20 +188,20 @@ const OnboardingStep1 = () => {
                   label="No"
                   required
                   name="adviding"
-                  onChange={handleAdvidingChange}
-                  value={adviding}
+                  onChange={handleAdvidingNoChange}
+                  checked={advidingNo}
                 />
               </div>
             </Col>
           </Row>
-        </Form>
+        </form>
         <Row>
           <Col md="12" className="d-flex justify-content-end">
             <Button
               className="onboarding--button"
-              type="button"
               form="onboarding_step-1"
-              onClick={(e) => handleSubmit(e)}
+              type="submit"
+              disable={loading}
             >
               Continue
             </Button>
