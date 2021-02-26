@@ -57,13 +57,14 @@ const TopBanner = (props) => {
             )}
             <div className="feed-page-top-banner-content">
               <h3>{props.title}</h3>
-              <p>Marketing</p>
+              {/* FUTURE (from API) */}
+              {/*<p>Marketing</p>
               <div className="d-flex align-items-center">
                 <span>1.4k Followers</span>
                 <Button className="btn-blue mb-2" onClick={handleShow}>
                   + Follow Space
                 </Button>
-              </div>
+              </div> */}
             </div>
           </div>
         </CustomCard>

@@ -41,11 +41,11 @@ function RenderRightContainer({
   memberList,
   vendorList,
   saveContent,
-  isGroup,
+  isGroupOrTopic,
 }) {
   return (
     <Col md="3" className="feed-right-container">
-      {!isGroup ? (
+      {!isGroupOrTopic ? (
         <Fragment>
           <MyNetwork title={feedTitle} saveContent={saveContent} />
           <BuildYourNetwork buildYourNetworkItems={buildYourNetworkItems} />
@@ -188,7 +188,7 @@ function RenderDashboard(props) {
         memberList={props.memberList}
         vendorList={props.vendorList}
         saveContent={props.saveContent}
-        isGroup={props.isGroup}
+        isGroupOrTopic={props.isGroupOrTopic}
       />
     </Row>
   );
@@ -208,6 +208,7 @@ const Feed = (props) => {
   const [filters, setFilters] = useState([]);
   const [bannerTitle, setBannerTitle] = useState("");
   const [bannerImage, setBannerImage] = useState("");
+  const [isTopic, setIsTopic] = useState(false);
   const [isGroup, setIsGroup] = useState(false);
   const changeDashboardHeader = (idx) => {
     if (idx < filters.length) {
@@ -238,29 +239,25 @@ const Feed = (props) => {
     setActiveSelector(idx);
     changeDashboardFilter(filters[filterIdx].slug, subSelectors[idx].slug);
   };
-  useEffect(() => {
-    if (location && location.pathname && location.pathname.includes("group")) {
-      setIsGroup(true);
+  const initFeedPage = (profileStats, isTopicPage) => {
+    let newFilters = [
+      { title: "My Network", slug: "my-network", enabled: true },
+      { title: "My Peers", slug: "my-peers", enabled: true },
+      { title: "My Experts", slug: "my-experts", enabled: true },
+    ];
+    if (profileStats && profileStats.profile && profileStats.profile.groups) {
+      newFilters = newFilters.concat(
+        profileStats.profile.groups.map((group) => {
+          return {
+            title: group.name,
+            slug: group.slug,
+            image: group.image || null,
+            enabled: true,
+          };
+        })
+      );
     }
-    const getProfileStats = async () => props.getProfileStats();
-    getProfileStats().then((profileStats) => {
-      let newFilters = [
-        { title: "My Network", slug: "my-network", enabled: true },
-        { title: "My Peers", slug: "my-peers", enabled: true },
-        { title: "My Experts", slug: "my-experts", enabled: true },
-      ];
-      if (profileStats && profileStats.profile && profileStats.profile.groups) {
-        newFilters = newFilters.concat(
-          profileStats.profile.groups.map((group) => {
-            return {
-              title: group.name,
-              slug: group.slug,
-              image: group.image || null,
-              enabled: true,
-            };
-          })
-        );
-      }
+    if (!isTopicPage) {
       setFilters(newFilters);
       let groupIdx = -1;
       if (window.location.href.includes("/group/")) {
@@ -275,8 +272,43 @@ const Feed = (props) => {
         newFilters[idx].slug,
         subSelectors[activeSelector].slug
       );
-    });
+    } else {
+      // topics are a simple case. Just add one filter (the topic) and set it to 0
+      // the filter view is hidden by default for topic
+      let topicSlug = Util.parsePath(window.location.href).trailingPath;
+      setFilters([
+        {
+          title: topicSlug,
+          slug: topicSlug,
+          enabled: true,
+        },
+      ]);
+      setFilterIdx(0);
+      setBannerTitle(topicSlug);
+      setBannerImage(`${cdn}/directory.png`);
+      changeDashboardFilter(topicSlug, subSelectors[activeSelector].slug);
+    }
+  };
+  useEffect(() => {
+    let pageLocationIsTopic = false;
+    if (location && location.pathname) {
+      if (location.pathname.includes("group")) {
+        setIsGroup(true);
+      } else if (location.pathname.includes("topic")) {
+        setIsTopic(true);
+        pageLocationIsTopic = true;
+      }
+    }
+    const getProfileStats = async () => props.getProfileStats();
+    getProfileStats().then((profileStats) =>
+      initFeedPage(profileStats, pageLocationIsTopic)
+    );
   }, []);
+  useEffect(() => {
+    let pageLocationIsTopic = props.isTopic || false;
+    setIsTopic(pageLocationIsTopic);
+    initFeedPage(props.profileStats, pageLocationIsTopic);
+  }, [props.isTopic]);
 
   return (
     <>
@@ -285,7 +317,7 @@ const Feed = (props) => {
           <Header />
           <CSSTransition in={isGroup} timeout={500} classNames="top-banner">
             <div>
-              {isGroup && (
+              {(isGroup || isTopic) && (
                 <TopBanner
                   title={bannerTitle}
                   image={bannerImage}
@@ -294,14 +326,16 @@ const Feed = (props) => {
               )}
             </div>
           </CSSTransition>
-          <div style={{ width: "100%" }}>
-            <Filter
-              className="mt-1"
-              filterIdx={filterIdx}
-              filters={filters}
-              onChange={(idx) => changeFilter(idx)}
-            />
-          </div>
+          {!isTopic && (
+            <div style={{ width: "100%" }}>
+              <Filter
+                className="mt-1"
+                filterIdx={filterIdx}
+                filters={filters}
+                onChange={(idx) => changeFilter(idx)}
+              />
+            </div>
+          )}
 
           <div className="feed-divider">
             <div className="section-break" />
@@ -340,7 +374,7 @@ const Feed = (props) => {
             fetchActiveFeed={props.fetchActiveFeed}
             reactions={props.reactions}
             changeReaction={props.changeReaction}
-            isGroup={isGroup}
+            isGroupOrTopic={isGroup || isTopic}
           />
 
           <InviteModal
