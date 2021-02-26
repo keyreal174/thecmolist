@@ -72,7 +72,6 @@ const Network = (props) => {
           }
         }
       }
-
       setFilters(newFilters);
       setBannerTitle(newFilters[idx].title);
       setBannerImage(newFilters[idx].image);
