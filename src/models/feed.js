@@ -32,6 +32,7 @@ export default {
     dashboardFeedData: {},
     activeFeed: [],
     activeFeedHasMoreData: false,
+    activeFeedAbout: {},
     activeFeedMembers: [],
     activeFeedVendors: [],
     activeFilter: "",
@@ -71,6 +72,8 @@ export default {
         currentFeed.moreData = false;
         newState.activeFeedHasMoreData = false;
       }
+      currentFeed.about = data.about || {};
+      newState.activeFeedAbout = currentFeed.about;
       if (data.members != null) {
         currentFeed.members = data.members;
         newState.activeFeedMembers = currentFeed.members;
@@ -91,6 +94,7 @@ export default {
         ...rootState,
         activeFilter: filterKey,
         activeFeed: rootState.dashboardFeedData[filterKey].data,
+        activeFeedAbout: rootState.dashboardFeedData[filterKey].about || {},
         activeFeedMembers: rootState.dashboardFeedData[filterKey].members || [],
         activeFeedVendors: rootState.dashboardFeedData[filterKey].vendors || [],
       };

@@ -38,6 +38,7 @@ import "./feed.scss";
 function RenderRightContainer({
   feedTitle,
   buildYourNetworkItems,
+  feedAbout,
   memberList,
   vendorList,
   saveContent,
@@ -51,7 +52,7 @@ function RenderRightContainer({
           <BuildYourNetwork buildYourNetworkItems={buildYourNetworkItems} />
         </Fragment>
       ) : (
-        <AboutSpace />
+        <AboutSpace about={feedAbout} />
       )}
       <AllMembers memberList={memberList} />
       <Vendors vendorList={vendorList} />
@@ -185,6 +186,7 @@ function RenderDashboard(props) {
       <RenderRightContainer
         feedTitle={props.feedTitle}
         buildYourNetworkItems={profileStats.buildYourNetwork}
+        feedAbout={props.feedAbout}
         memberList={props.memberList}
         vendorList={props.vendorList}
         saveContent={props.saveContent}
@@ -368,6 +370,7 @@ const Feed = (props) => {
             profileStats={props.profileStats}
             feedData={props.activeFeed}
             moreData={props.activeFeedHasMoreData}
+            feedAbout={props.activeFeedAbout}
             memberList={props.activeFeedMembers}
             vendorList={props.activeFeedVendors}
             saveContent={props.saveContent}
@@ -400,6 +403,7 @@ const mapState = (state) => {
     feedLoading: state.feedModel.feedLoading,
     activeFeed: state.feedModel.activeFeed,
     activeFeedHasMoreData: state.feedModel.activeFeedHasMoreData,
+    activeFeedAbout: state.feedModel.activeFeedAbout,
     activeFeedMembers: state.feedModel.activeFeedMembers,
     activeFeedVendors: state.feedModel.activeFeedVendors,
     filterIdx: state.feedModel.filterIdx,
