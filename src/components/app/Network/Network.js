@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router";
 import { connect } from "react-redux";
 import { Col, Row, Container } from "react-bootstrap";
 import Header from "../base/Header/Header";
@@ -10,9 +11,11 @@ import PopularTopics from "../base/PopularTopics/PopularTopics";
 import SimpleTopBanner from "../base/SimpleTopBanner/SimpleTopBanner";
 import NetworkFeed from "./NetworkFeed";
 import Analytics from "../../util/Analytics";
+import { cdn } from "../../util/constants";
 import "./network.scss";
 
 const Network = (props) => {
+  const location = useLocation();
   const [inviteModalShow, setInviteModalShow] = useState(false);
   const fetchData = async () => await props.fetchActiveNetwork();
   const [filterIdx, setFilterIdx] = useState(0);
@@ -47,10 +50,35 @@ const Network = (props) => {
         );
       }
       let idx = 0;
+      if (location && location.hash) {
+        let networkSlug = location.hash;
+        if (location.hash.indexOf("#") === 0) {
+          networkSlug = location.hash.substring(1);
+        }
+        if (networkSlug.length > 0) {
+          let existingFilterIndex = newFilters.findIndex(
+            (nf) => nf.slug === networkSlug
+          );
+          if (existingFilterIndex >= 0) {
+            idx = existingFilterIndex;
+          } else {
+            newFilters = newFilters.concat({
+              title: networkSlug,
+              slug: networkSlug,
+              image: `${cdn}/directory.png` || null,
+              enabled: true,
+            });
+            idx = newFilters.length - 1;
+          }
+        }
+      }
+
       setFilters(newFilters);
       setBannerTitle(newFilters[idx].title);
       setBannerImage(newFilters[idx].image);
-      props.changeFilter(newFilters[filterIdx].slug);
+      setFilterIdx(idx);
+      props.changeFilter(newFilters[idx].slug);
+      changeDashboardHeader(idx);
     });
   }, []);
 
