@@ -106,6 +106,44 @@ class Login extends React.Component {
               onSubmit={this.handleSubmit.bind(this)}
             >
               <h2 className="login--title">Sign in into CMOlist</h2>
+              <input
+                type="email"
+                className="form-control form-username input-field"
+                name="Username"
+                placeholder="Email"
+                required=""
+              />
+              <input
+                type="password"
+                className="form-control form-password input-field"
+                style={{ marginBottom: "15px" }}
+                name="Password"
+                placeholder="Password"
+                required=""
+              />
+              <button
+                className="btn btn-block btn-linkedin button-login"
+                name="Submit"
+                value="Login"
+                type="Submit"
+                disabled={this.state.busy}
+              >
+                <span>Login</span>
+                <div
+                  style={{
+                    "margin-top": "5px",
+                    "margin-right": "4px",
+                    float: "right",
+                  }}
+                >
+                  <Spinner
+                    radius={10}
+                    color={"#eee"}
+                    stroke={2}
+                    visible={this.state.busy}
+                  />
+                </div>
+              </button>
               <a
                 className="login--linkedIn btn btn-block btn-social btn-linkedin button-login"
                 href={this.state.linkedInUrl}
