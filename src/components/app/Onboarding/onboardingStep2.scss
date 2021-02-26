@@ -12,22 +12,22 @@
     background: transparent;
     border: 1px solid $brand;
     color: $brand;
+    border-radius: 22px !important;
     padding: 8px 37px;
-    border-radius: 18px;
     margin-right: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 30px !important;
+    &:focus,
+    &:hover,
+    &:active,
+    &.active {
+      background: $brand !important;
+    }
     &-wrapper {
       padding: 40px 50px;
     }
-    &:active,
-    &:focus {
-      color: $white;
-      background: $brand;
-      border-radius: 18px;
-      outline: none;
-    }
   }
   &--show-more {
+    color: $brand;
     padding: 22px;
     width: 100%;
   }
@@ -44,5 +44,10 @@
     border-radius: 23px;
     padding: 11px;
     min-width: 140px;
+    &:hover,
+    &:active,
+    &:focus {
+      background: $brand;
+    }
   }
 }

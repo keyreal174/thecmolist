@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import OnboardingLayout from "./OnboardingLayout";
 import CustomCard from "../base/CustomCard/CustomCard";
-import { Col, Row, Button } from "react-bootstrap";
+import {
+  Col,
+  Row,
+  ToggleButtonGroup,
+  ToggleButton,
+  Button,
+} from "react-bootstrap";
 import "./onboardingStep2.scss";
+import { useHistory } from "react-router";
 
 const OnboardingStep2 = () => {
   const pils = [
@@ -30,9 +37,31 @@ const OnboardingStep2 = () => {
     "marketing-analytics",
     "influencer-marketing",
   ];
+
   const [showMore, setShowMore] = useState(false);
   const handleButtonClick = () => {
     setShowMore(!showMore);
+  };
+
+  const [value, setValue] = useState([
+    "leadership",
+    "marketing",
+    "advertising",
+    "news",
+    "ecommerce-marketing",
+  ]);
+  const handleChange = (value) => setValue(value);
+
+  const [loading, setLoading] = useState(false);
+
+  const history = useHistory();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    console.log("submiting values:", value);
+    history.push("/feed");
+    setLoading(false);
   };
   return (
     <OnboardingLayout
@@ -43,13 +72,23 @@ const OnboardingStep2 = () => {
         <CustomCard className="onboarding--card">
           <Row className="onboarding--pill-wrapper">
             <Col md="12">
-              {pils.map((p, index) => {
-                if (index < 13 || showMore) {
-                  return (
-                    <button className="onboarding--pill">{`#${p}`}</button>
-                  );
-                }
-              })}
+              <ToggleButtonGroup
+                className="d-flex flex-wrap"
+                type="checkbox"
+                value={value}
+                onChange={handleChange}
+              >
+                {pils.map((p, index) => {
+                  if (index < 13 || showMore) {
+                    return (
+                      <ToggleButton
+                        value={p}
+                        className="onboarding--pill"
+                      >{`#${p}`}</ToggleButton>
+                    );
+                  }
+                })}
+              </ToggleButtonGroup>
             </Col>
           </Row>
           <Row className="position-relative">
@@ -67,7 +106,13 @@ const OnboardingStep2 = () => {
         </CustomCard>
         <Row>
           <Col className="d-flex justify-content-end" md="12">
-            <Button className="mt-3 onboarding--done">Done</Button>
+            <Button
+              className="mt-3 onboarding--done"
+              onClick={handleSubmit}
+              disabled={loading}
+            >
+              Done
+            </Button>
           </Col>
         </Row>
       </>
