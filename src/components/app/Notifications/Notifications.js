@@ -35,7 +35,12 @@ const Notifications = (props) => {
               })}
           </div>
 
-          {props.moreData && (
+          {feedData.length === 0 && (
+            <div className="wrapper article-wrapper">
+              <div className="no-feed-data-header">No notifications yet.</div>
+            </div>
+          )}
+          {feedData.length > 0 && props.moreData && (
             <div className="row">
               <div className="col-md-2 mt-2 mx-auto">
                 <button

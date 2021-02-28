@@ -133,6 +133,16 @@ class App extends React.Component {
             }
           />
           <Route
+            path="/topic"
+            render={(props) =>
+              this.state.authed ? (
+                <Feed isTopic={true} />
+              ) : (
+                <Redirect to="/login" />
+              )
+            }
+          />
+          <Route
             path="/content/:id"
             render={(props) =>
               this.state.authed ? (
