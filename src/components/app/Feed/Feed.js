@@ -2,16 +2,16 @@ import React, { useEffect, useState, Fragment } from "react";
 import { connect } from "react-redux";
 import { useLocation } from "react-router";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { CSSTransition } from "react-transition-group";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Filter from "../base/Filter/Filter";
 import Article from "../base/Article/Article";
-import Banner from "../base/Banner/Banner";
 import InviteModal from "../base/ShareModule/InviteModal";
 import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
 import ProfileStats from "../ProfileStats/ProfileStats";
 import AskQuestion from "../base/AskQuestion/AskQuestion";
+import AddMemberModal from "../base/AddMemberModal/AddMemberModal";
 import {
   getCheckedForEngagementType,
   getEngagementForId,
@@ -379,7 +379,11 @@ const Feed = (props) => {
             changeReaction={props.changeReaction}
             isGroupOrTopic={isGroup || isTopic}
           />
-
+          <AddMemberModal
+            onClose={() => console.log("close")}
+            onSubmit={() => console.log("submit")}
+            show={true}
+          />
           <InviteModal
             show={inviteModalShow}
             onHide={() => setInviteModalShow(false)}
