@@ -5,8 +5,8 @@ import CustomCard from "../base/CustomCard/CustomCard";
 const SpaceItem = ({ space }) => {
   return (
     <div className="d-flex align-items-center py-1">
-      <a href="#" className="profile-stats__space-title">
-        {space.title}
+      <a href={"/topic/" + space.slug} className="profile-stats__space-title">
+        {space.name}
       </a>
       {space.count && (
         <Badge pill className="profile-stats__spaces-badge">
@@ -20,9 +20,11 @@ const SpaceItem = ({ space }) => {
 const MySpaces = ({ profileStats }) => {
   return (
     <CustomCard heading="My Spaces">
-      {profileStats.spaces && profileStats.spaces.length > 0 ? (
+      {profileStats.profile &&
+      profileStats.profile.spaces &&
+      profileStats.profile.spaces.length > 0 ? (
         <div className="profile-stats__spaces-section">
-          {profileStats.spaces.map((space, i) => (
+          {profileStats.profile.spaces.map((space, i) => (
             <SpaceItem space={space} key={i} />
           ))}
         </div>

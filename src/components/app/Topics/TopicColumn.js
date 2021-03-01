@@ -8,7 +8,10 @@ const TopicColumn = ({ topic, followTopic }) => {
     <div className="topic-wrapper text-center p-3 h-100 d-flex flex-column">
       <div style={{ flex: 1 }}>
         <h2 className="sharp-symbol">#</h2>
-        <Link className="topic-link mb-3" to="#">
+        <Link
+          className="topic-link mb-3"
+          to={`/topic/${topic.slug || topic.name}`}
+        >
           {topic.name}
         </Link>
         <div className="topic-description mb-4">

@@ -27,34 +27,34 @@
   },
   "spaces": [
     {
-      "title": "#advertising",
+      "name": "#advertising",
       "count": 12
     },
     {
-      "title": "#social-media-marketing"
+      "name": "#social-media-marketing"
     },
     {
-      "title": "#performance-marketing",
+      "name": "#performance-marketing",
       "count": 8
     },
     {
-      "title": "#public-relations"
+      "name": "#public-relations"
     },
     {
-      "title": "#design",
+      "name": "#design",
       "count": 6
     },
     {
-      "title": "#account-based-marketing"
+      "name": "#account-based-marketing"
     },
     {
-      "title": "#content-marketing"
+      "name": "#content-marketing"
     },
     {
-      "title": "#conversion-ratio"
+      "name": "#conversion-ratio"
     },
     {
-      "title": "#demand-generation"
+      "name": "#demand-generation"
     }
   ],
   "buildYourNetwork": [

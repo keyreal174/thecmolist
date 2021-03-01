@@ -1,0 +1,61 @@
+@import "../../sass/globals.scss";
+
+.login {
+  &--logo {
+    text-align: center;
+    display: block;
+    margin-bottom: 36px;
+  }
+  &--form {
+    padding: 30px 38px 28px;
+  }
+  &--title {
+    color: $text-1;
+    font-size: 20px;
+    margin-bottom: 27px;
+    text-align: center;
+  }
+  &--linkedIn {
+    border-radius: 23px;
+    padding-left: 12px 35px;
+    font-size: 15px;
+    vertical-align: middle;
+    img {
+      margin-left: 35px;
+      margin-top: 7px;
+    }
+  }
+  &--disclaimer {
+    color: $text-2;
+    text-align: center;
+    font-size: 12px;
+    padding: 0px 70px;
+    margin-top: 15px;
+    margin-bottom: 66px;
+  }
+  &--questions {
+    font-size: 15px;
+    text-align: center;
+    display: block;
+    color: $text-2;
+  }
+  &--contact-email {
+    color: $brand;
+  }
+  &--separator {
+    margin-top: 26px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid #e0e0e7;
+    width: 100%;
+    position: absolute;
+    max-width: 420px;
+    left: 21px;
+  }
+  &--signup {
+    margin-top: 40px;
+    text-align: center;
+  }
+  &--footer {
+    margin-top: 460px;
+  }
+}

@@ -1,0 +1,28 @@
+@import "../../sass/globals.scss";
+
+.signedup {
+  &--logo {
+    text-align: center;
+    display: block;
+    margin-bottom: 40px;
+  }
+  &--thanks {
+    color: $text-1;
+  }
+  &--contact {
+    margin: 8px 110px;
+    font-size: 16px;
+    line-height: 18px;
+  }
+  &--form {
+    background: $white;
+    border-radius: 4px;
+    box-shadow: 0px 0px 4px rgba(21, 62, 102, 0.1);
+    padding-top: 40px;
+    padding-bottom: 40px;
+    text-align: center;
+  }
+  &--footer {
+    margin-top: 660px;
+  }
+}

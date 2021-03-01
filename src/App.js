@@ -10,6 +10,8 @@ import Login from "./components/login/Login";
 import Logout from "./components/login/Logout";
 import Network from "./components/app/Network/Network";
 import Notifications from "./components/app/Notifications/Notifications";
+import OnboardingStep1 from "./components/app/Onboarding/OnboardingStep1.js";
+import OnboardingStep2 from "./components/app/Onboarding/OnboardingStep2.js";
 import Profile from "./components/app/Profile/Profile";
 import ProfileEdit from "./components/app/ProfileEdit/ProfileEdit";
 import ReactGA from "react-ga";
@@ -133,6 +135,16 @@ class App extends React.Component {
             }
           />
           <Route
+            path="/topic"
+            render={(props) =>
+              this.state.authed ? (
+                <Feed isTopic={true} />
+              ) : (
+                <Redirect to="/login" />
+              )
+            }
+          />
+          <Route
             path="/content/:id"
             render={(props) =>
               this.state.authed ? (
@@ -201,7 +213,20 @@ class App extends React.Component {
               this.state.authed ? <VendorProfile /> : <Redirect to="/login" />
             }
           />
-
+          <Route
+            exact
+            path="/onboarding_step1"
+            render={(props) =>
+              this.state.authed ? <OnboardingStep1 /> : <Redirect to="/login" />
+            }
+          />
+          <Route
+            exact
+            path="/onboarding_step2"
+            render={(props) =>
+              this.state.authed ? <OnboardingStep2 /> : <Redirect to="/login" />
+            }
+          />
           <Route path="/login">
             <Login />
           </Route>

@@ -35,9 +35,7 @@ const NetworkFeed = ({
         })}
       {feedData && feedData.length === 0 && (
         <div className="wrapper article-wrapper">
-          <div className="no-feed-data-header">
-            You haven't connected to anyone yet.
-          </div>
+          <div className="no-feed-data-header">No members here yet.</div>
         </div>
       )}
       {moreData && (
