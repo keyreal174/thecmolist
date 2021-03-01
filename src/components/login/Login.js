@@ -3,6 +3,10 @@ import axios from "axios";
 import Spinner from "react-spinner-material";
 import querySearch from "stringquery";
 import Util from "../util/Util";
+import Footer from "../app/base/Footer/Footer";
+import "./login.scss";
+
+import LinkedInIcon from "./icons/linkedin.svg";
 
 const loginRequest = (user, password) => {
   var postBody = {
@@ -90,90 +94,89 @@ class Login extends React.Component {
     }
     return (
       <div className="container">
-        <div className="mt100">
-          <form
-            name="Login_Form"
-            className="form-signin form-group"
-            onSubmit={this.handleSubmit.bind(this)}
-          >
-            <h2 className="form-signin-heading">CMOlist Login</h2>
-            <hr className="colorgraph" />
-            <br />
-            <input
-              type="email"
-              className="form-control form-username input-field"
-              name="Username"
-              placeholder="Email"
-              required=""
-            />
-            <input
-              type="password"
-              className="form-control form-password input-field"
-              style={{ marginBottom: "15px" }}
-              name="Password"
-              placeholder="Password"
-              required=""
-            />
-            <button
-              className="btn btn-block btn-linkedin button-login"
-              name="Submit"
-              value="Login"
-              type="Submit"
-              disabled={this.state.busy}
-            >
-              <span>Login</span>
-              <div
-                style={{
-                  "margin-top": "5px",
-                  "margin-right": "4px",
-                  float: "right",
-                }}
-              >
-                <Spinner
-                  radius={10}
-                  color={"#eee"}
-                  stroke={2}
-                  visible={this.state.busy}
-                />
-              </div>
-            </button>
-            <a
-              class="btn btn-block btn-social btn-linkedin button-login"
-              href={this.state.linkedInUrl}
-              style={{ color: "white" }}
-            >
-              <span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  style={{ marginTop: "-2px", marginLeft: "1px" }}
-                  viewBox="0 0 21 21"
-                  data-supported-dps="21x21"
-                  width="21"
-                  height="21"
-                  focusable="false"
-                >
-                  <g transform="scale(.4375)" fill="none" fill-rule="evenodd">
-                    <rect
-                      class="bug-text-color"
-                      fill="#FFF"
-                      x="1"
-                      y="1"
-                      width="46"
-                      height="46"
-                      rx="4"
-                    ></rect>
-                    <path
-                      d="M0 4.01A4.01 4.01 0 014.01 0h39.98A4.01 4.01 0 0148 4.01v39.98A4.01 4.01 0 0143.99 48H4.01A4.01 4.01 0 010 43.99V4.01zM19 18.3h6.5v3.266C26.437 19.688 28.838 18 32.445 18 39.359 18 41 21.738 41 28.597V41.3h-7V30.159c0-3.906-.937-6.109-3.32-6.109-3.305 0-4.68 2.375-4.68 6.109V41.3h-7v-23zM7 41h7V18H7v23zm8-30.5a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z"
-                      class="background"
-                      fill="#0077B5"
-                    ></path>
-                  </g>
-                </svg>
-              </span>{" "}
-              Sign in with Linkedin
+        <div className="mt100 row no-gutters">
+          <div className="col-md-3" />
+          <div className="col-md-6">
+            <a className="login--logo nav__logo" href="/">
+              CMO<span>list</span>
             </a>
-          </form>
+            <form
+              name="Login_Form"
+              className="login--form form-signin form-group"
+              onSubmit={this.handleSubmit.bind(this)}
+            >
+              <h2 className="login--title">Sign in into CMOlist</h2>
+              <input
+                type="email"
+                className="form-control form-username input-field"
+                name="Username"
+                placeholder="Email"
+                required=""
+              />
+              <input
+                type="password"
+                className="form-control form-password input-field"
+                style={{ marginBottom: "15px" }}
+                name="Password"
+                placeholder="Password"
+                required=""
+              />
+              <button
+                className="btn btn-block btn-linkedin button-login"
+                name="Submit"
+                value="Login"
+                type="Submit"
+                disabled={this.state.busy}
+              >
+                <span>Login</span>
+                <div
+                  style={{
+                    "margin-top": "5px",
+                    "margin-right": "4px",
+                    float: "right",
+                  }}
+                >
+                  <Spinner
+                    radius={10}
+                    color={"#eee"}
+                    stroke={2}
+                    visible={this.state.busy}
+                  />
+                </div>
+              </button>
+              <a
+                className="login--linkedIn btn btn-block btn-social btn-linkedin button-login"
+                href={this.state.linkedInUrl}
+                onClick={() => console.log("login with linkedin")}
+              >
+                <img alt="LinkedIn Icon" src={LinkedInIcon} />
+                Sign in with Linkedin
+              </a>
+              <p className="login--disclaimer">
+                By signing in, you agree to our <a href="#">User Agreement</a>{" "}
+                and <a href="#">Privacy Policy</a>.
+              </p>
+              <p className="login--question">
+                Any questions or problems signing in? Please contact us at{" "}
+                <strong className="login--contact-email">
+                  hello@thecmolist.com
+                </strong>
+                .
+              </p>
+              <div className="login--separator"></div>
+              <p className="login--signup">
+                New to CMOlist ?{" "}
+                <strong>
+                  <a href="#" onClick={() => console.log("apply now")}>
+                    Apply now
+                  </a>
+                </strong>
+              </p>
+            </form>
+          </div>
+          <div className="col-md-3"></div>
         </div>
+        <Footer className="login--footer" />
       </div>
     );
   }

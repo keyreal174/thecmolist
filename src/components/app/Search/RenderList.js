@@ -34,6 +34,7 @@ const RenderList = ({
     } else {
       fetchMoreRefinedData(filter);
     }
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const List = Object.entries(modules).map(([key, value], i) => {
@@ -41,6 +42,8 @@ const RenderList = ({
     const heading = f && f["title"] ? f["title"] : "";
 
     const contentId = content && content.content_id;
+    const isContent = heading !== "People" && heading !== "Vendors";
+
     return (
       <CustomCard key={i} heading={heading}>
         {value.map((item, j) => {
@@ -51,22 +54,33 @@ const RenderList = ({
               articletextlines={1}
               {...item}
               engagementButtons={
-                heading !== "People" &&
-                heading !== "Vendors" && [
+                isContent && [
                   {
-                    checked: true,
+                    checked: getCheckedForEngagementType(
+                      contentId,
+                      "answer",
+                      reactions
+                    ),
                     text: "Answer",
                     icon: `${cdn}/Answer.png`,
                     number: getEngagementForId(contentId, "answer", reactions),
                   },
                   {
-                    checked: true,
+                    checked: getCheckedForEngagementType(
+                      contentId,
+                      "thanks",
+                      reactions
+                    ),
                     text: "Thanks",
                     icon: `${cdn}/Thanks.png`,
                     number: getEngagementForId(contentId, "thanks", reactions),
                   },
                   {
-                    checked: true,
+                    checked: getCheckedForEngagementType(
+                      contentId,
+                      "insightful",
+                      reactions
+                    ),
                     text: "Insightful",
                     icon: `${cdn}/Insightful.png`,
                     number: getEngagementForId(
@@ -83,7 +97,7 @@ const RenderList = ({
               )}
               style={{ paddingBottom: "10px" }}
               badge={
-                (heading === "People" || heading === "Vendors") && (
+                !isContent && (
                   <ConnectBadge
                     localConnectedUsers={localConnectedUsers}
                     feed={item}

@@ -1,0 +1,53 @@
+@import "../../../sass/globals.scss";
+
+.onboarding {
+  &--card {
+    padding: 0;
+    margin: 0;
+    .custom-card-body {
+      padding: 0;
+    }
+  }
+  &--pill {
+    background: transparent;
+    border: 1px solid $brand;
+    color: $brand;
+    border-radius: 22px !important;
+    padding: 8px 37px;
+    margin-right: 20px;
+    margin-bottom: 30px !important;
+    &:focus,
+    &:hover,
+    &:active,
+    &.active {
+      background: $brand !important;
+    }
+    &-wrapper {
+      padding: 40px 50px;
+    }
+  }
+  &--show-more {
+    color: $brand;
+    padding: 22px;
+    width: 100%;
+  }
+  &--divider {
+    border-top: 1px solid $gray-5;
+    position: absolute;
+    left: 15px;
+    height: 1px;
+    width: 97.4%;
+    margin: 0;
+  }
+  &--done {
+    background: $brand;
+    border-radius: 23px;
+    padding: 11px;
+    min-width: 140px;
+    &:hover,
+    &:active,
+    &:focus {
+      background: $brand;
+    }
+  }
+}
