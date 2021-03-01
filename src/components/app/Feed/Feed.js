@@ -11,7 +11,6 @@ import InviteModal from "../base/ShareModule/InviteModal";
 import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
 import ProfileStats from "../ProfileStats/ProfileStats";
 import AskQuestion from "../base/AskQuestion/AskQuestion";
-import AddMemberModal from "../base/AddMemberModal/AddMemberModal";
 import {
   getCheckedForEngagementType,
   getEngagementForId,
@@ -378,11 +377,6 @@ const Feed = (props) => {
             reactions={props.reactions}
             changeReaction={props.changeReaction}
             isGroupOrTopic={isGroup || isTopic}
-          />
-          <AddMemberModal
-            onClose={() => console.log("close")}
-            onSubmit={() => console.log("submit")}
-            show={true}
           />
           <InviteModal
             show={inviteModalShow}
