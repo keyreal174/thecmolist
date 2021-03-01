@@ -6,7 +6,7 @@ import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Filter from "../base/Filter/Filter";
 import RenderList from "./RenderList";
-import "./search.css";
+import "./search.scss";
 
 const Search = (props) => {
   const location = useLocation();
@@ -25,7 +25,7 @@ const Search = (props) => {
     var index = filters.map((item) => item.slug).indexOf(filter);
     changeFilter(index);
     setFilter(filter);
-    props.fetchRefinedSearch({ query, filter });
+    props.fetchRefinedSearch({ query, filter, isReset: true });
   };
 
   const fetchMoreRefinedData = (filter) => {
@@ -103,7 +103,10 @@ const Search = (props) => {
             className="mt-1"
             filterIdx={filterIdx}
             filters={filters}
-            onChange={(idx) => changeFilter(idx)}
+            onChange={(idx) => {
+              changeFilter(idx);
+              showMore(filters[idx]["slug"]);
+            }}
           />
           <div>
             {modules && (
@@ -114,6 +117,11 @@ const Search = (props) => {
                 moreData={props.moreData}
                 isFull={isFull}
                 fetchMoreRefinedData={fetchMoreRefinedData}
+                localConnectedUsers={props.localConnectedUsers}
+                invalidateFeed={props.invalidateFeed}
+                connectUser={props.connectUser}
+                content={props.content}
+                reactions={props.reactions}
               />
             )}
           </div>
@@ -128,6 +136,9 @@ const mapState = (state) => {
     searchResult: state.searchModel.searchResult,
     modules: state.searchModel.modules,
     moreData: state.searchModel.moreData,
+    localConnectedUsers: state.userModel.localConnectedUsers,
+    content: state.contentModel.content,
+    reactions: state.reactionModel.reactions,
   };
 };
 
@@ -135,6 +146,8 @@ const mapDispatch = (dispatch) => {
   return {
     fetchFullSearch: dispatch.searchModel.fetchFullSearch,
     fetchRefinedSearch: dispatch.searchModel.fetchRefinedSearch,
+    invalidateFeed: dispatch.networkModel.invalidateFeed,
+    connectUser: dispatch.userModel.connectUser,
   };
 };
 

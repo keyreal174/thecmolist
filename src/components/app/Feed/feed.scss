@@ -272,10 +272,12 @@
   transition: opacity 500ms;
 }
 
-.feed-page-top-banner {
+.top-banner-container {
   margin-top: 20px;
   margin-bottom: 20px;
+}
 
+.feed-page-top-banner {
   .custom-card:first-child {
     flex: 1;
     margin-right: 20px;

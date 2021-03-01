@@ -40,7 +40,7 @@ const TopBanner = (props) => {
   };
 
   return (
-    <div className="feed-page-top-banner">
+    <div className="feed-page-top-banner top-banner-container">
       <div className="d-flex">
         <CustomCard>
           <div className="d-flex align-items-center py-3 px-1">
