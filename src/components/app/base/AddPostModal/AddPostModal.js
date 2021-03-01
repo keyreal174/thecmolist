@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { connect } from "react-redux";
 import {
   Alert,
@@ -11,6 +11,7 @@ import {
 } from "react-bootstrap";
 import { cdn } from "../../../util/constants";
 import "./addPostModal.scss";
+const DraftEditor = React.lazy(() => import("../DraftEditor/DraftEditor"));
 
 function AddPostModal({
   profileStats,
@@ -286,7 +287,7 @@ function AddPostModal({
                 </Col>
                 <Col md="9">
                   <div className="modal-section-title">Body</div>
-                  <Form.Control
+                  {/* <Form.Control
                     as="textarea"
                     className="modal-section-body-left-content"
                     id="body"
@@ -295,7 +296,12 @@ function AddPostModal({
                     value={body}
                     required={true}
                     controldId="validation02"
-                  />
+                  /> */}
+                  <div className="form-control draft-js-editor">
+                    <Suspense fallback={<div>Loading...</div>}>
+                      <DraftEditor />
+                    </Suspense>
+                  </div>
                 </Col>
                 <Col md="3">
                   <ul className="modal-section-body-right-content">
