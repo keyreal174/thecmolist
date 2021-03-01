@@ -11,7 +11,8 @@ var MockAdapter,
   MockedApiTopics,
   MockedApiFullSearch,
   MockedApiRefinedSearch,
-  MockedApiVendorProfile;
+  MockedApiVendorProfile,
+  MockedApiOnboarding;
 if (process.env.NODE_ENV !== "production") {
   MockAdapter = require("axios-mock-adapter");
   MockedApiNetwork = require("./api_network.json");
@@ -26,6 +27,7 @@ if (process.env.NODE_ENV !== "production") {
   MockedApiFullSearch = require("./api_fullsearch.json");
   MockedApiRefinedSearch = require("./api_refinedsearch.json");
   MockedApiVendorProfile = require("./api_vendor.json");
+  MockedApiOnboarding = require("./api_onboarding.json");
 }
 function MockRequests() {
   if (process.env.NODE_ENV === "production") return;
@@ -72,6 +74,11 @@ function MockRequests() {
       path: /\/api\/refined_search.*/,
       responseCode: 200,
       response: MockedApiRefinedSearch,
+    },
+    {
+      path: /\/api\/onboarding\/step2.*/,
+      responseCode: 200,
+      response: MockedApiOnboarding,
     },
   ];
 
@@ -225,6 +232,14 @@ function MockRequests() {
         type: data.type,
       },
     ];
+  });
+
+  mock.onPost(new RegExp("/api/onboarding/step1")).reply((data) => {
+    return [200, { success: true, error: null }];
+  });
+
+  mock.onPost(new RegExp("/api/onboarding/step2")).reply((data) => {
+    return [200, { success: true, error: null }];
   });
 
   mock.onDelete(new RegExp("/api/post/*")).reply(() => {

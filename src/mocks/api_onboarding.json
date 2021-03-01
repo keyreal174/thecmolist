@@ -1,0 +1,27 @@
+{
+  "categories": [
+    { "value": "leadership", "selected": true },
+    { "value": "marketing", "selected": true },
+    { "value": "advertising", "selected": true },
+    { "value": "seo", "selected": false },
+    { "value": "digital-strategy", "selected": false },
+    { "value": "corporate-communications", "selected": false },
+    { "value": "brand", "selected": false },
+    { "value": "saas", "selected": false },
+    { "value": "media-planning", "selected": false },
+    { "value": "ecommerce", "selected": false },
+    { "value": "blockchain", "selected": false },
+    { "value": "media-planning", "selected": false },
+    { "value": "martech", "selected": false },
+    { "value": "news", "selected": true },
+    { "value": "ecommerce-marketing", "selected": true },
+    { "value": "b2b", "selected": false },
+    { "value": "content-marketing", "selected": false },
+    { "value": "design", "selected": false },
+    { "value": "event-marketing", "selected": false },
+    { "value": "inbound-marketing", "selected": false },
+    { "value": "social-media-marketing", "selected": false },
+    { "value": "marketing-analytics", "selected": false },
+    { "value": "influencer-marketing", "selected": false }
+  ]
+}
