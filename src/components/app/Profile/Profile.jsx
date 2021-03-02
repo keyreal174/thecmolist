@@ -18,7 +18,10 @@ import DeletePost from "./DeletePost";
 import FollowUserModal from "./FollowUser";
 import Util from "../../util/Util";
 import Analytics from "../../util/Analytics";
-import { cdn } from "../../util/constants";
+import {
+  cdn,
+  profileImage as profileBackgroundImage,
+} from "../../util/constants";
 import "./profile.scss";
 
 import LinkedIn from "./icons/linkedin.svg";
@@ -253,9 +256,6 @@ const Profile = (props) => {
     followers: "657",
   };
 
-  const profileBackgroundUrl =
-    "https://d3k6hg21rt7gsh.cloudfront.net/icons/profile--header.png";
-
   const handleEngagementButtonClick = async (caller, engagementType) => {
     const id = caller["content_id"];
     const engagement = engagementType.toLowerCase();
@@ -275,7 +275,7 @@ const Profile = (props) => {
             <Col md="8">
               <div className="profile--left-section">
                 <img
-                  src={profileBackgroundUrl}
+                  src={profileBackgroundImage}
                   className="left-section--image"
                   alt="profile"
                 />

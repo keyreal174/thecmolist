@@ -12,7 +12,8 @@ import {
   Col,
   ProgressBar,
 } from "react-bootstrap";
-import "./profileEdit.css";
+import { profileImage } from "../../util/constants";
+import "./profileEdit.scss";
 
 const getBase64 = (file) => {
   return new Promise((resolve, reject) => {
@@ -35,7 +36,9 @@ const ProfileEdit = (props) => {
   const [website, setWebsite] = useState("");
   const [headline, setHeadline] = useState("");
   const [image, setImage] = useState("");
+  const [coverImage, setCoverImage] = useState("");
   const [imageUploading, setImageUploading] = useState(false);
+  const [coverImageUploading, setCoverImageUploading] = useState(false);
   const [areasOfExpertise, setAreasOfExpertise] = useState("");
   const [areasOfInterest, setAreasOfInterest] = useState("");
   const [networking, setNetworking] = useState(false);
@@ -51,8 +54,9 @@ const ProfileEdit = (props) => {
   const [firstTime, setFirstTime] = useState(false);
   // props to control profile image
   const inputFile = useRef(null);
+  const coverInputFile = useRef(null);
 
-  let onInputFileChange = async (event) => {
+  const onInputFileChange = async (event) => {
     if (event && event.target && event.target.files.length > 0) {
       setImageUploading(true);
       const url = await getBase64(event.target.files[0]);
@@ -61,6 +65,14 @@ const ProfileEdit = (props) => {
     }
   };
 
+  const onCoverInputFileChange = async (event) => {
+    if (event && event.target && event.target.files.length > 0) {
+      setCoverImageUploading(true);
+      const url = await getBase64(event.target.files[0]);
+      setCoverImage(url);
+      setCoverImageUploading(false);
+    }
+  };
   useEffect(() => {
     const fetch = async () => {
       await props.fetchProfile();
@@ -81,6 +93,8 @@ const ProfileEdit = (props) => {
     setWebsite(profile.website);
     setHeadline(profile.headline);
     setImage(profile.image);
+    setCoverImage(profile.coverImage || profileImage);
+
     if (profile.about) {
       let pfa = profile.about;
       pfa.areasOfExpertise &&
@@ -114,6 +128,7 @@ const ProfileEdit = (props) => {
   const handleCancel = (e) => {
     setProfileInfo(props.profile);
     setImageUploading(false);
+    setCoverImageUploading(false);
   };
 
   const handleSubmit = async (e) => {
@@ -129,6 +144,7 @@ const ProfileEdit = (props) => {
       linkedin,
       website,
       headline,
+      coverImage,
       image,
       about: {
         areasOfExpertise: areasOfExpertise.split(", "),
@@ -149,7 +165,7 @@ const ProfileEdit = (props) => {
   };
 
   return (
-    <Container className="height-100">
+    <Container className="profile height-100">
       <Header />
       <Form>
         {firstTime && (
@@ -171,11 +187,48 @@ const ProfileEdit = (props) => {
           </Alert>
         )}
         <div className="card-box mt-2">
-          <div className="d-flex align-items-center px-3">
+          <div className="profile--cover-wrapper">
+            <img
+              className="profile--cover"
+              alt="profile"
+              src={coverImage}
+            ></img>
+            <input
+              type="file"
+              id="file"
+              ref={coverInputFile}
+              onChange={onCoverInputFileChange}
+              style={{ display: "none" }}
+            />
+            <div className="profile--edit-cover">
+              {coverImageUploading ? (
+                <Button
+                  className="btn-white"
+                  variant="outline-primary"
+                  disabled
+                >
+                  Uploading...
+                </Button>
+              ) : (
+                <Button
+                  className="btn-white mt-3"
+                  variant="outline-primary"
+                  onClick={() => {
+                    coverInputFile &&
+                      coverInputFile.current &&
+                      coverInputFile.current.click();
+                  }}
+                >
+                  Edit Cover Image
+                </Button>
+              )}
+            </div>
+          </div>
+          <div className="d-flex flex-column px-3">
             <img
               className="rounded-circle"
               src={image}
-              style={{ width: 120, height: 120 }}
+              style={{ width: 150, height: 150 }}
               alt=""
             />
             <input
@@ -185,10 +238,7 @@ const ProfileEdit = (props) => {
               onChange={onInputFileChange}
               style={{ display: "none" }}
             />
-            <div className="ml-5">
-              <h2 className="profile-edit-header mb-3 text-black">
-                Edit Profile
-              </h2>
+            <div>
               {imageUploading ? (
                 <Button
                   className="btn-white"
@@ -199,23 +249,23 @@ const ProfileEdit = (props) => {
                 </Button>
               ) : (
                 <Button
-                  className="btn-white"
+                  className="btn-white mt-3"
                   variant="outline-primary"
                   onClick={() => {
                     inputFile && inputFile.current && inputFile.current.click();
                   }}
                 >
-                  Update Image
+                  Edit Profile Image
                 </Button>
               )}
             </div>
           </div>
         </div>
-        <div className="card-box mt-2">
+        <div className="card-box">
           <div className="identity">
             <div style={{ marginLeft: -20, marginRight: -20 }}>
               <h2 className="profile-edit-section-title mb-3 px-4">Identity</h2>
-              <Separator />
+              <Separator className="card-separator" />
             </div>
             <Row>
               <Col>
@@ -294,7 +344,7 @@ const ProfileEdit = (props) => {
           <div className="role mt-4">
             <div style={{ marginLeft: -20, marginRight: -20 }}>
               <h2 className="profile-edit-section-title mb-3 px-4">Role</h2>
-              <Separator />
+              <Separator className="card-separator" />
             </div>
             <Row>
               <Col>
@@ -354,7 +404,7 @@ const ProfileEdit = (props) => {
           <div className="about mt-4">
             <div style={{ marginLeft: -20, marginRight: -20 }}>
               <h2 className="profile-edit-section-title mb-3 px-4">About</h2>
-              <Separator />
+              <Separator className="card-separator" />
             </div>
             <Row>
               <Col>
@@ -447,7 +497,7 @@ const ProfileEdit = (props) => {
           </div>
           <div className="mt-4">
             <div style={{ marginLeft: -20, marginRight: -20 }} className="mb-3">
-              <Separator />
+              <Separator className="card-separator" />
             </div>
             <div className="d-flex justify-content-end">
               {isNewUser ? (
