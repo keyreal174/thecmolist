@@ -19,6 +19,7 @@ import reactionModel from "./models/reaction";
 import topicsModel from "./models/topics";
 import searchModel from "./models/search";
 import vendorModel from "./models/vendor";
+import suggestionsModel from "./models/suggestions";
 
 const store = init({
   models: {
@@ -34,6 +35,7 @@ const store = init({
     reactionModel,
     searchModel,
     vendorModel,
+    suggestionsModel,
   },
 });
 
