@@ -12,9 +12,8 @@ import createMentionPlugin, {
 } from "@draft-js-plugins/mention";
 import "@draft-js-plugins/mention/lib/plugin.css";
 import editorStyles from "./DraftEditor.scss";
-import mentions from "./Mentions";
 
-const DraftEditor = () => {
+const DraftEditor = ({ mentions }) => {
   const ref = useRef(null);
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()

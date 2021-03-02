@@ -11,7 +11,8 @@ var MockAdapter,
   MockedApiTopics,
   MockedApiFullSearch,
   MockedApiRefinedSearch,
-  MockedApiVendorProfile;
+  MockedApiVendorProfile,
+  MockedApiSuggestions;
 if (process.env.NODE_ENV !== "production") {
   MockAdapter = require("axios-mock-adapter");
   MockedApiNetwork = require("./api_network.json");
@@ -26,6 +27,7 @@ if (process.env.NODE_ENV !== "production") {
   MockedApiFullSearch = require("./api_fullsearch.json");
   MockedApiRefinedSearch = require("./api_refinedsearch.json");
   MockedApiVendorProfile = require("./api_vendor.json");
+  MockedApiSuggestions = require("./api_suggestions.json");
 }
 function MockRequests() {
   if (process.env.NODE_ENV === "production") return;
@@ -72,6 +74,11 @@ function MockRequests() {
       path: /\/api\/refined_search.*/,
       responseCode: 200,
       response: MockedApiRefinedSearch,
+    },
+    {
+      path: /\/api\/entity_suggestions.*/,
+      responseCode: 200,
+      response: MockedApiSuggestions,
     },
   ];
 
