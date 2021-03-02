@@ -11,6 +11,9 @@
 .card-separator {
   height: 1px;
   background-color: $gray-4;
+  left: 0;
+  width: 100%;
+  position: absolute;
 }
 
 .profile-edit-header {
@@ -32,11 +35,11 @@
 .profile-edit-progress span {
   font-size: 20px;
   font-weight: 600;
-  color: black;
+  color: $text-1;
 }
 
 .welcome-message {
-  color: black;
+  color: $text-1;
 }
 
 .profile {
@@ -61,5 +64,12 @@
   &--edit-image {
     margin-top: 45px;
     margin-bottom: 40px;
+  }
+  &--row {
+    padding-left: 60px;
+  }
+  &--row-title {
+    padding-left: 20px;
+    padding-right: 80px;
   }
 }

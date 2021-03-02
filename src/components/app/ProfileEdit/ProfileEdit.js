@@ -262,12 +262,12 @@ const ProfileEdit = (props) => {
           </div>
         </div>
         <div className="card-box py-3 px-3">
-          <div className="identity">
-            <div style={{ marginLeft: -20, marginRight: -20 }}>
+          <div className="profile--row-title">
+            <div>
               <h2 className="profile-edit-section-title mb-3 px-4">Identity</h2>
               <Separator className="card-separator" />
             </div>
-            <Row>
+            <Row className="profile--row mt-5">
               <Col>
                 <Form.Label>First name</Form.Label>
                 <Form.Control
@@ -285,7 +285,7 @@ const ProfileEdit = (props) => {
                 />
               </Col>
             </Row>
-            <Row>
+            <Row className="profile--row">
               <Col>
                 <Form.Label>City</Form.Label>
                 <Form.Control
@@ -311,7 +311,7 @@ const ProfileEdit = (props) => {
                 />
               </Col>
             </Row>
-            <Row>
+            <Row className="profile--row mb-5">
               <Col>
                 <Form.Label>LinkedIn profile URL</Form.Label>
                 <Form.Control
@@ -329,24 +329,13 @@ const ProfileEdit = (props) => {
                 />
               </Col>
             </Row>
-            <Row>
-              <Col>
-                <Form.Label>Headline (optional)</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  rows="3"
-                  value={headline}
-                  onChange={(e) => setHeadline(e.target.value)}
-                />
-              </Col>
-            </Row>
           </div>
-          <div className="role mt-4">
-            <div style={{ marginLeft: -20, marginRight: -20 }}>
+          <div className="profile--row-title role mt-4">
+            <div>
               <h2 className="profile-edit-section-title mb-3 px-4">Role</h2>
               <Separator className="card-separator" />
             </div>
-            <Row>
+            <Row className="profile--row mt-5">
               <Col>
                 <Form.Label>Title</Form.Label>
                 <Form.Control
@@ -364,7 +353,7 @@ const ProfileEdit = (props) => {
                 />
               </Col>
             </Row>
-            <Row>
+            <Row className="profile--row">
               <Col>
                 <Form.Label>Company name</Form.Label>
                 <Form.Control
@@ -382,7 +371,7 @@ const ProfileEdit = (props) => {
                 />
               </Col>
             </Row>
-            <Row>
+            <Row className="profile--row mb-5">
               <Col>
                 <Form.Label>Company Industry</Form.Label>
                 <Form.Control
@@ -401,12 +390,23 @@ const ProfileEdit = (props) => {
               </Col>
             </Row>
           </div>
-          <div className="about mt-4">
-            <div style={{ marginLeft: -20, marginRight: -20 }}>
+          <div className="profile--row-title about mt-4">
+            <div>
               <h2 className="profile-edit-section-title mb-3 px-4">About</h2>
               <Separator className="card-separator" />
             </div>
-            <Row>
+            <Row className="profile--row mt-5">
+              <Col>
+                <Form.Label>Headline (optional)</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows="3"
+                  value={headline}
+                  onChange={(e) => setHeadline(e.target.value)}
+                />
+              </Col>
+            </Row>
+            <Row className="profile--row">
               <Col>
                 <Form.Label>Areas of expertise</Form.Label>
                 <Form.Control
@@ -424,7 +424,7 @@ const ProfileEdit = (props) => {
                 />
               </Col>
             </Row>
-            <Row>
+            <Row className="profile--row">
               <Col>
                 <Form.Label>Open to networking</Form.Label>
                 <div>
@@ -459,7 +459,7 @@ const ProfileEdit = (props) => {
                 />
               </Col>
             </Row>
-            <Row>
+            <Row className="profile--row mb-5">
               <Col>
                 <Form.Label>Open to advising</Form.Label>
                 <div>
@@ -495,37 +495,39 @@ const ProfileEdit = (props) => {
               </Col>
             </Row>
           </div>
-          <div className="mt-4">
-            <div style={{ marginLeft: -20, marginRight: -20 }} className="mb-3">
+          <div className="profile--row-title mt-4">
+            <div>
               <Separator className="card-separator" />
             </div>
             <div className="d-flex justify-content-end">
-              {isNewUser ? (
-                <Button
-                  className="btn-white modal-primary-button"
-                  variant="outline-primary"
-                  onClick={handleSubmit}
-                >
-                  Done
-                </Button>
-              ) : (
-                <>
-                  <Button
-                    className="btn-white mr-2"
-                    variant="outline-primary"
-                    onClick={handleCancel}
-                  >
-                    Cancel
-                  </Button>
+              <div className="pt-3">
+                {isNewUser ? (
                   <Button
                     className="btn-white modal-primary-button"
                     variant="outline-primary"
                     onClick={handleSubmit}
                   >
-                    Save
+                    Done
                   </Button>
-                </>
-              )}
+                ) : (
+                  <>
+                    <Button
+                      className="btn-white mr-2"
+                      variant="outline-primary"
+                      onClick={handleCancel}
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      className="btn-white modal-primary-button"
+                      variant="outline-primary"
+                      onClick={handleSubmit}
+                    >
+                      Save
+                    </Button>
+                  </>
+                )}
+              </div>
             </div>
           </div>
         </div>
