@@ -98,8 +98,8 @@ const Settings = ({ settings, saveSetting, getSetting }) => {
       <div className="wrapper settings">
         <h2 className="section-title pt-4 py-3">Settings</h2>
         <div className="account-settings mt-2">
-          <h2 className="section-title mb-2">Account Settings</h2>
-          <Separator />
+          <h2 className="section-title">Account Settings</h2>
+          <Separator className="separator" />
           <Form onSubmit={handleSubmit}>
             <div className="account-settings-info">
               {error && (
@@ -111,7 +111,9 @@ const Settings = ({ settings, saveSetting, getSetting }) => {
                 <h3 className="section-sub-title mb-2">Change Password</h3>
                 <Form.Row>
                   <Form.Group as={Col} md="6" controlId="ValidationFormik101">
-                    <Form.Label>New password</Form.Label>
+                    <Form.Label className="section-label">
+                      New password
+                    </Form.Label>
                     <Form.Control
                       className="password"
                       type="password"
@@ -180,9 +182,9 @@ const Settings = ({ settings, saveSetting, getSetting }) => {
               </div>
             </div>
             <Separator />
-            <div className="account-settings-submit-info mt-3 text-center d-flex justify-content-center">
+            <div className="account-settings-submit-info mt-3 text-center d-flex justify-content-end">
               <button
-                className="btn__homepage btn__homepage-white btn__share-module-share mr-3"
+                className="btn__homepage btn__homepage-white btn__share-module-share mr-3 account-settings-button"
                 style={{ margin: "initial" }}
                 onClick={handleCancel}
                 type="button"
@@ -191,7 +193,7 @@ const Settings = ({ settings, saveSetting, getSetting }) => {
               </button>
               <button
                 type="submit"
-                className="btn__homepage btn__homepage-blue btn__share-module-share"
+                className="btn__homepage btn__homepage-blue btn__share-module-share account-settings-button"
                 style={{ margin: "initial" }}
               >
                 Update
