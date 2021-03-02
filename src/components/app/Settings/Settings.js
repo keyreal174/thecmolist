@@ -125,7 +125,9 @@ const Settings = ({ settings, saveSetting, getSetting }) => {
                     />
                   </Form.Group>
                   <Form.Group as={Col} md="6" controlId="validationFormik102">
-                    <Form.Label>Confirm password</Form.Label>
+                    <Form.Label className="section-label">
+                      Confirm password
+                    </Form.Label>
                     <Form.Control
                       className="password"
                       type="password"
@@ -143,7 +145,9 @@ const Settings = ({ settings, saveSetting, getSetting }) => {
                 <h3 className="section-sub-title mb-3">Change Email</h3>
                 <Form.Row>
                   <Form.Group as={Col} md="6" controlId="validationFormik103">
-                    <Form.Label>Email address</Form.Label>
+                    <Form.Label className="section-label">
+                      Email address
+                    </Form.Label>
                     <Form.Control
                       className="email"
                       type="email"
