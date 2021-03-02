@@ -107,7 +107,14 @@ const Network = (props) => {
             firstButtonText="Cancel"
             secondButtonText="Send invitation"
             modalTitle="Invite a marketing leader to join you CMOlist peer network"
-            modalSubtitle="Build your trusted peer network by inviting and connecting only with marketing peers that you know and whose advice you trust"
+            modalSubtitle={
+              <div>
+                Build your <strong>trusted peer network</strong> by inviting and
+                connecting only with marketing peers that{" "}
+                <strong>you know</strong> and whose{" "}
+                <strong>advice you trust</strong>
+              </div>
+            }
             onClose={handleClose}
             onSubmit={props.inviteNewMember}
             show={show}

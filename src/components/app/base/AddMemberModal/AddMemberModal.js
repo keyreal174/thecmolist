@@ -36,7 +36,6 @@ function AddMemberModal({
       setError(error.message);
     } finally {
       setLoading(false);
-      if (!error) onClose();
       cleanFields();
     }
   };
@@ -50,7 +49,7 @@ function AddMemberModal({
 
   const handleCancel = () => {
     onClose();
-    setError(null);
+    setError(undefined);
     cleanFields();
   };
 
