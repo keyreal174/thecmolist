@@ -167,7 +167,7 @@ const ProfileEdit = (props) => {
   return (
     <Container className="profile height-100">
       <Header />
-      <Form>
+      <Form className="mb-5">
         {firstTime && (
           <div className="card-box mt-2 py-3 px-3">
             <div className="profile-edit-progress d-flex align-items-center">
@@ -271,6 +271,7 @@ const ProfileEdit = (props) => {
               <Col>
                 <Form.Label>First name</Form.Label>
                 <Form.Control
+                  className="profile--input"
                   placeholder=""
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
@@ -279,6 +280,7 @@ const ProfileEdit = (props) => {
               <Col>
                 <Form.Label>Last name</Form.Label>
                 <Form.Control
+                  className="profile--input"
                   placeholder=""
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
@@ -289,6 +291,7 @@ const ProfileEdit = (props) => {
               <Col>
                 <Form.Label>City</Form.Label>
                 <Form.Control
+                  className="profile--input"
                   placeholder=""
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
@@ -297,6 +300,7 @@ const ProfileEdit = (props) => {
               <Col>
                 <Form.Label>State/Province</Form.Label>
                 <Form.Control
+                  className="profile--input"
                   placeholder=""
                   value={province}
                   onChange={(e) => setProvince(e.target.value)}
@@ -305,6 +309,7 @@ const ProfileEdit = (props) => {
               <Col>
                 <Form.Label>Country</Form.Label>
                 <Form.Control
+                  className="profile--input"
                   placeholder=""
                   value={country}
                   onChange={(e) => setCountry(e.target.value)}
@@ -315,6 +320,7 @@ const ProfileEdit = (props) => {
               <Col>
                 <Form.Label>LinkedIn profile URL</Form.Label>
                 <Form.Control
+                  className="profile--input"
                   placeholder=""
                   value={linkedin}
                   onChange={(e) => setLinkedin(e.target.value)}
@@ -323,6 +329,7 @@ const ProfileEdit = (props) => {
               <Col>
                 <Form.Label>Website URL (optional)</Form.Label>
                 <Form.Control
+                  className="profile--input"
                   placeholder=""
                   value={website}
                   onChange={(e) => setWebsite(e.target.value)}
@@ -339,6 +346,7 @@ const ProfileEdit = (props) => {
               <Col>
                 <Form.Label>Title</Form.Label>
                 <Form.Control
+                  className="profile--input"
                   placeholder=""
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
@@ -347,6 +355,7 @@ const ProfileEdit = (props) => {
               <Col>
                 <Form.Label>Revenue accountability / impact ($M)</Form.Label>
                 <Form.Control
+                  className="profile--input"
                   placeholder=""
                   value={revenue}
                   onChange={(e) => setRevenue(e.target.value)}
@@ -357,6 +366,7 @@ const ProfileEdit = (props) => {
               <Col>
                 <Form.Label>Company name</Form.Label>
                 <Form.Control
+                  className="profile--input"
                   placeholder=""
                   value={company}
                   onChange={(e) => setCompany(e.target.value)}
@@ -365,6 +375,7 @@ const ProfileEdit = (props) => {
               <Col>
                 <Form.Label>Company LinkedIn URL</Form.Label>
                 <Form.Control
+                  className="profile--input"
                   placeholder=""
                   value={companyLinkedin}
                   onChange={(e) => setCompanyLinkedin(e.target.value)}
@@ -375,6 +386,7 @@ const ProfileEdit = (props) => {
               <Col>
                 <Form.Label>Company Industry</Form.Label>
                 <Form.Control
+                  className="profile--input"
                   placeholder=""
                   value={companyIndustry}
                   onChange={(e) => setCompanyIndustry(e.target.value)}
@@ -383,6 +395,7 @@ const ProfileEdit = (props) => {
               <Col>
                 <Form.Label>Company Stage (e.g., Series A)</Form.Label>
                 <Form.Control
+                  className="profile--input"
                   placeholder=""
                   value={companyStage}
                   onChange={(e) => setCompanyStage(e.target.value)}
@@ -400,7 +413,9 @@ const ProfileEdit = (props) => {
                 <Form.Label>Headline (optional)</Form.Label>
                 <Form.Control
                   as="textarea"
+                  className="profile--textarea"
                   rows="3"
+                  placeholder="High-tech professional marketer passionate about consumer internet, SaaS and disruptive marketplaces. Industry expertise: mobile, consumer internet, social media, enterprise software, SaaS, advertising."
                   value={headline}
                   onChange={(e) => setHeadline(e.target.value)}
                 />
@@ -408,16 +423,18 @@ const ProfileEdit = (props) => {
             </Row>
             <Row className="profile--row">
               <Col>
-                <Form.Label>Areas of expertise</Form.Label>
+                <Form.Label>Areas of marketing expertise</Form.Label>
                 <Form.Control
+                  className="profile--input"
                   placeholder="Choose one or more #topics"
                   value={areasOfExpertise}
                   onChange={(e) => setAreasOfExpertise(e.target.value)}
                 />
               </Col>
               <Col>
-                <Form.Label>Areas of interest</Form.Label>
+                <Form.Label>Areas of marketing interest</Form.Label>
                 <Form.Control
+                  className="profile--input"
                   placeholder="Choose one or more #topics"
                   value={areasOfInterest}
                   onChange={(e) => setAreasOfInterest(e.target.value)}
@@ -449,18 +466,6 @@ const ProfileEdit = (props) => {
                 </div>
               </Col>
               <Col>
-                <Form.Label>Networking opportunities</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  rows="1"
-                  placeholder="What types of people would you like to meet?"
-                  value={networkingOpportunities}
-                  onChange={(e) => setNetworkingOpportunities(e.target.value)}
-                />
-              </Col>
-            </Row>
-            <Row className="profile--row mb-5">
-              <Col>
                 <Form.Label>Open to advising</Form.Label>
                 <div>
                   <Form.Check
@@ -483,19 +488,9 @@ const ProfileEdit = (props) => {
                   />
                 </div>
               </Col>
-              <Col>
-                <Form.Label>Advising opportunities</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  rows="1"
-                  placeholder="What type companies would you like to advise?"
-                  value={advisingOpportunities}
-                  onChange={(e) => setAdvisingOpportunities(e.target.value)}
-                />
-              </Col>
             </Row>
           </div>
-          <div className="profile--row-title mt-4">
+          <div className="mt-4">
             <div>
               <Separator className="card-separator" />
             </div>

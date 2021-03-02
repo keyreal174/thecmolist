@@ -72,4 +72,12 @@
     padding-left: 20px;
     padding-right: 80px;
   }
+  &--input {
+    padding-left: 20px;
+    border-radius: 35px;
+    margin-bottom: 25px;
+  }
+  &--textarea {
+    border-radius: 8px;
+  }
 }
