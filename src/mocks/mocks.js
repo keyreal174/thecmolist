@@ -227,6 +227,10 @@ function MockRequests() {
     ];
   });
 
+  mock.onPost(new RegExp("/api/network/invite/*")).reply((data) => {
+    return [200, { success: true, error: null }];
+  });
+
   mock.onDelete(new RegExp("/api/post/*")).reply(() => {
     return [200, { success: true, error: null }];
   });

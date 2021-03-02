@@ -9,6 +9,7 @@ import InviteModal from "../base/ShareModule/InviteModal";
 import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
 import PopularTopics from "../base/PopularTopics/PopularTopics";
 import SimpleTopBanner from "../base/SimpleTopBanner/SimpleTopBanner";
+import AddMemberModal from "../base/AddMemberModal/AddMemberModal";
 import NetworkFeed from "./NetworkFeed";
 import Analytics from "../../util/Analytics";
 import { cdn } from "../../util/constants";
@@ -86,6 +87,11 @@ const Network = (props) => {
     props.changeFilter(filters[idx].slug);
     changeDashboardHeader(idx);
   };
+
+  const [show, setShow] = useState(false);
+  const handleClick = () => setShow(true);
+  const handleClose = () => setShow(false);
+
   return (
     <>
       <Container className="height-100">
@@ -93,8 +99,18 @@ const Network = (props) => {
           <Header />
           <SimpleTopBanner
             buttonText="Invite"
+            onClick={handleClick}
             title={bannerTitle}
             image={bannerImage}
+          />
+          <AddMemberModal
+            firstButtonText="Cancel"
+            secondButtonText="Send invitation"
+            modalTitle="Invite a marketing leader to join you CMOlist peer network"
+            modalSubtitle="Build your trusted peer network by inviting and connecting only with marketing peers that you know and whose advice you trust"
+            onClose={handleClose}
+            onSubmit={props.inviteNewMember}
+            show={show}
           />
           <div className="mb-4">
             <Filter
@@ -173,6 +189,7 @@ const mapDispatch = (dispatch) => {
     changeSortOrder: dispatch.networkModel.changeSortOrder,
     changeSubFilter: dispatch.networkModel.changeSubFilter,
     invalidateFeed: dispatch.networkModel.invalidateFeed,
+    inviteNewMember: dispatch.networkModel.inviteNewMember,
     saveUserInvite: dispatch.userModel.saveInvite,
     connectUser: dispatch.userModel.connectUser,
     getProfileStats: dispatch.profileModel.getProfileStats,

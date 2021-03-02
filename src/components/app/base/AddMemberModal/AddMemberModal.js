@@ -26,17 +26,17 @@ function AddMemberModal({
       mail,
       message,
     };
-    setError(null);
+    setError(undefined);
     setLoading(true);
     e.preventDefault();
 
     try {
       await onSubmit(content);
     } catch (error) {
-      setError(error);
+      setError(error.message);
     } finally {
       setLoading(false);
-      onClose();
+      if (!error) onClose();
       cleanFields();
     }
   };
