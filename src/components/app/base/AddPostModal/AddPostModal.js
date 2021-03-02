@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { connect } from "react-redux";
 import {
   Alert,
@@ -11,6 +11,7 @@ import {
 } from "react-bootstrap";
 import { cdn } from "../../../util/constants";
 import "./addPostModal.scss";
+const DraftEditor = React.lazy(() => import("../DraftEditor/DraftEditor"));
 
 function AddPostModal({
   profileStats,
@@ -21,10 +22,12 @@ function AddPostModal({
   secondButtonText,
   onSubmit,
   show,
+  suggestions,
+  getSuggestions,
 }) {
   const [allMembers, setAllMembers] = useState(false);
   const [body, setBody] = useState("");
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
   const [groups, setGroups] = useState({});
   const [onlyMyNetwork, setOnlyMyNetwork] = useState(true);
   const [person, setPerson] = useState("");
@@ -36,6 +39,7 @@ function AddPostModal({
   const [title, setTitle] = useState("");
   const [topics, setTopics] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [mentions, setMentions] = useState([]);
 
   const groupNameToSlug = (g) => {
     if (profileStats && profileStats.profile && profileStats.profile.groups) {
@@ -65,14 +69,14 @@ function AddPostModal({
         .map(groupNameToSlug);
     }
 
-    setError(null);
+    setError("");
     setIsLoading(true);
     e.preventDefault();
 
     try {
       await onSubmit(content);
     } catch (error) {
-      setError(error);
+      setError(error.toString());
     } finally {
       setIsLoading(false);
       handleClose();
@@ -109,7 +113,7 @@ function AddPostModal({
 
   const handleCancel = () => {
     handleClose();
-    setError(null);
+    setError("");
     cleanFields();
   };
 
@@ -117,8 +121,9 @@ function AddPostModal({
     const fetch = async () => {
       try {
         await getProfileStats();
+        await getSuggestions();
       } catch (err) {
-        setError(err);
+        setError(err.toString());
       }
     };
 
@@ -136,6 +141,12 @@ function AddPostModal({
       setGroups(getGroupsObject(actualGroups));
     }
   }, [profileStats]);
+
+  useEffect(() => {
+    if (suggestions && suggestions.length > 0) {
+      setMentions(suggestions);
+    }
+  }, [suggestions]);
 
   const handlePhotoClick = () => {
     const file = document.getElementById("file");
@@ -206,7 +217,7 @@ function AddPostModal({
           <Container>
             <Form id="form-add-post-modal" onSubmit={handleSubmit}>
               <Row>
-                {error && (
+                {error && error.length > 0 && (
                   <Alert
                     variant="danger"
                     className="mb-0 mt-2"
@@ -281,21 +292,15 @@ function AddPostModal({
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}
                     required={true}
-                    controlId="validation01"
                   />
                 </Col>
                 <Col md="9">
                   <div className="modal-section-title">Body</div>
-                  <Form.Control
-                    as="textarea"
-                    className="modal-section-body-left-content"
-                    id="body"
-                    placeholder="Include all the information, @people and @vendors someone would need to answer your question"
-                    onChange={(e) => setBody(e.target.value)}
-                    value={body}
-                    required={true}
-                    controldId="validation02"
-                  />
+                  <div className="form-control draft-js-editor">
+                    <Suspense fallback={<div>Loading...</div>}>
+                      <DraftEditor mentions={mentions} />
+                    </Suspense>
+                  </div>
                 </Col>
                 <Col md="3">
                   <ul className="modal-section-body-right-content">
@@ -480,12 +485,14 @@ function AddPostModal({
 const mapState = (state) => {
   return {
     profileStats: state.profileModel.profileStats,
+    suggestions: state.suggestionsModel.suggestions,
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
     getProfileStats: dispatch.profileModel.getProfileStats,
+    getSuggestions: dispatch.suggestionsModel.getSuggestions,
   };
 };
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import OnboardingLayout from "./OnboardingLayout";
 import CustomCard from "../base/CustomCard/CustomCard";
 import {
@@ -8,61 +8,48 @@ import {
   ToggleButton,
   Button,
 } from "react-bootstrap";
+import { connect } from "react-redux";
 import "./onboardingStep2.scss";
 import { useHistory } from "react-router";
 
-const OnboardingStep2 = () => {
-  const pils = [
-    "leadership",
-    "marketing",
-    "advertising",
-    "seo",
-    "digital-strategy",
-    "corporate-communications",
-    "brand",
-    "saas",
-    "media-planning",
-    "ecommerce",
-    "blockchain",
-    "media-planning",
-    "martech",
-    "news",
-    "ecommerce-marketing",
-    "b2b",
-    "content-marketing",
-    "design",
-    "event-marketing",
-    "inbound-marketing",
-    "social-media-marketing",
-    "marketing-analytics",
-    "influencer-marketing",
-  ];
-
+const OnboardingStep2 = ({
+  categories,
+  getCategories,
+  submitOnboardingStep2,
+}) => {
+  const [value, setValue] = useState([]);
   const [showMore, setShowMore] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const history = useHistory();
+
+  useEffect(() => {
+    const fetchCategories = async () => await getCategories();
+    fetchCategories();
+  }, []);
+
+  useEffect(() => {
+    const selectedValues = categories
+      .filter((c) => c.selected)
+      .map((c) => c.value);
+    setValue(selectedValues);
+  }, [categories]);
+
+  const pils = categories.map((c) => c.value);
+
   const handleButtonClick = () => {
     setShowMore(!showMore);
   };
 
-  const [value, setValue] = useState([
-    "leadership",
-    "marketing",
-    "advertising",
-    "news",
-    "ecommerce-marketing",
-  ]);
   const handleChange = (value) => setValue(value);
-
-  const [loading, setLoading] = useState(false);
-
-  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    console.log("submiting values:", value);
+    submitOnboardingStep2(value);
     history.push("/feed");
     setLoading(false);
   };
+
   return (
     <OnboardingLayout
       now={100}
@@ -120,4 +107,15 @@ const OnboardingStep2 = () => {
   );
 };
 
-export default OnboardingStep2;
+const mapState = (state) => ({
+  categories: state.onboardingModel.categories,
+});
+
+const mapDispatch = (dispatch) => {
+  return {
+    getCategories: dispatch.onboardingModel.getCategories,
+    submitOnboardingStep2: dispatch.onboardingModel.submitOnboardingStep2,
+  };
+};
+
+export default connect(mapState, mapDispatch)(OnboardingStep2);

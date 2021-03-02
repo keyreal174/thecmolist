@@ -13,11 +13,13 @@ import networkModel from "./models/network";
 import notificationsModel from "./models/notifications";
 import userModel from "./models/user";
 import settingsModel from "./models/settings";
+import onboardingModel from "./models/onboarding";
 import profileModel from "./models/profile";
 import reactionModel from "./models/reaction";
 import topicsModel from "./models/topics";
 import searchModel from "./models/search";
 import vendorModel from "./models/vendor";
+import suggestionsModel from "./models/suggestions";
 
 const store = init({
   models: {
@@ -27,11 +29,13 @@ const store = init({
     settingsModel,
     userModel,
     profileModel,
+    onboardingModel,
     topicsModel,
     notificationsModel,
     reactionModel,
     searchModel,
     vendorModel,
+    suggestionsModel,
   },
 });
 
