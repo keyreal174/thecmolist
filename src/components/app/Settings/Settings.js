@@ -108,7 +108,7 @@ const Settings = ({ settings, saveSetting, getSetting }) => {
                 </Alert>
               )}
               <div className="account-settings-sub-info">
-                <h3 className="section-sub-title mb-2">Change Password</h3>
+                <h3 className="section-sub-title mb-3">Change Password</h3>
                 <Form.Row>
                   <Form.Group as={Col} md="6" controlId="ValidationFormik101">
                     <Form.Label className="section-label">
@@ -140,7 +140,7 @@ const Settings = ({ settings, saveSetting, getSetting }) => {
               </div>
               <Separator />
               <div className="account-settings-sub-info">
-                <h3 className="section-sub-title mb-2">Change Email</h3>
+                <h3 className="section-sub-title mb-3">Change Email</h3>
                 <Form.Row>
                   <Form.Group as={Col} md="6" controlId="validationFormik103">
                     <Form.Label>Email address</Form.Label>
@@ -158,7 +158,7 @@ const Settings = ({ settings, saveSetting, getSetting }) => {
               </div>
               <Separator />
               <div className="account-settings-sub-info">
-                <h3 className="section-sub-title mb-2">
+                <h3 className="section-sub-title mb-4">
                   Update email notifications
                 </h3>
                 <Form.Group>
