@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import OnboardingLayout from "./OnboardingLayout";
+import { connect } from "react-redux";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useHistory } from "react-router";
 import "./onboardingStep1.scss";
 
-const OnboardingStep1 = () => {
+const OnboardingStep1 = ({ submitOnboardingStep1 }) => {
   const history = useHistory();
   const handleSubmit = (e) => {
     setLoading(true);
@@ -17,7 +18,7 @@ const OnboardingStep1 = () => {
       networking: networkingYes ? true : false,
       adviding: advidingYes ? true : false,
     };
-    console.log(formData);
+    submitOnboardingStep1(formData);
     history.push("onboarding_step2");
     setLoading(false);
   };
@@ -212,4 +213,12 @@ const OnboardingStep1 = () => {
   );
 };
 
-export default OnboardingStep1;
+const mapState = () => ({});
+
+const mapDispatch = (dispatch) => {
+  return {
+    submitOnboardingStep1: dispatch.onboarding.submitOnboardingStep1,
+  };
+};
+
+export default connect(mapState, mapDispatch)(OnboardingStep1);
