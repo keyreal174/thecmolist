@@ -5,6 +5,7 @@
   border-radius: 18px;
   border: 1px solid $gray-4;
   margin-bottom: 20px;
+  position: relative;
 }
 
 .card-separator {
@@ -24,6 +25,7 @@
 }
 
 .profile-edit-progress {
+  padding-left: 30px;
   width: 90%;
 }
 
@@ -41,14 +43,23 @@
   &--cover {
     width: 100%;
     height: 216px;
-    &-wrapper {
-      position: relative;
-      border-radius: 18px;
-    }
+  }
+  &--cover-wrapper {
+    position: relative;
+    border-radius: 18px;
   }
   &--edit-cover {
     position: absolute;
     top: 20px;
     right: 20px;
+  }
+  &--image {
+    position: absolute;
+    border: 3px solid $white;
+    top: 98px;
+  }
+  &--edit-image {
+    margin-top: 45px;
+    margin-bottom: 40px;
   }
 }

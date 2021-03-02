@@ -169,7 +169,7 @@ const ProfileEdit = (props) => {
       <Header />
       <Form>
         {firstTime && (
-          <div className="card-box mt-2">
+          <div className="card-box mt-2 py-3 px-3">
             <div className="profile-edit-progress d-flex align-items-center">
               <span className="mr-3">Start</span>
               <ProgressBar
@@ -226,7 +226,7 @@ const ProfileEdit = (props) => {
           </div>
           <div className="d-flex flex-column px-3">
             <img
-              className="rounded-circle"
+              className="profile--image rounded-circle"
               src={image}
               style={{ width: 150, height: 150 }}
               alt=""
@@ -238,7 +238,7 @@ const ProfileEdit = (props) => {
               onChange={onInputFileChange}
               style={{ display: "none" }}
             />
-            <div>
+            <div className="profile--edit-image">
               {imageUploading ? (
                 <Button
                   className="btn-white"
@@ -261,7 +261,7 @@ const ProfileEdit = (props) => {
             </div>
           </div>
         </div>
-        <div className="card-box">
+        <div className="card-box py-3 px-3">
           <div className="identity">
             <div style={{ marginLeft: -20, marginRight: -20 }}>
               <h2 className="profile-edit-section-title mb-3 px-4">Identity</h2>
