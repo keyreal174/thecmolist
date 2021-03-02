@@ -27,7 +27,7 @@ function AddPostModal({
 }) {
   const [allMembers, setAllMembers] = useState(false);
   const [body, setBody] = useState("");
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
   const [groups, setGroups] = useState({});
   const [onlyMyNetwork, setOnlyMyNetwork] = useState(true);
   const [person, setPerson] = useState("");
@@ -69,14 +69,14 @@ function AddPostModal({
         .map(groupNameToSlug);
     }
 
-    setError(null);
+    setError("");
     setIsLoading(true);
     e.preventDefault();
 
     try {
       await onSubmit(content);
     } catch (error) {
-      setError(error);
+      setError(error.toString());
     } finally {
       setIsLoading(false);
       handleClose();
@@ -113,7 +113,7 @@ function AddPostModal({
 
   const handleCancel = () => {
     handleClose();
-    setError(null);
+    setError("");
     cleanFields();
   };
 
@@ -123,7 +123,7 @@ function AddPostModal({
         await getProfileStats();
         await getSuggestions();
       } catch (err) {
-        setError(err);
+        setError(err.toString());
       }
     };
 
@@ -217,7 +217,7 @@ function AddPostModal({
           <Container>
             <Form id="form-add-post-modal" onSubmit={handleSubmit}>
               <Row>
-                {error && (
+                {error && error.length > 0 && (
                   <Alert
                     variant="danger"
                     className="mb-0 mt-2"
@@ -292,7 +292,6 @@ function AddPostModal({
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}
                     required={true}
-                    controlId="validation01"
                   />
                 </Col>
                 <Col md="9">
