@@ -99,7 +99,7 @@ const Settings = ({ settings, saveSetting, getSetting }) => {
         <h2 className="section-title pt-4 py-3">Settings</h2>
         <div className="account-settings mt-2">
           <h2 className="section-title">Account Settings</h2>
-          <Separator className="separator" />
+          <Separator className="settings-separator" />
           <Form onSubmit={handleSubmit}>
             <div className="account-settings-info">
               {error && (
@@ -140,7 +140,7 @@ const Settings = ({ settings, saveSetting, getSetting }) => {
                   </Form.Group>
                 </Form.Row>
               </div>
-              <Separator />
+              <Separator className="settings-separator" />
               <div className="account-settings-sub-info">
                 <h3 className="section-sub-title mb-3">Change Email</h3>
                 <Form.Row>
@@ -160,7 +160,7 @@ const Settings = ({ settings, saveSetting, getSetting }) => {
                   </Form.Group>
                 </Form.Row>
               </div>
-              <Separator />
+              <Separator className="settings-separator" />
               <div className="account-settings-sub-info">
                 <h3 className="section-sub-title mb-4">
                   Update email notifications
@@ -185,7 +185,7 @@ const Settings = ({ settings, saveSetting, getSetting }) => {
                 </Form.Group>
               </div>
             </div>
-            <Separator />
+            <Separator className="settings-separator" />
             <div className="account-settings-submit-info mt-3 text-center d-flex justify-content-end">
               <button
                 className="btn__homepage btn__homepage-white btn__share-module-share mr-3 account-settings-button"
