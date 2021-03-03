@@ -2,26 +2,32 @@
 
 .settings {
   margin-top: $margin-top-header;
+  margin-bottom: 150px;
 }
 
 .account-settings {
   background-color: #ffffff;
-  border: 2px solid #cccccc;
+  position: relative;
+  border: $border-card;
   padding: 10px 15px 20px 15px;
+  border-radius: 20px;
 }
 
-.account-settings .section-title {
-  font-weight: 400;
-  font-size: 22px;
+.section-title {
+  color: $text-1;
+  font-size: 25px;
+  font-weight: bold;
+  line-height: 33px;
+  padding: 17px 45px;
 }
-
 .account-settings-info {
   padding: 0 0 0 100px;
 }
 
 .account-settings-info .section-sub-title {
-  font-weight: 500;
-  font-size: 20px;
+  font-weight: bold;
+  font-size: 19px;
+  color: $text-1;
 }
 
 .account-settings-info .form-group {
@@ -47,4 +53,27 @@
 
 .account-settings-submit-info button.btn__homepage {
   outline: none;
+}
+
+.settings-separator {
+  position: absolute;
+  left: 0;
+  height: 1px;
+  background: $gray-7;
+}
+
+.section-label {
+  color: $text-1;
+}
+
+.password,
+.email {
+  padding-left: 20px;
+  border-radius: 28px;
+}
+
+.account-settings-button {
+  border-radius: 23px;
+  padding: 12px 40px;
+  height: 45px;
 }
