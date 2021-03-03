@@ -288,7 +288,7 @@ function AddPostModal({
                 </Col>
                 <Col md="9">
                   <div className="modal-section-title">Body</div>
-                  <div className="form-control draft-js-editor">
+                  <div>
                     <Suspense fallback={<div>Loading...</div>}>
                       <DraftEditor getSuggestions={getSuggestions} />
                     </Suspense>

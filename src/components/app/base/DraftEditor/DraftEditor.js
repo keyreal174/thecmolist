@@ -11,7 +11,7 @@ import createMentionPlugin, {
   defaultSuggestionsFilter,
 } from "@draft-js-plugins/mention";
 import "@draft-js-plugins/mention/lib/plugin.css";
-import editorStyles from "./DraftEditor.scss";
+import "./DraftEditor.scss";
 
 const DraftEditor = ({ getSuggestions }) => {
   const ref = useRef(null);
@@ -41,7 +41,7 @@ const DraftEditor = ({ getSuggestions }) => {
 
   return (
     <div
-      className={editorStyles.editor}
+      className="editor"
       onClick={() => {
         if (ref.current) {
           ref.current.focus();
