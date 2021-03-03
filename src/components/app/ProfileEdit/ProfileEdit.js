@@ -12,7 +12,8 @@ import {
   Col,
   ProgressBar,
 } from "react-bootstrap";
-import "./profileEdit.css";
+import { profileImage } from "../../util/constants";
+import "./profileEdit.scss";
 
 const getBase64 = (file) => {
   return new Promise((resolve, reject) => {
@@ -35,7 +36,9 @@ const ProfileEdit = (props) => {
   const [website, setWebsite] = useState("");
   const [headline, setHeadline] = useState("");
   const [image, setImage] = useState("");
+  const [coverImage, setCoverImage] = useState("");
   const [imageUploading, setImageUploading] = useState(false);
+  const [coverImageUploading, setCoverImageUploading] = useState(false);
   const [areasOfExpertise, setAreasOfExpertise] = useState("");
   const [areasOfInterest, setAreasOfInterest] = useState("");
   const [networking, setNetworking] = useState(false);
@@ -51,8 +54,9 @@ const ProfileEdit = (props) => {
   const [firstTime, setFirstTime] = useState(false);
   // props to control profile image
   const inputFile = useRef(null);
+  const coverInputFile = useRef(null);
 
-  let onInputFileChange = async (event) => {
+  const onInputFileChange = async (event) => {
     if (event && event.target && event.target.files.length > 0) {
       setImageUploading(true);
       const url = await getBase64(event.target.files[0]);
@@ -61,6 +65,14 @@ const ProfileEdit = (props) => {
     }
   };
 
+  const onCoverInputFileChange = async (event) => {
+    if (event && event.target && event.target.files.length > 0) {
+      setCoverImageUploading(true);
+      const url = await getBase64(event.target.files[0]);
+      setCoverImage(url);
+      setCoverImageUploading(false);
+    }
+  };
   useEffect(() => {
     const fetch = async () => {
       await props.fetchProfile();
@@ -81,6 +93,8 @@ const ProfileEdit = (props) => {
     setWebsite(profile.website);
     setHeadline(profile.headline);
     setImage(profile.image);
+    setCoverImage(profile.coverImage || profileImage);
+
     if (profile.about) {
       let pfa = profile.about;
       pfa.areasOfExpertise &&
@@ -114,6 +128,7 @@ const ProfileEdit = (props) => {
   const handleCancel = (e) => {
     setProfileInfo(props.profile);
     setImageUploading(false);
+    setCoverImageUploading(false);
   };
 
   const handleSubmit = async (e) => {
@@ -129,6 +144,7 @@ const ProfileEdit = (props) => {
       linkedin,
       website,
       headline,
+      coverImage,
       image,
       about: {
         areasOfExpertise: areasOfExpertise.split(", "),
@@ -149,11 +165,11 @@ const ProfileEdit = (props) => {
   };
 
   return (
-    <Container className="height-100">
+    <Container className="profile height-100">
       <Header />
-      <Form>
+      <Form className="mb-5">
         {firstTime && (
-          <div className="card-box mt-2">
+          <div className="card-box mt-2 py-3 px-3">
             <div className="profile-edit-progress d-flex align-items-center">
               <span className="mr-3">Start</span>
               <ProgressBar
@@ -171,11 +187,48 @@ const ProfileEdit = (props) => {
           </Alert>
         )}
         <div className="card-box mt-2">
-          <div className="d-flex align-items-center px-3">
+          <div className="profile--cover-wrapper">
             <img
-              className="rounded-circle"
+              className="profile--cover"
+              alt="profile"
+              src={coverImage}
+            ></img>
+            <input
+              type="file"
+              id="file"
+              ref={coverInputFile}
+              onChange={onCoverInputFileChange}
+              style={{ display: "none" }}
+            />
+            <div className="profile--edit-cover">
+              {coverImageUploading ? (
+                <Button
+                  className="btn-white"
+                  variant="outline-primary"
+                  disabled
+                >
+                  Uploading...
+                </Button>
+              ) : (
+                <Button
+                  className="btn-white mt-3"
+                  variant="outline-primary"
+                  onClick={() => {
+                    coverInputFile &&
+                      coverInputFile.current &&
+                      coverInputFile.current.click();
+                  }}
+                >
+                  Edit Cover Image
+                </Button>
+              )}
+            </div>
+          </div>
+          <div className="d-flex flex-column px-3">
+            <img
+              className="profile--image rounded-circle"
               src={image}
-              style={{ width: 120, height: 120 }}
+              style={{ width: 150, height: 150 }}
               alt=""
             />
             <input
@@ -185,10 +238,7 @@ const ProfileEdit = (props) => {
               onChange={onInputFileChange}
               style={{ display: "none" }}
             />
-            <div className="ml-5">
-              <h2 className="profile-edit-header mb-3 text-black">
-                Edit Profile
-              </h2>
+            <div className="profile--edit-image">
               {imageUploading ? (
                 <Button
                   className="btn-white"
@@ -199,28 +249,29 @@ const ProfileEdit = (props) => {
                 </Button>
               ) : (
                 <Button
-                  className="btn-white"
+                  className="btn-white mt-3"
                   variant="outline-primary"
                   onClick={() => {
                     inputFile && inputFile.current && inputFile.current.click();
                   }}
                 >
-                  Update Image
+                  Edit Profile Image
                 </Button>
               )}
             </div>
           </div>
         </div>
-        <div className="card-box mt-2">
-          <div className="identity">
-            <div style={{ marginLeft: -20, marginRight: -20 }}>
+        <div className="card-box py-3 px-3">
+          <div className="profile--row-title">
+            <div>
               <h2 className="profile-edit-section-title mb-3 px-4">Identity</h2>
-              <Separator />
+              <Separator className="card-separator" />
             </div>
-            <Row>
+            <Row className="profile--row mt-5">
               <Col>
                 <Form.Label>First name</Form.Label>
                 <Form.Control
+                  className="profile--input"
                   placeholder=""
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
@@ -229,16 +280,18 @@ const ProfileEdit = (props) => {
               <Col>
                 <Form.Label>Last name</Form.Label>
                 <Form.Control
+                  className="profile--input"
                   placeholder=""
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
                 />
               </Col>
             </Row>
-            <Row>
+            <Row className="profile--row">
               <Col>
                 <Form.Label>City</Form.Label>
                 <Form.Control
+                  className="profile--input"
                   placeholder=""
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
@@ -247,6 +300,7 @@ const ProfileEdit = (props) => {
               <Col>
                 <Form.Label>State/Province</Form.Label>
                 <Form.Control
+                  className="profile--input"
                   placeholder=""
                   value={province}
                   onChange={(e) => setProvince(e.target.value)}
@@ -255,16 +309,18 @@ const ProfileEdit = (props) => {
               <Col>
                 <Form.Label>Country</Form.Label>
                 <Form.Control
+                  className="profile--input"
                   placeholder=""
                   value={country}
                   onChange={(e) => setCountry(e.target.value)}
                 />
               </Col>
             </Row>
-            <Row>
+            <Row className="profile--row mb-5">
               <Col>
                 <Form.Label>LinkedIn profile URL</Form.Label>
                 <Form.Control
+                  className="profile--input"
                   placeholder=""
                   value={linkedin}
                   onChange={(e) => setLinkedin(e.target.value)}
@@ -273,33 +329,24 @@ const ProfileEdit = (props) => {
               <Col>
                 <Form.Label>Website URL (optional)</Form.Label>
                 <Form.Control
+                  className="profile--input"
                   placeholder=""
                   value={website}
                   onChange={(e) => setWebsite(e.target.value)}
                 />
               </Col>
             </Row>
-            <Row>
-              <Col>
-                <Form.Label>Headline (optional)</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  rows="3"
-                  value={headline}
-                  onChange={(e) => setHeadline(e.target.value)}
-                />
-              </Col>
-            </Row>
           </div>
-          <div className="role mt-4">
-            <div style={{ marginLeft: -20, marginRight: -20 }}>
+          <div className="profile--row-title role mt-4">
+            <div>
               <h2 className="profile-edit-section-title mb-3 px-4">Role</h2>
-              <Separator />
+              <Separator className="card-separator" />
             </div>
-            <Row>
+            <Row className="profile--row mt-5">
               <Col>
                 <Form.Label>Title</Form.Label>
                 <Form.Control
+                  className="profile--input"
                   placeholder=""
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
@@ -308,16 +355,18 @@ const ProfileEdit = (props) => {
               <Col>
                 <Form.Label>Revenue accountability / impact ($M)</Form.Label>
                 <Form.Control
+                  className="profile--input"
                   placeholder=""
                   value={revenue}
                   onChange={(e) => setRevenue(e.target.value)}
                 />
               </Col>
             </Row>
-            <Row>
+            <Row className="profile--row">
               <Col>
                 <Form.Label>Company name</Form.Label>
                 <Form.Control
+                  className="profile--input"
                   placeholder=""
                   value={company}
                   onChange={(e) => setCompany(e.target.value)}
@@ -326,16 +375,18 @@ const ProfileEdit = (props) => {
               <Col>
                 <Form.Label>Company LinkedIn URL</Form.Label>
                 <Form.Control
+                  className="profile--input"
                   placeholder=""
                   value={companyLinkedin}
                   onChange={(e) => setCompanyLinkedin(e.target.value)}
                 />
               </Col>
             </Row>
-            <Row>
+            <Row className="profile--row mb-5">
               <Col>
                 <Form.Label>Company Industry</Form.Label>
                 <Form.Control
+                  className="profile--input"
                   placeholder=""
                   value={companyIndustry}
                   onChange={(e) => setCompanyIndustry(e.target.value)}
@@ -344,6 +395,7 @@ const ProfileEdit = (props) => {
               <Col>
                 <Form.Label>Company Stage (e.g., Series A)</Form.Label>
                 <Form.Control
+                  className="profile--input"
                   placeholder=""
                   value={companyStage}
                   onChange={(e) => setCompanyStage(e.target.value)}
@@ -351,30 +403,45 @@ const ProfileEdit = (props) => {
               </Col>
             </Row>
           </div>
-          <div className="about mt-4">
-            <div style={{ marginLeft: -20, marginRight: -20 }}>
+          <div className="profile--row-title about mt-4">
+            <div>
               <h2 className="profile-edit-section-title mb-3 px-4">About</h2>
-              <Separator />
+              <Separator className="card-separator" />
             </div>
-            <Row>
+            <Row className="profile--row mt-5">
               <Col>
-                <Form.Label>Areas of expertise</Form.Label>
+                <Form.Label>Headline (optional)</Form.Label>
                 <Form.Control
+                  as="textarea"
+                  className="profile--textarea"
+                  rows="3"
+                  placeholder="High-tech professional marketer passionate about consumer internet, SaaS and disruptive marketplaces. Industry expertise: mobile, consumer internet, social media, enterprise software, SaaS, advertising."
+                  value={headline}
+                  onChange={(e) => setHeadline(e.target.value)}
+                />
+              </Col>
+            </Row>
+            <Row className="profile--row">
+              <Col>
+                <Form.Label>Areas of marketing expertise</Form.Label>
+                <Form.Control
+                  className="profile--input"
                   placeholder="Choose one or more #topics"
                   value={areasOfExpertise}
                   onChange={(e) => setAreasOfExpertise(e.target.value)}
                 />
               </Col>
               <Col>
-                <Form.Label>Areas of interest</Form.Label>
+                <Form.Label>Areas of marketing interest</Form.Label>
                 <Form.Control
+                  className="profile--input"
                   placeholder="Choose one or more #topics"
                   value={areasOfInterest}
                   onChange={(e) => setAreasOfInterest(e.target.value)}
                 />
               </Col>
             </Row>
-            <Row>
+            <Row className="profile--row">
               <Col>
                 <Form.Label>Open to networking</Form.Label>
                 <div>
@@ -399,18 +466,6 @@ const ProfileEdit = (props) => {
                 </div>
               </Col>
               <Col>
-                <Form.Label>Networking opportunities</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  rows="1"
-                  placeholder="What types of people would you like to meet?"
-                  value={networkingOpportunities}
-                  onChange={(e) => setNetworkingOpportunities(e.target.value)}
-                />
-              </Col>
-            </Row>
-            <Row>
-              <Col>
                 <Form.Label>Open to advising</Form.Label>
                 <div>
                   <Form.Check
@@ -433,49 +488,41 @@ const ProfileEdit = (props) => {
                   />
                 </div>
               </Col>
-              <Col>
-                <Form.Label>Advising opportunities</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  rows="1"
-                  placeholder="What type companies would you like to advise?"
-                  value={advisingOpportunities}
-                  onChange={(e) => setAdvisingOpportunities(e.target.value)}
-                />
-              </Col>
             </Row>
           </div>
           <div className="mt-4">
-            <div style={{ marginLeft: -20, marginRight: -20 }} className="mb-3">
-              <Separator />
+            <div>
+              <Separator className="card-separator" />
             </div>
             <div className="d-flex justify-content-end">
-              {isNewUser ? (
-                <Button
-                  className="btn-white modal-primary-button"
-                  variant="outline-primary"
-                  onClick={handleSubmit}
-                >
-                  Done
-                </Button>
-              ) : (
-                <>
-                  <Button
-                    className="btn-white mr-2"
-                    variant="outline-primary"
-                    onClick={handleCancel}
-                  >
-                    Cancel
-                  </Button>
+              <div className="pt-3">
+                {isNewUser ? (
                   <Button
                     className="btn-white modal-primary-button"
                     variant="outline-primary"
                     onClick={handleSubmit}
                   >
-                    Save
+                    Done
                   </Button>
-                </>
-              )}
+                ) : (
+                  <>
+                    <Button
+                      className="btn-white mr-2"
+                      variant="outline-primary"
+                      onClick={handleCancel}
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      className="btn-white modal-primary-button"
+                      variant="outline-primary"
+                      onClick={handleSubmit}
+                    >
+                      Save
+                    </Button>
+                  </>
+                )}
+              </div>
             </div>
           </div>
         </div>

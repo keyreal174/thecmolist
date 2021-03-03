@@ -1,0 +1,83 @@
+@import "../../../sass/globals.scss";
+
+.card-box {
+  background-color: $white;
+  border-radius: 18px;
+  border: 1px solid $gray-4;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.card-separator {
+  height: 1px;
+  background-color: $gray-4;
+  left: 0;
+  width: 100%;
+  position: absolute;
+}
+
+.profile-edit-header {
+  font-size: 32px;
+  font-weight: 600;
+  color: black;
+}
+
+.profile-edit-section-title {
+  color: black;
+  font-weight: 600;
+}
+
+.profile-edit-progress {
+  padding-left: 30px;
+  width: 90%;
+}
+
+.profile-edit-progress span {
+  font-size: 20px;
+  font-weight: 600;
+  color: $text-1;
+}
+
+.welcome-message {
+  color: $text-1;
+}
+
+.profile {
+  &--cover {
+    width: 100%;
+    height: 216px;
+  }
+  &--cover-wrapper {
+    position: relative;
+    border-radius: 18px;
+  }
+  &--edit-cover {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+  &--image {
+    position: absolute;
+    border: 3px solid $white;
+    top: 98px;
+  }
+  &--edit-image {
+    margin-top: 45px;
+    margin-bottom: 40px;
+  }
+  &--row {
+    padding-left: 60px;
+  }
+  &--row-title {
+    padding-left: 20px;
+    padding-right: 80px;
+  }
+  &--input {
+    padding-left: 20px;
+    border-radius: 35px;
+    margin-bottom: 25px;
+  }
+  &--textarea {
+    border-radius: 8px;
+  }
+}
