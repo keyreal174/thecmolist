@@ -39,7 +39,6 @@ function AddPostModal({
   const [title, setTitle] = useState("");
   const [topics, setTopics] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [mentions, setMentions] = useState([]);
 
   const groupNameToSlug = (g) => {
     if (profileStats && profileStats.profile && profileStats.profile.groups) {
@@ -121,7 +120,6 @@ function AddPostModal({
     const fetch = async () => {
       try {
         await getProfileStats();
-        await getSuggestions();
       } catch (err) {
         setError(err.toString());
       }
@@ -141,12 +139,6 @@ function AddPostModal({
       setGroups(getGroupsObject(actualGroups));
     }
   }, [profileStats]);
-
-  useEffect(() => {
-    if (suggestions && suggestions.length > 0) {
-      setMentions(suggestions);
-    }
-  }, [suggestions]);
 
   const handlePhotoClick = () => {
     const file = document.getElementById("file");
@@ -298,7 +290,7 @@ function AddPostModal({
                   <div className="modal-section-title">Body</div>
                   <div className="form-control draft-js-editor">
                     <Suspense fallback={<div>Loading...</div>}>
-                      <DraftEditor mentions={mentions} />
+                      <DraftEditor getSuggestions={getSuggestions} />
                     </Suspense>
                   </div>
                 </Col>
@@ -485,7 +477,6 @@ function AddPostModal({
 const mapState = (state) => {
   return {
     profileStats: state.profileModel.profileStats,
-    suggestions: state.suggestionsModel.suggestions,
   };
 };
 

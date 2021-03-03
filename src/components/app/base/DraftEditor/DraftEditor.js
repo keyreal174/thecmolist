@@ -13,13 +13,13 @@ import createMentionPlugin, {
 import "@draft-js-plugins/mention/lib/plugin.css";
 import editorStyles from "./DraftEditor.scss";
 
-const DraftEditor = ({ mentions }) => {
+const DraftEditor = ({ getSuggestions }) => {
   const ref = useRef(null);
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
   const [open, setOpen] = useState(true);
-  const [suggestions, setSuggestions] = useState(mentions);
+  const [suggestions, setSuggestions] = useState([]);
 
   const { MentionSuggestions, plugins } = useMemo(() => {
     const mentionPlugin = createMentionPlugin();
@@ -34,7 +34,9 @@ const DraftEditor = ({ mentions }) => {
     setOpen(_open);
   }, []);
   const onSearchChange = useCallback(({ value }) => {
-    setSuggestions(defaultSuggestionsFilter(value, mentions));
+    getSuggestions(value).then((response) => {
+      setSuggestions(response);
+    });
   }, []);
 
   return (
