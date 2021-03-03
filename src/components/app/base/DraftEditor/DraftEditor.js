@@ -6,7 +6,7 @@ import React, {
   useState,
 } from "react";
 import { EditorState } from "draft-js";
-import Editor from "@draft-js-plugins/editor";
+import Editor, { createEditorStateWithText } from "@draft-js-plugins/editor";
 import createMentionPlugin, {
   defaultSuggestionsFilter,
 } from "@draft-js-plugins/mention";
@@ -28,7 +28,9 @@ const { Toolbar } = staticToolbarPlugin;
 const DraftEditor = ({ getSuggestions }) => {
   const ref = useRef(null);
   const [editorState, setEditorState] = useState(() =>
-    EditorState.createEmpty()
+    createEditorStateWithText(
+      "Include all the information, @people and @vendors someone would need to answer your question"
+    )
   );
   const [open, setOpen] = useState(true);
   const [suggestions, setSuggestions] = useState([]);
