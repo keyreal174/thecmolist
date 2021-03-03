@@ -2,14 +2,37 @@
   box-sizing: border-box;
   border: 1px solid #ddd;
   cursor: text;
-  padding: 16px;
-  border-radius: 2px;
+  border-radius: 6px;
   margin-bottom: 2em;
-  box-shadow: inset 0px 1px 8px -3px #ababab;
   background: #fefefe;
-  min-height: 160px;
-}
+  min-height: 165px;
+  position: relative;
+  padding-bottom: 38px;
 
-.editor :global(.public-DraftEditor-content) {
-  min-height: 140px;
+  .editor-wrapper {
+    padding-top: 8px;
+    padding-right: 16px;
+    padding-left: 16px;
+    overflow-y: auto;
+    max-height: 120px;
+
+    .editor-toolbar {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      bottom: 4px;
+
+      & > div {
+        border: none;
+        border-top: 1px solid #ddd;
+        border-radius: 0;
+        box-shadow: none;
+      }
+    }
+
+    ul {
+      list-style: initial;
+      padding-left: 40px;
+    }
+  }
 }

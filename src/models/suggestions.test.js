@@ -1,5 +1,8 @@
 import { init } from "@rematch/core";
-import suggestionsModel, { fetchSuggestionsRequest } from "./suggestions";
+import suggestionsModel, {
+  fetchSuggestionsRequest,
+  fetchTopicSuggestionsRequest,
+} from "./suggestions";
 const axios = require("axios");
 
 const mentions = [
@@ -50,6 +53,16 @@ describe("suggestionsModel model", () => {
     const suggestionsModelData = store.getState().suggestionsModel;
     expect(suggestionsModelData.suggestions).toEqual(mentions);
   }),
+    it("reducer: updateTopicSuggestions", () => {
+      const store = init({
+        models: { suggestionsModel },
+      });
+
+      store.dispatch.suggestionsModel.updateTopicSuggestions(mentions);
+
+      const suggestionsModelData = store.getState().suggestionsModel;
+      expect(suggestionsModelData.topicSuggestions).toEqual(mentions);
+    }),
     it("fetch successfully full mention data from an API", async () => {
       axios.get.mockImplementationOnce(() => Promise.resolve(mentions));
 
@@ -63,5 +76,21 @@ describe("suggestionsModel model", () => {
       );
 
       await expect(fetchSuggestionsRequest()).rejects.toThrow(errorMessage);
+    }),
+    it("fetch successfully topic mention data from an API", async () => {
+      axios.get.mockImplementationOnce(() => Promise.resolve(mentions));
+
+      await expect(fetchTopicSuggestionsRequest()).resolves.toEqual(mentions);
+    }),
+    it("fetch erroneously topic mention data from an API", async () => {
+      const errorMessage = "Could not get topic suggestions";
+
+      axios.get.mockImplementationOnce(() =>
+        Promise.reject(new Error(errorMessage))
+      );
+
+      await expect(fetchTopicSuggestionsRequest()).rejects.toThrow(
+        errorMessage
+      );
     });
 });
