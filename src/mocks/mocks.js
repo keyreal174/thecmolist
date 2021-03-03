@@ -241,6 +241,10 @@ function MockRequests() {
     ];
   });
 
+  mock.onPost(new RegExp("/api/network/invite/*")).reply((data) => {
+     return [200, { success: true, error: null }];
+  });
+  
   mock.onPost(new RegExp("/api/onboarding/step1")).reply((data) => {
     return [200, { success: true, error: null }];
   });

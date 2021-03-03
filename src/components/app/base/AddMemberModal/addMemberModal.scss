@@ -1,0 +1,25 @@
+@import "../../../../sass/globals.scss";
+
+.add-member-modal {
+  &--title {
+    color: $text-1;
+  }
+  &--subtitle {
+    margin-left: 20px;
+  }
+  &--label {
+    color: $text-1;
+    font-size: 16px;
+  }
+  &--input {
+    padding-left: 20px;
+    border-radius: 23px;
+  }
+  &--textarea {
+    border-radius: 8px;
+  }
+  .form-group {
+    margin-top: 0;
+    margin-left: 20px;
+  }
+}

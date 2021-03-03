@@ -26,6 +26,9 @@ const networkRequest = (sort, filter, subfilter, token) => {
   return axios.get(url, { headers });
 };
 
+const postNewMember = (data) => {
+  axios.post("/api/network/invite", data);
+};
 export default {
   name: "networkModel",
   state: {
@@ -250,6 +253,13 @@ export default {
     },
     async invalidateFeed() {
       dispatch.networkModel.clearInactiveFeedData();
+    },
+    async inviteNewMember(data) {
+      try {
+        await postNewMember(data);
+      } catch (error) {
+        throw new Error("Can not add new member");
+      }
     },
   }),
 };
