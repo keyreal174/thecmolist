@@ -24,6 +24,7 @@ function AddPostModal({
   show,
   suggestions,
   getSuggestions,
+  getTopicSuggestions,
 }) {
   const [allMembers, setAllMembers] = useState(false);
   const [body, setBody] = useState("");
@@ -290,7 +291,10 @@ function AddPostModal({
                   <div className="modal-section-title">Body</div>
                   <div>
                     <Suspense fallback={<div>Loading...</div>}>
-                      <DraftEditor getSuggestions={getSuggestions} />
+                      <DraftEditor
+                        getSuggestions={getSuggestions}
+                        getTopicSuggestions={getTopicSuggestions}
+                      />
                     </Suspense>
                   </div>
                 </Col>
@@ -484,6 +488,7 @@ const mapDispatch = (dispatch) => {
   return {
     getProfileStats: dispatch.profileModel.getProfileStats,
     getSuggestions: dispatch.suggestionsModel.getSuggestions,
+    getTopicSuggestions: dispatch.suggestionsModel.getTopicSuggestions,
   };
 };
 

@@ -25,7 +25,7 @@ import "./DraftEditor.scss";
 const staticToolbarPlugin = createToolbarPlugin();
 const { Toolbar } = staticToolbarPlugin;
 
-const DraftEditor = ({ getSuggestions }) => {
+const DraftEditor = ({ getSuggestions, getTopicSuggestions }) => {
   const ref = useRef(null);
   const [editorState, setEditorState] = useState(() =>
     createEditorStateWithText(
@@ -36,7 +36,7 @@ const DraftEditor = ({ getSuggestions }) => {
   const [suggestions, setSuggestions] = useState([]);
 
   const { MentionSuggestions, plugins } = useMemo(() => {
-    const mentionPlugin = createMentionPlugin();
+    const mentionPlugin = createMentionPlugin({ mentionTrigger: ["@", "("] });
     // eslint-disable-next-line no-shadow
     const { MentionSuggestions } = mentionPlugin;
     // eslint-disable-next-line no-shadow
@@ -47,10 +47,16 @@ const DraftEditor = ({ getSuggestions }) => {
   const onOpenChange = useCallback((_open) => {
     setOpen(_open);
   }, []);
-  const onSearchChange = useCallback(({ value }) => {
-    getSuggestions(value).then((response) => {
-      setSuggestions(response);
-    });
+  const onSearchChange = useCallback(({ trigger, value }) => {
+    if (trigger === "@") {
+      getSuggestions(value).then((response) => {
+        setSuggestions(response);
+      });
+    } else {
+      getTopicSuggestions(value).then((response) => {
+        setSuggestions(response);
+      });
+    }
   }, []);
 
   return (
