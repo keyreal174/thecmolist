@@ -6,6 +6,12 @@ export const fetchSuggestionsRequest = (query) => {
     : axios.get(`/api/entity_suggestions?q=${query}`);
 };
 
+export const fetchTopicSuggestionsRequest = (query) => {
+  return !query
+    ? axios.get("/api/topic_suggestions")
+    : axios.get(`/api/topic_suggestions?q=${query}`);
+};
+
 export default {
   name: "suggestionsModel",
   state: {
@@ -18,6 +24,12 @@ export default {
         suggestions: data,
       };
     },
+    updateTopicSuggestions: (oldState, data) => {
+      return {
+        ...oldState,
+        topicSuggestions: data,
+      };
+    },
   },
   effects: (dispatch) => ({
     async getSuggestions(query = null) {
@@ -28,6 +40,16 @@ export default {
         return suggestions;
       } catch (err) {
         throw new Error("Could not get suggestions");
+      }
+    },
+    async getTopicSuggestions(query = null) {
+      try {
+        const response = await fetchTopicSuggestionsRequest(query);
+        const { suggestions } = response.data;
+        dispatch.suggestionsModel.updateTopicSuggestions(suggestions);
+        return suggestions;
+      } catch (err) {
+        throw new Error("Could not get topic suggestions");
       }
     },
   }),

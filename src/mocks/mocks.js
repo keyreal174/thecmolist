@@ -83,6 +83,11 @@ function MockRequests() {
       response: MockedApiSuggestions,
     },
     {
+      path: /\/api\/topic_suggestions.*/,
+      responseCode: 200,
+      response: MockedApiSuggestions,
+    },
+    {
       path: /\/api\/onboarding\/step2.*/,
       responseCode: 200,
       response: MockedApiOnboarding,
