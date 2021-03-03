@@ -1,0 +1,162 @@
+@import "../../sass/globals.scss";
+
+.Homepage {
+  text-align: center;
+}
+
+.Homepage-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.Homepage-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.img__homepage {
+  width: 100%;
+}
+
+.Homepage-link {
+  color: #61dafb;
+}
+
+.about__homepage {
+  margin-top: -10px;
+}
+
+.about__homepage .row {
+  border-bottom: 1px solid #dedede;
+  padding: 30px 0;
+}
+
+.about__homepage .row:last-child {
+  border-bottom: none;
+}
+
+.align-items-center {
+  -ms-flex-align: center !important;
+  align-items: center !important;
+}
+
+.hp__img {
+  max-width: 862px;
+  margin: 0 auto;
+  mix-blend-mode: darken;
+}
+
+.hp__img > img {
+  border-radius: 10px;
+  margin: 20px;
+  padding: 10px;
+  box-sizing: border-box;
+  box-shadow: 0 6px 12px -2px rgba(50, 50, 93, 0.25),
+    0 3px 7px -3px rgba(0, 0, 0, 0.3);
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.home {
+  &--header {
+    background: $white;
+    height: 80px;
+    position: absolute;
+    left: 0;
+    margin: 0;
+    width: 100%;
+  }
+  &--title {
+    color: $text-1;
+    font-size: 40px;
+    line-height: 52px;
+    margin-top: 128px;
+    text-align: center;
+  }
+  &--subtitle {
+    margin-top: 16px;
+    color: $text-2;
+    text-align: center;
+    font-size: 20px;
+    line-height: 26px;
+  }
+  &--form {
+    margin-top: 56px;
+    padding: 60px;
+    padding-top: 0;
+
+    &-title,
+    &-subtitle,
+    &-green-text {
+      text-align: center;
+    }
+    &-title {
+      color: $text-1;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 26px;
+    }
+    &-subtitle {
+      color: $text-2;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    &-green-text {
+      color: $success;
+      font-size: 12px;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 16px;
+      margin-bottom: 6px;
+    }
+  }
+  &--form-left {
+    background: $white;
+    border-bottom-left-radius: 23px;
+    border-top-left-radius: 23px;
+    padding: 60px;
+    height: 604px;
+  }
+  &--form-right {
+    background: #e0e9ff;
+    border-bottom-right-radius: 23px;
+    border-top-right-radius: 23px;
+    padding: 60px;
+    height: 604px;
+  }
+  &--form-linkedin {
+    margin-top: 80px !important;
+    width: 250px;
+  }
+  &--form-eula {
+    margin-top: 15px;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    padding: 0 60px;
+  }
+  &--form-questions {
+    margin-top: 89px;
+    padding: 0 30px;
+    text-align: center;
+  }
+  &--input {
+    padding-left: 20px;
+    border-radius: 23px;
+    width: 100%;
+  }
+  &--label {
+    color: $text-1;
+  }
+  &--footer {
+    margin-top: 315px;
+  }
+}

@@ -1,107 +1,159 @@
 import React from "react";
-import "./Homepage.css";
+import { Button, Container, Row, Col, Form } from "react-bootstrap";
+import Footer from "../app/base/Footer/Footer";
+import LinkedIn from "../login/icons/linkedin.svg";
 
-function handleSubmit(e) {
-  const scriptURL =
-    "https://script.google.com/macros/s/AKfycbw2T8seh57PBnyZWwS6adWbqRvSkxtUYrjUvscVjQGiqPU8xAvZ/exec";
-  const form = document.forms["submit-to-google-sheet"];
-  e.preventDefault();
-  fetch(scriptURL, { method: "POST", body: new FormData(form) })
-    .then((response) => {
-      console.log("Success!", response);
-      window.location.href = "/signedup";
-    })
-    .catch((error) => {
-      console.error("Error!", error.message);
-      alert("An error occurred please try again!");
-    });
-}
+import "./homepage.scss";
 
 function Homepage() {
+  const handleFormLeftSubmit = (e) => {
+    e.preventDefault();
+    const {
+      target: { elements },
+    } = e;
+    const { name, mail, linkedIn } = elements;
+    const content = {
+      name: name.value,
+      mail: mail.value,
+      linkedIn: linkedIn.value,
+    };
+    console.log(content);
+  };
+  const handleFormRightSubmit = (e) => {
+    e.preventDefault();
+    console.log("sign in with linkedIn");
+  };
   return (
-    <div className="container wrapper__homepage">
-      <header>
-        <nav className="nav__homepage">
+    <Container className="home height-100">
+      <Row className="home--header">
+        <div className="ml-5">
           <a className="nav__logo" href="/">
             CMO<span>list</span>
           </a>
-          <div className="btn__homepage-group">
-            <a href="/login" className="btn__homepage btn__homepage-white">
-              Sign In
-            </a>
+        </div>
+      </Row>
+      <Row>
+        <Col md="2"></Col>
+        <Col md="8">
+          <div className="home--title">
+            Manage and share marketing knowledge with your trusted peers
           </div>
-        </nav>
-
-        <div className="banner__homepage">
-          <div className="row align-items-center">
-            <div className="col-sm-8">
-              <h1 className="banner__header">
-                The private network for the world's leading marketers
-              </h1>
-              <form
-                name="submit-to-google-sheet"
-                style={{ "margin-top": "40px" }}
-                onSubmit={handleSubmit}
-              >
-                <div
-                  className="form-group"
-                  style={{ marginLeft: "0px", marginRight: "0px" }}
-                >
-                  <input
-                    name="email"
-                    type="email"
-                    placeholder="Enter email for early access"
-                    className="input-field max-input-width"
-                    style={{ width: "625px", marginRight: "0px" }}
-                    required
+        </Col>
+        <Col md="2"></Col>
+      </Row>
+      <Row>
+        <Col md="2"></Col>
+        <Col md="8">
+          <div className="home--subtitle">
+            CMOlist is a private knowledge network that helps marketing leaders
+            learn from each other by sharing critical insights, best practices,
+            and proven vendors.
+          </div>
+        </Col>
+        <Col md="2"></Col>
+      </Row>
+      <Row className="home--form">
+        <Col className="px-0" md="6">
+          <Form className="home--form-left" onSubmit={handleFormLeftSubmit}>
+            <div className="home--form-title">Join CMOlist</div>
+            <div className="home--form-green-text">Currently invite only</div>
+            <div className="home--form-subtitle">
+              Fill out the form below to apply:
+            </div>
+            <Row>
+              <Col>
+                <Form.Group>
+                  <Form.Label className="home--label">Name</Form.Label>
+                  <Form.Control
+                    className="home--input"
+                    placeHolder="First name, Last name"
+                    required={true}
+                    id="name"
                   />
-                  <button
-                    type="submit"
-                    className="btn__homepage btn__homepage-blue"
-                    style={{
-                      float: "right",
-                      width: "40px",
-                      height: "40px",
-                      fontSize: "18px",
-                      paddingTop: "4px",
-                    }}
-                  >
-                    >
-                  </button>
-                </div>
-              </form>
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Form.Group>
+                  <Form.Label className="home--label">Email</Form.Label>
+                  <Form.Control
+                    className="home--input"
+                    placeHolder="name@company.com"
+                    required={true}
+                    id="mail"
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Form.Group>
+                  <Form.Label className="home--label">LinkedIn</Form.Label>
+                  <Form.Control
+                    className="home--input"
+                    placeHolder="https://linkedin/.com/in/linkedinID"
+                    required={true}
+                    id="linkedIn"
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Button
+                  type="submit"
+                  className="btn__homepage btn__homepage-blue signup--form-apply"
+                >
+                  Apply
+                </Button>
+              </Col>
+            </Row>
+          </Form>
+        </Col>
+        <Col className="px-0" md="6">
+          <Form className="home--form-right" onSubmit={handleFormRightSubmit}>
+            <div className="home--form-title">Sign in</div>
+            <div className="home--form-green-text" />
+            <div className="home--form-subtitle">
+              Already have an account or received a invitation? Sign in here:
             </div>
-            <div className="col-sm-4">
-              <div className="banner__img">
-                <img
-                  className="img__homepage"
-                  src="/images/banner.png"
-                  alt=""
-                ></img>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <footer
-        className="footer__homepage"
-        style={{ borderBottom: "1px solid rgba(0, 0, 0, 0.2)" }}
-      >
-        <div className="footer__wrapper">
-          <div className="row">
-            <div className="col-md-2 order-md-first">
-              <div className="footer__left">
-                <a className="nav__logo" href="/">
-                  CMO<span>list</span>
-                </a>
-                <span className="footer__copyright">&copy; 2020</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
+            <Row>
+              <Col>
+                <Button
+                  type="submit"
+                  className="home--form-linkedin btn__homepage btn__homepage-blue signup--form-apply"
+                >
+                  <div>
+                    <span className="mr-2">
+                      <img src={LinkedIn} alt="linkeding" />
+                    </span>
+                    <span>Sign in with LinkedIn</span>
+                  </div>
+                </Button>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <p className="home--form-eula">
+                  By signing in, you agree to our <a href="#">User Agreement</a>{" "}
+                  and <a href="#">Privacy Policy</a>.
+                </p>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <p className="home--form-questions">
+                  Any questions or problems signing in? Please contact us at{" "}
+                  <a href="mailto:hello@theCMOlist.com">hello@theCMOlist.com</a>
+                </p>
+              </Col>
+            </Row>
+          </Form>
+        </Col>
+      </Row>
+      <Footer className="home--footer" />
+    </Container>
   );
 }
 
