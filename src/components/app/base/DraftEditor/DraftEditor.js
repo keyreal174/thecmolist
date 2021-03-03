@@ -10,8 +10,20 @@ import Editor from "@draft-js-plugins/editor";
 import createMentionPlugin, {
   defaultSuggestionsFilter,
 } from "@draft-js-plugins/mention";
+import createToolbarPlugin from "@draft-js-plugins/static-toolbar";
+import {
+  ItalicButton,
+  BoldButton,
+  UnderlineButton,
+  UnorderedListButton,
+  OrderedListButton,
+} from "@draft-js-plugins/buttons";
 import "@draft-js-plugins/mention/lib/plugin.css";
+import "@draft-js-plugins/static-toolbar/lib/plugin.css";
 import "./DraftEditor.scss";
+
+const staticToolbarPlugin = createToolbarPlugin();
+const { Toolbar } = staticToolbarPlugin;
 
 const DraftEditor = ({ getSuggestions }) => {
   const ref = useRef(null);
@@ -26,7 +38,7 @@ const DraftEditor = ({ getSuggestions }) => {
     // eslint-disable-next-line no-shadow
     const { MentionSuggestions } = mentionPlugin;
     // eslint-disable-next-line no-shadow
-    const plugins = [mentionPlugin];
+    const plugins = [mentionPlugin, staticToolbarPlugin];
     return { plugins, MentionSuggestions };
   }, []);
 
@@ -48,22 +60,40 @@ const DraftEditor = ({ getSuggestions }) => {
         }
       }}
     >
-      <Editor
-        editorKey={"editor"}
-        editorState={editorState}
-        onChange={setEditorState}
-        plugins={plugins}
-        ref={ref}
-      />
-      <MentionSuggestions
-        open={open}
-        onOpenChange={onOpenChange}
-        suggestions={suggestions}
-        onSearchChange={onSearchChange}
-        onAddMention={() => {
-          // get the mention object selected
-        }}
-      />
+      <div className="editor-wrapper">
+        <Editor
+          editorKey={"editor"}
+          editorState={editorState}
+          onChange={setEditorState}
+          plugins={plugins}
+          ref={ref}
+        />
+        <div className="editor-toolbar">
+          <Toolbar>
+            {
+              // may be use React.Fragment instead of div to improve perfomance after React 16
+              (externalProps) => (
+                <div>
+                  <BoldButton {...externalProps} />
+                  <ItalicButton {...externalProps} />
+                  <UnderlineButton {...externalProps} />
+                  <UnorderedListButton {...externalProps} />
+                  <OrderedListButton {...externalProps} />
+                </div>
+              )
+            }
+          </Toolbar>
+        </div>
+        <MentionSuggestions
+          open={open}
+          onOpenChange={onOpenChange}
+          suggestions={suggestions}
+          onSearchChange={onSearchChange}
+          onAddMention={() => {
+            // get the mention object selected
+          }}
+        />
+      </div>
     </div>
   );
 };
