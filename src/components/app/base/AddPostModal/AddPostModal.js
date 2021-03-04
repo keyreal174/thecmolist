@@ -9,6 +9,7 @@ import {
   Row,
   Col,
 } from "react-bootstrap";
+import { Typeahead } from "react-bootstrap-typeahead";
 import { cdn } from "../../../util/constants";
 import "./addPostModal.scss";
 const DraftEditor = React.lazy(() => import("../DraftEditor/DraftEditor"));
@@ -40,6 +41,15 @@ function AddPostModal({
   const [title, setTitle] = useState("");
   const [topics, setTopics] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  // Typeahead values for #topic
+  const [options, setOptions] = useState([
+    { name: "advertising", value: "advertising" },
+    { name: "seo", value: "seo" },
+    { name: "digital", value: "digital" },
+    { name: "corporate", value: "corporate" },
+  ]);
+  const [selectedOptions, setSelectedOptions] = useState([]);
 
   const groupNameToSlug = (g) => {
     if (profileStats && profileStats.profile && profileStats.profile.groups) {
@@ -442,13 +452,16 @@ function AddPostModal({
               <Row>
                 <Col>
                   <div className="modal-section-title">#Topics</div>
-                  <Form.Control
-                    as="input"
-                    className="modal-section-title-content"
-                    id="topics"
+                  <Typeahead
+                    clearButton
+                    id="agency-categories"
+                    labelKey="name"
+                    multiple
+                    options={options}
+                    onChange={(selectedOption) => {
+                      setSelectedOptions(selectedOption);
+                    }}
                     placeholder="Choose one or more #topics or #locations that describe what your question is about"
-                    onChange={(e) => setTopics(e.target.value)}
-                    value={topics}
                   />
                 </Col>
               </Row>
