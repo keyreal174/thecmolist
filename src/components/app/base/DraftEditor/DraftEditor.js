@@ -5,7 +5,8 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { EditorState } from "draft-js";
+import { EditorState, convertToRaw } from "draft-js";
+import draftToHtml from "draftjs-to-html";
 import Editor from "@draft-js-plugins/editor";
 import createMentionPlugin, {
   defaultSuggestionsFilter,
@@ -25,7 +26,7 @@ import "./DraftEditor.scss";
 const staticToolbarPlugin = createToolbarPlugin();
 const { Toolbar } = staticToolbarPlugin;
 
-const DraftEditor = ({ getSuggestions, getTopicSuggestions }) => {
+const DraftEditor = ({ getSuggestions, getTopicSuggestions, setBody }) => {
   const ref = useRef(null);
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
@@ -57,6 +58,12 @@ const DraftEditor = ({ getSuggestions, getTopicSuggestions }) => {
     }
   }, []);
 
+  const onChange = (editor_state) => {
+    setEditorState(editor_state);
+    const content = draftToHtml(convertToRaw(editor_state.getCurrentContent()));
+    setBody(content);
+  };
+
   return (
     <div
       className="editor"
@@ -70,7 +77,7 @@ const DraftEditor = ({ getSuggestions, getTopicSuggestions }) => {
         <Editor
           editorKey={"editor"}
           editorState={editorState}
-          onChange={setEditorState}
+          onChange={onChange}
           plugins={plugins}
           ref={ref}
         />

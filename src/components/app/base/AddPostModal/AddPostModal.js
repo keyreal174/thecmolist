@@ -292,6 +292,7 @@ function AddPostModal({
                   <div>
                     <Suspense fallback={<div>Loading...</div>}>
                       <DraftEditor
+                        setBody={setBody}
                         getSuggestions={getSuggestions}
                         getTopicSuggestions={getTopicSuggestions}
                       />
