@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Container, Row, Col, Form } from "react-bootstrap";
 import Footer from "../app/base/Footer/Footer";
 import LinkedIn from "../login/icons/linkedin.svg";
@@ -18,8 +18,13 @@ const loginRequest = (user, password) => {
   return axios.post("/api/login", postBody);
 };
 
+const linkedinAuthUrl = () => {
+  return axios.get("/api/lnkd_auth_url");
+};
+
 function Homepage() {
   const [loading, setLoading] = useState(false);
+  const [linkedInUrl, setLinkedInUrl] = useState("");
 
   const query = querySearch(window.location.search);
   const redirectUrl = query.redirect ? decodeURIComponent(query.redirect) : "/";
@@ -69,8 +74,16 @@ function Homepage() {
 
   const handleLinkedInClick = (e) => {
     e.preventDefault();
-    console.log("sign in with linkedIn");
+    window.location.href = linkedInUrl;
   };
+
+  useEffect(() => {
+    const fetchLinkedInUrl = async () => {
+      const { data } = await linkedinAuthUrl();
+      setLinkedInUrl(data.url);
+    };
+    fetchLinkedInUrl();
+  }, []);
 
   return (
     <Container className="home height-100">

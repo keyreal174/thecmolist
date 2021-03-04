@@ -87,6 +87,11 @@ function MockRequests() {
       responseCode: 200,
       response: MockedApiOnboarding,
     },
+    {
+      path: /\/api\/lnkd_auth_url.*/,
+      responseCode: 200,
+      response: { url: "https://auth_with_linkedIn" },
+    },
   ];
 
   // login/logout
@@ -242,9 +247,9 @@ function MockRequests() {
   });
 
   mock.onPost(new RegExp("/api/network/invite/*")).reply((data) => {
-     return [200, { success: true, error: null }];
+    return [200, { success: true, error: null }];
   });
-  
+
   mock.onPost(new RegExp("/api/onboarding/step1")).reply((data) => {
     return [200, { success: true, error: null }];
   });
