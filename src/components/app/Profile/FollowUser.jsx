@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
+import { connect } from "react-redux";
 import { Button, Form, Modal, Alert } from "react-bootstrap";
 import {
   AsyncTypeahead,
@@ -15,13 +16,22 @@ function FollowUserModal(props) {
   // agency search
   const OnComponentDidMount = (func) => useEffect(func, []);
   const [isLoading, setIsLoading] = useState(false);
-  const [options, setOptions] = useState([
-    { name: "advertising", value: "advertising" },
-    { name: "seo", value: "seo" },
-    { name: "digital", value: "digital" },
-    { name: "corporate", value: "corporate" },
-  ]);
+  const [options, setOptions] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState([]);
+
+  const handleSearch = async (query) => {
+    setIsLoading(true);
+    const data = await props.getTopicSuggestions(query);
+    const options = data.map((i, index) => ({
+      id: index,
+      avatar: i.avatar,
+      slug: i.link,
+      name: i.name,
+    }));
+
+    setOptions(options);
+    setIsLoading(false);
+  };
 
   const follow = () => {
     props.followUser({
@@ -59,16 +69,46 @@ function FollowUserModal(props) {
               <span className="text-capitalize">{props.firstname}</span> to be
               an expert
             </Form.Label>
-            <Typeahead
-              clearButton
-              id="agency-categories"
+            <AsyncTypeahead
+              id="async-global-search"
+              isLoading={isLoading}
               labelKey="name"
               multiple
+              minLength={1}
+              onSearch={handleSearch}
               options={options}
+              emptyLabel=""
+              renderMenu={(results, menuProps) => {
+                if (!results.length) {
+                  return null;
+                }
+                return (
+                  <TypeaheadMenu
+                    options={results}
+                    labelKey="name"
+                    {...menuProps}
+                  />
+                );
+              }}
               onChange={(selectedOption) => {
                 setSelectedOptions(selectedOption);
               }}
-              placeholder="Choose one or more topics"
+              placeholder="Choose one or more #topics or #locations that describe what your question is about"
+              renderMenuItemChildren={(option) => (
+                <React.Fragment>
+                  <img
+                    alt="avatar"
+                    src={option.avatar}
+                    style={{
+                      height: "24px",
+                      marginRight: "10px",
+                      width: "24px",
+                    }}
+                    className="rounded-circle"
+                  />
+                  <span>{option.name}</span>
+                </React.Fragment>
+              )}
             />
           </Fragment>
         </Modal.Body>
@@ -93,4 +133,14 @@ function FollowUserModal(props) {
   );
 }
 
-export default FollowUserModal;
+const mapState = (state) => {
+  return {};
+};
+
+const mapDispatch = (dispatch) => {
+  return {
+    getTopicSuggestions: dispatch.suggestionsModel.getTopicSuggestions,
+  };
+};
+
+export default connect(mapState, mapDispatch)(FollowUserModal);

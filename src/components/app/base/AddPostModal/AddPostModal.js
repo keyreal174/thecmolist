@@ -9,6 +9,11 @@ import {
   Row,
   Col,
 } from "react-bootstrap";
+import {
+  AsyncTypeahead,
+  Typeahead,
+  TypeaheadMenu,
+} from "react-bootstrap-typeahead";
 import { cdn } from "../../../util/constants";
 import "./addPostModal.scss";
 const DraftEditor = React.lazy(() => import("../DraftEditor/DraftEditor"));
@@ -38,8 +43,26 @@ function AddPostModal({
   const [showPhoto, setShowPhoto] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
   const [title, setTitle] = useState("");
-  const [topics, setTopics] = useState("");
+  const [topics, setTopics] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  // Typeahead values for #topic
+  const [options, setOptions] = useState([]);
+  const [isTypeLoading, setIsTypeLoading] = useState(false);
+
+  const handleSearch = async (query) => {
+    setIsTypeLoading(true);
+    const data = await getTopicSuggestions(query);
+    const options = data.map((i, index) => ({
+      id: index,
+      avatar: i.avatar,
+      slug: i.link,
+      name: i.name,
+    }));
+
+    setOptions(options);
+    setIsTypeLoading(false);
+  };
 
   const groupNameToSlug = (g) => {
     if (profileStats && profileStats.profile && profileStats.profile.groups) {
@@ -100,7 +123,7 @@ function AddPostModal({
     setGroups({});
     setTitle("");
     setBody("");
-    setTopics("");
+    setTopics([]);
     setPerson("");
     setPhoto("");
     setRole("");
@@ -292,6 +315,7 @@ function AddPostModal({
                   <div>
                     <Suspense fallback={<div>Loading...</div>}>
                       <DraftEditor
+                        setBody={setBody}
                         getSuggestions={getSuggestions}
                         getTopicSuggestions={getTopicSuggestions}
                       />
@@ -441,13 +465,46 @@ function AddPostModal({
               <Row>
                 <Col>
                   <div className="modal-section-title">#Topics</div>
-                  <Form.Control
-                    as="input"
-                    className="modal-section-title-content"
-                    id="topics"
+                  <AsyncTypeahead
+                    id="async-global-search"
+                    isLoading={isTypeLoading}
+                    labelKey="name"
+                    multiple
+                    minLength={1}
+                    onSearch={handleSearch}
+                    options={options}
+                    emptyLabel=""
+                    renderMenu={(results, menuProps) => {
+                      if (!results.length) {
+                        return null;
+                      }
+                      return (
+                        <TypeaheadMenu
+                          options={results}
+                          labelKey="name"
+                          {...menuProps}
+                        />
+                      );
+                    }}
+                    onChange={(selectedOption) => {
+                      setTopics(selectedOption);
+                    }}
                     placeholder="Choose one or more #topics or #locations that describe what your question is about"
-                    onChange={(e) => setTopics(e.target.value)}
-                    value={topics}
+                    renderMenuItemChildren={(option) => (
+                      <React.Fragment>
+                        <img
+                          alt="avatar"
+                          src={option.avatar}
+                          style={{
+                            height: "24px",
+                            marginRight: "10px",
+                            width: "24px",
+                          }}
+                          className="rounded-circle"
+                        />
+                        <span>{option.name}</span>
+                      </React.Fragment>
+                    )}
                   />
                 </Col>
               </Row>
