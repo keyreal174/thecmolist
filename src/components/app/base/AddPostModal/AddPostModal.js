@@ -505,7 +505,7 @@ function AddPostModal({
                         <span>{option.name}</span>
                       </React.Fragment>
                     )}
-                  ></AsyncTypeahead>
+                  />
                 </Col>
               </Row>
             </Form>
