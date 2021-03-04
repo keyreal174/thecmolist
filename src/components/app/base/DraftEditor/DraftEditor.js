@@ -6,7 +6,6 @@ import React, {
   useState,
 } from "react";
 import { EditorState, convertToRaw } from "draft-js";
-import draftToHtml from "draftjs-to-html";
 import Editor from "@draft-js-plugins/editor";
 import createMentionPlugin, {
   defaultSuggestionsFilter,
@@ -60,7 +59,7 @@ const DraftEditor = ({ getSuggestions, getTopicSuggestions, setBody }) => {
 
   const onChange = (editor_state) => {
     setEditorState(editor_state);
-    const content = draftToHtml(convertToRaw(editor_state.getCurrentContent()));
+    const content = convertToRaw(editor_state.getCurrentContent());
     setBody(content);
   };
 
