@@ -31,7 +31,11 @@ const SearchBox = (props) => {
 const TopBanner = (props) => {
   const history = useHistory();
   const [showContentModal, setShowContentModal] = useState(false);
-  const handleShow = () => setShowContentModal(true);
+  const [contentType, setContentType] = useState("question");
+  const handleShow = (type) => {
+    setContentType(type);
+    setShowContentModal(true);
+  };
   const handleClose = () => setShowContentModal(false);
 
   const handleSubmit = async (content) => {
@@ -73,28 +77,29 @@ const TopBanner = (props) => {
             <Button
               className="btn-white mb-2"
               variant="outline-primary"
-              onClick={handleShow}
+              onClick={() => handleShow("article")}
             >
               Share Article
             </Button>
-            <Button className="btn-blue mb-2" onClick={handleShow}>
+            <Button
+              className="btn-blue mb-2"
+              onClick={() => handleShow("project")}
+            >
               Share Experience
             </Button>
             <a
               role="button"
               tabIndex="0"
-              onClick={handleShow}
+              onClick={() => handleShow("question")}
               className="a-blue"
             >
               Ask Question ?
             </a>
             <AddPostModal
-              firstButtonText={"Cancel"}
-              handleClose={handleClose}
-              modalTitle="Ask a marketing question"
-              onSubmit={handleSubmit}
-              secondButtonText={"Ask a question"}
+              contentType={contentType}
               show={showContentModal}
+              onSubmit={handleSubmit}
+              handleClose={handleClose}
             />
           </div>
         </CustomCard>

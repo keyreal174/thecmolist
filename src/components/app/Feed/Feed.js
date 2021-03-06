@@ -290,25 +290,14 @@ const Feed = (props) => {
       changeDashboardFilter(topicSlug, subSelectors[activeSelector].slug);
     }
   };
+  // init whenever the isTopic prop changes
   useEffect(() => {
-    let pageLocationIsTopic = false;
-    if (location && location.pathname) {
-      if (location.pathname.includes("group")) {
-        setIsGroup(true);
-      } else if (location.pathname.includes("topic")) {
-        setIsTopic(true);
-        pageLocationIsTopic = true;
-      }
-    }
+    let pageLocationIsTopic = props.isTopic || false;
+    setIsTopic(pageLocationIsTopic);
     const getProfileStats = async () => props.getProfileStats();
     getProfileStats().then((profileStats) =>
       initFeedPage(profileStats, pageLocationIsTopic)
     );
-  }, []);
-  useEffect(() => {
-    let pageLocationIsTopic = props.isTopic || false;
-    setIsTopic(pageLocationIsTopic);
-    initFeedPage(props.profileStats, pageLocationIsTopic);
   }, [props.isTopic]);
 
   return (
