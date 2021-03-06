@@ -1,15 +1,15 @@
 import axios from "axios";
 
 export const fetchSuggestionsRequest = (query) => {
-  return !query
-    ? axios.get("/api/entity_suggestions")
-    : axios.get(`/api/entity_suggestions?q=${query}`);
+  return axios.get(`/api/entity_suggestions?q=${query || ""}`);
 };
 
 export const fetchTopicSuggestionsRequest = (query) => {
-  return !query
-    ? axios.get("/api/topic_suggestions")
-    : axios.get(`/api/topic_suggestions?q=${query}`);
+  let queryParam = query || "";
+  if (queryParam.startsWith("#")) {
+    queryParam = queryParam.substr(1);
+  }
+  return axios.get(`/api/topic_suggestions?q=${queryParam}`);
 };
 
 export default {
@@ -32,7 +32,7 @@ export default {
     },
   },
   effects: (dispatch) => ({
-    async getSuggestions(query = null) {
+    async getSuggestions(query) {
       try {
         const response = await fetchSuggestionsRequest(query);
         const { suggestions } = response.data;
@@ -42,7 +42,7 @@ export default {
         throw new Error("Could not get suggestions");
       }
     },
-    async getTopicSuggestions(query = null) {
+    async getTopicSuggestions(query) {
       try {
         const response = await fetchTopicSuggestionsRequest(query);
         const { suggestions } = response.data;

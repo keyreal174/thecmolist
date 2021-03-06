@@ -55,8 +55,7 @@ function AddPostModal({
     const data = await getTopicSuggestions(query);
     const options = data.map((i, index) => ({
       id: index,
-      avatar: i.avatar,
-      slug: i.link,
+      slug: i.slug,
       name: i.name,
     }));
 
@@ -492,16 +491,6 @@ function AddPostModal({
                     placeholder="Choose one or more #topics or #locations that describe what your question is about"
                     renderMenuItemChildren={(option) => (
                       <React.Fragment>
-                        <img
-                          alt="avatar"
-                          src={option.avatar}
-                          style={{
-                            height: "24px",
-                            marginRight: "10px",
-                            width: "24px",
-                          }}
-                          className="rounded-circle"
-                        />
                         <span>{option.name}</span>
                       </React.Fragment>
                     )}
