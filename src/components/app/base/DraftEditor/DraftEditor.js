@@ -18,6 +18,7 @@ import {
   UnorderedListButton,
   OrderedListButton,
 } from "@draft-js-plugins/buttons";
+import AddPersonModal from "../AddPersonModal/AddPersonModal";
 import "@draft-js-plugins/mention/lib/plugin.css";
 import "@draft-js-plugins/static-toolbar/lib/plugin.css";
 import "./DraftEditor.scss";
@@ -31,6 +32,7 @@ const DraftEditor = ({ getSuggestions, getTopicSuggestions, setBody }) => {
     EditorState.createEmpty()
   );
   const [open, setOpen] = useState(true);
+  const [show, setShow] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
 
   const { MentionSuggestions, plugins } = useMemo(() => {
@@ -48,7 +50,7 @@ const DraftEditor = ({ getSuggestions, getTopicSuggestions, setBody }) => {
   const onSearchChange = useCallback(({ trigger, value }) => {
     if (trigger === "@") {
       getSuggestions(value).then((response) => {
-        setSuggestions(response);
+        setSuggestions([...response, { name: "+ Add People" }]);
       });
     } else {
       getTopicSuggestions(value).then((response) => {
@@ -101,11 +103,14 @@ const DraftEditor = ({ getSuggestions, getTopicSuggestions, setBody }) => {
           onOpenChange={onOpenChange}
           suggestions={suggestions}
           onSearchChange={onSearchChange}
-          onAddMention={() => {
-            // get the mention object selected
+          onAddMention={(mention) => {
+            if (mention.name === "+ Add People") {
+              setShow(true);
+            }
           }}
         />
       </div>
+      <AddPersonModal show={show} handleClose={() => setShow(false)} />
     </div>
   );
 };
