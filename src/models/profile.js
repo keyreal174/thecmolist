@@ -13,7 +13,7 @@ export const saveProfileRequest = (data) => {
 };
 
 export const deletePostRequest = (id) => {
-  return axios.delete(`/api/post/${id}`);
+  return axios.delete(`/api/content/${id}`);
 };
 
 export const getProfileStatsRequest = () => {

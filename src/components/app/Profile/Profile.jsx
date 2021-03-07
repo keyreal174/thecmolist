@@ -149,7 +149,7 @@ const Profile = (props) => {
 
   const showDeletePostModal = (feed) => {
     setShowDeletePost(true);
-    setPostSlug(feed.slug);
+    setPostSlug(feed.content_id);
   };
 
   const closeDeletePostModal = () => {
