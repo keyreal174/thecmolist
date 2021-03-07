@@ -40,7 +40,7 @@ const TopBanner = (props) => {
 
   const handleSubmit = async (content) => {
     const id = await props.saveContent(content);
-    history.push(`content/${id}`);
+    history.push(`/content/${id}`);
   };
 
   return (

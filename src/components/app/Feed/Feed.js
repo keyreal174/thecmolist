@@ -198,10 +198,10 @@ function RenderDashboard(props) {
 const Feed = (props) => {
   const location = useLocation();
   const subSelectors = [
-    { title: "Questions & Answers", slug: "qa" },
-    { title: "Projects & Vendors", slug: "projects" },
-    { title: "Articles & News", slug: "articles" },
     { title: "All", slug: "all" },
+    { title: "Questions & Answers", slug: "question" },
+    { title: "Projects & Vendors", slug: "project" },
+    { title: "Articles & News", slug: "article" },
   ];
   const [inviteModalShow, setInviteModalShow] = useState(false);
   const [activeSelector, setActiveSelector] = useState(0);
