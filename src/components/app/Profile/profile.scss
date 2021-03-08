@@ -444,3 +444,9 @@
 .profile--feed {
   margin-top: 25px;
 }
+
+.profile {
+  &--follow-button {
+    width: 130px;
+  }
+}

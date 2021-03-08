@@ -34,6 +34,7 @@ import InsightfulIcon from "../base/icons/insightful.svg";
 import InsightfulCheckedIcon from "../base/icons/insightful_checked.svg";
 import ThanksIcon from "../base/icons/thanks.svg";
 import ThanksCheckedIcon from "../base/icons/thanks_checked.svg";
+import More from "./icons/more.svg";
 
 const RenderList = ({ arr }) => {
   return arr.map((item, index) => (
@@ -327,7 +328,7 @@ const Profile = (props) => {
                       <div className="btn-wrapper d-flex">
                         {!followedUser ? (
                           <Button
-                            className="btn-white edit-profile"
+                            className="profile--follow-button edit-profile"
                             variant="primary"
                             onClick={() => toggleFollowModal()}
                           >
@@ -344,11 +345,8 @@ const Profile = (props) => {
                         >
                           Message
                         </Button>
-                        <Button
-                          className="edit-profile"
-                          variant="outline-secondary"
-                        >
-                          More...
+                        <Button className="edit-profile edit-profile-more">
+                          <img src={More} alt="more icon"></img>
                         </Button>
                       </div>
                     )}
