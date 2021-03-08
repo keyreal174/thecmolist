@@ -26,13 +26,11 @@
 .navbar-brand:focus,
 .navbar-brand:hover,
 .navbar-brand {
-  background: $brand;
   color: $white;
   font-weight: bold;
   font-size: 26px;
   font-family: "Montserrat";
   width: 45px;
-  height: 45px;
   position: relative;
   border-radius: 11px;
 }
