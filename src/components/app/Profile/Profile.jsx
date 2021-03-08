@@ -24,6 +24,7 @@ import {
 } from "../../util/constants";
 import "./profile.scss";
 
+import AnswerIcon from "../base/icons/answer.svg";
 import LinkedIn from "./icons/linkedin.svg";
 import Website from "./icons/link.svg";
 import Mail from "./icons/mail.svg";
@@ -518,8 +519,9 @@ const Profile = (props) => {
                         badge={badge}
                         engagementButtons={[
                           {
-                            text: "Comment",
-                            icon: `${cdn}/Comment.png`,
+                            checked: true,
+                            text: "Answer",
+                            icon: AnswerIcon,
                             number:
                               feed.comments && feed.comments.length > 0
                                 ? feed.comments.length
