@@ -48,7 +48,7 @@
 
 .navbar-nav .nav-link {
   align-items: center;
-  color: $text-2;
+  color: $text-2 !important;
   display: flex;
   flex-direction: column;
   font-size: 12px;
@@ -75,7 +75,7 @@
 }
 
 .nav-link.active {
-  color: $brand;
+  color: $brand !important;
   background: $white;
   font-weight: 700;
   line-height: 16px;
@@ -229,6 +229,7 @@
 }
 
 .profile-dropdown {
+  color: $text-2 !important;
   font-size: 14px;
   font-weight: 500;
 }
