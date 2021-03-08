@@ -580,7 +580,7 @@ ul {
   }
 
   .button-as-link {
-    color: #0175b0;
+    color: #2962ff;
     text-decoration: none;
     background-color: transparent;
     border: none;
@@ -595,7 +595,7 @@ ul {
   .button-as-link:visited {
     border: none !important;
     background-color: unset !important;
-    color: #0175b0 !important;
+    color: #2962ff !important;
   }
 
 
