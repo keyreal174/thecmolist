@@ -345,7 +345,10 @@ const Profile = (props) => {
                         >
                           Message
                         </Button>
-                        <Button className="edit-profile edit-profile-more">
+                        <Button
+                          variant="light"
+                          className="profile--more-button"
+                        >
                           <img src={More} alt="more icon"></img>
                         </Button>
                       </div>

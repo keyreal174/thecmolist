@@ -449,4 +449,14 @@
   &--follow-button {
     width: 130px;
   }
+  &--more-button {
+    background-color: $white;
+    border-color: $white;
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: darken($white, 10);
+      border-color: $white;
+    }
+  }
 }
