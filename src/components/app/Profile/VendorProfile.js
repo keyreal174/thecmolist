@@ -32,6 +32,7 @@ import PassIcon from "../base/icons/pass.svg";
 import PassCheckedIcon from "../base/icons/pass_checked.svg";
 import ThanksIcon from "../base/icons/thanks.svg";
 import ThanksCheckedIcon from "../base/icons/thanks_checked.svg";
+import PopularTopics from "../base/PopularTopics/PopularTopics";
 
 const RenderList = ({ arr }) => {
   return arr.map((item, index) => (
@@ -244,7 +245,7 @@ const VendorProfile = (props) => {
   const [subfilters, setSubfilters] = useState({});
   const [filteredFeedData, setFilteredFeedData] = useState([]);
   const [hasDataOnCurrentFeed, setHasDataOnCurrentFeed] = useState(false);
-
+  const [topicsList, setTopicsList] = useState([]);
   const [showDeletePost, setShowDeletePost] = useState(false);
   const [showFollowModal, setShowFollowModal] = useState(false);
   const [showMore, setShowMore] = useState(false);
@@ -359,8 +360,14 @@ const VendorProfile = (props) => {
       if (currentFeed) {
         let subfilters = currentFeed.subfilters || {};
         setSubfilters(subfilters);
-        let subfilterKeys = Object.keys(subfilters);
-        setSubfilterKeys(subfilterKeys);
+        setTopicsList(
+          Object.keys(subfilters)
+            .map((s) => ({
+              title: s,
+              count: subfilters[s],
+            }))
+            .sort((a, b) => b.count - a.count)
+        );
         let feedFilter = currentFeed.subfilter || "";
         setFeedFilter(feedFilter);
         if (feedFilter.length > 0) {
@@ -439,51 +446,10 @@ const VendorProfile = (props) => {
         {profileFirstName && hasDataOnCurrentFeed && (
           <Row className="profile--feed">
             <Col md="4">
-              <CustomCard
-                className="profile--popular-topics"
-                heading="Popular #topics"
-              >
-                <div className="popular-topics--content">
-                  <div>
-                    {subfilterKeys.map((subfilter, idx) => {
-                      if (idx < 5 || showMore) {
-                        return (
-                          <div className="popular-topics--content-item">
-                            <Link
-                              className={
-                                subfilter === feedFilter
-                                  ? "profile-subfilter active"
-                                  : "profile-subfilter"
-                              }
-                              onClick={() => {
-                                onSubfilterChange(subfilter);
-                              }}
-                            >
-                              {idx !== 0 ? " " : ""}
-                              {subfilter} ({subfilters[subfilter]})
-                            </Link>
-                          </div>
-                        );
-                      }
-                    })}
-                  </div>
-                  <div>
-                    {subfilterKeys.length > 5 && (
-                      <>
-                        <div className="popular-topics--divider" />
-                        <div className="popular-topics--button">
-                          <Button
-                            variant="link"
-                            onClick={() => setShowMore(!showMore)}
-                          >
-                            {showMore ? "Show less" : "Show more"}
-                          </Button>
-                        </div>
-                      </>
-                    )}
-                  </div>
-                </div>
-              </CustomCard>
+              <PopularTopics
+                onSubfilterChange={onSubfilterChange}
+                topicList={topicsList}
+              />
             </Col>
             <Col md="8">
               <TransitionGroup enter={enableAnimations} exit={enableAnimations}>
