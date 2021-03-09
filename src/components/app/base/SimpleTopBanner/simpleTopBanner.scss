@@ -1,6 +1,8 @@
 @import "../../../../sass/globals.scss";
 
 .simple-top-banner {
+  margin-bottom: 20px;
+
   &--img {
     border-radius: 12px;
     margin-right: 23.5px;
@@ -8,10 +10,17 @@
   }
 
   &--text {
-    color: $text-1;
+    color: $white;
+  }
+
+  &--subtitle {
+    color: $white;
+    font-size: 12px;
+    line-height: 20px;
   }
 
   &--wrapper {
+    background: linear-gradient(91.03deg, #2962ff 19.83%, #1045d6 65.31%);
     width: 100%;
     min-height: 164px;
     padding: 16px ​0 0 16px;
