@@ -19,7 +19,7 @@ const SpaceItem = ({ space }) => {
 
 const MySpaces = ({ profileStats }) => {
   return (
-    <CustomCard heading="My Spaces">
+    <CustomCard heading="My Topics">
       {profileStats.profile &&
       profileStats.profile.spaces &&
       profileStats.profile.spaces.length > 0 ? (
