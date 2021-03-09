@@ -18,7 +18,7 @@ const SpaceItem = ({ space }) => {
   );
 };
 
-const MySpaces = ({ profileStats }) => {
+const MyTopics = ({ profileStats }) => {
   return (
     <CustomCard heading="My Topics">
       <div className="profile-stats--edit">
@@ -44,4 +44,4 @@ const MySpaces = ({ profileStats }) => {
   );
 };
 
-export default MySpaces;
+export default MyTopics;
