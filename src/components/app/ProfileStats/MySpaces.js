@@ -1,7 +1,7 @@
 import React from "react";
 import { Badge } from "react-bootstrap";
 import CustomCard from "../base/CustomCard/CustomCard";
-import EditIcon from "../base/icons/edit_square.svg";
+import EditIcon from "./icons/edit_square.svg";
 
 const SpaceItem = ({ space }) => {
   return (
