@@ -35,16 +35,9 @@ const MySpaces = ({ profileStats }) => {
           ))}
         </div>
       ) : (
-        <span
-          style={{
-            paddingLeft: "25px",
-            paddingRight: "20px",
-            display: "block",
-          }}
-        >
-          You are not yet subscribed to any topics.{" "}
-          <a href="/topics">Follow topics</a> to learn about new marketing
-          insights and connect with your peers.
+        <span className="profile-stats--empty-message">
+          Follow <a href="/topics">topics</a> to see updates about specific
+          marketing topics.
         </span>
       )}
     </CustomCard>
