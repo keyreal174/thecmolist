@@ -6,7 +6,7 @@ import axios from "axios";
 import Spinner from "react-spinner-material";
 import Util from "../util/Util";
 import querySearch from "stringquery";
-import { scriptURL } from "../util/constants";
+import { scriptURL, privacyPolicy } from "../util/constants";
 
 import "./homepage.scss";
 
@@ -240,7 +240,7 @@ function Homepage() {
               <Col>
                 <p className="home--form-eula">
                   By signing in, you agree to our <a href="#">User Agreement</a>{" "}
-                  and <a href="#">Privacy Policy</a>.
+                  and <a href={privacyPolicy}>Privacy Policy</a>.
                 </p>
               </Col>
             </Row>

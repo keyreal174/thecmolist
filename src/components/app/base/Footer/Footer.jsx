@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./footer.css";
+import { privacyPolicy } from "../../../util/constants";
 
 function Footer({ className }) {
   return (
@@ -16,9 +17,7 @@ function Footer({ className }) {
               <Link to="/">User Agreement</Link>
             </li>
             <li>
-              <a href="https://www.notion.so/CMOlist-Privacy-Policy-37d7804aa5dc4d3cb5c758b5265d2484">
-                Privacy Policy
-              </a>
+              <a href={privacyPolicy}>Privacy Policy</a>
             </li>
             <li>
               <Link to="/">Copyright Policy</Link>
