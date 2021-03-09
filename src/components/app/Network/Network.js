@@ -121,7 +121,7 @@ const Network = (props) => {
           />
           <div className="mb-4">
             <Filter
-              className="mt-1"
+              className="mt-1 network--filter"
               filterIdx={filterIdx}
               filters={filters}
               onChange={(idx) => changeFilter(idx)}

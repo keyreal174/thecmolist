@@ -13,6 +13,7 @@ import Apps from "../icons/apps.svg";
 import Person from "../icons/person.svg";
 import Search from "../icons/search.svg";
 import Rectangle2 from "../icons/rectangle2.svg";
+import Logo from "./svgs/logo.svg";
 
 function Header({ getProfileStats, profileStats }) {
   const history = useHistory();
@@ -72,10 +73,7 @@ function Header({ getProfileStats, profileStats }) {
       <div className="container-fullwidth"></div>
       <Navbar expand="md" variant="white">
         <Navbar.Brand href="/feed">
-          <img
-            src="https://d3k6hg21rt7gsh.cloudfront.net/icons/CMO.png"
-            alt="CMOList brand logo"
-          />
+          <img src={Logo} alt="CMOList brand logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className="nav-app" id="basic-navbar-nav">
