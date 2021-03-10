@@ -24,11 +24,19 @@
     margin-bottom: 4px;
   }
 
+  .profile-stats__user-name a {
+    color: $black;
+  }
+
   .profile-stats__user-company {
     color: $text-3;
     font-size: 16px;
     line-height: 20.8px;
     margin-bottom: 11.5px;
+  }
+
+  .profile-stats__user-company a {
+    color: $black;
   }
 
   .profile-stats__edit-button {
