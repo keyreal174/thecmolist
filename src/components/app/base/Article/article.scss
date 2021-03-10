@@ -115,6 +115,12 @@
   line-height: 21px;
 }
 
+.article-text ul {
+  list-style: unset;
+  margin: auto;
+  padding: revert;
+}
+
 .more {
   color: #0175b0;
   font-weight: 700;

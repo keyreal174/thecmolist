@@ -5,6 +5,7 @@ function DeletePost(props) {
   const handleDeletePost = async () => {
     await props.deletePost(props.slug);
     props.closeModal();
+    window.location.reload(false);
   };
 
   return (

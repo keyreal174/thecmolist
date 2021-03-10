@@ -99,13 +99,21 @@ class App extends React.Component {
             exact
             path="/feed"
             render={(props) =>
-              this.state.authed ? <Feed /> : <Redirect to="/login" />
+              this.state.authed ? (
+                <Feed isTopic={false} />
+              ) : (
+                <Redirect to="/login" />
+              )
             }
           />
           <Route
             path="/group"
             render={(props) =>
-              this.state.authed ? <Feed /> : <Redirect to="/login" />
+              this.state.authed ? (
+                <Feed isTopic={false} />
+              ) : (
+                <Redirect to="/login" />
+              )
             }
           />
           <Route

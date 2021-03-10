@@ -122,6 +122,11 @@ function Article(props) {
                 {props.subtitle && props.subtitle.length > 0 && (
                   <div className="article-subtitle">{props.subtitle}</div>
                 )}
+                {props.articletext && props.articletext.markdown && (
+                  <div className="article-text">
+                    <Markdown>{props.articletext.markdown}</Markdown>
+                  </div>
+                )}
                 {props.articletext && props.articletext.length > 0 && (
                   <div className="article-text">
                     <ShowMoreText

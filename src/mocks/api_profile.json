@@ -54,19 +54,19 @@
                   "text": "Unprecedented levels of change and disruption require new thinking and transformative approaches to growth. From purpose to product, brand to experience, customers to operations, we bring the insight, rigor and expertise needed to both uncover and realize transformative opportunities"
                 },
                 {
-                  "markdown": "Services: [Baidu Advertising](/directory/baidu-advertising), [Packaging Design](/directory/packaging-design), [SEM](/directory/sem), [Public Affairs PR](/directory/public-affairs-pr), [Market Research](/directory/market-research), [TV Advertising](/directory/tv-advertising), [Out of Home Advertising](/directory/out-of-home-advertising), [Snapchat Advertising](/directory/snapchat-advertising), [LinkedIn Advertising](/directory/linkedin-advertising)",
-                  "categorytitles": [
-                    "Baidu Advertising",
-                    "Packaging Design",
-                    "SEM",
-                    "Public Affairs PR",
-                    "Market Research",
-                    "TV Advertising",
-                    "Out of Home Advertising",
-                    "Snapchat Advertising",
-                    "LinkedIn Advertising"
-                  ]
+                  "markdown": "Services: [Baidu Advertising](/directory/baidu-advertising), [Packaging Design](/directory/packaging-design), [SEM](/directory/sem), [Public Affairs PR](/directory/public-affairs-pr), [Market Research](/directory/market-research), [TV Advertising](/directory/tv-advertising), [Out of Home Advertising](/directory/out-of-home-advertising), [Snapchat Advertising](/directory/snapchat-advertising), [LinkedIn Advertising](/directory/linkedin-advertising)"
                 }
+              ],
+              "collections": [
+                "Baidu Advertising",
+                "Packaging Design",
+                "SEM",
+                "Public Affairs PR",
+                "Market Research",
+                "TV Advertising",
+                "Out of Home Advertising",
+                "Snapchat Advertising",
+                "LinkedIn Advertising"
               ],
               "subtitle": "North America",
               "articletext": "ngng\nkjki\nhmnhfn\nhjg\nkjh\nzxcgb\ncbcs",
@@ -101,10 +101,10 @@
                   "text": "Excellent Baidu Advertising"
                 },
                 {
-                  "markdown": "Services: [Baidu Advertising](/directory/baidu-advertising)",
-                  "categorytitles": ["Baidu Advertising"]
+                  "markdown": "Services: [Baidu Advertising](/directory/baidu-advertising)"
                 }
               ],
+              "collections": ["Baidu Advertising"],
               "subtitle": "North America",
               "articletext": "ngng\nkjki\nhmnhfn\nhjg\nkjh\nzxcgb\ncbcs",
               "articletextlines": 4,
@@ -135,10 +135,10 @@
               "slug": "naranja-ad",
               "subheadlines": [
                 {
-                  "markdown": "Services: [Mobile & App Marketing](/directory/mobile-app-marketing)",
-                  "categorytitles": ["Mobile & App Marketing"]
+                  "markdown": "Services: [Mobile & App Marketing](/directory/mobile-app-marketing)"
                 }
               ],
+              "collections": ["Mobile & App Marketing"],
               "subtitle": "North America",
               "articletext": "Naranja!",
               "articletextlines": 4,
@@ -174,13 +174,13 @@
               "slug": "yo-wassup",
               "subheadlines": [
                 {
-                  "markdown": "Technologies: [Social Media Analytics](/directory/social-media-analytics), [Web and Content Software](/directory/web-and-content-software), [Account-Based Analytics](/directory/account-based-analytics)",
-                  "categorytitles": [
-                    "Social Media Analytics",
-                    "Web and Content Software",
-                    "Account-Based Analytics"
-                  ]
+                  "markdown": "Technologies: [Social Media Analytics](/directory/social-media-analytics), [Web and Content Software](/directory/web-and-content-software), [Account-Based Analytics](/directory/account-based-analytics)"
                 }
+              ],
+              "collections": [
+                "Social Media Analytics",
+                "Web and Content Software",
+                "Account-Based Analytics"
               ],
               "subtitle": "",
               "articletext": "nn\nvv\nzzz",

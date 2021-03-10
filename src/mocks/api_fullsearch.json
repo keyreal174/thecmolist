@@ -2,15 +2,15 @@
   "filters": [
     {
       "name": "Q & A",
-      "filter": "qa"
+      "filter": "question"
     },
     {
       "name": "Projects",
-      "filter": "projects"
+      "filter": "project"
     },
     {
       "name": "Articles",
-      "filter": "articles"
+      "filter": "article"
     },
     {
       "name": "People",
@@ -48,7 +48,7 @@
           "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NTgxMDIzMjMwOWltYWdlLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ=="
         }
       ],
-      "filter": "qa"
+      "filter": "question"
     },
     {
       "title": "New vendors from your network",
@@ -92,7 +92,7 @@
           "imageDisplay": "square"
         }
       ],
-      "filter": "projects"
+      "filter": "project"
     },
     {
       "title": "New articles from your network",
@@ -136,7 +136,7 @@
           "imageDisplay": "square"
         }
       ],
-      "filter": "articles"
+      "filter": "article"
     },
     {
       "title": "New people from your network",
