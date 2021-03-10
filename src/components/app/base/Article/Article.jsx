@@ -123,7 +123,9 @@ function Article(props) {
                   <div className="article-subtitle">{props.subtitle}</div>
                 )}
                 {props.articletext && props.articletext.markdown && (
-                  <Markdown>{props.articletext.markdown}</Markdown>
+                  <div className="article-text">
+                    <Markdown>{props.articletext.markdown}</Markdown>
+                  </div>
                 )}
                 {props.articletext && props.articletext.length > 0 && (
                   <div className="article-text">
