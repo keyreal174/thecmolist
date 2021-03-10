@@ -36,5 +36,18 @@
       list-style: initial;
       padding-left: 40px;
     }
+
+    & > div:last-child[id^="mentions-list-"] {
+      & > div:last-child {
+        border-top: 1px solid #ced4da;
+        padding-top: 10px;
+        color: #2962ff;
+        font-size: 16px;
+        line-height: 18px;
+        text-align: center;
+        padding-left: 0;
+        margin-top: 20px;
+      }
+    }
   }
 }
