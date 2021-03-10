@@ -114,7 +114,7 @@ describe("feedModel model", () => {
       // mock data
       axios.get.mockResolvedValue({
         data: {
-          feedData: [1, 2],
+          feedData: [{ value: 1 }, { value: 2 }],
           token: "bar22",
         },
       });
@@ -124,7 +124,10 @@ describe("feedModel model", () => {
       });
 
       const feedModelData = store.getState().feedModel;
-      expect(feedModelData.dashboardFeedData["a%%b"].data).toEqual([1, 2]);
+      expect(feedModelData.dashboardFeedData["a%%b"].data).toEqual([
+        { value: 1 },
+        { value: 2 },
+      ]);
       expect(feedModelData.dashboardFeedData["a%%b"].token).toBe("bar22");
       expect(feedModelData.dashboardFeedData["a%%b"].moreData).toBe(true);
       expect(feedModelData.dashboardFeedData["a%%b"].enabled).toBe(true);
