@@ -7,7 +7,13 @@ import Footer from "../base/Footer/Footer";
 import ContentDetail from "./ContentDetail";
 import "./content.scss";
 
-const Content = ({ contentLoading, fetchContent, match, ...rest }) => {
+const Content = ({
+  contentLoading,
+  fetchContent,
+  match,
+  getProfileStats,
+  ...rest
+}) => {
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -22,6 +28,12 @@ const Content = ({ contentLoading, fetchContent, match, ...rest }) => {
         setError(error.message);
       }
     };
+
+    fetch();
+  }, []);
+
+  useEffect(() => {
+    const fetch = async () => await getProfileStats();
 
     fetch();
   }, []);
@@ -67,6 +79,7 @@ const mapState = (state) => {
     content: state.contentModel.content,
     contentLoading: state.contentModel.contentLoading,
     reactions: state.reactionModel.reactions,
+    profileStats: state.profileModel.profileStats,
   };
 };
 
@@ -76,6 +89,7 @@ const mapDispatch = (dispatch) => {
     saveCommentToContent: dispatch.contentModel.saveCommentToContent,
     saveCommentToReply: dispatch.contentModel.saveCommentToReply,
     saveReactionToCallerType: dispatch.contentModel.saveReactionToCallerType,
+    getProfileStats: dispatch.profileModel.getProfileStats,
   };
 };
 

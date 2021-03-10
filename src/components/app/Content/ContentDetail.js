@@ -6,6 +6,7 @@ import {
   getCheckedForEngagementType,
   getEngagementForId,
 } from "../base/EngagementButtons/EngagementButtons";
+
 import AnswerIcon from "../base/icons/answer.svg";
 import InsightfulIcon from "../base/icons/insightful.svg";
 import InsightfulCheckedIcon from "../base/icons/insightful_checked.svg";
@@ -17,6 +18,7 @@ import { cdn } from "../../util/constants";
 
 const ContentDetail = ({
   content,
+  profileStats,
   reactions,
   saveCommentToContent,
   saveCommentToReply,
@@ -120,6 +122,7 @@ const ContentDetail = ({
           style={{ paddingBottom: "10px" }}
           showDiscussionComment={true}
           discussionCommentAuthor={author}
+          profile={profileStats.profile}
           discussionCommentPlaceholder={
             author && author.length > 0
               ? `Answer ${author}'s question...`
@@ -188,6 +191,7 @@ const ContentDetail = ({
                     this,
                     reply
                   )}
+                  profile={profileStats.profile}
                 >
                   <div className="question-comments-section">
                     {reply.comments &&
