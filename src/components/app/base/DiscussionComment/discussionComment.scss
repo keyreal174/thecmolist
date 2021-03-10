@@ -63,3 +63,12 @@
   margin-top: 15px;
   display: flex;
 }
+
+.comment--image {
+  margin: 0 10px;
+  img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+  }
+}

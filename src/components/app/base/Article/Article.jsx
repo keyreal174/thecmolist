@@ -198,6 +198,7 @@ function Article(props) {
           {props.showDiscussionComment && (
             <DiscussionComment
               placeholder={props.discussionCommentPlaceholder}
+              profile={props.profile}
               onSubmit={props.handleDiscussionCommentSubmit}
             />
           )}
