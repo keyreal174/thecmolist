@@ -49,7 +49,7 @@ const DraftEditor = ({
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [show, setShow] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
   const [lastTrigger, setLastTrigger] = useState("@");
