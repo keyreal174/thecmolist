@@ -1,5 +1,4 @@
 import React, { useState, useEffect, Suspense } from "react";
-import { connect } from "react-redux";
 import { Alert, Button, Container, Form, Row, Col } from "react-bootstrap";
 import { cdn } from "../../../util/constants";
 import "./AddPeronModal.scss";
@@ -71,7 +70,7 @@ function AddPersonModal({ show, handleClose, setMention, modalType }) {
                           as="input"
                           className="modal-person-section-input"
                           onChange={(e) => setLink(e.target.value)}
-                          placeholder="https://linkedin/.com/in/linkedinID"
+                          placeholder="https://linkedin.com/in/linkedinID"
                           value={link}
                         />
                       </div>
@@ -104,18 +103,4 @@ function AddPersonModal({ show, handleClose, setMention, modalType }) {
   );
 }
 
-const mapState = (state) => {
-  return {
-    profileStats: state.profileModel.profileStats,
-  };
-};
-
-const mapDispatch = (dispatch) => {
-  return {
-    getProfileStats: dispatch.profileModel.getProfileStats,
-    getSuggestions: dispatch.suggestionsModel.getSuggestions,
-    getTopicSuggestions: dispatch.suggestionsModel.getTopicSuggestions,
-  };
-};
-
-export default connect(mapState, mapDispatch)(AddPersonModal);
+export default AddPersonModal;
