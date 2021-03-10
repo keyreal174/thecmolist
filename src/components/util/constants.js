@@ -1,4 +1,8 @@
 const cdn = "https://d3k6hg21rt7gsh.cloudfront.net/icons";
 const profileImage = `${cdn}/profile--header.png`;
+const scriptURL =
+  "https://script.google.com/macros/s/AKfycbw2T8seh57PBnyZWwS6adWbqRvSkxtUYrjUvscVjQGiqPU8xAvZ/exec";
+const privacyPolicy =
+  "https://www.notion.so/CMOlist-Privacy-Policy-37d7804aa5dc4d3cb5c758b5265d2484";
 
-export { cdn, profileImage };
+export { cdn, profileImage, scriptURL, privacyPolicy };

@@ -27,6 +27,7 @@ import {
 } from "@draft-js-plugins/buttons";
 import "@draft-js-plugins/mention/lib/plugin.css";
 import "@draft-js-plugins/static-toolbar/lib/plugin.css";
+import { stateToMarkdown } from "draft-js-export-markdown";
 import "./DraftEditor.scss";
 
 const staticToolbarPlugin = createToolbarPlugin();
@@ -81,8 +82,57 @@ const DraftEditor = ({
 
   const onChange = (editor_state) => {
     setEditorState(editor_state);
-    const content = convertToRaw(editor_state.getCurrentContent());
-    setBody(content);
+    let contentState = editor_state.getCurrentContent();
+    // shim mentions to show up as links in the markdown
+    let entityMap = {};
+    let contentStateDerived = Object.create(contentState);
+    contentStateDerived.getEntity = function (key) {
+      let entity = contentState.getEntity(key);
+      if (
+        (entity && entity.getType() === "mention") ||
+        (entity && entity.getType() === "#mention")
+      ) {
+        let entityData = entity.getData();
+        if (!entityMap[key]) {
+          entityMap[key] = entityData;
+        }
+        let entityUrl = "";
+        if (entityData.mention && entityData.mention.type) {
+          switch (entityData.mention.type) {
+            case "topic":
+              entityUrl = "/topic/";
+              break;
+            case "topic":
+              entityUrl = "/group/";
+              break;
+            case "person":
+              entityUrl = "/profile/";
+              break;
+            case "object":
+              entityUrl = "/o/";
+              break;
+            default:
+              entity = "";
+          }
+        }
+        return {
+          getType: () => "LINK",
+          getData: () => ({
+            url:
+              entityUrl +
+              (entityData.mention.slug
+                ? entityData.mention.slug
+                : entityData.mention.name),
+          }),
+        };
+      }
+      return entity;
+    };
+    const content = stateToMarkdown(contentStateDerived);
+    setBody({
+      markdown: content,
+      entityMap: entityMap,
+    });
   };
 
   const getSearchTextAt = (blockText, position, triggers) => {
@@ -119,7 +169,10 @@ const DraftEditor = ({
     const contentStateWithEntity = editorState
       .getCurrentContent()
       .createEntity("mention", "SEGMENTED", {
-        mention: { name: "+ Add People", link: mention ? mention.link : null },
+        mention: {
+          name: MentionLast[lastTrigger],
+          link: mention ? mention.link : null,
+        },
       });
     const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
 
@@ -130,7 +183,7 @@ const DraftEditor = ({
 
     if (end) {
       const mentionTextSelection = currentSelectionState.merge({
-        anchorOffset: end - 13,
+        anchorOffset: end - MentionLast[lastTrigger].length - 1,
         focusOffset: end,
       });
 

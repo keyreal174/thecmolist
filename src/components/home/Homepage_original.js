@@ -1,5 +1,6 @@
 import React from "react";
 import "./Homepage.css";
+import { privacyPolicy } from "../util/constants";
 
 function Homepage() {
   return (
@@ -183,7 +184,7 @@ function Homepage() {
                   <a href="/#">User Agreement</a>
                 </li>
                 <li>
-                  <a href="/#">Privacy Policy</a>
+                  <a href={privacyPolicy}>Privacy Policy</a>
                 </li>
                 <li>
                   <a href="/#">Copyright Policy</a>

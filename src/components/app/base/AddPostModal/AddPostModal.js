@@ -20,12 +20,10 @@ import AddPersonModal from "../AddPersonModal/AddPersonModal";
 const DraftEditor = React.lazy(() => import("../DraftEditor/DraftEditor"));
 
 function AddPostModal({
+  contentType,
   profileStats,
-  firstButtonText,
   getProfileStats,
   handleClose,
-  modalTitle,
-  secondButtonText,
   onSubmit,
   show,
   suggestions,
@@ -45,6 +43,9 @@ function AddPostModal({
   const [showVideo, setShowVideo] = useState(false);
   const [title, setTitle] = useState("");
   const [topics, setTopics] = useState([]);
+  const [firstButtonText, setFirstButtonText] = useState("Cancel");
+  const [modalTitle, setModalTitle] = useState("Ask a marketing question");
+  const [secondButtonText, setSecondButtonText] = useState("Ask a question");
   const [isLoading, setIsLoading] = useState(false);
   const [showPersonModal, setShowPersonModal] = useState(false);
   const [modalType, setModalType] = useState("People");
@@ -59,8 +60,7 @@ function AddPostModal({
     const data = await getTopicSuggestions(query);
     const options = data.map((i, index) => ({
       id: index,
-      avatar: i.avatar,
-      slug: i.link,
+      slug: i.slug,
       name: i.name,
     }));
 
@@ -80,6 +80,7 @@ function AddPostModal({
   };
   const handleSubmit = async (e) => {
     const content = {
+      contentType,
       allMembers,
       onlyMyNetwork,
       groups,
@@ -167,6 +168,19 @@ function AddPostModal({
       setGroups(getGroupsObject(actualGroups));
     }
   }, [profileStats]);
+
+  useEffect(() => {
+    if (contentType === "question") {
+      setModalTitle("Ask a marketing question");
+      setSecondButtonText("Ask Question");
+    } else if (contentType === "project") {
+      setModalTitle("Share a marketing project launch or experience");
+      setSecondButtonText("Share Experience");
+    } else if (contentType === "article") {
+      setModalTitle("Share marketing news or article");
+      setSecondButtonText("Share Article");
+    }
+  }, [contentType]);
 
   const handlePhotoClick = () => {
     const file = document.getElementById("file");
@@ -502,16 +516,6 @@ function AddPostModal({
                     placeholder="Choose one or more #topics or #locations that describe what your question is about"
                     renderMenuItemChildren={(option) => (
                       <React.Fragment>
-                        <img
-                          alt="avatar"
-                          src={option.avatar}
-                          style={{
-                            height: "24px",
-                            marginRight: "10px",
-                            width: "24px",
-                          }}
-                          className="rounded-circle"
-                        />
                         <span>{option.name}</span>
                       </React.Fragment>
                     )}

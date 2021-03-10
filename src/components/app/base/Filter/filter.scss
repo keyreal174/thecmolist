@@ -1,3 +1,5 @@
+@import "../../../../sass/globals.scss";
+
 .filter-wrapper {
   display: flex;
   align-items: center;
@@ -124,6 +126,37 @@
 @media (max-width: 575px) {
   .filter-btn-group button {
     font-size: 13px;
+  }
+}
+
+.filter--button {
+  background-color: $gray-3 !important;
+  color: $text-2;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 21px;
+  min-height: 41px;
+  padding: 9px 21px !important;
+
+  &-active,
+  &:active {
+    background-color: $brand !important;
+  }
+  &:hover {
+    color: $text-2 !important;
+    background-color: inherit;
+  }
+
+  &-disable {
+    background-color: $gray-3 !important;
+    color: $text-1 !important;
+  }
+
+  &-active {
+    color: $white !important;
+    &:hover {
+      color: $white !important;
+    }
   }
 }
 

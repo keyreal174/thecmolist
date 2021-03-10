@@ -1,28 +1,90 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Container, Row, Col, Form } from "react-bootstrap";
 import Footer from "../app/base/Footer/Footer";
 import LinkedIn from "../login/icons/linkedin.svg";
+import axios from "axios";
+import Spinner from "react-spinner-material";
+import Util from "../util/Util";
+import querySearch from "stringquery";
+import { scriptURL, privacyPolicy } from "../util/constants";
 
 import "./homepage.scss";
 
+const loginRequest = (user, password) => {
+  var postBody = {
+    user: user,
+    pass: password,
+  };
+  return axios.post("/api/login", postBody);
+};
+
+const linkedinAuthUrl = () => {
+  return axios.get("/api/lnkd_auth_url");
+};
+
 function Homepage() {
+  const [loading, setLoading] = useState(false);
+  const [linkedInUrl, setLinkedInUrl] = useState("");
+
+  const query = querySearch(window.location.search);
+  const redirectUrl = query.redirect ? decodeURIComponent(query.redirect) : "/";
+
   const handleFormLeftSubmit = (e) => {
     e.preventDefault();
+    const form = document.forms["left-form"];
+
+    fetch(scriptURL, { method: "POST", body: new FormData(form) })
+      .then((response) => {
+        console.log("Success!", response);
+        window.location.href = "/signedup";
+      })
+      .catch((error) => {
+        console.error("Error!", error.message);
+        window.alert("An error occurred!");
+      });
+  };
+
+  const handleLoginClick = (e) => {
     const {
       target: { elements },
     } = e;
-    const { name, mail, linkedIn } = elements;
-    const content = {
-      name: name.value,
-      mail: mail.value,
-      linkedIn: linkedIn.value,
-    };
-    console.log(content);
-  };
-  const handleFormRightSubmit = (e) => {
+    const { email, password } = elements;
+
     e.preventDefault();
-    console.log("sign in with linkedIn");
+    setLoading(true);
+
+    loginRequest(email.value, password.value)
+      .then(({ data }) => {
+        if (data.success) {
+          if (Util.inLocalDevelopment()) {
+            document.cookie = "ipipeauth: foo";
+          }
+          window.location.href = redirectUrl;
+        } else {
+          let errorMessage = data.error || "Unknown";
+          alert("An error occurred: " + errorMessage);
+          setLoading(false);
+        }
+      })
+      .catch(function (error) {
+        alert("An error occurred: " + error);
+        setLoading(false);
+      });
   };
+
+  const handleLinkedInClick = (e) => {
+    e.preventDefault();
+    window.location.href = linkedInUrl;
+  };
+
+  useEffect(() => {
+    const fetchLinkedInUrl = async () => {
+      const { data } = await linkedinAuthUrl();
+      setLinkedInUrl(data.url);
+    };
+    fetchLinkedInUrl();
+  }, []);
+
   return (
     <Container className="home height-100">
       <Row className="home--header">
@@ -54,7 +116,11 @@ function Homepage() {
       </Row>
       <Row className="home--form">
         <Col className="px-0" md="6">
-          <Form className="home--form-left" onSubmit={handleFormLeftSubmit}>
+          <Form
+            className="home--form-left"
+            id="left-form"
+            onSubmit={handleFormLeftSubmit}
+          >
             <div className="home--form-title">Join CMOlist</div>
             <div className="home--form-green-text">Currently invite only</div>
             <div className="home--form-subtitle">
@@ -71,17 +137,14 @@ function Homepage() {
                     id="name"
                   />
                 </Form.Group>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
                 <Form.Group>
                   <Form.Label className="home--label">Email</Form.Label>
                   <Form.Control
                     className="home--input"
                     placeHolder="name@company.com"
                     required={true}
-                    id="mail"
+                    id="email"
+                    type="email"
                   />
                 </Form.Group>
               </Col>
@@ -112,17 +175,57 @@ function Homepage() {
           </Form>
         </Col>
         <Col className="px-0" md="6">
-          <Form className="home--form-right" onSubmit={handleFormRightSubmit}>
+          <Form className="home--form-right" onSubmit={handleLoginClick}>
             <div className="home--form-title">Sign in</div>
             <div className="home--form-green-text" />
             <div className="home--form-subtitle">
               Already have an account or received a invitation? Sign in here:
             </div>
             <Row>
-              <Col>
+              <Col md="12">
+                <Form.Group>
+                  <Form.Label className="home--label">Email</Form.Label>
+                  <Form.Control
+                    className="home--input"
+                    name="email"
+                    type="email"
+                    required={true}
+                  />
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label className="home--label">Password</Form.Label>
+                  <Form.Control
+                    className="home--input"
+                    name="password"
+                    type="password"
+                    required={true}
+                  />
+                </Form.Group>
                 <Button
-                  type="submit"
                   className="home--form-linkedin btn__homepage btn__homepage-blue signup--form-apply"
+                  type="submit"
+                >
+                  <span>Login</span>
+                  <div
+                    style={{
+                      "margin-top": "5px",
+                      "margin-right": "4px",
+                      float: "right",
+                    }}
+                  >
+                    <Spinner
+                      radius={10}
+                      color={"#eee"}
+                      stroke={2}
+                      visible={loading}
+                    />
+                  </div>
+                </Button>
+              </Col>
+              <Col md="12">
+                <Button
+                  className="home--form-linkedin btn__homepage btn__homepage-blue signup--form-apply"
+                  onClick={handleLinkedInClick}
                 >
                   <div>
                     <span className="mr-2">
@@ -137,7 +240,7 @@ function Homepage() {
               <Col>
                 <p className="home--form-eula">
                   By signing in, you agree to our <a href="#">User Agreement</a>{" "}
-                  and <a href="#">Privacy Policy</a>.
+                  and <a href={privacyPolicy}>Privacy Policy</a>.
                 </p>
               </Col>
             </Row>

@@ -30,6 +30,9 @@
 
 .question-related-section-item {
   color: black;
+  &-text {
+    padding: 8px 0;
+  }
 }
 
 .question-your-answer-section {

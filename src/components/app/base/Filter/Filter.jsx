@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Badge, Container, Row, Col, Button, Form } from "react-bootstrap";
-import "./filter.css";
+import "./filter.scss";
 
 function Filter(props) {
   const [filterIdx, setFilterIdx] = useState(props.filterIdx || 0);
@@ -19,10 +19,21 @@ function Filter(props) {
             <div className="filter-btn-group" data-toggle="buttons">
               {props.filters &&
                 props.filters.map((filter, idx) => {
+                  const active = idx === filterIdx;
+                  let className = "filter--button";
+
+                  if (active) {
+                    className += " filter--button-active";
+                  }
+                  if (!filter.enabled) {
+                    className += " filter--button-disable";
+                  }
+                  console.log(className);
                   return (
                     <Button
                       key={idx}
-                      active={idx === filterIdx ? true : false}
+                      active={active}
+                      className={className}
                       disabled={!filter.enabled}
                       onClick={() => {
                         setFilterIdx(idx);

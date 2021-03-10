@@ -5,14 +5,15 @@ import { AsyncTypeahead, TypeaheadMenu } from "react-bootstrap-typeahead";
 import { NavLink } from "react-router-dom";
 import "./header.scss";
 import { connect } from "react-redux";
+import PersonHeader from "../PersonHeader/PersonHeader";
 
 import HomeIcon from "../icons/home.svg";
 import Group from "../icons/group.svg";
 import Notification from "../icons/notification.svg";
 import Apps from "../icons/apps.svg";
-import Person from "../icons/person.svg";
 import Search from "../icons/search.svg";
 import Rectangle2 from "../icons/rectangle2.svg";
+import Logo from "./svgs/logo.svg";
 
 function Header({ getProfileStats, profileStats }) {
   const history = useHistory();
@@ -21,19 +22,6 @@ function Header({ getProfileStats, profileStats }) {
 
     fetch();
   }, []);
-  let PersonHeader = (props) => {
-    const profile = profileStats && profileStats.profile;
-    const image = profile && profile.image;
-    const name = profile && profile.name;
-
-    return (
-      <Fragment>
-        <img alt="" src={image} />
-        <br />
-        <span>{name && name.split(" ")[0]}</span>
-      </Fragment>
-    );
-  };
   const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -72,10 +60,7 @@ function Header({ getProfileStats, profileStats }) {
       <div className="container-fullwidth"></div>
       <Navbar expand="md" variant="white">
         <Navbar.Brand href="/feed">
-          <img
-            src="https://d3k6hg21rt7gsh.cloudfront.net/icons/CMO.png"
-            alt="CMOList brand logo"
-          />
+          <img src={Logo} alt="CMOList brand logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className="nav-app" id="basic-navbar-nav">
@@ -162,7 +147,7 @@ function Header({ getProfileStats, profileStats }) {
                 window.location.href.includes("/profile/") ? "active" : ""
               }
               alignRight
-              title={<PersonHeader icon={Person} />}
+              title={<PersonHeader profile={profileStats.profile} />}
               id="basic-nav-dropdown"
             >
               <NavDropdown.Item className="profile-dropdown" href="/profile">

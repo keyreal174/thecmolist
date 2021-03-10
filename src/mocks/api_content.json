@@ -114,19 +114,19 @@
   "related_questions": [
     {
       "title": "First question and test text",
-      "link": "/question/123"
+      "link": "/content/123"
     },
     {
       "title": "This is the second question",
-      "link": "/question/213"
+      "link": "/content/213"
     },
     {
       "title": "Next question",
-      "link": "/question/253"
+      "link": "/content/253"
     },
     {
       "title": "Next question",
-      "link": "/question/255"
+      "link": "/content/255"
     }
   ]
 }

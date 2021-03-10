@@ -9,20 +9,28 @@ const Profile = ({ profileStats }) => {
           <Fragment>
             <div className="profile-stats__user-info">
               <div className="article-img">
-                <img
-                  className="element-center"
-                  src={profileStats.profile.image}
-                  alt=""
-                />
+                <a alt="profile" href="/profile">
+                  <img
+                    className="element-center"
+                    src={profileStats.profile.image}
+                    alt=""
+                  />
+                </a>
               </div>
               <div className="profile-stats__user-name">
-                <span>{profileStats.profile.name}</span>
+                <a alt="profile" href="/profile">
+                  <span>{profileStats.profile.name}</span>
+                </a>
               </div>
               <div className="profile-stats__user-company text-center">
-                <span>{profileStats.profile.headline}</span>
+                <a alt="profile" href="/profile">
+                  <span>{profileStats.profile.headline}</span>
+                </a>
               </div>
               <div className="profile-stats__edit-button text-center">
-                <a href="/profile_edit">Edit Profile</a>
+                <a alt="edit profile" href="/profile_edit">
+                  Edit Profile
+                </a>
               </div>
             </div>
             <div className="profile-card-divider" />

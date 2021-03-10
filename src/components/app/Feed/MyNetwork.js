@@ -9,34 +9,45 @@ import Logo from "../base/icons/logo.svg";
 const MyNetwork = (props) => {
   const history = useHistory();
   const [showContentModal, setShowContentModal] = useState(false);
-  const handleShow = () => setShowContentModal(true);
+  const [contentType, setContentType] = useState("question");
+  const handleShow = (type) => {
+    setContentType(type);
+    setShowContentModal(true);
+  };
   const handleClose = () => setShowContentModal(false);
 
   const handleSubmit = async (content) => {
     const id = await props.saveContent(content);
-    history.push(`content/${id}`);
+    history.push(`/content/${id}`);
   };
 
   return (
     <CustomCard heading={props.title}>
       <div className="text-center">
         <div className="d-flex flex-column">
-          <Button className="btn-blue mb-2" onClick={handleShow}>
+          <Button
+            className="btn-blue mb-2"
+            onClick={() => handleShow("question")}
+          >
             Ask Question
           </Button>
-          <Button className="btn-white mb-2" onClick={handleShow}>
+          <Button
+            className="btn-white mb-2"
+            onClick={() => handleShow("project")}
+          >
             Share Experience
           </Button>
-          <Button className="btn-white mb-2" onClick={handleShow}>
+          <Button
+            className="btn-white mb-2"
+            onClick={() => handleShow("article")}
+          >
             Share Article
           </Button>
           <AddPostModal
-            firstButtonText={"Cancel"}
-            handleClose={handleClose}
-            modalTitle="Ask a marketing question"
-            onSubmit={handleSubmit}
-            secondButtonText={"Ask a question"}
+            contentType={contentType}
             show={showContentModal}
+            onSubmit={handleSubmit}
+            handleClose={handleClose}
           />
         </div>
       </div>

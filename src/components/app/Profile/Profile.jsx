@@ -24,6 +24,7 @@ import {
 } from "../../util/constants";
 import "./profile.scss";
 
+import AnswerIcon from "../base/icons/answer.svg";
 import LinkedIn from "./icons/linkedin.svg";
 import Website from "./icons/link.svg";
 import Mail from "./icons/mail.svg";
@@ -34,6 +35,7 @@ import InsightfulIcon from "../base/icons/insightful.svg";
 import InsightfulCheckedIcon from "../base/icons/insightful_checked.svg";
 import ThanksIcon from "../base/icons/thanks.svg";
 import ThanksCheckedIcon from "../base/icons/thanks_checked.svg";
+import More from "./icons/more.svg";
 
 const RenderList = ({ arr }) => {
   return arr.map((item, index) => (
@@ -118,18 +120,15 @@ const Profile = (props) => {
       feed.subfilters = {};
       let feed_data = feed.data;
       feed_data.forEach((data) => {
-        data.content &&
-          data.content.subheadlines &&
-          data.content.subheadlines.forEach((sh) => {
-            if (sh.categorytitles && Array.isArray(sh.categorytitles)) {
-              sh.categorytitles.forEach((categoryTitle) => {
-                if (!(categoryTitle in feed.subfilters)) {
-                  feed.subfilters[categoryTitle] = 0;
-                }
-                feed.subfilters[categoryTitle] += 1;
-              });
+        if (data.content && data.content.collections) {
+          let collectionsForContent = data.content.collections;
+          collectionsForContent.forEach((collectionTitle) => {
+            if (!(collectionTitle in feed.subfilters)) {
+              feed.subfilters[collectionTitle] = 0;
             }
+            feed.subfilters[collectionTitle] += 1;
           });
+        }
       });
     });
     setFeedData(newFeedData);
@@ -152,7 +151,7 @@ const Profile = (props) => {
 
   const showDeletePostModal = (feed) => {
     setShowDeletePost(true);
-    setPostSlug(feed.slug);
+    setPostSlug(feed.content_id);
   };
 
   const closeDeletePostModal = () => {
@@ -228,16 +227,14 @@ const Profile = (props) => {
         );
         if (feedFilter.length > 0) {
           feed_data = feed_data.filter((data) => {
-            for (let i = 0; i < data.content.subheadlines.length; i++) {
-              let sh = data.content.subheadlines[i];
-              if (sh.categorytitles) {
-                for (let j = 0; j < sh.categorytitles.length; j++) {
-                  if (
-                    sh.categorytitles[j] &&
-                    sh.categorytitles[j] === feedFilter
-                  )
-                    return true;
-                }
+            if (data.content && data.content.collections) {
+              let collectionsForContent = data.content.collections;
+              for (let j = 0; j < collectionsForContent.length; j++) {
+                if (
+                  collectionsForContent[j] &&
+                  collectionsForContent[j] === feedFilter
+                )
+                  return true;
               }
             }
             return false;
@@ -327,7 +324,7 @@ const Profile = (props) => {
                       <div className="btn-wrapper d-flex">
                         {!followedUser ? (
                           <Button
-                            className="btn-white edit-profile"
+                            className="profile--follow-button edit-profile"
                             variant="primary"
                             onClick={() => toggleFollowModal()}
                           >
@@ -345,10 +342,10 @@ const Profile = (props) => {
                           Message
                         </Button>
                         <Button
-                          className="edit-profile"
-                          variant="outline-secondary"
+                          variant="light"
+                          className="profile--more-button"
                         >
-                          More...
+                          <img src={More} alt="more icon"></img>
                         </Button>
                       </div>
                     )}
@@ -402,8 +399,7 @@ const Profile = (props) => {
                         alt="mail"
                         src={Mail}
                       />
-                      Email{" "}
-                      <strong>{profileMail.replace("mailto:", "")}</strong>
+                      <a href={profileMail}>Email</a>
                     </div>
                   )}
                   {profileLinkedin && (
@@ -413,7 +409,7 @@ const Profile = (props) => {
                         alt="linkedin"
                         src={LinkedIn}
                       />
-                      Linkdin <strong>{profileLinkedin}</strong>
+                      <a href={profileLinkedin}>Linkedin</a>
                     </div>
                   )}
                 </div>
@@ -489,6 +485,7 @@ const Profile = (props) => {
           <Row className="profile--feed">
             <Col md="4">
               <PopularTopics
+                heading={"Popular #topics and Spaces"}
                 topicList={topicList}
                 onSubfilterChange={onSubfilterChange}
               />
@@ -517,8 +514,9 @@ const Profile = (props) => {
                         badge={badge}
                         engagementButtons={[
                           {
-                            text: "Comment",
-                            icon: `${cdn}/Comment.png`,
+                            checked: true,
+                            text: "Answer",
+                            icon: AnswerIcon,
                             number:
                               feed.comments && feed.comments.length > 0
                                 ? feed.comments.length

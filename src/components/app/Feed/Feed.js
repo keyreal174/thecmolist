@@ -198,10 +198,10 @@ function RenderDashboard(props) {
 const Feed = (props) => {
   const location = useLocation();
   const subSelectors = [
-    { title: "Questions & Answers", slug: "qa" },
-    { title: "Projects & Vendors", slug: "projects" },
-    { title: "Articles & News", slug: "articles" },
     { title: "All", slug: "all" },
+    { title: "Questions & Answers", slug: "question" },
+    { title: "Projects & Vendors", slug: "project" },
+    { title: "Articles & News", slug: "article" },
   ];
   const [inviteModalShow, setInviteModalShow] = useState(false);
   const [activeSelector, setActiveSelector] = useState(0);
@@ -290,25 +290,14 @@ const Feed = (props) => {
       changeDashboardFilter(topicSlug, subSelectors[activeSelector].slug);
     }
   };
+  // init whenever the isTopic prop changes
   useEffect(() => {
-    let pageLocationIsTopic = false;
-    if (location && location.pathname) {
-      if (location.pathname.includes("group")) {
-        setIsGroup(true);
-      } else if (location.pathname.includes("topic")) {
-        setIsTopic(true);
-        pageLocationIsTopic = true;
-      }
-    }
+    let pageLocationIsTopic = props.isTopic || false;
+    setIsTopic(pageLocationIsTopic);
     const getProfileStats = async () => props.getProfileStats();
     getProfileStats().then((profileStats) =>
       initFeedPage(profileStats, pageLocationIsTopic)
     );
-  }, []);
-  useEffect(() => {
-    let pageLocationIsTopic = props.isTopic || false;
-    setIsTopic(pageLocationIsTopic);
-    initFeedPage(props.profileStats, pageLocationIsTopic);
   }, [props.isTopic]);
 
   return (
@@ -330,7 +319,7 @@ const Feed = (props) => {
           {!isTopic && (
             <div style={{ width: "100%" }}>
               <Filter
-                className="mt-1"
+                className="mt-1 feed--filters"
                 filterIdx={filterIdx}
                 filters={filters}
                 onChange={(idx) => changeFilter(idx)}
