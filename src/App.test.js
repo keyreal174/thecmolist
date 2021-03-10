@@ -12,6 +12,7 @@ import userModel from "./models/user";
 import settingsModel from "./models/settings";
 import profileModel from "./models/profile";
 import reactionModel from "./models/reaction";
+import suggestionModel from "./models/suggestions";
 import topicsModel from "./models/topics";
 
 test("renders app without crashing", async () => {
@@ -24,6 +25,7 @@ test("renders app without crashing", async () => {
       userModel,
       profileModel,
       reactionModel,
+      suggestionModel,
       topicsModel,
     },
   });
