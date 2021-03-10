@@ -77,8 +77,8 @@
 
 .connected-label {
   background-color: #fff;
-  color: #0073b1;
-  border-color: #0073b1;
+  color: $brand;
+  border-color: $brand;
   border-width: 2px;
   font-weight: 600;
   min-width: 120px;
@@ -90,8 +90,8 @@
 
 .connect-button {
   background-color: #fff;
-  color: #0073b1;
-  border-color: #0073b1;
+  color: $brand;
+  border-color: $brand;
   border-width: 2px;
   font-weight: 600;
   min-width: 120px;

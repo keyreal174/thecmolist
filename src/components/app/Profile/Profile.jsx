@@ -24,6 +24,7 @@ import {
 } from "../../util/constants";
 import "./profile.scss";
 
+import AnswerIcon from "../base/icons/answer.svg";
 import LinkedIn from "./icons/linkedin.svg";
 import Website from "./icons/link.svg";
 import Mail from "./icons/mail.svg";
@@ -34,6 +35,7 @@ import InsightfulIcon from "../base/icons/insightful.svg";
 import InsightfulCheckedIcon from "../base/icons/insightful_checked.svg";
 import ThanksIcon from "../base/icons/thanks.svg";
 import ThanksCheckedIcon from "../base/icons/thanks_checked.svg";
+import More from "./icons/more.svg";
 
 const RenderList = ({ arr }) => {
   return arr.map((item, index) => (
@@ -322,7 +324,7 @@ const Profile = (props) => {
                       <div className="btn-wrapper d-flex">
                         {!followedUser ? (
                           <Button
-                            className="btn-white edit-profile"
+                            className="profile--follow-button edit-profile"
                             variant="primary"
                             onClick={() => toggleFollowModal()}
                           >
@@ -340,10 +342,10 @@ const Profile = (props) => {
                           Message
                         </Button>
                         <Button
-                          className="edit-profile"
-                          variant="outline-secondary"
+                          variant="light"
+                          className="profile--more-button"
                         >
-                          More...
+                          <img src={More} alt="more icon"></img>
                         </Button>
                       </div>
                     )}
@@ -512,8 +514,9 @@ const Profile = (props) => {
                         badge={badge}
                         engagementButtons={[
                           {
-                            text: "Comment",
-                            icon: `${cdn}/Comment.png`,
+                            checked: true,
+                            text: "Answer",
+                            icon: AnswerIcon,
                             number:
                               feed.comments && feed.comments.length > 0
                                 ? feed.comments.length

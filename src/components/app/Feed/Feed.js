@@ -319,7 +319,7 @@ const Feed = (props) => {
           {!isTopic && (
             <div style={{ width: "100%" }}>
               <Filter
-                className="mt-1"
+                className="mt-1 feed--filters"
                 filterIdx={filterIdx}
                 filters={filters}
                 onChange={(idx) => changeFilter(idx)}

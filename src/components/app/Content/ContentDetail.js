@@ -215,7 +215,10 @@ const ContentDetail = ({
             <div className="question-related-section-item">
               {content.related_questions.map((relatedQuestion, index) => {
                 return (
-                  <div key={index}>
+                  <div
+                    className="question-related-section-item-text"
+                    key={index}
+                  >
                     <a href={relatedQuestion.link}>{relatedQuestion.title}</a>
                   </div>
                 );

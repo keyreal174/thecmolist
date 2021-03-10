@@ -9,14 +9,16 @@ const AllMembers = ({ memberList }) => {
     <CustomCard heading="All Members" seeAllLink={membersLink}>
       <div className="feed-box-content">
         {list &&
-          list.map(({ image, name, role }, index) => {
+          list.map(({ image, name, role, link }, index) => {
             return (
-              <Avatar
-                key={index}
-                image={image}
-                heading={name}
-                subHeading={role}
-              />
+              <a href={link}>
+                <Avatar
+                  key={index}
+                  image={image}
+                  heading={name}
+                  subHeading={role}
+                />
+              </a>
             );
           })}
       </div>
