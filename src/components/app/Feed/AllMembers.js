@@ -11,13 +11,8 @@ const AllMembers = ({ memberList }) => {
         {list &&
           list.map(({ image, name, role, link }, index) => {
             return (
-              <a href={link}>
-                <Avatar
-                  key={index}
-                  image={image}
-                  heading={name}
-                  subHeading={role}
-                />
+              <a href={link} key={index}>
+                <Avatar image={image} heading={name} subHeading={role} />
               </a>
             );
           })}
