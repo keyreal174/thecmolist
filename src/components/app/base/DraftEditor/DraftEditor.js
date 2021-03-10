@@ -4,6 +4,7 @@ import React, {
   useMemo,
   useRef,
   useState,
+  useEffect,
 } from "react";
 import {
   EditorState,
@@ -31,18 +32,27 @@ import "./DraftEditor.scss";
 const staticToolbarPlugin = createToolbarPlugin();
 const { Toolbar } = staticToolbarPlugin;
 
+const MentionLast = {
+  "@": "+ Add People",
+  "#": "+ Add Vendor",
+};
+
 const DraftEditor = ({
   getSuggestions,
   getTopicSuggestions,
   setBody,
   setShowPersonModal,
+  showPersonModal,
+  mention,
 }) => {
   const ref = useRef(null);
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
   const [open, setOpen] = useState(true);
+  const [show, setShow] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
+  const [lastTrigger, setLastTrigger] = useState("@");
 
   const { MentionSuggestions, plugins } = useMemo(() => {
     const mentionPlugin = createMentionPlugin({ mentionTrigger: ["@", "#"] });
@@ -57,13 +67,14 @@ const DraftEditor = ({
     setOpen(_open);
   }, []);
   const onSearchChange = useCallback(({ trigger, value }) => {
+    setLastTrigger(trigger);
     if (trigger === "@") {
       getSuggestions(value).then((response) => {
-        setSuggestions([...response, { name: "+ Add People" }]);
+        setSuggestions([...response, { name: MentionLast[trigger] }]);
       });
     } else {
       getTopicSuggestions(value).then((response) => {
-        setSuggestions(response);
+        setSuggestions([...response, { name: MentionLast[trigger] }]);
       });
     }
   }, []);
@@ -74,47 +85,101 @@ const DraftEditor = ({
     setBody(content);
   };
 
-  const handleAddPeople = () => {
-    const blocks = editorState.getCurrentContent().getBlockMap().toList();
+  const getSearchTextAt = (blockText, position, triggers) => {
+    const str = blockText.substr(0, position);
+    const { begin, index } = triggers
+      .map((trigger, triggerIndex) => ({
+        begin: trigger.length === 0 ? 0 : str.lastIndexOf(trigger),
+        index: triggerIndex,
+      }))
+      .reduce((left, right) => (left.begin >= right.begin ? left : right));
+    const matchingString =
+      triggers[index].length === 0
+        ? str
+        : str.slice(begin + triggers[index].length);
+    const end = str.length;
 
-    const updates = {
-      anchorKey: blocks.last().get("key"),
-      anchorOffset: blocks.last().getLength(),
-      focusKey: blocks.last().get("key"),
-      focusOffset: blocks.last().getLength(),
+    return {
+      begin,
+      end,
+      matchingString,
     };
-
-    const updatedSelection = editorState.getSelection().merge(updates);
-
-    const newContentState = Modifier.removeRange(
-      editorState.getCurrentContent(),
-      updatedSelection,
-      "backward"
-    );
-
-    const newState = EditorState.push(
-      editorState,
-      newContentState,
-      "remove-range"
-    );
   };
 
-  const removeSelectedBlocksStyle = (editorState) => {
-    const newContentState = RichUtils.tryToRemoveBlockStyle(editorState);
-    if (newContentState) {
-      return EditorState.push(
-        editorState,
-        newContentState,
-        "change-block-type"
+  const getSearchText = (editorState, selection, triggers) => {
+    const anchorKey = selection.getAnchorKey();
+    const anchorOffset = selection.getAnchorOffset();
+    const currentContent = editorState.getCurrentContent();
+    const currentBlock = currentContent.getBlockForKey(anchorKey);
+    const blockText = currentBlock.getText();
+    return getSearchTextAt(blockText, anchorOffset, triggers);
+  };
+
+  const handleAddPeople = (mention = null) => {
+    const contentStateWithEntity = editorState
+      .getCurrentContent()
+      .createEntity("mention", "SEGMENTED", {
+        mention: { name: "+ Add People", link: mention ? mention.link : null },
+      });
+    const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
+
+    const currentSelectionState = editorState.getSelection();
+    const { end } = getSearchText(editorState, currentSelectionState, [
+      lastTrigger,
+    ]);
+
+    if (end) {
+      const mentionTextSelection = currentSelectionState.merge({
+        anchorOffset: end - 13,
+        focusOffset: end,
+      });
+
+      let mentionReplacedContent = Modifier.replaceText(
+        editorState.getCurrentContent(),
+        mentionTextSelection,
+        mention ? mention.name : "",
+        undefined, // no inline style needed
+        entityKey
       );
+
+      // If the mention is inserted at the end, a space is appended right after for
+      // a smooth writing experience.
+      const blockKey = mentionTextSelection.getAnchorKey();
+      const blockSize = editorState
+        .getCurrentContent()
+        .getBlockForKey(blockKey)
+        .getLength();
+      if (blockSize === end) {
+        mentionReplacedContent = Modifier.insertText(
+          mentionReplacedContent,
+          mentionReplacedContent.getSelectionAfter(),
+          mention ? " " : ""
+        );
+      }
+
+      const newEditorState = EditorState.push(
+        editorState,
+        mentionReplacedContent,
+        "insert-fragment"
+      );
+      const newState = EditorState.forceSelection(
+        newEditorState,
+        mentionReplacedContent.getSelectionAfter()
+      );
+
+      setEditorState(newState);
     }
-    setEditorState(editorState);
-    return editorState;
   };
 
   const handleClose = () => {
     const contentState = editorState.getCurrentContent();
   };
+
+  useEffect(() => {
+    if (!showPersonModal) {
+      handleAddPeople(mention);
+    }
+  }, [showPersonModal]);
 
   return (
     <div
@@ -155,9 +220,8 @@ const DraftEditor = ({
           suggestions={suggestions}
           onSearchChange={onSearchChange}
           onAddMention={(mention) => {
-            if (mention.name === "+ Add People") {
-              // setShowPersonModal(true);
-              handleAddPeople();
+            if (mention.name === MentionLast[lastTrigger]) {
+              setShowPersonModal(lastTrigger === "@" ? "People" : "Vendor");
             }
           }}
         />

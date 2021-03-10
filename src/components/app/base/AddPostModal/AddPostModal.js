@@ -47,6 +47,8 @@ function AddPostModal({
   const [topics, setTopics] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [showPersonModal, setShowPersonModal] = useState(false);
+  const [modalType, setModalType] = useState("People");
+  const [mention, setMention] = useState(null);
 
   // Typeahead values for #topic
   const [options, setOptions] = useState([]);
@@ -320,7 +322,12 @@ function AddPostModal({
                         setBody={setBody}
                         getSuggestions={getSuggestions}
                         getTopicSuggestions={getTopicSuggestions}
-                        setShowPersonModal={() => setShowPersonModal(true)}
+                        setShowPersonModal={(type) => {
+                          setShowPersonModal(true);
+                          setModalType(type);
+                        }}
+                        showPersonModal={showPersonModal}
+                        mention={mention}
                       />
                     </Suspense>
                   </div>
@@ -536,6 +543,8 @@ function AddPostModal({
         <AddPersonModal
           show={showPersonModal}
           handleClose={() => setShowPersonModal(false)}
+          setMention={(mention) => setMention(mention)}
+          modalType={modalType}
         />
       </Modal>
     </>

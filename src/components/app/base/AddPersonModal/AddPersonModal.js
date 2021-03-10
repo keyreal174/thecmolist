@@ -5,7 +5,7 @@ import { cdn } from "../../../util/constants";
 import "./AddPeronModal.scss";
 import clsx from "clsx";
 
-function AddPersonModal({ onSubmit, show, handleClose }) {
+function AddPersonModal({ show, handleClose, setMention, modalType }) {
   const [name, setName] = useState("");
   const [link, setLink] = useState("");
   const handleSubmit = async (e) => {
@@ -15,13 +15,19 @@ function AddPersonModal({ onSubmit, show, handleClose }) {
       name,
       link,
     };
+    setMention(person);
+    reset();
+    handleClose();
+  };
 
-    handleCancel();
+  const reset = () => {
+    setName("");
+    setLink("");
   };
 
   const handleCancel = () => {
-    setName("");
-    setLink("");
+    reset();
+    setMention(null);
     handleClose();
   };
 
@@ -30,7 +36,9 @@ function AddPersonModal({ onSubmit, show, handleClose }) {
       <div className={clsx("add-person-modal", show && "visible")}>
         <div>
           <div className="modal-header">
-            <h4 className="modal-title">New Person</h4>
+            <h4 className="modal-title">
+              {modalType === "People" ? "New Person" : "New Vendor"}
+            </h4>
           </div>
           <div className="modal-body">
             <div>
@@ -39,7 +47,11 @@ function AddPersonModal({ onSubmit, show, handleClose }) {
                   <Col md="12">
                     <div>
                       <div className="person-section">
-                        <label>Please enter the person's full name:</label>
+                        <label>
+                          {modalType === "People"
+                            ? "Please enter the person's full name:"
+                            : "Please enter the vendor's full name:"}
+                        </label>
                         <Form.Control
                           as="input"
                           className="modal-person-section-input"
@@ -50,7 +62,11 @@ function AddPersonModal({ onSubmit, show, handleClose }) {
                         />
                       </div>
                       <div className="person-section">
-                        <label>Person's Linked URL:</label>
+                        <label>
+                          {modalType === "People"
+                            ? "Person's Linked URL:"
+                            : "Vendor's Linked URL:"}
+                        </label>
                         <Form.Control
                           as="input"
                           className="modal-person-section-input"
