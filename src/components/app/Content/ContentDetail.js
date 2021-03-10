@@ -122,6 +122,7 @@ const ContentDetail = ({
           style={{ paddingBottom: "10px" }}
           showDiscussionComment={true}
           discussionCommentAuthor={author}
+          profile={profileStats.profile}
           discussionCommentPlaceholder={
             author && author.length > 0
               ? `Answer ${author}'s question...`
