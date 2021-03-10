@@ -16,6 +16,7 @@ import {
 } from "react-bootstrap-typeahead";
 import { cdn } from "../../../util/constants";
 import "./addPostModal.scss";
+import AddPersonModal from "../AddPersonModal/AddPersonModal";
 const DraftEditor = React.lazy(() => import("../DraftEditor/DraftEditor"));
 
 function AddPostModal({
@@ -45,6 +46,7 @@ function AddPostModal({
   const [title, setTitle] = useState("");
   const [topics, setTopics] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [showPersonModal, setShowPersonModal] = useState(false);
 
   // Typeahead values for #topic
   const [options, setOptions] = useState([]);
@@ -318,6 +320,7 @@ function AddPostModal({
                         setBody={setBody}
                         getSuggestions={getSuggestions}
                         getTopicSuggestions={getTopicSuggestions}
+                        setShowPersonModal={() => setShowPersonModal(true)}
                       />
                     </Suspense>
                   </div>
@@ -530,6 +533,10 @@ function AddPostModal({
             {secondButtonText}
           </Button>
         </Modal.Footer>
+        <AddPersonModal
+          show={showPersonModal}
+          handleClose={() => setShowPersonModal(false)}
+        />
       </Modal>
     </>
   );

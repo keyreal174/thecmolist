@@ -1,9 +1,18 @@
 @import "../../../../sass/globals.scss";
 
 .add-person-modal {
-  .modal-dialog.modal-lg {
-    margin-top: 250px;
-    max-width: 600px;
+  top: 250px;
+  width: 600px !important;
+  z-index: 1140;
+  background-color: white;
+  position: fixed;
+  left: calc(50% - 300px);
+  border-radius: 12px;
+  border: 1px solid #d3e0f5;
+  display: none;
+
+  &.visible {
+    display: block;
   }
 
   .person-section {
