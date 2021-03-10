@@ -5,7 +5,7 @@ import querySearch from "stringquery";
 import Util from "../util/Util";
 import Footer from "../app/base/Footer/Footer";
 import "./login.scss";
-
+import { privacyPolicy } from "../util/constants";
 import LinkedInIcon from "./icons/linkedin.svg";
 
 const loginRequest = (user, password) => {
@@ -154,7 +154,7 @@ class Login extends React.Component {
               </a>
               <p className="login--disclaimer">
                 By signing in, you agree to our <a href="#">User Agreement</a>{" "}
-                and <a href="#">Privacy Policy</a>.
+                and <a href={privacyPolicy}>Privacy Policy</a>.
               </p>
               <p className="login--question">
                 Any questions or problems signing in? Please contact us at{" "}

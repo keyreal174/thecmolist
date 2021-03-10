@@ -88,3 +88,18 @@
   font-size: 12px;
   line-height: 15.6px;
 }
+
+.profile-stats {
+  &--edit {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 24px;
+    height: 24px;
+  }
+  &--empty-message {
+    padding-left: 25px;
+    padding-right: 20px;
+    display: block;
+  }
+}
