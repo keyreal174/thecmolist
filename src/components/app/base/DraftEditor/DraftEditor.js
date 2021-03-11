@@ -110,8 +110,8 @@ const DraftEditor = ({
             case "person":
               entityUrl = "/profile/";
               break;
-            case "object":
-              entityUrl = "/o/";
+            case "vendor":
+              entityUrl = "/vendor/";
               break;
             default:
               entity = "";
