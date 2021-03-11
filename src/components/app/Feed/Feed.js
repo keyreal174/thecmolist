@@ -161,15 +161,15 @@ function RenderFeed({
 }
 
 function RenderDashboard(props) {
-  const feedLoading = props.feedLoading;
-  const profileStats = props.profileStats;
+  const { feedLoading, profileStats, saveContent } = props;
+
   return (
     <Row>
       <Col md="3" style={{ paddingRight: "0px" }}>
         {profileStats && <ProfileStats profileStats={profileStats} />}
       </Col>
       <Col md="6">
-        <AskQuestion />
+        <AskQuestion saveContent={saveContent} />
         {feedLoading ? (
           <div className="mt-3 mb-5">
             <ActivityIndicator className="element-center feed-activity-indicator" />
