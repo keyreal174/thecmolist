@@ -14,8 +14,10 @@ import {
   Typeahead,
   TypeaheadMenu,
 } from "react-bootstrap-typeahead";
+import clsx from "clsx";
 import { cdn } from "../../../util/constants";
 import "./addPostModal.scss";
+import AddPersonModal from "../AddPersonModal/AddPersonModal";
 const DraftEditor = React.lazy(() => import("../DraftEditor/DraftEditor"));
 
 function AddPostModal({
@@ -46,6 +48,9 @@ function AddPostModal({
   const [modalTitle, setModalTitle] = useState("Ask a marketing question");
   const [secondButtonText, setSecondButtonText] = useState("Ask a question");
   const [isLoading, setIsLoading] = useState(false);
+  const [showPersonModal, setShowPersonModal] = useState(false);
+  const [mention, setMention] = useState(null);
+  const [isPersonVendor, setIsPersonVendor] = useState(false);
 
   // Typeahead values for #topic
   const [options, setOptions] = useState([]);
@@ -237,6 +242,10 @@ function AddPostModal({
     setPerson("");
     setRole("");
   };
+
+  const handlePersonVendor = (type) => {
+    setIsPersonVendor(true);
+  };
   return (
     <>
       <Modal className="modal" show={show} onHide={handleClose} size="lg">
@@ -332,6 +341,13 @@ function AddPostModal({
                         setBody={setBody}
                         getSuggestions={getSuggestions}
                         getTopicSuggestions={getTopicSuggestions}
+                        setShowPersonModal={(type) => {
+                          setShowPersonModal(type);
+                        }}
+                        showPersonModal={showPersonModal}
+                        mention={mention}
+                        isPersonVendor={isPersonVendor}
+                        setIsPersonVendor={() => setIsPersonVendor(false)}
                       />
                     </Suspense>
                   </div>
@@ -341,7 +357,7 @@ function AddPostModal({
                     <li>
                       <Button
                         className="modal-section-body-content"
-                        onClick={() => setShowPersonSection(true)}
+                        onClick={() => handlePersonVendor("People")}
                         size="sm"
                         variant="light"
                       >
@@ -358,7 +374,7 @@ function AddPostModal({
                     <li>
                       <Button
                         className="modal-section-body-content"
-                        onClick={() => setShowPersonSection(true)}
+                        onClick={() => handlePersonVendor("Vendor")}
                         size="sm"
                         variant="light"
                       >
@@ -536,6 +552,12 @@ function AddPostModal({
             {secondButtonText}
           </Button>
         </Modal.Footer>
+        <AddPersonModal
+          show={showPersonModal}
+          handleClose={() => setShowPersonModal(false)}
+          setMention={(mention) => setMention(mention)}
+        />
+        <div className={clsx(showPersonModal && "person-modal-backdrop")}></div>
       </Modal>
     </>
   );

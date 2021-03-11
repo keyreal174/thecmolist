@@ -28,15 +28,13 @@ import {
 import "@draft-js-plugins/mention/lib/plugin.css";
 import "@draft-js-plugins/static-toolbar/lib/plugin.css";
 import { stateToMarkdown } from "draft-js-export-markdown";
+import clsx from "clsx";
 import "./DraftEditor.scss";
 
 const staticToolbarPlugin = createToolbarPlugin();
 const { Toolbar } = staticToolbarPlugin;
 
-const MentionLast = {
-  "@": "+ Add People",
-  "#": "+ Add Vendor",
-};
+const MentionLast = [{ name: "+ Add People" }, { name: "+ Add Vendor" }];
 
 const DraftEditor = ({
   getSuggestions,
@@ -45,6 +43,8 @@ const DraftEditor = ({
   setShowPersonModal,
   showPersonModal,
   mention,
+  isPersonVendor,
+  setIsPersonVendor,
 }) => {
   const ref = useRef(null);
   const [editorState, setEditorState] = useState(() =>
@@ -53,7 +53,8 @@ const DraftEditor = ({
   const [open, setOpen] = useState(false);
   const [show, setShow] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
-  const [lastTrigger, setLastTrigger] = useState("@");
+  const [selectedMention, setSelectedMention] = useState("");
+  const [isSharp, setIsSharp] = useState(false);
 
   const { MentionSuggestions, plugins } = useMemo(() => {
     const mentionPlugin = createMentionPlugin({ mentionTrigger: ["@", "#"] });
@@ -68,14 +69,15 @@ const DraftEditor = ({
     setOpen(_open);
   }, []);
   const onSearchChange = useCallback(({ trigger, value }) => {
-    setLastTrigger(trigger);
     if (trigger === "@") {
+      setIsSharp(true);
       getSuggestions(value).then((response) => {
-        setSuggestions([...response, { name: MentionLast[trigger] }]);
+        setSuggestions([...response, ...MentionLast]);
       });
     } else {
+      setIsSharp(false);
       getTopicSuggestions(value).then((response) => {
-        setSuggestions([...response, { name: MentionLast[trigger] }]);
+        setSuggestions(response);
       });
     }
   }, []);
@@ -170,20 +172,18 @@ const DraftEditor = ({
       .getCurrentContent()
       .createEntity("mention", "SEGMENTED", {
         mention: {
-          name: MentionLast[lastTrigger],
+          name: selectedMention,
           link: mention ? mention.link : null,
         },
       });
     const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
 
     const currentSelectionState = editorState.getSelection();
-    const { end } = getSearchText(editorState, currentSelectionState, [
-      lastTrigger,
-    ]);
+    const { end } = getSearchText(editorState, currentSelectionState, ["@"]);
 
     if (end) {
       const mentionTextSelection = currentSelectionState.merge({
-        anchorOffset: end - MentionLast[lastTrigger].length - 1,
+        anchorOffset: !isPersonVendor ? end - selectedMention.length - 1 : end,
         focusOffset: end,
       });
 
@@ -224,8 +224,39 @@ const DraftEditor = ({
     }
   };
 
-  const handleClose = () => {
-    const contentState = editorState.getCurrentContent();
+  const handlePeopleVendor = () => {
+    ref.current.focus();
+
+    const contentStateWithEntity = editorState.getCurrentContent();
+    const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
+
+    const currentSelectionState = editorState.getSelection();
+    const end = currentSelectionState.getEndOffset();
+    const mentionTextSelection = currentSelectionState.merge({
+      anchorOffset: end,
+      focusOffset: end,
+    });
+
+    let mentionReplacedContent = Modifier.replaceText(
+      editorState.getCurrentContent(),
+      mentionTextSelection,
+      "@",
+      undefined, // no inline style needed
+      undefined
+    );
+
+    const newEditorState = EditorState.push(
+      editorState,
+      mentionReplacedContent,
+      "insert-fragment"
+    );
+    const newState = EditorState.forceSelection(
+      newEditorState,
+      mentionReplacedContent.getSelectionAfter()
+    );
+
+    setEditorState(newState);
+    setIsPersonVendor();
   };
 
   useEffect(() => {
@@ -233,6 +264,12 @@ const DraftEditor = ({
       handleAddPeople(mention);
     }
   }, [showPersonModal]);
+
+  useEffect(() => {
+    if (isPersonVendor) {
+      handlePeopleVendor();
+    }
+  }, [isPersonVendor]);
 
   return (
     <div
@@ -243,7 +280,12 @@ const DraftEditor = ({
         }
       }}
     >
-      <div className="editor-wrapper">
+      <div
+        className={clsx(
+          "editor-wrapper",
+          isSharp && "editor-wrapper-add-mention"
+        )}
+      >
         <Editor
           editorKey={"editor"}
           editorState={editorState}
@@ -273,8 +315,11 @@ const DraftEditor = ({
           suggestions={suggestions}
           onSearchChange={onSearchChange}
           onAddMention={(mention) => {
-            if (mention.name === MentionLast[lastTrigger]) {
-              setShowPersonModal(lastTrigger === "@" ? "People" : "Vendor");
+            if (MentionLast.find((item) => item.name === mention.name)) {
+              setSelectedMention(mention.name);
+              setShowPersonModal(
+                mention.name === MentionLast[0].name ? "People" : "Vendor"
+              );
             }
           }}
         />
