@@ -301,7 +301,7 @@ const DraftEditor = ({
                 <div>
                   <BoldButton {...externalProps} />
                   <ItalicButton {...externalProps} />
-                  <UnderlineButton {...externalProps} />
+                  {/* <UnderlineButton {...externalProps} /> */}
                   <UnorderedListButton {...externalProps} />
                   <OrderedListButton {...externalProps} />
                 </div>
