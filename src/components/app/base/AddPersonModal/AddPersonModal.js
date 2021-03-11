@@ -4,7 +4,7 @@ import { cdn } from "../../../util/constants";
 import "./AddPeronModal.scss";
 import clsx from "clsx";
 
-function AddPersonModal({ show, handleClose, setMention, modalType }) {
+function AddPersonModal({ show, handleClose, setMention }) {
   const [name, setName] = useState("");
   const [link, setLink] = useState("");
   const handleSubmit = async (e) => {
@@ -36,7 +36,7 @@ function AddPersonModal({ show, handleClose, setMention, modalType }) {
         <div>
           <div className="modal-header">
             <h4 className="modal-title">
-              {modalType === "People" ? "New Person" : "New Vendor"}
+              {show === "People" ? "New Person" : "New Vendor"}
             </h4>
           </div>
           <div className="modal-body">
@@ -47,7 +47,7 @@ function AddPersonModal({ show, handleClose, setMention, modalType }) {
                     <div>
                       <div className="person-section">
                         <label>
-                          {modalType === "People"
+                          {show === "People"
                             ? "Please enter the person's full name:"
                             : "Please enter the vendor's full name:"}
                         </label>
@@ -62,7 +62,7 @@ function AddPersonModal({ show, handleClose, setMention, modalType }) {
                       </div>
                       <div className="person-section">
                         <label>
-                          {modalType === "People"
+                          {show === "People"
                             ? "Person's Linked URL:"
                             : "Vendor's Linked URL:"}
                         </label>

@@ -48,8 +48,8 @@ function AddPostModal({
   const [secondButtonText, setSecondButtonText] = useState("Ask a question");
   const [isLoading, setIsLoading] = useState(false);
   const [showPersonModal, setShowPersonModal] = useState(false);
-  const [modalType, setModalType] = useState("People");
   const [mention, setMention] = useState(null);
+  const [isPersonVendor, setIsPersonVendor] = useState(false);
 
   // Typeahead values for #topic
   const [options, setOptions] = useState([]);
@@ -157,6 +157,23 @@ function AddPostModal({
     fetch();
   }, []);
 
+  // add backdrop when person modal is opened
+  useEffect(() => {
+    if (showPersonModal) {
+      const modal = document.getElementsByClassName("modal-dialog")[0];
+      const backdrop = document.createElement("div");
+      backdrop.className = "person-modal-backdrop";
+      modal.append(backdrop);
+    } else {
+      const backdrop = document.getElementsByClassName(
+        "person-modal-backdrop"
+      )[0];
+      if (backdrop) {
+        backdrop.remove();
+      }
+    }
+  }, [showPersonModal]);
+
   useEffect(() => {
     if (
       profileStats &&
@@ -240,6 +257,11 @@ function AddPostModal({
     setShowPersonSection(false);
     setPerson("");
     setRole("");
+  };
+
+  const handlePersonVendor = (type) => {
+    setIsPersonVendor(true);
+    setShowPersonModal(type);
   };
   return (
     <>
@@ -337,11 +359,12 @@ function AddPostModal({
                         getSuggestions={getSuggestions}
                         getTopicSuggestions={getTopicSuggestions}
                         setShowPersonModal={(type) => {
-                          setShowPersonModal(true);
-                          setModalType(type);
+                          setShowPersonModal(type);
                         }}
                         showPersonModal={showPersonModal}
                         mention={mention}
+                        isPersonVendor={isPersonVendor}
+                        setIsPersonVendor={() => setIsPersonVendor(false)}
                       />
                     </Suspense>
                   </div>
@@ -351,7 +374,7 @@ function AddPostModal({
                     <li>
                       <Button
                         className="modal-section-body-content"
-                        onClick={() => setShowPersonSection(true)}
+                        onClick={() => handlePersonVendor("People")}
                         size="sm"
                         variant="light"
                       >
@@ -368,7 +391,7 @@ function AddPostModal({
                     <li>
                       <Button
                         className="modal-section-body-content"
-                        onClick={() => setShowPersonSection(true)}
+                        onClick={() => handlePersonVendor("Vendor")}
                         size="sm"
                         variant="light"
                       >
@@ -548,7 +571,6 @@ function AddPostModal({
           show={showPersonModal}
           handleClose={() => setShowPersonModal(false)}
           setMention={(mention) => setMention(mention)}
-          modalType={modalType}
         />
       </Modal>
     </>
