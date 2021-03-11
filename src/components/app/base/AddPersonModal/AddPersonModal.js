@@ -82,19 +82,19 @@ function AddPersonModal({ show, handleClose, setMention }) {
           </div>
           <div className="modal-footer">
             <Button
+              className="btn-white modal-cancel-button"
+              variant="outline-primary"
+              onClick={() => handleCancel()}
+            >
+              Cancel
+            </Button>
+            <Button
               className="btn__homepage-blue modal-ok-button"
               variant="primary"
               form="form-add-person-modal"
               onClick={handleSubmit}
             >
               Create
-            </Button>
-            <Button
-              className="btn-white modal-cancel-button"
-              variant="outline-primary"
-              onClick={() => handleCancel()}
-            >
-              Cancel
             </Button>
           </div>
         </div>

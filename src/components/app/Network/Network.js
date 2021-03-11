@@ -34,9 +34,8 @@ const Network = (props) => {
     const getProfileStats = async () => props.getProfileStats();
     getProfileStats().then((profileStats) => {
       let newFilters = [
-        { title: "My Network", slug: "my-network", enabled: true },
+        { title: "All", slug: "my-network", enabled: true },
         { title: "My Peers", slug: "my-peers", enabled: true },
-        { title: "My Experts", slug: "my-experts", enabled: true },
       ];
       if (profileStats && profileStats.profile && profileStats.profile.groups) {
         newFilters = newFilters.concat(

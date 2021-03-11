@@ -28,7 +28,6 @@ function Filter(props) {
                   if (!filter.enabled) {
                     className += " filter--button-disable";
                   }
-                  console.log(className);
                   return (
                     <Button
                       key={idx}

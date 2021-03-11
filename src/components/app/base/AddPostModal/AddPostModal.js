@@ -16,7 +16,6 @@ import {
 } from "react-bootstrap-typeahead";
 import { cdn } from "../../../util/constants";
 import "./addPostModal.scss";
-import AddPersonModal from "../AddPersonModal/AddPersonModal";
 const DraftEditor = React.lazy(() => import("../DraftEditor/DraftEditor"));
 
 function AddPostModal({
@@ -411,6 +410,7 @@ function AddPostModal({
                         onClick={() => handlePhotoClick()}
                         variant="light"
                         size="sm"
+                        disabled
                       >
                         <div>
                           <img
@@ -434,6 +434,7 @@ function AddPostModal({
                         onClick={() => setShowVideo(true)}
                         variant="light"
                         size="sm"
+                        disabled
                       >
                         <div>
                           <img

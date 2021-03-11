@@ -47,7 +47,7 @@ describe("networkModel model", () => {
     expect(networkModelData.activeFeed).toEqual(DATA.feedData);
     expect(networkModelData.activeFilter).toEqual(FILTER_KEY);
     expect(networkModelData.sortOrder).toEqual(DATA.sortOrder);
-    expect(networkModelData.token).toEqual(DATA.token);
+    expect(networkModelData.feedData[FILTER_KEY].token).toEqual(DATA.token);
     expect(networkModelData.feedData[FILTER_KEY].title).toEqual(FILTER_KEY);
     expect(networkModelData.feedData[FILTER_KEY].data).toEqual(DATA.feedData);
     expect(networkModelData.feedData[FILTER_KEY].enabled).toEqual(true);
