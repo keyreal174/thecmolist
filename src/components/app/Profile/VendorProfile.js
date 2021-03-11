@@ -99,7 +99,12 @@ const ProfileIntro = ({
               />
               Location{" "}
               <strong>
-                {profileCity}, {profileState}
+                {profileCity}
+                {`${
+                  profileState && profileState.length > 0
+                    ? ", " + profileState
+                    : ""
+                }`}
               </strong>
             </div>
           )}
@@ -171,7 +176,7 @@ const ProfileOverview = ({
               )}
             </h2>
             <div className="overview-subheadline">
-              {profileTitle && `${profileTitle} at ${profileCompany}`}
+              {profileTitle && `${profileTitle}`}
             </div>
             {profileFollowers && (
               <div className="overview-followers">{`${profileFollowers} Followers`}</div>
