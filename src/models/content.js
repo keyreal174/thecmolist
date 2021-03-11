@@ -114,8 +114,10 @@ export default {
           let comment = data.comment;
           let replyId = data.reply.content_id;
           const response = await replyComment(replyId, comment);
+          const reply = response && response.data;
+
           dispatch.contentModel.saveComment({
-            newReply: response.data,
+            newReply: reply,
             replyId,
           });
         } else {
