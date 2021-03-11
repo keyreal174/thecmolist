@@ -222,20 +222,54 @@ const DraftEditor = ({
 
       setEditorState(newState);
     }
-    setIsPersonVendor();
   };
 
-  const handleClose = () => {
-    const contentState = editorState.getCurrentContent();
+  const handlePeopleVendor = () => {
+    ref.current.focus();
+
+    const contentStateWithEntity = editorState.getCurrentContent();
+    const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
+
+    const currentSelectionState = editorState.getSelection();
+    const end = currentSelectionState.getEndOffset();
+    const mentionTextSelection = currentSelectionState.merge({
+      anchorOffset: end,
+      focusOffset: end,
+    });
+
+    let mentionReplacedContent = Modifier.replaceText(
+      editorState.getCurrentContent(),
+      mentionTextSelection,
+      "@",
+      undefined, // no inline style needed
+      undefined
+    );
+
+    const newEditorState = EditorState.push(
+      editorState,
+      mentionReplacedContent,
+      "insert-fragment"
+    );
+    const newState = EditorState.forceSelection(
+      newEditorState,
+      mentionReplacedContent.getSelectionAfter()
+    );
+
+    setEditorState(newState);
+    setIsPersonVendor();
   };
 
   useEffect(() => {
     if (!showPersonModal) {
       handleAddPeople(mention);
-    } else {
-      ref.current.focus();
     }
   }, [showPersonModal]);
+
+  useEffect(() => {
+    if (isPersonVendor) {
+      handlePeopleVendor();
+    }
+  }, [isPersonVendor]);
 
   return (
     <div

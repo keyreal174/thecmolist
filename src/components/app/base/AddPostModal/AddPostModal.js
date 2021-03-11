@@ -14,8 +14,10 @@ import {
   Typeahead,
   TypeaheadMenu,
 } from "react-bootstrap-typeahead";
+import clsx from "clsx";
 import { cdn } from "../../../util/constants";
 import "./addPostModal.scss";
+import AddPersonModal from "../AddPersonModal/AddPersonModal";
 const DraftEditor = React.lazy(() => import("../DraftEditor/DraftEditor"));
 
 function AddPostModal({
@@ -156,23 +158,6 @@ function AddPostModal({
     fetch();
   }, []);
 
-  // add backdrop when person modal is opened
-  useEffect(() => {
-    if (showPersonModal) {
-      const modal = document.getElementsByClassName("modal-dialog")[0];
-      const backdrop = document.createElement("div");
-      backdrop.className = "person-modal-backdrop";
-      modal.append(backdrop);
-    } else {
-      const backdrop = document.getElementsByClassName(
-        "person-modal-backdrop"
-      )[0];
-      if (backdrop) {
-        backdrop.remove();
-      }
-    }
-  }, [showPersonModal]);
-
   useEffect(() => {
     if (
       profileStats &&
@@ -260,7 +245,6 @@ function AddPostModal({
 
   const handlePersonVendor = (type) => {
     setIsPersonVendor(true);
-    setShowPersonModal(type);
   };
   return (
     <>
@@ -573,6 +557,7 @@ function AddPostModal({
           handleClose={() => setShowPersonModal(false)}
           setMention={(mention) => setMention(mention)}
         />
+        <div className={clsx(showPersonModal && "person-modal-backdrop")}></div>
       </Modal>
     </>
   );
