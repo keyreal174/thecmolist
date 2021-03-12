@@ -37,8 +37,17 @@
       padding-left: 40px;
     }
 
+    & > div:last-child[id^="mentions-list-"] {
+      & > div {
+        display: flex;
+        align-items: center;
+      }
+    }
+
     &.editor-wrapper-add-mention {
       & > div:last-child[id^="mentions-list-"] {
+        padding-bottom: 0;
+
         & > div:last-child,
         & > div:nth-last-child(2) {
           border-top: 1px solid #ced4da;
@@ -46,8 +55,9 @@
           color: #2962ff;
           font-size: 16px;
           line-height: 18px;
-          text-align: center;
+          justify-content: center;
           padding-left: 0;
+          padding-bottom: 8px;
         }
       }
     }
