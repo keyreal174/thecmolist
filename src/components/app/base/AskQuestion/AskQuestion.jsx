@@ -11,7 +11,7 @@ const AskQuestion = ({ saveContent }) => {
   const [showPostModal, setShowPostModal] = useState(false);
   const history = useHistory();
   const handleInput = (e) => {
-    setQuestion(e.target.value);
+    setQuestion("");
   };
   const handleClick = (_) => {
     setShowPostModal(!showPostModal);
@@ -31,12 +31,13 @@ const AskQuestion = ({ saveContent }) => {
           className="ask-question-input"
           type="text"
           placeholder="Ask a question"
-          value={question}
           name="question"
           onChange={handleInput}
           onClick={handleClick}
+          value={question}
         />
         <AddPostModal
+          contentType="question"
           firstButtonText={"Cancel"}
           handleClose={handleClose}
           modalTitle="Ask a question"
