@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 
-const Badge = ({ localConnectedUsers, feed, invalidateFeed, connectUser }) => {
+const Badge = ({ localConnectedUsers, feed, connectUser }) => {
   const isLocallyConnected = localConnectedUsers.includes(feed.username);
   const isConnected = feed.isConnected || isLocallyConnected;
   let connect = !feed.disableConnect ? (
@@ -12,7 +12,6 @@ const Badge = ({ localConnectedUsers, feed, invalidateFeed, connectUser }) => {
         className="btn connect-button"
         type="button"
         onClick={() => {
-          invalidateFeed();
           connectUser(feed);
         }}
       >
@@ -23,7 +22,8 @@ const Badge = ({ localConnectedUsers, feed, invalidateFeed, connectUser }) => {
 
   return (
     <div className="network--badge">
-      <Button className="btn-blue mb-2">+ Follow</Button>
+      {/* Disable following for now... */}
+      {/* <Button className="btn-blue mb-2">+ Follow</Button> */}
       {connect}
     </div>
   );

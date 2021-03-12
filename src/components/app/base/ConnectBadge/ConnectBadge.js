@@ -28,7 +28,8 @@ const ConnectBadge = ({
 
   return (
     <div className="network--badge">
-      <Button className="btn-blue mb-2">+ Follow</Button>
+      {/* Disable following for now... */}
+      {/* <Button className="btn-blue mb-2">+ Follow</Button> */}
       {connect}
     </div>
   );

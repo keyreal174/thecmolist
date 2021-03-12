@@ -134,21 +134,6 @@ const Profile = (props) => {
     setFeedData(newFeedData);
   };
 
-  const connectUser = async () => {
-    let userName = Util.parsePath(window.location.href).trailingPath;
-    Analytics.sendClickEvent(
-      `Connected with user ${userName} from profile page`
-    );
-    try {
-      await props.connectUser({ username: userName });
-      setEnableAnimations(false);
-      setConnectedUser(true);
-    } catch (err) {
-      console.log(`An error occurred connecting with user: ${userName}`);
-      console.log(err);
-    }
-  };
-
   const showDeletePostModal = (feed) => {
     setShowDeletePost(true);
     setPostSlug(feed.content_id);
@@ -184,13 +169,13 @@ const Profile = (props) => {
     setFeedData(prevFeedData);
   };
 
-  const followUser = async (payload) => {
+  const connectUser = async (payload) => {
     let userName = Util.parsePath(window.location.href).trailingPath;
     Analytics.sendClickEvent(`Followed user ${userName} from profile page`);
     try {
-      await props.followUser(payload);
+      await props.connectUser(payload);
       setEnableAnimations(false);
-      setFollowedUser(true);
+      setConnectedUser(true);
     } catch (err) {
       console.log(`An error occurred connecting with user: ${userName}`);
       console.log(err);
@@ -322,22 +307,23 @@ const Profile = (props) => {
                   <React.Fragment>
                     {profileFirstName && (
                       <div className="btn-wrapper d-flex">
-                        {!followedUser ? (
+                        {!connectedUser ? (
                           <Button
                             className="profile--follow-button edit-profile"
                             variant="primary"
                             onClick={() => toggleFollowModal()}
                           >
-                            + Follow
+                            + Connect
                           </Button>
                         ) : (
-                          <span className="profile-connected-label mb-2">
-                            Followed
+                          <span className="profile-connected-label mt-1">
+                            Connected
                           </span>
                         )}
                         <Button
                           className="btn-white edit-profile"
                           variant="outline-primary"
+                          disabled
                         >
                           Message
                         </Button>
@@ -586,7 +572,7 @@ const Profile = (props) => {
           firstname={profileFirstName}
           username={profileUserName}
           toggle={toggleFollowModal}
-          followUser={followUser}
+          followUser={connectUser}
         />
         <Footer />
       </Container>
@@ -606,7 +592,7 @@ const mapDispatch = (dispatch) => {
     fetchProfile: dispatch.profileModel.fetchProfile,
     saveProfile: dispatch.profileModel.saveProfile,
     deletePost: dispatch.profileModel.deletePost,
-    followUser: dispatch.userModel.followUser,
+    connectUser: dispatch.userModel.connectUser,
     changeReaction: dispatch.reactionModel.changeReaction,
   };
 };
