@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button } from "react-bootstrap";
 import CustomCard from "../base/CustomCard/CustomCard";
 import ConnectBadge from "../base/ConnectBadge/ConnectBadge";
@@ -7,14 +7,12 @@ import {
   getEngagementForId,
 } from "../base/EngagementButtons/EngagementButtons";
 import Article from "../base/Article/Article";
-import Arrow from "../base/icons/arrow.svg";
 import { useHistory } from "react-router";
 import { cdn } from "../../util/constants";
 
 const RenderList = ({
   changeReaction,
   connectUser,
-  content,
   fetchMoreRefinedData,
   filters,
   invalidateFeed,
@@ -26,7 +24,6 @@ const RenderList = ({
   showMore,
 }) => {
   const history = useHistory();
-
   const handleEngagementButtonClick = async (caller, engagementType) => {
     const id = caller.contentId;
     const engagement = engagementType.toLowerCase();
@@ -107,10 +104,10 @@ const RenderList = ({
               badge={
                 !isContent && (
                   <ConnectBadge
-                    localConnectedUsers={localConnectedUsers}
+                    connectUser={connectUser}
                     feed={item}
                     invalidateFeed={invalidateFeed}
-                    connectUser={connectUser}
+                    localConnectedUsers={localConnectedUsers}
                   />
                 )
               }

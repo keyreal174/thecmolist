@@ -56,6 +56,7 @@ export default {
       try {
         const response = await getFullSearchRequest(query);
         dispatch.searchModel.updateSearchResult(response.data);
+        dispatch.reactionModel.setReactions(response.data.modules);
       } catch (err) {
         throw new Error("Could not get search full data" + err.toString());
       }
