@@ -46,7 +46,6 @@ export default {
         const data = response && response.data;
         dispatch.onboardingModel.updateCategories(data);
       } catch (err) {
-        console.log("err", err);
         throw new Error("Could not get categories");
       }
     },
