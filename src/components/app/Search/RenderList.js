@@ -8,24 +8,38 @@ import {
 } from "../base/EngagementButtons/EngagementButtons";
 import Article from "../base/Article/Article";
 import Arrow from "../base/icons/arrow.svg";
+import { useHistory } from "react-router";
 import { cdn } from "../../util/constants";
 
 const RenderList = ({
-  modules,
-  filters,
-  showMore,
-  moreData,
-  isFull,
-  fetchMoreRefinedData,
-  localConnectedUsers,
-  invalidateFeed,
+  changeReaction,
   connectUser,
   content,
+  fetchMoreRefinedData,
+  filters,
+  invalidateFeed,
+  isFull,
+  localConnectedUsers,
+  modules,
+  moreData,
   reactions,
+  showMore,
 }) => {
+  const history = useHistory();
+
   const handleEngagementButtonClick = async (caller, engagementType) => {
-    const id = caller["content_id"];
+    const id = caller.contentId;
     const engagement = engagementType.toLowerCase();
+
+    if (engagementType === "Answer") {
+      history.push(`/content/${id}`);
+    } else {
+      try {
+        await changeReaction({ id, engagement });
+      } catch (error) {
+        console.error(error.message);
+      }
+    }
   };
 
   const moduleShowMore = (filter) => {
@@ -40,13 +54,11 @@ const RenderList = ({
   const List = Object.entries(modules).map(([key, value], i) => {
     const f = filters.filter((item) => item.slug === key)[0];
     const heading = f && f["title"] ? f["title"] : "";
-
-    const contentId = content && content.content_id;
     const isContent = heading !== "People" && heading !== "Vendors";
-
     return (
       <CustomCard key={i} heading={heading}>
         {value.map((item, j) => {
+          let contentId = item.contentId;
           return (
             <Article
               key={j}
@@ -56,11 +68,7 @@ const RenderList = ({
               engagementButtons={
                 isContent && [
                   {
-                    checked: getCheckedForEngagementType(
-                      contentId,
-                      "answer",
-                      reactions
-                    ),
+                    checked: true,
                     text: "Answer",
                     icon: `${cdn}/Answer.png`,
                     number: getEngagementForId(contentId, "answer", reactions),
@@ -93,7 +101,7 @@ const RenderList = ({
               }
               onEngagementButtonClick={handleEngagementButtonClick.bind(
                 this,
-                value
+                item
               )}
               style={{ paddingBottom: "10px" }}
               badge={
@@ -139,5 +147,4 @@ const RenderList = ({
 
   return <div className="search-page-article">{List}</div>;
 };
-
 export default RenderList;
