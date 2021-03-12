@@ -5,11 +5,11 @@ import { Col, Row, Container } from "react-bootstrap";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Filter from "../base/Filter/Filter";
-import InviteModal from "../base/ShareModule/InviteModal";
 import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
 import PopularTopics from "../base/PopularTopics/PopularTopics";
 import SimpleTopBanner from "../base/SimpleTopBanner/SimpleTopBanner";
 import AddMemberModal from "../base/AddMemberModal/AddMemberModal";
+import FollowUserModal from "../Profile/FollowUser"; // VAS move this
 import NetworkFeed from "./NetworkFeed";
 import Analytics from "../../util/Analytics";
 import { cdn } from "../../util/constants";
@@ -17,7 +17,6 @@ import "./network.scss";
 
 const Network = (props) => {
   const location = useLocation();
-  const [inviteModalShow, setInviteModalShow] = useState(false);
   const fetchData = async () => await props.fetchActiveNetwork();
   const [filterIdx, setFilterIdx] = useState(0);
   const [filters, setFilters] = useState([]);
@@ -87,9 +86,34 @@ const Network = (props) => {
     changeDashboardHeader(idx);
   };
 
-  const [show, setShow] = useState(false);
-  const handleClick = () => setShow(true);
-  const handleClose = () => setShow(false);
+  const [showInviteModal, setShowInviteModal] = useState(false);
+  const [showFollowModal, setShowFollowModal] = useState(false);
+  const [connectName, setConnectName] = useState("");
+  const [connectUsername, setConnectUsername] = useState("");
+  const handleInviteModalClick = () => setShowInviteModal(true);
+  const handleInviteModalClose = () => setShowInviteModal(false);
+
+  const connectUser = async (payload) => {
+    let userName = payload.user;
+    Analytics.sendClickEvent(`Followed user ${userName} from profile page`);
+    try {
+      await props.connectUser(payload);
+      props.invalidateFeed();
+    } catch (err) {
+      console.log(`An error occurred connecting with user: ${userName}`);
+      console.log(err);
+    }
+  };
+
+  const toggleFollowModal = () => {
+    setShowFollowModal((value) => !value);
+  };
+
+  const onConnectClick = (payload) => {
+    setConnectName(payload.firstname || payload.username);
+    setConnectUsername(payload.username);
+    toggleFollowModal();
+  };
 
   return (
     <>
@@ -98,7 +122,7 @@ const Network = (props) => {
           <Header />
           <SimpleTopBanner
             buttonText="Invite"
-            onClick={handleClick}
+            onClick={handleInviteModalClick}
             title={bannerTitle}
             image={bannerImage}
           />
@@ -114,9 +138,16 @@ const Network = (props) => {
                 <strong>advice you trust</strong>
               </div>
             }
-            onClose={handleClose}
+            onClose={handleInviteModalClose}
             onSubmit={props.inviteNewMember}
-            show={show}
+            show={showInviteModal}
+          />
+          <FollowUserModal
+            show={showFollowModal}
+            firstname={connectName}
+            username={connectUsername}
+            toggle={toggleFollowModal}
+            followUser={connectUser}
           />
           <div className="mb-4">
             <Filter
@@ -153,21 +184,13 @@ const Network = (props) => {
               ) : (
                 <NetworkFeed
                   {...props}
+                  connectUser={onConnectClick}
                   fetchData={fetchData}
                   feedData={feedData}
                 />
               )}
             </Col>
           </Row>
-
-          <InviteModal
-            show={inviteModalShow}
-            onHide={() => setInviteModalShow(false)}
-            onSuccess={(data) => {
-              props.saveUserInvite(data);
-              setInviteModalShow(false);
-            }}
-          />
 
           <Footer />
         </div>

@@ -215,7 +215,6 @@ class App extends React.Component {
             }
           />
           <Route
-            exact
             path="/vendor"
             render={(props) =>
               this.state.authed ? <VendorProfile /> : <Redirect to="/login" />

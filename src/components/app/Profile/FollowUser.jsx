@@ -1,20 +1,11 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Button, Form, Modal, Alert } from "react-bootstrap";
-import {
-  AsyncTypeahead,
-  Typeahead,
-  TypeaheadMenu,
-} from "react-bootstrap-typeahead";
-import Rating from "../base/Rating/Rating";
-import PostVisibility from "../base/PostVisibility/PostVisibility";
+import { AsyncTypeahead, TypeaheadMenu } from "react-bootstrap-typeahead";
 import "react-bootstrap-typeahead/css/Typeahead.css";
 import "./profile.scss";
 
-let agencyName = "";
 function FollowUserModal(props) {
-  // agency search
-  const OnComponentDidMount = (func) => useEffect(func, []);
   const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -51,22 +42,26 @@ function FollowUserModal(props) {
       >
         <Modal.Header>
           <Modal.Title>
-            Add <span className="text-capitalize">{props.firstname}</span> to
-            your list of <b>Experts</b>
+            Add{" "}
+            <span className="text-capitalize">
+              {props.firstname || props.username}
+            </span>{" "}
+            to your list of trusted <b>peers</b>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Fragment>
             <Form.Label className="mt-2">
-              Follow and search posts from this member{" "}
-              <b>
-                only for the topics for which you consider them to be an expert.
-              </b>
+              Build your <b>trusted peer network</b> by inviting and connecting
+              only with marketing peers that <b>you know</b> and whose{" "}
+              <b>advice you trust</b>
             </Form.Label>
             <Form.Label className="mt-3">
-              Choose one or more <b>topics</b> for which you consider{" "}
-              <span className="text-capitalize">{props.firstname}</span> to be
-              an expert
+              <b>Endorse</b>{" "}
+              <span className="text-capitalize">
+                {props.firstname || props.username}
+              </span>{" "}
+              for one or more marketing skills
             </Form.Label>
             <AsyncTypeahead
               id="async-global-search"
@@ -92,7 +87,7 @@ function FollowUserModal(props) {
               onChange={(selectedOption) => {
                 setSelectedOptions(selectedOption);
               }}
-              placeholder="Choose one or more #topics or #locations that describe what your question is about"
+              placeholder=""
               renderMenuItemChildren={(option) => (
                 <React.Fragment>
                   <span>{option.name}</span>
@@ -114,7 +109,7 @@ function FollowUserModal(props) {
             variant="outline-primary"
             onClick={follow}
           >
-            Follow
+            Connect
           </Button>
         </Modal.Footer>
       </Modal>

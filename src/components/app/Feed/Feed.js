@@ -161,15 +161,15 @@ function RenderFeed({
 }
 
 function RenderDashboard(props) {
-  const feedLoading = props.feedLoading;
-  const profileStats = props.profileStats;
+  const { feedLoading, profileStats, saveContent } = props;
+
   return (
     <Row>
       <Col md="3" style={{ paddingRight: "0px" }}>
         {profileStats && <ProfileStats profileStats={profileStats} />}
       </Col>
       <Col md="6">
-        <AskQuestion />
+        <AskQuestion saveContent={saveContent} />
         {feedLoading ? (
           <div className="mt-3 mb-5">
             <ActivityIndicator className="element-center feed-activity-indicator" />
@@ -208,6 +208,7 @@ const Feed = (props) => {
   const [inviteModalShow, setInviteModalShow] = useState(false);
   const [activeSelector, setActiveSelector] = useState(0);
   const [filterIdx, setFilterIdx] = useState(0);
+  const [groupFilterStartIdx, setGroupFilterStartIdx] = useState(0);
   const [filters, setFilters] = useState([]);
   const [bannerTitle, setBannerTitle] = useState("");
   const [bannerImage, setBannerImage] = useState("");
@@ -226,7 +227,7 @@ const Feed = (props) => {
     changeDashboardFilter(filters[idx].slug, subSelectors[activeSelector].slug);
     changeDashboardHeader(idx);
     // rewrite the url
-    if (idx < 3) {
+    if (idx < groupFilterStartIdx) {
       window.history.pushState({}, filters[idx].name, "/feed");
       setIsGroup(false);
     } else {
@@ -247,6 +248,7 @@ const Feed = (props) => {
       { title: "All", slug: "my-network", enabled: true },
       { title: "My Peers", slug: "my-peers", enabled: true },
     ];
+    setGroupFilterStartIdx(newFilters.length);
     if (profileStats && profileStats.profile && profileStats.profile.groups) {
       newFilters = newFilters.concat(
         profileStats.profile.groups.map((group) => {

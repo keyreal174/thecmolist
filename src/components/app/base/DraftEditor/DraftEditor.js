@@ -110,8 +110,8 @@ const DraftEditor = ({
             case "person":
               entityUrl = "/profile/";
               break;
-            case "object":
-              entityUrl = "/o/";
+            case "vendor":
+              entityUrl = "/vendor/";
               break;
             default:
               entity = "";
@@ -301,7 +301,7 @@ const DraftEditor = ({
                 <div>
                   <BoldButton {...externalProps} />
                   <ItalicButton {...externalProps} />
-                  <UnderlineButton {...externalProps} />
+                  {/* <UnderlineButton {...externalProps} /> */}
                   <UnorderedListButton {...externalProps} />
                   <OrderedListButton {...externalProps} />
                 </div>
