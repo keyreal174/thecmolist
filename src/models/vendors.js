@@ -30,9 +30,9 @@ const postNewMember = (data) => {
   axios.post("/api/vendor/invite", data);
 };
 export default {
-  name: "vendorModel",
+  name: "vendorsModel",
   state: {
-    loadingVendor: false,
+    loadingVendors: false,
     feedData: {},
     activeFeed: [],
     activeFeedHasMoreData: false,
@@ -59,7 +59,7 @@ export default {
     setLoading: (oldState, data) => {
       return {
         ...oldState,
-        loadingVendor: data,
+        loadingVendors: data,
       };
     },
     setFeedDataForKey: (oldState, filterKey, data) => {
@@ -139,7 +139,7 @@ export default {
     },
   },
   effects: (dispatch) => ({
-    async fetchActiveNetwork(_, rootState) {
+    async fetchActiveVendors(_, rootState) {
       try {
         const {
           activeFilter,

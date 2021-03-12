@@ -1,15 +1,8 @@
 import React from "react";
 import Article from "../base/Article/Article";
-import Badge from "./Badge";
-import "./network.scss";
+import "./vendors.scss";
 
-const NetworkFeed = ({
-  feedData,
-  moreData,
-  localConnectedUsers,
-  connectUser,
-  fetchData,
-}) => (
+const NetworkFeed = ({ feedData, moreData, fetchData }) => (
   <>
     <React.Fragment>
       {feedData &&

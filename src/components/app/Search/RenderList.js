@@ -7,7 +7,6 @@ import {
   getEngagementForId,
 } from "../base/EngagementButtons/EngagementButtons";
 import Article from "../base/Article/Article";
-import Arrow from "../base/icons/arrow.svg";
 import { cdn } from "../../util/constants";
 
 const RenderList = ({
