@@ -34,7 +34,7 @@ import "./DraftEditor.scss";
 const staticToolbarPlugin = createToolbarPlugin();
 const { Toolbar } = staticToolbarPlugin;
 
-const MentionLast = [{ name: "+ Add People" }, { name: "+ Add Vendor" }];
+const MentionLast = [{ name: "+ Add Person" }, { name: "+ Add Vendor" }];
 
 const DraftEditor = ({
   getSuggestions,
