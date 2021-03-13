@@ -14,7 +14,7 @@ const NetworkFeed = ({ feedData, moreData, fetchData }) => {
                 className={
                   idx !== 0 ? "mt-1 network-list-item" : "network-list-item"
                 }
-                {...feed.data}
+                {...feed.data[0].content}
               />
             );
           })}
