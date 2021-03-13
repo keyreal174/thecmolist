@@ -88,7 +88,6 @@ const Vendors = (props) => {
   const [showInviteModal, setShowInviteModal] = useState(false);
   const handleInviteModalClick = () => setShowInviteModal(true);
   const handleInviteModalClose = () => setShowInviteModal(false);
-
   return (
     <>
       <Container className="height-100">

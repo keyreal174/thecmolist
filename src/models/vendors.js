@@ -4,7 +4,7 @@ const vendorRequest = (sort, filter, subfilter, token) => {
   let headers = {
     "timezone-offset": new Date().getTimezoneOffset(),
   };
-  let url = "/api/vendor?";
+  let url = "/api/vendors?";
   if (sort) {
     url += `sort=${sort.toLowerCase()}`;
   }
@@ -27,7 +27,7 @@ const vendorRequest = (sort, filter, subfilter, token) => {
 };
 
 const postNewMember = (data) => {
-  axios.post("/api/vendor/invite", data);
+  axios.post("/api/vendors/invite", data);
 };
 export default {
   name: "vendorsModel",
@@ -71,7 +71,7 @@ export default {
         activeFilter: filterKey,
         sortOrder: data.sortOrder,
       };
-      const feedData = data.feedData;
+      const feedData = data.profile.feedData;
       const token = data.token;
       const currentFeed = oldState.feedData[filterKey];
       if (feedData != null && feedData.length > 0) {
@@ -88,18 +88,6 @@ export default {
         newState.activeFeedSubFilters = currentFeed.filters;
       }
       newState.activeFeed = currentFeed.data.slice();
-      return newState;
-    },
-    clearInactiveFeedData: (oldState) => {
-      let newState = {
-        ...oldState,
-        feedData: {},
-      };
-      Object.keys(oldState.feedData).forEach((k) => {
-        if (k === oldState.activeFilter) {
-          newState.feedData[k] = oldState.feedData[k];
-        }
-      });
       return newState;
     },
     clearActiveFeedData: (oldState) => {
@@ -146,9 +134,9 @@ export default {
           activeSubFilter,
           sortOrder,
           feedData,
-        } = rootState.networkModel;
+        } = rootState.vendorsModel;
         const dataForFilter = feedData[activeFilter];
-        dispatch.networkModel.setLoading(true);
+        dispatch.vendorsModel.setLoading(true);
         const response = await vendorRequest(
           sortOrder,
           activeFilter,
@@ -157,16 +145,16 @@ export default {
         );
         let data = response.data;
         data.sortOrder = sortOrder;
-        dispatch.networkModel.setFeedDataForKey(activeFilter, response.data);
+        dispatch.vendorsModel.setFeedDataForKey(activeFilter, response.data);
       } catch (error) {
         console.log(error);
         throw new Error("Can not fetch active network");
       } finally {
-        dispatch.networkModel.setLoading(false);
+        dispatch.vendorsModel.setLoading(false);
       }
     },
     async changeFilter(filterKey, rootState) {
-      const { activeFilter, activeSubFilter } = rootState.networkModel;
+      const { activeFilter, activeSubFilter } = rootState.vendorsModel;
       if (filterKey === activeFilter) {
         // changing to the currently active filter
         return;
@@ -174,22 +162,22 @@ export default {
       if (activeSubFilter && activeSubFilter.length > 0) {
         // if there's a subfilter active, then invalidate the previous feed
         // the current subfilter will be removed on the new feed
-        dispatch.networkModel.clearActiveFeedData();
+        dispatch.vendorsModel.clearActiveFeedData();
       }
-      const filterExists = filterKey in rootState.networkModel.feedData;
+      const filterExists = filterKey in rootState.vendorsModel.feedData;
       if (
         filterExists &&
-        rootState.networkModel.feedData[filterKey].token &&
-        rootState.networkModel.feedData[filterKey].token.length > 0
+        rootState.vendorsModel.feedData[filterKey].token &&
+        rootState.vendorsModel.feedData[filterKey].token.length > 0
       ) {
         // the filter to change to exists, and has had a fetch attempted
         // switch to it.
-        dispatch.networkModel.setActiveFilter(filterKey);
+        dispatch.vendorsModel.setActiveFilter(filterKey);
       } else {
-        dispatch.networkModel.initFeedDataForKey(filterKey);
+        dispatch.vendorsModel.initFeedDataForKey(filterKey);
         try {
-          dispatch.networkModel.setLoading(true);
-          const { sortOrder } = rootState.networkModel;
+          dispatch.vendorsModel.setLoading(true);
+          const { sortOrder } = rootState.vendorsModel;
           const response = await vendorRequest(
             sortOrder,
             filterKey.toLowerCase(),
@@ -198,24 +186,26 @@ export default {
           );
           let data = response.data;
           data.sortOrder = sortOrder;
-          dispatch.networkModel.setFeedDataForKey(filterKey, data);
+          dispatch.vendorsModel.setFeedDataForKey(filterKey, data);
+          console.log("data", data);
+          console.log(filterKey, data);
         } finally {
-          dispatch.networkModel.setLoading(false);
+          dispatch.vendorsModel.setLoading(false);
         }
       }
     },
     async changeSubFilter(subfilter, rootState) {
       try {
-        const { activeSubFilter } = rootState.networkModel;
+        const { activeSubFilter } = rootState.vendorsModel;
         let subFilterToChangeTo = subfilter;
         if (activeSubFilter === subfilter) {
           // toggle
           subFilterToChangeTo = "";
         }
-        const { activeFilter, sortOrder } = rootState.networkModel;
-        dispatch.networkModel.clearActiveFeedData();
-        dispatch.networkModel.setActiveSubFilter(subFilterToChangeTo);
-        dispatch.networkModel.setLoading(true);
+        const { activeFilter, sortOrder } = rootState.vendorsModel;
+        dispatch.vendorsModel.clearActiveFeedData();
+        dispatch.vendorsModel.setActiveSubFilter(subFilterToChangeTo);
+        dispatch.vendorsModel.setLoading(true);
         const response = await vendorRequest(
           sortOrder,
           activeFilter,
@@ -223,36 +213,13 @@ export default {
           null
         );
         let data = response.data;
-        dispatch.networkModel.setFeedDataForKey(activeFilter, data);
+        dispatch.vendorsModel.setFeedDataForKey(activeFilter, data);
       } catch (error) {
         console.log(error);
         throw new Error("Can not change sub filter");
       } finally {
-        dispatch.networkModel.setLoading(false);
+        dispatch.vendorsModel.setLoading(false);
       }
-    },
-    async changeSortOrder(sort, rootState) {
-      try {
-        const { activeFilter, activeSubFilter } = rootState.networkModel;
-        dispatch.networkModel.clearActiveFeedData();
-        dispatch.networkModel.setLoading(true);
-        const response = await vendorRequest(
-          sort,
-          activeFilter,
-          activeSubFilter,
-          null
-        );
-        let data = response.data;
-        data.sortOrder = sort;
-        dispatch.networkModel.setFeedDataForKey(activeFilter, data);
-      } catch (error) {
-        throw new Error("Can not change sort order");
-      } finally {
-        dispatch.networkModel.setLoading(false);
-      }
-    },
-    async invalidateFeed() {
-      dispatch.networkModel.clearInactiveFeedData();
     },
     async inviteNewMember(data) {
       try {
