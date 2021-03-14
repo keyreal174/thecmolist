@@ -322,6 +322,7 @@ const Feed = (props) => {
               {(isGroup || isTopic) && (
                 <TopBanner
                   title={bannerTitle}
+                  subtitle={"Workspace"}
                   image={bannerImage}
                   saveContent={props.saveContent}
                 />
