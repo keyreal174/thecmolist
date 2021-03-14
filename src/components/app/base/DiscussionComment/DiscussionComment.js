@@ -1,5 +1,5 @@
 import { Button, Form } from "react-bootstrap";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import PersonHeader from "../PersonHeader/PersonHeader";
 
@@ -8,6 +8,7 @@ import "./discussionComment.scss";
 const DiscussionComment = ({
   onSubmit,
   className,
+  focusComment,
   placeholder,
   profile,
   value,
@@ -15,6 +16,14 @@ const DiscussionComment = ({
 }) => {
   const [comment, setComment] = useState(value || "");
   const [show, setShow] = useState("");
+  const textAreaEl = useRef(null);
+
+  useEffect(() => {
+    if (focusComment) {
+      textAreaEl.current.focus();
+    }
+  }, []);
+
   return (
     <div
       className={`comment-wrapper ${className} ${
@@ -39,6 +48,7 @@ const DiscussionComment = ({
           setShow(!!value);
         }}
         value={comment}
+        ref={textAreaEl}
         rows={1}
       />
       {

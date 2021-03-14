@@ -7,6 +7,7 @@ import "jest-canvas-mock";
 import App from "./App";
 import contentModel from "./models/content";
 import feedModel from "./models/feed";
+import fileModel from "./models/file";
 import networkModel from "./models/network";
 import userModel from "./models/user";
 import settingsModel from "./models/settings";
@@ -20,6 +21,7 @@ test("renders app without crashing", async () => {
     models: {
       contentModel,
       feedModel,
+      fileModel,
       networkModel,
       settingsModel,
       userModel,

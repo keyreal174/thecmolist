@@ -242,10 +242,14 @@ const Profile = (props) => {
     const id = caller["content_id"];
     const engagement = engagementType.toLowerCase();
 
-    try {
-      await props.changeReaction({ id, engagement });
-    } catch (error) {
-      console.error(error.message);
+    if (engagementType === "Answer") {
+      history.push(`/content/${id}`);
+    } else {
+      try {
+        await props.changeReaction({ id, engagement });
+      } catch (error) {
+        console.error(error.message);
+      }
     }
   };
   return (
@@ -539,6 +543,7 @@ const Profile = (props) => {
                             ),
                           },
                         ]}
+                        focusComment={true}
                         onEngagementButtonClick={handleEngagementButtonClick.bind(
                           this,
                           feed

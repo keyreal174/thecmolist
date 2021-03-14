@@ -202,6 +202,7 @@ function Article(props) {
           />
           {props.showDiscussionComment && (
             <DiscussionComment
+              focusComment={props.focusComment}
               placeholder={props.discussionCommentPlaceholder}
               profile={props.profile}
               onSubmit={props.handleDiscussionCommentSubmit}

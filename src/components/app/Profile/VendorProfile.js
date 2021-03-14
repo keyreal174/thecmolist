@@ -254,6 +254,7 @@ const VendorProfile = (props) => {
   const [showDeletePost, setShowDeletePost] = useState(false);
   const [showFollowModal, setShowFollowModal] = useState(false);
   const [showMore, setShowMore] = useState(false);
+  const history = useHistory();
 
   useEffect(() => {
     document.title = "Profile";
@@ -403,10 +404,15 @@ const VendorProfile = (props) => {
   const handleEngagementButtonClick = async (caller, engagementType) => {
     const id = caller["content_id"];
     const engagement = engagementType.toLowerCase();
-    try {
-      await props.changeReaction({ id, engagement });
-    } catch (error) {
-      console.error(error.message);
+
+    if (engagementType === "Answer") {
+      history.push(`/content/${id}`);
+    } else {
+      try {
+        await props.changeReaction({ id, engagement });
+      } catch (error) {
+        console.error(error.message);
+      }
     }
   };
   const reactions = props.reactions;

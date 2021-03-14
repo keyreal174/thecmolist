@@ -101,7 +101,7 @@ describe("content model", () => {
     expect(contentModelData.content).toEqual(data);
   });
 
-  it.skip("reducer: saveComment", () => {
+  it("reducer: saveComment", () => {
     const store = init({
       models: { contentModel },
     });
@@ -109,14 +109,14 @@ describe("content model", () => {
     store.dispatch.contentModel.setContent(data);
     let contentModelData = store.getState().contentModel;
 
-    expect(contentModelData.question.replies[0].comments.length).toEqual(1);
+    expect(contentModelData.content.replies[0].comments.length).toEqual(1);
     store.dispatch.contentModel.saveComment({
       comment: "Comment 2",
       replyId: 123,
     });
 
     contentModelData = store.getState().contentModel;
-    expect(contentModelData.question.replies[0].comments.length).toEqual(2);
+    expect(contentModelData.content.replies[0].comments.length).toEqual(2);
   });
 
   it("effect: fetchContent", async () => {
@@ -144,10 +144,10 @@ describe("content model", () => {
     await expect(result).rejects.toThrow("Could not fetch content");
   });
 
-  it.skip("effect: saveCommentToReply", async () => {
+  it("effect: saveCommentToReply", async () => {
     const newData = { ...data };
     const store = init({
-      models: { contentModel },
+      models: { contentModel, reactionModel },
     });
 
     axios.get.mockResolvedValue({
@@ -163,7 +163,7 @@ describe("content model", () => {
     newData.replies[0].comments.push(comment);
     const contentModelData = store.getState().contentModel;
 
-    expect(contentModelData.question.replies).toEqual(newData.replies);
+    expect(contentModelData.content.replies).toEqual(newData.replies);
   });
 
   it("effect: saveCommentToReply no data", async () => {
