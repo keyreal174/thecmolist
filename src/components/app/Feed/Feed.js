@@ -275,6 +275,7 @@ const Feed = (props) => {
       if (window.location.href.includes("/group/")) {
         let groupSlug = Util.parsePath(window.location.href).trailingPath;
         groupIdx = newFilters.findIndex((f) => f.slug === groupSlug);
+        setIsGroup(groupIdx > 0);
       }
       let idx = groupIdx > 0 ? groupIdx : filterIdx;
       setFilterIdx(idx);

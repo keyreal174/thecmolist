@@ -1,5 +1,6 @@
 import { Button, Form } from "react-bootstrap";
 import React, { useState, useEffect, useRef } from "react";
+import clsx from "clsx";
 
 import PersonHeader from "../PersonHeader/PersonHeader";
 
@@ -21,14 +22,17 @@ const DiscussionComment = ({
   useEffect(() => {
     if (focusComment) {
       textAreaEl.current.focus();
+      window.scrollTo(0, 0);
     }
   }, []);
 
   return (
     <div
-      className={`comment-wrapper ${className} ${
-        props.withMargin ? "comment-wrapper-with-margin" : ""
-      }`}
+      className={clsx(
+        "comment-wrapper",
+        className,
+        props.withMargin && "comment-wrapper-with-margin"
+      )}
     >
       {profile && (
         <PersonHeader
@@ -53,7 +57,7 @@ const DiscussionComment = ({
       />
       {
         <Button
-          className={`comment-button ${show ? "show" : ""}`}
+          className={clsx("comment-button", show && "show")}
           onClick={(e) => {
             e.preventDefault();
             onSubmit(comment);
