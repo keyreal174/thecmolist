@@ -15,6 +15,7 @@ import {
   getCheckedForEngagementType,
   getEngagementForId,
 } from "../base/EngagementButtons/EngagementButtons";
+import { useHistory } from "react-router";
 
 import MyNetwork from "./MyNetwork";
 import BuildYourNetwork from "./BuildYourNetwork";
@@ -75,13 +76,20 @@ function RenderFeed({
   };
   let feedMoreData = feedData.length > 0 && moreData;
 
+  const history = useHistory();
+
   const handleEngagementButtonClick = async (caller, engagementType) => {
     const id = caller["content_id"];
     const engagement = engagementType.toLowerCase();
-    try {
-      await changeReaction({ id, engagement });
-    } catch (error) {
-      console.error(error.message);
+
+    if (engagementType === "Answer") {
+      history.push(`/content/${id}`);
+    } else {
+      try {
+        await changeReaction({ id, engagement });
+      } catch (error) {
+        console.error(error.message);
+      }
     }
   };
   return (

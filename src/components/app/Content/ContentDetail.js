@@ -115,6 +115,7 @@ const ContentDetail = ({
               number: getEngagementForId(contentId, "insightful", reactions),
             },
           ]}
+          focusComment={true}
           onEngagementButtonClick={handleEngagementButtonClick.bind(
             this,
             content
