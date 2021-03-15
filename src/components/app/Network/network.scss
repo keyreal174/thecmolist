@@ -5,7 +5,7 @@
   margin-right: 20px;
   margin-top: 1px;
   width: 100%;
-  height: 2px;
+  height: 1px;
   background-color: lightgray;
 }
 
@@ -82,11 +82,21 @@
   border-radius: 100px;
 }
 
-.connect-button:hover {
-  background-color: rgba(152, 216, 244, 0.25);
-  color: $brand;
+.connected-button {
+  background-color: $brand;
+  color: $white;
   border-color: $brand;
-  box-shadow: inset 0 0 0 1px #a0c4d9;
+  border-width: 2px;
+  font-weight: 600;
+  min-width: 120px;
+  font-size: 16px;
+  padding: 6px 12px;
+  margin-top: 0 !important;
+  border-radius: 100px;
+}
+
+.connected-button:hover {
+  color: $white;
 }
 
 .network--badge {

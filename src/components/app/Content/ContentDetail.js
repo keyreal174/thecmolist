@@ -6,6 +6,7 @@ import {
   getCheckedForEngagementType,
   getEngagementForId,
 } from "../base/EngagementButtons/EngagementButtons";
+import DiscussionComment from "../base/DiscussionComment/DiscussionComment";
 
 import AnswerIcon from "../base/icons/answer.svg";
 import InsightfulIcon from "../base/icons/insightful.svg";
@@ -131,12 +132,13 @@ const ContentDetail = ({
           }
           handleDiscussionCommentSubmit={handleSubmit}
         />
-        {content && content.replies && (
+        {content && content.replies && content.replies.length > 0 && (
           <div className="question-answer-section-replies">{`${numberOfReplies} answers`}</div>
         )}
         <div className="question-answers">
           {content &&
             content.replies &&
+            content.replies.length > 0 &&
             content.replies.map((reply, index) => {
               const replyId = reply.content_id;
 
@@ -209,6 +211,20 @@ const ContentDetail = ({
                 </Article>
               );
             })}
+          {content && content.replies && content.replies.length > 0 && (
+            <div className="question-your-answer">
+              <div className="question-your-answer-text">Your answer</div>
+              <DiscussionComment
+                profile={profileStats.profile}
+                placeholder={
+                  author && author.length > 0
+                    ? `Answer ${author}'s question...`
+                    : "Answer this question..."
+                }
+                onSubmit={handleSubmit}
+              />
+            </div>
+          )}
         </div>
       </Col>
       {content.related_questions && (

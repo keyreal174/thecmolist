@@ -124,6 +124,7 @@ const Network = (props) => {
             buttonText="Invite"
             onClick={handleInviteModalClick}
             title={bannerTitle}
+            subtitle={"Members"}
             image={bannerImage}
           />
           <AddMemberModal

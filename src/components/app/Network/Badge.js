@@ -6,7 +6,15 @@ const Badge = ({ localConnectedUsers, feed, connectUser }) => {
   const isConnected = feed.isConnected || isLocallyConnected;
   let connect = !feed.disableConnect ? (
     isConnected ? (
-      <span className="connected-label">Connected</span>
+      <button
+        className="btn connected-button"
+        type="button"
+        onClick={() => {
+          connectUser(feed);
+        }}
+      >
+        Connected
+      </button>
     ) : (
       <button
         className="btn connect-button"
