@@ -1,22 +1,34 @@
 import React, { useState, useEffect, Suspense } from "react";
 import { Alert, Button, Container, Form, Row, Col } from "react-bootstrap";
 import { cdn } from "../../../util/constants";
+import Util from "../../../util/Util";
 import "./AddPeronModal.scss";
 import clsx from "clsx";
 
 function AddPersonModal({ show, handleClose, setMention }) {
   const [name, setName] = useState("");
   const [link, setLink] = useState("");
+  const [error, setError] = useState({});
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const person = {
-      name,
-      link,
-    };
-    setMention(person);
-    reset();
-    handleClose();
+    if (!name) error["name"] = "Name is required";
+    else delete error["name"];
+
+    if (!link) error["link"] = "URL is required";
+    else if (!Util.validURL(link)) error["link"] = "URL is not valid";
+    else delete error["link"];
+    setError({ ...error });
+
+    if (Object.keys(error).length === 0) {
+      const person = {
+        name,
+        link,
+      };
+      setMention(person);
+      reset();
+      handleClose();
+    }
   };
 
   const reset = () => {
@@ -59,6 +71,9 @@ function AddPersonModal({ show, handleClose, setMention }) {
                           value={name}
                           autoFocus
                         />
+                        {error && error.name && (
+                          <p className="error">{error.name}</p>
+                        )}
                       </div>
                       <div className="person-section">
                         <label>
@@ -73,6 +88,9 @@ function AddPersonModal({ show, handleClose, setMention }) {
                           placeholder="https://linkedin.com/in/linkedinID"
                           value={link}
                         />
+                        {error && error.link && (
+                          <p className="error">{error.link}</p>
+                        )}
                       </div>
                     </div>
                   </Col>
