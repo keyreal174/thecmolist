@@ -13,6 +13,7 @@ function AddPersonModal({ show, handleClose, setMention }) {
     const person = {
       name,
       link,
+      type: show.toLowerCase(),
     };
     setMention(person);
     reset();
@@ -30,13 +31,15 @@ function AddPersonModal({ show, handleClose, setMention }) {
     handleClose();
   };
 
+  const isPerson = show === "Person";
+
   return (
     <>
       <div className={clsx("add-person-modal", show && "visible")}>
         <div>
           <div className="modal-header">
             <h4 className="modal-title">
-              {show === "People" ? "New Person" : "New Vendor"}
+              {isPerson ? "New Person" : "New Vendor"}
             </h4>
           </div>
           <div className="modal-body">
@@ -47,9 +50,9 @@ function AddPersonModal({ show, handleClose, setMention }) {
                     <div>
                       <div className="person-section">
                         <label>
-                          {show === "People"
-                            ? "Please enter the person's full name:"
-                            : "Please enter the vendor's full name:"}
+                          {isPerson
+                            ? "Please enter the person's full name"
+                            : "Please enter the vendor's name"}
                         </label>
                         <Form.Control
                           as="input"
@@ -62,15 +65,18 @@ function AddPersonModal({ show, handleClose, setMention }) {
                       </div>
                       <div className="person-section">
                         <label>
-                          {show === "People"
-                            ? "Person's Linked URL:"
-                            : "Vendor's Linked URL:"}
+                          {isPerson ? "Person's Linkedin URL" : "Vendor URL"}
                         </label>
                         <Form.Control
                           as="input"
+                          type="url"
                           className="modal-person-section-input"
                           onChange={(e) => setLink(e.target.value)}
-                          placeholder="https://linkedin.com/in/linkedinID"
+                          placeholder={
+                            isPerson
+                              ? "https://linkedin.com/in/linkedinID"
+                              : "URL"
+                          }
                           value={link}
                         />
                       </div>

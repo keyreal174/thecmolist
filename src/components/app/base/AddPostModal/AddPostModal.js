@@ -118,7 +118,10 @@ function AddPostModal({
 
     if (groups && groups.length > 0) {
       groups.forEach(({ name, checked }) => {
-        aux[name] = checked;
+        // for the beta we will set all groups to be checked
+        aux[name] = true;
+        // REMOVE this line post beta
+        //aux[name] = checked;
       });
     }
 
@@ -126,7 +129,6 @@ function AddPostModal({
   };
 
   const cleanFields = () => {
-    setGroups({});
     setTitle("");
     setBody("");
     setTopics([]);
@@ -327,7 +329,7 @@ function AddPostModal({
                     as="input"
                     className="modal-section-title-content"
                     id="title"
-                    placeholder="Be specific and imagine you’re asking a question to another person"
+                    placeholder="Be specific and imagine you're asking a question to another person"
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}
                     required={true}
@@ -357,7 +359,7 @@ function AddPostModal({
                     <li>
                       <Button
                         className="modal-section-body-content"
-                        onClick={() => handlePersonVendor("People")}
+                        onClick={() => handlePersonVendor("Person")}
                         size="sm"
                         variant="light"
                       >
