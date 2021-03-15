@@ -159,3 +159,36 @@
   background-color: #000;
   opacity: 0.6;
 }
+
+.share-group-checkbox {
+  display: flex;
+
+  label {
+    color: $text-1;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+
+    span {
+      margin-left: 10px;
+      font-size: 14px;
+      color: $text-3;
+    }
+  }
+}
+
+.network-checkbox-group {
+  flex-wrap: wrap;
+
+  .custom-checkbox-label {
+    color: $text-1;
+    background-color: #d3e0f5;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    padding: 7px 18px;
+    margin-right: 20px;
+    font-size: 16px;
+    white-space: nowrap;
+  }
+}
