@@ -97,6 +97,7 @@ const Vendors = (props) => {
             buttonText="Invite"
             onClick={handleInviteModalClick}
             title={bannerTitle}
+            subtitle={"Vendors"}
             image={bannerImage}
           />
           <AddMemberModal
