@@ -193,9 +193,6 @@ const DraftEditor = ({
   };
 
   const handleAddPeople = (mention = null) => {
-    if (!mention) {
-      return;
-    }
     const contentStateWithEntity = editorState
       .getCurrentContent()
       .createEntity("mention", "SEGMENTED", {
