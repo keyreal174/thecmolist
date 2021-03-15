@@ -36,6 +36,17 @@ const { Toolbar } = staticToolbarPlugin;
 
 const MentionLast = [{ name: "+ Add Person" }, { name: "+ Add Vendor" }];
 
+const ensureLink = (link) => {
+  if (!link) {
+    return "";
+  }
+  if (link.startsWith("http")) {
+    return link;
+  } else {
+    return `https://${link}`;
+  }
+};
+
 const DraftEditor = ({
   getSuggestions,
   getTopicSuggestions,
@@ -131,15 +142,7 @@ const DraftEditor = ({
               break;
             case "newperson":
             case "newvendor":
-              if (entityData.mention.link) {
-                if (entityData.mention.link.startsWith("http")) {
-                  entityUrl = entityData.mention.link;
-                } else {
-                  entityUrl = `https://${entityData.mention.link}`;
-                }
-              } else {
-                entityUrl = "";
-              }
+              entityUrl = ensureLink(entityData.mention.link);
               break;
             default:
               entityUrl = "";
@@ -198,7 +201,7 @@ const DraftEditor = ({
       .createEntity("mention", "SEGMENTED", {
         mention: {
           name: mention ? mention.name : null,
-          link: mention ? mention.link : null,
+          link: mention ? ensureLink(mention.link) : null,
           type: `new${mention && mention.type ? mention.type : ""}`,
         },
       });
