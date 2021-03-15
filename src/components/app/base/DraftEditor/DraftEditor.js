@@ -102,29 +102,54 @@ const DraftEditor = ({
         if (entityData.mention && entityData.mention.type) {
           switch (entityData.mention.type) {
             case "topic":
-              entityUrl = "/topic/";
+              entityUrl = `/topic/${
+                entityData.mention.slug
+                  ? entityData.mention.slug
+                  : entityData.mention.name
+              }`;
               break;
-            case "topic":
-              entityUrl = "/group/";
+            case "group":
+              entityUrl = `/group/${
+                entityData.mention.slug
+                  ? entityData.mention.slug
+                  : entityData.mention.name
+              }`;
               break;
             case "person":
-              entityUrl = "/profile/";
+              entityUrl = `/profile/${
+                entityData.mention.slug
+                  ? entityData.mention.slug
+                  : entityData.mention.name
+              }`;
               break;
             case "vendor":
-              entityUrl = "/vendor/";
+              entityUrl = `/vendor/${
+                entityData.mention.slug
+                  ? entityData.mention.slug
+                  : entityData.mention.name
+              }`;
+              break;
+            case "newperson":
+            case "newvendor":
+              if (entityData.mention.link) {
+                if (entityData.mention.link.startsWith("http")) {
+                  entityUrl = entityData.mention.link;
+                } else {
+                  entityUrl = `https://${entityData.mention.link}`;
+                }
+              } else {
+                entityUrl = "";
+              }
               break;
             default:
-              entity = "";
+              entityUrl = "";
           }
         }
+
         return {
           getType: () => "LINK",
           getData: () => ({
-            url:
-              entityUrl +
-              (entityData.mention.slug
-                ? entityData.mention.slug
-                : entityData.mention.name),
+            url: entityUrl,
           }),
         };
       }
@@ -168,12 +193,16 @@ const DraftEditor = ({
   };
 
   const handleAddPeople = (mention = null) => {
+    if (!mention) {
+      return;
+    }
     const contentStateWithEntity = editorState
       .getCurrentContent()
       .createEntity("mention", "SEGMENTED", {
         mention: {
-          name: selectedMention,
+          name: mention ? mention.name : null,
           link: mention ? mention.link : null,
+          type: `new${mention && mention.type ? mention.type : ""}`,
         },
       });
     const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
@@ -318,7 +347,7 @@ const DraftEditor = ({
             if (MentionLast.find((item) => item.name === mention.name)) {
               setSelectedMention(mention.name);
               setShowPersonModal(
-                mention.name === MentionLast[0].name ? "People" : "Vendor"
+                mention.name === MentionLast[0].name ? "Person" : "Vendor"
               );
             }
           }}
