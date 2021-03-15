@@ -5,10 +5,14 @@ import Util from "../../../util/Util";
 import "./AddPeronModal.scss";
 import clsx from "clsx";
 
+const VendorType = ["Company", "Product", "Contractor"];
+
 function AddPersonModal({ show, handleClose, setMention }) {
   const [name, setName] = useState("");
   const [link, setLink] = useState("");
   const [error, setError] = useState({});
+  const [vendor_type, setVendorType] = useState(VendorType[0]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -24,6 +28,7 @@ function AddPersonModal({ show, handleClose, setMention }) {
       const person = {
         name,
         link,
+        type: vendor_type,
       };
       setMention(person);
       reset();
@@ -57,6 +62,27 @@ function AddPersonModal({ show, handleClose, setMention }) {
                 <Row>
                   <Col md="12">
                     <div>
+                      <div className="vendor-type-list">
+                        <label>Vendor</label>
+                        <div>
+                          {show !== "People" &&
+                            VendorType.map((vendor, index) => {
+                              return (
+                                <Form.Check
+                                  key={index}
+                                  label={vendor}
+                                  name="vendortype"
+                                  value={vendor}
+                                  id={vendor}
+                                  onChange={(e) => {
+                                    setVendorType(e.target.value);
+                                  }}
+                                  type="radio"
+                                />
+                              );
+                            })}
+                        </div>
+                      </div>
                       <div className="person-section">
                         <label>
                           {show === "People"
