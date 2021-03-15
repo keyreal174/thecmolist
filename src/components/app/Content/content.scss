@@ -2,6 +2,7 @@
 
 .question-answer-section-wrapper {
   justify-content: space-between;
+  min-height: 800px;
 }
 
 .question-answer-section {
@@ -69,4 +70,17 @@
 
 .question-answers--item {
   margin-bottom: 20px;
+}
+
+.question-your-answer {
+  background: $white;
+  border-radius: 20px;
+  border: $border-card;
+  padding: 20px 0;
+
+  &-text {
+    padding-left: 30px;
+    color: $text-1;
+    font-weight: 500;
+  }
 }

@@ -1,22 +1,39 @@
 import React, { useState, useEffect, Suspense } from "react";
 import { Alert, Button, Container, Form, Row, Col } from "react-bootstrap";
 import { cdn } from "../../../util/constants";
+import Util from "../../../util/Util";
 import "./AddPeronModal.scss";
 import clsx from "clsx";
+
+const VendorType = ["Company", "Product", "Contractor"];
 
 function AddPersonModal({ show, handleClose, setMention }) {
   const [name, setName] = useState("");
   const [link, setLink] = useState("");
+  const [error, setError] = useState({});
+  const [vendor_type, setVendorType] = useState(VendorType[0]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const person = {
-      name,
-      link,
-    };
-    setMention(person);
-    reset();
-    handleClose();
+    if (!name) error["name"] = "Name is required";
+    else delete error["name"];
+
+    if (!link) error["link"] = "URL is required";
+    else if (!Util.validURL(link)) error["link"] = "URL is not valid";
+    else delete error["link"];
+    setError({ ...error });
+
+    if (Object.keys(error).length === 0) {
+      const person = {
+        name,
+        link,
+        type: vendor_type,
+      };
+      setMention(person);
+      reset();
+      handleClose();
+    }
   };
 
   const reset = () => {
@@ -30,13 +47,15 @@ function AddPersonModal({ show, handleClose, setMention }) {
     handleClose();
   };
 
+  const isPerson = show === "Person";
+
   return (
     <>
       <div className={clsx("add-person-modal", show && "visible")}>
         <div>
           <div className="modal-header">
             <h4 className="modal-title">
-              {show === "People" ? "New Person" : "New Vendor"}
+              {isPerson ? "New Person" : "New Vendor"}
             </h4>
           </div>
           <div className="modal-body">
@@ -45,11 +64,32 @@ function AddPersonModal({ show, handleClose, setMention }) {
                 <Row>
                   <Col md="12">
                     <div>
+                      <div className="vendor-type-list">
+                        <label>Vendor</label>
+                        <div>
+                          {show !== "People" &&
+                            VendorType.map((vendor, index) => {
+                              return (
+                                <Form.Check
+                                  key={index}
+                                  label={vendor}
+                                  name="vendortype"
+                                  value={vendor}
+                                  id={vendor}
+                                  onChange={(e) => {
+                                    setVendorType(e.target.value);
+                                  }}
+                                  type="radio"
+                                />
+                              );
+                            })}
+                        </div>
+                      </div>
                       <div className="person-section">
                         <label>
-                          {show === "People"
-                            ? "Please enter the person's full name:"
-                            : "Please enter the vendor's full name:"}
+                          {isPerson
+                            ? "Please enter the person's full name"
+                            : "Please enter the vendor's name"}
                         </label>
                         <Form.Control
                           as="input"
@@ -59,20 +99,29 @@ function AddPersonModal({ show, handleClose, setMention }) {
                           value={name}
                           autoFocus
                         />
+                        {error && error.name && (
+                          <p className="error">{error.name}</p>
+                        )}
                       </div>
                       <div className="person-section">
                         <label>
-                          {show === "People"
-                            ? "Person's Linked URL:"
-                            : "Vendor's Linked URL:"}
+                          {isPerson ? "Person's Linkedin URL" : "Vendor URL"}
                         </label>
                         <Form.Control
                           as="input"
+                          type="url"
                           className="modal-person-section-input"
                           onChange={(e) => setLink(e.target.value)}
-                          placeholder="https://linkedin.com/in/linkedinID"
+                          placeholder={
+                            isPerson
+                              ? "https://linkedin.com/in/linkedinID"
+                              : "URL"
+                          }
                           value={link}
                         />
+                        {error && error.link && (
+                          <p className="error">{error.link}</p>
+                        )}
                       </div>
                     </div>
                   </Col>
