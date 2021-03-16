@@ -57,14 +57,14 @@ function MockRequests() {
     },
     { path: /\/api\/profile.*/, responseCode: 200, response: MockedApiProfile },
     {
+      path: /\/api\/vendors.*/,
+      responseCode: 200,
+      response: MockedApiVendorsProfile,
+    },
+    {
       path: /\/api\/vendor/,
       responseCode: 200,
       response: MockedApiVendorProfile,
-    },
-    {
-      path: /\/api\/vendors/,
-      responseCode: 200,
-      response: MockedApiVendorsProfile,
     },
     { path: /\/api\/agency.*/, responseCode: 200, response: MockedApiAgency },
     {

@@ -2,114 +2,35 @@
   "feedData": [
     {
       "headline": {
-        "markdown": "[Vas Swaminathan](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg)"
+        "markdown": "[Test Vendor 01](/vendor/test-vendor-01)"
       },
-      "subheadlines": [
-        {
-          "markdown": "Engineering Leader at Uber"
-        }
-      ],
-      "articletext": "Seasoned engineering leader with 10+ years of experience.",
-      "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NTgxMDIzMjMwOWltYWdlLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
-      "subtext": [
-        {
-          "label": "Vendors:",
-          "text": {
-            "markdown": "[Agencies (76)](/profile/vas#agencies), [Technologies (59)](/profile/vas#technologies)"
-          }
-        }
-      ],
-      "username": "svas"
-    },
-    {
-      "headline": {
-        "markdown": "[Julie22 Herendeen1](/profile/julie) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg)"
-      },
-      "subheadlines": [
-        {
-          "markdown": "(blank)1 at (blank)1"
-        }
-      ],
-      "articletext": "(blank)1",
-      "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiZGVmYXVsdC1wcm9maWxlLWltYWdlLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
-      "subtext": [
-        {
-          "label": "Vendors:",
-          "text": {
-            "markdown": "[Agencies (10)](/profile/julie#agencies), [Technologies (3)](/profile/julie#technologies)"
-          }
-        }
-      ],
-      "username": "julie"
-    },
-    {
-      "headline": {
-        "markdown": "[undefined undefined](/profile/entry1) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg)"
-      },
-      "subheadlines": [
-        {
-          "markdown": "undefined at undefined"
-        }
-      ],
       "articletext": "",
-      "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiZGVmYXVsdC1wcm9maWxlLWltYWdlLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
-      "subtext": [
-        {
-          "label": "Vendors:",
-          "text": {
-            "markdown": "[Agencies (0)](/profile/entry1#agencies), [Technologies (0)](/profile/entry1#technologies)"
-          }
-        }
-      ],
-      "username": "entry1"
-    },
-    {
-      "headline": {
-        "markdown": "[undefined undefined](/profile/entry2) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg)"
-      },
+      "image": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png",
       "subheadlines": [
         {
-          "markdown": "undefined at undefined"
+          "markdown": "San Francisco"
         }
       ],
-      "articletext": "",
-      "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiZGVmYXVsdC1wcm9maWxlLWltYWdlLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
-      "subtext": [
-        {
-          "label": "Vendors:",
-          "text": {
-            "markdown": "[Agencies (0)](/profile/entry2#agencies), [Technologies (0)](/profile/entry2#technologies)"
-          }
-        }
-      ],
-      "username": "entry2"
+      "name": "Test Vendor 01",
+      "username": "test-vendor-01"
     }
   ],
-  "token": "e6a47504c76140880e6466f23eead514",
+  "token": "20d4e19057ba491158412af549591124b7e35284fb973c13ac3b9b8ebc466e8a630b10b6fce332dd3d74b18b097325a9a6d3a73211b7f07a4866b52ff45eef8e",
   "filters": [
     {
-      "title": "Baidu Advertising",
-      "count": 1
+      "title": "#leadership",
+      "count": 112,
+      "slug": "leadership"
     },
     {
-      "title": "Packaging Design",
-      "count": 1
+      "title": "#marketing",
+      "count": 111,
+      "slug": "marketing"
     },
     {
-      "title": "SEM",
-      "count": 2
-    },
-    {
-      "title": "Saas",
-      "count": 1
-    },
-    {
-      "title": "Latam",
-      "count": 3
-    },
-    {
-      "title": "TV Advertising",
-      "count": 4
+      "title": "#saas",
+      "count": 1,
+      "slug": "saas"
     }
   ]
 }

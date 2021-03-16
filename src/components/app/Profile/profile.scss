@@ -198,8 +198,8 @@
 
 .btn-white:active {
   background-color: #fff !important;
-  color: #0073b1 !important;
-  border-color: #0073b1 !important;
+  color: $brand !important;
+  border-color: $brand !important;
 }
 
 .btn-secondary {
@@ -343,7 +343,7 @@
   width: 60px;
   height: 50px;
   background-color: white;
-  color: #0073b1;
+  color: $brand;
   font-size: 28px;
   font-weight: 700;
   margin-left: auto;

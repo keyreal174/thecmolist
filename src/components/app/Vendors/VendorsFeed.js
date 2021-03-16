@@ -2,7 +2,7 @@ import React from "react";
 import Article from "../base/Article/Article";
 import "./vendors.scss";
 
-const NetworkFeed = ({ feedData, moreData, fetchData }) => {
+const VendorsFeed = ({ feedData, moreData, fetchData }) => {
   return (
     <>
       <React.Fragment>
@@ -14,13 +14,13 @@ const NetworkFeed = ({ feedData, moreData, fetchData }) => {
                 className={
                   idx !== 0 ? "mt-1 network-list-item" : "network-list-item"
                 }
-                {...feed.data[0].content}
+                {...feed}
               />
             );
           })}
         {feedData && feedData.length === 0 && (
           <div className="wrapper article-wrapper">
-            <div className="no-feed-data-header">No members here yet.</div>
+            <div className="no-feed-data-header">No vendors here yet.</div>
           </div>
         )}
         {moreData && (
@@ -40,4 +40,4 @@ const NetworkFeed = ({ feedData, moreData, fetchData }) => {
     </>
   );
 };
-export default NetworkFeed;
+export default VendorsFeed;
