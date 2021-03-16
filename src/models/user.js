@@ -8,6 +8,10 @@ const connectUserRequest = (user) => {
   return axios.post("/api/connect_user", user);
 };
 
+const disconnectUserRequest = (user) => {
+  return axios.post("/api/disconnect_user", user);
+};
+
 const saveUserInviteRequest = (data) => {
   return axios.post("/api/userinvite", data);
 };
@@ -28,6 +32,18 @@ export default {
       }
       return oldState;
     },
+    removeConnectedUser: (oldState, data) => {
+      const username = data.user;
+      if (oldState.localConnectedUsers.includes(username)) {
+        return {
+          ...oldState,
+          localConnectedUsers: oldState.localConnectedUsers.filter(
+            (lcu) => lcu !== username
+          ),
+        };
+      }
+      return oldState;
+    },
   },
   effects: (dispatch) => ({
     async saveInvite(data) {
@@ -37,6 +53,11 @@ export default {
       const userData = { user: data.username };
       await connectUserRequest(userData);
       dispatch.userModel.addConnectedUser(userData);
+    },
+    async disconnectUser(data) {
+      const userData = { user: data.username };
+      await disconnectUserRequest(userData);
+      dispatch.userModel.removeConnectedUser(userData);
     },
     async followUser(data) {
       try {

@@ -9,6 +9,7 @@ const NetworkFeed = ({
   localConnectedUsers,
   invalidateFeed,
   connectUser,
+  disconnectUser,
   fetchData,
 }) => (
   <>
@@ -28,6 +29,7 @@ const NetworkFeed = ({
                   feed={feed}
                   invalidateFeed={invalidateFeed}
                   connectUser={connectUser}
+                  disconnectUser={disconnectUser}
                 />
               }
             />

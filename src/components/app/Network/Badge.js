@@ -1,20 +1,38 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 
-const Badge = ({ localConnectedUsers, feed, invalidateFeed, connectUser }) => {
+const Badge = ({
+  localConnectedUsers,
+  feed,
+  invalidateFeed,
+  connectUser,
+  disconnectUser,
+}) => {
   const isLocallyConnected = localConnectedUsers.includes(feed.username);
   const isConnected = feed.isConnected || isLocallyConnected;
-  let connect = !feed.disableConnect ? (
+
+  const handleConnectedButtonClick = () => {
+    invalidateFeed();
+    disconnectUser(feed);
+  };
+  const handleConnectButtonClick = () => {
+    invalidateFeed();
+    connectUser(feed);
+  };
+
+  const connect = !feed.disableConnect ? (
     isConnected ? (
-      <span className="connected-label">Connected</span>
+      <button
+        className="btn connect-button"
+        onClick={handleConnectedButtonClick}
+      >
+        Connected
+      </button>
     ) : (
       <button
         className="btn connect-button"
         type="button"
-        onClick={() => {
-          invalidateFeed();
-          connectUser(feed);
-        }}
+        onClick={handleConnectButtonClick}
       >
         Connect
       </button>
