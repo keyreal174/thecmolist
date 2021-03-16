@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { connect } from "react-redux";
+import { useHistory } from "react-router";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Separator from "../base/Separator/Separator";
@@ -16,6 +17,7 @@ const getBase64 = (file) => {
 };
 
 const VendorProfileEdit = (props) => {
+  const history = useHistory();
   const [companyName, setCompanyName] = useState("");
   const [company, setCompany] = useState("");
   const [city, setCity] = useState("");
@@ -104,13 +106,18 @@ const VendorProfileEdit = (props) => {
       headline,
       coverImage,
       image,
-      about: {
-        areasOfExpertise: areasOfExpertise.split(", "),
-        companyIndustry,
-      },
+      companyIndustry,
+      // about: {
+      //   areasOfExpertise: areasOfExpertise.split(", "),
+      // },
     };
     setNow(100);
-    await props.saveProfile(updated_profile);
+    try {
+      await props.saveProfile(updated_profile);
+      history.push("/vendor");
+    } catch (err) {
+      throw new Error("Could not save vendor profile");
+    }
   };
 
   return (
@@ -339,14 +346,14 @@ const VendorProfileEdit = (props) => {
 
 const mapState = (state) => {
   return {
-    profile: state.profileModel.profile,
+    profile: state.vendorModel.profile,
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
-    fetchProfile: dispatch.profileModel.fetchProfile,
-    saveProfile: dispatch.profileModel.saveProfile,
+    fetchProfile: dispatch.vendorModel.fetchProfile,
+    saveProfile: dispatch.vendorModel.saveProfile,
   };
 };
 

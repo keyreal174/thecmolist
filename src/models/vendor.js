@@ -8,6 +8,10 @@ export const vendorProfileRequest = (userName) => {
   });
 };
 
+export const saveVendorProfileRequest = (data) => {
+  return axios.post("/api/vendor", data);
+};
+
 export default {
   name: "vendorModel",
   state: {
@@ -30,6 +34,14 @@ export default {
         dispatch.reactionModel.setReactions(profile.feedData);
       } catch (err) {
         throw new Error("Could not get profile");
+      }
+    },
+    async saveProfile(profile) {
+      try {
+        await saveVendorProfileRequest({ profile });
+        dispatch.vendorModel.updateProfile(profile);
+      } catch (err) {
+        throw new Error("Could not save vendor profile");
       }
     },
   }),
