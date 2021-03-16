@@ -1,23 +1,39 @@
 import React, { useState, useEffect, Suspense } from "react";
 import { Alert, Button, Container, Form, Row, Col } from "react-bootstrap";
 import { cdn } from "../../../util/constants";
-import "./AddPeronModal.scss";
+import Util from "../../../util/Util";
+import "./AddPersonModal.scss";
 import clsx from "clsx";
+
+const VendorType = ["Company", "Product", "Contractor"];
 
 function AddPersonModal({ show, handleClose, setMention }) {
   const [name, setName] = useState("");
   const [link, setLink] = useState("");
+  const [error, setError] = useState({});
+  const [vendor_type, setVendorType] = useState(VendorType[0]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const person = {
-      name,
-      link,
-      type: show.toLowerCase(),
-    };
-    setMention(person);
-    reset();
-    handleClose();
+    if (!name) error["name"] = "Name is required";
+    else delete error["name"];
+
+    if (!link) error["link"] = "URL is required";
+    else if (!Util.validURL(link)) error["link"] = "URL is not valid";
+    else delete error["link"];
+    setError({ ...error });
+
+    if (Object.keys(error).length === 0) {
+      const person = {
+        name,
+        link,
+        type: vendor_type,
+      };
+      setMention(person);
+      reset();
+      handleClose();
+    }
   };
 
   const reset = () => {
@@ -48,6 +64,27 @@ function AddPersonModal({ show, handleClose, setMention }) {
                 <Row>
                   <Col md="12">
                     <div>
+                      <div className="vendor-type-list">
+                        <label>Vendor</label>
+                        <div>
+                          {show !== "People" &&
+                            VendorType.map((vendor, index) => {
+                              return (
+                                <Form.Check
+                                  key={index}
+                                  label={vendor}
+                                  name="vendortype"
+                                  value={vendor}
+                                  id={vendor}
+                                  onChange={(e) => {
+                                    setVendorType(e.target.value);
+                                  }}
+                                  type="radio"
+                                />
+                              );
+                            })}
+                        </div>
+                      </div>
                       <div className="person-section">
                         <label>
                           {isPerson
@@ -62,6 +99,9 @@ function AddPersonModal({ show, handleClose, setMention }) {
                           value={name}
                           autoFocus
                         />
+                        {error && error.name && (
+                          <p className="error">{error.name}</p>
+                        )}
                       </div>
                       <div className="person-section">
                         <label>
@@ -79,6 +119,9 @@ function AddPersonModal({ show, handleClose, setMention }) {
                           }
                           value={link}
                         />
+                        {error && error.link && (
+                          <p className="error">{error.link}</p>
+                        )}
                       </div>
                     </div>
                   </Col>
