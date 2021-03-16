@@ -129,6 +129,7 @@ const ProfileEdit = (props) => {
     setProfileInfo(props.profile);
     setImageUploading(false);
     setCoverImageUploading(false);
+    window.history.back();
   };
 
   const handleSubmit = async (e) => {

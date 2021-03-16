@@ -1,0 +1,36 @@
+{
+  "feedData": [
+    {
+      "headline": {
+        "markdown": "[Test Vendor 01](/vendor/test-vendor-01)"
+      },
+      "articletext": "",
+      "image": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png",
+      "subheadlines": [
+        {
+          "markdown": "San Francisco"
+        }
+      ],
+      "name": "Test Vendor 01",
+      "username": "test-vendor-01"
+    }
+  ],
+  "token": "20d4e19057ba491158412af549591124b7e35284fb973c13ac3b9b8ebc466e8a630b10b6fce332dd3d74b18b097325a9a6d3a73211b7f07a4866b52ff45eef8e",
+  "filters": [
+    {
+      "title": "#leadership",
+      "count": 112,
+      "slug": "leadership"
+    },
+    {
+      "title": "#marketing",
+      "count": 111,
+      "slug": "marketing"
+    },
+    {
+      "title": "#saas",
+      "count": 1,
+      "slug": "saas"
+    }
+  ]
+}

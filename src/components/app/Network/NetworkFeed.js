@@ -7,7 +7,6 @@ const NetworkFeed = ({
   feedData,
   moreData,
   localConnectedUsers,
-  invalidateFeed,
   connectUser,
   disconnectUser,
   fetchData,
@@ -27,7 +26,6 @@ const NetworkFeed = ({
                 <Badge
                   localConnectedUsers={localConnectedUsers}
                   feed={feed}
-                  invalidateFeed={invalidateFeed}
                   connectUser={connectUser}
                   disconnectUser={disconnectUser}
                 />

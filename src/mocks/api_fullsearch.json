@@ -26,26 +26,56 @@
       "title": "New questions from your network",
       "data": [
         {
-          "header": {
-            "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) created a new post in [TV Advertising](https://forum.thecmolist.com/t/110)",
-            "subtext": "2 months ago"
+          "content_id": 1,
+          "content": {
+            "header": {
+              "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) created a new post in [TV Advertising](https://forum.thecmolist.com/t/110)",
+              "subtext": "2 months ago"
+            },
+            "headline": {
+              "markdown": "[We are looking for a new TV advertising agency in NYC](https://forum.thecmolist.com/t/110)"
+            },
+            "articletext": "Any recommendations most appreciated.",
+            "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NTgxMDIzMjMwOWltYWdlLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
+            "num_thanks": 5,
+            "num_insightful": 10
           },
-          "headline": {
-            "markdown": "[We are looking for a new TV advertising agency in NYC](https://forum.thecmolist.com/t/110)"
-          },
-          "articletext": "Any recommendations most appreciated.",
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NTgxMDIzMjMwOWltYWdlLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ=="
+          "reactions": [
+            {
+              "type": "thanks",
+              "checked": true
+            },
+            {
+              "type": "insightful",
+              "checked": false
+            }
+          ]
         },
         {
-          "header": {
-            "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) created a new post in [TV Advertising](https://forum.thecmolist.com/t/110)",
-            "subtext": "2 months ago"
+          "content_id": 2,
+          "content": {
+            "header": {
+              "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) created a new post in [TV Advertising](https://forum.thecmolist.com/t/110)",
+              "subtext": "2 months ago"
+            },
+            "headline": {
+              "markdown": "[We are looking for a new TV advertising agency in NYC](https://forum.thecmolist.com/t/110)"
+            },
+            "articletext": "Any recommendations most appreciated.",
+            "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NTgxMDIzMjMwOWltYWdlLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
+            "num_thanks": 2,
+            "num_insightful": 2
           },
-          "headline": {
-            "markdown": "[We are looking for a new TV advertising agency in NYC](https://forum.thecmolist.com/t/110)"
-          },
-          "articletext": "Any recommendations most appreciated.",
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NTgxMDIzMjMwOWltYWdlLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ=="
+          "reactions": [
+            {
+              "type": "thanks",
+              "checked": true
+            },
+            {
+              "type": "insightful",
+              "checked": false
+            }
+          ]
         }
       ],
       "filter": "question"
@@ -54,42 +84,87 @@
       "title": "New vendors from your network",
       "data": [
         {
-          "header": {
-            "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [Print Advertising](/directory/print-advertising)",
-            "subtext": "21 days ago"
+          "content_id": 3,
+          "content": {
+            "header": {
+              "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [Print Advertising](/directory/print-advertising)",
+              "subtext": "21 days ago"
+            },
+            "headline": {
+              "markdown": "[test a new agency](/agency/test-a-new-agency)"
+            },
+            "subtitle": "NY",
+            "articletext": "zz",
+            "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjg4NDEyNG1hZHMtLXByb2ZpbGUuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+            "imageDisplay": "square",
+            "num_thanks": 1,
+            "num_insightful": 1
           },
-          "headline": {
-            "markdown": "[test a new agency](/agency/test-a-new-agency)"
-          },
-          "subtitle": "NY",
-          "articletext": "zz",
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjg4NDEyNG1hZHMtLXByb2ZpbGUuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
-          "imageDisplay": "square"
+          "reactions": [
+            {
+              "type": "thanks",
+              "checked": true
+            },
+            {
+              "type": "insightful",
+              "checked": false
+            }
+          ]
         },
         {
-          "header": {
-            "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [TV Advertising](/directory/tv-advertising)",
-            "subtext": "a month ago"
+          "content_id": 4,
+          "content": {
+            "header": {
+              "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [TV Advertising](/directory/tv-advertising)",
+              "subtext": "a month ago"
+            },
+            "headline": {
+              "markdown": "[test1](/agency/test1)"
+            },
+            "subtitle": "San Francisco, CA!!!",
+            "articletext": "cbx",
+            "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjgwODQyNnNhbGVlbC0tcHJvZmlsZS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
+            "imageDisplay": "square",
+            "num_thanks": 1,
+            "num_insightful": 1
           },
-          "headline": {
-            "markdown": "[test1](/agency/test1)"
-          },
-          "subtitle": "San Francisco, CA!!!",
-          "articletext": "cbx",
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjgwODQyNnNhbGVlbC0tcHJvZmlsZS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
-          "imageDisplay": "square"
+          "reactions": [
+            {
+              "type": "thanks",
+              "checked": true
+            },
+            {
+              "type": "insightful",
+              "checked": false
+            }
+          ]
         },
         {
-          "header": {
-            "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [Account-Based Advertising Software](/directory/account-based-advertising-software)",
-            "subtext": "a month ago"
+          "content_id": 5,
+          "content": {
+            "header": {
+              "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [Account-Based Advertising Software](/directory/account-based-advertising-software)",
+              "subtext": "a month ago"
+            },
+            "headline": {
+              "markdown": "[SMTP.com](/technology/smtpcom)"
+            },
+            "articletext": "xxv",
+            "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5Ijoic210cGNvbS0tcHJvZmlsZS5zdmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEwMCwiaGVpZ2h0IjoxMDAsImZpdCI6ImNvdmVyIn19fQ==",
+            "imageDisplay": "square",
+            "num_thanks": 1,
+            "num_insightful": 1
           },
-          "headline": {
-            "markdown": "[SMTP.com](/technology/smtpcom)"
-          },
-          "articletext": "xxv",
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5Ijoic210cGNvbS0tcHJvZmlsZS5zdmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEwMCwiaGVpZ2h0IjoxMDAsImZpdCI6ImNvdmVyIn19fQ==",
-          "imageDisplay": "square"
+          "reactions": [
+            {
+              "type": "thanks",
+              "checked": true
+            },
+            {
+              "type": "insightful",
+              "checked": false
+            }
+          ]
         }
       ],
       "filter": "project"
@@ -98,42 +173,87 @@
       "title": "New articles from your network",
       "data": [
         {
-          "header": {
-            "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [Print Advertising](/directory/print-advertising)",
-            "subtext": "21 days ago"
+          "content_id": 6,
+          "content": {
+            "header": {
+              "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [Print Advertising](/directory/print-advertising)",
+              "subtext": "21 days ago"
+            },
+            "headline": {
+              "markdown": "[test a new agency](/agency/test-a-new-agency)"
+            },
+            "subtitle": "NY",
+            "articletext": "zz",
+            "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjg4NDEyNG1hZHMtLXByb2ZpbGUuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+            "imageDisplay": "square",
+            "num_thanks": 1,
+            "num_insightful": 1
           },
-          "headline": {
-            "markdown": "[test a new agency](/agency/test-a-new-agency)"
-          },
-          "subtitle": "NY",
-          "articletext": "zz",
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjg4NDEyNG1hZHMtLXByb2ZpbGUuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
-          "imageDisplay": "square"
+          "reactions": [
+            {
+              "type": "thanks",
+              "checked": true
+            },
+            {
+              "type": "insightful",
+              "checked": false
+            }
+          ]
         },
         {
-          "header": {
-            "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [TV Advertising](/directory/tv-advertising)",
-            "subtext": "a month ago"
+          "content_id": 8,
+          "content": {
+            "header": {
+              "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [TV Advertising](/directory/tv-advertising)",
+              "subtext": "a month ago"
+            },
+            "headline": {
+              "markdown": "[test1](/agency/test1)"
+            },
+            "subtitle": "San Francisco, CA!!!",
+            "articletext": "cbx",
+            "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjgwODQyNnNhbGVlbC0tcHJvZmlsZS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
+            "imageDisplay": "square",
+            "num_thanks": 1,
+            "num_insightful": 1
           },
-          "headline": {
-            "markdown": "[test1](/agency/test1)"
-          },
-          "subtitle": "San Francisco, CA!!!",
-          "articletext": "cbx",
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjgwODQyNnNhbGVlbC0tcHJvZmlsZS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
-          "imageDisplay": "square"
+          "reactions": [
+            {
+              "type": "thanks",
+              "checked": true
+            },
+            {
+              "type": "insightful",
+              "checked": false
+            }
+          ]
         },
         {
-          "header": {
-            "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [Account-Based Advertising Software](/directory/account-based-advertising-software)",
-            "subtext": "a month ago"
+          "content_id": 7,
+          "content": {
+            "header": {
+              "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [Account-Based Advertising Software](/directory/account-based-advertising-software)",
+              "subtext": "a month ago"
+            },
+            "headline": {
+              "markdown": "[SMTP.com](/technology/smtpcom)"
+            },
+            "articletext": "xxv",
+            "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5Ijoic210cGNvbS0tcHJvZmlsZS5zdmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEwMCwiaGVpZ2h0IjoxMDAsImZpdCI6ImNvdmVyIn19fQ==",
+            "imageDisplay": "square",
+            "num_thanks": 1,
+            "num_insightful": 1
           },
-          "headline": {
-            "markdown": "[SMTP.com](/technology/smtpcom)"
-          },
-          "articletext": "xxv",
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5Ijoic210cGNvbS0tcHJvZmlsZS5zdmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEwMCwiaGVpZ2h0IjoxMDAsImZpdCI6ImNvdmVyIn19fQ==",
-          "imageDisplay": "square"
+          "reactions": [
+            {
+              "type": "thanks",
+              "checked": true
+            },
+            {
+              "type": "insightful",
+              "checked": false
+            }
+          ]
         }
       ],
       "filter": "article"
@@ -142,42 +262,87 @@
       "title": "New people from your network",
       "data": [
         {
-          "header": {
-            "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [Print Advertising](/directory/print-advertising)",
-            "subtext": "21 days ago"
+          "content_id": 9,
+          "content": {
+            "header": {
+              "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [Print Advertising](/directory/print-advertising)",
+              "subtext": "21 days ago"
+            },
+            "headline": {
+              "markdown": "[test a new agency](/agency/test-a-new-agency)"
+            },
+            "subtitle": "NY",
+            "articletext": "zz",
+            "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjg4NDEyNG1hZHMtLXByb2ZpbGUuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+            "imageDisplay": "square",
+            "num_thanks": 1,
+            "num_insightful": 1
           },
-          "headline": {
-            "markdown": "[test a new agency](/agency/test-a-new-agency)"
-          },
-          "subtitle": "NY",
-          "articletext": "zz",
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjg4NDEyNG1hZHMtLXByb2ZpbGUuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
-          "imageDisplay": "square"
+          "reactions": [
+            {
+              "type": "thanks",
+              "checked": true
+            },
+            {
+              "type": "insightful",
+              "checked": false
+            }
+          ]
         },
         {
-          "header": {
-            "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [TV Advertising](/directory/tv-advertising)",
-            "subtext": "a month ago"
+          "content_id": 10,
+          "content": {
+            "header": {
+              "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [TV Advertising](/directory/tv-advertising)",
+              "subtext": "a month ago"
+            },
+            "headline": {
+              "markdown": "[test1](/agency/test1)"
+            },
+            "subtitle": "San Francisco, CA!!!",
+            "articletext": "cbx",
+            "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjgwODQyNnNhbGVlbC0tcHJvZmlsZS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
+            "imageDisplay": "square",
+            "num_thanks": 1,
+            "num_insightful": 1
           },
-          "headline": {
-            "markdown": "[test1](/agency/test1)"
-          },
-          "subtitle": "San Francisco, CA!!!",
-          "articletext": "cbx",
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjgwODQyNnNhbGVlbC0tcHJvZmlsZS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
-          "imageDisplay": "square"
+          "reactions": [
+            {
+              "type": "thanks",
+              "checked": true
+            },
+            {
+              "type": "insightful",
+              "checked": false
+            }
+          ]
         },
         {
-          "header": {
-            "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [Account-Based Advertising Software](/directory/account-based-advertising-software)",
-            "subtext": "a month ago"
+          "content_id": 11,
+          "content": {
+            "header": {
+              "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [Account-Based Advertising Software](/directory/account-based-advertising-software)",
+              "subtext": "a month ago"
+            },
+            "headline": {
+              "markdown": "[SMTP.com](/technology/smtpcom)"
+            },
+            "articletext": "xxv",
+            "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5Ijoic210cGNvbS0tcHJvZmlsZS5zdmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEwMCwiaGVpZ2h0IjoxMDAsImZpdCI6ImNvdmVyIn19fQ==",
+            "imageDisplay": "square",
+            "num_thanks": 1,
+            "num_insightful": 1
           },
-          "headline": {
-            "markdown": "[SMTP.com](/technology/smtpcom)"
-          },
-          "articletext": "xxv",
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5Ijoic210cGNvbS0tcHJvZmlsZS5zdmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEwMCwiaGVpZ2h0IjoxMDAsImZpdCI6ImNvdmVyIn19fQ==",
-          "imageDisplay": "square"
+          "reactions": [
+            {
+              "type": "thanks",
+              "checked": true
+            },
+            {
+              "type": "insightful",
+              "checked": false
+            }
+          ]
         }
       ],
       "filter": "people"
@@ -186,42 +351,87 @@
       "title": "New vendors from your network",
       "data": [
         {
-          "header": {
-            "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [Print Advertising](/directory/print-advertising)",
-            "subtext": "21 days ago"
+          "content_id": 13,
+          "content": {
+            "header": {
+              "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [Print Advertising](/directory/print-advertising)",
+              "subtext": "21 days ago"
+            },
+            "headline": {
+              "markdown": "[test a new agency](/agency/test-a-new-agency)"
+            },
+            "subtitle": "NY",
+            "articletext": "zz",
+            "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjg4NDEyNG1hZHMtLXByb2ZpbGUuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+            "imageDisplay": "square",
+            "num_thanks": 1,
+            "num_insightful": 1
           },
-          "headline": {
-            "markdown": "[test a new agency](/agency/test-a-new-agency)"
-          },
-          "subtitle": "NY",
-          "articletext": "zz",
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjg4NDEyNG1hZHMtLXByb2ZpbGUuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
-          "imageDisplay": "square"
+          "reactions": [
+            {
+              "type": "thanks",
+              "checked": true
+            },
+            {
+              "type": "insightful",
+              "checked": false
+            }
+          ]
         },
         {
-          "header": {
-            "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [TV Advertising](/directory/tv-advertising)",
-            "subtext": "a month ago"
+          "content_id": 14,
+          "content": {
+            "header": {
+              "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [TV Advertising](/directory/tv-advertising)",
+              "subtext": "a month ago"
+            },
+            "headline": {
+              "markdown": "[test1](/agency/test1)"
+            },
+            "subtitle": "San Francisco, CA!!!",
+            "articletext": "cbx",
+            "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjgwODQyNnNhbGVlbC0tcHJvZmlsZS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
+            "imageDisplay": "square",
+            "num_thanks": 1,
+            "num_insightful": 1
           },
-          "headline": {
-            "markdown": "[test1](/agency/test1)"
-          },
-          "subtitle": "San Francisco, CA!!!",
-          "articletext": "cbx",
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjgwODQyNnNhbGVlbC0tcHJvZmlsZS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
-          "imageDisplay": "square"
+          "reactions": [
+            {
+              "type": "thanks",
+              "checked": true
+            },
+            {
+              "type": "insightful",
+              "checked": false
+            }
+          ]
         },
         {
-          "header": {
-            "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [Account-Based Advertising Software](/directory/account-based-advertising-software)",
-            "subtext": "a month ago"
+          "content_id": 12,
+          "content": {
+            "header": {
+              "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [Account-Based Advertising Software](/directory/account-based-advertising-software)",
+              "subtext": "a month ago"
+            },
+            "headline": {
+              "markdown": "[SMTP.com](/technology/smtpcom)"
+            },
+            "articletext": "xxv",
+            "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5Ijoic210cGNvbS0tcHJvZmlsZS5zdmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEwMCwiaGVpZ2h0IjoxMDAsImZpdCI6ImNvdmVyIn19fQ==",
+            "imageDisplay": "square",
+            "num_thanks": 1,
+            "num_insightful": 1
           },
-          "headline": {
-            "markdown": "[SMTP.com](/technology/smtpcom)"
-          },
-          "articletext": "xxv",
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5Ijoic210cGNvbS0tcHJvZmlsZS5zdmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEwMCwiaGVpZ2h0IjoxMDAsImZpdCI6ImNvdmVyIn19fQ==",
-          "imageDisplay": "square"
+          "reactions": [
+            {
+              "type": "thanks",
+              "checked": true
+            },
+            {
+              "type": "insightful",
+              "checked": false
+            }
+          ]
         }
       ],
       "filter": "vendors"

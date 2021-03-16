@@ -50,8 +50,8 @@ export default {
       await saveUserInviteRequest(data);
     },
     async connectUser(data) {
-      const userData = { user: data.username };
-      await connectUserRequest(userData);
+      const userData = { user: data.user };
+      await connectUserRequest(data);
       dispatch.userModel.addConnectedUser(userData);
     },
     async disconnectUser(data) {

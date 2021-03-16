@@ -1,7 +1,14 @@
 @import "../../../sass/globals.scss";
 
-.btn_following {
-  padding: 4px 15px;
+.btn_followed {
+  background-color: $brand;
+  color: $white;
+}
+
+.btn_following,
+.btn_followed {
+  padding: 6px 12px;
+  margin-right: 0 !important;
 }
 
 .topic-wrapper {
@@ -15,6 +22,7 @@
   font-size: 17px;
   display: block;
   line-height: 1.2;
+  color: $brand;
 }
 
 .topic-description {

@@ -99,7 +99,12 @@ const ProfileIntro = ({
               />
               Location{" "}
               <strong>
-                {profileCity}, {profileState}
+                {profileCity}
+                {`${
+                  profileState && profileState.length > 0
+                    ? ", " + profileState
+                    : ""
+                }`}
               </strong>
             </div>
           )}
@@ -171,7 +176,7 @@ const ProfileOverview = ({
               )}
             </h2>
             <div className="overview-subheadline">
-              {profileTitle && `${profileTitle} at ${profileCompany}`}
+              {profileTitle && `${profileTitle}`}
             </div>
             {profileFollowers && (
               <div className="overview-followers">{`${profileFollowers} Followers`}</div>
@@ -249,6 +254,7 @@ const VendorProfile = (props) => {
   const [showDeletePost, setShowDeletePost] = useState(false);
   const [showFollowModal, setShowFollowModal] = useState(false);
   const [showMore, setShowMore] = useState(false);
+  const history = useHistory();
 
   useEffect(() => {
     document.title = "Profile";
@@ -283,17 +289,15 @@ const VendorProfile = (props) => {
       feed.subfilters = {};
       let feed_data = feed.data;
       feed_data.forEach((data) => {
-        data.content.subheadlines &&
-          data.content.subheadlines.forEach((sh) => {
-            if (sh.categorytitles && Array.isArray(sh.categorytitles)) {
-              sh.categorytitles.forEach((categoryTitle) => {
-                if (!(categoryTitle in feed.subfilters)) {
-                  feed.subfilters[categoryTitle] = 0;
-                }
-                feed.subfilters[categoryTitle] += 1;
-              });
+        if (data.content && data.content.collections) {
+          let collectionsForContent = data.content.collections;
+          collectionsForContent.forEach((collectionTitle) => {
+            if (!(collectionTitle in feed.subfilters)) {
+              feed.subfilters[collectionTitle] = 0;
             }
+            feed.subfilters[collectionTitle] += 1;
           });
+        }
       });
     });
     setFeedData(newFeedData);
@@ -372,16 +376,14 @@ const VendorProfile = (props) => {
         setFeedFilter(feedFilter);
         if (feedFilter.length > 0) {
           feed_data = feed_data.filter((data) => {
-            for (let i = 0; i < data.content.subheadlines.length; i++) {
-              let sh = data.content.subheadlines[i];
-              if (sh.categorytitles) {
-                for (let j = 0; j < sh.categorytitles.length; j++) {
-                  if (
-                    sh.categorytitles[j] &&
-                    sh.categorytitles[j] === feedFilter
-                  )
-                    return true;
-                }
+            if (data.content && data.content.collections) {
+              let collectionsForContent = data.content.collections;
+              for (let j = 0; j < collectionsForContent.length; j++) {
+                if (
+                  collectionsForContent[j] &&
+                  collectionsForContent[j] === feedFilter
+                )
+                  return true;
               }
             }
             return false;
@@ -398,10 +400,15 @@ const VendorProfile = (props) => {
   const handleEngagementButtonClick = async (caller, engagementType) => {
     const id = caller["content_id"];
     const engagement = engagementType.toLowerCase();
-    try {
-      await props.changeReaction({ id, engagement });
-    } catch (error) {
-      console.error(error.message);
+
+    if (engagementType === "Answer") {
+      history.push(`/content/${id}`);
+    } else {
+      try {
+        await props.changeReaction({ id, engagement });
+      } catch (error) {
+        console.error(error.message);
+      }
     }
   };
   const reactions = props.reactions;
@@ -447,6 +454,7 @@ const VendorProfile = (props) => {
           <Row className="profile--feed">
             <Col md="4">
               <PopularTopics
+                heading={"Popular #topics and Spaces"}
                 onSubfilterChange={onSubfilterChange}
                 topicList={topicsList}
               />
@@ -545,9 +553,7 @@ const VendorProfile = (props) => {
         {profileFirstName && !hasDataOnCurrentFeed && (
           <div className="wrapper article-wrapper">
             <div className="no-feed-data-header">
-              {profileFirstName} hasn't shared anything in{" "}
-              {filters[filterIdx] ? filters[filterIdx].title : "this category"}{" "}
-              yet
+              {profileFirstName} hasn't shared anything here yet
             </div>
           </div>
         )}

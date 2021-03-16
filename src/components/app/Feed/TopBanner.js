@@ -61,8 +61,9 @@ const TopBanner = (props) => {
             )}
             <div className="feed-page-top-banner-content">
               <h3>{props.title}</h3>
+              {props.subtitle && <p>{props.subtitle}</p>}
               {/* FUTURE (from API) */}
-              {/*<p>Marketing</p>
+              {/*}
               <div className="d-flex align-items-center">
                 <span>1.4k Followers</span>
                 <Button className="btn-blue mb-2" onClick={handleShow}>
@@ -75,26 +76,24 @@ const TopBanner = (props) => {
         <CustomCard>
           <div className="d-flex flex-column text-center py-3 px-1">
             <Button
-              className="btn-white mb-2"
+              className="btn-blue mb-2 top-banner-button"
+              onClick={() => handleShow("question")}
+            >
+              Ask Question
+            </Button>
+            <Button
+              className="btn-white mb-2 top-banner-button"
               variant="outline-primary"
               onClick={() => handleShow("article")}
             >
               Share Article
             </Button>
             <Button
-              className="btn-blue mb-2"
+              className="btn-white top-banner-button"
               onClick={() => handleShow("project")}
             >
               Share Experience
             </Button>
-            <a
-              role="button"
-              tabIndex="0"
-              onClick={() => handleShow("question")}
-              className="a-blue"
-            >
-              Ask Question ?
-            </a>
             <AddPostModal
               contentType={contentType}
               show={showContentModal}

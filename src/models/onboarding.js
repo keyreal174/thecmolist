@@ -43,7 +43,8 @@ export default {
     async getCategories() {
       try {
         const response = await getOnboardingCategories();
-        dispatch.onboardingModel.updateCategories(response.data);
+        const data = response && response.data;
+        dispatch.onboardingModel.updateCategories(data);
       } catch (err) {
         throw new Error("Could not get categories");
       }

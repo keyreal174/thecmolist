@@ -55,13 +55,16 @@ const Search = (props) => {
         props.searchResult.modules.forEach((item) => {
           newModules = Object.assign({}, newModules, {
             [item.filter]: item.data.map((data) => {
+              const content = data && data.content;
+              const { header, image, headline, contentarticletext } = content;
               return {
+                contentId: data.content_id,
                 header: {
-                  ...data.header,
-                  image: data.image,
+                  ...header,
+                  image,
                 },
-                headline: data.headline,
-                articletext: data.articletext,
+                headline,
+                articletext: contentarticletext,
               };
             }),
           });
@@ -78,13 +81,16 @@ const Search = (props) => {
       let newModules = {};
       newModules = {
         [filter]: props.modules.map((data) => {
+          const content = data && data.content;
+          const { header, image, headline, contentarticletext } = content;
           return {
+            contentId: data.contentId,
             header: {
-              ...data.header,
-              image: data.image,
+              ...header,
+              image: image,
             },
-            headline: data.headline,
-            articletext: data.articletext,
+            headline,
+            articletext: contentarticletext,
           };
         }),
       };
@@ -111,17 +117,17 @@ const Search = (props) => {
           <div>
             {modules && (
               <RenderList
-                modules={modules}
-                filters={filters}
-                showMore={showMore}
-                moreData={props.moreData}
-                isFull={isFull}
-                fetchMoreRefinedData={fetchMoreRefinedData}
-                localConnectedUsers={props.localConnectedUsers}
-                invalidateFeed={props.invalidateFeed}
                 connectUser={props.connectUser}
-                content={props.content}
+                changeReaction={props.changeReaction}
+                fetchMoreRefinedData={fetchMoreRefinedData}
+                filters={filters}
+                invalidateFeed={props.invalidateFeed}
+                isFull={isFull}
+                localConnectedUsers={props.localConnectedUsers}
+                modules={modules}
+                moreData={props.moreData}
                 reactions={props.reactions}
+                showMore={showMore}
               />
             )}
           </div>
@@ -133,21 +139,21 @@ const Search = (props) => {
 
 const mapState = (state) => {
   return {
-    searchResult: state.searchModel.searchResult,
+    localConnectedUsers: state.userModel.localConnectedUsers,
     modules: state.searchModel.modules,
     moreData: state.searchModel.moreData,
-    localConnectedUsers: state.userModel.localConnectedUsers,
-    content: state.contentModel.content,
     reactions: state.reactionModel.reactions,
+    searchResult: state.searchModel.searchResult,
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
+    changeReaction: dispatch.reactionModel.changeReaction,
+    connectUser: dispatch.userModel.connectUser,
     fetchFullSearch: dispatch.searchModel.fetchFullSearch,
     fetchRefinedSearch: dispatch.searchModel.fetchRefinedSearch,
     invalidateFeed: dispatch.networkModel.invalidateFeed,
-    connectUser: dispatch.userModel.connectUser,
   };
 };
 

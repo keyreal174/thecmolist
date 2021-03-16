@@ -6,17 +6,19 @@ const Vendors = ({ vendorList }) => {
   let vendorsLink = vendorList.link || "";
   let list = Array.isArray(vendorList) ? vendorList : vendorList.list;
   return list && list.length > 0 ? (
-    <CustomCard heading={list.length + " Vendors"} seeAllLink={vendorsLink}>
+    <CustomCard heading="Vendors" seeAllLink={vendorsLink}>
       <div className="feed-box-content">
         {list &&
-          list.map(({ image, name, role }, index) => {
+          list.map(({ image, name, role, link }, index) => {
             return (
-              <Avatar
-                key={index}
-                image={image}
-                heading={name}
-                subHeading={role}
-              />
+              <a href={link} key={index}>
+                <Avatar
+                  key={index}
+                  image={image}
+                  heading={name}
+                  subHeading={role}
+                />
+              </a>
             );
           })}
       </div>

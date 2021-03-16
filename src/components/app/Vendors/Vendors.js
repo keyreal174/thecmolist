@@ -9,15 +9,14 @@ import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
 import PopularTopics from "../base/PopularTopics/PopularTopics";
 import SimpleTopBanner from "../base/SimpleTopBanner/SimpleTopBanner";
 import AddMemberModal from "../base/AddMemberModal/AddMemberModal";
-import FollowUserModal from "../Profile/FollowUser"; // VAS move this
-import NetworkFeed from "./NetworkFeed";
+import VendorsFeed from "./VendorsFeed";
 import Analytics from "../../util/Analytics";
 import { cdn } from "../../util/constants";
-import "./network.scss";
+import "./vendors.scss";
 
-const Network = (props) => {
+const Vendors = (props) => {
   const location = useLocation();
-  const fetchData = async () => await props.fetchActiveNetwork();
+  const fetchData = async () => await props.fetchActiveVendors();
   const [filterIdx, setFilterIdx] = useState(0);
   const [filters, setFilters] = useState([]);
   const [bannerTitle, setBannerTitle] = useState("");
@@ -87,34 +86,8 @@ const Network = (props) => {
   };
 
   const [showInviteModal, setShowInviteModal] = useState(false);
-  const [showFollowModal, setShowFollowModal] = useState(false);
-  const [connectName, setConnectName] = useState("");
-  const [connectUsername, setConnectUsername] = useState("");
   const handleInviteModalClick = () => setShowInviteModal(true);
   const handleInviteModalClose = () => setShowInviteModal(false);
-
-  const connectUser = async (payload) => {
-    let userName = payload.user;
-    Analytics.sendClickEvent(`Followed user ${userName} from profile page`);
-    try {
-      await props.connectUser(payload);
-      props.invalidateFeed();
-    } catch (err) {
-      console.log(`An error occurred connecting with user: ${userName}`);
-      console.log(err);
-    }
-  };
-
-  const toggleFollowModal = () => {
-    setShowFollowModal((value) => !value);
-  };
-
-  const onConnectClick = (payload) => {
-    setConnectName(payload.firstname || payload.username);
-    setConnectUsername(payload.username);
-    toggleFollowModal();
-  };
-
   return (
     <>
       <Container className="height-100">
@@ -124,7 +97,7 @@ const Network = (props) => {
             buttonText="Invite"
             onClick={handleInviteModalClick}
             title={bannerTitle}
-            subtitle={"Members"}
+            subtitle={"Vendors"}
             image={bannerImage}
           />
           <AddMemberModal
@@ -142,13 +115,6 @@ const Network = (props) => {
             onClose={handleInviteModalClose}
             onSubmit={props.inviteNewMember}
             show={showInviteModal}
-          />
-          <FollowUserModal
-            show={showFollowModal}
-            firstname={connectName}
-            username={connectUsername}
-            toggle={toggleFollowModal}
-            followUser={connectUser}
           />
           <div className="mb-4">
             <Filter
@@ -178,14 +144,13 @@ const Network = (props) => {
                   : "12"
               }
             >
-              {props.loadingNetwork ? (
+              {props.loadingVendors ? (
                 <div className="mt-3 mb-5">
                   <ActivityIndicator className="element-center feed-activity-indicator" />
                 </div>
               ) : (
-                <NetworkFeed
+                <VendorsFeed
                   {...props}
-                  connectUser={onConnectClick}
                   fetchData={fetchData}
                   feedData={feedData}
                 />
@@ -202,29 +167,21 @@ const Network = (props) => {
 
 const mapState = (state) => {
   return {
-    activeFilter: state.networkModel.activeFilter,
-    activeSubFilter: state.networkModel.activeSubFilter,
-    activeFeedSubFilters: state.networkModel.activeFeedSubFilters,
-    feedData: state.networkModel.activeFeed,
-    moreData: state.networkModel.activeFeedHasMoreData,
-    localConnectedUsers: state.userModel.localConnectedUsers,
-    loadingNetwork: state.networkModel.loadingNetwork,
+    activeFeedSubFilters: state.vendorsModel.activeFeedSubFilters,
+    feedData: state.vendorsModel.activeFeed,
+    moreData: state.vendorsModel.activeFeedHasMoreData,
+    loadingVendors: state.vendorsModel.loadingVendors,
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
-    fetchActiveNetwork: dispatch.networkModel.fetchActiveNetwork,
-    changeFilter: dispatch.networkModel.changeFilter,
-    changeSortOrder: dispatch.networkModel.changeSortOrder,
-    changeSubFilter: dispatch.networkModel.changeSubFilter,
-    invalidateFeed: dispatch.networkModel.invalidateFeed,
-    inviteNewMember: dispatch.networkModel.inviteNewMember,
-    saveUserInvite: dispatch.userModel.saveInvite,
-    connectUser: dispatch.userModel.connectUser,
-    disconnectUser: dispatch.userModel.disconnectUser,
+    fetchActiveVendors: dispatch.vendorsModel.fetchActiveVendors,
+    changeFilter: dispatch.vendorsModel.changeFilter,
+    changeSubFilter: dispatch.vendorsModel.changeSubFilter,
+    inviteNewMember: dispatch.vendorsModel.inviteNewMember,
     getProfileStats: dispatch.profileModel.getProfileStats,
   };
 };
 
-export default connect(mapState, mapDispatch)(Network);
+export default connect(mapState, mapDispatch)(Vendors);

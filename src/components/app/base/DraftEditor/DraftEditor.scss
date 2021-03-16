@@ -38,15 +38,27 @@
     }
 
     & > div:last-child[id^="mentions-list-"] {
-      & > div:last-child {
-        border-top: 1px solid #ced4da;
-        padding-top: 10px;
-        color: #2962ff;
-        font-size: 16px;
-        line-height: 18px;
-        text-align: center;
-        padding-left: 0;
-        margin-top: 20px;
+      & > div {
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    &.editor-wrapper-add-mention {
+      & > div:last-child[id^="mentions-list-"] {
+        padding-bottom: 0;
+
+        & > div:last-child,
+        & > div:nth-last-child(2) {
+          border-top: 1px solid #ced4da;
+          padding-top: 10px;
+          color: #2962ff;
+          font-size: 16px;
+          line-height: 18px;
+          justify-content: center;
+          padding-left: 0;
+          padding-bottom: 8px;
+        }
       }
     }
   }

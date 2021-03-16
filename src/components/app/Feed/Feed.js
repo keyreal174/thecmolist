@@ -15,6 +15,7 @@ import {
   getCheckedForEngagementType,
   getEngagementForId,
 } from "../base/EngagementButtons/EngagementButtons";
+import { useHistory } from "react-router";
 
 import MyNetwork from "./MyNetwork";
 import BuildYourNetwork from "./BuildYourNetwork";
@@ -75,13 +76,20 @@ function RenderFeed({
   };
   let feedMoreData = feedData.length > 0 && moreData;
 
+  const history = useHistory();
+
   const handleEngagementButtonClick = async (caller, engagementType) => {
     const id = caller["content_id"];
     const engagement = engagementType.toLowerCase();
-    try {
-      await changeReaction({ id, engagement });
-    } catch (error) {
-      console.error(error.message);
+
+    if (engagementType === "Answer") {
+      history.push(`/content/${id}`);
+    } else {
+      try {
+        await changeReaction({ id, engagement });
+      } catch (error) {
+        console.error(error.message);
+      }
     }
   };
   return (
@@ -161,15 +169,15 @@ function RenderFeed({
 }
 
 function RenderDashboard(props) {
-  const feedLoading = props.feedLoading;
-  const profileStats = props.profileStats;
+  const { feedLoading, profileStats, saveContent } = props;
+
   return (
     <Row>
       <Col md="3" style={{ paddingRight: "0px" }}>
         {profileStats && <ProfileStats profileStats={profileStats} />}
       </Col>
       <Col md="6">
-        <AskQuestion />
+        <AskQuestion saveContent={saveContent} />
         {feedLoading ? (
           <div className="mt-3 mb-5">
             <ActivityIndicator className="element-center feed-activity-indicator" />
@@ -208,6 +216,7 @@ const Feed = (props) => {
   const [inviteModalShow, setInviteModalShow] = useState(false);
   const [activeSelector, setActiveSelector] = useState(0);
   const [filterIdx, setFilterIdx] = useState(0);
+  const [groupFilterStartIdx, setGroupFilterStartIdx] = useState(0);
   const [filters, setFilters] = useState([]);
   const [bannerTitle, setBannerTitle] = useState("");
   const [bannerImage, setBannerImage] = useState("");
@@ -226,7 +235,7 @@ const Feed = (props) => {
     changeDashboardFilter(filters[idx].slug, subSelectors[activeSelector].slug);
     changeDashboardHeader(idx);
     // rewrite the url
-    if (idx < 3) {
+    if (idx < groupFilterStartIdx) {
       window.history.pushState({}, filters[idx].name, "/feed");
       setIsGroup(false);
     } else {
@@ -247,6 +256,7 @@ const Feed = (props) => {
       { title: "All", slug: "my-network", enabled: true },
       { title: "My Peers", slug: "my-peers", enabled: true },
     ];
+    setGroupFilterStartIdx(newFilters.length);
     if (profileStats && profileStats.profile && profileStats.profile.groups) {
       newFilters = newFilters.concat(
         profileStats.profile.groups.map((group) => {
@@ -265,6 +275,7 @@ const Feed = (props) => {
       if (window.location.href.includes("/group/")) {
         let groupSlug = Util.parsePath(window.location.href).trailingPath;
         groupIdx = newFilters.findIndex((f) => f.slug === groupSlug);
+        setIsGroup(groupIdx > 0);
       }
       let idx = groupIdx > 0 ? groupIdx : filterIdx;
       setFilterIdx(idx);
@@ -311,6 +322,7 @@ const Feed = (props) => {
               {(isGroup || isTopic) && (
                 <TopBanner
                   title={bannerTitle}
+                  subtitle={"Workspace"}
                   image={bannerImage}
                   saveContent={props.saveContent}
                 />

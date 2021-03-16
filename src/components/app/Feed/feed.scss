@@ -154,7 +154,7 @@
   float: right;
   width: 130px;
   font-weight: 600;
-  color: #0073b1;
+  color: $brand;
 }
 
 .feed-category-box {
@@ -275,6 +275,10 @@
 .top-banner-container {
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+.top-banner-button {
+  min-width: 228px;
 }
 
 .feed-page-top-banner {

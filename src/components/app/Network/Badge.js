@@ -4,7 +4,6 @@ import { Button } from "react-bootstrap";
 const Badge = ({
   localConnectedUsers,
   feed,
-  invalidateFeed,
   connectUser,
   disconnectUser,
 }) => {
@@ -12,11 +11,9 @@ const Badge = ({
   const isConnected = feed.isConnected || isLocallyConnected;
 
   const handleConnectedButtonClick = () => {
-    invalidateFeed();
     disconnectUser(feed);
   };
   const handleConnectButtonClick = () => {
-    invalidateFeed();
     connectUser(feed);
   };
 
@@ -25,6 +22,7 @@ const Badge = ({
       <button
         className="btn connect-button"
         onClick={handleConnectedButtonClick}
+        type="button"
       >
         Connected
       </button>
@@ -41,7 +39,8 @@ const Badge = ({
 
   return (
     <div className="network--badge">
-      <Button className="btn-blue mb-2">+ Follow</Button>
+      {/* Disable following for now... */}
+      {/* <Button className="btn-blue mb-2">+ Follow</Button> */}
       {connect}
     </div>
   );
