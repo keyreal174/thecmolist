@@ -2,7 +2,7 @@ import React, { useState, useEffect, Suspense } from "react";
 import { Alert, Button, Container, Form, Row, Col } from "react-bootstrap";
 import { cdn } from "../../../util/constants";
 import Util from "../../../util/Util";
-import "./AddPeronModal.scss";
+import "./AddPersonModal.scss";
 import clsx from "clsx";
 
 const VendorType = ["Company", "Product", "Contractor"];
