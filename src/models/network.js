@@ -75,10 +75,10 @@ export default {
       const token = data.token;
       const currentFeed = oldState.feedData[filterKey];
       if (feedData != null && feedData.length > 0) {
-        currentFeed.moreData = true;
+        currentFeed.moreData = feedData.length > 5;
         currentFeed.token = token;
         currentFeed.data = currentFeed.data.concat(feedData);
-        newState.activeFeedHasMoreData = true;
+        newState.activeFeedHasMoreData = currentFeed.moreData;
       } else {
         currentFeed.moreData = false;
         newState.activeFeedHasMoreData = false;
