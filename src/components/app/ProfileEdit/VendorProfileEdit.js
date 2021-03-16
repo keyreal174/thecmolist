@@ -7,6 +7,8 @@ import Separator from "../base/Separator/Separator";
 import { Container, Button, Form, Row, Col } from "react-bootstrap";
 import { profileImage } from "../../util/constants";
 
+const VendorType = ["Company", "Product", "Contractor"];
+
 const getBase64 = (file) => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -19,13 +21,18 @@ const getBase64 = (file) => {
 const VendorProfileEdit = (props) => {
   const history = useHistory();
   const [companyName, setCompanyName] = useState("");
-  const [company, setCompany] = useState("");
+  const [companyLinkedin, setCompanyLinkedin] = useState("");
+  const [companyWebsite, setCompanyWebsite] = useState("");
+  const [productName, setProductName] = useState("");
+  const [productLinkedin, setProductLinkedin] = useState("");
+  const [productWebsite, setProductWebsite] = useState("");
+  const [contractorName, setContractorName] = useState("");
+  const [contractorLinkedin, setContractorLinkedin] = useState("");
+  const [contractorWebsite, setContractorWebsite] = useState("");
   const [city, setCity] = useState("");
   const [province, setProvince] = useState("");
   const [country, setCountry] = useState("");
-  const [linkedin, setLinkedin] = useState("");
   const [twitter, setTwitter] = useState("");
-  const [website, setWebsite] = useState("");
   const [headline, setHeadline] = useState("");
   const [image, setImage] = useState("");
   const [coverImage, setCoverImage] = useState("");
@@ -34,6 +41,7 @@ const VendorProfileEdit = (props) => {
   const [areasOfExpertise, setAreasOfExpertise] = useState("");
   const [companyIndustry, setCompanyIndustry] = useState("");
   const [now, setNow] = useState(50);
+  const [vendor_type, setVendorType] = useState(VendorType[0]);
   // props to control profile image
   const inputFile = useRef(null);
   const coverInputFile = useRef(null);
@@ -67,8 +75,15 @@ const VendorProfileEdit = (props) => {
     setCity(profile.city);
     setProvince(profile.state);
     setCountry(profile.country);
-    setLinkedin(profile.linkedin);
-    setWebsite(profile.website);
+    setCompanyName(profile.company);
+    setCompanyLinkedin(profile.companyLinkedin);
+    setCompanyWebsite(profile.companyWebsite);
+    setProductName(profile.product);
+    setProductLinkedin(profile.productLinkedin);
+    setProductWebsite(profile.productWebsite);
+    setContractorName(profile.contractor);
+    setContractorLinkedin(profile.contractorLinkedin);
+    setContractorWebsite(profile.contractorWebsite);
     setHeadline(profile.headline);
     setImage(profile.image);
     setCoverImage(profile.coverImage || profileImage);
@@ -97,20 +112,28 @@ const VendorProfileEdit = (props) => {
   const handleSubmit = async (e) => {
     const updated_profile = {
       ...props.profile,
-      companyName,
       city,
       state: province,
       country,
-      linkedin,
-      website,
+      company: companyName,
+      companyLinkedin,
+      companyWebsite,
+      product: productName,
+      productLinkedin,
+      productWebsite,
+      contractor: contractorName,
+      contractorLinkedin,
+      contractorWebsite,
       headline,
       coverImage,
       image,
       companyIndustry,
-      // about: {
-      //   areasOfExpertise: areasOfExpertise.split(", "),
-      // },
+      about: {
+        ...props?.profile?.about,
+        areasOfExpertise: areasOfExpertise.split(", "),
+      },
     };
+    console.log(areasOfExpertise);
     setNow(100);
     try {
       await props.saveProfile(updated_profile);
@@ -207,34 +230,125 @@ const VendorProfileEdit = (props) => {
             </div>
             <Row className="profile--row mt-5">
               <Col>
-                <Form.Label>Company name</Form.Label>
-                <Form.Control
-                  className="profile--input"
-                  placeholder=""
-                  value={companyName}
-                  onChange={(e) => setCompanyName(e.target.value)}
-                />
-              </Col>
-              <Col>
-                <Form.Label>LinkedIn URL</Form.Label>
-                <Form.Control
-                  className="profile--input"
-                  placeholder=""
-                  value={linkedin}
-                  onChange={(e) => setLinkedin(e.target.value)}
-                />
+                <Form.Label>Vendor</Form.Label>
+                <div className="vendor-profile-type-list">
+                  {VendorType.map((vendor, index) => {
+                    return (
+                      <Form.Check
+                        key={index}
+                        label={vendor}
+                        name="vendortype"
+                        value={vendor}
+                        id={vendor}
+                        checked={vendor === vendor_type}
+                        onChange={(e) => {
+                          setVendorType(e.target.value);
+                        }}
+                        type="radio"
+                      />
+                    );
+                  })}
+                </div>
               </Col>
             </Row>
             <Row className="profile--row">
-              <Col>
-                <Form.Label>Website</Form.Label>
-                <Form.Control
-                  className="profile--input"
-                  placeholder=""
-                  value={website}
-                  onChange={(e) => setWebsite(e.target.value)}
-                />
-              </Col>
+              {vendor_type === "Company" ? (
+                <>
+                  <Col>
+                    <Form.Label>Company name</Form.Label>
+                    <Form.Control
+                      className="profile--input"
+                      placeholder=""
+                      value={companyName}
+                      onChange={(e) => setCompanyName(e.target.value)}
+                    />
+                  </Col>
+                  <Col>
+                    <Form.Label>Company LinkedIn URL</Form.Label>
+                    <Form.Control
+                      className="profile--input"
+                      placeholder=""
+                      value={companyLinkedin}
+                      onChange={(e) => setCompanyLinkedin(e.target.value)}
+                    />
+                  </Col>
+                </>
+              ) : vendor_type === "Product" ? (
+                <>
+                  <Col>
+                    <Form.Label>Product name</Form.Label>
+                    <Form.Control
+                      className="profile--input"
+                      placeholder=""
+                      value={productName}
+                      onChange={(e) => setProductName(e.target.value)}
+                    />
+                  </Col>
+                  <Col>
+                    <Form.Label>Product LinkedIn URL</Form.Label>
+                    <Form.Control
+                      className="profile--input"
+                      placeholder=""
+                      value={productLinkedin}
+                      onChange={(e) => setProductLinkedin(e.target.value)}
+                    />
+                  </Col>
+                </>
+              ) : (
+                <>
+                  <Col>
+                    <Form.Label>Contractor name</Form.Label>
+                    <Form.Control
+                      className="profile--input"
+                      placeholder=""
+                      value={contractorName}
+                      onChange={(e) => setContractorName(e.target.value)}
+                    />
+                  </Col>
+                  <Col>
+                    <Form.Label>Contractor LinkedIn URL</Form.Label>
+                    <Form.Control
+                      className="profile--input"
+                      placeholder=""
+                      value={contractorLinkedin}
+                      onChange={(e) => setContractorLinkedin(e.target.value)}
+                    />
+                  </Col>
+                </>
+              )}
+            </Row>
+            <Row className="profile--row">
+              {vendor_type === "Company" ? (
+                <Col>
+                  <Form.Label>Company Website</Form.Label>
+                  <Form.Control
+                    className="profile--input"
+                    placeholder=""
+                    value={companyWebsite}
+                    onChange={(e) => setCompanyWebsite(e.target.value)}
+                  />
+                </Col>
+              ) : vendor_type === "Product" ? (
+                <Col>
+                  <Form.Label>Product Website</Form.Label>
+                  <Form.Control
+                    className="profile--input"
+                    placeholder=""
+                    value={productWebsite}
+                    onChange={(e) => setProductWebsite(e.target.value)}
+                  />
+                </Col>
+              ) : (
+                <Col>
+                  <Form.Label>Contractor Website</Form.Label>
+                  <Form.Control
+                    className="profile--input"
+                    placeholder=""
+                    value={contractorWebsite}
+                    onChange={(e) => setContractorWebsite(e.target.value)}
+                  />
+                </Col>
+              )}
               <Col>
                 <Form.Label>Twitter</Form.Label>
                 <Form.Control

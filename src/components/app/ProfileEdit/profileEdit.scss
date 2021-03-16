@@ -86,3 +86,12 @@
     font-weight: 500;
   }
 }
+
+.vendor-profile-type-list {
+  display: flex;
+  margin-bottom: 25px;
+
+  .form-check + .form-check {
+    margin-left: 20px;
+  }
+}
