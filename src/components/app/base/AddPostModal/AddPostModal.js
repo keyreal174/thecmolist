@@ -18,6 +18,7 @@ import clsx from "clsx";
 import { cdn } from "../../../util/constants";
 import "./addPostModal.scss";
 import AddPersonModal from "../AddPersonModal/AddPersonModal";
+import CustomCheckBox from "../CustomCheckBox/CustomCheckBox";
 const DraftEditor = React.lazy(() => import("../DraftEditor/DraftEditor"));
 
 function AddPostModal({
@@ -36,6 +37,7 @@ function AddPostModal({
   const [error, setError] = useState("");
   const [groups, setGroups] = useState({});
   const [onlyMyNetwork, setOnlyMyNetwork] = useState(true);
+  const [publicV, setPublicV] = useState(false);
   const [person, setPerson] = useState("");
   const [photo, setPhoto] = useState("");
   const [role, setRole] = useState("");
@@ -84,6 +86,7 @@ function AddPostModal({
       contentType,
       allMembers,
       onlyMyNetwork,
+      publicV,
       groups,
       title,
       body,
@@ -137,6 +140,7 @@ function AddPostModal({
     setRole("");
     setAllMembers(false);
     setOnlyMyNetwork(true);
+    setPublicV(false);
     setShowPersonSection(false);
     setShowPhoto(false);
     setShowVideo(false);
@@ -273,35 +277,70 @@ function AddPostModal({
                   <div className="modal-section-title">
                     Share this post with
                   </div>
-                  <Form.Check
-                    className="modal-section-radio-content"
-                    name="members"
-                    id="allCMOlist"
-                    label="All CMOlist members"
-                    type="radio"
-                    checked={allMembers}
-                    onClick={() => {
-                      setAllMembers(true);
-                      setOnlyMyNetwork(false);
-                    }}
-                  />
-                  <Form.Check
-                    className="modal-section-radio-content"
-                    name="members"
-                    id="onlyMyNetwork"
-                    label="Only my networks"
-                    type="radio"
-                    checked={onlyMyNetwork}
-                    onClick={() => {
-                      setOnlyMyNetwork(true);
-                      setAllMembers(false);
-                    }}
-                  />
-                  <div style={{ display: "flex", marginBottom: "10px" }}>
+                  <div className="share-group-checkbox">
+                    <Form.Check
+                      name="members"
+                      id="public"
+                      type="radio"
+                      checked={publicV}
+                      onClick={() => {
+                        setPublicV(true);
+                        setAllMembers(false);
+                        setOnlyMyNetwork(false);
+                      }}
+                    />
+                    <label htmlFor="public">
+                      Public
+                      <span>(visible to all CMO list members)</span>
+                    </label>
+                  </div>
+                  <div className="share-group-checkbox">
+                    <Form.Check
+                      name="members"
+                      id="allnetwork"
+                      type="radio"
+                      checked={allMembers}
+                      onClick={() => {
+                        setPublicV(false);
+                        setAllMembers(true);
+                        setOnlyMyNetwork(false);
+                      }}
+                    />
+                    <label htmlFor="allnetwork">
+                      All networks
+                      <span>
+                        (visible to your Peers and all member any network you
+                        belong to)
+                      </span>
+                    </label>
+                  </div>
+                  <div className="share-group-checkbox">
+                    <Form.Check
+                      name="members"
+                      id="selectnetwork"
+                      type="radio"
+                      checked={onlyMyNetwork}
+                      onClick={() => {
+                        setPublicV(false);
+                        setAllMembers(false);
+                        setOnlyMyNetwork(true);
+                      }}
+                    />
+                    <label htmlFor="selectnetwork">
+                      Select networks
+                      <span>
+                        (visible only to members of selected networks)
+                      </span>
+                    </label>
+                  </div>
+                  <div
+                    className="network-checkbox-group"
+                    style={{ display: "flex", marginBottom: "10px" }}
+                  >
                     {groups &&
                       Object.keys(groups).map((groupKey, index) => {
                         return (
-                          <Form.Check
+                          <CustomCheckBox
                             className="modal-section-checkbox-content"
                             defaultChecked={groups[groupKey]}
                             disabled={allMembers}
