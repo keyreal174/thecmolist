@@ -29,7 +29,7 @@ const TopicColumn = ({ topic, followTopic }) => {
       <div>
         {topic.followed ? (
           <Button
-            className="btn-white modal-primary-button btn_followed"
+            className="btn-blue modal-primary-button btn_followed"
             variant="outline-primary"
             onClick={() => followTopic(topic.id)}
           >
