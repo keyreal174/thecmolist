@@ -1,12 +1,12 @@
-import { Button, Form } from "react-bootstrap";
 import React, { useState, useEffect, useRef } from "react";
-import { connect } from "react-redux";
-import clsx from "clsx";
-
 import PersonHeader from "../PersonHeader/PersonHeader";
+import RichEditor from "../DraftEditor/RichEditor";
+import clsx from "clsx";
+import { Button, Form } from "react-bootstrap";
+import { connect } from "react-redux";
+import { cdn } from "../../../util/constants";
 
 import "./discussionComment.scss";
-import RichEditor from "../DraftEditor/RichEditor";
 
 const DiscussionComment = ({
   className,
@@ -23,6 +23,7 @@ const DiscussionComment = ({
   const [comment, setComment] = useState(value || "");
   const [show, setShow] = useState("");
   const [body, setBody] = useState("");
+  const [isPersonVendor, setIsPersonVendor] = useState(false);
   const textAreaEl = useRef(null);
 
   const handleButtonClick = (e) => {
@@ -42,9 +43,14 @@ const DiscussionComment = ({
     }
   }, []);
 
-  const handleChange = (content) => {
+  const handleChange = () => {
     setShow(!!body);
   };
+
+  const handlePersonVendor = () => {
+    setIsPersonVendor(true);
+  };
+
   return (
     <div
       className={clsx(
@@ -79,12 +85,46 @@ const DiscussionComment = ({
       {useRichEditor && (
         <div className="comment--rich-editor">
           <RichEditor
-            setBody={setBody}
             getSuggestions={getSuggestions}
             getTopicSuggestions={getTopicSuggestions}
-            toolbar={true}
             handleChange={handleChange}
+            isPersonVendor={isPersonVendor}
+            setBody={setBody}
+            setIsPersonVendor={() => setIsPersonVendor(false)}
+            toolbar={true}
           />
+          <div className="comment--buttons">
+            <Button
+              className="modal-section-body-content"
+              onClick={() => handlePersonVendor("Vendor")}
+              size="sm"
+              variant="light"
+            >
+              <div>
+                <img
+                  alt="company icon"
+                  className="modal-section-body-image"
+                  src={`${cdn}/company.png`}
+                />
+                @Vendor
+              </div>
+            </Button>
+            <Button
+              className="modal-section-body-content"
+              onClick={() => handlePersonVendor("Person")}
+              size="sm"
+              variant="light"
+            >
+              <div>
+                <img
+                  alt="person icon"
+                  className="modal-section-body-image"
+                  src={`${cdn}/person.png`}
+                />
+                @Person
+              </div>
+            </Button>
+          </div>
         </div>
       )}
       {
