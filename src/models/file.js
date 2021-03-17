@@ -27,8 +27,8 @@ export default {
     async uploadImageFile(file, rootState) {
       try {
         const response = await getimageUploadUrlRequest(file.name, file.type);
-        await uploadImageRequest(file, response.signedRequest);
-        return response.url;
+        await uploadImageRequest(file, response.data.signedRequest);
+        return response.data.url;
       } catch (e) {
         console.log("Error uploading file: " + file);
         console.log(e);
