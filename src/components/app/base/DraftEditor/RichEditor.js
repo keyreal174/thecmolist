@@ -3,10 +3,11 @@ import PropTypes from "prop-types";
 const DraftEditor = React.lazy(() => import("./DraftEditor"));
 
 const RichEditor = ({
-  setBody,
   getSuggestions,
   getTopicSuggestions,
+  handleChange,
   isPersonVendor,
+  setBody,
   setIsPersonVendor,
   toolbar,
   ...rest
@@ -15,10 +16,11 @@ const RichEditor = ({
     <div>
       <Suspense fallback={<div>Loading...</div>}>
         <DraftEditor
-          setBody={setBody}
           getSuggestions={getSuggestions}
           getTopicSuggestions={getTopicSuggestions}
+          handleChange={handleChange}
           isPersonVendor={isPersonVendor}
+          setBody={setBody}
           setIsPersonVendor={() => setIsPersonVendor(false)}
           toolbar={toolbar}
           {...rest}

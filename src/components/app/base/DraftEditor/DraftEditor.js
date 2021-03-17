@@ -55,6 +55,7 @@ const DraftEditor = ({
   isPersonVendor,
   setIsPersonVendor,
   toolbar,
+  handleChange,
   ...rest
 }) => {
   const ref = useRef(null);
@@ -162,6 +163,11 @@ const DraftEditor = ({
       return entity;
     };
     const content = stateToMarkdown(contentStateDerived);
+
+    if (handleChange) {
+      handleChange(content);
+    }
+
     setBody({
       markdown: content,
       entityMap: entityMap,
