@@ -30,6 +30,7 @@ import "@draft-js-plugins/static-toolbar/lib/plugin.css";
 import { stateToMarkdown } from "draft-js-export-markdown";
 import clsx from "clsx";
 import "./DraftEditor.scss";
+import AddPersonModal from "../AddPersonModal/AddPersonModal";
 
 const staticToolbarPlugin = createToolbarPlugin();
 const { Toolbar } = staticToolbarPlugin;
@@ -51,11 +52,10 @@ const DraftEditor = ({
   getSuggestions,
   getTopicSuggestions,
   setBody,
-  setShowPersonModal,
-  showPersonModal,
-  mention,
   isPersonVendor,
   setIsPersonVendor,
+  toolbar,
+  ...rest
 }) => {
   const ref = useRef(null);
   const [editorState, setEditorState] = useState(() =>
@@ -65,6 +65,7 @@ const DraftEditor = ({
   const [show, setShow] = useState(false);
   const [suggestions, setSuggestions] = useState([]);
   const [selectedMention, setSelectedMention] = useState("");
+  const [mention, setMention] = useState(null);
   const [isSharp, setIsSharp] = useState(false);
 
   const { MentionSuggestions, plugins } = useMemo(() => {
@@ -291,10 +292,10 @@ const DraftEditor = ({
   };
 
   useEffect(() => {
-    if (!showPersonModal) {
+    if (!show) {
       handleAddPeople(mention);
     }
-  }, [showPersonModal]);
+  }, [show]);
 
   useEffect(() => {
     if (isPersonVendor) {
@@ -303,58 +304,68 @@ const DraftEditor = ({
   }, [isPersonVendor]);
 
   return (
-    <div
-      className="editor"
-      onClick={() => {
-        if (ref.current) {
-          ref.current.focus();
-        }
-      }}
-    >
+    <div {...rest}>
       <div
-        className={clsx(
-          "editor-wrapper",
-          isSharp && "editor-wrapper-add-mention"
-        )}
+        className="editor"
+        onClick={() => {
+          if (ref.current) {
+            ref.current.focus();
+          }
+        }}
       >
-        <Editor
-          editorKey={"editor"}
-          editorState={editorState}
-          onChange={onChange}
-          plugins={plugins}
-          ref={ref}
-        />
-        <div className="editor-toolbar">
-          <Toolbar>
-            {
-              // may be use React.Fragment instead of div to improve perfomance after React 16
-              (externalProps) => (
-                <div>
-                  <BoldButton {...externalProps} />
-                  <ItalicButton {...externalProps} />
-                  {/* <UnderlineButton {...externalProps} /> */}
-                  <UnorderedListButton {...externalProps} />
-                  <OrderedListButton {...externalProps} />
-                </div>
-              )
-            }
-          </Toolbar>
+        <div
+          className={clsx(
+            "editor-wrapper",
+            isSharp && "editor-wrapper-add-mention"
+          )}
+        >
+          <Editor
+            editorKey={"editor"}
+            editorState={editorState}
+            onChange={onChange}
+            plugins={plugins}
+            ref={ref}
+          />
+          {toolbar && (
+            <div className="editor-toolbar">
+              <Toolbar>
+                {
+                  // may be use React.Fragment instead of div to improve perfomance after React 16
+                  (externalProps) => (
+                    <div>
+                      <BoldButton {...externalProps} />
+                      <ItalicButton {...externalProps} />
+                      {/* <UnderlineButton {...externalProps} /> */}
+                      <UnorderedListButton {...externalProps} />
+                      <OrderedListButton {...externalProps} />
+                    </div>
+                  )
+                }
+              </Toolbar>
+            </div>
+          )}
+          <MentionSuggestions
+            open={open}
+            onOpenChange={onOpenChange}
+            suggestions={suggestions}
+            onSearchChange={onSearchChange}
+            onAddMention={(mention) => {
+              if (MentionLast.find((item) => item.name === mention.name)) {
+                setSelectedMention(mention.name);
+                setShow(
+                  mention.name === MentionLast[0].name ? "Person" : "Vendor"
+                );
+              }
+            }}
+          />
         </div>
-        <MentionSuggestions
-          open={open}
-          onOpenChange={onOpenChange}
-          suggestions={suggestions}
-          onSearchChange={onSearchChange}
-          onAddMention={(mention) => {
-            if (MentionLast.find((item) => item.name === mention.name)) {
-              setSelectedMention(mention.name);
-              setShowPersonModal(
-                mention.name === MentionLast[0].name ? "Person" : "Vendor"
-              );
-            }
-          }}
-        />
       </div>
+      <AddPersonModal
+        show={show}
+        handleClose={() => setShow(false)}
+        setMention={(mention) => setMention(mention)}
+      />
+      <div className={clsx(show && "person-modal-backdrop")}></div>
     </div>
   );
 };
