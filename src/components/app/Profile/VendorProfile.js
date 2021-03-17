@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { Link } from "react-router-dom";
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import ShowMoreText from "react-show-more-text";
 import CustomCard from "../base/CustomCard/CustomCard";
@@ -10,10 +9,7 @@ import Header from "../base/Header/Header";
 import Filter from "../base/Filter/Filter";
 import Article from "../base/Article/Article";
 import Footer from "../base/Footer/Footer";
-import DeletePost from "./DeletePost";
-import FollowUserModal from "./FollowUser";
 import Util from "../../util/Util";
-import Analytics from "../../util/Analytics";
 import {
   getCheckedForEngagementType,
   getEngagementForId,
@@ -140,8 +136,6 @@ const ProfileOverview = ({
   profileCompany,
   profileFollowers,
   isMyProfile,
-  followedUser,
-  toggleFollowModal,
 }) => {
   const history = useHistory();
   return (
@@ -188,7 +182,13 @@ const ProfileOverview = ({
             <Button
               className="btn-white edit-profile"
               variant="outline-primary"
-              onClick={() => history.push("/profile_edit")}
+              onClick={() =>
+                history.push(
+                  `/profile_edit/${
+                    Util.parsePath(window.location.href).trailingPath
+                  }`
+                )
+              }
             >
               Edit Profile
             </Button>
@@ -197,17 +197,19 @@ const ProfileOverview = ({
           <React.Fragment>
             {profileFirstName && (
               <div className="btn-wrapper d-flex">
-                {!followedUser ? (
-                  <Button
-                    className="btn-white edit-profile"
-                    variant="primary"
-                    onClick={() => toggleFollowModal()}
-                  >
-                    + Follow
-                  </Button>
-                ) : (
-                  <span className="profile-connected-label mb-2">Followed</span>
-                )}
+                <Button
+                  className="btn-white edit-profile"
+                  variant="primary"
+                  onClick={() =>
+                    history.push(
+                      `/vendor_edit/${
+                        Util.parsePath(window.location.href).trailingPath
+                      }`
+                    )
+                  }
+                >
+                  Edit
+                </Button>
                 <Button
                   className="edit-profile edit-profile-more"
                   variant="outline-secondary"
@@ -258,7 +260,7 @@ const VendorProfile = (props) => {
 
   useEffect(() => {
     document.title = "Profile";
-    props.fetchProfile(Util.parsePath(window.location.href).trailingPath);
+    props.fetchVendor(Util.parsePath(window.location.href).trailingPath);
   }, []);
 
   useEffect(() => {
@@ -331,23 +333,6 @@ const VendorProfile = (props) => {
     let prevFeedFilter = prevFeedData[filterIdx].subfilter;
     prevFeedData[filterIdx].subfilter = key === prevFeedFilter ? "" : key;
     setFeedData(prevFeedData);
-  };
-
-  const followUser = async (payload) => {
-    let userName = Util.parsePath(window.location.href).trailingPath;
-    Analytics.sendClickEvent(`Followed user ${userName} from profile page`);
-    try {
-      await props.followUser(payload);
-      setEnableAnimations(false);
-      setFollowedUser(true);
-    } catch (err) {
-      console.log(`An error occurred connecting with user: ${userName}`);
-      console.log(err);
-    }
-  };
-
-  const toggleFollowModal = () => {
-    setShowFollowModal((value) => !value);
   };
 
   useEffect(() => {
@@ -431,7 +416,6 @@ const VendorProfile = (props) => {
               profileFollowers={profileFollowers}
               isMyProfile={isMyProfile}
               followedUser={followedUser}
-              toggleFollowModal={toggleFollowModal}
             />
             <ProfileIntro
               profileCity={profileCity}
@@ -572,7 +556,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    fetchProfile: dispatch.vendorModel.fetchProfile,
+    fetchVendor: dispatch.vendorModel.fetchVendor,
     changeReaction: dispatch.reactionModel.changeReaction,
   };
 };

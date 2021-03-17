@@ -223,7 +223,6 @@ class App extends React.Component {
             }
           />
           <Route
-            exact
             path="/vendor_edit"
             render={(props) =>
               this.state.authed ? (

@@ -5,7 +5,7 @@ import clsx from "clsx";
 import Tick from "../icons/tick.svg";
 import "./CustomCheckBox.scss";
 
-const CustomCheckBox = ({ checked, label }) => {
+const CustomCheckBox = ({ onChange, checked, label, useCheckedStyling }) => {
   return (
     <Checkbox
       icon={
@@ -26,12 +26,13 @@ const CustomCheckBox = ({ checked, label }) => {
       }
       name="my-input"
       checked={checked}
-      onChange={(value) => {
-        console.log(value);
-      }}
+      onChange={onChange}
       borderColor="#9597AE"
       containerClassName="custom-checkbox"
-      labelClassName={clsx("custom-checkbox-label", checked && "checked")}
+      labelClassName={clsx(
+        "custom-checkbox-label",
+        checked && useCheckedStyling && "checked"
+      )}
       label={label}
     />
   );

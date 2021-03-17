@@ -10,7 +10,11 @@ const BuildYourNetwork = ({ buildYourNetworkItems }) => {
           buildYourNetworkItems.map((item, index) => {
             return (
               <div key={index}>
-                <CustomCheckBox checked={item.checked} label={item.content} />
+                <CustomCheckBox
+                  checked={item.checked}
+                  label={item.content}
+                  useCheckedStyling
+                />
               </div>
             );
           })}

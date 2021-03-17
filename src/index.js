@@ -20,6 +20,7 @@ import topicsModel from "./models/topics";
 import searchModel from "./models/search";
 import vendorModel from "./models/vendor";
 import vendorsModel from "./models/vendors";
+import fileModel from "./models/file";
 import suggestionsModel from "./models/suggestions";
 
 const store = init({
@@ -38,6 +39,7 @@ const store = init({
     vendorModel,
     vendorsModel,
     suggestionsModel,
+    fileModel,
   },
 });
 

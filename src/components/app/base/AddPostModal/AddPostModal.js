@@ -304,6 +304,15 @@ function AddPostModal({
                         setPublicV(false);
                         setAllMembers(true);
                         setOnlyMyNetwork(false);
+                        // set all groups to true
+                        if (groups) {
+                          let newGroups = { ...groups };
+                          let groupKeys = Object.keys(groups);
+                          groupKeys.forEach((name) => {
+                            newGroups[name] = true;
+                          });
+                          setGroups(newGroups);
+                        }
                       }}
                     />
                     <label htmlFor="allnetwork">
@@ -342,7 +351,7 @@ function AddPostModal({
                         return (
                           <CustomCheckBox
                             className="modal-section-checkbox-content"
-                            defaultChecked={groups[groupKey]}
+                            checked={groups[groupKey]}
                             disabled={allMembers}
                             id={groupKey}
                             key={index}
@@ -351,7 +360,7 @@ function AddPostModal({
                             onChange={(e) => {
                               setGroups({
                                 ...groups,
-                                [groupKey]: e.target.checked,
+                                [groupKey]: e,
                               });
                             }}
                             type="checkbox"

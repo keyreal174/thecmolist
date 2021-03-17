@@ -6,6 +6,7 @@ import Footer from "../base/Footer/Footer";
 import Separator from "../base/Separator/Separator";
 import { Container, Button, Form, Row, Col } from "react-bootstrap";
 import { profileImage } from "../../util/constants";
+import Util from "../../util/Util";
 
 const VendorType = ["Company", "Product", "Contractor"];
 
@@ -49,7 +50,7 @@ const VendorProfileEdit = (props) => {
   const onInputFileChange = async (event) => {
     if (event && event.target && event.target.files.length > 0) {
       setImageUploading(true);
-      const url = await getBase64(event.target.files[0]);
+      const url = await props.uploadImageFile(event.target.files[0]);
       setImage(url);
       setImageUploading(false);
     }
@@ -65,7 +66,9 @@ const VendorProfileEdit = (props) => {
   };
   useEffect(() => {
     const fetch = async () => {
-      await props.fetchProfile();
+      await props.fetchVendor(
+        Util.parsePath(window.location.href).trailingPath
+      );
     };
 
     fetch();
@@ -107,6 +110,7 @@ const VendorProfileEdit = (props) => {
     setProfileInfo(props.profile);
     setImageUploading(false);
     setCoverImageUploading(false);
+    window.history.back();
   };
 
   const handleSubmit = async (e) => {
@@ -466,8 +470,9 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    fetchProfile: dispatch.vendorModel.fetchProfile,
-    saveProfile: dispatch.vendorModel.saveProfile,
+    fetchVendor: dispatch.vendorModel.fetchVendor,
+    saveVendor: dispatch.vendorModel.saveVendor,
+    uploadImageFile: dispatch.fileModel.uploadImageFile,
   };
 };
 

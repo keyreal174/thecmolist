@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export const vendorProfileRequest = (userName) => {
-  return axios.get(`/api/vendor/${userName ? userName : ""}`, {
+export const vendorProfileRequest = (vendorSlug) => {
+  return axios.get(`/api/vendor/${vendorSlug ? vendorSlug : ""}`, {
     headers: {
       "timezone-offset": new Date().getTimezoneOffset(),
     },
@@ -26,9 +26,9 @@ export default {
     },
   },
   effects: (dispatch) => ({
-    async fetchProfile(userName) {
+    async fetchVendor(vendorSlug) {
       try {
-        const response = await vendorProfileRequest(userName);
+        const response = await vendorProfileRequest(vendorSlug);
         const { profile } = response.data;
         dispatch.vendorModel.updateProfile(profile);
         dispatch.reactionModel.setReactions(profile.feedData);
@@ -36,7 +36,7 @@ export default {
         throw new Error("Could not get profile");
       }
     },
-    async saveProfile(profile) {
+    async saveVendor(profile) {
       try {
         await saveVendorProfileRequest({ profile });
         dispatch.vendorModel.updateProfile(profile);

@@ -11,24 +11,31 @@ function AddPersonModal({ show, handleClose, setMention }) {
   const [name, setName] = useState("");
   const [link, setLink] = useState("");
   const [error, setError] = useState({});
-  const [vendor_type, setVendorType] = useState(VendorType[0]);
+  const [vendorType, setVendorType] = useState(VendorType[0]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!name) error["name"] = "Name is required";
-    else delete error["name"];
+    if (!name) {
+      error["name"] = "Name is required";
+    } else {
+      delete error["name"];
+    }
 
-    if (!link) error["link"] = "URL is required";
-    else if (!Util.validURL(link)) error["link"] = "URL is not valid";
-    else delete error["link"];
+    if (!link) {
+      error["link"] = "URL is required";
+    } else if (!Util.validURL(link)) {
+      error["link"] = "URL is not valid";
+    } else {
+      delete error["link"];
+    }
     setError({ ...error });
 
     if (Object.keys(error).length === 0) {
       const person = {
         name,
         link,
-        type: vendor_type,
+        type: vendorType.toLocaleLowerCase(),
       };
       setMention(person);
       reset();
@@ -67,7 +74,7 @@ function AddPersonModal({ show, handleClose, setMention }) {
                       <div className="vendor-type-list">
                         <label>Vendor</label>
                         <div>
-                          {show !== "People" &&
+                          {!isPerson &&
                             VendorType.map((vendor, index) => {
                               return (
                                 <Form.Check

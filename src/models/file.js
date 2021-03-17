@@ -23,5 +23,17 @@ export default {
       };
     },
   },
-  effects: (dispatch) => ({}),
+  effects: (dispatch) => ({
+    async uploadImageFile(file, rootState) {
+      try {
+        const response = await getimageUploadUrlRequest(file.name, file.type);
+        await uploadImageRequest(file, response.signedRequest);
+        return response.url;
+      } catch (e) {
+        console.log("Error uploading file: " + file);
+        console.log(e);
+        throw e;
+      }
+    },
+  }),
 };

@@ -141,7 +141,9 @@ const DraftEditor = ({
               }`;
               break;
             case "newperson":
-            case "newvendor":
+            case "newcompany":
+            case "newproduct":
+            case "newcontractor":
               entityUrl = ensureLink(entityData.mention.link);
               break;
             default:
