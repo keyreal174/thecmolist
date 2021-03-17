@@ -71,11 +71,11 @@ function AddPersonModal({ show, handleClose, setMention }) {
                 <Row>
                   <Col md="12">
                     <div>
-                      <div className="vendor-type-list">
-                        <label>Vendor</label>
-                        <div>
-                          {!isPerson &&
-                            VendorType.map((vendor, index) => {
+                      {!isPerson && (
+                        <div className="vendor-type-list">
+                          <label>Vendor</label>
+                          <div>
+                            {VendorType.map((vendor, index) => {
                               return (
                                 <Form.Check
                                   key={index}
@@ -90,8 +90,9 @@ function AddPersonModal({ show, handleClose, setMention }) {
                                 />
                               );
                             })}
+                          </div>
                         </div>
-                      </div>
+                      )}
                       <div className="person-section">
                         <label>
                           {isPerson
