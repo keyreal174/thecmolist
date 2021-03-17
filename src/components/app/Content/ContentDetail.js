@@ -223,6 +223,7 @@ const ContentDetail = ({
                     : "Answer this question..."
                 }
                 onSubmit={handleSubmit}
+                useRichEditor={true}
               />
             </div>
           )}
