@@ -1,6 +1,6 @@
 import React from "react";
 import Article from "../base/Article/Article";
-import Badge from "./Badge";
+import Badge from "../base/Badge/Badge";
 import "./network.scss";
 
 const NetworkFeed = ({

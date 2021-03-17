@@ -1,12 +1,7 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import "./badge.scss";
 
-const Badge = ({
-  localConnectedUsers,
-  feed,
-  connectUser,
-  disconnectUser,
-}) => {
+const Badge = ({ localConnectedUsers, feed, connectUser, disconnectUser }) => {
   const isLocallyConnected = localConnectedUsers.includes(feed.username);
   const isConnected = feed.isConnected || isLocallyConnected;
 
@@ -38,7 +33,7 @@ const Badge = ({
   ) : null;
 
   return (
-    <div className="network--badge">
+    <div className="badge">
       {/* Disable following for now... */}
       {/* <Button className="btn-blue mb-2">+ Follow</Button> */}
       {connect}
