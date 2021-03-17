@@ -203,9 +203,10 @@ function Article(props) {
           {props.showDiscussionComment && (
             <DiscussionComment
               focusComment={props.focusComment}
+              onSubmit={props.handleDiscussionCommentSubmit}
               placeholder={props.discussionCommentPlaceholder}
               profile={props.profile}
-              onSubmit={props.handleDiscussionCommentSubmit}
+              useRichEditor={props.useRichEditor}
             />
           )}
         </div>

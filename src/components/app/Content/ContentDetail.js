@@ -125,6 +125,7 @@ const ContentDetail = ({
           showDiscussionComment={true}
           discussionCommentAuthor={author}
           profile={profileStats.profile}
+          useRichEditor={true}
           discussionCommentPlaceholder={
             author && author.length > 0
               ? `Answer ${author}'s question...`
