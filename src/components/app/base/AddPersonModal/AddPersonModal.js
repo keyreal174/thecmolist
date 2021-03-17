@@ -96,7 +96,7 @@ function AddPersonModal({ show, handleClose, setMention }) {
                         <label>
                           {isPerson
                             ? "Please enter the person's full name"
-                            : "Please enter the vendor's name"}
+                            : vendorType + " name"}
                         </label>
                         <Form.Control
                           as="input"
@@ -112,7 +112,11 @@ function AddPersonModal({ show, handleClose, setMention }) {
                       </div>
                       <div className="person-section">
                         <label>
-                          {isPerson ? "Person's Linkedin URL" : "Vendor URL"}
+                          {isPerson
+                            ? "Person's Linkedin URL"
+                            : vendorType === "Contractor"
+                            ? "Linkedin URL"
+                            : vendorType + " URL"}
                         </label>
                         <Form.Control
                           as="input"

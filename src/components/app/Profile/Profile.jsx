@@ -233,10 +233,7 @@ const Profile = (props) => {
     }
   }, [feedData]);
 
-  const profileData = {
-    university: "Cambridge International",
-    followers: "657",
-  };
+  const profileData = {};
 
   const handleEngagementButtonClick = async (caller, engagementType) => {
     const id = caller["content_id"];

@@ -155,7 +155,7 @@ function Homepage() {
                   <Form.Label className="home--label">LinkedIn</Form.Label>
                   <Form.Control
                     className="home--input"
-                    placeHolder="https://linkedin/.com/in/linkedinID"
+                    placeHolder="https://linkedin.com/in/linkedinID"
                     required={true}
                     id="linkedIn"
                   />

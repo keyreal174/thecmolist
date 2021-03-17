@@ -289,7 +289,7 @@ const VendorProfileEdit = (props) => {
                     />
                   </Col>
                   <Col>
-                    <Form.Label>Product LinkedIn URL</Form.Label>
+                    <Form.Label>Company LinkedIn URL</Form.Label>
                     <Form.Control
                       className="profile--input"
                       placeholder=""
