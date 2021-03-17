@@ -15,7 +15,7 @@ const Badge = ({ localConnectedUsers, feed, connectUser, disconnectUser }) => {
   const connect = !feed.disableConnect ? (
     isConnected ? (
       <button
-        className="btn connect-button"
+        className="btn badge--connect-button"
         onClick={handleConnectedButtonClick}
         type="button"
       >
@@ -23,7 +23,7 @@ const Badge = ({ localConnectedUsers, feed, connectUser, disconnectUser }) => {
       </button>
     ) : (
       <button
-        className="btn connect-button"
+        className="btn badge--connect-button"
         type="button"
         onClick={handleConnectButtonClick}
       >
