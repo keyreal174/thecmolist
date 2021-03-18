@@ -17,9 +17,8 @@ import {
 import clsx from "clsx";
 import { cdn } from "../../../util/constants";
 import "./addPostModal.scss";
-import AddPersonModal from "../AddPersonModal/AddPersonModal";
 import CustomCheckBox from "../CustomCheckBox/CustomCheckBox";
-const DraftEditor = React.lazy(() => import("../DraftEditor/DraftEditor"));
+import RichEditor from "../DraftEditor/RichEditor";
 
 function AddPostModal({
   contentType,
@@ -50,8 +49,6 @@ function AddPostModal({
   const [modalTitle, setModalTitle] = useState("Ask a marketing question");
   const [secondButtonText, setSecondButtonText] = useState("Ask a question");
   const [isLoading, setIsLoading] = useState(false);
-  const [showPersonModal, setShowPersonModal] = useState(false);
-  const [mention, setMention] = useState(null);
   const [isPersonVendor, setIsPersonVendor] = useState(false);
 
   // Typeahead values for #topic
@@ -385,22 +382,14 @@ function AddPostModal({
                 </Col>
                 <Col md="9">
                   <div className="modal-section-title">Body</div>
-                  <div>
-                    <Suspense fallback={<div>Loading...</div>}>
-                      <DraftEditor
-                        setBody={setBody}
-                        getSuggestions={getSuggestions}
-                        getTopicSuggestions={getTopicSuggestions}
-                        setShowPersonModal={(type) => {
-                          setShowPersonModal(type);
-                        }}
-                        showPersonModal={showPersonModal}
-                        mention={mention}
-                        isPersonVendor={isPersonVendor}
-                        setIsPersonVendor={() => setIsPersonVendor(false)}
-                      />
-                    </Suspense>
-                  </div>
+                  <RichEditor
+                    setBody={setBody}
+                    getSuggestions={getSuggestions}
+                    getTopicSuggestions={getTopicSuggestions}
+                    isPersonVendor={isPersonVendor}
+                    setIsPersonVendor={() => setIsPersonVendor(false)}
+                    toolbar={true}
+                  />
                 </Col>
                 <Col md="3">
                   <ul className="modal-section-body-right-content">
@@ -602,12 +591,6 @@ function AddPostModal({
             {secondButtonText}
           </Button>
         </Modal.Footer>
-        <AddPersonModal
-          show={showPersonModal}
-          handleClose={() => setShowPersonModal(false)}
-          setMention={(mention) => setMention(mention)}
-        />
-        <div className={clsx(showPersonModal && "person-modal-backdrop")}></div>
       </Modal>
     </>
   );
