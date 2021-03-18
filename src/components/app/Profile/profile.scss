@@ -406,11 +406,15 @@
   }
   &--item {
     margin-bottom: 20px;
+    padding-left: 40px;
+    position: relative;
+
     &-img {
+      position: absolute;
       width: 18px;
       height: 18px;
-      margin-right: 10px;
-      margin-left: 20px;
+      left: 10px;
+      top: 4px;
     }
   }
   &--email {
