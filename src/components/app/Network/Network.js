@@ -121,7 +121,7 @@ const Network = (props) => {
         <div className="wrapper">
           <Header />
           <SimpleTopBanner
-            buttonText="Invite"
+            // disable for now... buttonText="Invite"
             onClick={handleInviteModalClick}
             title={bannerTitle}
             subtitle={"Members"}

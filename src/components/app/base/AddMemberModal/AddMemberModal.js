@@ -5,7 +5,7 @@ import "./addMemberModal.scss";
 function AddMemberModal({
   firstButtonText = "Cancel",
   secondButtonText = "Send invitation",
-  modalTitle = "Invite a marketing leader to join you CMOlist peer network",
+  modalTitle = "Invite a marketing leader to join your CMOlist peer network",
   modalSubtitle = "Build your trusted peer network by inviting and connecting only with marketing peers that you know and whose advice you trust",
   onClose,
   onSubmit,
@@ -118,12 +118,12 @@ function AddMemberModal({
               <Col md="12">
                 <Form.Group>
                   <Form.Label className="add-member-modal--label">
-                    LinkedIn URL
+                    Linkedin URL
                   </Form.Label>
                   <Form.Control
                     className="add-member-modal--input"
                     id="linkedin"
-                    placeholder="https://linkedin/.com/in/linkedinID"
+                    placeholder="https://linkedin.com/in/linkedinID"
                     onChange={(e) => setLinkedin(e.target.value)}
                     value={linkedin}
                     required={true}

@@ -5,7 +5,7 @@ import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Separator from "../base/Separator/Separator";
 import { Container, Button, Form, Row, Col } from "react-bootstrap";
-import { profileImage } from "../../util/constants";
+import { vendorProfileHeader } from "../../util/constants";
 import Util from "../../util/Util";
 
 const VendorType = ["Company", "Product", "Contractor"];
@@ -24,17 +24,11 @@ const VendorProfileEdit = (props) => {
   const [companyName, setCompanyName] = useState("");
   const [companyLinkedin, setCompanyLinkedin] = useState("");
   const [companyWebsite, setCompanyWebsite] = useState("");
-  const [productName, setProductName] = useState("");
-  const [productLinkedin, setProductLinkedin] = useState("");
-  const [productWebsite, setProductWebsite] = useState("");
-  const [contractorName, setContractorName] = useState("");
-  const [contractorLinkedin, setContractorLinkedin] = useState("");
-  const [contractorWebsite, setContractorWebsite] = useState("");
   const [city, setCity] = useState("");
   const [province, setProvince] = useState("");
   const [country, setCountry] = useState("");
   const [twitter, setTwitter] = useState("");
-  const [headline, setHeadline] = useState("");
+  const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
   const [coverImage, setCoverImage] = useState("");
   const [imageUploading, setImageUploading] = useState(false);
@@ -42,7 +36,7 @@ const VendorProfileEdit = (props) => {
   const [areasOfExpertise, setAreasOfExpertise] = useState("");
   const [companyIndustry, setCompanyIndustry] = useState("");
   const [now, setNow] = useState(50);
-  const [vendor_type, setVendorType] = useState(VendorType[0]);
+  const [vendorType, setVendorType] = useState(VendorType[0]);
   // props to control profile image
   const inputFile = useRef(null);
   const coverInputFile = useRef(null);
@@ -78,26 +72,19 @@ const VendorProfileEdit = (props) => {
     setCity(profile.city);
     setProvince(profile.state);
     setCountry(profile.country);
-    setCompanyName(profile.company);
-    setCompanyLinkedin(profile.companyLinkedin);
-    setCompanyWebsite(profile.companyWebsite);
-    setProductName(profile.product);
-    setProductLinkedin(profile.productLinkedin);
-    setProductWebsite(profile.productWebsite);
-    setContractorName(profile.contractor);
-    setContractorLinkedin(profile.contractorLinkedin);
-    setContractorWebsite(profile.contractorWebsite);
-    setHeadline(profile.headline);
+    setCompanyName(profile.name);
+    setCompanyLinkedin(profile.linkedin);
+    setTwitter(profile.twitter);
+    setCompanyWebsite(profile.website);
+    setCompanyIndustry(profile.industry);
+    setDescription(profile.description);
     setImage(profile.image);
-    setCoverImage(profile.coverImage || profileImage);
-
-    if (profile.about) {
-      let pfa = profile.about;
-      pfa.areasOfExpertise &&
-        setAreasOfExpertise(pfa.areasOfExpertise.join(", "));
+    setCoverImage(profile.coverImage || vendorProfileHeader);
+    if (profile.areasOfExpertise) {
+      setAreasOfExpertise(
+        profile.areasOfExpertise.map((a) => a.name).join(", ")
+      );
     }
-
-    setCompanyIndustry(profile.companyIndustry);
   };
 
   useEffect(() => {
@@ -119,29 +106,27 @@ const VendorProfileEdit = (props) => {
       city,
       state: province,
       country,
+      description,
       company: companyName,
-      companyLinkedin,
       companyWebsite,
-      product: productName,
-      productLinkedin,
-      productWebsite,
-      contractor: contractorName,
-      contractorLinkedin,
-      contractorWebsite,
-      headline,
       coverImage,
       image,
+      companyLinkedin,
+      companyTwitter,
       companyIndustry,
       about: {
         ...props?.profile?.about,
         areasOfExpertise: areasOfExpertise.split(", "),
       },
+      vendorType: vendorType,
     };
-    console.log(areasOfExpertise);
-    setNow(100);
     try {
-      await props.saveProfile(updated_profile);
-      history.push("/vendor");
+      let vendorSlug = Util.parsePath(window.location.href).trailingPath;
+      await props.saveVendor({
+        vendorSlug: vendorSlug,
+        profile: updated_profile,
+      });
+      window.location.href = `/vendor/${vendorSlug}`;
     } catch (err) {
       throw new Error("Could not save vendor profile");
     }
@@ -244,7 +229,7 @@ const VendorProfileEdit = (props) => {
                         name="vendortype"
                         value={vendor}
                         id={vendor}
-                        checked={vendor === vendor_type}
+                        checked={vendor === vendorType}
                         onChange={(e) => {
                           setVendorType(e.target.value);
                         }}
@@ -256,7 +241,7 @@ const VendorProfileEdit = (props) => {
               </Col>
             </Row>
             <Row className="profile--row">
-              {vendor_type === "Company" ? (
+              {vendorType === "Company" ? (
                 <>
                   <Col>
                     <Form.Label>Company name</Form.Label>
@@ -277,15 +262,15 @@ const VendorProfileEdit = (props) => {
                     />
                   </Col>
                 </>
-              ) : vendor_type === "Product" ? (
+              ) : vendorType === "Product" ? (
                 <>
                   <Col>
                     <Form.Label>Product name</Form.Label>
                     <Form.Control
                       className="profile--input"
                       placeholder=""
-                      value={productName}
-                      onChange={(e) => setProductName(e.target.value)}
+                      value={companyName}
+                      onChange={(e) => setCompanyName(e.target.value)}
                     />
                   </Col>
                   <Col>
@@ -293,8 +278,8 @@ const VendorProfileEdit = (props) => {
                     <Form.Control
                       className="profile--input"
                       placeholder=""
-                      value={productLinkedin}
-                      onChange={(e) => setProductLinkedin(e.target.value)}
+                      value={companyLinkedin}
+                      onChange={(e) => setCompanyLinkedin(e.target.value)}
                     />
                   </Col>
                 </>
@@ -305,8 +290,8 @@ const VendorProfileEdit = (props) => {
                     <Form.Control
                       className="profile--input"
                       placeholder=""
-                      value={contractorName}
-                      onChange={(e) => setContractorName(e.target.value)}
+                      value={companyName}
+                      onChange={(e) => setCompanyName(e.target.value)}
                     />
                   </Col>
                   <Col>
@@ -314,15 +299,15 @@ const VendorProfileEdit = (props) => {
                     <Form.Control
                       className="profile--input"
                       placeholder=""
-                      value={contractorLinkedin}
-                      onChange={(e) => setContractorLinkedin(e.target.value)}
+                      value={companyLinkedin}
+                      onChange={(e) => setCompanyLinkedin(e.target.value)}
                     />
                   </Col>
                 </>
               )}
             </Row>
             <Row className="profile--row">
-              {vendor_type === "Company" ? (
+              {vendorType === "Company" ? (
                 <Col>
                   <Form.Label>Company Website</Form.Label>
                   <Form.Control
@@ -332,14 +317,14 @@ const VendorProfileEdit = (props) => {
                     onChange={(e) => setCompanyWebsite(e.target.value)}
                   />
                 </Col>
-              ) : vendor_type === "Product" ? (
+              ) : vendorType === "Product" ? (
                 <Col>
                   <Form.Label>Product Website</Form.Label>
                   <Form.Control
                     className="profile--input"
                     placeholder=""
-                    value={productWebsite}
-                    onChange={(e) => setProductWebsite(e.target.value)}
+                    value={companyWebsite}
+                    onChange={(e) => setCompanyWebsite(e.target.value)}
                   />
                 </Col>
               ) : (
@@ -348,8 +333,8 @@ const VendorProfileEdit = (props) => {
                   <Form.Control
                     className="profile--input"
                     placeholder=""
-                    value={contractorWebsite}
-                    onChange={(e) => setContractorWebsite(e.target.value)}
+                    value={companyWebsite}
+                    onChange={(e) => setCompanyWebsite(e.target.value)}
                   />
                 </Col>
               )}
@@ -400,14 +385,14 @@ const VendorProfileEdit = (props) => {
             </div>
             <Row className="profile--row mt-5">
               <Col>
-                <Form.Label>Headline (optional)</Form.Label>
+                <Form.Label>Description (optional)</Form.Label>
                 <Form.Control
                   as="textarea"
                   className="profile--textarea"
                   rows="3"
-                  placeholder="High-tech professional marketer passionate about consumer internet, SaaS and disruptive marketplaces. Industry expertise: mobile, consumer internet, social media, enterprise software, SaaS, advertising."
-                  value={headline}
-                  onChange={(e) => setHeadline(e.target.value)}
+                  placeholder=""
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
                 />
               </Col>
             </Row>

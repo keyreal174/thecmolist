@@ -95,13 +95,13 @@ function Signup() {
             </div>
             <div className="form-group">
               <label className="label-field signup--form-label" for="linkedIn">
-                LinkedIn URL
+                Linkedin URL
               </label>
               <br />
               <input
                 name="linkedIn"
                 type="linkedIn"
-                placeholder="https://linkedin/.com/in/linkedIn"
+                placeholder="https://linkedin.com/in/linkedIn"
                 className="input-field max-input-width signup--form-input"
                 required
               />

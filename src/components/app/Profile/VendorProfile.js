@@ -33,8 +33,8 @@ import PopularTopics from "../base/PopularTopics/PopularTopics";
 const RenderList = ({ arr }) => {
   return arr.map((item, index) => (
     <React.Fragment key={index}>
-      <a href="#">
-        {item}
+      <a href={`/topic/${item.slug}`}>
+        {item.name}
         {index < arr.length - 1 && ","}
       </a>
       {index < arr.length - 1 && <span> </span>}
@@ -42,35 +42,40 @@ const RenderList = ({ arr }) => {
   ));
 };
 
-const ProfileAbout = ({ profileAbout }) => {
+const ProfileAbout = ({ description, areasOfExpertise }) => {
   return (
-    Object.keys(profileAbout).length > 0 && (
+    ((description && description.length > 0) ||
+      (areasOfExpertise && areasOfExpertise.length > 0)) && (
       <CustomCard heading="About" className="profile-about mt-2">
-        <Row>
-          <Col md="12">
-            <div className="profile-about--content">
-              <ShowMoreText
-                keepNewLines={true}
-                lines={2}
-                more="See more"
-                less="See less"
-                width={0}
-              >
-                {profileAbout.description}
-              </ShowMoreText>
-            </div>
-          </Col>
-        </Row>
-        <Row className="profile-about--experience">
-          <Col md="6">
-            <Form.Label className="profile-about--experience-title">
-              Marketing expertise
-            </Form.Label>
-            <div>
-              <RenderList arr={profileAbout.areasOfExpertise} />
-            </div>
-          </Col>
-        </Row>
+        {description && (
+          <Row>
+            <Col md="12">
+              <div className="profile-about--content">
+                <ShowMoreText
+                  keepNewLines={true}
+                  lines={2}
+                  more="See more"
+                  less="See less"
+                  width={0}
+                >
+                  {description}
+                </ShowMoreText>
+              </div>
+            </Col>
+          </Row>
+        )}
+        {areasOfExpertise && areasOfExpertise.length > 0 && (
+          <Row className="profile-about--experience">
+            <Col md="6">
+              <Form.Label className="profile-about--experience-title">
+                Marketing expertise
+              </Form.Label>
+              <div>
+                <RenderList arr={areasOfExpertise} />
+              </div>
+            </Col>
+          </Row>
+        )}
       </CustomCard>
     )
   );
@@ -81,6 +86,8 @@ const ProfileIntro = ({
   profileState,
   profileMail,
   profileLinkedin,
+  profileTwitter,
+  profileIndustry,
 }) => {
   return (
     <Col md="4">
@@ -117,7 +124,27 @@ const ProfileIntro = ({
                 alt="linkedin"
                 src={LinkedIn}
               />
-              Linkdin <strong>{profileLinkedin}</strong>
+              <a href={profileLinkedin}>Linkedin</a>
+            </div>
+          )}
+          {profileTwitter && (
+            <div className="right-section--linkdin right-section--item">
+              <img
+                className="right-section--item-img"
+                alt="twitter"
+                src={LinkedIn}
+              />
+              <a href={profileTwitter}>Twitter</a>
+            </div>
+          )}
+          {profileIndustry && (
+            <div className="right-section--live right-section--item">
+              <img
+                className="right-section--item-img"
+                alt="location"
+                src={Location}
+              />
+              Industry <strong>{profileIndustry}</strong>
             </div>
           )}
         </div>
@@ -129,13 +156,10 @@ const ProfileIntro = ({
 const ProfileOverview = ({
   profileBackgroundUrl,
   profileImage,
-  profileFirstName,
-  profileLastName,
+  profileName,
   profileWebsite,
   profileTitle,
   profileCompany,
-  profileFollowers,
-  isMyProfile,
 }) => {
   const history = useHistory();
   return (
@@ -152,11 +176,10 @@ const ProfileOverview = ({
           </div>
         )}
 
-        {profileFirstName && (
+        {profileName && (
           <div className="overview-summary">
             <h2 className="overview-header mb-1">
-              {profileFirstName}&nbsp;
-              {profileLastName}&nbsp;
+              {profileName}&nbsp;
               {profileWebsite.length > 0 && (
                 <span className="overview-link-button">
                   <a
@@ -172,63 +195,40 @@ const ProfileOverview = ({
             <div className="overview-subheadline">
               {profileTitle && `${profileTitle}`}
             </div>
-            {profileFollowers && (
-              <div className="overview-followers">{`${profileFollowers} Followers`}</div>
-            )}
           </div>
         )}
-        {isMyProfile ? (
-          <div className="btn-wrapper">
-            <Button
-              className="btn-white edit-profile"
-              variant="outline-primary"
-              onClick={() =>
-                history.push(
-                  `/profile_edit/${
-                    Util.parsePath(window.location.href).trailingPath
-                  }`
-                )
-              }
-            >
-              Edit Profile
-            </Button>
-          </div>
-        ) : (
-          <React.Fragment>
-            {profileFirstName && (
-              <div className="btn-wrapper d-flex">
-                <Button
-                  className="btn-white edit-profile"
-                  variant="primary"
-                  onClick={() =>
-                    history.push(
-                      `/vendor_edit/${
-                        Util.parsePath(window.location.href).trailingPath
-                      }`
-                    )
-                  }
-                >
-                  Edit
-                </Button>
-                <Button
-                  className="edit-profile edit-profile-more"
-                  variant="outline-secondary"
-                >
-                  <img alt="More icon" src={More} />
-                </Button>
-              </div>
-            )}
-          </React.Fragment>
-        )}
+        <React.Fragment>
+          {profileName && (
+            <div className="btn-wrapper d-flex">
+              <Button
+                className="btn-white edit-profile"
+                variant="primary"
+                onClick={() =>
+                  history.push(
+                    `/vendor_edit/${
+                      Util.parsePath(window.location.href).trailingPath
+                    }`
+                  )
+                }
+              >
+                Edit
+              </Button>
+              <Button
+                className="edit-profile edit-profile-more"
+                variant="outline-secondary"
+              >
+                <img alt="More icon" src={More} />
+              </Button>
+            </div>
+          )}
+        </React.Fragment>
       </div>
     </Col>
   );
 };
 
 const VendorProfile = (props) => {
-  const [isMyProfile, setIsMyProfile] = useState(false);
-  const [profileFirstName, setProfileFirstName] = useState("");
-  const [profileLastName, setProfileLastName] = useState("");
+  const [profileName, setProfileName] = useState("");
   const [profileUserName, setProfileUserName] = useState("");
   const [profileImage, setProfileImage] = useState("");
   const [profileTitle, setProfileTitle] = useState("");
@@ -236,10 +236,13 @@ const VendorProfile = (props) => {
   const [profileCity, setProfileCity] = useState("");
   const [profileState, setProfileState] = useState("");
   const [profileLinkedin, setProfileLinkedin] = useState("");
+  const [profileTwitter, setProfileTwitter] = useState("");
   const [profileMail, setProfileMail] = useState("");
+  const [profileDescription, setProfileDescription] = useState("");
+  const [profileIndustry, setProfileIndustry] = useState("");
+  const [profileAreasOfExpertise, setProfileAreasOfExpertise] = useState([]);
+
   const [profileWebsite, setProfileWebsite] = useState("");
-  const [profileAbout, setProfileAbout] = useState([]);
-  const [profileFollowers, setProfileFollowers] = useState("");
   const [feedData, setFeedData] = useState([]);
   const [followedUser, setFollowedUser] = useState(false);
 
@@ -265,9 +268,7 @@ const VendorProfile = (props) => {
 
   useEffect(() => {
     if (props.profile && Object.keys(props.profile).length > 0) {
-      setIsMyProfile(props.profile.isMyProfile || "");
-      setProfileFirstName(props.profile.firstName || "");
-      setProfileLastName(props.profile.lastName || "");
+      setProfileName(props.profile.name || "");
       setProfileUserName(props.profile.userName || "");
       setProfileImage(props.profile.image || "");
       setProfileTitle(props.profile.title || "");
@@ -275,11 +276,13 @@ const VendorProfile = (props) => {
       setProfileCity(props.profile.city || "");
       setProfileState(props.profile.state || "");
       setProfileLinkedin(props.profile.linkedin || "");
+      setProfileTwitter(props.profile.twitter || "");
       setProfileWebsite(props.profile.website || "");
       setProfileMail(props.profile.mail || "");
-      setProfileAbout(props.profile.about || {});
+      setProfileDescription(props.profile.description || "");
+      setProfileIndustry(props.profile.industry || "");
+      setProfileAreasOfExpertise(props.profile.areasOfExpertise || []);
       setFeedData(props.profile.feedData || []);
-      setProfileFollowers(props.profile.followers || "");
       setFollowedUser(props.profile.followedUser);
       props.profile.feedData && createSubfilters(props.profile.feedData);
     }
@@ -408,13 +411,10 @@ const VendorProfile = (props) => {
             <ProfileOverview
               profileBackgroundUrl={profileBackgroundUrl}
               profileImage={profileImage}
-              profileFirstName={profileFirstName}
-              profileLastName={profileLastName}
+              profileName={profileName}
               profileWebsite={profileWebsite}
               profileTitle={profileTitle}
               profileCompany={profileCompany}
-              profileFollowers={profileFollowers}
-              isMyProfile={isMyProfile}
               followedUser={followedUser}
             />
             <ProfileIntro
@@ -422,10 +422,15 @@ const VendorProfile = (props) => {
               profileState={profileState}
               profileMail={profileMail}
               profileLinkedin={profileLinkedin}
+              profileTwitter={profileTwitter}
+              profileIndustry={profileIndustry}
             />
           </Row>
-          <ProfileAbout profileAbout={profileAbout} />
-          {profileFirstName && (
+          <ProfileAbout
+            description={profileDescription}
+            areasOfExpertise={profileAreasOfExpertise}
+          />
+          {profileName && (
             <Filter
               filterIdx={filterIdx}
               filters={filters}
@@ -434,7 +439,7 @@ const VendorProfile = (props) => {
           )}
         </div>
 
-        {profileFirstName && hasDataOnCurrentFeed && (
+        {profileName && hasDataOnCurrentFeed && (
           <Row className="profile--feed">
             <Col md="4">
               <PopularTopics
@@ -446,25 +451,12 @@ const VendorProfile = (props) => {
             <Col md="8">
               <TransitionGroup enter={enableAnimations} exit={enableAnimations}>
                 {filteredFeedData.map((feed, idx) => {
-                  let badge = null;
-                  if (isMyProfile) {
-                    badge = (
-                      <span
-                        className="cursor-pointer noselect"
-                        style={{ display: "block", marginTop: "-10px" }}
-                        onClick={() => showDeletePostModal(feed)}
-                      >
-                        ✖
-                      </span>
-                    );
-                  }
                   return (
                     <FadeTransition key={idx}>
                       <Article
                         key={idx}
                         className={idx !== 0 ? "mt-1" : ""}
                         {...feed.content}
-                        badge={badge}
                         engagementButtons={[
                           {
                             checked: true,
@@ -534,10 +526,10 @@ const VendorProfile = (props) => {
             </Col>
           </Row>
         )}
-        {profileFirstName && !hasDataOnCurrentFeed && (
+        {profileName && !hasDataOnCurrentFeed && (
           <div className="wrapper article-wrapper">
             <div className="no-feed-data-header">
-              {profileFirstName} hasn't shared anything here yet
+              {profileName} hasn't shared anything here yet
             </div>
           </div>
         )}

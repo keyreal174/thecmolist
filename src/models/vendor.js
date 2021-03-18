@@ -8,8 +8,8 @@ export const vendorProfileRequest = (vendorSlug) => {
   });
 };
 
-export const saveVendorProfileRequest = (data) => {
-  return axios.post("/api/vendor", data);
+export const saveVendorProfileRequest = (vendorSlug, data) => {
+  return axios.post(`/api/vendor/${vendorSlug}`, data);
 };
 
 export default {
@@ -36,9 +36,10 @@ export default {
         throw new Error("Could not get profile");
       }
     },
-    async saveVendor(profile) {
+    async saveVendor(payload) {
       try {
-        await saveVendorProfileRequest({ profile });
+        let { vendorSlug, profile } = payload;
+        await saveVendorProfileRequest(vendorSlug, profile);
         dispatch.vendorModel.updateProfile(profile);
       } catch (err) {
         throw new Error("Could not save vendor profile");

@@ -1,15 +1,13 @@
 {
   "profile": {
     "userId": 9,
-    "firstName": "Division",
-    "lastName": "of Lavor",
+    "name": "Division",
     "userName": "Division of lavor",
     "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiZGVmYXVsdC1wcm9maWxlLWltYWdlLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
-    "title": "",
+    "title": "Company",
     "company": "",
     "product": "",
     "contractor": "",
-    "followers": "1.4k",
     "companyLinkedin": "(blank)1",
     "companyWebsite": "(blank)1",
     "productLinkedin": "@division_L",
@@ -24,18 +22,12 @@
     "country": "(blank)1",
     "headline": "(blank)1",
     "mail": "mailto:division@contact.com",
-    "about": {
-      "description": "Division of Labor is an independent, San Francisco advertising agency. We develop strategies and creative campaign to promote brands and sell products across all media platforms.",
-      "networking": true,
-      "networkingOpportunities": "Networking Opportunities",
-      "advising": false,
-      "advisingOpportunities": "Advising Opportunities",
-      "areasOfExpertise": [
-        "#advertising",
-        "#out-of-home-advertising",
-        "#branding"
-      ]
-    },
+    "description": "Division of Labor is an independent, San Francisco advertising agency. We develop strategies and creative campaign to promote brands and sell products across all media platforms.",
+    "areasOfExpertise": [
+      { "name": "#advertising", "slug": "advertising" },
+      { "name": "#out-of-home-advertising", "slug": "out-of-home-advertising" },
+      { "name": "#branding", "slug": "branding" }
+    ],
     "feedData": [
       {
         "title": "Project",
