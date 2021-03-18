@@ -186,6 +186,7 @@ const Network = (props) => {
                 <NetworkFeed
                   {...props}
                   connectUser={onConnectClick}
+                  localConnectedUsers={props.localConnectedUsers}
                   fetchData={fetchData}
                   feedData={feedData}
                 />
