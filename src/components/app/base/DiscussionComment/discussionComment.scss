@@ -16,6 +16,8 @@
 
 .comment-button {
   opacity: 0;
+  border-radius: 20px;
+  height: 46px;
 }
 
 .comment-button.show {
@@ -65,11 +67,39 @@
   display: flex;
 }
 
-.comment--image {
-  margin: 0 10px;
-  img {
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
+.comment {
+  &--image {
+    margin: 0 10px;
+    img {
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &--rich-editor {
+    position: relative;
+    width: 100%;
+    margin-right: 10px;
+
+    .editor {
+      min-height: 100px;
+      margin-bottom: 0;
+    }
+  }
+
+  &--buttons {
+    display: flex;
+    position: absolute;
+    bottom: 3px;
+    left: 148px;
+
+    button {
+      height: 34px;
+      font-size: 14px;
+      padding: 0 4px;
+      width: unset;
+      margin: 0;
+    }
   }
 }

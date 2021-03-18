@@ -125,6 +125,7 @@ const ContentDetail = ({
           showDiscussionComment={true}
           discussionCommentAuthor={author}
           profile={profileStats.profile}
+          useRichEditor={true}
           discussionCommentPlaceholder={
             author && author.length > 0
               ? `Answer ${author}'s question...`
@@ -222,6 +223,7 @@ const ContentDetail = ({
                     : "Answer this question..."
                 }
                 onSubmit={handleSubmit}
+                useRichEditor={true}
               />
             </div>
           )}
