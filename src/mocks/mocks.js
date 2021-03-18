@@ -131,6 +131,10 @@ function MockRequests() {
     return [200, { success: true, error: null }];
   });
 
+  mock.onPost("/api/disconnect_user").reply(() => {
+    return [200, { success: true, error: null }];
+  });
+
   mock.onPost("/api/follow_user").reply(() => {
     return [200, { success: true, error: null }];
   });

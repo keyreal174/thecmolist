@@ -222,6 +222,7 @@ const mapDispatch = (dispatch) => {
     inviteNewMember: dispatch.networkModel.inviteNewMember,
     saveUserInvite: dispatch.userModel.saveInvite,
     connectUser: dispatch.userModel.connectUser,
+    disconnectUser: dispatch.userModel.disconnectUser,
     getProfileStats: dispatch.profileModel.getProfileStats,
   };
 };

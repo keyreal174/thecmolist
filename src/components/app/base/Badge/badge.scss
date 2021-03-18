@@ -1,0 +1,36 @@
+@import "../../../../sass/globals.scss";
+
+.badge {
+  display: flex;
+  flex-direction: column;
+
+  &--connect-button {
+    background-color: #fff;
+    border-color: $brand;
+    border-radius: 100px;
+    border-width: 2px;
+    color: $brand;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 0 !important;
+    min-width: 120px;
+    padding: 6px 12px;
+  }
+
+  &--connected-button {
+    background-color: $brand;
+    color: $white;
+    border-color: $brand;
+    border-width: 2px;
+    font-weight: 600;
+    min-width: 120px;
+    font-size: 16px;
+    padding: 6px 12px;
+    margin-top: 0 !important;
+    border-radius: 100px;
+
+    &:hover {
+      color: $white;
+    }
+  }
+}

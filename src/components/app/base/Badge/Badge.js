@@ -1,27 +1,31 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import "./badge.scss";
 
-const Badge = ({ localConnectedUsers, feed, connectUser }) => {
+const Badge = ({ localConnectedUsers, feed, connectUser, disconnectUser }) => {
   const isLocallyConnected = localConnectedUsers.includes(feed.username);
   const isConnected = feed.isConnected || isLocallyConnected;
-  let connect = !feed.disableConnect ? (
+
+  const handleConnectedButtonClick = () => {
+    disconnectUser(feed);
+  };
+  const handleConnectButtonClick = () => {
+    connectUser(feed);
+  };
+
+  const connect = !feed.disableConnect ? (
     isConnected ? (
       <button
-        className="btn connected-button"
+        className="btn badge--connect-button"
+        onClick={handleConnectedButtonClick}
         type="button"
-        onClick={() => {
-          connectUser(feed);
-        }}
       >
         Connected
       </button>
     ) : (
       <button
-        className="btn connect-button"
+        className="btn badge--connect-button"
         type="button"
-        onClick={() => {
-          connectUser(feed);
-        }}
+        onClick={handleConnectButtonClick}
       >
         Connect
       </button>
@@ -29,7 +33,7 @@ const Badge = ({ localConnectedUsers, feed, connectUser }) => {
   ) : null;
 
   return (
-    <div className="network--badge">
+    <div className="badge">
       {/* Disable following for now... */}
       {/* <Button className="btn-blue mb-2">+ Follow</Button> */}
       {connect}
