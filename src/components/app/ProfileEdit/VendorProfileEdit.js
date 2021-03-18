@@ -112,7 +112,6 @@ const VendorProfileEdit = (props) => {
       coverImage,
       image,
       companyLinkedin,
-      companyTwitter,
       companyIndustry,
       about: {
         ...props?.profile?.about,
