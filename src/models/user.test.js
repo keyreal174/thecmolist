@@ -23,6 +23,44 @@ describe("userModel model", () => {
     const userModelData = store.getState().userModel;
     expect(userModelData.localConnectedUsers).toEqual(["foo", "bar"]);
   }),
+    it("reducer: removeConnectedUser", () => {
+      const store = init({
+        models: { userModel },
+      });
+
+      store.dispatch.userModel.addConnectedUser({
+        user: "foo",
+      });
+      store.dispatch.userModel.addConnectedUser({
+        user: "bar",
+      });
+      store.dispatch.userModel.removeConnectedUser({
+        user: "bar",
+      });
+
+      const userModelData = store.getState().userModel;
+
+      expect(userModelData.localConnectedUsers).toEqual(["foo"]);
+    }),
+    it("reducer: removeConnectedUser user not exist", () => {
+      const store = init({
+        models: { userModel },
+      });
+
+      store.dispatch.userModel.addConnectedUser({
+        user: "foo",
+      });
+      store.dispatch.userModel.addConnectedUser({
+        user: "bar",
+      });
+      store.dispatch.userModel.removeConnectedUser({
+        user: "NN",
+      });
+
+      const userModelData = store.getState().userModel;
+
+      expect(userModelData.localConnectedUsers).toEqual(["foo", "bar"]);
+    }),
     it("effect: userModel connectUser", async () => {
       const store = init({
         models: { userModel },
@@ -38,6 +76,26 @@ describe("userModel model", () => {
 
       const userModelData = store.getState().userModel;
       expect(userModelData.localConnectedUsers).toEqual(["foo_user"]);
+    }),
+    it("effect: userModel disconnectUser", async () => {
+      const store = init({
+        models: { userModel },
+      });
+
+      // mock data
+      axios.put.mockResolvedValue({
+        data: {
+          success: true,
+        },
+      });
+      store.dispatch.userModel.addConnectedUser({
+        user: "bar",
+      });
+
+      await store.dispatch.userModel.disconnectUser({ username: "bar" });
+
+      const userModelData = store.getState().userModel;
+      expect(userModelData.localConnectedUsers).toEqual([]);
     }),
     it("effect: userModel saveInvite", async () => {
       const store = init({

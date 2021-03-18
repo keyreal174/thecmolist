@@ -1,7 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import CustomCard from "../base/CustomCard/CustomCard";
-import ConnectBadge from "../base/ConnectBadge/ConnectBadge";
 import {
   getCheckedForEngagementType,
   getEngagementForId,
@@ -9,13 +8,14 @@ import {
 import Article from "../base/Article/Article";
 import { useHistory } from "react-router";
 import { cdn } from "../../util/constants";
+import Badge from "../base/Badge/Badge";
 
 const RenderList = ({
   changeReaction,
   connectUser,
+  disconnectUser,
   fetchMoreRefinedData,
   filters,
-  invalidateFeed,
   isFull,
   localConnectedUsers,
   modules,
@@ -103,10 +103,10 @@ const RenderList = ({
               style={{ paddingBottom: "10px" }}
               badge={
                 !isContent && (
-                  <ConnectBadge
+                  <Badge
                     connectUser={connectUser}
+                    disconnectUser={disconnectUser}
                     feed={item}
-                    invalidateFeed={invalidateFeed}
                     localConnectedUsers={localConnectedUsers}
                   />
                 )

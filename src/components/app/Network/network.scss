@@ -56,54 +56,6 @@
   font-weight: 600;
 }
 
-.connected-label {
-  background-color: #fff;
-  color: $brand;
-  border-color: $brand;
-  border-width: 2px;
-  font-weight: 600;
-  min-width: 120px;
-  font-size: 16px;
-  padding: 6px 12px;
-  margin-top: -5px;
-  display: inline-block;
-}
-
-.connect-button {
-  background-color: #fff;
-  color: $brand;
-  border-color: $brand;
-  border-width: 2px;
-  font-weight: 600;
-  min-width: 120px;
-  font-size: 16px;
-  padding: 6px 12px;
-  margin-top: 0 !important;
-  border-radius: 100px;
-}
-
-.connected-button {
-  background-color: $brand;
-  color: $white;
-  border-color: $brand;
-  border-width: 2px;
-  font-weight: 600;
-  min-width: 120px;
-  font-size: 16px;
-  padding: 6px 12px;
-  margin-top: 0 !important;
-  border-radius: 100px;
-}
-
-.connected-button:hover {
-  color: $white;
-}
-
-.network--badge {
-  display: flex;
-  flex-direction: column;
-}
-
 .network-list-item {
   margin-bottom: 0px;
   box-shadow: none;

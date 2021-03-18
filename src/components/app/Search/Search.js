@@ -119,6 +119,7 @@ const Search = (props) => {
               <RenderList
                 connectUser={props.connectUser}
                 changeReaction={props.changeReaction}
+                disconnectUser={props.disconnectUser}
                 fetchMoreRefinedData={fetchMoreRefinedData}
                 filters={filters}
                 invalidateFeed={props.invalidateFeed}
@@ -151,6 +152,7 @@ const mapDispatch = (dispatch) => {
   return {
     changeReaction: dispatch.reactionModel.changeReaction,
     connectUser: dispatch.userModel.connectUser,
+    disconnectUser: dispatch.userModel.disconnectUser,
     fetchFullSearch: dispatch.searchModel.fetchFullSearch,
     fetchRefinedSearch: dispatch.searchModel.fetchRefinedSearch,
     invalidateFeed: dispatch.networkModel.invalidateFeed,

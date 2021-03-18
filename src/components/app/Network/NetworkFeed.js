@@ -1,6 +1,6 @@
 import React from "react";
 import Article from "../base/Article/Article";
-import Badge from "./Badge";
+import Badge from "../base/Badge/Badge";
 import "./network.scss";
 
 const NetworkFeed = ({
@@ -8,6 +8,7 @@ const NetworkFeed = ({
   moreData,
   localConnectedUsers,
   connectUser,
+  disconnectUser,
   fetchData,
 }) => (
   <>
@@ -26,6 +27,7 @@ const NetworkFeed = ({
                   localConnectedUsers={localConnectedUsers}
                   feed={feed}
                   connectUser={connectUser}
+                  disconnectUser={disconnectUser}
                 />
               }
             />
