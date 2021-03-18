@@ -15,15 +15,6 @@ import {
 import { profileImage } from "../../util/constants";
 import "./profileEdit.scss";
 
-const getBase64 = (file) => {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = (error) => reject(error);
-  });
-};
-
 const ProfileEdit = (props) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -59,7 +50,7 @@ const ProfileEdit = (props) => {
   const onInputFileChange = async (event) => {
     if (event && event.target && event.target.files.length > 0) {
       setImageUploading(true);
-      const url = await getBase64(event.target.files[0]);
+      const url = await props.uploadImageFile(event.target.files[0]);
       setImage(url);
       setImageUploading(false);
     }
@@ -68,7 +59,7 @@ const ProfileEdit = (props) => {
   const onCoverInputFileChange = async (event) => {
     if (event && event.target && event.target.files.length > 0) {
       setCoverImageUploading(true);
-      const url = await getBase64(event.target.files[0]);
+      const url = await props.uploadImageFile(event.target.files[0]);
       setCoverImage(url);
       setCoverImageUploading(false);
     }

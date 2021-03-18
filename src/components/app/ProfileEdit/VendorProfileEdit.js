@@ -10,15 +10,6 @@ import Util from "../../util/Util";
 
 const VendorType = ["Company", "Product", "Contractor"];
 
-const getBase64 = (file) => {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = (error) => reject(error);
-  });
-};
-
 const VendorProfileEdit = (props) => {
   const history = useHistory();
   const [companyName, setCompanyName] = useState("");
@@ -53,7 +44,7 @@ const VendorProfileEdit = (props) => {
   const onCoverInputFileChange = async (event) => {
     if (event && event.target && event.target.files.length > 0) {
       setCoverImageUploading(true);
-      const url = await getBase64(event.target.files[0]);
+      const url = await props.uploadImageFile(event.target.files[0]);
       setCoverImage(url);
       setCoverImageUploading(false);
     }
