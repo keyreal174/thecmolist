@@ -38,15 +38,19 @@ import ThanksCheckedIcon from "../base/icons/thanks_checked.svg";
 import More from "./icons/more.svg";
 
 const RenderList = ({ arr }) => {
-  return arr.map((item, index) => (
-    <React.Fragment key={index}>
-      <a href="#">
-        {item}
-        {index < arr.length - 1 && ","}
-      </a>
-      {index < arr.length - 1 && <span> </span>}
-    </React.Fragment>
-  ));
+  if (arr) {
+    return arr.map((item, index) => (
+      <React.Fragment key={index}>
+        <a href="#">
+          {item}
+          {index < arr.length - 1 && ","}
+        </a>
+        {index < arr.length - 1 && <span> </span>}
+      </React.Fragment>
+    ));
+  } else {
+    return <React.Fragment />;
+  }
 };
 
 const Profile = (props) => {
@@ -421,22 +425,26 @@ const Profile = (props) => {
                 </Col>
               </Row>
               <Row className="profile-about--experience">
-                <Col md="6">
-                  <Form.Label className="profile-about--experience-title">
-                    Marketing expertise
-                  </Form.Label>
-                  <div>
-                    <RenderList arr={profileAbout.areasOfExpertise} />
-                  </div>
-                </Col>
-                <Col md="6">
-                  <Form.Label className="profile-about--experience-title">
-                    Marketing interests
-                  </Form.Label>
-                  <div>
-                    <RenderList arr={profileAbout.areasOfInterest} />
-                  </div>
-                </Col>
+                {profileAbout.areasOfExpertise && (
+                  <Col md="6">
+                    <Form.Label className="profile-about--experience-title">
+                      Marketing expertise
+                    </Form.Label>
+                    <div>
+                      <RenderList arr={profileAbout.areasOfExpertise} />
+                    </div>
+                  </Col>
+                )}
+                {profileAbout.areasOfInterest && (
+                  <Col md="6">
+                    <Form.Label className="profile-about--experience-title">
+                      Marketing interests
+                    </Form.Label>
+                    <div>
+                      <RenderList arr={profileAbout.areasOfInterest} />
+                    </div>
+                  </Col>
+                )}
               </Row>
               <Row className="profile-about--open">
                 <Col md="6">

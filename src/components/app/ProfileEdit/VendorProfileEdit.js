@@ -112,12 +112,9 @@ const VendorProfileEdit = (props) => {
       coverImage,
       image,
       companyLinkedin,
-      companyTwitter,
+      twitter,
       companyIndustry,
-      about: {
-        ...props?.profile?.about,
-        areasOfExpertise: areasOfExpertise.split(", "),
-      },
+      areasOfExpertise: areasOfExpertise.split(", "),
       vendorType: vendorType,
     };
     try {
