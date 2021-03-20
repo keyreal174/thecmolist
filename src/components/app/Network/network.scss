@@ -86,3 +86,19 @@
     margin-top: 12px;
   }
 }
+
+.network-feed--button {
+  border-radius: 10px;
+  border: 1px solid $gray-4;
+  font-weight: 500;
+  color: $brand;
+  width: 100%;
+  &:hover,
+  &:focus,
+  &:active {
+    border-radius: 10px;
+    border: 1px solid $gray-4;
+    font-weight: 500;
+    color: $brand;
+  }
+}
