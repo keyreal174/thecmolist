@@ -47,6 +47,11 @@ function AddPostModal({
   const [topics, setTopics] = useState([]);
   const [firstButtonText, setFirstButtonText] = useState("Cancel");
   const [modalTitle, setModalTitle] = useState("Ask a marketing question");
+  const [titleHeading, setTitleHeading] = useState("Title");
+  const [titlePlaceholder, setTitlePlaceholder] = useState(
+    "Be specific and imagine you're asking a question to another person"
+  );
+  const [descriptionSubheading, setDescriptionSubheading] = useState("");
   const [secondButtonText, setSecondButtonText] = useState("Ask a question");
   const [isLoading, setIsLoading] = useState(false);
   const [isPersonVendor, setIsPersonVendor] = useState(false);
@@ -175,12 +180,22 @@ function AddPostModal({
 
   useEffect(() => {
     if (contentType === "question") {
+      setTitleHeading("Title");
+      setTitlePlaceholder(
+        "Be specific and imagine you're asking a question to another person"
+      );
       setModalTitle("Ask a marketing question");
       setSecondButtonText("Ask Question");
     } else if (contentType === "project") {
+      setTitleHeading("Title");
+      setTitlePlaceholder(
+        "Be specific and imagine you're describing this project to another person"
+      );
       setModalTitle("Share a marketing project launch or experience");
       setSecondButtonText("Share Experience");
     } else if (contentType === "article") {
+      setTitleHeading("Article URL");
+      setTitlePlaceholder("http://");
       setModalTitle("Share marketing news or article");
       setSecondButtonText("Share Article");
     }
@@ -369,19 +384,21 @@ function AddPostModal({
               </Row>
               <Row>
                 <Col className="modal-section-separator" md="12">
-                  <div className="modal-section-title">Title</div>
+                  <div className="modal-section-title">{titleHeading}</div>
                   <Form.Control
                     as="input"
                     className="modal-section-title-content"
                     id="title"
-                    placeholder="Be specific and imagine you're asking a question to another person"
+                    placeholder={titlePlaceholder}
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}
                     required={true}
                   />
                 </Col>
                 <Col md="9">
-                  <div className="modal-section-title">Body</div>
+                  <div className="modal-section-title">
+                    Description <span>{descriptionSubheading}</span>
+                  </div>
                   <RichEditor
                     setBody={setBody}
                     getSuggestions={getSuggestions}
