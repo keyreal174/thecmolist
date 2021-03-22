@@ -11,6 +11,7 @@ import SimpleTopBanner from "../base/SimpleTopBanner/SimpleTopBanner";
 import AddMemberModal from "../base/AddMemberModal/AddMemberModal";
 import FollowUserModal from "../Profile/FollowUser"; // VAS move this
 import NetworkFeed from "./NetworkFeed";
+import MyNetwork from "../Feed/MyNetwork";
 import Analytics from "../../util/Analytics";
 import { cdn } from "../../util/constants";
 import "./network.scss";
@@ -120,13 +121,22 @@ const Network = (props) => {
       <Container className="height-100">
         <div className="wrapper">
           <Header />
-          <SimpleTopBanner
-            // disable for now... buttonText="Invite"
-            onClick={handleInviteModalClick}
-            title={bannerTitle}
-            subtitle={"Members"}
-            image={bannerImage}
-          />
+          <Row>
+            <Col md="9">
+              <SimpleTopBanner
+                // disable for now... buttonText="Invite"
+                onClick={handleInviteModalClick}
+                title={bannerTitle}
+                subtitle={"Members"}
+                image={bannerImage}
+              />
+            </Col>
+            <Col md="3">
+              <div className="mt-3">
+                <MyNetwork saveContent={props.saveContent} />
+              </div>
+            </Col>
+          </Row>
           <AddMemberModal
             firstButtonText="Cancel"
             secondButtonText="Send invitation"
@@ -225,6 +235,7 @@ const mapDispatch = (dispatch) => {
     connectUser: dispatch.userModel.connectUser,
     disconnectUser: dispatch.userModel.disconnectUser,
     getProfileStats: dispatch.profileModel.getProfileStats,
+    saveContent: dispatch.contentModel.saveContent,
   };
 };
 
