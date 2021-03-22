@@ -74,6 +74,7 @@ function Header({ getProfileStats, profileStats }) {
       <Navbar expand="md" variant="white">
         <Navbar.Brand href="/feed">
           <img src={Logo} alt="CMOList brand logo" />
+          <span className="header--tag">beta</span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className="nav-app" id="basic-navbar-nav">
