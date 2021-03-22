@@ -25,16 +25,18 @@
       "advising": false,
       "advisingOpportunities": "Advising Opportunities",
       "areasOfExpertise": [
-        "#leadership",
-        "#advertising",
-        "#public-relations",
-        "#branding"
+        { "name": "#leadership", "slug": "leadership" },
+        { "name": "#advertising", "slug": "advertising" },
+        { "name": "#public-relations", "slug": "public-relations" },
+        { "name": "#branding", "slug": "branding" }
       ],
       "areasOfInterest": [
-        "#event-marketing",
-        "#performance-marketing",
-        "#account-based-marketing",
-        "#account-based-marketing"
+        { "name": "#event-marketing", "slug": "event-marketing" },
+        { "name": "#performance-marketing", "slug": "performance-marketing" },
+        {
+          "name": "#account-based-marketing",
+          "slug": "account-based-marketing"
+        }
       ]
     },
     "feedData": [

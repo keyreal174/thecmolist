@@ -34,6 +34,7 @@ const DiscussionComment = ({
     e.preventDefault();
     onSubmit(text);
     setComment("");
+    setShow(false);
   };
 
   useEffect(() => {

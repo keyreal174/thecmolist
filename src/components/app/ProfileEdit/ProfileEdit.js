@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Separator from "../base/Separator/Separator";
+import { AsyncTypeahead, TypeaheadMenu } from "react-bootstrap-typeahead";
 import {
   Alert,
   Container,
@@ -26,12 +27,12 @@ const ProfileEdit = (props) => {
   const [linkedin, setLinkedin] = useState("");
   const [website, setWebsite] = useState("");
   const [headline, setHeadline] = useState("");
+  const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
   const [coverImage, setCoverImage] = useState("");
   const [imageUploading, setImageUploading] = useState(false);
   const [coverImageUploading, setCoverImageUploading] = useState(false);
   const [areasOfExpertise, setAreasOfExpertise] = useState("");
-  const [areasOfInterest, setAreasOfInterest] = useState("");
   const [networking, setNetworking] = useState(false);
   const [networkingOpportunities, setNetworkingOpportunities] = useState("");
   const [advising, setAdvising] = useState(false);
@@ -46,6 +47,10 @@ const ProfileEdit = (props) => {
   // props to control profile image
   const inputFile = useRef(null);
   const coverInputFile = useRef(null);
+  // props to cover typeahead
+  const [isTypeaheadLoading, setIsTypeaheadLoading] = useState(false);
+  const [typeaheadOptions, setTypeaheadOptions] = useState([]);
+  const [selectedAreasOfExpertise, setSelectedAreasOfExpertise] = useState([]);
 
   const onInputFileChange = async (event) => {
     if (event && event.target && event.target.files.length > 0) {
@@ -66,7 +71,7 @@ const ProfileEdit = (props) => {
   };
   useEffect(() => {
     const fetch = async () => {
-      await props.fetchProfile();
+      await props.fetchProfile({ scope: "edit" });
     };
 
     fetch();
@@ -88,9 +93,15 @@ const ProfileEdit = (props) => {
 
     if (profile.about) {
       let pfa = profile.about;
-      pfa.areasOfExpertise &&
-        setAreasOfExpertise(pfa.areasOfExpertise.join(", "));
-      pfa.areasOfInterest && setAreasOfInterest(pfa.areasOfInterest.join(", "));
+      if (pfa.areasOfExpertise && pfa.areasOfExpertise.length > 0) {
+        setSelectedAreasOfExpertise(
+          pfa.areasOfExpertise.map((a) => ({
+            name: a.name,
+            slug: a.slug,
+          }))
+        );
+      }
+      pfa.description && setDescription(pfa.description);
       pfa.networking && setNetworking(pfa.networking);
       pfa.networkingOpportunities &&
         setNetworkingOpportunities(pfa.networkingOpportunities);
@@ -125,7 +136,7 @@ const ProfileEdit = (props) => {
 
   const handleSubmit = async (e) => {
     const updated_profile = {
-      ...props.profile,
+      ...props.profile.profile,
       firstName,
       lastName,
       title,
@@ -139,8 +150,8 @@ const ProfileEdit = (props) => {
       coverImage,
       image,
       about: {
-        areasOfExpertise: areasOfExpertise.split(", "),
-        areasOfInterest: areasOfInterest.split(", "),
+        description: description,
+        areasOfExpertise: selectedAreasOfExpertise,
         networking,
         networkingOpportunities,
         advising,
@@ -154,6 +165,24 @@ const ProfileEdit = (props) => {
     };
     setNow(100);
     await props.saveProfile(updated_profile);
+    window.location.href = "/profile";
+  };
+
+  const handleSearch = async (query) => {
+    setIsTypeaheadLoading(true);
+    const data = await props.getTopicSuggestions(query);
+    const options = data
+      .map((i, index) => ({
+        id: index,
+        slug: i.slug,
+        name: i.name,
+      }))
+      .filter(
+        (o) => !selectedAreasOfExpertise.some((so) => o.name === so.name)
+      );
+
+    setTypeaheadOptions(options);
+    setIsTypeaheadLoading(false);
   };
 
   return (
@@ -205,6 +234,7 @@ const ProfileEdit = (props) => {
                 <Button
                   className="btn-white mt-3"
                   variant="outline-primary"
+                  disabled
                   onClick={() => {
                     coverInputFile &&
                       coverInputFile.current &&
@@ -406,30 +436,61 @@ const ProfileEdit = (props) => {
                 <Form.Control
                   as="textarea"
                   className="profile--textarea"
-                  rows="3"
+                  rows="1"
                   placeholder="High-tech professional marketer passionate about consumer internet, SaaS and disruptive marketplaces. Industry expertise: mobile, consumer internet, social media, enterprise software, SaaS, advertising."
                   value={headline}
                   onChange={(e) => setHeadline(e.target.value)}
                 />
               </Col>
             </Row>
+            <Row className="profile--row mt-5">
+              <Col>
+                <Form.Label>Description (optional)</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  className="profile--textarea"
+                  rows="3"
+                  placeholder="High-tech professional marketer passionate about consumer internet, SaaS and disruptive marketplaces. Industry expertise: mobile, consumer internet, social media, enterprise software, SaaS, advertising."
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                />
+              </Col>
+            </Row>
             <Row className="profile--row">
               <Col>
                 <Form.Label>Areas of marketing expertise</Form.Label>
-                <Form.Control
-                  className="profile--input"
-                  placeholder="Choose one or more #topics"
-                  value={areasOfExpertise}
-                  onChange={(e) => setAreasOfExpertise(e.target.value)}
-                />
-              </Col>
-              <Col>
-                <Form.Label>Areas of marketing interest</Form.Label>
-                <Form.Control
-                  className="profile--input"
-                  placeholder="Choose one or more #topics"
-                  value={areasOfInterest}
-                  onChange={(e) => setAreasOfInterest(e.target.value)}
+                <AsyncTypeahead
+                  id="async-global-search"
+                  className="expertise--input"
+                  isLoading={isTypeaheadLoading}
+                  labelKey="name"
+                  multiple
+                  minLength={1}
+                  onSearch={handleSearch}
+                  options={typeaheadOptions}
+                  emptyLabel=""
+                  renderMenu={(results, menuProps) => {
+                    if (!results.length) {
+                      return null;
+                    }
+                    return (
+                      <TypeaheadMenu
+                        options={results}
+                        labelKey="name"
+                        {...menuProps}
+                      />
+                    );
+                  }}
+                  selected={selectedAreasOfExpertise}
+                  onChange={(selectedOption) => {
+                    setSelectedAreasOfExpertise(selectedOption);
+                  }}
+                  placeholder=""
+                  renderMenuItemChildren={(option) => (
+                    <React.Fragment>
+                      <span>{option.name}</span>
+                    </React.Fragment>
+                  )}
                 />
               </Col>
             </Row>
@@ -534,6 +595,8 @@ const mapDispatch = (dispatch) => {
   return {
     fetchProfile: dispatch.profileModel.fetchProfile,
     saveProfile: dispatch.profileModel.saveProfile,
+    uploadImageFile: dispatch.fileModel.uploadImageFile,
+    getTopicSuggestions: dispatch.suggestionsModel.getTopicSuggestions,
   };
 };
 

@@ -1,11 +1,14 @@
 import axios from "axios";
 
-export const profileRequest = (userName) => {
-  return axios.get(`/api/profile/${userName ? userName : ""}`, {
-    headers: {
-      "timezone-offset": new Date().getTimezoneOffset(),
-    },
-  });
+export const profileRequest = (userName, scope) => {
+  return axios.get(
+    `/api/profile/${userName ? userName : ""}${scope ? "?scope=" + scope : ""}`,
+    {
+      headers: {
+        "timezone-offset": new Date().getTimezoneOffset(),
+      },
+    }
+  );
 };
 
 export const saveProfileRequest = (data) => {
@@ -57,9 +60,9 @@ export default {
     },
   },
   effects: (dispatch) => ({
-    async fetchProfile(userName) {
+    async fetchProfile(payload) {
       try {
-        const response = await profileRequest(userName);
+        const response = await profileRequest(payload.userName, payload.scope);
         const { profile } = response.data;
         dispatch.profileModel.updateProfile(profile);
         dispatch.reactionModel.setReactions(profile.feedData);
@@ -70,7 +73,7 @@ export default {
 
     async saveProfile(profile) {
       try {
-        await saveProfileRequest({ profile });
+        await saveProfileRequest(profile);
         dispatch.profileModel.updateProfile(profile);
       } catch (err) {
         throw new Error("Could not save profile");

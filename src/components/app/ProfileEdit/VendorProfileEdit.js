@@ -4,6 +4,7 @@ import { useHistory } from "react-router";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Separator from "../base/Separator/Separator";
+import { AsyncTypeahead, TypeaheadMenu } from "react-bootstrap-typeahead";
 import { Container, Button, Form, Row, Col } from "react-bootstrap";
 import { vendorProfileHeader } from "../../util/constants";
 import Util from "../../util/Util";
@@ -24,13 +25,16 @@ const VendorProfileEdit = (props) => {
   const [coverImage, setCoverImage] = useState("");
   const [imageUploading, setImageUploading] = useState(false);
   const [coverImageUploading, setCoverImageUploading] = useState(false);
-  const [areasOfExpertise, setAreasOfExpertise] = useState("");
   const [companyIndustry, setCompanyIndustry] = useState("");
   const [now, setNow] = useState(50);
   const [vendorType, setVendorType] = useState(VendorType[0]);
   // props to control profile image
   const inputFile = useRef(null);
   const coverInputFile = useRef(null);
+  // props to cover typeahead
+  const [isTypeaheadLoading, setIsTypeaheadLoading] = useState(false);
+  const [typeaheadOptions, setTypeaheadOptions] = useState([]);
+  const [selectedAreasOfExpertise, setSelectedAreasOfExpertise] = useState([]);
 
   const onInputFileChange = async (event) => {
     if (event && event.target && event.target.files.length > 0) {
@@ -71,9 +75,12 @@ const VendorProfileEdit = (props) => {
     setDescription(profile.description);
     setImage(profile.image);
     setCoverImage(profile.coverImage || vendorProfileHeader);
-    if (profile.areasOfExpertise) {
-      setAreasOfExpertise(
-        profile.areasOfExpertise.map((a) => a.name).join(", ")
+    if (profile.areasOfExpertise && profile.areasOfExpertise.length > 0) {
+      setSelectedAreasOfExpertise(
+        profile.areasOfExpertise.map((a) => ({
+          name: a.name,
+          slug: a.slug,
+        }))
       );
     }
   };
@@ -105,7 +112,7 @@ const VendorProfileEdit = (props) => {
       companyLinkedin,
       twitter,
       companyIndustry,
-      areasOfExpertise: areasOfExpertise.split(", "),
+      areasOfExpertise: selectedAreasOfExpertise,
       vendorType: vendorType,
     };
     try {
@@ -118,6 +125,23 @@ const VendorProfileEdit = (props) => {
     } catch (err) {
       throw new Error("Could not save vendor profile");
     }
+  };
+
+  const handleSearch = async (query) => {
+    setIsTypeaheadLoading(true);
+    const data = await props.getTopicSuggestions(query);
+    const options = data
+      .map((i, index) => ({
+        id: index,
+        slug: i.slug,
+        name: i.name,
+      }))
+      .filter(
+        (o) => !selectedAreasOfExpertise.some((so) => o.name === so.name)
+      );
+
+    setTypeaheadOptions(options);
+    setIsTypeaheadLoading(false);
   };
 
   return (
@@ -330,7 +354,7 @@ const VendorProfileEdit = (props) => {
                 <Form.Label>Twitter</Form.Label>
                 <Form.Control
                   className="profile--input"
-                  placeholder=""
+                  placeholder="@handle"
                   value={twitter}
                   onChange={(e) => setTwitter(e.target.value)}
                 />
@@ -341,7 +365,7 @@ const VendorProfileEdit = (props) => {
                 <Form.Label>City</Form.Label>
                 <Form.Control
                   className="profile--input"
-                  placeholder="San Francisco"
+                  placeholder=""
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
                 />
@@ -350,7 +374,7 @@ const VendorProfileEdit = (props) => {
                 <Form.Label>State/Province</Form.Label>
                 <Form.Control
                   className="profile--input"
-                  placeholder="CA"
+                  placeholder=""
                   value={province}
                   onChange={(e) => setProvince(e.target.value)}
                 />
@@ -359,7 +383,7 @@ const VendorProfileEdit = (props) => {
                 <Form.Label>Country</Form.Label>
                 <Form.Control
                   className="profile--input"
-                  placeholder="USA"
+                  placeholder=""
                   value={country}
                   onChange={(e) => setCountry(e.target.value)}
                 />
@@ -387,11 +411,38 @@ const VendorProfileEdit = (props) => {
             <Row className="profile--row">
               <Col>
                 <Form.Label>Areas of marketing expertise</Form.Label>
-                <Form.Control
-                  className="profile--input"
-                  placeholder="Choose one or more #topics"
-                  value={areasOfExpertise}
-                  onChange={(e) => setAreasOfExpertise(e.target.value)}
+                <AsyncTypeahead
+                  id="async-global-search"
+                  className="expertise--input"
+                  isLoading={isTypeaheadLoading}
+                  labelKey="name"
+                  multiple
+                  minLength={1}
+                  onSearch={handleSearch}
+                  options={typeaheadOptions}
+                  emptyLabel=""
+                  renderMenu={(results, menuProps) => {
+                    if (!results.length) {
+                      return null;
+                    }
+                    return (
+                      <TypeaheadMenu
+                        options={results}
+                        labelKey="name"
+                        {...menuProps}
+                      />
+                    );
+                  }}
+                  selected={selectedAreasOfExpertise}
+                  onChange={(selectedOption) => {
+                    setSelectedAreasOfExpertise(selectedOption);
+                  }}
+                  placeholder=""
+                  renderMenuItemChildren={(option) => (
+                    <React.Fragment>
+                      <span>{option.name}</span>
+                    </React.Fragment>
+                  )}
                 />
               </Col>
               <Col>
@@ -446,6 +497,7 @@ const mapDispatch = (dispatch) => {
     fetchVendor: dispatch.vendorModel.fetchVendor,
     saveVendor: dispatch.vendorModel.saveVendor,
     uploadImageFile: dispatch.fileModel.uploadImageFile,
+    getTopicSuggestions: dispatch.suggestionsModel.getTopicSuggestions,
   };
 };
 

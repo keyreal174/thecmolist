@@ -41,8 +41,8 @@ const RenderList = ({ arr }) => {
   if (arr) {
     return arr.map((item, index) => (
       <React.Fragment key={index}>
-        <a href="#">
-          {item}
+        <a href={`/topic/${item.slug}`}>
+          {item.name}
           {index < arr.length - 1 && ","}
         </a>
         {index < arr.length - 1 && <span> </span>}
@@ -91,7 +91,9 @@ const Profile = (props) => {
 
   useEffect(() => {
     document.title = "Profile";
-    props.fetchProfile(Util.parsePath(window.location.href).trailingPath);
+    props.fetchProfile({
+      userName: Util.parsePath(window.location.href).trailingPath,
+    });
   }, []);
 
   useEffect(() => {
