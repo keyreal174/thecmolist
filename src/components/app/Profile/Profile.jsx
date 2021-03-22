@@ -416,7 +416,7 @@ const Profile = (props) => {
                   <div className="profile-about--content">
                     <ShowMoreText
                       keepNewLines={true}
-                      lines={2}
+                      lines={3}
                       more="See more"
                       less="See less"
                       width={0}
