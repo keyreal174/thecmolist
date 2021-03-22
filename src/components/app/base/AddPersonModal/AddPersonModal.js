@@ -83,6 +83,7 @@ function AddPersonModal({ show, handleClose, setMention }) {
                                   name="vendortype"
                                   value={vendor}
                                   id={vendor}
+                                  defaultChecked={index === 0}
                                   onChange={(e) => {
                                     setVendorType(e.target.value);
                                   }}
