@@ -13,9 +13,9 @@ const CustomCheckBox = ({ onChange, checked, label, useCheckedStyling }) => {
           style={{
             display: "flex",
             flex: 1,
-            backgroundColor: "#27AC5D",
+            backgroundColor: "#2962ff",
             borderRadius: "5px",
-            border: "2px solid #27AC5D",
+            border: "2px solid #2962ff",
             height: 18,
             width: 18,
             padding: "2px",
