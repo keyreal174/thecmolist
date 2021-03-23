@@ -5,7 +5,13 @@ import clsx from "clsx";
 import Tick from "../icons/tick.svg";
 import "./CustomCheckBox.scss";
 
-const CustomCheckBox = ({ onChange, checked, label, useCheckedStyling }) => {
+const CustomCheckBox = ({
+  onChange,
+  checked,
+  label,
+  useCheckedStyling,
+  disabled,
+}) => {
   return (
     <Checkbox
       icon={
@@ -13,9 +19,9 @@ const CustomCheckBox = ({ onChange, checked, label, useCheckedStyling }) => {
           style={{
             display: "flex",
             flex: 1,
-            backgroundColor: "#2962ff",
+            backgroundColor: disabled ? "#ddd" : "#2962ff",
             borderRadius: "5px",
-            border: "2px solid #2962ff",
+            border: disabled ? "2px solid #ddd" : "2px solid #2962ff",
             height: 18,
             width: 18,
             padding: "2px",
@@ -34,6 +40,7 @@ const CustomCheckBox = ({ onChange, checked, label, useCheckedStyling }) => {
         checked && useCheckedStyling && "checked"
       )}
       label={label}
+      disabled={disabled}
     />
   );
 };
