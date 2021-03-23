@@ -437,7 +437,7 @@ const ProfileEdit = (props) => {
                   as="textarea"
                   className="profile--textarea"
                   rows="1"
-                  placeholder="High-tech professional marketer passionate about consumer internet, SaaS and disruptive marketplaces. Industry expertise: mobile, consumer internet, social media, enterprise software, SaaS, advertising."
+                  placeholder=""
                   value={headline}
                   onChange={(e) => setHeadline(e.target.value)}
                 />
@@ -450,7 +450,7 @@ const ProfileEdit = (props) => {
                   as="textarea"
                   className="profile--textarea"
                   rows="3"
-                  placeholder="High-tech professional marketer passionate about consumer internet, SaaS and disruptive marketplaces. Industry expertise: mobile, consumer internet, social media, enterprise software, SaaS, advertising."
+                  placeholder=""
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                 />
