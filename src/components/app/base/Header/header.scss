@@ -30,7 +30,7 @@
   font-weight: bold;
   font-size: 26px;
   font-family: "Montserrat";
-  width: 45px;
+  width: 100px;
   position: relative;
   border-radius: 11px;
 }
@@ -294,5 +294,25 @@
     top: 30%;
     right: -4px;
     position: absolute;
+  }
+}
+
+.header {
+  &--logo {
+    position: relative;
+  }
+  &--tag {
+    max-height: 20px;
+    margin-left: 8px;
+    padding: 5px 8px;
+    border-radius: 10px;
+    background-color: $gray-4;
+    color: $text-1;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+    line-height: 10px;
+    letter-spacing: 0.15ch;
+    position: absolute;
+    top: 10px;
   }
 }

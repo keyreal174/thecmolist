@@ -72,8 +72,9 @@ function Header({ getProfileStats, profileStats }) {
     <div>
       <div className="container-fullwidth"></div>
       <Navbar expand="md" variant="white">
-        <Navbar.Brand href="/feed">
+        <Navbar.Brand className="header--logo" href="/feed">
           <img src={Logo} alt="CMOList brand logo" />
+          <span className="header--tag">Beta</span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className="nav-app" id="basic-navbar-nav">
