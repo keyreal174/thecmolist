@@ -5,6 +5,22 @@
   cursor: pointer;
 }
 
+.custom-checkbox-icon {
+  display: flex;
+  flex: 1;
+  background-color: $blue;
+  border-radius: 5px;
+  border: 2px solid $blue;
+  height: 18px;
+  width: 18px;
+  padding: 2px;
+}
+
+.custom-checkbox-icon.disabled {
+  background-color: #ddd;
+  border: 2px solid #ddd;
+}
+
 .custom-checkbox-label {
   margin-left: 13px !important;
   user-select: none;
@@ -13,6 +29,10 @@
   font-size: 16px;
   line-height: 20px;
   font-weight: 500;
+}
+
+.custom-checkbox-label.disabled {
+  background-color: #ddd;
 }
 
 .custom-checkbox-label.checked {

@@ -330,8 +330,8 @@ function AddPostModal({
                     <label htmlFor="allnetwork">
                       My Peers
                       <span>
-                        (visible to your Peers and all member of any network you
-                        belong to)
+                        (visible to your Peers and all members of any networks
+                        you belong to)
                       </span>
                     </label>
                   </div>

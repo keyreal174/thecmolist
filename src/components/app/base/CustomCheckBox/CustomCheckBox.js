@@ -15,18 +15,7 @@ const CustomCheckBox = ({
   return (
     <Checkbox
       icon={
-        <div
-          style={{
-            display: "flex",
-            flex: 1,
-            backgroundColor: disabled ? "#ddd" : "#2962ff",
-            borderRadius: "5px",
-            border: disabled ? "2px solid #ddd" : "2px solid #2962ff",
-            height: 18,
-            width: 18,
-            padding: "2px",
-          }}
-        >
+        <div className={clsx("custom-checkbox-icon", disabled && "disabled")}>
           <img src={Tick} alt="tick" style={{ userSelect: "none" }} />
         </div>
       }
@@ -37,7 +26,8 @@ const CustomCheckBox = ({
       containerClassName="custom-checkbox"
       labelClassName={clsx(
         "custom-checkbox-label",
-        checked && useCheckedStyling && "checked"
+        checked && useCheckedStyling && "checked",
+        disabled && "disabled"
       )}
       label={label}
       disabled={disabled}
