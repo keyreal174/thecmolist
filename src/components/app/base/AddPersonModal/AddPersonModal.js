@@ -12,6 +12,7 @@ function AddPersonModal({ show, handleClose, setMention }) {
   const [link, setLink] = useState("");
   const [error, setError] = useState({});
   const [vendorType, setVendorType] = useState(VendorType[0]);
+  const isPerson = show === "Person";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,7 +36,7 @@ function AddPersonModal({ show, handleClose, setMention }) {
       const person = {
         name,
         link,
-        type: vendorType.toLocaleLowerCase(),
+        type: isPerson ? "person" : vendorType.toLocaleLowerCase(),
       };
       setMention(person);
       reset();
@@ -53,8 +54,6 @@ function AddPersonModal({ show, handleClose, setMention }) {
     setMention(null);
     handleClose();
   };
-
-  const isPerson = show === "Person";
 
   return (
     <>
