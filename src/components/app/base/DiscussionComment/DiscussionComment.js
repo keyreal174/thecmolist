@@ -23,6 +23,7 @@ const DiscussionComment = ({
   const [comment, setComment] = useState(value || "");
   const [show, setShow] = useState("");
   const [body, setBody] = useState("");
+  const [reStateToggle, setReStateToggle] = useState(false);
   const [isPersonVendor, setIsPersonVendor] = useState(false);
   const textAreaEl = useRef(null);
 
@@ -34,6 +35,8 @@ const DiscussionComment = ({
     e.preventDefault();
     onSubmit(text);
     setComment("");
+    setBody("");
+    setReStateToggle(!reStateToggle);
     setShow(false);
   };
 
@@ -93,6 +96,7 @@ const DiscussionComment = ({
             setBody={setBody}
             setIsPersonVendor={() => setIsPersonVendor(false)}
             toolbar={true}
+            stateToggle={reStateToggle}
           />
           <div className="comment--buttons">
             <Button

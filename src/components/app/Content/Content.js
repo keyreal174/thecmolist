@@ -43,8 +43,8 @@ const Content = ({
       <Container className="height-100">
         <div className="wrapper">
           <Header />
-          <Row className="question-answer-section-wrapper">
-            {error && (
+          {error && (
+            <Row>
               <Col md="12">
                 <Alert
                   id="error-section"
@@ -54,7 +54,9 @@ const Content = ({
                   {error}
                 </Alert>
               </Col>
-            )}
+            </Row>
+          )}
+          <Row className="question-answer-section-wrapper">
             {contentLoading ? (
               <Col md="12">
                 <ActivityIndicator className="element-center question-activity-indicator" />

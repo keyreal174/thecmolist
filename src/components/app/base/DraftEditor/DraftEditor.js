@@ -56,6 +56,7 @@ const DraftEditor = ({
   setIsPersonVendor,
   toolbar,
   handleChange,
+  stateToggle,
   ...rest
 }) => {
   const ref = useRef(null);
@@ -68,6 +69,12 @@ const DraftEditor = ({
   const [selectedMention, setSelectedMention] = useState("");
   const [mention, setMention] = useState(null);
   const [isSharp, setIsSharp] = useState(false);
+
+  useEffect(() => {
+    if (editorState.getCurrentContent().hasText()) {
+      setEditorState(EditorState.createEmpty());
+    }
+  }, [stateToggle]);
 
   const { MentionSuggestions, plugins } = useMemo(() => {
     const mentionPlugin = createMentionPlugin({ mentionTrigger: ["@", "#"] });
