@@ -29,6 +29,8 @@ function Homepage() {
   const query = querySearch(window.location.search);
   const redirectUrl = query.redirect ? decodeURIComponent(query.redirect) : "/";
 
+  const showUsernameField = !window.location.hostname.includes("thecmolist");
+
   const handleFormLeftSubmit = (e) => {
     e.preventDefault();
     const form = document.forms["left-form"];
@@ -126,29 +128,31 @@ function Homepage() {
             <div className="home--form-subtitle">
               Fill out the form below to apply:
             </div>
-            <Row>
-              <Col>
-                <Form.Group>
-                  <Form.Label className="home--label">Name</Form.Label>
-                  <Form.Control
-                    className="home--input"
-                    placeHolder="First name, Last name"
-                    required={true}
-                    id="name"
-                  />
-                </Form.Group>
-                <Form.Group>
-                  <Form.Label className="home--label">Email</Form.Label>
-                  <Form.Control
-                    className="home--input"
-                    placeHolder="name@company.com"
-                    required={true}
-                    id="email"
-                    type="email"
-                  />
-                </Form.Group>
-              </Col>
-            </Row>
+            {showUsernameField && (
+              <Row>
+                <Col>
+                  <Form.Group>
+                    <Form.Label className="home--label">Name</Form.Label>
+                    <Form.Control
+                      className="home--input"
+                      placeHolder="First name, Last name"
+                      required={true}
+                      id="name"
+                    />
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label className="home--label">Email</Form.Label>
+                    <Form.Control
+                      className="home--input"
+                      placeHolder="name@company.com"
+                      required={true}
+                      id="email"
+                      type="email"
+                    />
+                  </Form.Group>
+                </Col>
+              </Row>
+            )}
             <Row>
               <Col>
                 <Form.Group>
