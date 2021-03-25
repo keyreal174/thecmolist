@@ -68,6 +68,7 @@ const DraftEditor = ({
   const [selectedMention, setSelectedMention] = useState("");
   const [mention, setMention] = useState(null);
   const [isSharp, setIsSharp] = useState(false);
+  const [defaultName, setDefaultName] = useState("");
 
   const { MentionSuggestions, plugins } = useMemo(() => {
     const mentionPlugin = createMentionPlugin({ mentionTrigger: ["@", "#"] });
@@ -309,6 +310,18 @@ const DraftEditor = ({
     setIsPersonVendor();
   };
 
+  const typedText = () => {
+    let selection = editorState.getSelection();
+    const anchorKey = selection.getAnchorKey();
+    const currentContent = editorState.getCurrentContent();
+    const currentBlock = currentContent.getBlockForKey(anchorKey);
+
+    const { start, end } = getSearchText(editorState, selection, ["@"]);
+    const selectedText = currentBlock.getText().slice(start, end);
+    const resultText = selectedText.split("@").pop();
+    setDefaultName(resultText);
+  };
+
   useEffect(() => {
     if (!show) {
       handleAddPeople(mention);
@@ -369,10 +382,10 @@ const DraftEditor = ({
             onSearchChange={onSearchChange}
             onAddMention={(mention) => {
               if (MentionLast.find((item) => item.name === mention.name)) {
+                const isPerson = mention.name === MentionLast[0].name;
+                isPerson ? setDefaultName("") : typedText();
                 setSelectedMention(mention.name);
-                setShow(
-                  mention.name === MentionLast[0].name ? "Person" : "Vendor"
-                );
+                setShow(isPerson ? "Person" : "Vendor");
               }
             }}
           />
@@ -382,6 +395,7 @@ const DraftEditor = ({
         show={show}
         handleClose={() => setShow(false)}
         setMention={(mention) => setMention(mention)}
+        defaultName={defaultName}
       />
       <div className={clsx(show && "person-modal-backdrop")}></div>
     </div>
