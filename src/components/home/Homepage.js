@@ -100,21 +100,21 @@ function Homepage() {
         <Col md="2"></Col>
         <Col md="8">
           <div className="home--title">
-            Manage and share marketing knowledge with your trusted peers
+            Connecting marketing leaders with the advice and resources they need
+            to succeed
           </div>
         </Col>
         <Col md="2"></Col>
       </Row>
       <Row>
-        <Col md="2"></Col>
-        <Col md="8">
+        <Col md="1"></Col>
+        <Col md="10">
           <div className="home--subtitle">
-            CMOlist is a private knowledge network that helps marketing leaders
-            learn from each other by sharing critical insights, best practices,
-            and proven vendors.
+            CMOlist enables marketing leaders to learn from each other by
+            sharing critical insights, best practices, and proven vendors.
           </div>
         </Col>
-        <Col md="2"></Col>
+        <Col md="1"></Col>
       </Row>
       <Row className="home--form">
         <Col className="px-0" md="6">
@@ -128,31 +128,29 @@ function Homepage() {
             <div className="home--form-subtitle">
               Fill out the form below to apply:
             </div>
-            {showUsernameField && (
-              <Row>
-                <Col>
-                  <Form.Group>
-                    <Form.Label className="home--label">Name</Form.Label>
-                    <Form.Control
-                      className="home--input"
-                      placeHolder="First name, Last name"
-                      required={true}
-                      id="name"
-                    />
-                  </Form.Group>
-                  <Form.Group>
-                    <Form.Label className="home--label">Email</Form.Label>
-                    <Form.Control
-                      className="home--input"
-                      placeHolder="name@company.com"
-                      required={true}
-                      id="email"
-                      type="email"
-                    />
-                  </Form.Group>
-                </Col>
-              </Row>
-            )}
+            <Row>
+              <Col>
+                <Form.Group>
+                  <Form.Label className="home--label">Name</Form.Label>
+                  <Form.Control
+                    className="home--input"
+                    placeHolder="First name, Last name"
+                    required={true}
+                    id="name"
+                  />
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label className="home--label">Email</Form.Label>
+                  <Form.Control
+                    className="home--input"
+                    placeHolder="name@company.com"
+                    required={true}
+                    id="email"
+                    type="email"
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
             <Row>
               <Col>
                 <Form.Group>
@@ -186,46 +184,48 @@ function Homepage() {
               Already have an account or received a invitation? Sign in here:
             </div>
             <Row>
-              <Col md="12">
-                <Form.Group>
-                  <Form.Label className="home--label">Email</Form.Label>
-                  <Form.Control
-                    className="home--input"
-                    name="email"
-                    type="email"
-                    required={true}
-                  />
-                </Form.Group>
-                <Form.Group>
-                  <Form.Label className="home--label">Password</Form.Label>
-                  <Form.Control
-                    className="home--input"
-                    name="password"
-                    type="password"
-                    required={true}
-                  />
-                </Form.Group>
-                <Button
-                  className="home--form-linkedin btn__homepage btn__homepage-blue signup--form-apply"
-                  type="submit"
-                >
-                  <span>Login</span>
-                  <div
-                    style={{
-                      "margin-top": "5px",
-                      "margin-right": "4px",
-                      float: "right",
-                    }}
-                  >
-                    <Spinner
-                      radius={10}
-                      color={"#eee"}
-                      stroke={2}
-                      visible={loading}
+              {showUsernameField && (
+                <Col md="12">
+                  <Form.Group>
+                    <Form.Label className="home--label">Email</Form.Label>
+                    <Form.Control
+                      className="home--input"
+                      name="email"
+                      type="email"
+                      required={true}
                     />
-                  </div>
-                </Button>
-              </Col>
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label className="home--label">Password</Form.Label>
+                    <Form.Control
+                      className="home--input"
+                      name="password"
+                      type="password"
+                      required={true}
+                    />
+                  </Form.Group>
+                  <Button
+                    className="home--form-linkedin btn__homepage btn__homepage-blue signup--form-apply"
+                    type="submit"
+                  >
+                    <span>Login</span>
+                    <div
+                      style={{
+                        "margin-top": "5px",
+                        "margin-right": "4px",
+                        float: "right",
+                      }}
+                    >
+                      <Spinner
+                        radius={10}
+                        color={"#eee"}
+                        stroke={2}
+                        visible={loading}
+                      />
+                    </div>
+                  </Button>
+                </Col>
+              )}
               <Col md="12">
                 <Button
                   className="home--form-linkedin btn__homepage btn__homepage-blue signup--form-apply"

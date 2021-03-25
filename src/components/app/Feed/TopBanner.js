@@ -79,20 +79,20 @@ const TopBanner = (props) => {
               className="btn-blue mb-2 top-banner-button"
               onClick={() => handleShow("question")}
             >
-              Ask Question
+              Ask a Question
             </Button>
             <Button
               className="btn-white mb-2 top-banner-button"
               variant="outline-primary"
               onClick={() => handleShow("article")}
             >
-              Share Article
+              Share an Article
             </Button>
             <Button
               className="btn-white top-banner-button"
               onClick={() => handleShow("project")}
             >
-              Share Experience
+              Share an Update
             </Button>
             <AddPostModal
               contentType={contentType}

@@ -25,6 +25,7 @@ import Util from "./components/util/Util";
 import VendorProfile from "./components/app/Profile/VendorProfile";
 import VendorProfileEdit from "./components/app/ProfileEdit/VendorProfileEdit";
 import Vendors from "./components/app/Vendors/Vendors";
+import AdminPage from "./components/admin/AdminPage";
 import Cookies from "js-cookie";
 import SetupMocks from "./mocks/mocks";
 
@@ -252,6 +253,15 @@ class App extends React.Component {
               this.state.authed ? <OnboardingStep2 /> : <Redirect to="/login" />
             }
           />
+
+          <Route
+            exact
+            path="/admin"
+            render={(props) =>
+              this.state.authed ? <AdminPage /> : <Redirect to="/login" />
+            }
+          />
+
           <Route path="/login">
             <Login />
           </Route>

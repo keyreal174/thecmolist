@@ -75,6 +75,12 @@ const VendorProfileEdit = (props) => {
     setDescription(profile.description);
     setImage(profile.image);
     setCoverImage(profile.coverImage || vendorProfileHeader);
+    if (profile.type) {
+      let idx = VendorType.indexOf(profile.type);
+      if (idx >= 0) {
+        setVendorType(VendorType[idx]);
+      }
+    }
     if (profile.areasOfExpertise && profile.areasOfExpertise.length > 0) {
       setSelectedAreasOfExpertise(
         profile.areasOfExpertise.map((a) => ({
