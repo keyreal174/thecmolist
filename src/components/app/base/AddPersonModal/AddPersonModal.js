@@ -7,8 +7,8 @@ import clsx from "clsx";
 
 const VendorType = ["Company", "Product", "Contractor"];
 
-function AddPersonModal({ show, handleClose, setMention }) {
-  const [name, setName] = useState("");
+function AddPersonModal({ show, handleClose, setMention, defaultName }) {
+  const [name, setName] = useState(defaultName);
   const [link, setLink] = useState("");
   const [error, setError] = useState({});
   const [vendorType, setVendorType] = useState(VendorType[0]);
@@ -55,6 +55,10 @@ function AddPersonModal({ show, handleClose, setMention }) {
   };
 
   const isPerson = show === "Person";
+
+  useEffect(() => {
+    setName(defaultName);
+  }, [defaultName]);
 
   return (
     <>
