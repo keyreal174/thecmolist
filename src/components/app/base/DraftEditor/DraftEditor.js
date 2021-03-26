@@ -12,6 +12,8 @@ import {
   Modifier,
   SelectionState,
   RichUtils,
+  getDefaultKeyBinding,
+  KeyBindingUtil,
 } from "draft-js";
 import Editor from "@draft-js-plugins/editor";
 import createMentionPlugin, {
@@ -310,6 +312,31 @@ const DraftEditor = ({
     setDefaultName(resultText);
   };
 
+  const keyBindingFn = (event) => {
+    if (KeyBindingUtil.hasCommandModifier(event) && event.keyCode === 66) {
+      return "bold";
+    }
+    if (KeyBindingUtil.hasCommandModifier(event) && event.keyCode === 73) {
+      return "italic";
+    }
+    return getDefaultKeyBinding(event);
+  };
+
+  const handleKeyCommand = (command) => {
+    let newState;
+    if (command === "bold") {
+      newState = RichUtils.toggleInlineStyle(editorState, "BOLD");
+    } else if (command === "italic") {
+      newState = RichUtils.toggleInlineStyle(editorState, "ITALIC");
+    }
+
+    if (newState) {
+      setEditorState(newState);
+      return "handled";
+    }
+    return "not-handled";
+  };
+
   useEffect(() => {
     if (!show) {
       handleAddPeople(mention);
@@ -344,6 +371,8 @@ const DraftEditor = ({
             onChange={onChange}
             plugins={plugins}
             ref={ref}
+            handleKeyCommand={handleKeyCommand}
+            keyBindingFn={keyBindingFn}
           />
           {toolbar && (
             <div className="editor-toolbar">
