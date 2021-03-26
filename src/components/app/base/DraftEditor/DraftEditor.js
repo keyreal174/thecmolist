@@ -373,6 +373,7 @@ const DraftEditor = ({
             ref={ref}
             handleKeyCommand={handleKeyCommand}
             keyBindingFn={keyBindingFn}
+            placeholder="Include all the information, @people and @vendors someone would need to answer your question"
           />
           {toolbar && (
             <div className="editor-toolbar">
