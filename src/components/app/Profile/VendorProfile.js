@@ -17,6 +17,7 @@ import {
 import "./profile.scss";
 
 import LinkedIn from "./icons/linkedin.svg";
+import Twitter from "./icons/twitter.svg";
 import Website from "./icons/link.svg";
 import Mail from "./icons/mail.svg";
 import More from "./icons/more.svg";
@@ -132,7 +133,7 @@ const ProfileIntro = ({
               <img
                 className="right-section--item-img"
                 alt="twitter"
-                src={LinkedIn}
+                src={Twitter}
               />
               <a href={profileTwitter}>Twitter</a>
             </div>

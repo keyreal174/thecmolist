@@ -29,19 +29,19 @@ const MyNetwork = (props) => {
             className="btn-blue mb-2"
             onClick={() => handleShow("question")}
           >
-            Ask Question
+            Ask a Question
           </Button>
           <Button
             className="btn-white mb-2"
             onClick={() => handleShow("project")}
           >
-            Share Experience
+            Share an Update
           </Button>
           <Button
             className="btn-white mb-2"
             onClick={() => handleShow("article")}
           >
-            Share Article
+            Share an Article
           </Button>
           <AddPostModal
             contentType={contentType}

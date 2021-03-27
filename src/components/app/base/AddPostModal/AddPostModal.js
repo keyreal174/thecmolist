@@ -57,7 +57,17 @@ function AddPostModal({
   const [isPersonVendor, setIsPersonVendor] = useState(false);
 
   // Typeahead values for #topic
-  const [options, setOptions] = useState([]);
+  const [options, setOptions] = useState([
+    { name: "#martech", type: "topic", slug: "martech" },
+    { name: "#social", type: "topic", slug: "social" },
+    { name: "#brand", type: "topic", slug: "brand" },
+    { name: "#advertising", type: "topic", slug: "advertising" },
+    {
+      name: "#performancemarketing",
+      type: "topic",
+      slug: "performancemarketing",
+    },
+  ]);
   const [isTypeLoading, setIsTypeLoading] = useState(false);
 
   const handleSearch = async (query) => {
@@ -558,7 +568,7 @@ function AddPostModal({
                     isLoading={isTypeLoading}
                     labelKey="name"
                     multiple
-                    minLength={1}
+                    minLength={0}
                     onSearch={handleSearch}
                     options={options}
                     emptyLabel=""

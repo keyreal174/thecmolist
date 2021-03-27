@@ -97,24 +97,24 @@ function Homepage() {
         </div>
       </Row>
       <Row>
-        <Col md="2"></Col>
-        <Col md="8">
+        <Col md="1"></Col>
+        <Col md="10">
           <div className="home--title">
             Connecting marketing leaders with the advice and resources they need
             to succeed
           </div>
         </Col>
-        <Col md="2"></Col>
+        <Col md="1"></Col>
       </Row>
       <Row>
-        <Col md="1"></Col>
-        <Col md="10">
+        <Col md="2"></Col>
+        <Col md="8">
           <div className="home--subtitle">
             CMOlist enables marketing leaders to learn from each other by
             sharing critical insights, best practices, and proven vendors.
           </div>
         </Col>
-        <Col md="1"></Col>
+        <Col md="2"></Col>
       </Row>
       <Row className="home--form">
         <Col className="px-0" md="6">
