@@ -517,7 +517,8 @@ const Profile = (props) => {
                         engagementButtons={[
                           {
                             checked: true,
-                            text: "Answer",
+                            text: feed.replyText || "Answer",
+                            type: "Answer",
                             icon: AnswerIcon,
                             number:
                               feed.comments && feed.comments.length > 0
@@ -531,6 +532,7 @@ const Profile = (props) => {
                               reactions
                             ),
                             text: "Thanks",
+                            type: "Answer",
                             icon: ThanksIcon,
                             iconChecked: ThanksCheckedIcon,
                             number: getEngagementForId(
@@ -546,6 +548,7 @@ const Profile = (props) => {
                               reactions
                             ),
                             text: "Insightful",
+                            type: "Answer",
                             icon: InsightfulIcon,
                             iconChecked: InsightfulCheckedIcon,
                             number: getEngagementForId(

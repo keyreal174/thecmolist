@@ -112,7 +112,8 @@ function RenderFeed({
               engagementButtons={[
                 {
                   checked: true,
-                  text: "Answer",
+                  text: feed.replyText || "Answer",
+                  type: "Answer",
                   icon: AnswerIcon,
                   number: getEngagementForId(contentId, "answer", reactions),
                 },
@@ -123,6 +124,7 @@ function RenderFeed({
                     reactions
                   ),
                   text: "Thanks",
+                  type: "Reaction",
                   icon: ThanksIcon,
                   iconChecked: ThanksCheckedIcon,
                   number: getEngagementForId(contentId, "thanks", reactions),
@@ -134,6 +136,7 @@ function RenderFeed({
                     reactions
                   ),
                   text: "Insightful",
+                  type: "Reaction",
                   icon: InsightfulIcon,
                   iconChecked: InsightfulCheckedIcon,
                   number: getEngagementForId(

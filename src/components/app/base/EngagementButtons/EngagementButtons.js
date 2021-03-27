@@ -37,7 +37,7 @@ const EngagementButtons = ({
     <div className={`engagement-buttons ${className}`}>
       {engagementButtons &&
         engagementButtons.map(
-          ({ text, icon, iconChecked, number, checked }, index) => {
+          ({ text, type, icon, iconChecked, number, checked }, index) => {
             let auxIcon = icon;
             if (checked && iconChecked) {
               auxIcon = iconChecked;
@@ -49,7 +49,7 @@ const EngagementButtons = ({
                     checked ? "checked" : ""
                   }`}
                   variant="light"
-                  onClick={onEngagementButtonClick.bind(this, text)}
+                  onClick={onEngagementButtonClick.bind(this, type)}
                 >
                   <img
                     alt={`Icon for button ${index}`}

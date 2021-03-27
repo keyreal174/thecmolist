@@ -78,20 +78,10 @@ const ContentDetail = ({
           engagementButtons={[
             {
               checked: true,
-              text: "Answer",
+              text: content.replyText || "Answer",
+              type: "Answer",
               icon: AnswerIcon,
               number: numberOfReplies,
-            },
-            {
-              checked: getCheckedForEngagementType(
-                contentId,
-                "pass",
-                reactions
-              ),
-              text: "Pass",
-              icon: PassIcon,
-              iconChecked: PassCheckedIcon,
-              number: getEngagementForId(contentId, "pass", reactions),
             },
             {
               checked: getCheckedForEngagementType(
@@ -100,6 +90,7 @@ const ContentDetail = ({
                 reactions
               ),
               text: "Thanks",
+              type: "Reaction",
               icon: ThanksIcon,
               iconChecked: ThanksCheckedIcon,
               number: getEngagementForId(contentId, "thanks", reactions),
@@ -111,6 +102,7 @@ const ContentDetail = ({
                 reactions
               ),
               text: "Insightful",
+              type: "Reaction",
               icon: InsightfulIcon,
               iconChecked: InsightfulCheckedIcon,
               number: getEngagementForId(contentId, "insightful", reactions),

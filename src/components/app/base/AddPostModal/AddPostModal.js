@@ -195,19 +195,19 @@ function AddPostModal({
         "Be specific and imagine you're asking a question to another person"
       );
       setModalTitle("Ask a marketing question");
-      setSecondButtonText("Ask a Question");
+      setSecondButtonText("Ask Question");
     } else if (contentType === "project") {
       setTitleHeading("Title");
       setTitlePlaceholder(
         "Be specific and imagine you're describing this project to another person"
       );
       setModalTitle("Share a marketing project launch or experience");
-      setSecondButtonText("Share an Update");
+      setSecondButtonText("Share Update");
     } else if (contentType === "article") {
       setTitleHeading("Article URL");
       setTitlePlaceholder("http://");
       setModalTitle("Share marketing news or article");
-      setSecondButtonText("Share an Article");
+      setSecondButtonText("Share Article");
     }
   }, [contentType]);
 

@@ -466,7 +466,8 @@ const VendorProfile = (props) => {
                         engagementButtons={[
                           {
                             checked: true,
-                            text: "Answer",
+                            text: feed.replyText || "Answer",
+                            type: "Answer",
                             icon: AnswerIcon,
                             number: getEngagementForId(
                               feed.content_id,
@@ -477,25 +478,11 @@ const VendorProfile = (props) => {
                           {
                             checked: getCheckedForEngagementType(
                               feed.content_id,
-                              "pass",
-                              reactions
-                            ),
-                            text: "Pass",
-                            icon: PassIcon,
-                            iconChecked: PassCheckedIcon,
-                            number: getEngagementForId(
-                              feed.content_id,
-                              "pass",
-                              reactions
-                            ),
-                          },
-                          {
-                            checked: getCheckedForEngagementType(
-                              feed.content_id,
                               "thanks",
                               reactions
                             ),
                             text: "Thanks",
+                            type: "Reaction",
                             icon: ThanksIcon,
                             iconChecked: ThanksCheckedIcon,
                             number: getEngagementForId(
@@ -511,6 +498,7 @@ const VendorProfile = (props) => {
                               reactions
                             ),
                             text: "Insightful",
+                            type: "Reaction",
                             icon: InsightfulIcon,
                             iconChecked: InsightfulCheckedIcon,
                             number: getEngagementForId(

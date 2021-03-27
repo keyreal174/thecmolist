@@ -71,7 +71,8 @@ const RenderList = ({
                 isContent && [
                   {
                     checked: true,
-                    text: "Answer",
+                    text: item.replyText || "Answer",
+                    type: "Answer",
                     icon: `${cdn}/Answer.png`,
                     number: getEngagementForId(contentId, "answer", reactions),
                   },
@@ -82,6 +83,7 @@ const RenderList = ({
                       reactions
                     ),
                     text: "Thanks",
+                    type: "Reaction",
                     icon: `${cdn}/Thanks.png`,
                     number: getEngagementForId(contentId, "thanks", reactions),
                   },
@@ -92,6 +94,7 @@ const RenderList = ({
                       reactions
                     ),
                     text: "Insightful",
+                    type: "Reaction",
                     icon: `${cdn}/Insightful.png`,
                     number: getEngagementForId(
                       contentId,
