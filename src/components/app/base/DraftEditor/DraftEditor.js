@@ -12,6 +12,8 @@ import {
   Modifier,
   SelectionState,
   RichUtils,
+  getDefaultKeyBinding,
+  KeyBindingUtil,
 } from "draft-js";
 import Editor from "@draft-js-plugins/editor";
 import createMentionPlugin, {
@@ -69,6 +71,7 @@ const DraftEditor = ({
   const [selectedMention, setSelectedMention] = useState("");
   const [mention, setMention] = useState(null);
   const [isSharp, setIsSharp] = useState(false);
+  const [defaultName, setDefaultName] = useState("");
 
   useEffect(() => {
     if (editorState.getCurrentContent().hasText()) {
@@ -224,11 +227,22 @@ const DraftEditor = ({
     const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
 
     const currentSelectionState = editorState.getSelection();
-    const { end } = getSearchText(editorState, currentSelectionState, ["@"]);
+    const { begin, end } = getSearchText(editorState, currentSelectionState, [
+      "@",
+    ]);
+
+    const content = editorState.getCurrentContent();
+    const blockMap = content.getBlockMap();
+
+    const length = blockMap.last().getLength();
 
     if (end) {
       const mentionTextSelection = currentSelectionState.merge({
-        anchorOffset: !isPersonVendor ? end - selectedMention.length - 1 : end,
+        anchorOffset: !isPersonVendor
+          ? end !== length
+            ? end - selectedMention.length
+            : end - selectedMention.length - 1
+          : end,
         focusOffset: end,
       });
 
@@ -251,7 +265,8 @@ const DraftEditor = ({
         mentionReplacedContent = Modifier.insertText(
           mentionReplacedContent,
           mentionReplacedContent.getSelectionAfter(),
-          mention ? " " : ""
+          // mention ? " " : ""
+          " "
         );
       }
 
@@ -304,6 +319,43 @@ const DraftEditor = ({
     setIsPersonVendor();
   };
 
+  const typedText = () => {
+    let selection = editorState.getSelection();
+    const anchorKey = selection.getAnchorKey();
+    const currentContent = editorState.getCurrentContent();
+    const currentBlock = currentContent.getBlockForKey(anchorKey);
+
+    const { start, end } = getSearchText(editorState, selection, ["@"]);
+    const selectedText = currentBlock.getText().slice(start, end);
+    const resultText = selectedText.split("@").pop();
+    setDefaultName(resultText);
+  };
+
+  const keyBindingFn = (event) => {
+    if (KeyBindingUtil.hasCommandModifier(event) && event.keyCode === 66) {
+      return "bold";
+    }
+    if (KeyBindingUtil.hasCommandModifier(event) && event.keyCode === 73) {
+      return "italic";
+    }
+    return getDefaultKeyBinding(event);
+  };
+
+  const handleKeyCommand = (command) => {
+    let newState;
+    if (command === "bold") {
+      newState = RichUtils.toggleInlineStyle(editorState, "BOLD");
+    } else if (command === "italic") {
+      newState = RichUtils.toggleInlineStyle(editorState, "ITALIC");
+    }
+
+    if (newState) {
+      setEditorState(newState);
+      return "handled";
+    }
+    return "not-handled";
+  };
+
   useEffect(() => {
     if (!show) {
       handleAddPeople(mention);
@@ -338,6 +390,9 @@ const DraftEditor = ({
             onChange={onChange}
             plugins={plugins}
             ref={ref}
+            handleKeyCommand={handleKeyCommand}
+            keyBindingFn={keyBindingFn}
+            placeholder="Include all the information, @people and @vendors someone would need to answer your question"
           />
           {toolbar && (
             <div className="editor-toolbar">
@@ -364,10 +419,10 @@ const DraftEditor = ({
             onSearchChange={onSearchChange}
             onAddMention={(mention) => {
               if (MentionLast.find((item) => item.name === mention.name)) {
+                const isPerson = mention.name === MentionLast[0].name;
+                isPerson ? setDefaultName("") : typedText();
                 setSelectedMention(mention.name);
-                setShow(
-                  mention.name === MentionLast[0].name ? "Person" : "Vendor"
-                );
+                setShow(isPerson ? "Person" : "Vendor");
               }
             }}
           />
@@ -377,6 +432,7 @@ const DraftEditor = ({
         show={show}
         handleClose={() => setShow(false)}
         setMention={(mention) => setMention(mention)}
+        defaultName={defaultName}
       />
       <div className={clsx(show && "person-modal-backdrop")}></div>
     </div>

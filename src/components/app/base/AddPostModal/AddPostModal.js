@@ -328,7 +328,7 @@ function AddPostModal({
                       }}
                     />
                     <label htmlFor="allnetwork">
-                      All networks
+                      My Peers
                       <span>
                         (visible to your Peers and all members of any networks
                         you belong to)
@@ -364,7 +364,7 @@ function AddPostModal({
                           <CustomCheckBox
                             className="modal-section-checkbox-content"
                             checked={groups[groupKey]}
-                            disabled={allMembers}
+                            disabled={!onlyMyNetwork}
                             id={groupKey}
                             key={index}
                             label={groupKey}
