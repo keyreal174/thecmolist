@@ -179,6 +179,7 @@ const VendorProfileEdit = (props) => {
                 </Button>
               ) : (
                 <Button
+                  disabled
                   className="btn-white mt-3"
                   variant="outline-primary"
                   onClick={() => {

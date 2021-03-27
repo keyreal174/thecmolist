@@ -212,7 +212,8 @@ const ContentDetail = ({
                 </Article>
               );
             })}
-          {content && content.replies && content.replies.length > 0 && (
+          {/* Disable due to following bug: https://github.com/draft-js-plugins/draft-js-plugins/issues/1244*/}
+          {/* {content && content.replies && content.replies.length > 0 && (
             <div className="question-your-answer">
               <div className="question-your-answer-text">Your answer</div>
               <DiscussionComment
@@ -226,7 +227,7 @@ const ContentDetail = ({
                 useRichEditor={true}
               />
             </div>
-          )}
+          )} */}
         </div>
       </Col>
       {content.related_questions && (

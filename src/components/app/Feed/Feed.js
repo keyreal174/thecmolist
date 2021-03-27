@@ -79,11 +79,16 @@ function RenderFeed({
   const history = useHistory();
 
   const handleEngagementButtonClick = async (caller, engagementType) => {
+    const parentId = caller["parent_content_id"];
     const id = caller["content_id"];
     const engagement = engagementType.toLowerCase();
 
     if (engagementType === "Answer") {
-      history.push(`/content/${id}`);
+      if (parentId) {
+        history.push(`/content/${parentId}`);
+      } else {
+        history.push(`/content/${id}`);
+      }
     } else {
       try {
         await changeReaction({ id, engagement });
@@ -210,7 +215,7 @@ const Feed = (props) => {
   const subSelectors = [
     { title: "All", slug: "all" },
     { title: "Questions & Answers", slug: "question" },
-    { title: "Projects & Vendors", slug: "project" },
+    { title: "Updates & Insights", slug: "project" },
     { title: "Articles & News", slug: "article" },
   ];
   const [inviteModalShow, setInviteModalShow] = useState(false);

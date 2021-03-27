@@ -17,6 +17,19 @@
         "num_thanks": 5,
         "num_insightful": 10
       },
+      "parent_content": {
+        "header": {
+          "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [Print Advertising](/directory/print-advertising)",
+          "subtext": "19 days ago"
+        },
+        "headline": {
+          "markdown": "[test a new agency](/agency/test-a-new-agency)"
+        },
+        "subtitle": "NY",
+        "articletext": "zz",
+        "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjg4NDEyNG1hZHMtLXByb2ZpbGUuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+        "imageDisplay": "square"
+      },
       "reactions": [
         {
           "type": "thanks",

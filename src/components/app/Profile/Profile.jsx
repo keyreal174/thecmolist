@@ -242,11 +242,16 @@ const Profile = (props) => {
   const profileData = {};
 
   const handleEngagementButtonClick = async (caller, engagementType) => {
+    const parentId = caller["parent_content_id"];
     const id = caller["content_id"];
     const engagement = engagementType.toLowerCase();
 
     if (engagementType === "Answer") {
-      history.push(`/content/${id}`);
+      if (parentId) {
+        history.push(`/content/${parentId}`);
+      } else {
+        history.push(`/content/${id}`);
+      }
     } else {
       try {
         await props.changeReaction({ id, engagement });
