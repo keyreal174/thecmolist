@@ -218,11 +218,22 @@ const DraftEditor = ({
     const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
 
     const currentSelectionState = editorState.getSelection();
-    const { end } = getSearchText(editorState, currentSelectionState, ["@"]);
+    const { begin, end } = getSearchText(editorState, currentSelectionState, [
+      "@",
+    ]);
+
+    const content = editorState.getCurrentContent();
+    const blockMap = content.getBlockMap();
+
+    const length = blockMap.last().getLength();
 
     if (end) {
       const mentionTextSelection = currentSelectionState.merge({
-        anchorOffset: !isPersonVendor ? end - selectedMention.length - 1 : end,
+        anchorOffset: !isPersonVendor
+          ? end !== length
+            ? end - selectedMention.length
+            : end - selectedMention.length - 1
+          : end,
         focusOffset: end,
       });
 
@@ -245,7 +256,8 @@ const DraftEditor = ({
         mentionReplacedContent = Modifier.insertText(
           mentionReplacedContent,
           mentionReplacedContent.getSelectionAfter(),
-          mention ? " " : ""
+          // mention ? " " : ""
+          " "
         );
       }
 
