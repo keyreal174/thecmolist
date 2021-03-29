@@ -102,12 +102,14 @@ function RenderFeed({
       {feedData &&
         feedData.map((feed, idx) => {
           const contentId = feed && "content_id" in feed ? feed.content_id : 0;
+
           return (
             <Article
               key={idx}
               className={
                 idx !== 0 ? "mt-1 feed-dashboard-cell" : "feed-dashboard-cell"
               }
+              parentContent={feed.parent_content}
               {...feed.content}
               engagementButtons={[
                 {

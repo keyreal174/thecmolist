@@ -188,6 +188,15 @@ function Article(props) {
               </Row>
             )}
           </div>
+          {props.parentContent && (
+            <div className="mb-3 px-3">
+              <Article
+                key={0}
+                className="mt-1 feed-dashboard-cell"
+                {...props.parentContent}
+              />
+            </div>
+          )}
           <EngagementButtons
             className={`
               ${withMargin ? "article-engagement-buttons__with-margin" : ""}
