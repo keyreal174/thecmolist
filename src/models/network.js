@@ -74,6 +74,7 @@ export default {
       const feedData = data.feedData;
       const token = data.token;
       const currentFeed = oldState.feedData[filterKey];
+
       if (feedData != null && feedData.length > 0) {
         currentFeed.moreData = feedData.length > 5;
         currentFeed.token = token;
@@ -88,6 +89,7 @@ export default {
         newState.activeFeedSubFilters = currentFeed.filters;
       }
       newState.activeFeed = currentFeed.data.slice();
+
       return newState;
     },
     clearInactiveFeedData: (oldState) => {
