@@ -3,6 +3,9 @@ import Article from "../base/Article/Article";
 import "./vendors.scss";
 
 const VendorsFeed = ({ feedData, moreData, fetchData }) => {
+  // FIXME: for the beta we disable pagination as the BE returns all data
+  // POST BETA remove this
+  moreData = false;
   return (
     <>
       <React.Fragment>
