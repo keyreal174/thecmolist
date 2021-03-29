@@ -182,21 +182,12 @@ function Article(props) {
             </Row>
             {props.children && (
               <Row>
-                <Col sm="9" lg="11" style={{ paddingLeft: "0px" }}>
+                <Col sm="12" lg="12">
                   {props.children}
                 </Col>
               </Row>
             )}
           </div>
-          {props.parentContent && (
-            <div className="mb-3 px-3">
-              <Article
-                key={0}
-                className="mt-1 feed-dashboard-cell"
-                {...props.parentContent}
-              />
-            </div>
-          )}
           <EngagementButtons
             className={`
               ${withMargin ? "article-engagement-buttons__with-margin" : ""}

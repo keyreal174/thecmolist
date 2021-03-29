@@ -109,7 +109,6 @@ function RenderFeed({
               className={
                 idx !== 0 ? "mt-1 feed-dashboard-cell" : "feed-dashboard-cell"
               }
-              parentContent={feed.parent_content}
               {...feed.content}
               engagementButtons={[
                 {
@@ -149,7 +148,9 @@ function RenderFeed({
                 this,
                 feed
               )}
-            />
+            >
+              {feed.parent_content && <Article {...feed.parent_content} />}
+            </Article>
           );
         })}
 
