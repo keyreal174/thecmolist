@@ -49,7 +49,7 @@ const EngagementButtons = ({
                     checked ? "checked" : ""
                   }`}
                   variant="light"
-                  onClick={onEngagementButtonClick.bind(this, type)}
+                  onClick={onEngagementButtonClick.bind(this, type, text)}
                 >
                   <img
                     alt={`Icon for button ${index}`}

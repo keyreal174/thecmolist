@@ -386,10 +386,14 @@ const VendorProfile = (props) => {
     }
   }, [feedData]);
 
-  const handleEngagementButtonClick = async (caller, engagementType) => {
+  const handleEngagementButtonClick = async (
+    caller,
+    engagementType,
+    engagementText
+  ) => {
     const parentId = caller["parent_content_id"];
     const id = caller["content_id"];
-    const engagement = engagementType.toLowerCase();
+    const engagement = engagementText.toLowerCase();
 
     if (engagementType === "Answer") {
       if (parentId) {

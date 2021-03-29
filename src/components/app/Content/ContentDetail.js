@@ -51,9 +51,13 @@ const ContentDetail = ({
     }
   };
 
-  const handleEngagementButtonClick = async (caller, engagementType) => {
+  const handleEngagementButtonClick = async (
+    caller,
+    engagementType,
+    engagementText
+  ) => {
     const id = caller["content_id"];
-    const engagement = engagementType.toLowerCase();
+    const engagement = engagementText.toLowerCase();
 
     try {
       setError("");
