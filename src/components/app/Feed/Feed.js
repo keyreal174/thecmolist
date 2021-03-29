@@ -218,6 +218,7 @@ const Feed = (props) => {
     { title: "Updates & Insights", slug: "project" },
     { title: "Articles & News", slug: "article" },
   ];
+  const [topic, setTopic] = useState({});
   const [inviteModalShow, setInviteModalShow] = useState(false);
   const [activeSelector, setActiveSelector] = useState(0);
   const [filterIdx, setFilterIdx] = useState(0);
@@ -256,6 +257,12 @@ const Feed = (props) => {
     setActiveSelector(idx);
     changeDashboardFilter(filters[filterIdx].slug, subSelectors[idx].slug);
   };
+
+  useEffect(() => {
+    const fetch = async () => await props.fetchTopics();
+    fetch();
+  }, []);
+
   const initFeedPage = (profileStats, isTopicPage) => {
     let newFilters = [
       { title: "All", slug: "my-network", enabled: true },
@@ -303,10 +310,16 @@ const Feed = (props) => {
       ]);
       setFilterIdx(0);
       setBannerTitle(topicSlug);
+      let topicName = `#${topicSlug}`;
+      let auxTopic =
+        props.topics && props.topics.find((t) => t.name === topicName);
+      setTopic(auxTopic);
+
       setBannerImage(`${cdn}/directory.png`);
       changeDashboardFilter(topicSlug, subSelectors[activeSelector].slug);
     }
   };
+
   // init whenever the isTopic prop changes
   useEffect(() => {
     let pageLocationIsTopic = props.isTopic || false;
@@ -315,7 +328,7 @@ const Feed = (props) => {
     getProfileStats().then((profileStats) =>
       initFeedPage(profileStats, pageLocationIsTopic)
     );
-  }, [props.isTopic]);
+  }, [props.isTopic, props.topics]);
 
   return (
     <>
@@ -330,6 +343,8 @@ const Feed = (props) => {
                   subtitle={"Workspace"}
                   image={bannerImage}
                   saveContent={props.saveContent}
+                  followTopic={props.followTopic}
+                  topic={topic}
                 />
               )}
             </div>
@@ -405,26 +420,29 @@ const Feed = (props) => {
 
 const mapState = (state) => {
   return {
-    feedLoading: state.feedModel.feedLoading,
     activeFeed: state.feedModel.activeFeed,
-    activeFeedHasMoreData: state.feedModel.activeFeedHasMoreData,
     activeFeedAbout: state.feedModel.activeFeedAbout,
+    activeFeedHasMoreData: state.feedModel.activeFeedHasMoreData,
     activeFeedMembers: state.feedModel.activeFeedMembers,
     activeFeedVendors: state.feedModel.activeFeedVendors,
+    feedLoading: state.feedModel.feedLoading,
     filterIdx: state.feedModel.filterIdx,
     profileStats: state.profileModel.profileStats,
     reactions: state.reactionModel.reactions,
+    topics: state.topicsModel.topics,
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
-    fetchActiveFeed: dispatch.feedModel.fetchActiveFeed,
     changeDashboardFilter: dispatch.feedModel.changeDashboardFilter,
-    saveUserInvite: dispatch.userModel.saveInvite,
+    changeReaction: dispatch.reactionModel.changeReaction,
+    fetchActiveFeed: dispatch.feedModel.fetchActiveFeed,
+    fetchTopics: dispatch.topicsModel.fetchTopics,
+    followTopic: dispatch.topicsModel.followTopic,
     getProfileStats: dispatch.profileModel.getProfileStats,
     saveContent: dispatch.contentModel.saveContent,
-    changeReaction: dispatch.reactionModel.changeReaction,
+    saveUserInvite: dispatch.userModel.saveInvite,
   };
 };
 
