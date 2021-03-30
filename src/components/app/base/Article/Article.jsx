@@ -182,7 +182,7 @@ function Article(props) {
             </Row>
             {props.children && (
               <Row>
-                <Col sm="9" lg="11" style={{ paddingLeft: "0px" }}>
+                <Col sm="12" lg="12">
                   {props.children}
                 </Col>
               </Row>

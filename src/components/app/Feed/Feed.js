@@ -102,6 +102,7 @@ function RenderFeed({
       {feedData &&
         feedData.map((feed, idx) => {
           const contentId = feed && "content_id" in feed ? feed.content_id : 0;
+
           return (
             <Article
               key={idx}
@@ -147,7 +148,9 @@ function RenderFeed({
                 this,
                 feed
               )}
-            />
+            >
+              {feed.parent_content && <Article {...feed.parent_content} />}
+            </Article>
           );
         })}
 
