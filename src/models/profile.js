@@ -24,7 +24,6 @@ export const getProfileStatsRequest = () => {
 };
 
 export const updateSpacesRequest = (id) => {
-  console.log(id);
   return axios.post(`/api/profilestats/spaces/${id}`);
 };
 
