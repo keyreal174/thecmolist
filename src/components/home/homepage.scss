@@ -156,7 +156,63 @@
   &--label {
     color: $text-1;
   }
-  &--footer {
-    margin-top: 315px;
+}
+
+@media (max-width: 768px) {
+  .home {
+    &--title {
+      margin: 128px 30px 10px 30px;
+    }
+    &--subtitle {
+      margin: 30px;
+    }
+    &--form {
+      margin-top: 20px;
+      padding: 60px;
+      padding-top: 0;
+    }
+    &--form-left {
+      border-radius: 20px;
+    }
+    &--form-right {
+      border-radius: 20px;
+      margin-top: 20px;
+    }
+    &--form-linkedin {
+      width: 250px;
+    }
+    &--form-eula {
+      margin-top: 15px;
+      font-size: 12px;
+      line-height: 16px;
+      text-align: center;
+      padding: 0 10px;
+    }
+    &--form-questions {
+      font-size: 14px;
+      margin: 20px 0;
+      padding: 0 10px;
+      text-align: center;
+    }
+    &--input {
+      padding-left: 20px;
+      border-radius: 23px;
+      width: 100%;
+    }
+    &--label {
+      color: $text-1;
+    }
+    &--leaders-section {
+      background: $white;
+      &-title {
+        margin-top: 20px;
+        margin-bottom: 55px;
+      }
+      &-items-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+      }
+    }
   }
 }
