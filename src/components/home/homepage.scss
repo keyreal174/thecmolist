@@ -156,6 +156,22 @@
   &--label {
     color: $text-1;
   }
+  &--leaders-section {
+    background: $white;
+    margin: 20px 40px;
+    min-height: 231px;
+    border-radius: 20px;
+    padding: 0 85px;
+    &-title {
+      color: $text-1;
+      margin-top: 20px;
+      margin-bottom: 55px;
+      font-size: 27px;
+      padding-top: 40px;
+      text-align: center;
+      font-weight: 500;
+    }
+  }
 }
 
 @media (max-width: 768px) {
@@ -168,7 +184,7 @@
     }
     &--form {
       margin-top: 20px;
-      padding: 60px;
+      padding-bottom: 0px;
       padding-top: 0;
     }
     &--form-left {
@@ -203,15 +219,18 @@
       color: $text-1;
     }
     &--leaders-section {
-      background: $white;
+      padding: 0 10px;
+      min-height: unset;
+
       &-title {
-        margin-top: 20px;
-        margin-bottom: 55px;
+        font-size: 20px;
+        margin-top: 27px;
+      }
+      &-item {
+        padding: 25px 80px;
       }
       &-items-wrapper {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
+        padding-bottom: 50px;
       }
     }
   }

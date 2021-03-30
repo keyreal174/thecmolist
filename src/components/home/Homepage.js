@@ -7,6 +7,7 @@ import Spinner from "react-spinner-material";
 import Util from "../util/Util";
 import querySearch from "stringquery";
 import { scriptURL, privacyPolicy } from "../util/constants";
+import marketIcon from "./svg/market.svg";
 
 import "./homepage.scss";
 
@@ -176,7 +177,7 @@ function Homepage() {
             </Row>
           </Form>
         </Col>
-        <Col className="px-0" md="6">
+        <Col className="px-0" md="6" sm="12">
           <Form className="home--form-right" onSubmit={handleLoginClick}>
             <div className="home--form-title">Sign in</div>
             <div className="home--form-green-text" />
@@ -257,6 +258,26 @@ function Homepage() {
               </Col>
             </Row>
           </Form>
+        </Col>
+      </Row>
+      <Row>
+        <Col md="12" sm="12">
+          <div className="home--leaders-section">
+            <div className="home--leaders-section-title">
+              Join marketing leaders from world-class companies including
+            </div>
+            <Row
+              sm="12"
+              md="12"
+              className="home--leaders-section-items-wrapper"
+            >
+              {[...Array(6)].map((_, index) => (
+                <Col md="2" sm="6" className="home--leaders-section-item">
+                  <img alt={`item ${index}`} src={marketIcon} />
+                </Col>
+              ))}
+            </Row>
+          </div>
         </Col>
       </Row>
       <Footer className="home--footer" />
