@@ -23,6 +23,11 @@ export const getProfileStatsRequest = () => {
   return axios.get(`/api/profilestats/`);
 };
 
+export const updateSpacesRequest = (id) => {
+  console.log(id);
+  return axios.post(`/api/profilestats/spaces/${id}`);
+};
+
 export default {
   name: "profileModel",
   state: {
@@ -61,6 +66,7 @@ export default {
 
     updateSpaces: (oldState, data) => {
       const { profile, buildYourNetwork } = oldState.profileStats;
+
       return {
         ...oldState,
         profileStats: {
@@ -114,6 +120,7 @@ export default {
 
     async updateSpacesStats(id) {
       try {
+        await updateSpacesRequest(id);
         dispatch.profileModel.updateSpaces(id);
       } catch (err) {
         throw new Error("Could not update spaces");
