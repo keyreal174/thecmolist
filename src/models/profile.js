@@ -58,6 +58,18 @@ export default {
         profileStats: data,
       };
     },
+
+    updateSpaces: (oldState, data) => {
+      const { profile, buildYourNetwork } = oldState.profileStats;
+      return {
+        ...oldState,
+        profileStats: {
+          profile,
+          buildYourNetwork,
+          spaces: oldState.profileStats.spaces.filter((s) => s.id !== data),
+        },
+      };
+    },
   },
   effects: (dispatch) => ({
     async fetchProfile(payload) {
@@ -97,6 +109,14 @@ export default {
         return profileStats;
       } catch (err) {
         throw new Error("Could not get profilestats");
+      }
+    },
+
+    async updateSpacesStats(id) {
+      try {
+        dispatch.profileModel.updateSpaces(id);
+      } catch (err) {
+        throw new Error("Could not update spaces");
       }
     },
   }),

@@ -258,11 +258,6 @@ const Feed = (props) => {
     changeDashboardFilter(filters[filterIdx].slug, subSelectors[idx].slug);
   };
 
-  useEffect(() => {
-    const fetch = async () => await props.fetchTopics();
-    fetch();
-  }, []);
-
   const initFeedPage = (profileStats, isTopicPage) => {
     let newFilters = [
       { title: "All", slug: "my-network", enabled: true },
@@ -310,10 +305,6 @@ const Feed = (props) => {
       ]);
       setFilterIdx(0);
       setBannerTitle(topicSlug);
-      let topicName = `#${topicSlug}`;
-      let auxTopic =
-        props.topics && props.topics.find((t) => t.name === topicName);
-      setTopic(auxTopic);
 
       setBannerImage(`${cdn}/directory.png`);
       changeDashboardFilter(topicSlug, subSelectors[activeSelector].slug);
@@ -328,7 +319,33 @@ const Feed = (props) => {
     getProfileStats().then((profileStats) =>
       initFeedPage(profileStats, pageLocationIsTopic)
     );
-  }, [props.isTopic, props.topics]);
+  }, [props.isTopic]);
+
+  useEffect(() => {
+    const profileStats = props.profileStats;
+    const topicSlug = Util.parsePath(window.location.href).trailingPath;
+    const topicName = `#${topicSlug}`;
+    let auxTopic =
+      profileStats.spaces &&
+      profileStats.spaces.find((t) => t.name === topicName);
+
+    if (auxTopic) {
+      auxTopic.followed = true;
+    } else {
+      auxTopic = {
+        followed: false,
+        name: topicName,
+        // id can not be determined
+      };
+    }
+
+    setTopic(auxTopic);
+  }, [props.profileStats]);
+
+  const handleFollowClick = (id) => {
+    props.followTopic(id);
+    props.updateSpacesStats(id);
+  };
 
   return (
     <>
@@ -343,7 +360,7 @@ const Feed = (props) => {
                   subtitle={"Workspace"}
                   image={bannerImage}
                   saveContent={props.saveContent}
-                  followTopic={props.followTopic}
+                  followTopic={handleFollowClick}
                   topic={topic}
                 />
               )}
@@ -429,7 +446,6 @@ const mapState = (state) => {
     filterIdx: state.feedModel.filterIdx,
     profileStats: state.profileModel.profileStats,
     reactions: state.reactionModel.reactions,
-    topics: state.topicsModel.topics,
   };
 };
 
@@ -438,11 +454,11 @@ const mapDispatch = (dispatch) => {
     changeDashboardFilter: dispatch.feedModel.changeDashboardFilter,
     changeReaction: dispatch.reactionModel.changeReaction,
     fetchActiveFeed: dispatch.feedModel.fetchActiveFeed,
-    fetchTopics: dispatch.topicsModel.fetchTopics,
     followTopic: dispatch.topicsModel.followTopic,
     getProfileStats: dispatch.profileModel.getProfileStats,
     saveContent: dispatch.contentModel.saveContent,
     saveUserInvite: dispatch.userModel.saveInvite,
+    updateSpacesStats: dispatch.profileModel.updateSpacesStats,
   };
 };
 
