@@ -43,21 +43,18 @@ const NetworkFeed = ({
           </div>
         )}
         {moreData && (
-          <div className="row">
-            <div className="col-md-2 mt-2 mx-auto">
-              <button
-                className="btn btn__load-more"
-                type="button"
-                onClick={fetchData}
-              >
-                Show more
-              </button>
-            </div>
+          <div className="mt-2">
+            <button
+              className="btn btn-white btn__load-more network-feed--button"
+              type="button"
+              onClick={fetchData}
+            >
+              Show more
+            </button>
           </div>
         )}
       </React.Fragment>
     </>
   );
 };
-
 export default NetworkFeed;

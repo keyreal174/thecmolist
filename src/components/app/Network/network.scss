@@ -58,6 +58,7 @@
 
 .network-list-item {
   margin-bottom: 0px;
+  margin-top: 10px !important;
   box-shadow: none;
   min-height: 134px;
 }
@@ -84,5 +85,21 @@
 .network--filter {
   .filter--button {
     margin-top: 12px;
+  }
+}
+
+.network-feed--button {
+  border-radius: 10px;
+  border: 1px solid $gray-4;
+  font-weight: 500;
+  color: $brand;
+  width: 100%;
+  &:hover,
+  &:focus,
+  &:active {
+    border-radius: 10px;
+    border: 1px solid $gray-4;
+    font-weight: 500;
+    color: $brand;
   }
 }

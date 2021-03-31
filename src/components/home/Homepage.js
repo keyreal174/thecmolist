@@ -8,6 +8,11 @@ import Util from "../util/Util";
 import querySearch from "stringquery";
 import { scriptURL, privacyPolicy } from "../util/constants";
 
+import marketIcon from "./svg/market.svg";
+import trustedIcon from "./svg/trusted.svg";
+import knowledgeIcon from "./svg/knowledge.svg";
+import informedIcon from "./svg/informed.svg";
+
 import "./homepage.scss";
 
 const loginRequest = (user, password) => {
@@ -97,27 +102,27 @@ function Homepage() {
         </div>
       </Row>
       <Row>
-        <Col md="1"></Col>
-        <Col md="10">
+        <Col md="1" sm="0"></Col>
+        <Col md="10" sm="12">
           <div className="home--title">
             Connecting marketing leaders with the advice and resources they need
             to succeed
           </div>
         </Col>
-        <Col md="1"></Col>
+        <Col md="1" sm="0"></Col>
       </Row>
       <Row>
-        <Col md="2"></Col>
-        <Col md="8">
+        <Col md="2" sm="0"></Col>
+        <Col md="8" sm="12">
           <div className="home--subtitle">
             CMOlist enables marketing leaders to learn from each other by
             sharing critical insights, best practices, and proven vendors.
           </div>
         </Col>
-        <Col md="2"></Col>
+        <Col md="2" sm="0"></Col>
       </Row>
       <Row className="home--form">
-        <Col className="px-0" md="6">
+        <Col className="px-0" md="6" sm="12">
           <Form
             className="home--form-left"
             id="left-form"
@@ -176,7 +181,7 @@ function Homepage() {
             </Row>
           </Form>
         </Col>
-        <Col className="px-0" md="6">
+        <Col className="px-0" md="6" sm="12">
           <Form className="home--form-right" onSubmit={handleLoginClick}>
             <div className="home--form-title">Sign in</div>
             <div className="home--form-green-text" />
@@ -257,6 +262,73 @@ function Homepage() {
               </Col>
             </Row>
           </Form>
+        </Col>
+      </Row>
+      <Row>
+        <Col md="12" sm="12">
+          <div className="home--leaders-section">
+            <div className="home--leaders-section-title">
+              Join marketing leaders from world-class companies including
+            </div>
+            <Row
+              sm="12"
+              md="12"
+              className="home--leaders-section-items-wrapper"
+            >
+              {[...Array(6)].map((_, index) => (
+                <Col md="2" sm="6" className="home--leaders-section-item">
+                  <img alt={`item ${index}`} src={marketIcon} />
+                </Col>
+              ))}
+            </Row>
+          </div>
+        </Col>
+      </Row>
+      <Row>
+        <Col md="12">
+          <div className="home--share">
+            <div className="home--share-title">
+              Manage and share marketing knowledge with your trusted peers
+            </div>
+            <Row className="home--share-items-wrapper">
+              <Col className="home--share-item" md="3" sm="12">
+                <img
+                  className="home--share-item-image"
+                  src={trustedIcon}
+                  alt="trusted icon"
+                />
+                <div className="home--share-item-title">Get trusted advice</div>
+                <div className="home--share-item-subtitle">
+                  Exchange frank, private advice with trusted peers and industry
+                  experts
+                </div>
+              </Col>
+              <Col className="home--share-item" md="3" sm="12">
+                <img
+                  className="home--share-item-image"
+                  src={knowledgeIcon}
+                  alt="knowledge icon"
+                />
+                <div className="home--share-item-title">Unlock knowledge</div>
+                <div className="home--share-item-subtitle">
+                  Turn emails, slacks, and wikis  into structured and searchable
+                  marketing knowledge
+                </div>
+              </Col>
+              <Col className="home--share-item" md="3" sm="12">
+                <img
+                  className="home--share-item-image"
+                  src={informedIcon}
+                  alt="informed icon"
+                />
+                <div className="home--share-item-title">Stay informed</div>
+                <div className="home--share-item-subtitle">
+                  Network with your peers and get updates on new marketing
+                  trends and insights
+                </div>
+              </Col>
+            </Row>
+          </div>
         </Col>
       </Row>
       <Footer className="home--footer" />

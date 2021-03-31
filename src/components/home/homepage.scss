@@ -156,7 +156,149 @@
   &--label {
     color: $text-1;
   }
-  &--footer {
-    margin-top: 315px;
+  &--leaders-section {
+    background: $white;
+    margin: 20px 40px;
+    min-height: 231px;
+    border-radius: 20px;
+    padding: 0 85px;
+    &-title {
+      color: $text-1;
+      margin-top: 20px;
+      margin-bottom: 55px;
+      font-size: 27px;
+      padding-top: 40px;
+      text-align: center;
+      font-weight: 500;
+    }
+  }
+  &--share {
+    margin-bottom: 115px;
+
+    &-title {
+      color: $text-1;
+      font-size: 35px;
+      font-weight: 700;
+      color: $text-1;
+      line-height: 48px;
+      text-align: center;
+      margin-top: 96px;
+      margin-bottom: 56px;
+      padding: 0 190px;
+    }
+    &-items-wrapper {
+      margin: 0 40px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    &-item {
+      background: $white;
+      border-radius: 20px;
+      height: 304px;
+      width: 320px;
+      max-width: 320px;
+
+      &-image {
+        width: 77px;
+        height: 77px;
+        margin: 50px 121px 34px 121px;
+      }
+      &-title {
+        color: $text-1;
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 16px;
+        line-height: 20px;
+        text-align: center;
+      }
+      &-subtitle {
+        font-size: 16px;
+        text-align: center;
+        margin-bottom: 43px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .home {
+    &--title {
+      margin: 128px 30px 10px 30px;
+    }
+    &--subtitle {
+      margin: 30px;
+    }
+    &--form {
+      margin-top: 20px;
+      padding-bottom: 0px;
+      padding-top: 0;
+    }
+    &--form-left {
+      border-radius: 20px;
+    }
+    &--form-right {
+      border-radius: 20px;
+      margin-top: 20px;
+    }
+    &--form-linkedin {
+      width: 250px;
+    }
+    &--form-eula {
+      margin-top: 15px;
+      font-size: 12px;
+      line-height: 16px;
+      text-align: center;
+      padding: 0 10px;
+    }
+    &--form-questions {
+      font-size: 14px;
+      margin: 20px 0;
+      padding: 0 10px;
+      text-align: center;
+    }
+    &--input {
+      padding-left: 20px;
+      border-radius: 23px;
+      width: 100%;
+    }
+    &--label {
+      color: $text-1;
+    }
+    &--leaders-section {
+      padding: 0 10px;
+      min-height: unset;
+
+      &-title {
+        font-size: 20px;
+        margin-top: 27px;
+      }
+      &-item {
+        padding: 25px 80px;
+      }
+      &-items-wrapper {
+        padding-bottom: 50px;
+      }
+    }
+    &--share {
+      &-title {
+        padding: 0;
+        margin-top: 30px;
+      }
+      &-items-wrapper {
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      &-item {
+        margin: 20px auto;
+        width: 100%;
+
+        &-image {
+          margin: 25px auto;
+          width: 100%;
+          padding: 0;
+        }
+      }
+    }
   }
 }
