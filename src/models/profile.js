@@ -23,11 +23,6 @@ export const getProfileStatsRequest = () => {
   return axios.get(`/api/profilestats/`);
 };
 
-export const updateSpacesRequest = (id) => {
-  console.log(id);
-  return axios.post(`/api/profilestats/spaces/${id}`);
-};
-
 export default {
   name: "profileModel",
   state: {
@@ -61,19 +56,6 @@ export default {
       return {
         ...oldState,
         profileStats: data,
-      };
-    },
-
-    updateSpaces: (oldState, data) => {
-      const { profile, buildYourNetwork } = oldState.profileStats;
-
-      return {
-        ...oldState,
-        profileStats: {
-          profile,
-          buildYourNetwork,
-          spaces: oldState.profileStats.spaces.filter((s) => s.id !== data),
-        },
       };
     },
   },
@@ -115,15 +97,6 @@ export default {
         return profileStats;
       } catch (err) {
         throw new Error("Could not get profilestats");
-      }
-    },
-
-    async updateSpacesStats(id) {
-      try {
-        await updateSpacesRequest(id);
-        dispatch.profileModel.updateSpaces(id);
-      } catch (err) {
-        throw new Error("Could not update spaces");
       }
     },
   }),
