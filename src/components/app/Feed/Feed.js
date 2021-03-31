@@ -228,6 +228,7 @@ const Feed = (props) => {
   const [bannerImage, setBannerImage] = useState("");
   const [isTopic, setIsTopic] = useState(false);
   const [isGroup, setIsGroup] = useState(false);
+  const [followed, setFollowed] = useState(false);
   const changeDashboardHeader = (idx) => {
     if (idx < filters.length) {
       setBannerTitle(filters[idx].title);
@@ -324,27 +325,32 @@ const Feed = (props) => {
   useEffect(() => {
     const profileStats = props.profileStats;
     const topicSlug = Util.parsePath(window.location.href).trailingPath;
-    const topicName = `#${topicSlug}`;
     let auxTopic =
       profileStats.spaces &&
-      profileStats.spaces.find((t) => t.name === topicName);
+      profileStats.spaces.find((t) => t.slug === topicSlug);
 
     if (auxTopic) {
-      auxTopic.followed = true;
+      setFollowed(true);
     } else {
+      setFollowed(false);
       auxTopic = {
-        followed: false,
-        name: topicName,
-        // id can not be determined
+        name: `#${topicSlug}`,
+        slug: topicSlug,
       };
     }
 
+    auxTopic.followed = followed;
     setTopic(auxTopic);
   }, [props.profileStats]);
 
-  const handleFollowClick = (id) => {
-    props.followTopic(id);
-    props.updateSpacesStats(id);
+  const handleFollowClick = (slug) => {
+    const newFollowed = !followed;
+    setFollowed(newFollowed);
+    setTopic({
+      ...topic,
+      followed: newFollowed,
+    });
+    props.followTopic(slug);
   };
 
   return (
@@ -458,7 +464,6 @@ const mapDispatch = (dispatch) => {
     getProfileStats: dispatch.profileModel.getProfileStats,
     saveContent: dispatch.contentModel.saveContent,
     saveUserInvite: dispatch.userModel.saveInvite,
-    updateSpacesStats: dispatch.profileModel.updateSpacesStats,
   };
 };
 

@@ -51,7 +51,7 @@ const TopBanner = ({
   };
 
   const handleTopicButtonClick = () => {
-    followTopic(topic.id);
+    followTopic(topic.slug);
   };
 
   return (

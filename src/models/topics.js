@@ -25,7 +25,7 @@ export default {
       return {
         ...oldState,
         topics: oldState.topics.map((topic) => {
-          if (topic.id === id) {
+          if (topic.id === id || topic.name.replace("#", "") === id) {
             return {
               ...topic,
               followed: !topic.followed,
