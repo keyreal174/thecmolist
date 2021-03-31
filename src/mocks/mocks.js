@@ -274,10 +274,6 @@ function MockRequests() {
     return [200, { success: true, error: null }];
   });
 
-  mock.onPost(/\/api\/profilestats\/spaces\/\d+.*/).reply((_) => {
-    return [200, { success: true, error: null }];
-  });
-
   mock.onDelete(new RegExp("/api/post/*")).reply(() => {
     return [200, { success: true, error: null }];
   });
