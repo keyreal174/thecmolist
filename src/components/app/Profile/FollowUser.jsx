@@ -7,7 +7,17 @@ import "./profile.scss";
 
 function FollowUserModal(props) {
   const [isLoading, setIsLoading] = useState(false);
-  const [options, setOptions] = useState([]);
+  const [options, setOptions] = useState([
+    { name: "#martech", type: "topic", slug: "martech" },
+    { name: "#social", type: "topic", slug: "social" },
+    { name: "#brand", type: "topic", slug: "brand" },
+    { name: "#advertising", type: "topic", slug: "advertising" },
+    {
+      name: "#performancemarketing",
+      type: "topic",
+      slug: "performancemarketing",
+    },
+  ]);
   const [selectedOptions, setSelectedOptions] = useState([]);
 
   const handleSearch = async (query) => {
@@ -68,7 +78,7 @@ function FollowUserModal(props) {
               isLoading={isLoading}
               labelKey="name"
               multiple
-              minLength={1}
+              minLength={0}
               onSearch={handleSearch}
               options={options}
               emptyLabel=""
