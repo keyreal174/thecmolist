@@ -239,7 +239,9 @@
     width: 100% !important;
   }
   .navbar-toggler {
-    background: $gray-6 !important;
+    background-image: url("./svgs/menu.svg");
+    background-repeat: no-repeat;
+    background-position: center;
   }
 }
 
