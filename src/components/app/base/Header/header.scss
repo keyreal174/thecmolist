@@ -226,6 +226,21 @@
     width: 16px;
     opacity: 0.25;
   }
+  .container-fullwidth {
+    height: 170px;
+  }
+  .navbar {
+    justify-content: flex-start;
+    height: 170px;
+    padding-top: 22px;
+    padding-bottom: 30px;
+  }
+  .header-search {
+    width: 100% !important;
+  }
+  .navbar-toggler {
+    background: $gray-6 !important;
+  }
 }
 
 .profile-dropdown {

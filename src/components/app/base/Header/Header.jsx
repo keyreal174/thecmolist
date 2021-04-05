@@ -4,7 +4,9 @@ import { Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
 import { AsyncTypeahead, TypeaheadMenu } from "react-bootstrap-typeahead";
 import { NavLink } from "react-router-dom";
 import "./header.scss";
+import { isSmall } from "../../../util/constants";
 import { connect } from "react-redux";
+import PersonHeader from "../PersonHeader/PersonHeader";
 
 import HomeIcon from "../icons/home.svg";
 import Group from "../icons/group.svg";
@@ -14,6 +16,57 @@ import Person from "../icons/person.svg";
 import Search from "../icons/search.svg";
 import Rectangle2 from "../icons/rectangle2.svg";
 import Logo from "./svgs/logo.svg";
+import Menu from "./svgs/menu.svg";
+
+function RenderSearch({ isLoading, handleSearch, options, goSearchPage }) {
+  return (
+    <AsyncTypeahead
+      className="header-search"
+      id="async-global-search"
+      isLoading={isLoading}
+      labelKey="name"
+      minLength={3}
+      onSearch={handleSearch}
+      options={options}
+      emptyLabel=""
+      renderMenu={(results, menuProps) => {
+        if (!results.length) {
+          return null;
+        }
+        return (
+          <TypeaheadMenu options={results} labelKey="name" {...menuProps} />
+        );
+      }}
+      onChange={(selectedOption) => {
+        window.location.href = selectedOption[0].link;
+      }}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") {
+          goSearchPage();
+        }
+      }}
+      placeholder="Search"
+      renderMenuItemChildren={(option) => (
+        <Fragment>
+          <img
+            alt="avatar"
+            src={option.avatar_url}
+            style={{
+              height: "24px",
+              marginRight: "10px",
+              width: "24px",
+            }}
+          />
+          <span>{option.name}</span>
+        </Fragment>
+      )}
+    >
+      <Button className="search-btn" variant="submit">
+        <img src={Search} alt="" />
+      </Button>
+    </AsyncTypeahead>
+  );
+}
 
 function Header({ getProfileStats, profileStats }) {
   const history = useHistory();
@@ -22,24 +75,10 @@ function Header({ getProfileStats, profileStats }) {
 
     fetch();
   }, []);
-  let PersonHeader = (props) => {
-    const profile = profileStats && profileStats.profile;
-    const image = profile && profile.image;
-    const name = profile && profile.name;
-
-    return (
-      <Fragment>
-        <img alt="" src={image} />
-        <br />
-        <span>{name && name.split(" ")[0]}</span>
-      </Fragment>
-    );
-  };
   const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const SEARCH_URI = "/api/globalsearch";
-  const isSmall = window.innerWidth < 767;
   const handleSearch = (query) => {
     setSearchQuery(query);
     setIsLoading(true);
@@ -72,61 +111,30 @@ function Header({ getProfileStats, profileStats }) {
     <div>
       <div className="container-fullwidth"></div>
       <Navbar expand="md" variant="white">
-        <Navbar.Brand className="header--logo" href="/feed">
-          <img src={Logo} alt="CMOList brand logo" />
-          <span className="header--tag">Beta</span>
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse className="nav-app" id="basic-navbar-nav">
-          <AsyncTypeahead
-            className="header-search"
-            id="async-global-search"
+        <div>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Brand className="header--logo" href="/feed">
+            <img src={Logo} alt="CMOList brand logo" />
+            <span className="header--tag">Beta</span>
+          </Navbar.Brand>
+        </div>
+        {isSmall && (
+          <RenderSearch
             isLoading={isLoading}
-            labelKey="name"
-            minLength={3}
-            onSearch={handleSearch}
+            handleSearch={handleSearch}
             options={options}
-            emptyLabel=""
-            renderMenu={(results, menuProps) => {
-              if (!results.length) {
-                return null;
-              }
-              return (
-                <TypeaheadMenu
-                  options={results}
-                  labelKey="name"
-                  {...menuProps}
-                />
-              );
-            }}
-            onChange={(selectedOption) => {
-              window.location.href = selectedOption[0].link;
-            }}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                goSearchPage();
-              }
-            }}
-            placeholder="Search"
-            renderMenuItemChildren={(option) => (
-              <Fragment>
-                <img
-                  alt="avatar"
-                  src={option.avatar_url}
-                  style={{
-                    height: "24px",
-                    marginRight: "10px",
-                    width: "24px",
-                  }}
-                />
-                <span>{option.name}</span>
-              </Fragment>
-            )}
-          >
-            <Button className="search-btn" variant="submit">
-              <img src={Search} alt="" />
-            </Button>
-          </AsyncTypeahead>
+            goSearchPage={goSearchPage}
+          />
+        )}
+        <Navbar.Collapse className="nav-app" id="basic-navbar-nav">
+          {!isSmall && (
+            <RenderSearch
+              isLoading={isLoading}
+              handleSearch={handleSearch}
+              options={options}
+              goSearchPage={goSearchPage}
+            />
+          )}
           <Nav>
             <Nav.Link as={NavLink} to="/feed">
               <img src={HomeIcon} alt="" />
@@ -161,7 +169,7 @@ function Header({ getProfileStats, profileStats }) {
                 window.location.href.includes("/profile/") ? "active" : ""
               }
               alignRight
-              title={<PersonHeader icon={Person} />}
+              title={<PersonHeader profile={profileStats.profile} />}
               id="basic-nav-dropdown"
             >
               <NavDropdown.Item className="profile-dropdown" href="/profile">
