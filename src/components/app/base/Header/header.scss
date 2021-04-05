@@ -246,6 +246,23 @@
       background-image: url("./svgs/cross.svg");
     }
   }
+  .navbar-dropdown {
+    border-radius: 39px;
+    border: 1px solid $gray-3;
+    position: absolute;
+    right: 20px;
+    height: 38px;
+    text-align: center;
+    a {
+      color: $brand;
+      margin-right: 10px;
+      &:after {
+        right: 0;
+        top: 45%;
+        margin: 0 5px;
+      }
+    }
+  }
 }
 
 .profile-dropdown {

@@ -116,7 +116,7 @@ function Header({ getProfileStats, profileStats }) {
     <div>
       <div className="container-fullwidth"></div>
       <Navbar expand="md" variant="white" onToggle={handleOnToggle}>
-        <div>
+        <div className="d-flex">
           <Navbar.Toggle
             className={`navbar-toggler ${open ? "open" : ""}`}
             aria-controls="basic-navbar-nav"
@@ -125,6 +125,23 @@ function Header({ getProfileStats, profileStats }) {
             <img src={Logo} alt="CMOList brand logo" />
             <span className="header--tag">Beta</span>
           </Navbar.Brand>
+          {isSmall && (
+            <NavDropdown
+              className="navbar-dropdown"
+              title="Share experience"
+              id="basic-nav-dropdown"
+            >
+              <NavDropdown.Item className="profile-dropdown" href="/profile">
+                Ask Question
+              </NavDropdown.Item>
+              <NavDropdown.Item className="profile-dropdown" href="/settings">
+                Share Article
+              </NavDropdown.Item>
+              <NavDropdown.Item className="profile-dropdown" href="/logout">
+                Share experience
+              </NavDropdown.Item>
+            </NavDropdown>
+          )}
         </div>
         {isSmall && (
           <RenderSearch
