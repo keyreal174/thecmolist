@@ -32,6 +32,7 @@ const PopularTopics = ({ heading, topicList, onSubfilterChange }) => {
     }
     onSubfilterChange(topic);
   };
+  const minTopics = 10;
   return (
     <CustomCard
       className="popular-topics"
@@ -41,7 +42,7 @@ const PopularTopics = ({ heading, topicList, onSubfilterChange }) => {
         <div className="popular-topics--wrapper">
           {topicList &&
             topicList.map((topic, idx) => {
-              if (idx < 5 || showMore) {
+              if (idx < minTopics || showMore) {
                 return (
                   <div key={idx} className="popular-topics--content-item">
                     <span
@@ -61,7 +62,7 @@ const PopularTopics = ({ heading, topicList, onSubfilterChange }) => {
             })}
         </div>
         <div>
-          {topicList && topicList.length > 5 && (
+          {topicList && topicList.length > minTopics && (
             <>
               <div className="popular-topics--divider" />
               <div className="popular-topics--button">

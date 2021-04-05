@@ -339,10 +339,7 @@ function AddPostModal({
                     />
                     <label htmlFor="allnetwork">
                       My Peers
-                      <span>
-                        (visible to your Peers and all members of any networks
-                        you belong to)
-                      </span>
+                      <span>(visible only to your Peers)</span>
                     </label>
                   </div>
                   <div className="share-group-checkbox">
@@ -359,9 +356,7 @@ function AddPostModal({
                     />
                     <label htmlFor="selectnetwork">
                       Select networks
-                      <span>
-                        (visible only to members of selected networks)
-                      </span>
+                      <span>(visible only to selected networks)</span>
                     </label>
                   </div>
                   <div
