@@ -228,6 +228,7 @@ const Feed = (props) => {
     { title: "Updates & Insights", slug: "project" },
     { title: "Articles & News", slug: "article" },
   ];
+  const [topic, setTopic] = useState({});
   const [inviteModalShow, setInviteModalShow] = useState(false);
   const [activeSelector, setActiveSelector] = useState(0);
   const [filterIdx, setFilterIdx] = useState(0);
@@ -237,6 +238,7 @@ const Feed = (props) => {
   const [bannerImage, setBannerImage] = useState("");
   const [isTopic, setIsTopic] = useState(false);
   const [isGroup, setIsGroup] = useState(false);
+  const [followed, setFollowed] = useState(false);
   const changeDashboardHeader = (idx) => {
     if (idx < filters.length) {
       setBannerTitle(filters[idx].title);
@@ -266,6 +268,7 @@ const Feed = (props) => {
     setActiveSelector(idx);
     changeDashboardFilter(filters[filterIdx].slug, subSelectors[idx].slug);
   };
+
   const initFeedPage = (profileStats, isTopicPage) => {
     let newFilters = [
       { title: "All", slug: "my-network", enabled: true },
@@ -313,10 +316,12 @@ const Feed = (props) => {
       ]);
       setFilterIdx(0);
       setBannerTitle(topicSlug);
+
       setBannerImage(`${cdn}/directory.png`);
       changeDashboardFilter(topicSlug, subSelectors[activeSelector].slug);
     }
   };
+
   // init whenever the isTopic prop changes
   useEffect(() => {
     let pageLocationIsTopic = props.isTopic || false;
@@ -326,6 +331,37 @@ const Feed = (props) => {
       initFeedPage(profileStats, pageLocationIsTopic)
     );
   }, [props.isTopic]);
+
+  useEffect(() => {
+    const profileStats = props.profileStats;
+    const topicSlug = Util.parsePath(window.location.href).trailingPath;
+    let auxTopic =
+      profileStats.spaces &&
+      profileStats.spaces.find((t) => t.slug === topicSlug);
+
+    if (auxTopic) {
+      setFollowed(true);
+    } else {
+      setFollowed(false);
+      auxTopic = {
+        name: `#${topicSlug}`,
+        slug: topicSlug,
+      };
+    }
+
+    auxTopic.followed = followed;
+    setTopic(auxTopic);
+  }, [props.profileStats]);
+
+  const handleFollowClick = (slug) => {
+    const newFollowed = !followed;
+    setFollowed(newFollowed);
+    setTopic({
+      ...topic,
+      followed: newFollowed,
+    });
+    props.followTopic(slug);
+  };
 
   return (
     <>
@@ -340,6 +376,8 @@ const Feed = (props) => {
                   subtitle={"Workspace"}
                   image={bannerImage}
                   saveContent={props.saveContent}
+                  followTopic={handleFollowClick}
+                  topic={topic}
                 />
               )}
             </div>
@@ -415,12 +453,12 @@ const Feed = (props) => {
 
 const mapState = (state) => {
   return {
-    feedLoading: state.feedModel.feedLoading,
     activeFeed: state.feedModel.activeFeed,
-    activeFeedHasMoreData: state.feedModel.activeFeedHasMoreData,
     activeFeedAbout: state.feedModel.activeFeedAbout,
+    activeFeedHasMoreData: state.feedModel.activeFeedHasMoreData,
     activeFeedMembers: state.feedModel.activeFeedMembers,
     activeFeedVendors: state.feedModel.activeFeedVendors,
+    feedLoading: state.feedModel.feedLoading,
     filterIdx: state.feedModel.filterIdx,
     profileStats: state.profileModel.profileStats,
     reactions: state.reactionModel.reactions,
@@ -429,12 +467,13 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    fetchActiveFeed: dispatch.feedModel.fetchActiveFeed,
     changeDashboardFilter: dispatch.feedModel.changeDashboardFilter,
-    saveUserInvite: dispatch.userModel.saveInvite,
+    changeReaction: dispatch.reactionModel.changeReaction,
+    fetchActiveFeed: dispatch.feedModel.fetchActiveFeed,
+    followTopic: dispatch.topicsModel.followTopic,
     getProfileStats: dispatch.profileModel.getProfileStats,
     saveContent: dispatch.contentModel.saveContent,
-    changeReaction: dispatch.reactionModel.changeReaction,
+    saveUserInvite: dispatch.userModel.saveInvite,
   };
 };
 

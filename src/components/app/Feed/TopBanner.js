@@ -28,7 +28,14 @@ const SearchBox = (props) => {
   );
 };
 
-const TopBanner = (props) => {
+const TopBanner = ({
+  title,
+  subtitle,
+  image,
+  saveContent,
+  followTopic,
+  topic,
+}) => {
   const history = useHistory();
   const [showContentModal, setShowContentModal] = useState(false);
   const [contentType, setContentType] = useState("question");
@@ -39,8 +46,12 @@ const TopBanner = (props) => {
   const handleClose = () => setShowContentModal(false);
 
   const handleSubmit = async (content) => {
-    const id = await props.saveContent(content);
+    const id = await saveContent(content);
     history.push(`/content/${id}`);
+  };
+
+  const handleTopicButtonClick = () => {
+    followTopic(topic.slug);
   };
 
   return (
@@ -48,28 +59,38 @@ const TopBanner = (props) => {
       <div className="d-flex">
         <CustomCard>
           <div className="d-flex align-items-center py-3 px-1">
-            {props.image ? (
+            {image ? (
               <div className="feed-page-top-banner-img">
-                <img src={props.image} alt="Logo" width="100" height="100" />
+                <img src={image} alt="Logo" width="100" height="100" />
               </div>
             ) : (
               <div className="feed-page-top-banner-placeholder-img">
-                {props.title && (
-                  <img src={Logo} alt="Logo" width="58" height="58" />
-                )}
+                {title && <img src={Logo} alt="Logo" width="58" height="58" />}
               </div>
             )}
             <div className="feed-page-top-banner-content">
-              <h3>{props.title}</h3>
-              {props.subtitle && <p>{props.subtitle}</p>}
-              {/* FUTURE (from API) */}
-              {/*}
-              <div className="d-flex align-items-center">
-                <span>1.4k Followers</span>
-                <Button className="btn-blue mb-2" onClick={handleShow}>
-                  + Follow Space
-                </Button>
-              </div> */}
+              <h3>{title}</h3>
+              {subtitle && <p>{subtitle}</p>}
+              <div className="d-flex align-items-center mt-2">
+                {topic &&
+                  (topic.followed ? (
+                    <Button
+                      className="btn-blue modal-primary-button btn_followed"
+                      variant="outline-primary"
+                      onClick={handleTopicButtonClick}
+                    >
+                      Followed
+                    </Button>
+                  ) : (
+                    <Button
+                      className="btn-white btn_following"
+                      variant="outline-primary"
+                      onClick={handleTopicButtonClick}
+                    >
+                      Follow
+                    </Button>
+                  ))}
+              </div>
             </div>
           </div>
         </CustomCard>
@@ -103,7 +124,7 @@ const TopBanner = (props) => {
           </div>
         </CustomCard>
       </div>
-      <SearchBox placeholder={props.title} />
+      <SearchBox placeholder={title} />
     </div>
   );
 };
