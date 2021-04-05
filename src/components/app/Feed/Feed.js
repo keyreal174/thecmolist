@@ -63,11 +63,12 @@ function RenderRightContainer({
 }
 
 function RenderFeed({
-  feedData,
-  moreData,
-  fetchActiveFeed,
-  reactions,
   changeReaction,
+  feedData,
+  fetchActiveFeed,
+  moreData,
+  profileStats,
+  reactions,
 }) {
   let onLoadMoreClick = (e) => {
     e.preventDefault();
@@ -155,6 +156,8 @@ function RenderFeed({
                 this,
                 feed
               )}
+              profile={profileStats.profile}
+              showDiscussionComment={false}
             >
               {feed.parent_content && <Article {...feed.parent_content} />}
             </Article>
@@ -199,11 +202,12 @@ function RenderDashboard(props) {
           </div>
         ) : (
           <RenderFeed
-            feedData={props.feedData}
-            moreData={props.moreData}
-            fetchActiveFeed={props.fetchActiveFeed}
-            reactions={props.reactions}
             changeReaction={props.changeReaction}
+            feedData={props.feedData}
+            fetchActiveFeed={props.fetchActiveFeed}
+            moreData={props.moreData}
+            profileStats={profileStats}
+            reactions={props.reactions}
           />
         )}
       </Col>
