@@ -84,7 +84,7 @@ context('Login', () => {
       .should('have.text', 'Already have an account or received a invitation? Sign in here:')
   })
 
-  it('Logout', () => {
+  it('Block unauthorized login, display good error message', () => {
     // type email and test
     cy.get('input[name="email"]')
       .type('test@gmail.com')
