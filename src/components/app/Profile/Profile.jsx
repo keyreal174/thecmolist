@@ -370,7 +370,7 @@ const Profile = (props) => {
                       <strong>{profileCompany}</strong>
                     </div>
                   )}
-                  {profileCity && (
+                  {profileCity && profileCity.length > 0 && (
                     <div className="right-section--live right-section--item">
                       <img
                         className="right-section--item-img"
@@ -401,7 +401,7 @@ const Profile = (props) => {
                         alt="mail"
                         src={Mail}
                       />
-                      <a href={profileMail}>Email</a>
+                      <a href={"mailto: " + profileMail}>Email</a>
                     </div>
                   )}
                   {profileLinkedin && (
@@ -567,7 +567,11 @@ const Profile = (props) => {
                           this,
                           feed
                         )}
-                      />
+                      >
+                        {feed.parent_content && (
+                          <Article {...feed.parent_content} />
+                        )}
+                      </Article>
                     </FadeTransition>
                   );
                 })}
