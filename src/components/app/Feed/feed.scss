@@ -356,3 +356,16 @@
     margin-top: 20px;
   }
 }
+
+@media (max-width: 768px) {
+  .filter-btn-group {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 30px;
+  }
+  .filter--button {
+    margin-right: 22px !important;
+    min-width: 193px;
+  }
+}
