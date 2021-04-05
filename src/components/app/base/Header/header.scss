@@ -242,6 +242,9 @@
     background-image: url("./svgs/menu.svg");
     background-repeat: no-repeat;
     background-position: center;
+    &.open {
+      background-image: url("./svgs/cross.svg");
+    }
   }
 }
 

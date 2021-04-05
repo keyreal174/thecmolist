@@ -75,6 +75,7 @@ function Header({ getProfileStats, profileStats }) {
 
     fetch();
   }, []);
+  const [open, setOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -107,12 +108,19 @@ function Header({ getProfileStats, profileStats }) {
     });
   };
 
+  const handleOnToggle = () => {
+    setOpen(!open);
+  };
+
   return (
     <div>
       <div className="container-fullwidth"></div>
-      <Navbar expand="md" variant="white">
+      <Navbar expand="md" variant="white" onToggle={handleOnToggle}>
         <div>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Toggle
+            className={`navbar-toggler ${open ? "open" : ""}`}
+            aria-controls="basic-navbar-nav"
+          />
           <Navbar.Brand className="header--logo" href="/feed">
             <img src={Logo} alt="CMOList brand logo" />
             <span className="header--tag">Beta</span>
