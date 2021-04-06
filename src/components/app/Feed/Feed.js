@@ -26,7 +26,7 @@ import TopBanner from "./TopBanner";
 
 import Analytics from "../../util/Analytics";
 import Util from "../../util/Util";
-import { cdn } from "../../util/constants";
+import { cdn, isSmall } from "../../util/constants";
 import AnswerIcon from "../base/icons/answer.svg";
 import InsightfulIcon from "../base/icons/insightful.svg";
 import InsightfulCheckedIcon from "../base/icons/insightful_checked.svg";
@@ -232,6 +232,7 @@ const Feed = (props) => {
     { title: "Updates & Insights", slug: "project" },
     { title: "Articles & News", slug: "article" },
   ];
+  const [open, setOpen] = useState(false);
   const [topic, setTopic] = useState({});
   const [inviteModalShow, setInviteModalShow] = useState(false);
   const [activeSelector, setActiveSelector] = useState(0);
@@ -367,11 +368,15 @@ const Feed = (props) => {
     props.followTopic(slug);
   };
 
+  const handleToggle = () => {
+    setOpen(!open);
+  };
+
   return (
     <>
       <Container className="height-100">
         <div className="wrapper">
-          <Header />
+          <Header onToggle={handleToggle} />
           <CSSTransition in={isGroup} timeout={500} classNames="top-banner">
             <div>
               {(isGroup || isTopic) && (
@@ -386,6 +391,8 @@ const Feed = (props) => {
               )}
             </div>
           </CSSTransition>
+
+          {isSmall && <div className={`${open ? "feed-separator" : ""}`}></div>}
           {!isTopic && (
             <div style={{ width: "100%" }}>
               <Filter

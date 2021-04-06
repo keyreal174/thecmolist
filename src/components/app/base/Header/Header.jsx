@@ -68,7 +68,7 @@ function RenderSearch({ isLoading, handleSearch, options, goSearchPage }) {
   );
 }
 
-function Header({ getProfileStats, profileStats }) {
+function Header({ getProfileStats, profileStats, onToggle }) {
   const history = useHistory();
   useEffect(() => {
     const fetch = async () => await getProfileStats();
@@ -108,14 +108,15 @@ function Header({ getProfileStats, profileStats }) {
     });
   };
 
-  const handleOnToggle = () => {
+  const handleToggle = () => {
     setOpen(!open);
+    onToggle && onToggle();
   };
 
   return (
     <div>
       <div className="container-fullwidth"></div>
-      <Navbar expand="md" variant="white" onToggle={handleOnToggle}>
+      <Navbar expand="md" variant="white" onToggle={handleToggle}>
         <div className="d-flex">
           <Navbar.Toggle
             className={`navbar-toggler ${open ? "open" : ""}`}
@@ -131,15 +132,9 @@ function Header({ getProfileStats, profileStats }) {
               title="Share experience"
               id="basic-nav-dropdown"
             >
-              <NavDropdown.Item className="profile-dropdown" href="/profile">
-                Ask Question
-              </NavDropdown.Item>
-              <NavDropdown.Item className="profile-dropdown" href="/settings">
-                Share Article
-              </NavDropdown.Item>
-              <NavDropdown.Item className="profile-dropdown" href="/logout">
-                Share experience
-              </NavDropdown.Item>
+              <NavDropdown.Item>Ask Question</NavDropdown.Item>
+              <NavDropdown.Item>Share Article</NavDropdown.Item>
+              <NavDropdown.Item>Share experience</NavDropdown.Item>
             </NavDropdown>
           )}
         </div>
@@ -163,19 +158,19 @@ function Header({ getProfileStats, profileStats }) {
           <Nav>
             <Nav.Link as={NavLink} to="/feed">
               <img src={HomeIcon} alt="" />
-              {isSmall ? "" : "Home"}
+              <div>Home</div>
             </Nav.Link>
             <Nav.Link as={NavLink} to="/network">
               <img src={Group} alt="" />
-              {isSmall ? "" : "My Networks"}
+              <div>My Networks</div>
             </Nav.Link>
             <Nav.Link as={NavLink} to="/topics">
               <img src={Apps} alt="" />
-              {isSmall ? "" : "Topics"}
+              <div>Topics</div>
             </Nav.Link>
             <Nav.Link as={NavLink} to="/notifications">
               <img src={Notification} alt="" />
-              {isSmall ? "" : "Notifications"}
+              <div>Notifications</div>
               {notificationCount > 0 && (
                 <div className="notifications--wrapper">
                   <img

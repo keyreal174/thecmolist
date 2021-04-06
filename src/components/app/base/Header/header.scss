@@ -205,9 +205,6 @@
     width: 30px;
     margin-right: 5px;
   }
-  .navbar-collapse {
-    padding: 15px 0;
-  }
   .search-form {
     max-width: 100%;
     margin-bottom: 10px;
@@ -261,6 +258,36 @@
         top: 45%;
         margin: 0 5px;
       }
+    }
+  }
+  .navbar-nav {
+    flex-direction: column;
+    margin-top: 38px;
+  }
+  .nav-link {
+    align-items: flex-start !important;
+    background: $white;
+    height: 100%;
+    text-align: center;
+    width: 100% !important;
+    padding-left: 35px !important;
+    flex-direction: row !important;
+    display: flex;
+
+    img {
+      margin-right: 20px;
+    }
+
+    div {
+      &:after {
+        background: $gray-1;
+        content: " ";
+        width: 388px;
+        height: 1px;
+      }
+    }
+    &.active {
+      border-bottom: none;
     }
   }
 }
