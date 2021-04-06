@@ -336,8 +336,10 @@ const Feed = (props) => {
     const profileStats = props.profileStats;
     const topicSlug = Util.parsePath(window.location.href).trailingPath;
     let auxTopic =
-      profileStats.spaces &&
-      profileStats.spaces.find((t) => t.slug === topicSlug);
+      profileStats &&
+      profileStats.profile &&
+      profileStats.profile.spaces &&
+      profileStats.profile.spaces.find((t) => t.slug === topicSlug);
 
     if (auxTopic) {
       setTopicFollowed(true);
@@ -361,6 +363,7 @@ const Feed = (props) => {
       followed: newFollowed,
     });
     props.followTopic(slug);
+    props.getProfileStats();
   };
 
   return (
