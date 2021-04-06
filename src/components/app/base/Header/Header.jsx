@@ -120,7 +120,10 @@ function Header({ getProfileStats, profileStats, onToggle }) {
             className={`navbar-toggler ${open ? "open" : ""}`}
             aria-controls="basic-navbar-nav"
           />
-          <Navbar.Brand className="header--logo" href="/feed">
+          <Navbar.Brand
+            className={`header--logo ${open ? "open" : ""}`}
+            href="/feed"
+          >
             <img src={Logo} alt="CMOList brand logo" />
             <span className="header--tag">Beta</span>
           </Navbar.Brand>
