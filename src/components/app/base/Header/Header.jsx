@@ -113,7 +113,7 @@ function Header({ getProfileStats, profileStats, onToggle }) {
 
   return (
     <div>
-      <div className="container-fullwidth"></div>
+      <div className={`container-fullwidth ${open ? "open" : ""}`}></div>
       <Navbar expand="md" variant="white" onToggle={handleToggle}>
         <div className="d-flex">
           <Navbar.Toggle
@@ -124,7 +124,7 @@ function Header({ getProfileStats, profileStats, onToggle }) {
             <img src={Logo} alt="CMOList brand logo" />
             <span className="header--tag">Beta</span>
           </Navbar.Brand>
-          {isSmall && (
+          {isSmall && !open && (
             <NavDropdown
               className="navbar-dropdown"
               title="Share experience"
@@ -136,7 +136,7 @@ function Header({ getProfileStats, profileStats, onToggle }) {
             </NavDropdown>
           )}
         </div>
-        {isSmall && (
+        {isSmall && !open && (
           <RenderSearch
             isLoading={isLoading}
             handleSearch={handleSearch}
@@ -157,18 +157,22 @@ function Header({ getProfileStats, profileStats, onToggle }) {
             <Nav.Link as={NavLink} to="/feed">
               <img src={HomeIcon} alt="" />
               <div>Home</div>
+              <div className="header--separator"></div>
             </Nav.Link>
             <Nav.Link as={NavLink} to="/network">
               <img src={Group} alt="" />
               <div>My Networks</div>
+              <div className="header--separator"></div>
             </Nav.Link>
             <Nav.Link as={NavLink} to="/topics">
               <img src={Apps} alt="" />
               <div>Topics</div>
+              <div className="header--separator"></div>
             </Nav.Link>
             <Nav.Link as={NavLink} to="/notifications">
               <img src={Notification} alt="" />
               <div>Notifications</div>
+              <div className="header--separator"></div>
               {notificationCount > 0 && (
                 <div className="notifications--wrapper">
                   <img
