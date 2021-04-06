@@ -191,11 +191,13 @@ function RenderDashboard(props) {
 
   return (
     <Row>
-      <Col md="3" style={{ paddingRight: "0px" }}>
-        {profileStats && <ProfileStats profileStats={profileStats} />}
-      </Col>
+      {!isSmall && (
+        <Col md="3" style={{ paddingRight: "0px" }}>
+          {profileStats && <ProfileStats profileStats={profileStats} />}
+        </Col>
+      )}
       <Col md="6">
-        <AskQuestion saveContent={saveContent} />
+        {!isSmall && <AskQuestion saveContent={saveContent} />}
         {feedLoading ? (
           <div className="mt-3 mb-5">
             <ActivityIndicator className="element-center feed-activity-indicator" />
@@ -211,15 +213,17 @@ function RenderDashboard(props) {
           />
         )}
       </Col>
-      <RenderRightContainer
-        feedTitle={props.feedTitle}
-        buildYourNetworkItems={profileStats.buildYourNetwork}
-        feedAbout={props.feedAbout}
-        memberList={props.memberList}
-        vendorList={props.vendorList}
-        saveContent={props.saveContent}
-        isGroupOrTopic={props.isGroupOrTopic}
-      />
+      {!isSmall && (
+        <RenderRightContainer
+          feedTitle={props.feedTitle}
+          buildYourNetworkItems={profileStats.buildYourNetwork}
+          feedAbout={props.feedAbout}
+          memberList={props.memberList}
+          vendorList={props.vendorList}
+          saveContent={props.saveContent}
+          isGroupOrTopic={props.isGroupOrTopic}
+        />
+      )}
     </Row>
   );
 }
