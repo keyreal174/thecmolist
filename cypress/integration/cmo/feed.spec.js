@@ -1,0 +1,159 @@
+/// <reference types="cypress" />
+
+context('Login', () => {
+  beforeEach(() => {
+    cy.visit('/')
+  })
+
+  it("Load 'All' tab in feed", () => {
+    // type email and test
+    cy.get('input[name="email"]')
+      .type('testuser@gmail.com')
+    // type password and test
+    cy.get('input[name="password"]')
+      .type('password123')
+    // submit
+    cy.get('.home--form-right')
+      .submit()
+
+    // Feed Page
+    cy.url().should('include', '/feed')
+    // profile stats badge visible
+    cy.get('#root > div > div > div.wrapper > div:nth-child(3) > div > div > div.col-md-12 > div > div > button:nth-child(1)')
+      .should('have.class', 'active')
+      .should('have.text', 'All')
+    
+    // 3 posts visible
+    cy.get('.article-wrapper')
+      .should('have.length', 2)
+  })
+
+  it("Load My peers tab in feed", () => {
+    // type email and test
+    cy.get('input[name="email"]')
+      .type('testuser@gmail.com')
+    // type password and test
+    cy.get('input[name="password"]')
+      .type('password123')
+    // submit
+    cy.get('.home--form-right')
+      .submit()
+
+    // Feed Page
+    cy.url().should('include', '/feed')
+
+    cy.get('#root > div > div > div.wrapper > div:nth-child(3) > div > div > div.col-md-12 > div > div > button:nth-child(2)')
+      .click()
+    // profile stats badge visible
+    cy.get('#root > div > div > div.wrapper > div:nth-child(3) > div > div > div.col-md-12 > div > div > button:nth-child(2)')
+      .should('have.class', 'active')
+      .should('have.text', 'My Peers')
+    
+    // 0 posts visible
+    cy.get('.article-wrapper')
+      .should('have.length', 1)
+    cy.get('.article-wrapper .no-feed-data-header')
+      .should('have.text', 'No content yet')
+  })
+
+  it("Load Signalfire marketing tab in feed", () => {
+    // type email and test
+    cy.get('input[name="email"]')
+      .type('testuser@gmail.com')
+    // type password and test
+    cy.get('input[name="password"]')
+      .type('password123')
+    // submit
+    cy.get('.home--form-right')
+      .submit()
+
+    // Feed Page
+    cy.url().should('include', '/feed')
+
+    cy.get('#root > div > div > div.wrapper > div:nth-child(3) > div > div > div.col-md-12 > div > div > button:nth-child(3)')
+      .click()
+    cy.wait(1000)
+    // profile stats badge visible
+    cy.get('#root > div > div > div.wrapper > div:nth-child(3) > div > div > div.col-md-12 > div > div > button:nth-child(3)')
+      .should('have.class', 'active')
+      .should('have.text', 'SignalFire Marketing')
+
+      cy.url().should('include', '/group/signalfire-marketing')
+    
+    // 0 posts visible
+    cy.get('.article-wrapper')
+      .should('have.length', 2)
+  })
+
+  it("Load all three tabs, tab through filters (All/Q&A/Projects/Articles)", () => {
+    // type email and test
+    cy.get('input[name="email"]')
+      .type('testuser@gmail.com')
+    // type password and test
+    cy.get('input[name="password"]')
+      .type('password123')
+    // submit
+    cy.get('.home--form-right')
+      .submit()
+
+    // Feed Page
+    cy.url().should('include', '/feed')
+
+    // SignalFire Marketing tab
+    cy.get('#root > div > div > div.wrapper > div:nth-child(3) > div > div > div.col-md-12 > div > div > button:nth-child(3)')
+      .click()
+    cy.wait(1000)
+    cy.get('#root > div > div > div.wrapper > div:nth-child(3) > div > div > div.col-md-12 > div > div > button:nth-child(3)')
+      .should('have.class', 'active')
+      .should('have.text', 'SignalFire Marketing')
+    cy.url().should('include', '/group/signalfire-marketing')
+    cy.get('.article-wrapper')
+      .should('have.length', 2)
+
+    // My Peers tab
+    cy.get('#root > div > div > div.wrapper > div:nth-child(3) > div > div > div.col-md-12 > div > div > button:nth-child(2)')
+      .click()
+    cy.get('#root > div > div > div.wrapper > div:nth-child(3) > div > div > div.col-md-12 > div > div > button:nth-child(2)')
+      .should('have.class', 'active')
+      .should('have.text', 'My Peers')
+    cy.url().should('include', '/feed')
+    cy.get('.article-wrapper')
+      .should('have.length', 1)
+      cy.get('.article-wrapper .no-feed-data-header')
+      .should('have.text', 'No content yet')
+
+    // All tab
+    cy.get('#root > div > div > div.wrapper > div:nth-child(3) > div > div > div.col-md-12 > div > div > button:nth-child(1)')
+      .click()
+    cy.get('#root > div > div > div.wrapper > div:nth-child(3) > div > div > div.col-md-12 > div > div > button:nth-child(1)')
+      .should('have.class', 'active')
+      .should('have.text', 'All')
+    cy.get('.article-wrapper')
+      .should('have.length', 2)
+
+    // Q&A filter
+    cy.get('#root > div > div > div.wrapper > div.feed-divider > button:nth-child(5)')
+      .click()
+    cy.get('.article-wrapper')
+      .should('have.length', 2)
+
+    // All filter
+    cy.get('#root > div > div > div.wrapper > div.feed-divider > button:nth-child(3)')
+      .click()
+    cy.get('.article-wrapper')
+      .should('have.length', 2)
+
+    // Updates & Insights filter
+    cy.get('#root > div > div > div.wrapper > div.feed-divider > button:nth-child(7)')
+      .click()
+    cy.get('.article-wrapper')
+      .should('have.length', 1)
+
+    // Updates & Insights filter
+    cy.get('#root > div > div > div.wrapper > div.feed-divider > button:nth-child(9)')
+      .click()
+    cy.get('.article-wrapper')
+      .should('have.length', 1)
+
+  })
+})
