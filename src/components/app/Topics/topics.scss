@@ -40,12 +40,3 @@
   font-size: 50px;
   color: $brand;
 }
-
-@media (max-width: 768px) {
-  .topics--header {
-    margin-bottom: 110px;
-    &.open {
-      margin-bottom: 500px;
-    }
-  }
-}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
 import Column from "./TopicColumn";
@@ -8,23 +8,14 @@ import SimpleTopBanner from "../base/SimpleTopBanner/SimpleTopBanner";
 import "./topics.scss";
 
 const Topics = (props) => {
-  const [open, setOpen] = useState(false);
-
   useEffect(() => {
     props.fetchTopics();
   }, []);
 
-  const handleToggle = () => {
-    setOpen(!open);
-  };
-
   return (
     <>
       <Container className="height-100">
-        <Header
-          className={`topics--header ${open ? "open" : ""}`}
-          onToggle={handleToggle}
-        />
+        <Header />
         <div className="wrapper">
           <SimpleTopBanner title="Topics" />
           <Row className="mt-3">

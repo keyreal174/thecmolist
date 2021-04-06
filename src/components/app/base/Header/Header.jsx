@@ -112,7 +112,9 @@ function Header({ className, getProfileStats, profileStats, onToggle }) {
   };
 
   return (
-    <div className={`header ${className}`}>
+    <div
+      className={`header ${className ? className : ""} ${open ? "open" : ""}`}
+    >
       <div className={`container-fullwidth ${open ? "open" : ""}`}></div>
       <Navbar expand="md" variant="white" onToggle={handleToggle}>
         <div className="d-flex">

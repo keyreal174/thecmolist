@@ -103,12 +103,3 @@
     color: $brand;
   }
 }
-
-@media (max-width: 768px) {
-  .network--header {
-    margin-bottom: 110px;
-    &.open {
-      margin-bottom: 500px;
-    }
-  }
-}

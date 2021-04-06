@@ -356,7 +356,17 @@
   }
   .navbar-nav {
     flex-direction: column;
+  }
+  .nav-app {
+    opacity: 0;
+    height: 0;
+    transition: opacity 0.2s ease-in-out;
     transition: height 0.2s ease-in-out;
+
+    &.show {
+      opacity: 1 !important;
+      height: 100%;
+    }
   }
   .nav-app .nav-link {
     align-items: center !important;
@@ -422,5 +432,11 @@
   .navbar-nav .dropdown-menu .basic-nav-dropdown {
     position: absolute;
     left: 0 !important;
+  }
+  .header {
+    margin-bottom: 110px;
+    &.open {
+      margin-bottom: 500px;
+    }
   }
 }
