@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import "./header.scss";
+import AddPostModal from "../AddPostModal/AddPostModal";
 import { AsyncTypeahead, TypeaheadMenu } from "react-bootstrap-typeahead";
 import { connect } from "react-redux";
 import { isSmall } from "../../../util/constants";
@@ -66,14 +67,22 @@ function RenderSearch({ isLoading, handleSearch, options, goSearchPage }) {
   );
 }
 
-function Header({ className, getProfileStats, profileStats, onToggle }) {
+function Header({
+  className,
+  getProfileStats,
+  profileStats,
+  onToggle,
+  saveContent,
+}) {
   const history = useHistory();
+  const [showPostModal, setShowPostModal] = useState(false);
   useEffect(() => {
     const fetch = async () => await getProfileStats();
 
     fetch();
   }, []);
   const [open, setOpen] = useState(false);
+  const [contentType, setContentType] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -111,6 +120,20 @@ function Header({ className, getProfileStats, profileStats, onToggle }) {
     onToggle && onToggle();
   };
 
+  const handleClose = (_) => {
+    setShowPostModal(false);
+  };
+
+  const handlePostModalSubmit = async (content) => {
+    const id = await saveContent(content);
+    history.push(`/content/${id}`);
+  };
+
+  const handleNavDropdownItemClick = (type) => {
+    setContentType(type);
+    setShowPostModal(true);
+  };
+
   return (
     <div
       className={`header ${className ? className : ""} ${open ? "open" : ""}`}
@@ -130,15 +153,38 @@ function Header({ className, getProfileStats, profileStats, onToggle }) {
             <span className="header--tag">Beta</span>
           </Navbar.Brand>
           {isSmall && !open && (
-            <NavDropdown
-              className="navbar-dropdown"
-              title="Share experience"
-              id="basic-nav-dropdown"
-            >
-              <NavDropdown.Item>Ask Question</NavDropdown.Item>
-              <NavDropdown.Item>Share Article</NavDropdown.Item>
-              <NavDropdown.Item>Share experience</NavDropdown.Item>
-            </NavDropdown>
+            <div>
+              <NavDropdown
+                className="navbar-dropdown"
+                title="Share experience"
+                id="basic-nav-dropdown"
+              >
+                <NavDropdown.Item
+                  onClick={handleNavDropdownItemClick.bind(this, "question")}
+                >
+                  Ask Question
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  onClick={handleNavDropdownItemClick.bind(this, "article")}
+                >
+                  Share Article
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  onClick={handleNavDropdownItemClick.bind(this, "project")}
+                >
+                  Share experience
+                </NavDropdown.Item>
+              </NavDropdown>
+              <AddPostModal
+                contentType={contentType}
+                firstButtonText={"Cancel"}
+                handleClose={handleClose}
+                modalTitle="Ask a question"
+                onSubmit={handlePostModalSubmit}
+                secondButtonText={"Ask a question"}
+                show={showPostModal}
+              />
+            </div>
           )}
         </div>
         {isSmall && !open && (
@@ -191,6 +237,7 @@ function Header({ className, getProfileStats, profileStats, onToggle }) {
                 </div>
               )}
             </Nav.Link>
+
             <NavDropdown
               className={
                 window.location.href.includes("/profile/") ? "active" : ""
@@ -224,6 +271,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     getProfileStats: dispatch.profileModel.getProfileStats,
+    saveContent: dispatch.contentModel.saveContent,
   };
 };
 
