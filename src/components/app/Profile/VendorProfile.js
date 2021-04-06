@@ -516,7 +516,11 @@ const VendorProfile = (props) => {
                           this,
                           feed
                         )}
-                      />
+                      >
+                        {feed.parent_content && (
+                          <Article {...feed.parent_content} />
+                        )}
+                      </Article>
                     </FadeTransition>
                   );
                 })}

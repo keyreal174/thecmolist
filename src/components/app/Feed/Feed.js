@@ -229,6 +229,7 @@ const Feed = (props) => {
     { title: "Articles & News", slug: "article" },
   ];
   const [topic, setTopic] = useState({});
+  const [topicFollowed, setTopicFollowed] = useState(false);
   const [inviteModalShow, setInviteModalShow] = useState(false);
   const [activeSelector, setActiveSelector] = useState(0);
   const [filterIdx, setFilterIdx] = useState(0);
@@ -238,7 +239,6 @@ const Feed = (props) => {
   const [bannerImage, setBannerImage] = useState("");
   const [isTopic, setIsTopic] = useState(false);
   const [isGroup, setIsGroup] = useState(false);
-  const [followed, setFollowed] = useState(false);
   const changeDashboardHeader = (idx) => {
     if (idx < filters.length) {
       setBannerTitle(filters[idx].title);
@@ -340,22 +340,22 @@ const Feed = (props) => {
       profileStats.spaces.find((t) => t.slug === topicSlug);
 
     if (auxTopic) {
-      setFollowed(true);
+      setTopicFollowed(true);
     } else {
-      setFollowed(false);
+      setTopicFollowed(false);
       auxTopic = {
         name: `#${topicSlug}`,
         slug: topicSlug,
       };
     }
 
-    auxTopic.followed = followed;
+    auxTopic.followed = topicFollowed;
     setTopic(auxTopic);
   }, [props.profileStats]);
 
-  const handleFollowClick = (slug) => {
-    const newFollowed = !followed;
-    setFollowed(newFollowed);
+  const handleTopicFollowClick = (slug) => {
+    const newFollowed = !topicFollowed;
+    setTopicFollowed(newFollowed);
     setTopic({
       ...topic,
       followed: newFollowed,
@@ -376,7 +376,7 @@ const Feed = (props) => {
                   subtitle={"Workspace"}
                   image={bannerImage}
                   saveContent={props.saveContent}
-                  followTopic={handleFollowClick}
+                  followTopic={handleTopicFollowClick}
                   topic={topic}
                 />
               )}
