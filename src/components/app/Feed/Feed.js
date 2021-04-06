@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { useLocation } from "react-router";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { CSSTransition } from "react-transition-group";
+import Avatar from "../base/Avatar/Avatar";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Filter from "../base/Filter/Filter";
@@ -157,6 +158,20 @@ function RenderFeed({
               )}
             >
               {feed.parent_content && <Article {...feed.parent_content} />}
+              {feed.entities?.length > 0 && (
+                <div className="feed-box-content mt-3">
+                  {feed.entities.map(({ image, name, role, link }, index) => (
+                    <a href={link} key={index}>
+                      <Avatar
+                        key={index}
+                        image={image}
+                        heading={name}
+                        subHeading={role}
+                      />
+                    </a>
+                  ))}
+                </div>
+              )}
             </Article>
           );
         })}
