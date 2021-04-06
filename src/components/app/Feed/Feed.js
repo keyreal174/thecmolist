@@ -393,7 +393,7 @@ const Feed = (props) => {
           </CSSTransition>
 
           {isSmall && <div className={`${open ? "feed-separator" : ""}`}></div>}
-          {!isTopic && (
+          {!isTopic && !open && (
             <div style={{ width: "100%" }}>
               <Filter
                 className="mt-1 feed--filters"
@@ -404,46 +404,54 @@ const Feed = (props) => {
             </div>
           )}
 
-          <div className="feed-divider">
-            <div className="section-break" />
-            {subSelectors.map((sel, idx) => {
-              return (
-                <Fragment key={idx}>
-                  {idx === 0 ? <span>&nbsp;</span> : <span>&nbsp;|&nbsp;</span>}
-                  {idx === activeSelector ? (
-                    <span style={{ fontWeight: 600, lineHeight: "25px" }}>
-                      {sel.title}
-                    </span>
-                  ) : (
-                    <Button
-                      className="button-as-link"
-                      style={{ paddingTop: "0px", paddingBottom: "0px" }}
-                      onClick={() => {
-                        changeSubFilter(idx);
-                      }}
-                    >
-                      {sel.title}
-                    </Button>
-                  )}
-                </Fragment>
-              );
-            })}
-          </div>
+          {!isSmall && (
+            <div className="feed-divider">
+              <div className="section-break" />
+              {subSelectors.map((sel, idx) => {
+                return (
+                  <Fragment key={idx}>
+                    {idx === 0 ? (
+                      <span>&nbsp;</span>
+                    ) : (
+                      <span>&nbsp;|&nbsp;</span>
+                    )}
+                    {idx === activeSelector ? (
+                      <span style={{ fontWeight: 600, lineHeight: "25px" }}>
+                        {sel.title}
+                      </span>
+                    ) : (
+                      <Button
+                        className="button-as-link"
+                        style={{ paddingTop: "0px", paddingBottom: "0px" }}
+                        onClick={() => {
+                          changeSubFilter(idx);
+                        }}
+                      >
+                        {sel.title}
+                      </Button>
+                    )}
+                  </Fragment>
+                );
+              })}
+            </div>
+          )}
 
-          <RenderDashboard
-            feedTitle={bannerTitle}
-            profileStats={props.profileStats}
-            feedData={props.activeFeed}
-            moreData={props.activeFeedHasMoreData}
-            feedAbout={props.activeFeedAbout}
-            memberList={props.activeFeedMembers}
-            vendorList={props.activeFeedVendors}
-            saveContent={props.saveContent}
-            fetchActiveFeed={props.fetchActiveFeed}
-            reactions={props.reactions}
-            changeReaction={props.changeReaction}
-            isGroupOrTopic={isGroup || isTopic}
-          />
+          {!open && (
+            <RenderDashboard
+              feedTitle={bannerTitle}
+              profileStats={props.profileStats}
+              feedData={props.activeFeed}
+              moreData={props.activeFeedHasMoreData}
+              feedAbout={props.activeFeedAbout}
+              memberList={props.activeFeedMembers}
+              vendorList={props.activeFeedVendors}
+              saveContent={props.saveContent}
+              fetchActiveFeed={props.fetchActiveFeed}
+              reactions={props.reactions}
+              changeReaction={props.changeReaction}
+              isGroupOrTopic={isGroup || isTopic}
+            />
+          )}
           <InviteModal
             show={inviteModalShow}
             onHide={() => setInviteModalShow(false)}
@@ -456,7 +464,7 @@ const Feed = (props) => {
           {/* wrapper */}
         </div>
 
-        <Footer />
+        <Footer className={`${open ? "feed--footer" : ""}`} />
       </Container>
     </>
   );

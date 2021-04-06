@@ -317,11 +317,11 @@
   }
   .navbar {
     justify-content: flex-start;
-    height: 170px;
     padding-top: 22px;
     padding-bottom: 30px;
   }
   .header-search {
+    margin-top: 20px;
     width: 100% !important;
   }
   .navbar-toggler {
@@ -355,7 +355,6 @@
   }
   .navbar-nav {
     flex-direction: column;
-    margin-top: 38px;
   }
   .nav-link {
     align-items: flex-start !important;
@@ -382,5 +381,12 @@
     &.active {
       border-bottom: none;
     }
+  }
+  .feed--filters {
+    margin-top: 90px !important;
+  }
+  .navbar-collapse {
+    margin-top: 20px;
+    height: 481px;
   }
 }

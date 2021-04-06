@@ -1,22 +1,20 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { useHistory } from "react-router";
-import { Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
-import { AsyncTypeahead, TypeaheadMenu } from "react-bootstrap-typeahead";
-import { NavLink } from "react-router-dom";
 import "./header.scss";
-import { isSmall } from "../../../util/constants";
+import { AsyncTypeahead, TypeaheadMenu } from "react-bootstrap-typeahead";
 import { connect } from "react-redux";
+import { isSmall } from "../../../util/constants";
+import { Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
+import { useHistory } from "react-router";
 import PersonHeader from "../PersonHeader/PersonHeader";
 
-import HomeIcon from "../icons/home.svg";
-import Group from "../icons/group.svg";
-import Notification from "../icons/notification.svg";
 import Apps from "../icons/apps.svg";
-import Person from "../icons/person.svg";
-import Search from "../icons/search.svg";
-import Rectangle2 from "../icons/rectangle2.svg";
+import Group from "../icons/group.svg";
+import HomeIcon from "../icons/home.svg";
 import Logo from "./svgs/logo.svg";
-import Menu from "./svgs/menu.svg";
+import Notification from "../icons/notification.svg";
+import Rectangle2 from "../icons/rectangle2.svg";
+import Search from "../icons/search.svg";
 
 function RenderSearch({ isLoading, handleSearch, options, goSearchPage }) {
   return (
