@@ -9,6 +9,7 @@ import Analytics from "../../util/Analytics";
 import "./notifications.scss";
 
 const Notifications = (props) => {
+  const [open, setOpen] = useState(false);
   const [inviteModalShow, setInviteModalShow] = useState(false);
   const fetchData = async () => await props.fetchNotifications();
   useEffect(() => {
@@ -16,12 +17,19 @@ const Notifications = (props) => {
   }, []);
 
   let feedData = props.feedData;
+
+  const handleToggle = () => {
+    setOpen(!open);
+  };
+
   return (
     <>
       <Container className="height-100">
         <div className="wrapper">
-          <Header />
-
+          <Header
+            className={`notifications--header ${open ? "open" : ""}`}
+            onToggle={handleToggle}
+          />
           <div className="notifications--feed">
             {feedData &&
               feedData.map((feed, idx) => {

@@ -66,7 +66,7 @@ function RenderSearch({ isLoading, handleSearch, options, goSearchPage }) {
   );
 }
 
-function Header({ getProfileStats, profileStats, onToggle }) {
+function Header({ className, getProfileStats, profileStats, onToggle }) {
   const history = useHistory();
   useEffect(() => {
     const fetch = async () => await getProfileStats();
@@ -112,7 +112,7 @@ function Header({ getProfileStats, profileStats, onToggle }) {
   };
 
   return (
-    <div>
+    <div className={`header ${className}`}>
       <div className={`container-fullwidth ${open ? "open" : ""}`}></div>
       <Navbar expand="md" variant="white" onToggle={handleToggle}>
         <div className="d-flex">

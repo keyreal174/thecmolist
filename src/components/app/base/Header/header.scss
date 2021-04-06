@@ -356,6 +356,7 @@
   }
   .navbar-nav {
     flex-direction: column;
+    transition: height 0.2s ease-in-out;
   }
   .nav-app .nav-link {
     align-items: center !important;

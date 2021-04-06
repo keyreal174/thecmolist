@@ -87,6 +87,7 @@ const Network = (props) => {
     changeDashboardHeader(idx);
   };
 
+  const [open, setOpen] = useState(false);
   const [showInviteModal, setShowInviteModal] = useState(false);
   const [showFollowModal, setShowFollowModal] = useState(false);
   const [connectName, setConnectName] = useState("");
@@ -116,11 +117,18 @@ const Network = (props) => {
     toggleFollowModal();
   };
 
+  const handleToggle = () => {
+    setOpen(!open);
+  };
+
   return (
     <>
       <Container className="height-100">
         <div className="wrapper">
-          <Header />
+          <Header
+            className={`network--header ${open ? "open" : ""}`}
+            onToggle={handleToggle}
+          />
           <Row>
             <Col md="9">
               <SimpleTopBanner
