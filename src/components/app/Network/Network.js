@@ -103,12 +103,25 @@ const Network = (props) => {
 
   const connectUser = async (payload) => {
     let userName = payload.user;
-    Analytics.sendClickEvent(`Followed user ${userName} from profile page`);
+    Analytics.sendClickEvent(`Followed user ${userName} from network page`);
     try {
       await props.connectUser(payload);
       props.invalidateFeed();
     } catch (err) {
       console.log(`An error occurred connecting with user: ${userName}`);
+      console.log(err);
+    }
+  };
+
+  const disconnectUser = async (payload) => {
+    let userName = payload.username;
+    Analytics.sendClickEvent(`Unfollowed user ${userName} from network page`);
+    try {
+      payload.isConnected = false;
+      await props.disconnectUser({ user: userName });
+      props.invalidateFeed();
+    } catch (err) {
+      console.log(`An error occurred disconnecting with user: ${userName}`);
       console.log(err);
     }
   };
@@ -203,6 +216,7 @@ const Network = (props) => {
                 <NetworkFeed
                   {...props}
                   connectUser={onConnectClick}
+                  disconnectUser={disconnectUser}
                   localConnectedUsers={props.localConnectedUsers}
                   fetchData={fetchData}
                   feedData={feedData}
