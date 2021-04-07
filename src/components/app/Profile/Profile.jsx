@@ -582,9 +582,7 @@ const Profile = (props) => {
         {profileFirstName && !hasDataOnCurrentFeed && (
           <div className="wrapper article-wrapper">
             <div className="no-feed-data-header">
-              {profileFirstName} hasn't shared anything in{" "}
-              {filters[filterIdx] ? filters[filterIdx].title : "this category"}{" "}
-              yet
+              {profileFirstName} hasn't shared anything here yet
             </div>
           </div>
         )}
