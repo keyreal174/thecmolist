@@ -468,7 +468,7 @@ const Feed = (props) => {
           {/* wrapper */}
         </div>
 
-        <Footer className={`${open ? "feed--footer" : ""}`} />
+        {!open && <Footer />}
       </Container>
     </>
   );
