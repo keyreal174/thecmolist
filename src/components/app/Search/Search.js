@@ -114,7 +114,7 @@ const Search = (props) => {
               showMore(filters[idx]["slug"]);
             }}
           />
-          <div>
+          <div className="mt-3">
             {modules && (
               <RenderList
                 connectUser={props.connectUser}
