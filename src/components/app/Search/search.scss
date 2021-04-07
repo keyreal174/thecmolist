@@ -90,7 +90,11 @@
     position: relative;
     width: 140px !important;
     top: unset !important;
-    margin-left: 60px;
-    margin: 10px 60px;
+    margin: 10px 0px;
+  }
+  .search-page-article {
+    .article-wrapper .article-badge {
+      margin: 10px 60px;
+    }
   }
 }
