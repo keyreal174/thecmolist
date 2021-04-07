@@ -161,6 +161,7 @@ const ContentDetail = ({
                         reactions
                       ),
                       text: "Thanks",
+                      type: "Reaction",
                       icon: ThanksIcon,
                       iconChecked: ThanksCheckedIcon,
                       number: getEngagementForId(replyId, "thanks", reactions),
@@ -172,6 +173,7 @@ const ContentDetail = ({
                         reactions
                       ),
                       text: "Insightful",
+                      type: "Reaction",
                       icon: InsightfulIcon,
                       iconChecked: InsightfulCheckedIcon,
                       number: getEngagementForId(

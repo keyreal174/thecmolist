@@ -30,55 +30,62 @@ const Network = (props) => {
       setBannerImage(filters[idx].image);
     }
   };
-  useEffect(() => {
-    const getProfileStats = async () => props.getProfileStats();
-    getProfileStats().then((profileStats) => {
-      let newFilters = [
-        { title: "All", slug: "my-network", enabled: true },
-        { title: "My Peers", slug: "my-peers", enabled: true },
-      ];
-      if (profileStats && profileStats.profile && profileStats.profile.groups) {
-        newFilters = newFilters.concat(
-          profileStats.profile.groups.map((group) => {
-            return {
-              title: group.name,
-              slug: group.slug,
-              image: group.image || null,
-              enabled: true,
-            };
-          })
+  const initNetworkpage = (profileStats) => {
+    let newFilters = [
+      { title: "All", slug: "my-network", enabled: true },
+      { title: "My Peers", slug: "my-peers", enabled: true },
+    ];
+    if (profileStats && profileStats.profile && profileStats.profile.groups) {
+      newFilters = newFilters.concat(
+        profileStats.profile.groups.map((group) => {
+          return {
+            title: group.name,
+            slug: group.slug,
+            image: group.image || null,
+            enabled: true,
+          };
+        })
+      );
+    }
+    let idx = 0;
+    if (location && location.hash) {
+      let networkSlug = location.hash;
+      if (location.hash.indexOf("#") === 0) {
+        networkSlug = location.hash.substring(1);
+      }
+      if (networkSlug.length > 0) {
+        let existingFilterIndex = newFilters.findIndex(
+          (nf) => nf.slug === networkSlug
         );
-      }
-      let idx = 0;
-      if (location && location.hash) {
-        let networkSlug = location.hash;
-        if (location.hash.indexOf("#") === 0) {
-          networkSlug = location.hash.substring(1);
-        }
-        if (networkSlug.length > 0) {
-          let existingFilterIndex = newFilters.findIndex(
-            (nf) => nf.slug === networkSlug
-          );
-          if (existingFilterIndex >= 0) {
-            idx = existingFilterIndex;
-          } else {
-            newFilters = newFilters.concat({
-              title: networkSlug,
-              slug: networkSlug,
-              image: `${cdn}/directory.png` || null,
-              enabled: true,
-            });
-            idx = newFilters.length - 1;
-          }
+        if (existingFilterIndex >= 0) {
+          idx = existingFilterIndex;
+        } else {
+          newFilters = newFilters.concat({
+            title: networkSlug,
+            slug: networkSlug,
+            image: `${cdn}/directory.png` || null,
+            enabled: true,
+          });
+          idx = newFilters.length - 1;
         }
       }
-      setFilters(newFilters);
-      setBannerTitle(newFilters[idx].title);
-      setBannerImage(newFilters[idx].image);
-      setFilterIdx(idx);
-      props.changeFilter(newFilters[idx].slug);
-      changeDashboardHeader(idx);
-    });
+    }
+    setFilters(newFilters);
+    setBannerTitle(newFilters[idx].title);
+    setBannerImage(newFilters[idx].image);
+    setFilterIdx(idx);
+    props.changeFilter(newFilters[idx].slug);
+    changeDashboardHeader(idx);
+  };
+  useEffect(() => {
+    if (Object.keys(props.profileStats).length === 0) {
+      const getProfileStats = async () => props.getProfileStats();
+      getProfileStats().then((profileStats) => {
+        initNetworkpage(profileStats);
+      });
+    } else {
+      initNetworkpage(props.profileStats);
+    }
   }, []);
 
   const changeFilter = (idx) => {
@@ -220,6 +227,7 @@ const mapState = (state) => {
     moreData: state.networkModel.activeFeedHasMoreData,
     localConnectedUsers: state.userModel.localConnectedUsers,
     loadingNetwork: state.networkModel.loadingNetwork,
+    profileStats: state.profileModel.profileStats,
   };
 };
 

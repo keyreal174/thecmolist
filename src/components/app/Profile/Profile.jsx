@@ -536,7 +536,7 @@ const Profile = (props) => {
                               reactions
                             ),
                             text: "Thanks",
-                            type: "Answer",
+                            type: "Reaction",
                             icon: ThanksIcon,
                             iconChecked: ThanksCheckedIcon,
                             number: getEngagementForId(
@@ -552,7 +552,7 @@ const Profile = (props) => {
                               reactions
                             ),
                             text: "Insightful",
-                            type: "Answer",
+                            type: "Reaction",
                             icon: InsightfulIcon,
                             iconChecked: InsightfulCheckedIcon,
                             number: getEngagementForId(

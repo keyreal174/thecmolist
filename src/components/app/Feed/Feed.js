@@ -329,10 +329,14 @@ const Feed = (props) => {
   useEffect(() => {
     let pageLocationIsTopic = props.isTopic || false;
     setIsTopic(pageLocationIsTopic);
-    const getProfileStats = async () => props.getProfileStats();
-    getProfileStats().then((profileStats) =>
-      initFeedPage(profileStats, pageLocationIsTopic)
-    );
+    if (Object.keys(props.profileStats).length === 0) {
+      const getProfileStats = async () => props.getProfileStats();
+      getProfileStats().then((profileStats) =>
+        initFeedPage(profileStats, pageLocationIsTopic)
+      );
+    } else {
+      initFeedPage(props.profileStats, pageLocationIsTopic);
+    }
   }, [props.isTopic]);
 
   useEffect(() => {
@@ -345,6 +349,7 @@ const Feed = (props) => {
       profileStats.profile.spaces.find((t) => t.slug === topicSlug);
 
     if (auxTopic) {
+      auxTopic.followed = true;
       setTopicFollowed(true);
     } else {
       setTopicFollowed(false);
@@ -352,9 +357,8 @@ const Feed = (props) => {
         name: `#${topicSlug}`,
         slug: topicSlug,
       };
+      auxTopic.followed = false;
     }
-
-    auxTopic.followed = topicFollowed;
     setTopic(auxTopic);
   }, [props.profileStats]);
 
