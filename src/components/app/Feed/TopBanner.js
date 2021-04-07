@@ -79,7 +79,7 @@ const TopBanner = ({
                       variant="outline-primary"
                       onClick={handleTopicButtonClick}
                     >
-                      Followed
+                      Following
                     </Button>
                   ) : (
                     <Button

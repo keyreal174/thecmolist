@@ -160,7 +160,7 @@ const Network = (props) => {
             toggle={toggleFollowModal}
             followUser={connectUser}
           />
-          <div className="mb-4">
+          <div className="mt-4 mb-4">
             <Filter
               className="mt-1 network--filter"
               filterIdx={filterIdx}

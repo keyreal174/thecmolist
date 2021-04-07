@@ -48,7 +48,10 @@ function RenderRightContainer({
     <Col md="3" className="feed-right-container">
       {!isGroupOrTopic ? (
         <Fragment>
-          <MyNetwork title={feedTitle} saveContent={saveContent} />
+          <MyNetwork
+            title={feedTitle && feedTitle.length > 0 ? feedTitle : "-"}
+            saveContent={saveContent}
+          />
           {buildYourNetworkItems && buildYourNetworkItems.length > 0 && (
             <BuildYourNetwork buildYourNetworkItems={buildYourNetworkItems} />
           )}
@@ -388,7 +391,7 @@ const Feed = (props) => {
           {!isTopic && (
             <div style={{ width: "100%" }}>
               <Filter
-                className="mt-1 feed--filters"
+                className="mt-4 feed--filters"
                 filterIdx={filterIdx}
                 filters={filters}
                 onChange={(idx) => changeFilter(idx)}
