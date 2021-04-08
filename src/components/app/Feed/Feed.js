@@ -26,7 +26,7 @@ import TopBanner from "./TopBanner";
 
 import Analytics from "../../util/Analytics";
 import Util from "../../util/Util";
-import { cdn, isSmall } from "../../util/constants";
+import { cdn } from "../../util/constants";
 import AnswerIcon from "../base/icons/answer.svg";
 import InsightfulIcon from "../base/icons/insightful.svg";
 import InsightfulCheckedIcon from "../base/icons/insightful_checked.svg";
