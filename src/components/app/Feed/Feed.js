@@ -195,11 +195,7 @@ function RenderDashboard(props) {
 
   return (
     <Row className={className}>
-      <Col
-        className="feed--profile-stats"
-        md="3"
-        style={{ paddingRight: "0px" }}
-      >
+      <Col className="feed--profile-stats" md="3">
         {profileStats && <ProfileStats profileStats={profileStats} />}
       </Col>
       <Col md="6">
@@ -240,7 +236,7 @@ const Feed = (props) => {
     { title: "Updates & Insights", slug: "project" },
     { title: "Articles & News", slug: "article" },
   ];
-  const [open, setOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [topic, setTopic] = useState({});
   const [topicFollowed, setTopicFollowed] = useState(false);
   const [inviteModalShow, setInviteModalShow] = useState(false);
@@ -384,7 +380,7 @@ const Feed = (props) => {
   };
 
   const handleToggle = () => {
-    setOpen(!open);
+    setMobileMenuOpen(!mobileMenuOpen);
   };
 
   return (
@@ -410,7 +406,7 @@ const Feed = (props) => {
           {!isTopic && (
             <div style={{ width: "100%" }}>
               <Filter
-                className={clsx("mt-4 feed--filters", open && "open")}
+                className={clsx("mt-4 feed--filters", mobileMenuOpen && "open")}
                 filterIdx={filterIdx}
                 filters={filters}
                 onChange={(idx) => changeFilter(idx)}
@@ -444,7 +440,7 @@ const Feed = (props) => {
             })}
           </div>
           <RenderDashboard
-            className={clsx("feed--dashboard", open && "open")}
+            className={clsx("feed--dashboard", mobileMenuOpen && "open")}
             feedTitle={bannerTitle}
             profileStats={props.profileStats}
             feedData={props.activeFeed}
@@ -470,7 +466,7 @@ const Feed = (props) => {
           {/* wrapper */}
         </div>
 
-        <Footer className={clsx("feed--footer", open && "open")} />
+        <Footer className={clsx("feed--footer", mobileMenuOpen && "open")} />
       </Container>
     </>
   );
