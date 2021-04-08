@@ -372,4 +372,13 @@
   .btn__load-more {
     width: 100%;
   }
+  .feed-divider {
+    display: none;
+  }
+  .feed--dashboard,
+  .feed--footer {
+    &.open {
+      display: none;
+    }
+  }
 }

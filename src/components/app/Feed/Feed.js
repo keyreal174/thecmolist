@@ -34,6 +34,7 @@ import ThanksIcon from "../base/icons/thanks.svg";
 import ThanksCheckedIcon from "../base/icons/thanks_checked.svg";
 
 import "./feed.scss";
+import clsx from "clsx";
 
 function RenderRightContainer({
   feedTitle,
@@ -190,10 +191,10 @@ function RenderFeed({
 }
 
 function RenderDashboard(props) {
-  const { feedLoading, profileStats, saveContent } = props;
+  const { className, feedLoading, profileStats, saveContent } = props;
 
   return (
-    <Row>
+    <Row className={className}>
       {!isSmall && (
         <Col md="3" style={{ paddingRight: "0px" }}>
           {profileStats && <ProfileStats profileStats={profileStats} />}
@@ -418,54 +419,46 @@ const Feed = (props) => {
             </div>
           )}
 
-          {!isSmall && (
-            <div className="feed-divider">
-              <div className="section-break" />
-              {subSelectors.map((sel, idx) => {
-                return (
-                  <Fragment key={idx}>
-                    {idx === 0 ? (
-                      <span>&nbsp;</span>
-                    ) : (
-                      <span>&nbsp;|&nbsp;</span>
-                    )}
-                    {idx === activeSelector ? (
-                      <span style={{ fontWeight: 600, lineHeight: "25px" }}>
-                        {sel.title}
-                      </span>
-                    ) : (
-                      <Button
-                        className="button-as-link"
-                        style={{ paddingTop: "0px", paddingBottom: "0px" }}
-                        onClick={() => {
-                          changeSubFilter(idx);
-                        }}
-                      >
-                        {sel.title}
-                      </Button>
-                    )}
-                  </Fragment>
-                );
-              })}
-            </div>
-          )}
-
-          {!open && (
-            <RenderDashboard
-              feedTitle={bannerTitle}
-              profileStats={props.profileStats}
-              feedData={props.activeFeed}
-              moreData={props.activeFeedHasMoreData}
-              feedAbout={props.activeFeedAbout}
-              memberList={props.activeFeedMembers}
-              vendorList={props.activeFeedVendors}
-              saveContent={props.saveContent}
-              fetchActiveFeed={props.fetchActiveFeed}
-              reactions={props.reactions}
-              changeReaction={props.changeReaction}
-              isGroupOrTopic={isGroup || isTopic}
-            />
-          )}
+          <div className="feed-divider">
+            <div className="section-break" />
+            {subSelectors.map((sel, idx) => {
+              return (
+                <Fragment key={idx}>
+                  {idx === 0 ? <span>&nbsp;</span> : <span>&nbsp;|&nbsp;</span>}
+                  {idx === activeSelector ? (
+                    <span style={{ fontWeight: 600, lineHeight: "25px" }}>
+                      {sel.title}
+                    </span>
+                  ) : (
+                    <Button
+                      className="button-as-link"
+                      style={{ paddingTop: "0px", paddingBottom: "0px" }}
+                      onClick={() => {
+                        changeSubFilter(idx);
+                      }}
+                    >
+                      {sel.title}
+                    </Button>
+                  )}
+                </Fragment>
+              );
+            })}
+          </div>
+          <RenderDashboard
+            className={clsx("feed--dashboard", open && "open")}
+            feedTitle={bannerTitle}
+            profileStats={props.profileStats}
+            feedData={props.activeFeed}
+            moreData={props.activeFeedHasMoreData}
+            feedAbout={props.activeFeedAbout}
+            memberList={props.activeFeedMembers}
+            vendorList={props.activeFeedVendors}
+            saveContent={props.saveContent}
+            fetchActiveFeed={props.fetchActiveFeed}
+            reactions={props.reactions}
+            changeReaction={props.changeReaction}
+            isGroupOrTopic={isGroup || isTopic}
+          />
           <InviteModal
             show={inviteModalShow}
             onHide={() => setInviteModalShow(false)}
@@ -478,7 +471,7 @@ const Feed = (props) => {
           {/* wrapper */}
         </div>
 
-        {!open && <Footer />}
+        <Footer className={clsx("feed--footer", open && "open")} />
       </Container>
     </>
   );
