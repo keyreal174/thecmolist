@@ -34,15 +34,12 @@ export default {
     },
     removeConnectedUser: (oldState, data) => {
       const username = data.user;
-      if (oldState.localConnectedUsers.includes(username)) {
-        return {
-          ...oldState,
-          localConnectedUsers: oldState.localConnectedUsers.filter(
-            (lcu) => lcu !== username
-          ),
-        };
-      }
-      return oldState;
+      return {
+        ...oldState,
+        localConnectedUsers: oldState.localConnectedUsers.filter(
+          (lcu) => lcu !== username
+        ),
+      };
     },
   },
   effects: (dispatch) => ({
@@ -55,8 +52,8 @@ export default {
       dispatch.userModel.addConnectedUser(userData);
     },
     async disconnectUser(data) {
-      const userData = { user: data.username };
-      await disconnectUserRequest(userData);
+      const userData = { user: data.user };
+      await disconnectUserRequest(data);
       dispatch.userModel.removeConnectedUser(userData);
     },
     async followUser(data) {

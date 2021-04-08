@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./footer.css";
-import { privacyPolicy } from "../../../util/constants";
+import { userPolicy, privacyPolicy } from "../../../util/constants";
 
 function Footer({ className }) {
   return (
@@ -14,7 +14,7 @@ function Footer({ className }) {
               <Link to="/">About</Link>
             </li>
             <li>
-              <Link to="/">User Agreement</Link>
+              <a href={userPolicy}>User Agreement</a>
             </li>
             <li>
               <a href={privacyPolicy}>Privacy Policy</a>

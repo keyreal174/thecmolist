@@ -6,7 +6,7 @@ import EditSquareIcon from "../icons/edit_square.svg";
 import AddPostModal from "../AddPostModal/AddPostModal";
 import "./AskQuestion.scss";
 
-const AskQuestion = ({ saveContent }) => {
+const AskQuestion = ({ className, saveContent }) => {
   const [question, setQuestion] = useState("");
   const [showPostModal, setShowPostModal] = useState(false);
   const history = useHistory();
@@ -24,7 +24,7 @@ const AskQuestion = ({ saveContent }) => {
     history.push(`/content/${id}`);
   };
   return (
-    <CustomCard>
+    <CustomCard className={className}>
       <div className="ask-a-question-form">
         <img src={EditSquareIcon} alt="Question" width="24" height="24" />
         <Form.Control

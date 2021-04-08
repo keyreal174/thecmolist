@@ -201,7 +201,7 @@ function AddPostModal({
       setTitlePlaceholder(
         "Be specific and imagine you're describing this project to another person"
       );
-      setModalTitle("Share a marketing project launch or experience");
+      setModalTitle("Share a marketing project launch or vendor experience");
       setSecondButtonText("Share Update");
     } else if (contentType === "article") {
       setTitleHeading("Article URL");

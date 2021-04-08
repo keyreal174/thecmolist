@@ -34,6 +34,7 @@ import ThanksIcon from "../base/icons/thanks.svg";
 import ThanksCheckedIcon from "../base/icons/thanks_checked.svg";
 
 import "./feed.scss";
+import clsx from "clsx";
 
 function RenderRightContainer({
   feedTitle,
@@ -48,7 +49,10 @@ function RenderRightContainer({
     <Col md="3" className="feed-right-container">
       {!isGroupOrTopic ? (
         <Fragment>
-          <MyNetwork title={feedTitle} saveContent={saveContent} />
+          <MyNetwork
+            title={feedTitle && feedTitle.length > 0 ? feedTitle : "-"}
+            saveContent={saveContent}
+          />
           {buildYourNetworkItems && buildYourNetworkItems.length > 0 && (
             <BuildYourNetwork buildYourNetworkItems={buildYourNetworkItems} />
           )}
@@ -63,11 +67,12 @@ function RenderRightContainer({
 }
 
 function RenderFeed({
-  feedData,
-  moreData,
-  fetchActiveFeed,
-  reactions,
   changeReaction,
+  feedData,
+  fetchActiveFeed,
+  moreData,
+  profileStats,
+  reactions,
 }) {
   let onLoadMoreClick = (e) => {
     e.preventDefault();
@@ -155,6 +160,8 @@ function RenderFeed({
                 this,
                 feed
               )}
+              profile={profileStats.profile}
+              showDiscussionComment={false}
             >
               {feed.parent_content && <Article {...feed.parent_content} />}
             </Article>
@@ -184,26 +191,27 @@ function RenderFeed({
 }
 
 function RenderDashboard(props) {
-  const { feedLoading, profileStats, saveContent } = props;
+  const { className, feedLoading, profileStats, saveContent } = props;
 
   return (
-    <Row>
-      <Col md="3" style={{ paddingRight: "0px" }}>
+    <Row className={className}>
+      <Col className="feed--profile-stats" md="3">
         {profileStats && <ProfileStats profileStats={profileStats} />}
       </Col>
       <Col md="6">
-        <AskQuestion saveContent={saveContent} />
+        <AskQuestion className="feed--ask-question" saveContent={saveContent} />
         {feedLoading ? (
           <div className="mt-3 mb-5">
             <ActivityIndicator className="element-center feed-activity-indicator" />
           </div>
         ) : (
           <RenderFeed
-            feedData={props.feedData}
-            moreData={props.moreData}
-            fetchActiveFeed={props.fetchActiveFeed}
-            reactions={props.reactions}
             changeReaction={props.changeReaction}
+            feedData={props.feedData}
+            fetchActiveFeed={props.fetchActiveFeed}
+            moreData={props.moreData}
+            profileStats={profileStats}
+            reactions={props.reactions}
           />
         )}
       </Col>
@@ -228,7 +236,9 @@ const Feed = (props) => {
     { title: "Updates & Insights", slug: "project" },
     { title: "Articles & News", slug: "article" },
   ];
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [topic, setTopic] = useState({});
+  const [topicFollowed, setTopicFollowed] = useState(false);
   const [inviteModalShow, setInviteModalShow] = useState(false);
   const [activeSelector, setActiveSelector] = useState(0);
   const [filterIdx, setFilterIdx] = useState(0);
@@ -238,7 +248,6 @@ const Feed = (props) => {
   const [bannerImage, setBannerImage] = useState("");
   const [isTopic, setIsTopic] = useState(false);
   const [isGroup, setIsGroup] = useState(false);
-  const [followed, setFollowed] = useState(false);
   const changeDashboardHeader = (idx) => {
     if (idx < filters.length) {
       setBannerTitle(filters[idx].title);
@@ -326,48 +335,59 @@ const Feed = (props) => {
   useEffect(() => {
     let pageLocationIsTopic = props.isTopic || false;
     setIsTopic(pageLocationIsTopic);
-    const getProfileStats = async () => props.getProfileStats();
-    getProfileStats().then((profileStats) =>
-      initFeedPage(profileStats, pageLocationIsTopic)
-    );
+    if (Object.keys(props.profileStats).length === 0) {
+      const getProfileStats = async () => props.getProfileStats();
+      getProfileStats().then((profileStats) =>
+        initFeedPage(profileStats, pageLocationIsTopic)
+      );
+    } else {
+      initFeedPage(props.profileStats, pageLocationIsTopic);
+    }
   }, [props.isTopic]);
 
   useEffect(() => {
     const profileStats = props.profileStats;
     const topicSlug = Util.parsePath(window.location.href).trailingPath;
     let auxTopic =
-      profileStats.spaces &&
-      profileStats.spaces.find((t) => t.slug === topicSlug);
+      profileStats &&
+      profileStats.profile &&
+      profileStats.profile.spaces &&
+      profileStats.profile.spaces.find((t) => t.slug === topicSlug);
 
     if (auxTopic) {
-      setFollowed(true);
+      auxTopic.followed = true;
+      setTopicFollowed(true);
     } else {
-      setFollowed(false);
+      setTopicFollowed(false);
       auxTopic = {
         name: `#${topicSlug}`,
         slug: topicSlug,
       };
+      auxTopic.followed = false;
     }
-
-    auxTopic.followed = followed;
     setTopic(auxTopic);
   }, [props.profileStats]);
 
-  const handleFollowClick = (slug) => {
-    const newFollowed = !followed;
-    setFollowed(newFollowed);
+  const handleTopicFollowClick = (slug) => {
+    const newFollowed = !topicFollowed;
+    setTopicFollowed(newFollowed);
     setTopic({
       ...topic,
       followed: newFollowed,
     });
     props.followTopic(slug);
+    props.getProfileStats();
+  };
+
+  const handleToggle = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
   };
 
   return (
     <>
       <Container className="height-100">
         <div className="wrapper">
-          <Header />
+          <Header onToggle={handleToggle} />
           <CSSTransition in={isGroup} timeout={500} classNames="top-banner">
             <div>
               {(isGroup || isTopic) && (
@@ -376,16 +396,17 @@ const Feed = (props) => {
                   subtitle={"Workspace"}
                   image={bannerImage}
                   saveContent={props.saveContent}
-                  followTopic={handleFollowClick}
+                  followTopic={handleTopicFollowClick}
                   topic={topic}
                 />
               )}
             </div>
           </CSSTransition>
+
           {!isTopic && (
             <div style={{ width: "100%" }}>
               <Filter
-                className="mt-1 feed--filters"
+                className={clsx("mt-4 feed--filters", mobileMenuOpen && "open")}
                 filterIdx={filterIdx}
                 filters={filters}
                 onChange={(idx) => changeFilter(idx)}
@@ -418,8 +439,8 @@ const Feed = (props) => {
               );
             })}
           </div>
-
           <RenderDashboard
+            className={clsx("feed--dashboard", mobileMenuOpen && "open")}
             feedTitle={bannerTitle}
             profileStats={props.profileStats}
             feedData={props.activeFeed}
@@ -445,7 +466,7 @@ const Feed = (props) => {
           {/* wrapper */}
         </div>
 
-        <Footer />
+        <Footer className={clsx("feed--footer", mobileMenuOpen && "open")} />
       </Container>
     </>
   );

@@ -16,12 +16,12 @@ const Notifications = (props) => {
   }, []);
 
   let feedData = props.feedData;
+
   return (
     <>
       <Container className="height-100">
         <div className="wrapper">
           <Header />
-
           <div className="notifications--feed">
             {feedData &&
               feedData.map((feed, idx) => {

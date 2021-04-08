@@ -10,7 +10,7 @@ const TopicColumn = ({ topic, followTopic }) => {
         <h2 className="sharp-symbol">#</h2>
         <Link
           className="topic-link mb-3"
-          to={`/topic/${topic.name.replace("#", "")}`}
+          to={`/topic/${topic.slug ? topic.slug : topic.name.replace("#", "")}`}
         >
           {topic.name}
         </Link>

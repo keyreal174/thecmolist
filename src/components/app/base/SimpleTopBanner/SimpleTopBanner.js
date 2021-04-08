@@ -22,7 +22,7 @@ const NetworkTopBanner = ({
             </div>
           )}
           <h3 className="simple-top-banner--text">{title}</h3>
-          {subtitle && (
+          {title && title.length > 0 && subtitle && subtitle.length > 0 && (
             <div className="simple-top-banner--subtitle">{subtitle}</div>
           )}
           {buttonText && (

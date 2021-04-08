@@ -1,10 +1,10 @@
-import React, { Fragment, useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
-import Header from "../base/Header/Header";
-import Footer from "../base/Footer/Footer";
-import SimpleTopBanner from "../base/SimpleTopBanner/SimpleTopBanner";
 import Column from "./TopicColumn";
+import Footer from "../base/Footer/Footer";
+import Header from "../base/Header/Header";
+import SimpleTopBanner from "../base/SimpleTopBanner/SimpleTopBanner";
 import "./topics.scss";
 
 const Topics = (props) => {

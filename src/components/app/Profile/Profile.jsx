@@ -264,6 +264,7 @@ const Profile = (props) => {
       }
     }
   };
+
   return (
     <>
       <Container className="height-100">
@@ -536,7 +537,7 @@ const Profile = (props) => {
                               reactions
                             ),
                             text: "Thanks",
-                            type: "Answer",
+                            type: "Reaction",
                             icon: ThanksIcon,
                             iconChecked: ThanksCheckedIcon,
                             number: getEngagementForId(
@@ -552,7 +553,7 @@ const Profile = (props) => {
                               reactions
                             ),
                             text: "Insightful",
-                            type: "Answer",
+                            type: "Reaction",
                             icon: InsightfulIcon,
                             iconChecked: InsightfulCheckedIcon,
                             number: getEngagementForId(
@@ -582,9 +583,7 @@ const Profile = (props) => {
         {profileFirstName && !hasDataOnCurrentFeed && (
           <div className="wrapper article-wrapper">
             <div className="no-feed-data-header">
-              {profileFirstName} hasn't shared anything in{" "}
-              {filters[filterIdx] ? filters[filterIdx].title : "this category"}{" "}
-              yet
+              {profileFirstName} hasn't shared anything here yet
             </div>
           </div>
         )}

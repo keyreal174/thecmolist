@@ -10,6 +10,7 @@ function Filter(props) {
     }
   }, [props]);
 
+  let hasFilters = props.filters && props.filters.length > 0;
   return (
     <Container className={props.className ? props.className : "pt-3 pb-2"}>
       <Row className="align-items-center mb-2">
@@ -17,7 +18,7 @@ function Filter(props) {
           <div className="filter-wrapper">
             {props.title && <h2 className="section-title">{props.title}</h2>}
             <div className="filter-btn-group" data-toggle="buttons">
-              {props.filters &&
+              {hasFilters ? (
                 props.filters.map((filter, idx) => {
                   const active = idx === filterIdx;
                   let className = "filter--button";
@@ -47,7 +48,10 @@ function Filter(props) {
                       )}
                     </Button>
                   );
-                })}
+                })
+              ) : (
+                <div className="filter-placeholder" />
+              )}
             </div>
           </div>
         </Col>
