@@ -1,4 +1,5 @@
 import axios from "axios";
+import ModelUtil from "./modelUtil";
 
 export const profileRequest = (userName, scope) => {
   return axios.get(
@@ -90,13 +91,31 @@ export default {
     },
 
     async getProfileStats() {
-      try {
-        const response = await getProfileStatsRequest();
-        const profileStats = response.data;
-        dispatch.profileModel.updateProfileStats(profileStats);
-        return profileStats;
-      } catch (err) {
-        throw new Error("Could not get profilestats");
+      if (this.subscribeList) {
+        let statsPromise = new ModelUtil.DeferedPromise();
+        this.subscribeList.push((psd) => {
+          try {
+            statsPromise.resolve(psd);
+          } catch (e) {}
+        });
+        let data = await statsPromise;
+        return data;
+      } else {
+        try {
+          this.subscribeList = [];
+          const response = await getProfileStatsRequest();
+          const profileStats = response.data;
+          dispatch.profileModel.updateProfileStats(profileStats);
+
+          // invoke subscribers
+          this.subscribeList.forEach((s) => s(profileStats));
+          this.subscribeList = null;
+          return profileStats;
+        } catch (err) {
+          this.subscribeList.forEach((s) => s(null));
+          this.subscribeList = null;
+          throw new Error("Could not get profilestats");
+        }
       }
     },
   }),

@@ -23,64 +23,58 @@
         "slug": "pagerduty-marketing",
         "checked": false
       }
+    ],
+    "spaces": [
+      {
+        "name": "#advertising",
+        "count": 12,
+        "id": 123,
+        "slug": "advertising"
+      },
+      {
+        "name": "#social-media-marketing",
+        "id": 124,
+        "slug": "social-media-marketing"
+      },
+      {
+        "name": "#performance-marketing",
+        "count": 8,
+        "id": 125,
+        "slug": "performance-marketing"
+      },
+      {
+        "name": "#public-relations",
+        "id": 126,
+        "slug": "public-relations"
+      },
+      {
+        "name": "#design",
+        "count": 6,
+        "id": 127,
+        "slug": "design"
+      },
+      {
+        "name": "#account-based-marketing",
+        "id": 128,
+        "slug": "account-based-marketing"
+      },
+      {
+        "name": "#content-marketing",
+        "id": 129,
+        "slug": "content-marketing"
+      },
+      {
+        "name": "#conversion-ratio",
+        "id": 130,
+        "slug": "conversion-ratio"
+      },
+      {
+        "name": "#demand-generation",
+        "id": 131,
+        "slug": "demand-generation"
+      }
     ]
   },
-  "spaces": [
-    {
-      "name": "#advertising",
-      "count": 12,
-      "id": 123,
-      "slug": "advertising"
-    },
-    {
-      "name": "#social-media-marketing",
-      "count": 0,
-      "id": 124,
-      "slug": "social-media-marketing"
-    },
-    {
-      "name": "#performance-marketing",
-      "count": 8,
-      "id": 125,
-      "slug": "performance-marketing"
-    },
-    {
-      "name": "#public-relations",
-      "count": 0,
-      "id": 126,
-      "slug": "public-relations"
-    },
-    {
-      "name": "#design",
-      "count": 6,
-      "id": 127,
-      "slug": "design"
-    },
-    {
-      "name": "#account-based-marketing",
-      "count": 0,
-      "id": 128,
-      "slug": "account-based-marketing"
-    },
-    {
-      "name": "#content-marketing",
-      "count": 0,
-      "id": 129,
-      "slug": "content-marketing"
-    },
-    {
-      "name": "#conversion-ratio",
-      "count": 0,
-      "id": 130,
-      "slug": "conversion-ratio"
-    },
-    {
-      "name": "#demand-generation",
-      "count": 0,
-      "id": 131,
-      "slug": "demand-generation"
-    }
-  ],
   "buildYourNetwork": [
     { "checked": false, "content": "Invite your team" },
     { "checked": true, "content": "Invite your peers" },

@@ -90,7 +90,7 @@ function AdminPage() {
                       className="home--input"
                       name="id"
                       type="input"
-                      value={0}
+                      defaultValue={0}
                       required={true}
                     />
                   </Form.Group>

@@ -58,7 +58,6 @@
 
 .network-list-item {
   margin-bottom: 0px;
-  margin-top: 10px !important;
   box-shadow: none;
   min-height: 134px;
 }
@@ -79,13 +78,7 @@
 }
 
 .network-list-item .article-text {
-  max-width: 75%;
-}
-
-.network--filter {
-  .filter--button {
-    margin-top: 12px;
-  }
+  max-width: 95%;
 }
 
 .network-feed--button {

@@ -371,7 +371,7 @@ const Profile = (props) => {
                       <strong>{profileCompany}</strong>
                     </div>
                   )}
-                  {profileCity && (
+                  {profileCity && profileCity.length > 0 && (
                     <div className="right-section--live right-section--item">
                       <img
                         className="right-section--item-img"
@@ -402,7 +402,7 @@ const Profile = (props) => {
                         alt="mail"
                         src={Mail}
                       />
-                      <a href={profileMail}>Email</a>
+                      <a href={"mailto: " + profileMail}>Email</a>
                     </div>
                   )}
                   {profileLinkedin && (
@@ -537,7 +537,7 @@ const Profile = (props) => {
                               reactions
                             ),
                             text: "Thanks",
-                            type: "Answer",
+                            type: "Reaction",
                             icon: ThanksIcon,
                             iconChecked: ThanksCheckedIcon,
                             number: getEngagementForId(
@@ -553,7 +553,7 @@ const Profile = (props) => {
                               reactions
                             ),
                             text: "Insightful",
-                            type: "Answer",
+                            type: "Reaction",
                             icon: InsightfulIcon,
                             iconChecked: InsightfulCheckedIcon,
                             number: getEngagementForId(
@@ -568,7 +568,11 @@ const Profile = (props) => {
                           this,
                           feed
                         )}
-                      />
+                      >
+                        {feed.parent_content && (
+                          <Article {...feed.parent_content} />
+                        )}
+                      </Article>
                     </FadeTransition>
                   );
                 })}
@@ -579,9 +583,7 @@ const Profile = (props) => {
         {profileFirstName && !hasDataOnCurrentFeed && (
           <div className="wrapper article-wrapper">
             <div className="no-feed-data-header">
-              {profileFirstName} hasn't shared anything in{" "}
-              {filters[filterIdx] ? filters[filterIdx].title : "this category"}{" "}
-              yet
+              {profileFirstName} hasn't shared anything here yet
             </div>
           </div>
         )}

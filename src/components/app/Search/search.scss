@@ -84,3 +84,17 @@
     padding: 16px 4px;
   }
 }
+
+@media (max-width: 768px) {
+  .article-badge {
+    position: relative;
+    width: 140px !important;
+    top: unset !important;
+    margin: 10px 0px;
+  }
+  .search-page-article {
+    .article-wrapper .article-badge {
+      margin: 10px 60px;
+    }
+  }
+}

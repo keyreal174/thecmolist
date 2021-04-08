@@ -79,7 +79,7 @@ const TopBanner = ({
                       variant="outline-primary"
                       onClick={handleTopicButtonClick}
                     >
-                      Followed
+                      Following
                     </Button>
                   ) : (
                     <Button
@@ -113,7 +113,7 @@ const TopBanner = ({
               className="btn-white top-banner-button"
               onClick={() => handleShow("project")}
             >
-              Share an Update
+              Share Project/Vendor
             </Button>
             <AddPostModal
               contentType={contentType}

@@ -33,7 +33,17 @@ const VendorProfileEdit = (props) => {
   const coverInputFile = useRef(null);
   // props to cover typeahead
   const [isTypeaheadLoading, setIsTypeaheadLoading] = useState(false);
-  const [typeaheadOptions, setTypeaheadOptions] = useState([]);
+  const [typeaheadOptions, setTypeaheadOptions] = useState([
+    { name: "#martech", type: "topic", slug: "martech" },
+    { name: "#social", type: "topic", slug: "social" },
+    { name: "#brand", type: "topic", slug: "brand" },
+    { name: "#advertising", type: "topic", slug: "advertising" },
+    {
+      name: "#performancemarketing",
+      type: "topic",
+      slug: "performancemarketing",
+    },
+  ]);
   const [selectedAreasOfExpertise, setSelectedAreasOfExpertise] = useState([]);
 
   const onInputFileChange = async (event) => {
@@ -424,7 +434,7 @@ const VendorProfileEdit = (props) => {
                   isLoading={isTypeaheadLoading}
                   labelKey="name"
                   multiple
-                  minLength={1}
+                  minLength={0}
                   onSearch={handleSearch}
                   options={typeaheadOptions}
                   emptyLabel=""
