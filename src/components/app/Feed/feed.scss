@@ -353,3 +353,38 @@
     padding-top: 0;
   }
 }
+
+.feed--profile-stats {
+  padding-right: 0px;
+}
+
+@media (max-width: 768px) {
+  .filter-btn-group {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 30px;
+  }
+  .filter--button {
+    margin-right: 22px !important;
+    min-width: 193px;
+  }
+  .btn__load-more {
+    width: 100%;
+  }
+  .feed-divider {
+    display: none;
+  }
+  .feed--dashboard,
+  .feed--footer,
+  .feed--filters {
+    &.open {
+      display: none;
+    }
+  }
+  .feed--profile-stats,
+  .feed--ask-question,
+  .feed-right-container {
+    display: none;
+  }
+}

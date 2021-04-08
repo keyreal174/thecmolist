@@ -2,6 +2,7 @@
 
 .nav-app {
   justify-content: flex-end;
+  margin-left: 45px;
 }
 
 .navbar-collapse {
@@ -158,6 +159,100 @@
   transform: translateY(3px);
 }
 
+.profile-dropdown {
+  color: $text-3 !important;
+  font-size: 13px;
+  font-weight: 499;
+}
+
+.header-search {
+  width: 39%;
+  font-size: 13px;
+  font-weight: 399;
+  border-radius: 1px;
+  height: 44px;
+  transition: -1.2s ease;
+}
+
+.header-search > div > .rbt-input-main {
+  padding-left: 53px;
+  padding-right: 7px;
+  padding-bottom: -1px;
+  padding-top: -1px;
+  background: $gray-7;
+}
+
+.search-btn {
+  position: absolute;
+  top: 8px;
+  left: 17px;
+}
+
+.inbox {
+  &--rectangle {
+    position: absolute;
+    top: -1;
+    right: -1;
+  }
+  &--number {
+    color: $white;
+    position: absolute;
+    top: 0px;
+    right: 7px;
+  }
+}
+
+.notifications {
+  &--rectangle {
+    position: absolute;
+    top: -1;
+    right: -1;
+  }
+
+  &--number {
+    color: $white;
+    position: absolute;
+    right: 4px;
+    top: 2px;
+  }
+}
+
+.dropdown-toggle {
+  &::after {
+    border-top: -1.5em solid;
+    border-right: -1.5em solid transparent;
+    border-left: -1.5em solid transparent;
+    top: 29%;
+    right: -5px;
+    position: absolute;
+  }
+}
+
+.header {
+  &--logo {
+    position: relative;
+  }
+  &--tag {
+    max-height: 19px;
+    margin-left: 7px;
+    padding: 4px 8px;
+    border-radius: 9px;
+    background-color: $gray-5;
+    color: $text-2;
+    font-size: 9px !important;
+    font-weight: 599 !important;
+    line-height: 9px;
+    position: absolute;
+    top: 9px;
+    width: 36px;
+  }
+}
+
+.navbar-dropdown--wrapper,
+.navbar--mobile-search {
+  display: none;
+}
+
 @media (max-width: 1199px) {
   .search-form {
     max-width: 300px;
@@ -205,17 +300,11 @@
     width: 30px;
     margin-right: 5px;
   }
-  .navbar-collapse {
-    padding: 15px 0;
-  }
   .search-form {
     max-width: 100%;
     margin-bottom: 10px;
   }
-  .navbar-nav .dropdown-menu {
-    position: absolute;
-    left: -133px;
-  }
+
   .navbar-dark .navbar-nav .nav-link.active::after,
   .navbar-dark .navbar-nav .nav-link.active:hover::after {
     content: "";
@@ -226,93 +315,143 @@
     width: 16px;
     opacity: 0.25;
   }
-}
-
-.profile-dropdown {
-  color: $text-2 !important;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.header-search {
-  width: 40%;
-  font-size: 14px;
-  font-weight: 400;
-  border-radius: 2px;
-  height: 45px;
-  transition: 0.2s ease;
-}
-
-.header-search > div > .rbt-input-main {
-  padding-left: 54px;
-  padding-right: 8px;
-  padding-bottom: 0px;
-  padding-top: 0px;
-  background: $gray-6;
-}
-
-.search-btn {
-  position: absolute;
-  top: 9px;
-  left: 18px;
-}
-
-.inbox {
-  &--rectangle {
-    position: absolute;
-    top: 0;
-    right: 0;
+  .container-fullwidth {
+    height: 170px;
+    &.open {
+      height: 80px;
+    }
   }
-  &--number {
-    color: $white;
-    position: absolute;
-    top: 1px;
-    right: 8px;
+  .navbar {
+    justify-content: flex-start;
+    padding-top: 22px;
+    padding-bottom: 30px;
   }
-}
-
-.notifications {
-  &--rectangle {
-    position: absolute;
-    top: 0;
-    right: 0;
+  .header-search {
+    margin-top: 20px;
+    width: 100% !important;
   }
-
-  &--number {
-    color: $white;
-    position: absolute;
-    right: 5px;
-    top: 3px;
+  .navbar-toggler {
+    background-image: url("./svgs/menu.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    &.open {
+      background-image: url("./svgs/cross.svg");
+    }
   }
-}
-
-.dropdown-toggle {
-  &::after {
-    border-top: 0.5em solid;
-    border-right: 0.5em solid transparent;
-    border-left: 0.5em solid transparent;
-    top: 30%;
-    right: -4px;
+  .navbar-dropdown {
+    border-radius: 39px;
+    border: 1px solid $gray-3;
     position: absolute;
+    right: 20px;
+    height: 38px;
+    text-align: left !important;
+    padding-left: 0px;
+    a {
+      border-radius: 39px;
+      color: $brand;
+      margin-right: 10px;
+      padding: 5px 20px !important;
+      &:after {
+        right: 0;
+        top: 16px;
+        margin: 0px 8px;
+        padding: 0px;
+      }
+    }
   }
-}
+  .navbar-nav {
+    flex-direction: column;
+  }
+  .nav-app {
+    opacity: 0;
+    height: 0;
+    transition: opacity 0.2s ease-in-out;
+    transition: height 0.2s ease-in-out;
 
-.header {
-  &--logo {
+    &.show {
+      opacity: 1 !important;
+      height: 100%;
+    }
+  }
+  .nav-app .nav-link {
+    align-items: center !important;
+    background: $white;
+    color: $text-2;
+    display: flex;
+    flex-direction: row !important;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 23px;
+    height: 80px;
+    padding-left: 35px !important;
     position: relative;
+    text-align: center;
+    width: 100% !important;
+
+    img {
+      margin-right: 20px;
+    }
+    &.active {
+      border-bottom: none;
+    }
   }
-  &--tag {
-    max-height: 20px;
-    margin-left: 8px;
-    padding: 5px 8px;
-    border-radius: 10px;
-    background-color: $gray-4;
-    color: $text-1;
-    font-size: 10px !important;
-    font-weight: 600 !important;
-    line-height: 10px;
-    letter-spacing: 0.15ch;
+  .feed--filters {
+    margin-top: 90px !important;
+  }
+  .navbar-collapse {
+    margin-top: 20px;
+    height: 481px;
+  }
+  .header--separator {
+    width: 328px;
+    height: 1px;
+    background: #c6d3de;
     position: absolute;
-    top: 10px;
+    bottom: 0;
+    left: 70px;
+  }
+  .header--logo {
+    &.open {
+      position: absolute;
+      right: 40px;
+    }
+  }
+  #basic-nav-dropdown {
+    position: relative;
+    height: 80px;
+    div {
+      display: flex;
+      height: 100%;
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+  .dropdown-toggle {
+    &::after {
+      left: 152px;
+      position: absolute;
+      right: unset;
+      top: 37px;
+    }
+  }
+  .navbar-nav .dropdown-menu .basic-nav-dropdown {
+    position: absolute;
+    left: 0 !important;
+  }
+  .header {
+    margin-bottom: 110px;
+    &.open {
+      margin-bottom: 500px;
+    }
+  }
+  .navbar-dropdown--wrapper,
+  .navbar--mobile-search {
+    display: initial;
+    &.open {
+      display: none;
+    }
+  }
+  .navbar--search {
+    display: none;
   }
 }

@@ -34,6 +34,7 @@ import ThanksIcon from "../base/icons/thanks.svg";
 import ThanksCheckedIcon from "../base/icons/thanks_checked.svg";
 
 import "./feed.scss";
+import clsx from "clsx";
 
 function RenderRightContainer({
   feedTitle,
@@ -66,11 +67,12 @@ function RenderRightContainer({
 }
 
 function RenderFeed({
-  feedData,
-  moreData,
-  fetchActiveFeed,
-  reactions,
   changeReaction,
+  feedData,
+  fetchActiveFeed,
+  moreData,
+  profileStats,
+  reactions,
 }) {
   let onLoadMoreClick = (e) => {
     e.preventDefault();
@@ -158,6 +160,8 @@ function RenderFeed({
                 this,
                 feed
               )}
+              profile={profileStats.profile}
+              showDiscussionComment={false}
             >
               {feed.parent_content && <Article {...feed.parent_content} />}
             </Article>
@@ -187,26 +191,27 @@ function RenderFeed({
 }
 
 function RenderDashboard(props) {
-  const { feedLoading, profileStats, saveContent } = props;
+  const { className, feedLoading, profileStats, saveContent } = props;
 
   return (
-    <Row>
-      <Col md="3" style={{ paddingRight: "0px" }}>
+    <Row className={className}>
+      <Col className="feed--profile-stats" md="3">
         {profileStats && <ProfileStats profileStats={profileStats} />}
       </Col>
       <Col md="6">
-        <AskQuestion saveContent={saveContent} />
+        <AskQuestion className="feed--ask-question" saveContent={saveContent} />
         {feedLoading ? (
           <div className="mt-3 mb-5">
             <ActivityIndicator className="element-center feed-activity-indicator" />
           </div>
         ) : (
           <RenderFeed
-            feedData={props.feedData}
-            moreData={props.moreData}
-            fetchActiveFeed={props.fetchActiveFeed}
-            reactions={props.reactions}
             changeReaction={props.changeReaction}
+            feedData={props.feedData}
+            fetchActiveFeed={props.fetchActiveFeed}
+            moreData={props.moreData}
+            profileStats={profileStats}
+            reactions={props.reactions}
           />
         )}
       </Col>
@@ -231,6 +236,7 @@ const Feed = (props) => {
     { title: "Updates & Insights", slug: "project" },
     { title: "Articles & News", slug: "article" },
   ];
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [topic, setTopic] = useState({});
   const [topicFollowed, setTopicFollowed] = useState(false);
   const [inviteModalShow, setInviteModalShow] = useState(false);
@@ -373,11 +379,15 @@ const Feed = (props) => {
     props.getProfileStats();
   };
 
+  const handleToggle = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
     <>
       <Container className="height-100">
         <div className="wrapper">
-          <Header />
+          <Header onToggle={handleToggle} />
           <CSSTransition in={isGroup} timeout={500} classNames="top-banner">
             <div>
               {(isGroup || isTopic) && (
@@ -392,10 +402,11 @@ const Feed = (props) => {
               )}
             </div>
           </CSSTransition>
+
           {!isTopic && (
             <div style={{ width: "100%" }}>
               <Filter
-                className="mt-4 feed--filters"
+                className={clsx("mt-4 feed--filters", mobileMenuOpen && "open")}
                 filterIdx={filterIdx}
                 filters={filters}
                 onChange={(idx) => changeFilter(idx)}
@@ -428,8 +439,8 @@ const Feed = (props) => {
               );
             })}
           </div>
-
           <RenderDashboard
+            className={clsx("feed--dashboard", mobileMenuOpen && "open")}
             feedTitle={bannerTitle}
             profileStats={props.profileStats}
             feedData={props.activeFeed}
@@ -455,7 +466,7 @@ const Feed = (props) => {
           {/* wrapper */}
         </div>
 
-        <Footer />
+        <Footer className={clsx("feed--footer", mobileMenuOpen && "open")} />
       </Container>
     </>
   );

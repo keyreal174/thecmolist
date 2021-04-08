@@ -1,45 +1,150 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { useHistory } from "react-router";
-import { Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
-import { AsyncTypeahead, TypeaheadMenu } from "react-bootstrap-typeahead";
-import { NavLink } from "react-router-dom";
 import "./header.scss";
+import AddPostModal from "../AddPostModal/AddPostModal";
+import clsx from "clsx";
+import { AsyncTypeahead, TypeaheadMenu } from "react-bootstrap-typeahead";
 import { connect } from "react-redux";
+import { Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
+import { useHistory } from "react-router";
+import PersonHeader from "../PersonHeader/PersonHeader";
 
-import HomeIcon from "../icons/home.svg";
-import Group from "../icons/group.svg";
-import Notification from "../icons/notification.svg";
 import Apps from "../icons/apps.svg";
-import Person from "../icons/person.svg";
-import Search from "../icons/search.svg";
-import Rectangle2 from "../icons/rectangle2.svg";
+import Group from "../icons/group.svg";
+import HomeIcon from "../icons/home.svg";
 import Logo from "./svgs/logo.svg";
+import Notification from "../icons/notification.svg";
+import Rectangle2 from "../icons/rectangle2.svg";
+import Search from "../icons/search.svg";
 
-function Header({ getProfileStats, profileStats }) {
+function RenderSearch({
+  className,
+  isLoading,
+  handleSearch,
+  options,
+  goSearchPage,
+}) {
+  return (
+    <AsyncTypeahead
+      className={clsx("header-search", className)}
+      id="async-global-search"
+      isLoading={isLoading}
+      labelKey="name"
+      minLength={3}
+      onSearch={handleSearch}
+      options={options}
+      emptyLabel=""
+      renderMenu={(results, menuProps) => {
+        if (!results.length) {
+          return null;
+        }
+        return (
+          <TypeaheadMenu options={results} labelKey="name" {...menuProps} />
+        );
+      }}
+      onChange={(selectedOption) => {
+        window.location.href = selectedOption[0].link;
+      }}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") {
+          goSearchPage();
+        }
+      }}
+      placeholder="Search"
+      renderMenuItemChildren={(option) => (
+        <Fragment>
+          <img
+            alt="avatar"
+            src={option.avatar_url}
+            style={{
+              height: "24px",
+              marginRight: "10px",
+              width: "24px",
+            }}
+          />
+          <span>{option.name}</span>
+        </Fragment>
+      )}
+    >
+      <Button className="search-btn" variant="submit">
+        <img src={Search} alt="" />
+      </Button>
+    </AsyncTypeahead>
+  );
+}
+
+function RenderMobileDropdown({ saveContent, history, mobileMenuOpen }) {
+  const [showPostModal, setShowPostModal] = useState(false);
+  const [contentType, setContentType] = useState("");
+
+  const handleClose = (_) => {
+    setShowPostModal(false);
+  };
+
+  const handlePostModalSubmit = async (content) => {
+    const id = await saveContent(content);
+    history.push(`/content/${id}`);
+  };
+
+  const handleNavDropdownItemClick = (type) => {
+    setContentType(type);
+    setShowPostModal(true);
+  };
+
+  return (
+    <div className={clsx("navbar-dropdown--wrapper", mobileMenuOpen && "open")}>
+      <NavDropdown
+        className="navbar-dropdown"
+        title="Share experience"
+        id="basic-nav-dropdown"
+      >
+        <NavDropdown.Item
+          onClick={handleNavDropdownItemClick.bind(this, "question")}
+        >
+          Ask Question
+        </NavDropdown.Item>
+        <NavDropdown.Item
+          onClick={handleNavDropdownItemClick.bind(this, "article")}
+        >
+          Share Article
+        </NavDropdown.Item>
+        <NavDropdown.Item
+          onClick={handleNavDropdownItemClick.bind(this, "project")}
+        >
+          Share experience
+        </NavDropdown.Item>
+      </NavDropdown>
+      <AddPostModal
+        contentType={contentType}
+        firstButtonText={"Cancel"}
+        handleClose={handleClose}
+        modalTitle="Ask a question"
+        onSubmit={handlePostModalSubmit}
+        secondButtonText={"Ask a question"}
+        show={showPostModal}
+      />
+    </div>
+  );
+}
+
+function Header({
+  className,
+  getProfileStats,
+  profileStats,
+  onToggle,
+  saveContent,
+}) {
   const history = useHistory();
   useEffect(() => {
     const fetch = async () => await getProfileStats();
 
     fetch();
   }, []);
-  let PersonHeader = (props) => {
-    const profile = profileStats && profileStats.profile;
-    const image = profile && profile.image;
-    const name = profile && profile.name;
-
-    return (
-      <Fragment>
-        <img alt="" src={image} />
-        <br />
-        <span>{name && name.split(" ")[0]}</span>
-      </Fragment>
-    );
-  };
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const SEARCH_URI = "/api/globalsearch";
-  const isSmall = window.innerWidth < 767;
   const handleSearch = (query) => {
     setSearchQuery(query);
     setIsLoading(true);
@@ -68,81 +173,76 @@ function Header({ getProfileStats, profileStats }) {
     });
   };
 
+  const handleToggle = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+    onToggle && onToggle();
+  };
+
   return (
-    <div>
-      <div className="container-fullwidth"></div>
-      <Navbar expand="md" variant="white">
-        <Navbar.Brand className="header--logo" href="/feed">
-          <img src={Logo} alt="CMOList brand logo" />
-          <span className="header--tag">Beta</span>
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse className="nav-app" id="basic-navbar-nav">
-          <AsyncTypeahead
-            className="header-search"
-            id="async-global-search"
-            isLoading={isLoading}
-            labelKey="name"
-            minLength={3}
-            onSearch={handleSearch}
-            options={options}
-            emptyLabel=""
-            renderMenu={(results, menuProps) => {
-              if (!results.length) {
-                return null;
-              }
-              return (
-                <TypeaheadMenu
-                  options={results}
-                  labelKey="name"
-                  {...menuProps}
-                />
-              );
-            }}
-            onChange={(selectedOption) => {
-              window.location.href = selectedOption[0].link;
-            }}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                goSearchPage();
-              }
-            }}
-            placeholder="Search"
-            renderMenuItemChildren={(option) => (
-              <Fragment>
-                <img
-                  alt="avatar"
-                  src={option.avatar_url}
-                  style={{
-                    height: "24px",
-                    marginRight: "10px",
-                    width: "24px",
-                  }}
-                />
-                <span>{option.name}</span>
-              </Fragment>
-            )}
+    <div
+      className={clsx(
+        "header",
+        className && className,
+        mobileMenuOpen && "open"
+      )}
+    >
+      <div
+        className={clsx("container-fullwidth", mobileMenuOpen && "open")}
+      ></div>
+      <Navbar expand="md" variant="white" onToggle={handleToggle}>
+        <div className="d-flex">
+          <Navbar.Toggle
+            className={clsx("navbar-toggler", mobileMenuOpen && "open")}
+            aria-controls="basic-navbar-nav"
+          />
+          <Navbar.Brand
+            className={clsx("header--logo", mobileMenuOpen && "open")}
+            href="/feed"
           >
-            <Button className="search-btn" variant="submit">
-              <img src={Search} alt="" />
-            </Button>
-          </AsyncTypeahead>
+            <img src={Logo} alt="CMOList brand logo" />
+            <span className="header--tag">Beta</span>
+          </Navbar.Brand>
+          <RenderMobileDropdown
+            saveContent={saveContent}
+            history={history}
+            mobileMenuOpen={mobileMenuOpen}
+          />
+        </div>
+        <RenderSearch
+          className={clsx("navbar--mobile-search", mobileMenuOpen && "open")}
+          isLoading={isLoading}
+          handleSearch={handleSearch}
+          options={options}
+          goSearchPage={goSearchPage}
+        />
+        <Navbar.Collapse className="nav-app" id="basic-navbar-nav">
+          <RenderSearch
+            className="navbar--search"
+            isLoading={isLoading}
+            handleSearch={handleSearch}
+            options={options}
+            goSearchPage={goSearchPage}
+          />
           <Nav>
             <Nav.Link as={NavLink} to="/feed">
               <img src={HomeIcon} alt="" />
-              {isSmall ? "" : "Home"}
+              <div>Home</div>
+              <div className="header--separator"></div>
             </Nav.Link>
             <Nav.Link as={NavLink} to="/network">
               <img src={Group} alt="" />
-              {isSmall ? "" : "My Networks"}
+              <div>My Networks</div>
+              <div className="header--separator"></div>
             </Nav.Link>
             <Nav.Link as={NavLink} to="/topics">
               <img src={Apps} alt="" />
-              {isSmall ? "" : "Topics"}
+              <div>Topics</div>
+              <div className="header--separator"></div>
             </Nav.Link>
             <Nav.Link as={NavLink} to="/notifications">
               <img src={Notification} alt="" />
-              {isSmall ? "" : "Notifications"}
+              <div>Notifications</div>
+              <div className="header--separator"></div>
               {notificationCount > 0 && (
                 <div className="notifications--wrapper">
                   <img
@@ -156,12 +256,13 @@ function Header({ getProfileStats, profileStats }) {
                 </div>
               )}
             </Nav.Link>
+
             <NavDropdown
               className={
                 window.location.href.includes("/profile/") ? "active" : ""
               }
               alignRight
-              title={<PersonHeader icon={Person} />}
+              title={<PersonHeader profile={profileStats.profile} />}
               id="basic-nav-dropdown"
             >
               <NavDropdown.Item className="profile-dropdown" href="/profile">
@@ -189,6 +290,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     getProfileStats: dispatch.profileModel.getProfileStats,
+    saveContent: dispatch.contentModel.saveContent,
   };
 };
 
