@@ -302,3 +302,23 @@
     }
   }
 }
+
+@media (max-width: 400px) {
+  .home--form-left {
+    padding: 20px 0px;
+    height: 520px;
+  }
+  .home--form-left .signup--form-apply {
+    margin: unset;
+    position: absolute !important;
+    right: 50px !important;
+    justify-content: space-around;
+  }
+  .home--form-right {
+    padding: 20px 0px;
+  }
+  .home--leaders-section-item {
+    width: 50%;
+    padding: 25px 60px;
+  }
+}
