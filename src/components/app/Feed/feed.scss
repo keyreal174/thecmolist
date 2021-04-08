@@ -365,10 +365,6 @@
     margin-right: 22px !important;
     min-width: 193px;
   }
-  .feed-separator {
-    transition: height 1s ease;
-    margin-top: 255px;
-  }
   .btn__load-more {
     width: 100%;
   }
@@ -376,9 +372,15 @@
     display: none;
   }
   .feed--dashboard,
-  .feed--footer {
+  .feed--footer,
+  .feed--filters {
     &.open {
       display: none;
     }
+  }
+  .feed--profile-stats,
+  .feed--ask-question,
+  .feed-right-container {
+    display: none;
   }
 }

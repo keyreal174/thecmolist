@@ -195,13 +195,15 @@ function RenderDashboard(props) {
 
   return (
     <Row className={className}>
-      {!isSmall && (
-        <Col md="3" style={{ paddingRight: "0px" }}>
-          {profileStats && <ProfileStats profileStats={profileStats} />}
-        </Col>
-      )}
+      <Col
+        className="feed--profile-stats"
+        md="3"
+        style={{ paddingRight: "0px" }}
+      >
+        {profileStats && <ProfileStats profileStats={profileStats} />}
+      </Col>
       <Col md="6">
-        {!isSmall && <AskQuestion saveContent={saveContent} />}
+        <AskQuestion className="feed--ask-question" saveContent={saveContent} />
         {feedLoading ? (
           <div className="mt-3 mb-5">
             <ActivityIndicator className="element-center feed-activity-indicator" />
@@ -217,17 +219,15 @@ function RenderDashboard(props) {
           />
         )}
       </Col>
-      {!isSmall && (
-        <RenderRightContainer
-          feedTitle={props.feedTitle}
-          buildYourNetworkItems={profileStats.buildYourNetwork}
-          feedAbout={props.feedAbout}
-          memberList={props.memberList}
-          vendorList={props.vendorList}
-          saveContent={props.saveContent}
-          isGroupOrTopic={props.isGroupOrTopic}
-        />
-      )}
+      <RenderRightContainer
+        feedTitle={props.feedTitle}
+        buildYourNetworkItems={profileStats.buildYourNetwork}
+        feedAbout={props.feedAbout}
+        memberList={props.memberList}
+        vendorList={props.vendorList}
+        saveContent={props.saveContent}
+        isGroupOrTopic={props.isGroupOrTopic}
+      />
     </Row>
   );
 }
@@ -407,11 +407,10 @@ const Feed = (props) => {
             </div>
           </CSSTransition>
 
-          {isSmall && <div className={`${open ? "feed-separator" : ""}`}></div>}
-          {!isTopic && !open && (
+          {!isTopic && (
             <div style={{ width: "100%" }}>
               <Filter
-                className="mt-4 feed--filters"
+                className={clsx("mt-4 feed--filters", open && "open")}
                 filterIdx={filterIdx}
                 filters={filters}
                 onChange={(idx) => changeFilter(idx)}
