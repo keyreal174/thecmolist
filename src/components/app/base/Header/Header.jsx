@@ -73,7 +73,7 @@ function RenderSearch({
   );
 }
 
-function RenderMobileDropdown({ saveContent, history, open }) {
+function RenderMobileDropdown({ saveContent, history, mobileMenuOpen }) {
   const [showPostModal, setShowPostModal] = useState(false);
   const [contentType, setContentType] = useState("");
 
@@ -92,7 +92,7 @@ function RenderMobileDropdown({ saveContent, history, open }) {
   };
 
   return (
-    <div className={clsx("navbar-dropdown--wrapper", open && "open")}>
+    <div className={clsx("navbar-dropdown--wrapper", mobileMenuOpen && "open")}>
       <NavDropdown
         className="navbar-dropdown"
         title="Share experience"
@@ -140,7 +140,7 @@ function Header({
 
     fetch();
   }, []);
-  const [open, setOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -174,21 +174,29 @@ function Header({
   };
 
   const handleToggle = () => {
-    setOpen(!open);
+    setMobileMenuOpen(!mobileMenuOpen);
     onToggle && onToggle();
   };
 
   return (
-    <div className={clsx("header", className && className, open && "open")}>
-      <div className={clsx("container-fullwidth", open && "open")}></div>
+    <div
+      className={clsx(
+        "header",
+        className && className,
+        mobileMenuOpen && "open"
+      )}
+    >
+      <div
+        className={clsx("container-fullwidth", mobileMenuOpen && "open")}
+      ></div>
       <Navbar expand="md" variant="white" onToggle={handleToggle}>
         <div className="d-flex">
           <Navbar.Toggle
-            className={clsx("navbar-toggler", open && "open")}
+            className={clsx("navbar-toggler", mobileMenuOpen && "open")}
             aria-controls="basic-navbar-nav"
           />
           <Navbar.Brand
-            className={clsx("header--logo", open && "open")}
+            className={clsx("header--logo", mobileMenuOpen && "open")}
             href="/feed"
           >
             <img src={Logo} alt="CMOList brand logo" />
@@ -197,11 +205,11 @@ function Header({
           <RenderMobileDropdown
             saveContent={saveContent}
             history={history}
-            open={open}
+            mobileMenuOpen={mobileMenuOpen}
           />
         </div>
         <RenderSearch
-          className={clsx("navbar--mobile-search", open && "open")}
+          className={clsx("navbar--mobile-search", mobileMenuOpen && "open")}
           isLoading={isLoading}
           handleSearch={handleSearch}
           options={options}
