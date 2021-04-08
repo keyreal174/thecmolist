@@ -248,7 +248,8 @@
   }
 }
 
-.navbar-dropdown--wrapper {
+.navbar-dropdown--wrapper,
+.navbar--mobile-search {
   display: none;
 }
 
@@ -443,7 +444,8 @@
       margin-bottom: 500px;
     }
   }
-  .navbar-dropdown--wrapper {
+  .navbar-dropdown--wrapper,
+  .navbar--mobile-search {
     display: initial;
     &.open {
       display: none;

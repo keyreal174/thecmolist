@@ -195,17 +195,17 @@ function Header({
             open={open}
           />
         </div>
-        {isSmall && !open && (
-          <RenderSearch
-            isLoading={isLoading}
-            handleSearch={handleSearch}
-            options={options}
-            goSearchPage={goSearchPage}
-          />
-        )}
+        <RenderSearch
+          className={clsx("navbar--mobile-search", open && "open")}
+          isLoading={isLoading}
+          handleSearch={handleSearch}
+          options={options}
+          goSearchPage={goSearchPage}
+        />
         <Navbar.Collapse className="nav-app" id="basic-navbar-nav">
           {!isSmall && (
             <RenderSearch
+              className="navbar--search"
               isLoading={isLoading}
               handleSearch={handleSearch}
               options={options}
