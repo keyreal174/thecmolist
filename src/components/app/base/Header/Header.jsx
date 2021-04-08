@@ -4,7 +4,6 @@ import AddPostModal from "../AddPostModal/AddPostModal";
 import clsx from "clsx";
 import { AsyncTypeahead, TypeaheadMenu } from "react-bootstrap-typeahead";
 import { connect } from "react-redux";
-import { isSmall } from "../../../util/constants";
 import { Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router";
