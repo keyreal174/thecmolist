@@ -96,3 +96,10 @@
     color: $brand;
   }
 }
+
+@media (max-width: 768px) {
+  .network--share-content,
+  .network--popular-topics {
+    display: none;
+  }
+}

@@ -15,7 +15,7 @@ import MyNetwork from "../Feed/MyNetwork";
 import Analytics from "../../util/Analytics";
 import { cdn } from "../../util/constants";
 import "./network.scss";
-const isSmall = window.innerWidth < 768;
+
 const Network = (props) => {
   const location = useLocation();
   const fetchData = async () => await props.fetchActiveNetwork();
@@ -151,13 +151,11 @@ const Network = (props) => {
                 image={bannerImage}
               />
             </Col>
-            {!isSmall && (
-              <Col md="3">
-                <div className="mt-3">
-                  <MyNetwork saveContent={props.saveContent} />
-                </div>
-              </Col>
-            )}
+            <Col className="network--share-content" md="3">
+              <div className="mt-3">
+                <MyNetwork saveContent={props.saveContent} />
+              </div>
+            </Col>
           </Row>
           <AddMemberModal
             firstButtonText="Cancel"
@@ -192,9 +190,8 @@ const Network = (props) => {
           </div>
           <Row>
             {props.activeFeedSubFilters &&
-              props.activeFeedSubFilters.length > 0 &&
-              !isSmall && (
-                <Col md="4">
+              props.activeFeedSubFilters.length > 0 && (
+                <Col className="network--popular-topics" md="4">
                   <PopularTopics
                     onSubfilterChange={(f) => {
                       props.changeSubFilter(f.slug || f.title);
