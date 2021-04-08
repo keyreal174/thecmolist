@@ -18,10 +18,16 @@ import Notification from "../icons/notification.svg";
 import Rectangle2 from "../icons/rectangle2.svg";
 import Search from "../icons/search.svg";
 
-function RenderSearch({ isLoading, handleSearch, options, goSearchPage }) {
+function RenderSearch({
+  className,
+  isLoading,
+  handleSearch,
+  options,
+  goSearchPage,
+}) {
   return (
     <AsyncTypeahead
-      className="header-search"
+      className={clsx("header-search", className)}
       id="async-global-search"
       isLoading={isLoading}
       labelKey="name"
@@ -203,15 +209,13 @@ function Header({
           goSearchPage={goSearchPage}
         />
         <Navbar.Collapse className="nav-app" id="basic-navbar-nav">
-          {!isSmall && (
-            <RenderSearch
-              className="navbar--search"
-              isLoading={isLoading}
-              handleSearch={handleSearch}
-              options={options}
-              goSearchPage={goSearchPage}
-            />
-          )}
+          <RenderSearch
+            className="navbar--search"
+            isLoading={isLoading}
+            handleSearch={handleSearch}
+            options={options}
+            goSearchPage={goSearchPage}
+          />
           <Nav>
             <Nav.Link as={NavLink} to="/feed">
               <img src={HomeIcon} alt="" />
