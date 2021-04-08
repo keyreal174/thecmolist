@@ -248,6 +248,10 @@
   }
 }
 
+.navbar-dropdown--wrapper {
+  display: none;
+}
+
 @media (max-width: 1199px) {
   .search-form {
     max-width: 300px;
@@ -437,6 +441,12 @@
     margin-bottom: 110px;
     &.open {
       margin-bottom: 500px;
+    }
+  }
+  .navbar-dropdown--wrapper {
+    display: initial;
+    &.open {
+      display: none;
     }
   }
 }

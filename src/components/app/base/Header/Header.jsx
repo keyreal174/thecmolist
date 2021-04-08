@@ -68,7 +68,7 @@ function RenderSearch({ isLoading, handleSearch, options, goSearchPage }) {
   );
 }
 
-function RenderMobileDropdown({ saveContent, history }) {
+function RenderMobileDropdown({ saveContent, history, open }) {
   const [showPostModal, setShowPostModal] = useState(false);
   const [contentType, setContentType] = useState("");
 
@@ -87,7 +87,7 @@ function RenderMobileDropdown({ saveContent, history }) {
   };
 
   return (
-    <div>
+    <div className={clsx("navbar-dropdown--wrapper", open && "open")}>
       <NavDropdown
         className="navbar-dropdown"
         title="Share experience"
@@ -189,9 +189,11 @@ function Header({
             <img src={Logo} alt="CMOList brand logo" />
             <span className="header--tag">Beta</span>
           </Navbar.Brand>
-          {isSmall && !open && (
-            <RenderMobileDropdown saveContent={saveContent} history={history} />
-          )}
+          <RenderMobileDropdown
+            saveContent={saveContent}
+            history={history}
+            open={open}
+          />
         </div>
         {isSmall && !open && (
           <RenderSearch
