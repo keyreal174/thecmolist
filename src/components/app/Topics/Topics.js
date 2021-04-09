@@ -17,11 +17,20 @@ const Topics = (props) => {
       <Container className="height-100">
         <Header />
         <div className="wrapper">
-          <SimpleTopBanner title="Topics" />
-          <Row className="mt-3">
+          <SimpleTopBanner
+            className="topics--simple-top-banner"
+            title="Topics"
+          />
+          <Row className="topics--wrapper mt-3">
             {props.topics.map((topic) => {
               return (
-                <Col key={topic.id} lg={3} md={4} sm={6} className="mb-4">
+                <Col
+                  key={topic.id}
+                  lg={3}
+                  md={4}
+                  sm={6}
+                  className="topics--item-wrapper mb-4"
+                >
                   <Column topic={topic} followTopic={props.followTopic} />
                 </Col>
               );

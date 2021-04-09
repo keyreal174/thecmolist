@@ -40,3 +40,16 @@
   font-size: 50px;
   color: $brand;
 }
+
+@media (max-width: 768px) {
+  .topics--simple-top-banner {
+    margin: 10px 17px;
+  }
+  .topics--item-wrapper {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .btn {
+    min-width: unset;
+  }
+}
