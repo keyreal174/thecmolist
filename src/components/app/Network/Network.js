@@ -142,7 +142,7 @@ const Network = (props) => {
         <div className="wrapper">
           <Header />
           <Row>
-            <Col md="9">
+            <Col className="network--simple-top-banner" md="9">
               <SimpleTopBanner
                 // disable for now... buttonText="Invite"
                 onClick={handleInviteModalClick}
@@ -180,7 +180,7 @@ const Network = (props) => {
             toggle={toggleFollowModal}
             followUser={connectUser}
           />
-          <div className="mt-4 mb-4">
+          <div className="network--filter-wrapper mt-4 mb-4">
             <Filter
               className="mt-1 network--filter"
               filterIdx={filterIdx}
@@ -201,6 +201,7 @@ const Network = (props) => {
                 </Col>
               )}
             <Col
+              className="network--feed"
               md={
                 props.activeFeedSubFilters &&
                 props.activeFeedSubFilters.length > 0

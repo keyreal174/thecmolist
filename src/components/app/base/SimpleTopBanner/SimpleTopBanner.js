@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import CustomCard from "../CustomCard/CustomCard";
 import bannerBackground from "./svgs/banner-background.svg";
+import bannerBackgroundSmall from "./svgs/banner-background-small.svg";
 import "./simpleTopBanner.scss";
 
 const NetworkTopBanner = ({
@@ -36,7 +37,9 @@ const NetworkTopBanner = ({
           <img
             className="simple-top-banner--background-image"
             alt="top banner background"
-            src={bannerBackground}
+            src={
+              window.innerWidth < 768 ? bannerBackgroundSmall : bannerBackground
+            }
           />
         </div>
       </CustomCard>

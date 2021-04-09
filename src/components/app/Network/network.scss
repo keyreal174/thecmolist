@@ -102,4 +102,19 @@
   .network--popular-topics {
     display: none;
   }
+  .network--simple-top-banner,
+  .network--filter-wrapper,
+  .network-list-item {
+    margin: 10px 17px !important;
+  }
+  .network--simple-top-banner {
+    .simple-top-banner {
+      margin: 0 !important;
+    }
+  }
+  .network--filter-wrapper {
+    .filter-btn-group {
+      padding-bottom: 10px;
+    }
+  }
 }
