@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router";
 import { connect } from "react-redux";
 import { Container } from "react-bootstrap";
+import clsx from "clsx";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Filter from "../base/Filter/Filter";
@@ -9,6 +10,7 @@ import RenderList from "./RenderList";
 import "./search.scss";
 
 const Search = (props) => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
   const [filters, setFilters] = useState([]);
   const [modules, setModules] = useState(null);
@@ -100,11 +102,15 @@ const Search = (props) => {
     }
   }, [props.modules]);
 
+  const handleToggle = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
     <Container className="height-100">
       <div className="wrapper">
-        <Header />
-        <div>
+        <Header onToggle={handleToggle} />
+        <div className={clsx("search--content", mobileMenuOpen && "open")}>
           <Filter
             className="mt-1"
             filterIdx={filterIdx}
