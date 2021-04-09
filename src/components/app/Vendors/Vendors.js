@@ -127,7 +127,7 @@ const Vendors = (props) => {
           <Row>
             {props.activeFeedSubFilters &&
               props.activeFeedSubFilters.length > 0 && (
-                <Col md="4">
+                <Col className="vendors--popular-topics" md="4">
                   <PopularTopics
                     onSubfilterChange={(f) => {
                       props.changeSubFilter(f.slug || f.title);

@@ -118,3 +118,9 @@
 .network-list-item .article-text {
   max-width: 75%;
 }
+
+@media (max-width: 768px) {
+  .vendors--popular-topics {
+    display: none;
+  }
+}
