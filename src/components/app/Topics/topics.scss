@@ -52,4 +52,9 @@
   .btn {
     min-width: unset;
   }
+  .wrapper {
+    &.open {
+      display: none;
+    }
+  }
 }

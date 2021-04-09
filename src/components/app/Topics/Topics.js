@@ -1,22 +1,29 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
 import Column from "./TopicColumn";
+import clsx from "clsx";
 import Footer from "../base/Footer/Footer";
 import Header from "../base/Header/Header";
 import SimpleTopBanner from "../base/SimpleTopBanner/SimpleTopBanner";
 import "./topics.scss";
 
 const Topics = (props) => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   useEffect(() => {
     props.fetchTopics();
   }, []);
 
+  const handleToggle = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
     <>
       <Container className="height-100">
-        <Header />
-        <div className="wrapper">
+        <Header onToggle={handleToggle} />
+        <div className={clsx("wrapper", mobileMenuOpen && "open")}>
           <SimpleTopBanner
             className="topics--simple-top-banner"
             title="Topics"
