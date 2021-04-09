@@ -1,27 +1,43 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
 import Column from "./TopicColumn";
+import clsx from "clsx";
 import Footer from "../base/Footer/Footer";
 import Header from "../base/Header/Header";
 import SimpleTopBanner from "../base/SimpleTopBanner/SimpleTopBanner";
 import "./topics.scss";
 
 const Topics = (props) => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   useEffect(() => {
     props.fetchTopics();
   }, []);
 
+  const handleToggle = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
     <>
       <Container className="height-100">
-        <Header />
-        <div className="wrapper">
-          <SimpleTopBanner title="Topics" />
-          <Row className="mt-3">
+        <Header onToggle={handleToggle} />
+        <div className={clsx("wrapper", mobileMenuOpen && "open")}>
+          <SimpleTopBanner
+            className="topics--simple-top-banner"
+            title="Topics"
+          />
+          <Row className="topics--wrapper mt-3">
             {props.topics.map((topic) => {
               return (
-                <Col key={topic.id} lg={3} md={4} sm={6} className="mb-4">
+                <Col
+                  key={topic.id}
+                  lg={3}
+                  md={4}
+                  sm={6}
+                  className="topics--item-wrapper mb-4"
+                >
                   <Column topic={topic} followTopic={props.followTopic} />
                 </Col>
               );
