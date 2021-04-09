@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import { connect } from "react-redux";
 import { Col, Row, Container } from "react-bootstrap";
+import clsx from "clsx";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Filter from "../base/Filter/Filter";
@@ -94,6 +95,7 @@ const Network = (props) => {
     changeDashboardHeader(idx);
   };
 
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showInviteModal, setShowInviteModal] = useState(false);
   const [showFollowModal, setShowFollowModal] = useState(false);
   const [connectName, setConnectName] = useState("");
@@ -136,12 +138,21 @@ const Network = (props) => {
     toggleFollowModal();
   };
 
+  const handleToggle = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
     <>
       <Container className="height-100">
         <div className="wrapper">
-          <Header />
-          <Row>
+          <Header onToggle={handleToggle} />
+          <Row
+            className={clsx(
+              "network--simple-top-banner-wrapper",
+              mobileMenuOpen && "open"
+            )}
+          >
             <Col className="network--simple-top-banner" md="9">
               <SimpleTopBanner
                 // disable for now... buttonText="Invite"
@@ -180,7 +191,12 @@ const Network = (props) => {
             toggle={toggleFollowModal}
             followUser={connectUser}
           />
-          <div className="network--filter-wrapper mt-4 mb-4">
+          <div
+            className={clsx(
+              "network--filter-wrapper mt-4 mb-4",
+              mobileMenuOpen && "open"
+            )}
+          >
             <Filter
               className="mt-1 network--filter"
               filterIdx={filterIdx}
@@ -201,7 +217,7 @@ const Network = (props) => {
                 </Col>
               )}
             <Col
-              className="network--feed"
+              className={clsx("network--feed", mobileMenuOpen && "open")}
               md={
                 props.activeFeedSubFilters &&
                 props.activeFeedSubFilters.length > 0
@@ -226,7 +242,9 @@ const Network = (props) => {
             </Col>
           </Row>
 
-          <Footer />
+          <Footer
+            className={clsx("network--footer", mobileMenuOpen && "open")}
+          />
         </div>
       </Container>
     </>

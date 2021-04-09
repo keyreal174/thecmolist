@@ -115,4 +115,12 @@
   .filter-btn-group {
     padding-bottom: 10px;
   }
+  .network--simple-top-banner-wrapper,
+  .network--filter-wrapper,
+  .network--feed,
+  .network--footer {
+    &.open {
+      display: none;
+    }
+  }
 }
