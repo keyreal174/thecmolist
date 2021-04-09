@@ -81,7 +81,6 @@ const DraftEditor = ({
 
   const { MentionSuggestions, plugins } = useMemo(() => {
     const mentionPlugin = createMentionPlugin({
-      mentionPrefix: "@",
       mentionTrigger: ["@", "#"],
     });
     // eslint-disable-next-line no-shadow
