@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import { connect } from "react-redux";
 import { Col, Row, Container } from "react-bootstrap";
+import clsx from "clsx";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Filter from "../base/Filter/Filter";
@@ -30,55 +31,62 @@ const Network = (props) => {
       setBannerImage(filters[idx].image);
     }
   };
-  useEffect(() => {
-    const getProfileStats = async () => props.getProfileStats();
-    getProfileStats().then((profileStats) => {
-      let newFilters = [
-        { title: "All", slug: "my-network", enabled: true },
-        { title: "My Peers", slug: "my-peers", enabled: true },
-      ];
-      if (profileStats && profileStats.profile && profileStats.profile.groups) {
-        newFilters = newFilters.concat(
-          profileStats.profile.groups.map((group) => {
-            return {
-              title: group.name,
-              slug: group.slug,
-              image: group.image || null,
-              enabled: true,
-            };
-          })
+  const initNetworkpage = (profileStats) => {
+    let newFilters = [
+      { title: "All", slug: "my-network", enabled: true },
+      { title: "My Peers", slug: "my-peers", enabled: true },
+    ];
+    if (profileStats && profileStats.profile && profileStats.profile.groups) {
+      newFilters = newFilters.concat(
+        profileStats.profile.groups.map((group) => {
+          return {
+            title: group.name,
+            slug: group.slug,
+            image: group.image || null,
+            enabled: true,
+          };
+        })
+      );
+    }
+    let idx = 0;
+    if (location && location.hash) {
+      let networkSlug = location.hash;
+      if (location.hash.indexOf("#") === 0) {
+        networkSlug = location.hash.substring(1);
+      }
+      if (networkSlug.length > 0) {
+        let existingFilterIndex = newFilters.findIndex(
+          (nf) => nf.slug === networkSlug
         );
-      }
-      let idx = 0;
-      if (location && location.hash) {
-        let networkSlug = location.hash;
-        if (location.hash.indexOf("#") === 0) {
-          networkSlug = location.hash.substring(1);
-        }
-        if (networkSlug.length > 0) {
-          let existingFilterIndex = newFilters.findIndex(
-            (nf) => nf.slug === networkSlug
-          );
-          if (existingFilterIndex >= 0) {
-            idx = existingFilterIndex;
-          } else {
-            newFilters = newFilters.concat({
-              title: networkSlug,
-              slug: networkSlug,
-              image: `${cdn}/directory.png` || null,
-              enabled: true,
-            });
-            idx = newFilters.length - 1;
-          }
+        if (existingFilterIndex >= 0) {
+          idx = existingFilterIndex;
+        } else {
+          newFilters = newFilters.concat({
+            title: networkSlug,
+            slug: networkSlug,
+            image: `${cdn}/directory.png` || null,
+            enabled: true,
+          });
+          idx = newFilters.length - 1;
         }
       }
-      setFilters(newFilters);
-      setBannerTitle(newFilters[idx].title);
-      setBannerImage(newFilters[idx].image);
-      setFilterIdx(idx);
-      props.changeFilter(newFilters[idx].slug);
-      changeDashboardHeader(idx);
-    });
+    }
+    setFilters(newFilters);
+    setBannerTitle(newFilters[idx].title);
+    setBannerImage(newFilters[idx].image);
+    setFilterIdx(idx);
+    props.changeFilter(newFilters[idx].slug);
+    changeDashboardHeader(idx);
+  };
+  useEffect(() => {
+    if (Object.keys(props.profileStats).length === 0) {
+      const getProfileStats = async () => props.getProfileStats();
+      getProfileStats().then((profileStats) => {
+        initNetworkpage(profileStats);
+      });
+    } else {
+      initNetworkpage(props.profileStats);
+    }
   }, []);
 
   const changeFilter = (idx) => {
@@ -87,6 +95,7 @@ const Network = (props) => {
     changeDashboardHeader(idx);
   };
 
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showInviteModal, setShowInviteModal] = useState(false);
   const [showFollowModal, setShowFollowModal] = useState(false);
   const [connectName, setConnectName] = useState("");
@@ -96,12 +105,25 @@ const Network = (props) => {
 
   const connectUser = async (payload) => {
     let userName = payload.user;
-    Analytics.sendClickEvent(`Followed user ${userName} from profile page`);
+    Analytics.sendClickEvent(`Followed user ${userName} from network page`);
     try {
       await props.connectUser(payload);
       props.invalidateFeed();
     } catch (err) {
       console.log(`An error occurred connecting with user: ${userName}`);
+      console.log(err);
+    }
+  };
+
+  const disconnectUser = async (payload) => {
+    let userName = payload.username;
+    Analytics.sendClickEvent(`Unfollowed user ${userName} from network page`);
+    try {
+      payload.isConnected = false;
+      await props.disconnectUser({ user: userName });
+      props.invalidateFeed();
+    } catch (err) {
+      console.log(`An error occurred disconnecting with user: ${userName}`);
       console.log(err);
     }
   };
@@ -116,13 +138,22 @@ const Network = (props) => {
     toggleFollowModal();
   };
 
+  const handleToggle = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
     <>
       <Container className="height-100">
         <div className="wrapper">
-          <Header />
-          <Row>
-            <Col md="9">
+          <Header onToggle={handleToggle} />
+          <Row
+            className={clsx(
+              "network--simple-top-banner-wrapper",
+              mobileMenuOpen && "open"
+            )}
+          >
+            <Col className="network--simple-top-banner" md="9">
               <SimpleTopBanner
                 // disable for now... buttonText="Invite"
                 onClick={handleInviteModalClick}
@@ -131,7 +162,7 @@ const Network = (props) => {
                 image={bannerImage}
               />
             </Col>
-            <Col md="3">
+            <Col className="network--share-content" md="3">
               <div className="mt-3">
                 <MyNetwork saveContent={props.saveContent} />
               </div>
@@ -160,7 +191,12 @@ const Network = (props) => {
             toggle={toggleFollowModal}
             followUser={connectUser}
           />
-          <div className="mb-4">
+          <div
+            className={clsx(
+              "network--filter-wrapper mt-4 mb-4",
+              mobileMenuOpen && "open"
+            )}
+          >
             <Filter
               className="mt-1 network--filter"
               filterIdx={filterIdx}
@@ -171,7 +207,7 @@ const Network = (props) => {
           <Row>
             {props.activeFeedSubFilters &&
               props.activeFeedSubFilters.length > 0 && (
-                <Col md="4">
+                <Col className="network--popular-topics" md="4">
                   <PopularTopics
                     onSubfilterChange={(f) => {
                       props.changeSubFilter(f.slug || f.title);
@@ -181,6 +217,7 @@ const Network = (props) => {
                 </Col>
               )}
             <Col
+              className={clsx("network--feed", mobileMenuOpen && "open")}
               md={
                 props.activeFeedSubFilters &&
                 props.activeFeedSubFilters.length > 0
@@ -196,6 +233,7 @@ const Network = (props) => {
                 <NetworkFeed
                   {...props}
                   connectUser={onConnectClick}
+                  disconnectUser={disconnectUser}
                   localConnectedUsers={props.localConnectedUsers}
                   fetchData={fetchData}
                   feedData={feedData}
@@ -204,7 +242,9 @@ const Network = (props) => {
             </Col>
           </Row>
 
-          <Footer />
+          <Footer
+            className={clsx("network--footer", mobileMenuOpen && "open")}
+          />
         </div>
       </Container>
     </>
@@ -220,6 +260,7 @@ const mapState = (state) => {
     moreData: state.networkModel.activeFeedHasMoreData,
     localConnectedUsers: state.userModel.localConnectedUsers,
     loadingNetwork: state.networkModel.loadingNetwork,
+    profileStats: state.profileModel.profileStats,
   };
 };
 

@@ -186,7 +186,11 @@ const ProfileOverview = ({
                   <a
                     target="_blank"
                     rel="noopener noreferrer"
-                    href={profileWebsite}
+                    href={
+                      profileWebsite.startsWith("http")
+                        ? profileWebsite
+                        : "https://" + profileWebsite
+                    }
                   >
                     <img className="overview-link-img" src={Website} alt="" />
                   </a>
@@ -516,7 +520,11 @@ const VendorProfile = (props) => {
                           this,
                           feed
                         )}
-                      />
+                      >
+                        {feed.parent_content && (
+                          <Article {...feed.parent_content} />
+                        )}
+                      </Article>
                     </FadeTransition>
                   );
                 })}

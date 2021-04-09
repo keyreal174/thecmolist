@@ -1,4 +1,3 @@
-import { check } from "prettier";
 import React from "react";
 import Checkbox from "react-custom-checkbox";
 import clsx from "clsx";

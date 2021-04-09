@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import CustomCard from "../CustomCard/CustomCard";
 import bannerBackground from "./svgs/banner-background.svg";
+import bannerBackgroundSmall from "./svgs/banner-background-small.svg";
 import "./simpleTopBanner.scss";
 
 const NetworkTopBanner = ({
@@ -22,7 +23,7 @@ const NetworkTopBanner = ({
             </div>
           )}
           <h3 className="simple-top-banner--text">{title}</h3>
-          {subtitle && (
+          {title && title.length > 0 && subtitle && subtitle.length > 0 && (
             <div className="simple-top-banner--subtitle">{subtitle}</div>
           )}
           {buttonText && (
@@ -36,7 +37,9 @@ const NetworkTopBanner = ({
           <img
             className="simple-top-banner--background-image"
             alt="top banner background"
-            src={bannerBackground}
+            src={
+              window.innerWidth < 768 ? bannerBackgroundSmall : bannerBackground
+            }
           />
         </div>
       </CustomCard>

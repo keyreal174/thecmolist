@@ -123,7 +123,9 @@ const RenderList = ({
                   />
                 )
               }
-            />
+            >
+              {item.parent_content && <Article {...item.parent_content} />}
+            </Article>
           );
         })}
         <div className="feed-dashboard-show-more">
