@@ -118,3 +118,24 @@
 .network-list-item .article-text {
   max-width: 75%;
 }
+
+@media (max-width: 768px) {
+  .vendors--popular-topics {
+    display: none;
+  }
+  .vendors--simple-top-banner,
+  .vendors--footer,
+  .vendors--feed-item,
+  .vendors--filters,
+  .vendors--feed {
+    &.open {
+      display: none;
+    }
+  }
+  .vendors--simple-top-banner,
+  .vendors--footer,
+  .vendors--feed-item,
+  .vendors--filters {
+    margin: 10px 17px;
+  }
+}
