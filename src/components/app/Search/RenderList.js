@@ -62,7 +62,7 @@ const RenderList = ({
     const heading = f && f["title"] ? f["title"] : "";
     const isContent = heading !== "People" && heading !== "Vendors";
     return (
-      <CustomCard key={i} heading={heading}>
+      <CustomCard className="search--article-item" key={i} heading={heading}>
         {value.map((item, j) => {
           let contentId = item.contentId;
           return (
