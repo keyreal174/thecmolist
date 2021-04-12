@@ -107,7 +107,7 @@ function RenderFeed({
     }
   };
   return (
-    <div>
+    <div className="feed--wrapper">
       {feedData &&
         feedData.map((feed, idx) => {
           const contentId = feed && "content_id" in feed ? feed.content_id : 0;
@@ -198,7 +198,7 @@ function RenderDashboard(props) {
       <Col className="feed--profile-stats" md="3">
         {profileStats && <ProfileStats profileStats={profileStats} />}
       </Col>
-      <Col md="6">
+      <Col className="feed--feed" md="6">
         <AskQuestion className="feed--ask-question" saveContent={saveContent} />
         {feedLoading ? (
           <div className="mt-3 mb-5">

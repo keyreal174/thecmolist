@@ -40,3 +40,24 @@
   font-size: 50px;
   color: $brand;
 }
+
+@media (max-width: 768px) {
+  .topics--simple-top-banner {
+    margin: 10px 17px;
+  }
+  .topics--item-wrapper {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .topic-wrapper .btn {
+    min-width: unset;
+  }
+  .topics--wrapper {
+    margin: 10px 2px;
+  }
+  .wrapper {
+    &.open {
+      display: none;
+    }
+  }
+}

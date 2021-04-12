@@ -97,4 +97,12 @@
       margin: 10px 60px;
     }
   }
+  .search--content {
+    &.open {
+      display: none;
+    }
+  }
+  .search--article-item {
+    margin: 10px 17px;
+  }
 }
