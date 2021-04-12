@@ -502,4 +502,12 @@
     position: relative;
     height: unset;
   }
+
+  .wrapper,
+  .profile--feed,
+  .profile--footer {
+    &.open {
+      display: none;
+    }
+  }
 }

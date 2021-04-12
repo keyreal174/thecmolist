@@ -56,6 +56,7 @@ const RenderList = ({ arr }) => {
 
 const Profile = (props) => {
   const history = useHistory();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isMyProfile, setIsMyProfile] = useState(false);
   const [profileFirstName, setProfileFirstName] = useState("");
   const [profileLastName, setProfileLastName] = useState("");
@@ -265,11 +266,16 @@ const Profile = (props) => {
       }
     }
   };
+
+  const handleToggle = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
     <>
       <Container className="height-100">
-        <Header />
-        <div className="wrapper">
+        <Header onToggle={handleToggle} />
+        <div className={clsx("wrapper", mobileMenuOpen && "open")}>
           <Row className="profile--wrapper">
             <Col md="8" sm="12">
               <div className="profile--left-section">
@@ -490,7 +496,7 @@ const Profile = (props) => {
         </div>
 
         {profileFirstName && hasDataOnCurrentFeed && (
-          <Row className="profile--feed">
+          <Row className={clsx("profile--feed", mobileMenuOpen && "open")}>
             <Col md="4" className="profile--popular-topics">
               <PopularTopics
                 heading={"Popular #topics and Spaces"}
@@ -585,7 +591,12 @@ const Profile = (props) => {
           </Row>
         )}
         {profileFirstName && !hasDataOnCurrentFeed && (
-          <div className="wrapper article-wrapper">
+          <div
+            className={clsx(
+              "wrapper article-wrapper",
+              mobileMenuOpen && "open"
+            )}
+          >
             <div className="no-feed-data-header">
               {profileFirstName} hasn't shared anything here yet
             </div>
@@ -605,7 +616,7 @@ const Profile = (props) => {
           toggle={toggleFollowModal}
           followUser={connectUser}
         />
-        <Footer />
+        <Footer className={clsx("profile--footer", mobileMenuOpen && "open")} />
       </Container>
     </>
   );
