@@ -264,7 +264,6 @@ const Profile = (props) => {
       }
     }
   };
-
   return (
     <>
       <Container className="height-100">
@@ -402,7 +401,7 @@ const Profile = (props) => {
                         alt="mail"
                         src={Mail}
                       />
-                      <a href={"mailto: " + profileMail}>Email</a>
+                      <a href={"mailto:" + profileMail}>Email</a>
                     </div>
                   )}
                   {profileLinkedin && (
