@@ -107,4 +107,10 @@
   .welcome-message {
     margin: 10px 17px;
   }
+  .profile-edit--content,
+  .profile-edit--footer {
+    &.open {
+      display: none;
+    }
+  }
 }

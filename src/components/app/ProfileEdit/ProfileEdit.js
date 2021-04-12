@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { connect } from "react-redux";
+import clsx from "clsx";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Separator from "../base/Separator/Separator";
@@ -196,10 +197,20 @@ const ProfileEdit = (props) => {
     setIsTypeaheadLoading(false);
   };
 
+  const handleToggle = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
     <Container className="profile height-100">
-      <Header />
-      <Form className="mb-5">
+      <Header onToggle={handleToggle} />
+      <Form
+        className={clsx(
+          "profile-edit--content",
+          "mb-5",
+          mobileMenuOpen && "open"
+        )}
+      >
         {firstTime && (
           <div className="card-box mt-2 py-3 px-3">
             <div className="profile-edit-progress d-flex align-items-center">
@@ -506,7 +517,7 @@ const ProfileEdit = (props) => {
               </Col>
             </Row>
             <Row className="profile--row">
-              <Col md="6" sm="6">
+              <Col md="6" sm="12">
                 <Form.Label>Open to networking</Form.Label>
                 <div>
                   <Form.Check
@@ -529,7 +540,7 @@ const ProfileEdit = (props) => {
                   />
                 </div>
               </Col>
-              <Col md="6" sm="6">
+              <Col md="6" sm="12">
                 <Form.Label>Open to advising</Form.Label>
                 <div>
                   <Form.Check
@@ -591,7 +602,9 @@ const ProfileEdit = (props) => {
           </div>
         </div>
       </Form>
-      <Footer />
+      <Footer
+        className={clsx("profile-edit--footer", mobileMenuOpen && "open")}
+      />
     </Container>
   );
 };
