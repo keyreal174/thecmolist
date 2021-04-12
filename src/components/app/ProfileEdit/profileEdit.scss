@@ -101,7 +101,8 @@
     padding: 0 10px;
   }
   .profile--row {
-    padding: 0;
+    padding: 5px 0 !important;
+    margin: 0 !important;
   }
   .card-box,
   .welcome-message {
@@ -112,5 +113,8 @@
     &.open {
       display: none;
     }
+  }
+  .profile--input {
+    border-radius: 8px;
   }
 }
