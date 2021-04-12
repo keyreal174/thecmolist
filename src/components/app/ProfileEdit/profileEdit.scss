@@ -95,3 +95,16 @@
     margin-left: 20px;
   }
 }
+
+@media (max-width: 768px) {
+  .profile--row-title {
+    padding: 0 10px;
+  }
+  .profile--row {
+    padding: 0;
+  }
+  .card-box,
+  .welcome-message {
+    margin: 10px 17px;
+  }
+}
