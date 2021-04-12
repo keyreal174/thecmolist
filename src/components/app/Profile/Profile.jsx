@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import clsx from "clsx";
 import { useHistory } from "react-router";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
@@ -270,7 +271,7 @@ const Profile = (props) => {
         <Header />
         <div className="wrapper">
           <Row className="profile--wrapper">
-            <Col md="8">
+            <Col md="8" sm="12">
               <div className="profile--left-section">
                 <img
                   src={profileBackgroundImage}
@@ -356,7 +357,7 @@ const Profile = (props) => {
               </div>
             </Col>
 
-            <Col md="4">
+            <Col md="4" sm="12">
               <CustomCard heading="Intro" className="profile--right-section">
                 <div className="right-section--details">
                   {profileCompany && (
@@ -480,6 +481,7 @@ const Profile = (props) => {
 
           {profileFirstName && (
             <Filter
+              classname="profile--filters"
               filterIdx={filterIdx}
               filters={filters}
               onChange={(idx) => setFilterId(idx)}
@@ -489,7 +491,7 @@ const Profile = (props) => {
 
         {profileFirstName && hasDataOnCurrentFeed && (
           <Row className="profile--feed">
-            <Col md="4">
+            <Col md="4" className="profile--popular-topics">
               <PopularTopics
                 heading={"Popular #topics and Spaces"}
                 topicList={topicList}
@@ -515,7 +517,10 @@ const Profile = (props) => {
                     <FadeTransition key={idx}>
                       <Article
                         key={idx}
-                        className={idx !== 0 ? "mt-1" : ""}
+                        className={clsx(
+                          "profile--article-item",
+                          idx !== 0 && "mt-1"
+                        )}
                         {...feed.content}
                         badge={badge}
                         engagementButtons={[
