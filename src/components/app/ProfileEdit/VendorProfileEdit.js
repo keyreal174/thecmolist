@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router";
+import clsx from "clsx";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Separator from "../base/Separator/Separator";
@@ -13,6 +14,7 @@ const VendorType = ["Company", "Product", "Contractor"];
 
 const VendorProfileEdit = (props) => {
   const history = useHistory();
+
   const [companyName, setCompanyName] = useState("");
   const [companyLinkedin, setCompanyLinkedin] = useState("");
   const [companyWebsite, setCompanyWebsite] = useState("");
@@ -27,6 +29,7 @@ const VendorProfileEdit = (props) => {
   const [coverImageUploading, setCoverImageUploading] = useState(false);
   const [companyIndustry, setCompanyIndustry] = useState("");
   const [now, setNow] = useState(50);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [vendorType, setVendorType] = useState(VendorType[0]);
   // props to control profile image
   const inputFile = useRef(null);
@@ -160,10 +163,20 @@ const VendorProfileEdit = (props) => {
     setIsTypeaheadLoading(false);
   };
 
+  const handleToggle = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
     <Container className="profile height-100">
-      <Header />
-      <Form className="mb-5">
+      <Header onToggle={handleToggle} />
+      <Form
+        className={clsx(
+          "mb-5",
+          "vendor-profile--form",
+          mobileMenuOpen && "open"
+        )}
+      >
         <div className="card-box mt-2">
           <div className="profile--cover-wrapper">
             <img
@@ -498,7 +511,9 @@ const VendorProfileEdit = (props) => {
           </div>
         </div>
       </Form>
-      <Footer />
+      <Footer
+        className={clsx("vendor-profile--footer", mobileMenuOpen && "open")}
+      />
     </Container>
   );
 };
