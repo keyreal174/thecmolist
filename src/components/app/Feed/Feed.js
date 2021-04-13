@@ -196,8 +196,11 @@ function RenderDashboard(props) {
   return (
     <Row className={className}>
       <Col className="feed--profile-stats" md="3">
-        {profileStats && <ProfileStats profileStats={profileStats} />}
+        <div className="feed--sticky-content">
+          {profileStats && <ProfileStats profileStats={profileStats} />}
+        </div>
       </Col>
+
       <Col className="feed--feed" md="6">
         <AskQuestion className="feed--ask-question" saveContent={saveContent} />
         {feedLoading ? (

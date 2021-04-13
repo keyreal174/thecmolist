@@ -391,3 +391,11 @@
     margin: 10px 17px;
   }
 }
+
+@media (min-height: 2400px) {
+  .feed--sticky-content {
+    position: sticky;
+    top: 0;
+    height: 10px;
+  }
+}
