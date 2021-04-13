@@ -95,3 +95,26 @@
     margin-left: 20px;
   }
 }
+
+@media (max-width: 768px) {
+  .profile--row-title {
+    padding: 0 10px;
+  }
+  .profile--row {
+    padding: 5px 0 !important;
+    margin: 0 !important;
+  }
+  .card-box,
+  .welcome-message {
+    margin: 10px 17px;
+  }
+  .profile-edit--content,
+  .profile-edit--footer {
+    &.open {
+      display: none;
+    }
+  }
+  .profile--input {
+    border-radius: 8px;
+  }
+}
