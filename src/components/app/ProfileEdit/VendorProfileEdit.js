@@ -260,7 +260,7 @@ const VendorProfileEdit = (props) => {
               <Separator className="card-separator" />
             </div>
             <Row className="profile--row mt-5">
-              <Col>
+              <Col md="12" sm="12">
                 <Form.Label>Vendor</Form.Label>
                 <div className="vendor-profile-type-list">
                   {VendorType.map((vendor, index) => {
@@ -285,7 +285,7 @@ const VendorProfileEdit = (props) => {
             <Row className="profile--row">
               {vendorType === "Company" ? (
                 <>
-                  <Col>
+                  <Col md="6" sm="12">
                     <Form.Label>Company name</Form.Label>
                     <Form.Control
                       className="profile--input"
@@ -294,7 +294,7 @@ const VendorProfileEdit = (props) => {
                       onChange={(e) => setCompanyName(e.target.value)}
                     />
                   </Col>
-                  <Col>
+                  <Col md="6" sm="12">
                     <Form.Label>Company LinkedIn URL</Form.Label>
                     <Form.Control
                       className="profile--input"
@@ -306,7 +306,7 @@ const VendorProfileEdit = (props) => {
                 </>
               ) : vendorType === "Product" ? (
                 <>
-                  <Col>
+                  <Col md="6" sm="12">
                     <Form.Label>Product name</Form.Label>
                     <Form.Control
                       className="profile--input"
@@ -315,7 +315,7 @@ const VendorProfileEdit = (props) => {
                       onChange={(e) => setCompanyName(e.target.value)}
                     />
                   </Col>
-                  <Col>
+                  <Col md="6" sm="12">
                     <Form.Label>Company LinkedIn URL</Form.Label>
                     <Form.Control
                       className="profile--input"
@@ -327,7 +327,7 @@ const VendorProfileEdit = (props) => {
                 </>
               ) : (
                 <>
-                  <Col>
+                  <Col md="6" sm="12">
                     <Form.Label>Contractor name</Form.Label>
                     <Form.Control
                       className="profile--input"
@@ -336,7 +336,7 @@ const VendorProfileEdit = (props) => {
                       onChange={(e) => setCompanyName(e.target.value)}
                     />
                   </Col>
-                  <Col>
+                  <Col md="6" sm="12">
                     <Form.Label>Contractor LinkedIn URL</Form.Label>
                     <Form.Control
                       className="profile--input"
@@ -350,7 +350,7 @@ const VendorProfileEdit = (props) => {
             </Row>
             <Row className="profile--row">
               {vendorType === "Company" ? (
-                <Col>
+                <Col md="6" sm="12">
                   <Form.Label>Company Website</Form.Label>
                   <Form.Control
                     className="profile--input"
@@ -360,7 +360,7 @@ const VendorProfileEdit = (props) => {
                   />
                 </Col>
               ) : vendorType === "Product" ? (
-                <Col>
+                <Col md="6" sm="12">
                   <Form.Label>Product Website</Form.Label>
                   <Form.Control
                     className="profile--input"
@@ -370,7 +370,7 @@ const VendorProfileEdit = (props) => {
                   />
                 </Col>
               ) : (
-                <Col>
+                <Col md="6" sm="12">
                   <Form.Label>Contractor Website</Form.Label>
                   <Form.Control
                     className="profile--input"
@@ -380,7 +380,7 @@ const VendorProfileEdit = (props) => {
                   />
                 </Col>
               )}
-              <Col>
+              <Col md="6" sm="12">
                 <Form.Label>Twitter</Form.Label>
                 <Form.Control
                   className="profile--input"
@@ -391,7 +391,7 @@ const VendorProfileEdit = (props) => {
               </Col>
             </Row>
             <Row className="profile--row mb-5">
-              <Col>
+              <Col md="4" sm="12">
                 <Form.Label>City</Form.Label>
                 <Form.Control
                   className="profile--input"
@@ -400,7 +400,7 @@ const VendorProfileEdit = (props) => {
                   onChange={(e) => setCity(e.target.value)}
                 />
               </Col>
-              <Col>
+              <Col md="4" sm="12">
                 <Form.Label>State/Province</Form.Label>
                 <Form.Control
                   className="profile--input"
@@ -409,7 +409,7 @@ const VendorProfileEdit = (props) => {
                   onChange={(e) => setProvince(e.target.value)}
                 />
               </Col>
-              <Col>
+              <Col md="4" sm="12">
                 <Form.Label>Country</Form.Label>
                 <Form.Control
                   className="profile--input"
@@ -426,7 +426,7 @@ const VendorProfileEdit = (props) => {
               <Separator className="card-separator" />
             </div>
             <Row className="profile--row mt-5">
-              <Col>
+              <Col md="12" sm="12">
                 <Form.Label>Description (optional)</Form.Label>
                 <Form.Control
                   as="textarea"
@@ -439,7 +439,7 @@ const VendorProfileEdit = (props) => {
               </Col>
             </Row>
             <Row className="profile--row">
-              <Col>
+              <Col md="6" sm="12">
                 <Form.Label>Areas of marketing expertise</Form.Label>
                 <AsyncTypeahead
                   id="async-global-search"
@@ -475,7 +475,7 @@ const VendorProfileEdit = (props) => {
                   )}
                 />
               </Col>
-              <Col>
+              <Col md="6" sm="12">
                 <Form.Label>Company Industry</Form.Label>
                 <Form.Control
                   className="profile--input"
