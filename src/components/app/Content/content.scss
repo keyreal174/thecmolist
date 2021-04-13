@@ -97,4 +97,13 @@
   .question-related-section {
     display: none;
   }
+  .question-answer-section {
+    margin: 0;
+    .article-wrapper {
+      margin: 10px 17px;
+    }
+  }
+  .question-answer-section-replies {
+    margin: 10px 17px;
+  }
 }
