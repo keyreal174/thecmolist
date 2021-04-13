@@ -503,6 +503,22 @@
     height: unset;
   }
 
+  .profile--filters {
+    .filter-btn-group {
+      padding-bottom: 0;
+    }
+  }
+  .profile--right-section {
+    height: 250px;
+  }
+  .profile--feed {
+    margin-top: 10px;
+  }
+  .profile--feed {
+    .popular-topics {
+      display: none;
+    }
+  }
   .wrapper,
   .profile--feed,
   .profile--footer {
