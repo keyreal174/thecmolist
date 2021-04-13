@@ -84,3 +84,17 @@
     font-weight: 500;
   }
 }
+
+@media (max-width: 768px) {
+  .content--error,
+  .content--content,
+  .content--footer,
+  .question-answer-section {
+    &.open {
+      display: none;
+    }
+  }
+  .question-related-section {
+    display: none;
+  }
+}
