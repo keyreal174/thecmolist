@@ -479,6 +479,30 @@
   .profile--article-item {
     margin: 10px 17px;
   }
+  .profile--popular-topics {
+    display: none;
+  }
+  .profile--feed {
+    margin-top: 0;
+  }
+  .profile--more-button {
+    position: absolute;
+    right: 0px;
+  }
+  .profile--left-section {
+    padding-bottom: 100px !important;
+    .btn-wrapper {
+      top: unset;
+      bottom: 40px;
+      left: 40px;
+    }
+  }
+  .profile--left-section,
+  .profile--right-section {
+    position: relative;
+    height: unset;
+  }
+
   .profile--filters {
     .filter-btn-group {
       padding-bottom: 0;
