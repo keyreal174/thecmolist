@@ -102,4 +102,10 @@
   .form-control {
     border-radius: 8px;
   }
+  .wrapper,
+  .settings--footer {
+    &.open {
+      display: none;
+    }
+  }
 }
