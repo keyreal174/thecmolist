@@ -1,5 +1,6 @@
 import React from "react";
 import Footer from "../app/base/Footer/Footer";
+import Logo from "../app/base/Header/svgs/logo.svg";
 import "./Signup.scss";
 
 function handleSubmit(e) {
@@ -24,9 +25,9 @@ function Signup() {
       <div className="row no-gutters">
         <div className="col-md-3" />
         <div className="col-md-6">
-          <a className="signup--logo nav__logo" href="/">
-            CMO<span>list</span>
-          </a>
+          <div className="signup--logo nav__logo">
+            <img src={Logo} alt="CMOList brand logo" />
+          </div>
           <form
             className="signup--form"
             name="submit-to-google-sheet"
