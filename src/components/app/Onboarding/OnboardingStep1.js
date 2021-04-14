@@ -197,7 +197,10 @@ const OnboardingStep1 = ({ submitOnboardingStep1 }) => {
           </Row>
         </form>
         <Row>
-          <Col md="12" className="d-flex justify-content-end">
+          <Col
+            md="12"
+            className="onboarding--button-wrapper d-flex justify-content-end"
+          >
             <Button
               className="onboarding--button"
               form="onboarding_step-1"
