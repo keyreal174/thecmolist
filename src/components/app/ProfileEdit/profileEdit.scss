@@ -117,4 +117,10 @@
   .profile--input {
     border-radius: 8px;
   }
+  .vendor-profile--form,
+  .vendor-profile--footer {
+    &.open {
+      display: none;
+    }
+  }
 }
