@@ -5,6 +5,7 @@ import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import ContentDetail from "./ContentDetail";
+import clsx from "clsx";
 import "./content.scss";
 
 const Content = ({
@@ -15,6 +16,7 @@ const Content = ({
   ...rest
 }) => {
   const [error, setError] = useState("");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const {
@@ -38,13 +40,17 @@ const Content = ({
     fetch();
   }, []);
 
+  const handleToggle = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
     <>
       <Container className="height-100">
         <div className="wrapper">
-          <Header />
+          <Header onToggle={handleToggle} />
           {error && (
-            <Row>
+            <Row className={clsx("content--error", mobileMenuOpen && "open")}>
               <Col md="12">
                 <Alert
                   id="error-section"
@@ -56,16 +62,26 @@ const Content = ({
               </Col>
             </Row>
           )}
-          <Row className="question-answer-section-wrapper">
+          <Row
+            className={clsx(
+              "question-answer-section-wrapper",
+              "content--content",
+              mobileMenuOpen && "open"
+            )}
+          >
             {contentLoading ? (
               <Col md="12">
                 <ActivityIndicator className="element-center question-activity-indicator" />
               </Col>
             ) : (
-              <ContentDetail {...rest} setError={setError} />
+              <ContentDetail
+                {...rest}
+                mobileMenuOpen={mobileMenuOpen}
+                setError={setError}
+              />
             )}
           </Row>
-          <Row>
+          <Row className={clsx("content--footer", mobileMenuOpen && "open")}>
             <Col md="12">
               <Footer />
             </Col>
