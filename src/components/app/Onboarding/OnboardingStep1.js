@@ -148,7 +148,7 @@ const OnboardingStep1 = ({ submitOnboardingStep1 }) => {
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col md="6" sm="12">
               <Form.Label>Open to networking</Form.Label>
               <div className="d-flex">
                 <Form.Check
@@ -171,7 +171,7 @@ const OnboardingStep1 = ({ submitOnboardingStep1 }) => {
                 />
               </div>
             </Col>
-            <Col>
+            <Col md="6" sm="12">
               <Form.Label>Open to adviding</Form.Label>
               <div className="d-flex">
                 <Form.Check
