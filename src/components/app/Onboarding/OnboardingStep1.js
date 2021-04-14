@@ -217,7 +217,7 @@ const mapState = () => ({});
 
 const mapDispatch = (dispatch) => {
   return {
-    submitOnboardingStep1: dispatch.onboarding.submitOnboardingStep1,
+    submitOnboardingStep1: dispatch.onboardingModel.submitOnboardingStep1,
   };
 };
 
