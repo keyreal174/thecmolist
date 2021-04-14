@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router";
 import axios from "axios";
 import Spinner from "react-spinner-material";
 import querySearch from "stringquery";
@@ -16,16 +17,26 @@ const loginRequest = (user, password) => {
   return axios.post("/api/login", postBody);
 };
 
-const linkedinAuthUrl = () => {
-  return axios.get("/api/lnkd_auth_url");
+const linkedinAuthUrl = (from) => {
+  return axios.get("/api/lnkd_auth_url?redirect=" + from);
 };
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
 
-    let query = querySearch(window.location.search);
-    let redirectUrl = query.redirect ? decodeURIComponent(query.redirect) : "/";
+    let redirectUrl = "/";
+    if (this.props.location) {
+      let location = this.props.location;
+      let locationFrom =
+        location && location.state && location.state.from
+          ? location.state.from.pathname
+          : null;
+      redirectUrl = locationFrom ? locationFrom : "/";
+    } else {
+      let query = querySearch(window.location.search);
+      redirectUrl = query.redirect ? decodeURIComponent(query.redirect) : "/";
+    }
 
     this.state = {
       busy: false,
@@ -37,7 +48,7 @@ class Login extends React.Component {
   }
 
   componentDidMount() {
-    linkedinAuthUrl().then(({ data }) => {
+    linkedinAuthUrl(this.state.redirectUrl).then(({ data }) => {
       this.setState({
         linkedInUrl: data.url,
       });
@@ -182,4 +193,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);

@@ -95,7 +95,13 @@ class App extends React.Component {
             exact
             path="/search"
             render={(props) =>
-              this.state.authed ? <Search /> : <Redirect to="/login" />
+              this.state.authed ? (
+                <Search />
+              ) : (
+                <Redirect
+                  to={{ pathname: "/login", state: { from: props.location } }}
+                />
+              )
             }
           />
           <Route
@@ -105,7 +111,9 @@ class App extends React.Component {
               this.state.authed ? (
                 <Feed isTopic={false} />
               ) : (
-                <Redirect to="/login" />
+                <Redirect
+                  to={{ pathname: "/login", state: { from: props.location } }}
+                />
               )
             }
           />
@@ -115,34 +123,60 @@ class App extends React.Component {
               this.state.authed ? (
                 <Feed isTopic={false} />
               ) : (
-                <Redirect to="/login" />
+                <Redirect
+                  to={{ pathname: "/login", state: { from: props.location } }}
+                />
               )
             }
           />
           <Route
             path="/profile"
             render={(props) =>
-              this.state.authed ? <Profile /> : <Redirect to="/login" />
+              this.state.authed ? (
+                <Profile />
+              ) : (
+                <Redirect
+                  to={{ pathname: "/login", state: { from: props.location } }}
+                />
+              )
             }
           />
           <Route
             exact
             path="/profile_edit"
             render={(props) =>
-              this.state.authed ? <ProfileEdit /> : <Redirect to="/login" />
+              this.state.authed ? (
+                <ProfileEdit />
+              ) : (
+                <Redirect
+                  to={{ pathname: "/login", state: { from: props.location } }}
+                />
+              )
             }
           />
           <Route
             path="/settings"
             render={(props) =>
-              this.state.authed ? <Settings /> : <Redirect to="/login" />
+              this.state.authed ? (
+                <Settings />
+              ) : (
+                <Redirect
+                  to={{ pathname: "/login", state: { from: props.location } }}
+                />
+              )
             }
           />
           <Route
             exact
             path="/topics"
             render={(props) =>
-              this.state.authed ? <Topics /> : <Redirect to="/login" />
+              this.state.authed ? (
+                <Topics />
+              ) : (
+                <Redirect
+                  to={{ pathname: "/login", state: { from: props.location } }}
+                />
+              )
             }
           />
           <Route
@@ -151,7 +185,9 @@ class App extends React.Component {
               this.state.authed ? (
                 <Feed isTopic={true} />
               ) : (
-                <Redirect to="/login" />
+                <Redirect
+                  to={{ pathname: "/login", state: { from: props.location } }}
+                />
               )
             }
           />
@@ -161,7 +197,9 @@ class App extends React.Component {
               this.state.authed ? (
                 <Content {...props} />
               ) : (
-                <Redirect to="/login" />
+                <Redirect
+                  to={{ pathname: "/login", state: { from: props.location } }}
+                />
               )
             }
           />
@@ -171,7 +209,9 @@ class App extends React.Component {
               this.state.authed ? (
                 <AgencyProfile {...props} />
               ) : (
-                <Redirect to="/login" />
+                <Redirect
+                  to={{ pathname: "/login", state: { from: props.location } }}
+                />
               )
             }
           />
@@ -181,7 +221,9 @@ class App extends React.Component {
               this.state.authed ? (
                 <TechnologyProfile {...props} />
               ) : (
-                <Redirect to="/login" />
+                <Redirect
+                  to={{ pathname: "/login", state: { from: props.location } }}
+                />
               )
             }
           />
@@ -189,7 +231,13 @@ class App extends React.Component {
             exact
             path="/directory"
             render={(props) =>
-              this.state.authed ? <Directory /> : <Redirect to="/login" />
+              this.state.authed ? (
+                <Directory />
+              ) : (
+                <Redirect
+                  to={{ pathname: "/login", state: { from: props.location } }}
+                />
+              )
             }
           />
           <Route
@@ -199,7 +247,9 @@ class App extends React.Component {
               this.state.authed ? (
                 <Category {...props} />
               ) : (
-                <Redirect to="/login" />
+                <Redirect
+                  to={{ pathname: "/login", state: { from: props.location } }}
+                />
               )
             }
           />
@@ -207,20 +257,38 @@ class App extends React.Component {
             exact
             path="/network"
             render={(props) =>
-              this.state.authed ? <Network /> : <Redirect to="/login" />
+              this.state.authed ? (
+                <Network />
+              ) : (
+                <Redirect
+                  to={{ pathname: "/login", state: { from: props.location } }}
+                />
+              )
             }
           />
           <Route
             exact
             path="/notifications"
             render={(props) =>
-              this.state.authed ? <Notifications /> : <Redirect to="/login" />
+              this.state.authed ? (
+                <Notifications />
+              ) : (
+                <Redirect
+                  to={{ pathname: "/login", state: { from: props.location } }}
+                />
+              )
             }
           />
           <Route
             path="/vendor"
             render={(props) =>
-              this.state.authed ? <VendorProfile /> : <Redirect to="/login" />
+              this.state.authed ? (
+                <VendorProfile />
+              ) : (
+                <Redirect
+                  to={{ pathname: "/login", state: { from: props.location } }}
+                />
+              )
             }
           />
           <Route
@@ -229,28 +297,48 @@ class App extends React.Component {
               this.state.authed ? (
                 <VendorProfileEdit />
               ) : (
-                <Redirect to="/login" />
+                <Redirect
+                  to={{ pathname: "/login", state: { from: props.location } }}
+                />
               )
             }
           />
           <Route
             path="/vendors"
             render={(props) =>
-              this.state.authed ? <Vendors /> : <Redirect to="/login" />
+              this.state.authed ? (
+                <Vendors />
+              ) : (
+                <Redirect
+                  to={{ pathname: "/login", state: { from: props.location } }}
+                />
+              )
             }
           />
           <Route
             exact
             path="/onboarding_step1"
             render={(props) =>
-              this.state.authed ? <OnboardingStep1 /> : <Redirect to="/login" />
+              this.state.authed ? (
+                <OnboardingStep1 />
+              ) : (
+                <Redirect
+                  to={{ pathname: "/login", state: { from: props.location } }}
+                />
+              )
             }
           />
           <Route
             exact
             path="/onboarding_step2"
             render={(props) =>
-              this.state.authed ? <OnboardingStep2 /> : <Redirect to="/login" />
+              this.state.authed ? (
+                <OnboardingStep2 />
+              ) : (
+                <Redirect
+                  to={{ pathname: "/login", state: { from: props.location } }}
+                />
+              )
             }
           />
 
@@ -258,7 +346,13 @@ class App extends React.Component {
             exact
             path="/admin"
             render={(props) =>
-              this.state.authed ? <AdminPage /> : <Redirect to="/login" />
+              this.state.authed ? (
+                <AdminPage />
+              ) : (
+                <Redirect
+                  to={{ pathname: "/login", state: { from: props.location } }}
+                />
+              )
             }
           />
 
