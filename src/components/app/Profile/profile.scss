@@ -470,3 +470,60 @@
   border-radius: 35px;
   margin-bottom: 25px;
 }
+
+@media (max-width: 768px) {
+  .profile--left-section,
+  .profile--right-section,
+  .profile-about,
+  .profile--filters,
+  .profile--article-item {
+    margin: 10px 17px;
+  }
+  .profile--popular-topics {
+    display: none;
+  }
+  .profile--feed {
+    margin-top: 0;
+  }
+  .profile--more-button {
+    position: absolute;
+    right: 0px;
+  }
+  .profile--left-section {
+    padding-bottom: 100px !important;
+    .btn-wrapper {
+      top: unset;
+      bottom: 40px;
+      left: 40px;
+    }
+  }
+  .profile--left-section,
+  .profile--right-section {
+    position: relative;
+    height: unset;
+  }
+
+  .profile--filters {
+    .filter-btn-group {
+      padding-bottom: 0;
+    }
+  }
+  .profile--right-section {
+    height: 250px;
+  }
+  .profile--feed {
+    margin-top: 10px;
+  }
+  .profile--feed {
+    .popular-topics {
+      display: none;
+    }
+  }
+  .wrapper,
+  .profile--feed,
+  .profile--footer {
+    &.open {
+      display: none;
+    }
+  }
+}

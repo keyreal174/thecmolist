@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { connect } from "react-redux";
+import clsx from "clsx";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Separator from "../base/Separator/Separator";
@@ -17,6 +18,7 @@ import { profileImage } from "../../util/constants";
 import "./profileEdit.scss";
 
 const ProfileEdit = (props) => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [title, setTitle] = useState("");
@@ -195,10 +197,20 @@ const ProfileEdit = (props) => {
     setIsTypeaheadLoading(false);
   };
 
+  const handleToggle = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
     <Container className="profile height-100">
-      <Header />
-      <Form className="mb-5">
+      <Header onToggle={handleToggle} />
+      <Form
+        className={clsx(
+          "profile-edit--content",
+          "mb-5",
+          mobileMenuOpen && "open"
+        )}
+      >
         {firstTime && (
           <div className="card-box mt-2 py-3 px-3">
             <div className="profile-edit-progress d-flex align-items-center">
@@ -300,7 +312,7 @@ const ProfileEdit = (props) => {
               <Separator className="card-separator" />
             </div>
             <Row className="profile--row mt-5">
-              <Col>
+              <Col md="6" sm="12">
                 <Form.Label>First name</Form.Label>
                 <Form.Control
                   className="profile--input"
@@ -309,7 +321,7 @@ const ProfileEdit = (props) => {
                   onChange={(e) => setFirstName(e.target.value)}
                 />
               </Col>
-              <Col>
+              <Col md="6" sm="12">
                 <Form.Label>Last name</Form.Label>
                 <Form.Control
                   className="profile--input"
@@ -320,7 +332,7 @@ const ProfileEdit = (props) => {
               </Col>
             </Row>
             <Row className="profile--row">
-              <Col>
+              <Col md="4" sm="12">
                 <Form.Label>City</Form.Label>
                 <Form.Control
                   className="profile--input"
@@ -329,7 +341,7 @@ const ProfileEdit = (props) => {
                   onChange={(e) => setCity(e.target.value)}
                 />
               </Col>
-              <Col>
+              <Col md="4" sm="12">
                 <Form.Label>State/Province</Form.Label>
                 <Form.Control
                   className="profile--input"
@@ -338,7 +350,7 @@ const ProfileEdit = (props) => {
                   onChange={(e) => setProvince(e.target.value)}
                 />
               </Col>
-              <Col>
+              <Col md="4" sm="12">
                 <Form.Label>Country</Form.Label>
                 <Form.Control
                   className="profile--input"
@@ -349,7 +361,7 @@ const ProfileEdit = (props) => {
               </Col>
             </Row>
             <Row className="profile--row mb-5">
-              <Col>
+              <Col md="6" sm="12">
                 <Form.Label>LinkedIn profile URL</Form.Label>
                 <Form.Control
                   className="profile--input"
@@ -358,7 +370,7 @@ const ProfileEdit = (props) => {
                   onChange={(e) => setLinkedin(e.target.value)}
                 />
               </Col>
-              <Col>
+              <Col md="6" sm="12">
                 <Form.Label>Website URL (optional)</Form.Label>
                 <Form.Control
                   className="profile--input"
@@ -375,7 +387,7 @@ const ProfileEdit = (props) => {
               <Separator className="card-separator" />
             </div>
             <Row className="profile--row mt-5">
-              <Col>
+              <Col sm="12" md="6">
                 <Form.Label>Title</Form.Label>
                 <Form.Control
                   className="profile--input"
@@ -384,7 +396,7 @@ const ProfileEdit = (props) => {
                   onChange={(e) => setTitle(e.target.value)}
                 />
               </Col>
-              <Col>
+              <Col sm="12" md="6">
                 <Form.Label>Revenue accountability / impact ($M)</Form.Label>
                 <Form.Control
                   className="profile--input"
@@ -395,7 +407,7 @@ const ProfileEdit = (props) => {
               </Col>
             </Row>
             <Row className="profile--row">
-              <Col>
+              <Col sm="12" md="6">
                 <Form.Label>Company name</Form.Label>
                 <Form.Control
                   className="profile--input"
@@ -404,7 +416,7 @@ const ProfileEdit = (props) => {
                   onChange={(e) => setCompany(e.target.value)}
                 />
               </Col>
-              <Col>
+              <Col sm="12" md="6">
                 <Form.Label>Company LinkedIn URL</Form.Label>
                 <Form.Control
                   className="profile--input"
@@ -415,7 +427,7 @@ const ProfileEdit = (props) => {
               </Col>
             </Row>
             <Row className="profile--row mb-5">
-              <Col>
+              <Col sm="12" md="6">
                 <Form.Label>Company Industry</Form.Label>
                 <Form.Control
                   className="profile--input"
@@ -424,7 +436,7 @@ const ProfileEdit = (props) => {
                   onChange={(e) => setCompanyIndustry(e.target.value)}
                 />
               </Col>
-              <Col>
+              <Col sm="12" md="6">
                 <Form.Label>Company Stage (e.g., Series A)</Form.Label>
                 <Form.Control
                   className="profile--input"
@@ -441,7 +453,7 @@ const ProfileEdit = (props) => {
               <Separator className="card-separator" />
             </div>
             <Row className="profile--row mt-5">
-              <Col>
+              <Col md="12" sm="12">
                 <Form.Label>Headline (optional)</Form.Label>
                 <Form.Control
                   as="textarea"
@@ -454,7 +466,7 @@ const ProfileEdit = (props) => {
               </Col>
             </Row>
             <Row className="profile--row mt-5">
-              <Col>
+              <Col sm="12" md="12">
                 <Form.Label>Description (optional)</Form.Label>
                 <Form.Control
                   as="textarea"
@@ -505,7 +517,7 @@ const ProfileEdit = (props) => {
               </Col>
             </Row>
             <Row className="profile--row">
-              <Col>
+              <Col md="6" sm="12">
                 <Form.Label>Open to networking</Form.Label>
                 <div>
                   <Form.Check
@@ -528,7 +540,7 @@ const ProfileEdit = (props) => {
                   />
                 </div>
               </Col>
-              <Col>
+              <Col md="6" sm="12">
                 <Form.Label>Open to advising</Form.Label>
                 <div>
                   <Form.Check
@@ -590,7 +602,9 @@ const ProfileEdit = (props) => {
           </div>
         </div>
       </Form>
-      <Footer />
+      <Footer
+        className={clsx("profile-edit--footer", mobileMenuOpen && "open")}
+      />
     </Container>
   );
 };
