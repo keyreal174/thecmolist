@@ -3,6 +3,7 @@ import axios from "axios";
 import Spinner from "react-spinner-material";
 import querySearch from "stringquery";
 import Util from "../util/Util";
+import Logo from "../app/base/Header/svgs/logo.svg";
 import Footer from "../app/base/Footer/Footer";
 import "./login.scss";
 import { privacyPolicy } from "../util/constants";
@@ -98,7 +99,7 @@ class Login extends React.Component {
           <div className="col-md-3" />
           <div className="col-md-6">
             <a className="login--logo nav__logo" href="/">
-              CMO<span>list</span>
+              <img src={Logo} alt="CMOList brand logo" />
             </a>
             <form
               name="Login_Form"

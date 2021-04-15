@@ -59,3 +59,9 @@
     margin-top: 460px;
   }
 }
+
+@media (max-width: 768px) {
+  .login--form {
+    border-radius: 20px;
+  }
+}

@@ -1,8 +1,8 @@
 .btn__show-more {
   border: 2px solid;
   background-color: #fff;
-  color: #0175b0;
-  border-color: #0175b0;
+  color: #2962ff;
+  border-color: #2962ff;
   border-width: 2px;
   font-weight: 500;
   min-width: 135px;
@@ -84,7 +84,7 @@
 }
 
 a {
-  color: #0175b0;
+  color: #2962ff;
   text-decoration: none;
   background-color: transparent;
 }
