@@ -45,48 +45,54 @@ function InviteModal(props) {
               <strong>you know</strong> and whose{" "}
               <strong>advice you trust</strong>
             </p>
-            <Row className="mt-3">
-              <Col className="invite-modal--input" xs={12}>
-                <Form.Label>Name</Form.Label>
-                <Form.Control
-                  className="invite-module-input"
-                  type="text"
-                  placeholder="First name, Last name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </Col>
-              <Col className="invite-modal--input" xs={12}>
-                <Form.Label>Email</Form.Label>
-                <Form.Control
-                  className="invite-module-input"
-                  type="email"
-                  placeholder="name@company.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </Col>
-              <Col className="invite-modal--input" xs={12}>
-                <Form.Label>Linkedin URL</Form.Label>
-                <Form.Control
-                  className="invite-module-input"
-                  type="text"
-                  placeholder="https://linkedin.com/linkedinID"
-                  value={linkedIn}
-                  onChange={(e) => setLinkedIn(e.target.value)}
-                />
-              </Col>
-              <Col xs={12}>
-                <Form.Label>Message</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  placeholder="E.g., We know each other from..."
-                  rows="2"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                />
-              </Col>
-            </Row>
+            <form id="invite-modal" onSubmit={closeDialog}>
+              <Row className="mt-3">
+                <Col className="invite-modal--input" xs={12}>
+                  <Form.Label>Name</Form.Label>
+                  <Form.Control
+                    className="invite-module-input"
+                    type="text"
+                    placeholder="First name, Last name"
+                    value={name}
+                    required={true}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </Col>
+                <Col className="invite-modal--input" xs={12}>
+                  <Form.Label>Email</Form.Label>
+                  <Form.Control
+                    className="invite-module-input"
+                    type="email"
+                    placeholder="name@company.com"
+                    value={email}
+                    required={true}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </Col>
+                <Col className="invite-modal--input" xs={12}>
+                  <Form.Label>Linkedin URL</Form.Label>
+                  <Form.Control
+                    className="invite-module-input"
+                    type="text"
+                    placeholder="https://linkedin.com/linkedinID"
+                    value={linkedIn}
+                    required={true}
+                    onChange={(e) => setLinkedIn(e.target.value)}
+                  />
+                </Col>
+                <Col xs={12}>
+                  <Form.Label>Message</Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    placeholder="E.g., We know each other from..."
+                    rows="2"
+                    value={message}
+                    required={true}
+                    onChange={(e) => setMessage(e.target.value)}
+                  />
+                </Col>
+              </Row>
+            </form>
           </Fragment>
           <Modal.Footer>
             <Button
@@ -98,8 +104,9 @@ function InviteModal(props) {
             </Button>
             <Button
               className="btn-white modal-primary-button"
-              onClick={() => closeDialog()}
               variant="outline-primary"
+              form="invite-modal"
+              type="submit"
             >
               Send invitation
             </Button>
