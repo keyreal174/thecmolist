@@ -138,7 +138,7 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col md="12" sm="6">
               <Form.Label>Open to networking</Form.Label>
               <div className="d-flex">
                 <Form.Check
@@ -161,7 +161,7 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
                 />
               </div>
             </Col>
-            <Col>
+            <Col md="12" sm="6">
               <Form.Label>Open to advising</Form.Label>
               <div className="d-flex">
                 <Form.Check
