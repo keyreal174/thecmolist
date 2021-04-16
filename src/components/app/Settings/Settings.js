@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Container, Form, Col, Alert } from "react-bootstrap";
+import clsx from "clsx";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Separator from "../base/Separator/Separator";
@@ -15,6 +16,7 @@ const Settings = ({ settings, saveSetting, getSetting }) => {
     allowDiscussions: false,
     allowActivity: false,
   });
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
@@ -92,10 +94,14 @@ const Settings = ({ settings, saveSetting, getSetting }) => {
     }
   }, [settings]);
 
+  const handleToggle = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
     <Container className="height-100">
-      <Header />
-      <div className="wrapper settings">
+      <Header onToggle={handleToggle} />
+      <div className={clsx("wrapper settings", mobileMenuOpen && "open")}>
         <h2 className="section-title pt-4 py-3">Settings</h2>
         <div className="account-settings mt-2">
           <h2 className="section-title">Account Settings</h2>
@@ -206,7 +212,8 @@ const Settings = ({ settings, saveSetting, getSetting }) => {
           </Form>
         </div>
       </div>
-      <Footer />
+
+      <Footer className={clsx("settings--footer", mobileMenuOpen && "open")} />
     </Container>
   );
 };
