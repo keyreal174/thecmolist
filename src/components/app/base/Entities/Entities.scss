@@ -1,0 +1,18 @@
+@import "../../../../sass/globals.scss";
+
+.entities {
+  &--divider {
+    border-top: $border-card;
+    width: 100%;
+    left: 0;
+    bottom: 60px;
+  }
+  &-showmore--button {
+    text-align: center;
+    bottom: 15px;
+    left: 115px;
+    > button {
+      color: $brand;
+    }
+  }
+}

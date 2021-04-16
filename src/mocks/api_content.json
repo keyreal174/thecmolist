@@ -10,7 +10,9 @@
     "headline": {
       "markdown": "Do you have any experience with deploying @HubSpot for a SaaS business with both a direct and self-serve model?"
     },
-    "articletext": "We are a series A B2B startup with a custom solution that no have a product defined to use. Any recommendation is more than welcomed",
+    "articletext": {
+      "markdown": "This is what I made using Draft.js mention plugin. [@Eckart Walther](/profile/eckart) [@Vas Swaminathan](/profile/vas)"
+    },
     "num_pass": 0,
     "num_thanks": 5,
     "num_insightful": 10
