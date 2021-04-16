@@ -5,6 +5,7 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import ShowMoreText from "react-show-more-text";
 import CustomCard from "../base/CustomCard/CustomCard";
+import clsx from "clsx";
 import Header from "../base/Header/Header";
 import Filter from "../base/Filter/Filter";
 import Article from "../base/Article/Article";
@@ -165,7 +166,7 @@ const ProfileOverview = ({
   const history = useHistory();
   return (
     <Col md="8">
-      <div className="profile--left-section">
+      <div className={clsx("profile--left-section")}>
         <img
           src={profileBackgroundUrl}
           className="left-section--image"
@@ -233,6 +234,7 @@ const ProfileOverview = ({
 };
 
 const VendorProfile = (props) => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [profileName, setProfileName] = useState("");
   const [profileUserName, setProfileUserName] = useState("");
   const [profileImage, setProfileImage] = useState("");
@@ -416,11 +418,16 @@ const VendorProfile = (props) => {
   const reactions = props.reactions;
   const profileBackgroundUrl =
     "https://d3k6hg21rt7gsh.cloudfront.net/icons/profile--header.png";
+
+  const handleToggle = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
     <>
       <Container className="height-100">
-        <Header />
-        <div className="wrapper">
+        <Header onToggle={handleToggle} />
+        <div className={clsx("wrapper", mobileMenuOpen && "open")}>
           <Row className="profile--wrapper">
             <ProfileOverview
               profileBackgroundUrl={profileBackgroundUrl}
@@ -446,6 +453,7 @@ const VendorProfile = (props) => {
           />
           {profileName && (
             <Filter
+              className="profile--filters"
               filterIdx={filterIdx}
               filters={filters}
               onChange={(idx) => setFilterId(idx)}
@@ -454,7 +462,7 @@ const VendorProfile = (props) => {
         </div>
 
         {profileName && hasDataOnCurrentFeed && (
-          <Row className="profile--feed">
+          <Row className={clsx("profile--feed", mobileMenuOpen && "open")}>
             <Col md="4">
               <PopularTopics
                 heading={"Popular #topics and Spaces"}
@@ -469,7 +477,10 @@ const VendorProfile = (props) => {
                     <FadeTransition key={idx}>
                       <Article
                         key={idx}
-                        className={idx !== 0 ? "mt-1" : ""}
+                        className={clsx(
+                          "profile--article-item",
+                          idx !== 0 && "mt-1"
+                        )}
                         {...feed.content}
                         engagementButtons={[
                           {
@@ -533,13 +544,18 @@ const VendorProfile = (props) => {
           </Row>
         )}
         {profileName && !hasDataOnCurrentFeed && (
-          <div className="wrapper article-wrapper">
+          <div
+            className={clsx(
+              "wrapper article-wrapper",
+              mobileMenuOpen && "open"
+            )}
+          >
             <div className="no-feed-data-header">
               {profileName} hasn't shared anything here yet
             </div>
           </div>
         )}
-        <Footer />
+        <Footer className={clsx("profile--footer", mobileMenuOpen && "open")} />
       </Container>
     </>
   );

@@ -111,7 +111,7 @@ const DiscussionComment = ({
                   className="modal-section-body-image"
                   src={`${cdn}/company.png`}
                 />
-                @Vendor
+                <span className="modal-section-body-text">@Vendor</span>
               </div>
             </Button>
             <Button
@@ -126,7 +126,7 @@ const DiscussionComment = ({
                   className="modal-section-body-image"
                   src={`${cdn}/person.png`}
                 />
-                @Person
+                <span className="modal-section-body-text">@Person</span>
               </div>
             </Button>
           </div>

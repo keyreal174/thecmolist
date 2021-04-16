@@ -1,6 +1,7 @@
 import React from "react";
 import Article from "../base/Article/Article";
 import CustomCard from "../base/CustomCard/CustomCard";
+import clsx from "clsx";
 import { Col } from "react-bootstrap";
 import {
   getCheckedForEngagementType,
@@ -20,6 +21,7 @@ import { cdn } from "../../util/constants";
 const ContentDetail = ({
   content,
   profileStats,
+  mobileMenuOpen,
   reactions,
   saveCommentToContent,
   saveCommentToReply,
@@ -75,7 +77,10 @@ const ContentDetail = ({
 
   return (
     <>
-      <Col className="question-answer-section" md="8">
+      <Col
+        className={clsx("question-answer-section", mobileMenuOpen && "open")}
+        md="8"
+      >
         <Article
           articletextlines={1}
           {...content.content}

@@ -14,7 +14,7 @@
   }
 
   .see-more-button {
-    color: #0175b0;
+    color: #2962ff;
     text-decoration: none;
     background-color: transparent;
     border-color: transparent;
@@ -96,5 +96,13 @@
     .article-wrapper .article-badge {
       margin: 10px 60px;
     }
+  }
+  .search--content {
+    &.open {
+      display: none;
+    }
+  }
+  .search--article-item {
+    margin: 10px 17px;
   }
 }

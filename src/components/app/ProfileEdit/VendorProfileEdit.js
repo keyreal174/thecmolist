@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router";
+import clsx from "clsx";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Separator from "../base/Separator/Separator";
@@ -13,6 +14,7 @@ const VendorType = ["Company", "Product", "Contractor"];
 
 const VendorProfileEdit = (props) => {
   const history = useHistory();
+
   const [companyName, setCompanyName] = useState("");
   const [companyLinkedin, setCompanyLinkedin] = useState("");
   const [companyWebsite, setCompanyWebsite] = useState("");
@@ -27,6 +29,7 @@ const VendorProfileEdit = (props) => {
   const [coverImageUploading, setCoverImageUploading] = useState(false);
   const [companyIndustry, setCompanyIndustry] = useState("");
   const [now, setNow] = useState(50);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [vendorType, setVendorType] = useState(VendorType[0]);
   // props to control profile image
   const inputFile = useRef(null);
@@ -160,10 +163,20 @@ const VendorProfileEdit = (props) => {
     setIsTypeaheadLoading(false);
   };
 
+  const handleToggle = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
     <Container className="profile height-100">
-      <Header />
-      <Form className="mb-5">
+      <Header onToggle={handleToggle} />
+      <Form
+        className={clsx(
+          "mb-5",
+          "vendor-profile--form",
+          mobileMenuOpen && "open"
+        )}
+      >
         <div className="card-box mt-2">
           <div className="profile--cover-wrapper">
             <img
@@ -247,7 +260,7 @@ const VendorProfileEdit = (props) => {
               <Separator className="card-separator" />
             </div>
             <Row className="profile--row mt-5">
-              <Col>
+              <Col md="12" sm="12">
                 <Form.Label>Vendor</Form.Label>
                 <div className="vendor-profile-type-list">
                   {VendorType.map((vendor, index) => {
@@ -272,7 +285,7 @@ const VendorProfileEdit = (props) => {
             <Row className="profile--row">
               {vendorType === "Company" ? (
                 <>
-                  <Col>
+                  <Col md="6" sm="12">
                     <Form.Label>Company name</Form.Label>
                     <Form.Control
                       className="profile--input"
@@ -281,7 +294,7 @@ const VendorProfileEdit = (props) => {
                       onChange={(e) => setCompanyName(e.target.value)}
                     />
                   </Col>
-                  <Col>
+                  <Col md="6" sm="12">
                     <Form.Label>Company LinkedIn URL</Form.Label>
                     <Form.Control
                       className="profile--input"
@@ -293,7 +306,7 @@ const VendorProfileEdit = (props) => {
                 </>
               ) : vendorType === "Product" ? (
                 <>
-                  <Col>
+                  <Col md="6" sm="12">
                     <Form.Label>Product name</Form.Label>
                     <Form.Control
                       className="profile--input"
@@ -302,7 +315,7 @@ const VendorProfileEdit = (props) => {
                       onChange={(e) => setCompanyName(e.target.value)}
                     />
                   </Col>
-                  <Col>
+                  <Col md="6" sm="12">
                     <Form.Label>Company LinkedIn URL</Form.Label>
                     <Form.Control
                       className="profile--input"
@@ -314,7 +327,7 @@ const VendorProfileEdit = (props) => {
                 </>
               ) : (
                 <>
-                  <Col>
+                  <Col md="6" sm="12">
                     <Form.Label>Contractor name</Form.Label>
                     <Form.Control
                       className="profile--input"
@@ -323,7 +336,7 @@ const VendorProfileEdit = (props) => {
                       onChange={(e) => setCompanyName(e.target.value)}
                     />
                   </Col>
-                  <Col>
+                  <Col md="6" sm="12">
                     <Form.Label>Contractor LinkedIn URL</Form.Label>
                     <Form.Control
                       className="profile--input"
@@ -337,7 +350,7 @@ const VendorProfileEdit = (props) => {
             </Row>
             <Row className="profile--row">
               {vendorType === "Company" ? (
-                <Col>
+                <Col md="6" sm="12">
                   <Form.Label>Company Website</Form.Label>
                   <Form.Control
                     className="profile--input"
@@ -347,7 +360,7 @@ const VendorProfileEdit = (props) => {
                   />
                 </Col>
               ) : vendorType === "Product" ? (
-                <Col>
+                <Col md="6" sm="12">
                   <Form.Label>Product Website</Form.Label>
                   <Form.Control
                     className="profile--input"
@@ -357,7 +370,7 @@ const VendorProfileEdit = (props) => {
                   />
                 </Col>
               ) : (
-                <Col>
+                <Col md="6" sm="12">
                   <Form.Label>Contractor Website</Form.Label>
                   <Form.Control
                     className="profile--input"
@@ -367,7 +380,7 @@ const VendorProfileEdit = (props) => {
                   />
                 </Col>
               )}
-              <Col>
+              <Col md="6" sm="12">
                 <Form.Label>Twitter</Form.Label>
                 <Form.Control
                   className="profile--input"
@@ -378,7 +391,7 @@ const VendorProfileEdit = (props) => {
               </Col>
             </Row>
             <Row className="profile--row mb-5">
-              <Col>
+              <Col md="4" sm="12">
                 <Form.Label>City</Form.Label>
                 <Form.Control
                   className="profile--input"
@@ -387,7 +400,7 @@ const VendorProfileEdit = (props) => {
                   onChange={(e) => setCity(e.target.value)}
                 />
               </Col>
-              <Col>
+              <Col md="4" sm="12">
                 <Form.Label>State/Province</Form.Label>
                 <Form.Control
                   className="profile--input"
@@ -396,7 +409,7 @@ const VendorProfileEdit = (props) => {
                   onChange={(e) => setProvince(e.target.value)}
                 />
               </Col>
-              <Col>
+              <Col md="4" sm="12">
                 <Form.Label>Country</Form.Label>
                 <Form.Control
                   className="profile--input"
@@ -413,7 +426,7 @@ const VendorProfileEdit = (props) => {
               <Separator className="card-separator" />
             </div>
             <Row className="profile--row mt-5">
-              <Col>
+              <Col md="12" sm="12">
                 <Form.Label>Description (optional)</Form.Label>
                 <Form.Control
                   as="textarea"
@@ -426,7 +439,7 @@ const VendorProfileEdit = (props) => {
               </Col>
             </Row>
             <Row className="profile--row">
-              <Col>
+              <Col md="6" sm="12">
                 <Form.Label>Areas of marketing expertise</Form.Label>
                 <AsyncTypeahead
                   id="async-global-search"
@@ -462,7 +475,7 @@ const VendorProfileEdit = (props) => {
                   )}
                 />
               </Col>
-              <Col>
+              <Col md="6" sm="12">
                 <Form.Label>Company Industry</Form.Label>
                 <Form.Control
                   className="profile--input"
@@ -498,7 +511,9 @@ const VendorProfileEdit = (props) => {
           </div>
         </div>
       </Form>
-      <Footer />
+      <Footer
+        className={clsx("vendor-profile--footer", mobileMenuOpen && "open")}
+      />
     </Container>
   );
 };

@@ -26,3 +26,13 @@
     margin-top: 660px;
   }
 }
+
+@media (max-width: 768px) {
+  .signedup--form {
+    margin-top: 200px;
+    border-radius: 20px;
+  }
+  .signedup--logo {
+    margin: 20px 0;
+  }
+}

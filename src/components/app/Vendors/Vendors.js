@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import { connect } from "react-redux";
 import { Col, Row, Container } from "react-bootstrap";
+import clsx from "clsx";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Filter from "../base/Filter/Filter";
@@ -15,6 +16,7 @@ import { cdn } from "../../util/constants";
 import "./vendors.scss";
 
 const Vendors = (props) => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
   const fetchData = async () => await props.fetchActiveVendors();
   const [filterIdx, setFilterIdx] = useState(0);
@@ -88,13 +90,22 @@ const Vendors = (props) => {
   const [showInviteModal, setShowInviteModal] = useState(false);
   const handleInviteModalClick = () => setShowInviteModal(true);
   const handleInviteModalClose = () => setShowInviteModal(false);
+
+  const handleToggle = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
     <>
       <Container className="height-100">
         <div className="wrapper">
-          <Header />
+          <Header onToggle={handleToggle} />
           <SimpleTopBanner
             // disable for now... buttonText="Invite"
+            className={clsx(
+              "vendors--simple-top-banner",
+              mobileMenuOpen && "open"
+            )}
             onClick={handleInviteModalClick}
             title={bannerTitle}
             subtitle={"Vendors"}
@@ -116,7 +127,9 @@ const Vendors = (props) => {
             onSubmit={props.inviteNewMember}
             show={showInviteModal}
           />
-          <div className="mb-4">
+          <div
+            className={clsx("vendors--filters mb-4", mobileMenuOpen && "open")}
+          >
             <Filter
               className="mt-1 network--filter"
               filterIdx={filterIdx}
@@ -127,7 +140,7 @@ const Vendors = (props) => {
           <Row>
             {props.activeFeedSubFilters &&
               props.activeFeedSubFilters.length > 0 && (
-                <Col md="4">
+                <Col className="vendors--popular-topics" md="4">
                   <PopularTopics
                     onSubfilterChange={(f) => {
                       props.changeSubFilter(f.slug || f.title);
@@ -137,6 +150,7 @@ const Vendors = (props) => {
                 </Col>
               )}
             <Col
+              className={clsx("vendors--feed", mobileMenuOpen && "open")}
               md={
                 props.activeFeedSubFilters &&
                 props.activeFeedSubFilters.length > 0
@@ -158,7 +172,9 @@ const Vendors = (props) => {
             </Col>
           </Row>
 
-          <Footer />
+          <Footer
+            className={clsx("vendors--footer", mobileMenuOpen && "open")}
+          />
         </div>
       </Container>
     </>

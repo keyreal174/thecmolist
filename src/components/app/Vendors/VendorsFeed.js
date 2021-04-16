@@ -1,5 +1,6 @@
 import React from "react";
 import Article from "../base/Article/Article";
+import clsx from "clsx";
 import "./vendors.scss";
 
 const VendorsFeed = ({ feedData, moreData, fetchData }) => {
@@ -14,9 +15,11 @@ const VendorsFeed = ({ feedData, moreData, fetchData }) => {
             return (
               <Article
                 key={idx}
-                className={
-                  idx !== 0 ? "mt-1 network-list-item" : "network-list-item"
-                }
+                className={clsx(
+                  idx && "mt-1",
+                  "network-list-item",
+                  "vendors--feed-item"
+                )}
                 {...feed}
               />
             );
