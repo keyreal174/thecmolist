@@ -404,4 +404,11 @@
   .feed-right-container {
     max-width: unset;
   }
+  .feed--profile-stats {
+    max-width: 300px;
+  }
+  .feed-divider {
+    max-width: calc(300px + 75%);
+    margin-right: 15px;
+  }
 }
