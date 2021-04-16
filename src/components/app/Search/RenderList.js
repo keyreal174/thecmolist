@@ -5,6 +5,10 @@ import {
   getCheckedForEngagementType,
   getEngagementForId,
 } from "../base/EngagementButtons/EngagementButtons";
+import InsightfulIcon from "../base/icons/insightful.svg";
+import InsightfulCheckedIcon from "../base/icons/insightful_checked.svg";
+import ThanksIcon from "../base/icons/thanks.svg";
+import ThanksCheckedIcon from "../base/icons/thanks_checked.svg";
 import Article from "../base/Article/Article";
 import Entities from "../base/Entities/Entities";
 import { useHistory } from "react-router";
@@ -87,9 +91,10 @@ const RenderList = ({
                       "thanks",
                       reactions
                     ),
-                    text: "Thanks",
+                    text: "Like",
                     type: "Reaction",
-                    icon: `${cdn}/Thanks.png`,
+                    icon: ThanksIcon,
+                    iconChecked: ThanksCheckedIcon,
                     number: getEngagementForId(contentId, "thanks", reactions),
                   },
                   {
@@ -100,7 +105,8 @@ const RenderList = ({
                     ),
                     text: "Insightful",
                     type: "Reaction",
-                    icon: `${cdn}/Insightful.png`,
+                    icon: InsightfulIcon,
+                    iconChecked: InsightfulCheckedIcon,
                     number: getEngagementForId(
                       contentId,
                       "insightful",

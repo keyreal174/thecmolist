@@ -501,7 +501,7 @@ const VendorProfile = (props) => {
                               "thanks",
                               reactions
                             ),
-                            text: "Thanks",
+                            text: "Like",
                             type: "Reaction",
                             icon: ThanksIcon,
                             iconChecked: ThanksCheckedIcon,

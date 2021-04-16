@@ -131,8 +131,13 @@ export default {
     async changeReaction(data) {
       try {
         const { id, engagement } = data;
-        await setReaction(id, engagement);
-        dispatch.reactionModel.setReaction({ id, type: engagement });
+        let engagementName = engagement;
+        if (engagementName === "like") {
+          // map 'like' engagement to thanks
+          engagementName = "thanks";
+        }
+        await setReaction(id, engagementName);
+        dispatch.reactionModel.setReaction({ id, type: engagementName });
       } catch (err) {
         throw new Error("Could not change reaction: " + err.toString());
       }

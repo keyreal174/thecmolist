@@ -12,8 +12,6 @@ import DiscussionComment from "../base/DiscussionComment/DiscussionComment";
 import AnswerIcon from "../base/icons/answer.svg";
 import InsightfulIcon from "../base/icons/insightful.svg";
 import InsightfulCheckedIcon from "../base/icons/insightful_checked.svg";
-import PassIcon from "../base/icons/pass.svg";
-import PassCheckedIcon from "../base/icons/pass_checked.svg";
 import ThanksIcon from "../base/icons/thanks.svg";
 import ThanksCheckedIcon from "../base/icons/thanks_checked.svg";
 import { cdn } from "../../util/constants";
@@ -105,7 +103,7 @@ const ContentDetail = ({
                 "thanks",
                 reactions
               ),
-              text: "Thanks",
+              text: "Like",
               type: "Reaction",
               icon: ThanksIcon,
               iconChecked: ThanksCheckedIcon,
@@ -171,7 +169,7 @@ const ContentDetail = ({
                         "thanks",
                         reactions
                       ),
-                      text: "Thanks",
+                      text: "Like",
                       type: "Reaction",
                       icon: ThanksIcon,
                       iconChecked: ThanksCheckedIcon,
