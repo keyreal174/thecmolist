@@ -125,6 +125,9 @@ const RenderList = ({
               }
             >
               {item.parent_content && <Article {...item.parent_content} />}
+              {item.entities?.length > 0 && (
+                <Entities entities={item.entities} />
+              )}
             </Article>
           );
         })}

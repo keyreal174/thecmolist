@@ -535,6 +535,9 @@ const VendorProfile = (props) => {
                         {feed.parent_content && (
                           <Article {...feed.parent_content} />
                         )}
+                        {feed.entities?.length > 0 && (
+                          <Entities entities={feed.entities} />
+                        )}
                       </Article>
                     </FadeTransition>
                   );
