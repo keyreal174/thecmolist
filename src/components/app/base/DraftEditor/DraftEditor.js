@@ -50,6 +50,44 @@ const ensureLink = (link) => {
   }
 };
 
+function Entry(props) {
+  const { mention, theme, searchValue, isFocused, ...parentProps } = props;
+
+  return (
+    <div {...parentProps}>
+      <div className={clsx(theme?.mentionSuggestionsEntryContainer, "d-flex")}>
+        {mention.avatar && (
+          <div
+            className={clsx(
+              theme?.mentionSuggestionsEntryContainerLeft,
+              "d-flex align-items-center"
+            )}
+          >
+            <img
+              src={mention.avatar}
+              className={theme?.mentionSuggestionsEntryAvatar}
+              role="presentation"
+            />
+          </div>
+        )}
+
+        <div
+          className={clsx(
+            theme?.mentionSuggestionsEntryContainerRight,
+            "d-flex align-items-center"
+          )}
+        >
+          <div className={theme?.mentionSuggestionsEntryText}>
+            {mention.name.startsWith("@")
+              ? mention.name.slice(1)
+              : mention.name}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const DraftEditor = ({
   getSuggestions,
   getTopicSuggestions,
@@ -72,6 +110,7 @@ const DraftEditor = ({
   const [mention, setMention] = useState(null);
   const [isSharp, setIsSharp] = useState(false);
   const [defaultName, setDefaultName] = useState("");
+  const [lastTrigger, setLastTrigger] = useState("");
 
   useEffect(() => {
     if (editorState.getCurrentContent().hasText()) {
@@ -105,6 +144,7 @@ const DraftEditor = ({
         setSuggestions(response);
       });
     }
+    setLastTrigger(trigger);
   }, []);
 
   const onChange = (editor_state) => {
@@ -251,7 +291,11 @@ const DraftEditor = ({
       let mentionReplacedContent = Modifier.replaceText(
         editorState.getCurrentContent(),
         mentionTextSelection,
-        mention ? mention.name : "",
+        mention
+          ? lastTrigger === "@"
+            ? "@" + mention.name
+            : mention.name
+          : "",
         undefined, // no inline style needed
         entityKey
       );
@@ -426,6 +470,7 @@ const DraftEditor = ({
                 setShow(isPerson ? "Person" : "Vendor");
               }
             }}
+            entryComponent={Entry}
           />
         </div>
       </div>
