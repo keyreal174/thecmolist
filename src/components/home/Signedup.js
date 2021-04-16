@@ -1,5 +1,6 @@
 import React from "react";
 import Footer from "../app/base/Footer/Footer";
+import Logo from "../app/base/Header/svgs/logo.svg";
 import "./signedup.scss";
 
 function Signedup() {
@@ -9,7 +10,7 @@ function Signedup() {
         <div className="col-md-3"></div>
         <div className="col-md-6">
           <a className="nav__logo signedup--logo" href="/">
-            CMO<span>list</span>
+            <img src={Logo} alt="CMOList brand logo" />
           </a>
           <div className="form-group signedup--form">
             <h2 className="signedup--thanks">Thank you for signing up</h2>
