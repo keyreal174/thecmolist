@@ -9,6 +9,7 @@ import clsx from "clsx";
 import Header from "../base/Header/Header";
 import Filter from "../base/Filter/Filter";
 import Article from "../base/Article/Article";
+import Entities from "../base/Entities/Entities";
 import Footer from "../base/Footer/Footer";
 import Util from "../../util/Util";
 import {

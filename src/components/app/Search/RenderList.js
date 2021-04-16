@@ -6,6 +6,7 @@ import {
   getEngagementForId,
 } from "../base/EngagementButtons/EngagementButtons";
 import Article from "../base/Article/Article";
+import Entities from "../base/Entities/Entities";
 import { useHistory } from "react-router";
 import { cdn } from "../../util/constants";
 import Badge from "../base/Badge/Badge";

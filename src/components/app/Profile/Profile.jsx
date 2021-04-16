@@ -9,6 +9,7 @@ import CustomCard from "../base/CustomCard/CustomCard";
 import Header from "../base/Header/Header";
 import Filter from "../base/Filter/Filter";
 import Article from "../base/Article/Article";
+import Entities from "../base/Entities/Entities";
 import Footer from "../base/Footer/Footer";
 import PopularTopics from "../base/PopularTopics/PopularTopics";
 import {
