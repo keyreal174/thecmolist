@@ -76,7 +76,7 @@ const RenderList = ({
                 isContent && [
                   {
                     checked: true,
-                    text: item.replyText || "Answer",
+                    text: item.replyText || "Reply",
                     type: "Answer",
                     icon: `${cdn}/Answer.png`,
                     number: getEngagementForId(contentId, "answer", reactions),

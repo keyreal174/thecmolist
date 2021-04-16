@@ -533,7 +533,7 @@ const Profile = (props) => {
                         engagementButtons={[
                           {
                             checked: true,
-                            text: feed.replyText || "Answer",
+                            text: feed.replyText || "Reply",
                             type: "Answer",
                             icon: AnswerIcon,
                             number:

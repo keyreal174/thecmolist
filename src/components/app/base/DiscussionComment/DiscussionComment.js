@@ -26,6 +26,7 @@ const DiscussionComment = ({
   const [reStateToggle, setReStateToggle] = useState(false);
   const [isPersonVendor, setIsPersonVendor] = useState(false);
   const textAreaEl = useRef(null);
+  const richeditorEl = useRef(null);
 
   const handleButtonClick = (e) => {
     let text = comment;
@@ -41,11 +42,20 @@ const DiscussionComment = ({
   };
 
   useEffect(() => {
-    if (focusComment && !useRichEditor) {
-      textAreaEl.current.focus();
-      window.scrollTo(0, 0);
+    if (focusComment) {
+      if (!useRichEditor) {
+        textAreaEl.current.focus();
+        window.scrollTo(0, 0);
+      } else {
+        richeditorEl.current && richeditorEl.current.focus();
+        window.scrollTo(0, 0);
+      }
     }
   }, []);
+
+  useEffect(() => {
+    richeditorEl.current && richeditorEl.current.focus();
+  }, [focusComment]);
 
   const handleChange = () => {
     setShow(!!body);
@@ -96,6 +106,7 @@ const DiscussionComment = ({
             setBody={setBody}
             setIsPersonVendor={() => setIsPersonVendor(false)}
             toolbar={true}
+            ref={richeditorEl}
             stateToggle={reStateToggle}
           />
           <div className="comment--buttons">
@@ -138,7 +149,7 @@ const DiscussionComment = ({
           onClick={handleButtonClick}
           variant="primary"
         >
-          Post
+          Reply
         </Button>
       }
     </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Article from "../base/Article/Article";
 import CustomCard from "../base/CustomCard/CustomCard";
 import clsx from "clsx";
@@ -28,6 +28,7 @@ const ContentDetail = ({
   saveReactionToCallerType,
   setError,
 }) => {
+  const [focusCommentToggle, setFocusCommentToggle] = useState(true);
   const focusError = () => {
     const errorSection = document.getElementById("error-section");
     window.scrollTo(0, 0);
@@ -37,6 +38,10 @@ const ContentDetail = ({
     try {
       setError("");
       await saveCommentToContent(comment);
+      window.setTimeout(
+        () => window.scrollTo(0, document.body.scrollHeight),
+        100
+      );
     } catch (error) {
       setError(error.message);
       focusError();
@@ -60,13 +65,16 @@ const ContentDetail = ({
   ) => {
     const id = caller["content_id"];
     const engagement = engagementText.toLowerCase();
-
-    try {
-      setError("");
-      await saveReactionToCallerType({ id, engagement });
-    } catch (error) {
-      setError(error.message);
-      focusError();
+    if (engagementType === "Answer") {
+      setFocusCommentToggle(!focusCommentToggle);
+    } else {
+      try {
+        setError("");
+        await saveReactionToCallerType({ id, engagement });
+      } catch (error) {
+        setError(error.message);
+        focusError();
+      }
     }
   };
 
@@ -82,12 +90,11 @@ const ContentDetail = ({
         md="8"
       >
         <Article
-          articletextlines={1}
           {...content.content}
           engagementButtons={[
             {
               checked: true,
-              text: content.replyText || "Answer",
+              text: content.replyText || "Reply",
               type: "Answer",
               icon: AnswerIcon,
               number: numberOfReplies,
@@ -117,7 +124,7 @@ const ContentDetail = ({
               number: getEngagementForId(contentId, "insightful", reactions),
             },
           ]}
-          focusComment={true}
+          focusComment={focusCommentToggle}
           onEngagementButtonClick={handleEngagementButtonClick.bind(
             this,
             content
@@ -146,7 +153,6 @@ const ContentDetail = ({
 
               return (
                 <Article
-                  articletextlines={2}
                   {...reply.content}
                   className="question-answers--item"
                   key={index}

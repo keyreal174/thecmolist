@@ -1,38 +1,56 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import OnboardingLayout from "./OnboardingLayout";
 import { connect } from "react-redux";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useHistory } from "react-router";
 import "./onboardingStep1.scss";
 
-const OnboardingStep1 = ({ submitOnboardingStep1 }) => {
+const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
   const history = useHistory();
   const handleSubmit = (e) => {
     setLoading(true);
     const formData = {
       title,
       companyName,
-      companyIndustry,
-      companyStage,
       headline,
       networking: networkingYes ? true : false,
-      adviding: advidingYes ? true : false,
+      advising: advisingYes ? true : false,
     };
     submitOnboardingStep1(formData);
-    history.push("onboarding_step2");
+    history.push("onboarding_step2" + window.location.search);
     setLoading(false);
   };
 
   const [loading, setLoading] = useState(false);
+  const [firstname, setFirstname] = useState("");
   const [title, setTitle] = useState("");
   const [companyName, setCompanyName] = useState("");
-  const [companyIndustry, setCompanyIndustry] = useState("");
-  const [companyStage, setCompanyStage] = useState("");
   const [headline, setHeadline] = useState("");
   const [networkingYes, setNetworkingYes] = useState("");
   const [networkingNo, setNetworkingNo] = useState("");
-  const [advidingYes, setAdvidingYes] = useState("");
-  const [advidingNo, setAdvidingNo] = useState("");
+  const [advisingYes, setAdvisingYes] = useState("");
+  const [advisingNo, setAdvisingNo] = useState("");
+
+  useEffect(() => {
+    fetchProfile({
+      userName: "",
+    });
+  }, []);
+
+  useEffect(() => {
+    if (profile) {
+      setFirstname(profile.firstName);
+      setTitle(profile.title);
+      setCompanyName(profile.company);
+      setHeadline(profile.about ? profile.about.description : "");
+      let networking = profile.about ? profile.about.networking : true;
+      setNetworkingYes(networking);
+      setNetworkingNo(!networking);
+      let advising = profile.about ? profile.about.advising : true;
+      setAdvisingYes(advising);
+      setAdvisingNo(!advising);
+    }
+  }, [profile]);
 
   const handleTitleChange = (e) => {
     const { value } = e.target;
@@ -41,14 +59,6 @@ const OnboardingStep1 = ({ submitOnboardingStep1 }) => {
   const handleCompanyNameChange = (e) => {
     const { value } = e.target;
     setCompanyName(value);
-  };
-  const handleCompanyIndustryChange = (e) => {
-    const { value } = e.target;
-    setCompanyIndustry(value);
-  };
-  const handleCompanyStageChange = (e) => {
-    const { value } = e.target;
-    setCompanyStage(value);
   };
   const handleHeadlineChange = (e) => {
     const { value } = e.target;
@@ -62,20 +72,24 @@ const OnboardingStep1 = ({ submitOnboardingStep1 }) => {
     setNetworkingYes(false);
     setNetworkingNo(true);
   };
-  const handleAdvidingYesChange = () => {
-    setAdvidingYes(true);
-    setAdvidingNo(false);
+  const handleAdvisingYesChange = () => {
+    setAdvisingYes(true);
+    setAdvisingNo(false);
   };
-  const handleAdvidingNoChange = () => {
-    setAdvidingYes(false);
-    setAdvidingNo(true);
+  const handleAdvisingNoChange = () => {
+    setAdvisingYes(false);
+    setAdvisingNo(true);
   };
 
   return (
     <OnboardingLayout
       now={50}
       title={
-        "First set up your profile to help you discover and connect with your marketing peers"
+        <span
+          style={{ textAlign: "left", display: "block", paddingLeft: "40px" }}
+        >
+          Welcome {firstname}! Please review and update your member profile
+        </span>
       }
     >
       <>
@@ -110,32 +124,8 @@ const OnboardingStep1 = ({ submitOnboardingStep1 }) => {
             </Col>
           </Row>
           <Row>
-            <Col md="6">
-              <Form.Label>Company industry</Form.Label>
-              <Form.Control
-                className="onboarding--input"
-                type="text"
-                required
-                name="companyIndustry"
-                onChange={handleCompanyIndustryChange}
-                value={companyIndustry}
-              />
-            </Col>
-            <Col md="6">
-              <Form.Label>Company Stage</Form.Label>
-              <Form.Control
-                className="onboarding--input"
-                type="text"
-                required
-                name="companyStage"
-                onChange={handleCompanyStageChange}
-                value={companyStage}
-              />
-            </Col>
-          </Row>
-          <Row>
             <Col md="12">
-              <Form.Label>Headline(optional)</Form.Label>
+              <Form.Label>Bio (optional)</Form.Label>
               <Form.Control
                 as="textarea"
                 className="onboarding--text-area"
@@ -172,25 +162,25 @@ const OnboardingStep1 = ({ submitOnboardingStep1 }) => {
               </div>
             </Col>
             <Col>
-              <Form.Label>Open to adviding</Form.Label>
+              <Form.Label>Open to advising</Form.Label>
               <div className="d-flex">
                 <Form.Check
                   className="onboarding--radio"
                   type="radio"
                   label="Yes"
                   required
-                  name="adviding"
-                  onChange={handleAdvidingYesChange}
-                  checked={advidingYes}
+                  name="advising"
+                  onChange={handleAdvisingYesChange}
+                  checked={advisingYes}
                 />
                 <Form.Check
                   className="onboarding--radio"
                   type="radio"
                   label="No"
                   required
-                  name="adviding"
-                  onChange={handleAdvidingNoChange}
-                  checked={advidingNo}
+                  name="advising"
+                  onChange={handleAdvisingNoChange}
+                  checked={advisingNo}
                 />
               </div>
             </Col>
@@ -213,11 +203,14 @@ const OnboardingStep1 = ({ submitOnboardingStep1 }) => {
   );
 };
 
-const mapState = () => ({});
+const mapState = (state) => ({
+  profile: state.profileModel.profile,
+});
 
 const mapDispatch = (dispatch) => {
   return {
-    submitOnboardingStep1: dispatch.onboarding.submitOnboardingStep1,
+    fetchProfile: dispatch.profileModel.fetchProfile,
+    submitOnboardingStep1: dispatch.onboardingModel.submitOnboardingStep1,
   };
 };
 
