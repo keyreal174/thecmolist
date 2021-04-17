@@ -91,7 +91,11 @@ class Login extends React.Component {
 
   render() {
     let isMobile = Util.isMobile();
-    if (isMobile) {
+    let isStaging =
+      window.location &&
+      window.location.hostname &&
+      window.location.hostname.includes("-staging");
+    if (isMobile && !isStaging) {
       return (
         <div className="container">
           <div className="mt100">
