@@ -7,7 +7,7 @@ import axios from "axios";
 import Spinner from "react-spinner-material";
 import Util from "../util/Util";
 import querySearch from "stringquery";
-import { scriptURL, privacyPolicy } from "../util/constants";
+import { cdn, scriptURL, privacyPolicy } from "../util/constants";
 
 import marketIcon from "./svg/market.svg";
 import trustedIcon from "./svg/trusted.svg";
@@ -27,6 +27,15 @@ const loginRequest = (user, password) => {
 const linkedinAuthUrl = (from) => {
   return axios.get("/api/lnkd_auth_url?redirect=" + from);
 };
+
+const marketingLeaders = [
+  { img: `${cdn}/Adobe.png` },
+  { img: `${cdn}/Intuit.png` },
+  { img: `${cdn}/walmart.png` },
+  { img: `${cdn}/Microsoft.png` },
+  { img: `${cdn}/Uber.png` },
+  { img: `${cdn}/LinkedIn.png` },
+];
 
 function Homepage() {
   let location = useLocation();
@@ -272,7 +281,7 @@ function Homepage() {
         </Col>
       </Row>
       <Row>
-        <Col md="12" sm="12">
+        <Col className="px-0" md="12" sm="12">
           <div className="home--leaders-section">
             <div className="home--leaders-section-title">
               Developed in close collaboration with marketing executives from
@@ -283,9 +292,9 @@ function Homepage() {
               md="12"
               className="home--leaders-section-items-wrapper"
             >
-              {[...Array(6)].map((_, index) => (
+              {marketingLeaders.map(({ img }, index) => (
                 <Col md="2" sm="6" className="home--leaders-section-item">
-                  <img alt={`item ${index}`} src={marketIcon} />
+                  <img alt={`item ${index}`} src={img} />
                 </Col>
               ))}
             </Row>
