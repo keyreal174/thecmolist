@@ -9,6 +9,7 @@ import Util from "../util/Util";
 import querySearch from "stringquery";
 import { cdn, scriptURL, privacyPolicy } from "../util/constants";
 
+import Logo from "../app/base/Header/svgs/logo.svg";
 import marketIcon from "./svg/market.svg";
 import trustedIcon from "./svg/trusted.svg";
 import knowledgeIcon from "./svg/knowledge.svg";
@@ -113,7 +114,7 @@ function Homepage() {
       <Row className="home--header">
         <div className="ml-5">
           <a className="nav__logo" href="/">
-            CMO<span>list</span>
+            <img src={Logo} alt="CMOList logo"></img>
           </a>
         </div>
       </Row>
