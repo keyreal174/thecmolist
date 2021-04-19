@@ -130,8 +130,10 @@ const DraftEditor = ({
   }, []);
 
   const onOpenChange = useCallback((_open) => {
+    _open ? removeBinding() : applyBinding();
     setOpen(_open);
   }, []);
+
   const onSearchChange = useCallback(({ trigger, value }) => {
     if (trigger === "@") {
       setIsSharp(true);
@@ -402,6 +404,18 @@ const DraftEditor = ({
     return "not-handled";
   };
 
+  const [stateKeyBinding, setStateKeyBinding] = useState(() => (event) =>
+    keyBindingFn(event)
+  );
+
+  const removeBinding = () => {
+    setStateKeyBinding(undefined);
+  };
+
+  const applyBinding = () => {
+    setStateKeyBinding(() => (event) => keyBindingFn(event));
+  };
+
   useEffect(() => {
     if (!show) {
       handleAddPeople(mention);
@@ -437,7 +451,7 @@ const DraftEditor = ({
             plugins={plugins}
             ref={ref}
             handleKeyCommand={handleKeyCommand}
-            keyBindingFn={keyBindingFn}
+            keyBindingFn={stateKeyBinding}
           />
           {toolbar && (
             <div className="editor-toolbar">
