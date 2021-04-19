@@ -217,22 +217,20 @@ const ContentDetail = ({
                 </Article>
               );
             })}
-          {/* Disable due to following bug: https://github.com/draft-js-plugins/draft-js-plugins/issues/1244*/}
-          {/* {content && content.replies && content.replies.length > 0 && (
+          {/* NOTE: There is a bug with Draft JS and multiple controls: https://github.com/draft-js-plugins/draft-js-plugins/issues/1244*/}
+          {content && content.replies && content.replies.length > 0 && (
             <div className="question-your-answer">
               <div className="question-your-answer-text">Your reply</div>
               <DiscussionComment
                 profile={profileStats.profile}
                 placeholder={
-                  author && author.length > 0
-                    ? `Reply to ${author}`
-                    : "Reply"
+                  author && author.length > 0 ? `Reply to ${author}` : "Reply"
                 }
                 onSubmit={handleSubmit}
                 useRichEditor={true}
               />
             </div>
-          )} */}
+          )}
         </div>
       </Col>
       {content.related_questions && (
