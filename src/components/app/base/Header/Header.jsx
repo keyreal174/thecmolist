@@ -140,6 +140,15 @@ function Header({
 
     fetch();
   }, []);
+  useEffect(() => {
+    const profile = profileStats && profileStats.profile;
+    if (profile) {
+      if ("onboarded" in profile && !profile.onboarded) {
+        window.location.href =
+          "/onboarding_step1?r=" + window.btoa(window.location.pathname);
+      }
+    }
+  }, [profileStats]);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState([]);

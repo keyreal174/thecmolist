@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Button, Container, Row, Col, Form } from "react-bootstrap";
 import Footer from "../app/base/Footer/Footer";
 import LinkedIn from "../login/icons/linkedin.svg";
@@ -23,11 +24,17 @@ const loginRequest = (user, password) => {
   return axios.post("/api/login", postBody);
 };
 
-const linkedinAuthUrl = () => {
-  return axios.get("/api/lnkd_auth_url");
+const linkedinAuthUrl = (from) => {
+  return axios.get("/api/lnkd_auth_url?redirect=" + from);
 };
 
 function Homepage() {
+  let location = useLocation();
+  let locationFrom =
+    location && location.state && location.state.from
+      ? location.state.from.pathname
+      : null;
+  let from = locationFrom ? locationFrom : "/";
   const [loading, setLoading] = useState(false);
   const [linkedInUrl, setLinkedInUrl] = useState("");
 
@@ -86,7 +93,7 @@ function Homepage() {
 
   useEffect(() => {
     const fetchLinkedInUrl = async () => {
-      const { data } = await linkedinAuthUrl();
+      const { data } = await linkedinAuthUrl(from);
       setLinkedInUrl(data.url);
     };
     fetchLinkedInUrl();

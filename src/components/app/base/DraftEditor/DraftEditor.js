@@ -1,6 +1,8 @@
 import React, {
   ReactElement,
+  forwardRef,
   useCallback,
+  useImperativeHandle,
   useMemo,
   useRef,
   useState,
@@ -205,27 +207,27 @@ const DraftEditor = ({
             default:
               entityUrl = "";
           }
+
+          return {
+            getType: () => "LINK",
+            getData: () => ({
+              url: entityUrl,
+            }),
+          };
         }
-
-        return {
-          getType: () => "LINK",
-          getData: () => ({
-            url: entityUrl,
-          }),
-        };
+        return entity;
       }
-      return entity;
+      const content = stateToMarkdown(contentStateDerived);
+
+      if (handleChange) {
+        handleChange(content);
+      }
+
+      setBody({
+        markdown: content,
+        entityMap: entityMap,
+      });
     };
-    const content = stateToMarkdown(contentStateDerived);
-
-    if (handleChange) {
-      handleChange(content);
-    }
-
-    setBody({
-      markdown: content,
-      entityMap: entityMap,
-    });
   };
 
   const getSearchTextAt = (blockText, position, triggers) => {
@@ -293,11 +295,7 @@ const DraftEditor = ({
       let mentionReplacedContent = Modifier.replaceText(
         editorState.getCurrentContent(),
         mentionTextSelection,
-        mention
-          ? lastTrigger === "@"
-            ? "@" + mention.name
-            : mention.name
-          : "",
+        mention ? mention.name : "",
         undefined, // no inline style needed
         entityKey
       );
@@ -333,7 +331,7 @@ const DraftEditor = ({
   };
 
   const handlePeopleVendor = () => {
-    ref.current.focus();
+    ref.current && ref.current.focus();
 
     const contentStateWithEntity = editorState.getCurrentContent();
     const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
@@ -348,7 +346,7 @@ const DraftEditor = ({
     let mentionReplacedContent = Modifier.replaceText(
       editorState.getCurrentContent(),
       mentionTextSelection,
-      "@",
+      mention ? (lastTrigger === "@" ? "@" + mention.name : mention.name) : "",
       undefined, // no inline style needed
       undefined
     );

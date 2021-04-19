@@ -1,5 +1,22 @@
 @import "../../../sass/globals.scss";
 
+.list-transition-enter {
+  opacity: 0;
+  transform: translateY(-50px);
+}
+.list-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0px);
+  transition: all 400ms;
+}
+.list-transition-exit {
+  opacity: 1;
+}
+.list-transition-exit-active {
+  opacity: 0;
+  transition: opacity 400ms;
+}
+
 .onboarding {
   &--card {
     padding: 0;
@@ -24,6 +41,17 @@
     }
     &-wrapper {
       padding: 40px 50px;
+    }
+    &-head {
+      padding: 40px 50px;
+      padding-bottom: 0px;
+    }
+    &-mid {
+      padding-left: 50px;
+      padding-right: 50px;
+    }
+    &-check {
+      float: left;
     }
   }
   &--show-more {
