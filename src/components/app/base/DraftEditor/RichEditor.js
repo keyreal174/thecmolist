@@ -12,6 +12,7 @@ const RichEditor = React.forwardRef(
       setBody,
       setIsPersonVendor,
       toolbar,
+      placeholder,
       ...rest
     },
     ref
@@ -28,6 +29,7 @@ const RichEditor = React.forwardRef(
             setIsPersonVendor={() => setIsPersonVendor(false)}
             toolbar={toolbar}
             ref={ref}
+            placeholder={placeholder}
             {...rest}
           />
         </Suspense>

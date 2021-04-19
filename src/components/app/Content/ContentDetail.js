@@ -133,9 +133,7 @@ const ContentDetail = ({
           profile={profileStats.profile}
           useRichEditor={true}
           discussionCommentPlaceholder={
-            author && author.length > 0
-              ? `Answer ${author}'s question...`
-              : "Answer this question..."
+            author && author.length > 0 ? `Reply to ${author}` : "Reply"
           }
           handleDiscussionCommentSubmit={handleSubmit}
         />
@@ -222,13 +220,13 @@ const ContentDetail = ({
           {/* Disable due to following bug: https://github.com/draft-js-plugins/draft-js-plugins/issues/1244*/}
           {/* {content && content.replies && content.replies.length > 0 && (
             <div className="question-your-answer">
-              <div className="question-your-answer-text">Your answer</div>
+              <div className="question-your-answer-text">Your reply</div>
               <DiscussionComment
                 profile={profileStats.profile}
                 placeholder={
                   author && author.length > 0
-                    ? `Answer ${author}'s question...`
-                    : "Answer this question..."
+                    ? `Reply to ${author}`
+                    : "Reply"
                 }
                 onSubmit={handleSubmit}
                 useRichEditor={true}

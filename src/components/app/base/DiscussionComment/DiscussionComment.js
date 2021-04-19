@@ -104,6 +104,7 @@ const DiscussionComment = ({
             handleChange={handleChange}
             isPersonVendor={isPersonVendor}
             setBody={setBody}
+            placeholder={placeholder ? placeholder : ""}
             setIsPersonVendor={() => setIsPersonVendor(false)}
             toolbar={true}
             ref={richeditorEl}

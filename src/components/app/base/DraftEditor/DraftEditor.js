@@ -63,6 +63,7 @@ const DraftEditor = forwardRef(
       toolbar,
       handleChange,
       stateToggle,
+      placeholder,
       ...rest
     },
     ref
@@ -402,6 +403,7 @@ const DraftEditor = forwardRef(
               onChange={onChange}
               plugins={plugins}
               ref={editorRef}
+              placeholder={placeholder || ""}
               handleKeyCommand={handleKeyCommand}
               keyBindingFn={keyBindingFn}
             />
