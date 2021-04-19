@@ -453,3 +453,16 @@
     display: none;
   }
 }
+
+@media (max-width: 425px) {
+  .header-search {
+    margin-top: 50px;
+  }
+  .navbar-dropdown--wrapper {
+    .navbar-dropdown {
+      bottom: -34px;
+      right: unset;
+      left: 30px;
+    }
+  }
+}

@@ -55,6 +55,7 @@
     & > div {
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
 
       .form-check {
         font-size: 16px;
