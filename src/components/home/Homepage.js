@@ -132,8 +132,9 @@ function Homepage() {
         <Col md="2" sm="0"></Col>
         <Col md="8" sm="12">
           <div className="home--subtitle">
-            CMOlist enables marketing leaders to learn from each other by
-            sharing critical insights, best practices, and proven vendors.
+            CMOlist is a private knowledge network that helps marketing leaders
+            learn from each other by sharing critical insights, best practices,
+            and proven vendors.
           </div>
         </Col>
         <Col md="2" sm="0"></Col>
