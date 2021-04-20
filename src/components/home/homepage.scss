@@ -112,7 +112,6 @@
     &-green-text {
       color: $success;
       font-size: 12px;
-      font-style: italic;
       font-weight: 400;
       line-height: 16px;
       margin-bottom: 6px;
@@ -131,6 +130,10 @@
     border-top-right-radius: 23px;
     padding: 60px;
     height: 604px;
+    .home--form-subtitle {
+      text-align: center;
+      padding: 0 80px;
+    }
   }
   &--form-linkedin {
     width: 250px;
@@ -271,7 +274,7 @@
       text-align: center;
     }
     &--form {
-      margin-top: 20px;
+      margin: 0 18px;
       padding-bottom: 0px;
       padding-top: 0;
     }
@@ -284,10 +287,8 @@
       margin-top: 20px;
       padding: 30px;
     }
-    &--form-left,
-    &--form-right,
     &--leaders-section {
-      margin: 20px;
+      margin: 20px !important;
     }
     &--form-linkedin {
       width: 250px;
@@ -314,12 +315,11 @@
       color: $text-1;
     }
     &--leaders-section {
-      padding: 0 10px;
+      padding: 0;
       min-height: unset;
 
       &-title {
         font-size: 20px;
-        margin-top: 27px;
       }
       &-item {
         padding: 25px 80px;
@@ -336,6 +336,7 @@
       &-items-wrapper {
         flex-direction: column;
         justify-content: space-between;
+        margin: 0;
       }
       &-item {
         margin: 20px auto;
