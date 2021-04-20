@@ -278,6 +278,9 @@
       padding-bottom: 0px;
       padding-top: 0;
     }
+    &--leaders {
+      margin: 0px;
+    }
     &--form-left {
       border-radius: 20px;
       padding: 30px;
@@ -287,8 +290,8 @@
       margin-top: 20px;
       padding: 30px;
     }
-    &--leaders-section {
-      margin: 20px !important;
+    &--leaders {
+      margin: 18px 18px 30px 18px;
     }
     &--form-linkedin {
       width: 250px;

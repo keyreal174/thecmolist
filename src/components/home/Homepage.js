@@ -282,7 +282,7 @@ function Homepage() {
           </Form>
         </Col>
       </Row>
-      <Row>
+      <Row className="home--leaders">
         <Col className="px-0" md="12" sm="12">
           <div className="home--leaders-section">
             <div className="home--leaders-section-title">
