@@ -122,8 +122,8 @@ function Homepage() {
         <Col md="1" sm="0"></Col>
         <Col md="10" sm="12">
           <div className="home--title">
-            Connect with your marketing peers to get the advice and resources
-            you need to succeed
+            CMOlist connects you with the advice and resources you need to
+            succeed
           </div>
         </Col>
         <Col md="1" sm="0"></Col>
@@ -329,7 +329,7 @@ function Homepage() {
                 />
                 <div className="home--share-item-title">Unlock knowledge</div>
                 <div className="home--share-item-subtitle">
-                  Turn emails, slacks, and wikis  into structured and searchable
+                  Turn emails, slacks, and wikis into structured and searchable
                   marketing knowledge
                 </div>
               </Col>

@@ -257,7 +257,11 @@
 @media (max-width: 768px) {
   .home {
     &--title {
-      margin: 128px 30px 10px 30px;
+      font-size: 27px;
+      font-weight: 700;
+      line-height: 36px;
+      margin: 95px 27px 10px 30px;
+      text-align: center;
     }
     &--subtitle {
       margin: 30px;
