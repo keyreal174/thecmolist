@@ -333,8 +333,12 @@
     }
     &--share {
       &-title {
-        padding: 0;
-        margin-top: 30px;
+        font-size: 21px;
+        font-weight: 700;
+        line-height: 30px;
+        margin-top: 0px;
+        padding: 0 29px;
+        text-align: center;
       }
       &-items-wrapper {
         flex-direction: column;
