@@ -13,7 +13,7 @@ const disconnectUserRequest = (user) => {
 };
 
 const saveUserInviteRequest = (data) => {
-  return axios.post("/api/userinvite", data);
+  return axios.post("/api/invite_user", data);
 };
 
 export default {
@@ -44,7 +44,12 @@ export default {
   },
   effects: (dispatch) => ({
     async saveInvite(data) {
-      await saveUserInviteRequest(data);
+      try {
+        await saveUserInviteRequest(data);
+      } catch (err) {
+        console.log(err);
+        throw new Error("Could not save user invite request");
+      }
     },
     async connectUser(data) {
       const userData = { user: data.user };

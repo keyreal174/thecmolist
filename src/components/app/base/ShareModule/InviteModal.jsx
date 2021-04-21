@@ -3,40 +3,20 @@ import { Button, Form, Modal, Row, Col } from "react-bootstrap";
 import "./sharemodule.css";
 
 function InviteModal(props) {
-  const [name1, setName1] = useState("");
-  const [email1, setEmail1] = useState("");
-  const [name2, setName2] = useState("");
-  const [email2, setEmail2] = useState("");
-  const [name3, setName3] = useState("");
-  const [email3, setEmail3] = useState("");
-  const [personalNote, setPersonalNote] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [linkedIn, setLinkedIn] = useState("");
 
   let closeDialog = () => {
-    let data = [];
-    if (name1.length > 0 && email1.length > 0) {
-      data.push({
-        name: name1,
-        email: email1,
-      });
-    }
-    if (name2.length > 0 && email2.length > 0) {
-      data.push({
-        name: name2,
-        email: email2,
-      });
-    }
-    if (name3.length > 0 && email3.length > 0) {
-      data.push({
-        name: name3,
-        email: email3,
-      });
-    }
-    if (personalNote.length > 0) {
-      data.push({
-        note: personalNote,
-      });
-    }
-    if (data.length > 0) {
+    let data = {
+      name,
+      email,
+      message,
+      linkedIn,
+    };
+
+    if (Object.keys(data).length > 0) {
       props.onSuccess(data);
     } else {
       props.onHide();
@@ -54,99 +34,65 @@ function InviteModal(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title>
-            Invite other marketing leaders to your network
+            Invite a marketing leader to join you CMOlist peer network
           </Modal.Title>
-          <img
-            className="invite-modal-title-img"
-            src="https://d3k6hg21rt7gsh.cloudfront.net/sharing_icon.png"
-            alt=""
-          />
         </Modal.Header>
         <Modal.Body>
           <Fragment>
-            <strong>
-              Please nominate other marketing leaders that you would like to be
-              part of your network.
-            </strong>
             <p>
-              We will{" "}
-              <strong style={{ textDecoration: "underline" }}>not</strong> send
-              any emails without your permission and work with you to onboard
-              them to your CMOlist network.
+              Build your <strong>trusted peer network</strong> by inviting and
+              connecting only with marketing peers that{" "}
+              <strong>you know</strong> and whose{" "}
+              <strong>advice you trust</strong>
             </p>
-            <Row className="mt-3">
-              <Col xs={6}>
-                <Form.Control
-                  className="invite-module-input"
-                  type="text"
-                  placeholder="First and last name"
-                  value={name1}
-                  onChange={(e) => setName1(e.target.value)}
-                />
-              </Col>
-              <Col xs={6}>
-                <Form.Control
-                  className="invite-module-input"
-                  type="email"
-                  placeholder="Email address"
-                  value={email1}
-                  onChange={(e) => setEmail1(e.target.value)}
-                />
-              </Col>
-            </Row>
-            <Row className="mt-2">
-              <Col xs={6}>
-                <Form.Control
-                  className="invite-module-input"
-                  type="text"
-                  placeholder="First and last name"
-                  value={name2}
-                  onChange={(e) => setName2(e.target.value)}
-                />
-              </Col>
-              <Col xs={6}>
-                <Form.Control
-                  className="invite-module-input"
-                  type="email"
-                  placeholder="Email address"
-                  value={email2}
-                  onChange={(e) => setEmail2(e.target.value)}
-                />
-              </Col>
-            </Row>
-            <Row className="mt-2 mb-2">
-              <Col xs={6}>
-                <Form.Control
-                  className="invite-module-input"
-                  type="text"
-                  placeholder="First and last name"
-                  value={name3}
-                  onChange={(e) => setName3(e.target.value)}
-                />
-              </Col>
-              <Col xs={6}>
-                <Form.Control
-                  className="invite-module-input"
-                  type="email"
-                  placeholder="Email address"
-                  value={email3}
-                  onChange={(e) => setEmail3(e.target.value)}
-                />
-              </Col>
-            </Row>
-            <Row className="mt-2 mb-2">
-              <Col xs={12}>
-                <Form.Label>Include a personal note (optional)</Form.Label>
-              </Col>
-              <Col xs={12}>
-                <Form.Control
-                  as="textarea"
-                  rows="2"
-                  value={personalNote}
-                  onChange={(e) => setPersonalNote(e.target.value)}
-                />
-              </Col>
-            </Row>
+            <form id="invite-modal" onSubmit={closeDialog}>
+              <Row className="mt-3">
+                <Col className="invite-modal--input" xs={12}>
+                  <Form.Label>Name</Form.Label>
+                  <Form.Control
+                    className="invite-module-input"
+                    type="text"
+                    placeholder="First name, Last name"
+                    value={name}
+                    required={true}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </Col>
+                <Col className="invite-modal--input" xs={12}>
+                  <Form.Label>Email</Form.Label>
+                  <Form.Control
+                    className="invite-module-input"
+                    type="email"
+                    placeholder="name@company.com"
+                    value={email}
+                    required={true}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </Col>
+                <Col className="invite-modal--input" xs={12}>
+                  <Form.Label>Linkedin URL</Form.Label>
+                  <Form.Control
+                    className="invite-module-input"
+                    type="text"
+                    placeholder="https://linkedin.com/linkedinID"
+                    value={linkedIn}
+                    required={true}
+                    onChange={(e) => setLinkedIn(e.target.value)}
+                  />
+                </Col>
+                <Col xs={12}>
+                  <Form.Label>Message</Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    placeholder="E.g., We know each other from..."
+                    rows="2"
+                    value={message}
+                    required={true}
+                    onChange={(e) => setMessage(e.target.value)}
+                  />
+                </Col>
+              </Row>
+            </form>
           </Fragment>
           <Modal.Footer>
             <Button
@@ -158,10 +104,11 @@ function InviteModal(props) {
             </Button>
             <Button
               className="btn-white modal-primary-button"
-              onClick={() => closeDialog()}
               variant="outline-primary"
+              form="invite-modal"
+              type="submit"
             >
-              Invite
+              Send invitation
             </Button>
           </Modal.Footer>
         </Modal.Body>
