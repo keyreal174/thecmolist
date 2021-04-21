@@ -122,8 +122,8 @@ function Homepage() {
         <Col md="1" sm="0"></Col>
         <Col md="10" sm="12">
           <div className="home--title">
-            Connect with your marketing peers to get the advice and resources
-            you need to succeed
+            CMOlist connects you with the advice and resources you need to
+            succeed
           </div>
         </Col>
         <Col md="1" sm="0"></Col>
@@ -132,8 +132,9 @@ function Homepage() {
         <Col md="2" sm="0"></Col>
         <Col md="8" sm="12">
           <div className="home--subtitle">
-            CMOlist enables marketing leaders to learn from each other by
-            sharing critical insights, best practices, and proven vendors.
+            CMOlist is a private knowledge network that helps marketing leaders
+            learn from each other by sharing critical insights, best practices,
+            and proven vendors.
           </div>
         </Col>
         <Col md="2" sm="0"></Col>
@@ -281,7 +282,7 @@ function Homepage() {
           </Form>
         </Col>
       </Row>
-      <Row>
+      <Row className="home--leaders">
         <Col className="px-0" md="12" sm="12">
           <div className="home--leaders-section">
             <div className="home--leaders-section-title">
@@ -329,7 +330,7 @@ function Homepage() {
                 />
                 <div className="home--share-item-title">Unlock knowledge</div>
                 <div className="home--share-item-subtitle">
-                  Turn emails, slacks, and wikis  into structured and searchable
+                  Turn emails, slacks, and wikis into structured and searchable
                   marketing knowledge
                 </div>
               </Col>
