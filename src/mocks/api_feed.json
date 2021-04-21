@@ -11,7 +11,9 @@
           "markdown": "[test a new agency](/agency/test-a-new-agency)"
         },
         "subtitle": "NY",
-        "articletext": "zz",
+        "articletext": {
+          "markdown": "This is what I made using Draft.js mention plugin. [@Eckart Walther](/profile/eckart) [@Vas Swaminathan](/profile/vas)"
+        },
         "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjg4NDEyNG1hZHMtLXByb2ZpbGUuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
         "imageDisplay": "square",
         "num_thanks": 5,

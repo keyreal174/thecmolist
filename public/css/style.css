@@ -120,7 +120,7 @@ ul {
   width: 136px;
   padding: 6px 5px;
   font-size: 18px;
-  border: 2px solid #0073B2;
+  border: 2px solid #2962ff;
   border-radius: 5px;
   white-space: nowrap;
   text-align: center;
@@ -133,20 +133,20 @@ ul {
 }
 
 .btn__homepage-blue{
-  background-color: #0073B2;
+  background-color: #2962ff;
   color: #ffffff;
 }
 
 .btn__homepage-blue:hover {
   background-color: rgba(152,216,244,.25);
-  border-color: #0073B2;
-  color: #0073B2;
+  border-color: #2962ff;
+  color: #2962ff;
   box-shadow: inset 0 0 0 1px #a0c4d9;
 }
 
-.btn__homepage-white{
+.btn__homepage-white {
   background-color: #ffffff;
-  color: #0073B2;
+  color: #2962ff;
   margin-left: 30px;
 }
 
@@ -160,7 +160,7 @@ ul {
 
 .banner__homepage {
   padding: 30px 60px;
-  color: #0073B2;
+  color: #2962ff;
 }
 
 .banner__header {
@@ -218,7 +218,7 @@ ul {
 }
 
 .brands__title {
-  color: #0073B2;
+  color: #2962ff;
   font-size: 23px;
 }
 
@@ -291,7 +291,7 @@ ul {
 }
 
 .footer__menu a:hover {
-  color: #0175b0;
+  color: #2962ff;
 }
 
 /* Media */
@@ -328,7 +328,7 @@ ul {
   .btn__homepage {
     width: 114px;
     font-size: 14px;
-    border: 1px solid #0073B2;
+    border: 1px solid #2962ff;
   }
   .nav__homepage {
     min-height: 70px;
@@ -604,12 +604,12 @@ ul {
 .btn-social.btn-sm{padding-left:38px}.btn-social.btn-sm>:first-child{line-height:28px;width:28px;font-size:1.4em}
 .btn-social.btn-xs{padding-left:30px}.btn-social.btn-xs>:first-child{line-height:20px;width:20px;font-size:1.2em}
 
-.btn-linkedin{color:#fff;background-color:#007bb6;border-color:rgba(0,0,0,0.2)}.btn-linkedin:focus,.btn-linkedin.focus{color:#fff;background-color:#005983;border-color:rgba(0,0,0,0.2)}
-.btn-linkedin:hover{color:#fff;background-color:#005983;border-color:rgba(0,0,0,0.2)}
-.btn-linkedin:active,.btn-linkedin.active,.open>.dropdown-toggle.btn-linkedin{color:#fff;background-color:#005983;border-color:rgba(0,0,0,0.2)}.btn-linkedin:active:hover,.btn-linkedin.active:hover,.open>.dropdown-toggle.btn-linkedin:hover,.btn-linkedin:active:focus,.btn-linkedin.active:focus,.open>.dropdown-toggle.btn-linkedin:focus,.btn-linkedin:active.focus,.btn-linkedin.active.focus,.open>.dropdown-toggle.btn-linkedin.focus{color:#fff;background-color:#00405f;border-color:rgba(0,0,0,0.2)}
+.btn-linkedin{color:#fff;background-color:#2962ff;border-color:rgba(0,0,0,0.2)}.btn-linkedin:focus,.btn-linkedin.focus{color:#fff;background-color:#005983;border-color:rgba(0,0,0,0.2)}
+.btn-linkedin:hover{color:#fff;background-color:#386af5;border-color:rgba(0,0,0,0.2)}
+.btn-linkedin:active,.btn-linkedin.active,.open>.dropdown-toggle.btn-linkedin{color:#fff;background-color:#386af5;border-color:rgba(0,0,0,0.2)}.btn-linkedin:active:hover,.btn-linkedin.active:hover,.open>.dropdown-toggle.btn-linkedin:hover,.btn-linkedin:active:focus,.btn-linkedin.active:focus,.open>.dropdown-toggle.btn-linkedin:focus,.btn-linkedin:active.focus,.btn-linkedin.active.focus,.open>.dropdown-toggle.btn-linkedin.focus{color:#fff;background-color:#00405f;border-color:rgba(0,0,0,0.2)}
 .btn-linkedin:active,.btn-linkedin.active,.open>.dropdown-toggle.btn-linkedin{background-image:none}
-.btn-linkedin.disabled:hover,.btn-linkedin[disabled]:hover,fieldset[disabled] .btn-linkedin:hover,.btn-linkedin.disabled:focus,.btn-linkedin[disabled]:focus,fieldset[disabled] .btn-linkedin:focus,.btn-linkedin.disabled.focus,.btn-linkedin[disabled].focus,fieldset[disabled] .btn-linkedin.focus{background-color:#007bb6;border-color:rgba(0,0,0,0.2)}
-.btn-linkedin .badge{color:#007bb6;background-color:#fff}
+.btn-linkedin.disabled:hover,.btn-linkedin[disabled]:hover,fieldset[disabled] .btn-linkedin:hover,.btn-linkedin.disabled:focus,.btn-linkedin[disabled]:focus,fieldset[disabled] .btn-linkedin:focus,.btn-linkedin.disabled.focus,.btn-linkedin[disabled].focus,fieldset[disabled] .btn-linkedin.focus{background-color:#386af5;border-color:rgba(0,0,0,0.2)}
+.btn-linkedin .badge{color:#386af5;background-color:#fff}
 
 .button-login {
   width: 335px;

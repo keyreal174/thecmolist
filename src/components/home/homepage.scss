@@ -112,7 +112,6 @@
     &-green-text {
       color: $success;
       font-size: 12px;
-      font-style: italic;
       font-weight: 400;
       line-height: 16px;
       margin-bottom: 6px;
@@ -131,6 +130,10 @@
     border-top-right-radius: 23px;
     padding: 60px;
     height: 604px;
+    .home--form-subtitle {
+      text-align: center;
+      padding: 0 80px;
+    }
   }
   &--form-linkedin {
     width: 250px;
@@ -170,6 +173,13 @@
       padding-top: 40px;
       text-align: center;
       font-weight: 500;
+    }
+    &-item {
+      margin-bottom: 30px;
+      img {
+        width: 60px;
+        height: 60px;
+      }
     }
   }
   &--share {
@@ -221,25 +231,67 @@
   }
 }
 
+@media (max-width: 1200px) {
+  .home {
+    &--form {
+      padding: 0px;
+    }
+    &--form-left,
+    &--form-right {
+      padding: 20px 0;
+    }
+    &--leaders-section {
+      padding: 0 20px;
+      margin: 20px 0;
+    }
+    &--share-title {
+      padding: 0;
+      margin-bottom: 0;
+    }
+    &--share-items-wrapper {
+      margin: 0;
+    }
+    &--share-item {
+      margin: 20px 0;
+    }
+  }
+}
+
 @media (max-width: 768px) {
   .home {
     &--title {
-      margin: 128px 30px 10px 30px;
+      font-size: 27px;
+      font-weight: 700;
+      line-height: 36px;
+      margin: 95px 27px 10px 30px;
+      text-align: center;
     }
     &--subtitle {
-      margin: 30px;
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 22px;
+      margin: 10px 20px 20px 20px;
+      text-align: center;
     }
     &--form {
-      margin-top: 20px;
+      margin: 0 18px;
       padding-bottom: 0px;
       padding-top: 0;
     }
+    &--leaders {
+      margin: 0px;
+    }
     &--form-left {
       border-radius: 20px;
+      padding: 30px;
     }
     &--form-right {
       border-radius: 20px;
       margin-top: 20px;
+      padding: 30px;
+    }
+    &--leaders {
+      margin: 18px 18px 30px 18px;
     }
     &--form-linkedin {
       width: 250px;
@@ -266,12 +318,11 @@
       color: $text-1;
     }
     &--leaders-section {
-      padding: 0 10px;
+      padding: 0;
       min-height: unset;
 
       &-title {
         font-size: 20px;
-        margin-top: 27px;
       }
       &-item {
         padding: 25px 80px;
@@ -282,23 +333,38 @@
     }
     &--share {
       &-title {
-        padding: 0;
-        margin-top: 30px;
+        font-size: 21px;
+        font-weight: 700;
+        line-height: 30px;
+        margin-top: 0px;
+        padding: 0 29px;
+        text-align: center;
       }
       &-items-wrapper {
         flex-direction: column;
         justify-content: space-between;
+        margin: 0;
       }
       &-item {
-        margin: 20px auto;
+        margin: 15px auto;
         width: 100%;
-
+        &-subtitle {
+          color: $text-3;
+          padding: 0 26px;
+          line-height: 18px;
+          font-weight: 400;
+          text-align: center;
+        }
         &-image {
-          margin: 25px auto;
+          margin: 50px auto;
+          margin-bottom: 34px;
           width: 100%;
           padding: 0;
         }
       }
+    }
+    &--header {
+      padding: 20px;
     }
   }
 }

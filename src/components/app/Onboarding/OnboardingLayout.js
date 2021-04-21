@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Col, ProgressBar, Row } from "react-bootstrap";
+import Logo from "../base/Header/svgs/logo.svg";
 import "./onboardingLayout.scss";
-import Logo from "../../app/base/Header/svgs/logo.svg";
 
 const OnboardingLayout = ({ children, now, title }) => {
   return (
@@ -11,6 +11,7 @@ const OnboardingLayout = ({ children, now, title }) => {
         <Col md="12" className="layout--header-logo">
           <span>
             <img src={Logo} alt="CMOList brand logo" />
+            <span className="header--tag">Beta</span>
           </span>
         </Col>
         <Col md="12">

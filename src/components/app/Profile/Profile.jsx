@@ -9,6 +9,7 @@ import CustomCard from "../base/CustomCard/CustomCard";
 import Header from "../base/Header/Header";
 import Filter from "../base/Filter/Filter";
 import Article from "../base/Article/Article";
+import Entities from "../base/Entities/Entities";
 import Footer from "../base/Footer/Footer";
 import PopularTopics from "../base/PopularTopics/PopularTopics";
 import {
@@ -532,7 +533,7 @@ const Profile = (props) => {
                         engagementButtons={[
                           {
                             checked: true,
-                            text: feed.replyText || "Answer",
+                            text: feed.replyText || "Reply",
                             type: "Answer",
                             icon: AnswerIcon,
                             number:
@@ -546,7 +547,7 @@ const Profile = (props) => {
                               "thanks",
                               reactions
                             ),
-                            text: "Thanks",
+                            text: "Like",
                             type: "Reaction",
                             icon: ThanksIcon,
                             iconChecked: ThanksCheckedIcon,
@@ -581,6 +582,9 @@ const Profile = (props) => {
                       >
                         {feed.parent_content && (
                           <Article {...feed.parent_content} />
+                        )}
+                        {feed.entities?.length > 0 && (
+                          <Entities entities={feed.entities} />
                         )}
                       </Article>
                     </FadeTransition>

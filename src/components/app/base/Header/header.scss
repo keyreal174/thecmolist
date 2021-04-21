@@ -160,7 +160,7 @@
 }
 
 .profile-dropdown {
-  color: $text-3 !important;
+  color: $text-2 !important;
   font-size: 13px;
   font-weight: 499;
 }
@@ -177,9 +177,7 @@
 .header-search > div > .rbt-input-main {
   padding-left: 53px;
   padding-right: 7px;
-  padding-bottom: -1px;
-  padding-top: -1px;
-  background: $gray-7;
+  background: $gray-6;
 }
 
 .search-btn {
@@ -453,5 +451,18 @@
   }
   .navbar--search {
     display: none;
+  }
+}
+
+@media (max-width: 425px) {
+  .header-search {
+    margin-top: 50px;
+  }
+  .navbar-dropdown--wrapper {
+    .navbar-dropdown {
+      bottom: -34px;
+      right: unset;
+      left: 30px;
+    }
   }
 }

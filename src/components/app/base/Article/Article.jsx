@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ShowMoreText from "react-show-more-text";
@@ -7,6 +7,25 @@ import Gallery from "../Gallery/Gallery";
 import DiscussionComment from "../DiscussionComment/DiscussionComment";
 import EngagementButtons from "../EngagementButtons/EngagementButtons";
 import "./article.scss";
+
+const RenderMarkdownTruncated = ({ numLines, markdown }) => {
+  let [expanded, setExpanded] = useState(false);
+  let markdownSanitized = markdown.replace(/\n- /g, "<br />");
+  markdownSanitized = markdownSanitized.replace(/\n\n/g, "<br />");
+  return expanded ? (
+    <Markdown>{markdown}</Markdown>
+  ) : (
+    <ShowMoreText
+      lines={numLines}
+      more="See more"
+      less=""
+      width={0}
+      onClick={() => setExpanded(true)}
+    >
+      <Markdown>{markdownSanitized}</Markdown>
+    </ShowMoreText>
+  );
+};
 
 function Article(props) {
   let articleBodyContentPresent =
@@ -124,7 +143,14 @@ function Article(props) {
                 )}
                 {props.articletext && props.articletext.markdown && (
                   <div className="article-text">
-                    <Markdown>{props.articletext.markdown}</Markdown>
+                    {props.articletextlines ? (
+                      <RenderMarkdownTruncated
+                        numLines={props.articletextlines}
+                        markdown={props.articletext.markdown}
+                      />
+                    ) : (
+                      <Markdown>{props.articletext.markdown}</Markdown>
+                    )}
                   </div>
                 )}
                 {props.articletext && props.articletext.length > 0 && (

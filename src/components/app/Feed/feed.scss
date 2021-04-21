@@ -399,3 +399,17 @@
     height: 10px;
   }
 }
+
+@media (min-width: 1200px) {
+  .feed-right-container {
+    max-width: 250px;
+  }
+  .feed--profile-stats {
+    max-width: 300px;
+  }
+  .feed--feed {
+    width: calc(100% - 565px);
+    flex: unset;
+    max-width: unset;
+  }
+}

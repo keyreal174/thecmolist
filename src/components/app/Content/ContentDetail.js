@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Article from "../base/Article/Article";
 import CustomCard from "../base/CustomCard/CustomCard";
 import clsx from "clsx";
@@ -12,8 +12,6 @@ import DiscussionComment from "../base/DiscussionComment/DiscussionComment";
 import AnswerIcon from "../base/icons/answer.svg";
 import InsightfulIcon from "../base/icons/insightful.svg";
 import InsightfulCheckedIcon from "../base/icons/insightful_checked.svg";
-import PassIcon from "../base/icons/pass.svg";
-import PassCheckedIcon from "../base/icons/pass_checked.svg";
 import ThanksIcon from "../base/icons/thanks.svg";
 import ThanksCheckedIcon from "../base/icons/thanks_checked.svg";
 import { cdn } from "../../util/constants";
@@ -28,6 +26,7 @@ const ContentDetail = ({
   saveReactionToCallerType,
   setError,
 }) => {
+  const [focusCommentToggle, setFocusCommentToggle] = useState(true);
   const focusError = () => {
     const errorSection = document.getElementById("error-section");
     window.scrollTo(0, 0);
@@ -37,6 +36,10 @@ const ContentDetail = ({
     try {
       setError("");
       await saveCommentToContent(comment);
+      window.setTimeout(
+        () => window.scrollTo(0, document.body.scrollHeight),
+        100
+      );
     } catch (error) {
       setError(error.message);
       focusError();
@@ -60,13 +63,16 @@ const ContentDetail = ({
   ) => {
     const id = caller["content_id"];
     const engagement = engagementText.toLowerCase();
-
-    try {
-      setError("");
-      await saveReactionToCallerType({ id, engagement });
-    } catch (error) {
-      setError(error.message);
-      focusError();
+    if (engagementType === "Answer") {
+      setFocusCommentToggle(!focusCommentToggle);
+    } else {
+      try {
+        setError("");
+        await saveReactionToCallerType({ id, engagement });
+      } catch (error) {
+        setError(error.message);
+        focusError();
+      }
     }
   };
 
@@ -82,12 +88,11 @@ const ContentDetail = ({
         md="8"
       >
         <Article
-          articletextlines={1}
           {...content.content}
           engagementButtons={[
             {
               checked: true,
-              text: content.replyText || "Answer",
+              text: content.replyText || "Reply",
               type: "Answer",
               icon: AnswerIcon,
               number: numberOfReplies,
@@ -98,7 +103,7 @@ const ContentDetail = ({
                 "thanks",
                 reactions
               ),
-              text: "Thanks",
+              text: "Like",
               type: "Reaction",
               icon: ThanksIcon,
               iconChecked: ThanksCheckedIcon,
@@ -117,7 +122,7 @@ const ContentDetail = ({
               number: getEngagementForId(contentId, "insightful", reactions),
             },
           ]}
-          focusComment={true}
+          focusComment={focusCommentToggle}
           onEngagementButtonClick={handleEngagementButtonClick.bind(
             this,
             content
@@ -128,9 +133,7 @@ const ContentDetail = ({
           profile={profileStats.profile}
           useRichEditor={true}
           discussionCommentPlaceholder={
-            author && author.length > 0
-              ? `Answer ${author}'s question...`
-              : "Answer this question..."
+            author && author.length > 0 ? `Reply to ${author}` : "Reply"
           }
           handleDiscussionCommentSubmit={handleSubmit}
         />
@@ -146,7 +149,6 @@ const ContentDetail = ({
 
               return (
                 <Article
-                  articletextlines={2}
                   {...reply.content}
                   className="question-answers--item"
                   key={index}
@@ -165,7 +167,7 @@ const ContentDetail = ({
                         "thanks",
                         reactions
                       ),
-                      text: "Thanks",
+                      text: "Like",
                       type: "Reaction",
                       icon: ThanksIcon,
                       iconChecked: ThanksCheckedIcon,
@@ -218,13 +220,13 @@ const ContentDetail = ({
           {/* Disable due to following bug: https://github.com/draft-js-plugins/draft-js-plugins/issues/1244*/}
           {/* {content && content.replies && content.replies.length > 0 && (
             <div className="question-your-answer">
-              <div className="question-your-answer-text">Your answer</div>
+              <div className="question-your-answer-text">Your reply</div>
               <DiscussionComment
                 profile={profileStats.profile}
                 placeholder={
                   author && author.length > 0
-                    ? `Answer ${author}'s question...`
-                    : "Answer this question..."
+                    ? `Reply to ${author}`
+                    : "Reply"
                 }
                 onSubmit={handleSubmit}
                 useRichEditor={true}

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { useLocation } from "react-router";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { CSSTransition } from "react-transition-group";
+import Entities from "../base/Entities/Entities";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Filter from "../base/Filter/Filter";
@@ -122,7 +123,7 @@ function RenderFeed({
               engagementButtons={[
                 {
                   checked: true,
-                  text: feed.replyText || "Answer",
+                  text: feed.replyText || "Reply",
                   type: "Answer",
                   icon: AnswerIcon,
                   number: getEngagementForId(contentId, "answer", reactions),
@@ -133,7 +134,7 @@ function RenderFeed({
                     "thanks",
                     reactions
                   ),
-                  text: "Thanks",
+                  text: "Like",
                   type: "Reaction",
                   icon: ThanksIcon,
                   iconChecked: ThanksCheckedIcon,
@@ -164,6 +165,9 @@ function RenderFeed({
               showDiscussionComment={false}
             >
               {feed.parent_content && <Article {...feed.parent_content} />}
+              {feed.entities?.length > 0 && (
+                <Entities entities={feed.entities} />
+              )}
             </Article>
           );
         })}

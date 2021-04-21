@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Container, Form, Col, Alert } from "react-bootstrap";
+import clsx from "clsx";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Separator from "../base/Separator/Separator";
@@ -15,6 +16,7 @@ const Settings = ({ settings, saveSetting, getSetting }) => {
     allowDiscussions: false,
     allowActivity: false,
   });
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
@@ -92,10 +94,14 @@ const Settings = ({ settings, saveSetting, getSetting }) => {
     }
   }, [settings]);
 
+  const handleToggle = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
     <Container className="height-100">
-      <Header />
-      <div className="wrapper settings">
+      <Header onToggle={handleToggle} />
+      <div className={clsx("wrapper settings", mobileMenuOpen && "open")}>
         <h2 className="section-title pt-4 py-3">Settings</h2>
         <div className="account-settings mt-2">
           <h2 className="section-title">Account Settings</h2>
@@ -107,59 +113,6 @@ const Settings = ({ settings, saveSetting, getSetting }) => {
                   {error}
                 </Alert>
               )}
-              <div className="account-settings-sub-info">
-                <h3 className="section-sub-title mb-3">Change Password</h3>
-                <Form.Row>
-                  <Form.Group as={Col} md="6" controlId="ValidationFormik101">
-                    <Form.Label className="section-label">
-                      New password
-                    </Form.Label>
-                    <Form.Control
-                      className="password"
-                      type="password"
-                      placeholder="New Password"
-                      value={account.password}
-                      name="new_password"
-                      onChange={handleInput}
-                      required
-                    />
-                  </Form.Group>
-                  <Form.Group as={Col} md="6" controlId="validationFormik102">
-                    <Form.Label className="section-label">
-                      Confirm password
-                    </Form.Label>
-                    <Form.Control
-                      className="password"
-                      type="password"
-                      placeholder="Confirm Password"
-                      value={account.confirm_password}
-                      name="confirm_password"
-                      onChange={handleInput}
-                      required
-                    />
-                  </Form.Group>
-                </Form.Row>
-              </div>
-              <Separator className="settings-separator" />
-              <div className="account-settings-sub-info">
-                <h3 className="section-sub-title mb-3">Change Email</h3>
-                <Form.Row>
-                  <Form.Group as={Col} md="6" controlId="validationFormik103">
-                    <Form.Label className="section-label">
-                      Email address
-                    </Form.Label>
-                    <Form.Control
-                      className="email"
-                      type="email"
-                      placeholder="admin@test.com"
-                      value={account.email}
-                      name="email"
-                      onChange={handleInput}
-                      required={true}
-                    />
-                  </Form.Group>
-                </Form.Row>
-              </div>
               <Separator className="settings-separator" />
               <div className="account-settings-sub-info">
                 <h3 className="section-sub-title mb-4">
@@ -206,7 +159,8 @@ const Settings = ({ settings, saveSetting, getSetting }) => {
           </Form>
         </div>
       </div>
-      <Footer />
+
+      <Footer className={clsx("settings--footer", mobileMenuOpen && "open")} />
     </Container>
   );
 };

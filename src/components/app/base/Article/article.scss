@@ -9,7 +9,7 @@
 }
 
 .article-subheadline a {
-  color: #0175b0;
+  color: #2962ff;
   font-weight: 500;
 }
 
@@ -111,7 +111,7 @@
 
 .article-text {
   margin: 8px 0;
-  color: $text-2;
+  color: $black;
   font-size: 15px;
   line-height: 21px;
 }
@@ -123,13 +123,13 @@
 }
 
 .more {
-  color: #0175b0;
+  color: #2962ff;
   font-weight: 700;
   cursor: pointer;
 }
 
 .article-label {
-  color: #0175b0;
+  color: #2962ff;
   font-weight: 500;
   float: left;
   margin-right: 10px;
@@ -171,6 +171,10 @@
   position: absolute;
   right: 10px;
   top: 10px;
+}
+
+.article-blue-link a {
+  background: #e7f4ff;
 }
 
 @media (max-width: 767px) {
