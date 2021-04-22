@@ -115,6 +115,7 @@
       color: $text-2;
       font-size: 14px;
       font-weight: 400;
+      line-height: 18px;
     }
     &-green-text {
       color: $success;
@@ -139,7 +140,7 @@
     height: 604px;
     .home--form-subtitle {
       text-align: center;
-      padding: 0 80px;
+      padding: 0 70px;
     }
   }
   &--form-linkedin {
@@ -334,17 +335,34 @@
       color: $text-1;
     }
     &--leaders-section {
+      background-color: unset;
       padding: 0;
       min-height: unset;
+      margin: 0;
 
       &-title {
         font-size: 20px;
+        margin-bottom: 0;
+        padding: 0;
+        margin-bottom: 20px;
       }
       &-item {
-        padding: 25px 80px;
-      }
-      &-items-wrapper {
-        padding-bottom: 50px;
+        background-color: $white;
+        border-radius: 20px;
+        height: 104px;
+        margin-bottom: 10px;
+        margin-left: 5px;
+        margin-right: 10px;
+        padding: 0;
+        width: 100%;
+        img {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: 37px;
+          width: 100px;
+          height: 30px;
+        }
       }
     }
     &--share {
@@ -398,7 +416,6 @@
     padding: 20px 0px;
   }
   .home--leaders-section-item {
-    width: 50%;
-    padding: 25px 60px;
+    width: 45%;
   }
 }
