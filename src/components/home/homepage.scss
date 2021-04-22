@@ -76,6 +76,10 @@
     margin: 0;
     position: absolute;
     width: 100%;
+    z-index: 1;
+    &-button {
+      display: none;
+    }
   }
   &--title {
     color: $text-1;
@@ -262,6 +266,15 @@
 
 @media (max-width: 768px) {
   .home {
+    &--header-button {
+      display: initial;
+      button {
+        background-color: $white;
+        border-radius: 20px;
+        border-color: $gray-3;
+        color: $brand;
+      }
+    }
     &--title {
       font-size: 27px;
       font-weight: 700;

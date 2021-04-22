@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import { Button, Container, Row, Col, Form } from "react-bootstrap";
 import Footer from "../app/base/Footer/Footer";
 import LinkedIn from "../login/icons/linkedin.svg";
@@ -97,6 +97,12 @@ function Homepage() {
       });
   };
 
+  const history = useHistory();
+  const handleHeaderLoginButtonClick = () => {
+    console.log("click");
+    history.push("/login");
+  };
+
   const handleLinkedInClick = (e) => {
     e.preventDefault();
     window.location.href = linkedInUrl;
@@ -118,8 +124,8 @@ function Homepage() {
             <img src={Logo} alt="CMOList logo"></img>
           </a>
         </div>
-        <div>
-          <Button onClick={handleLoginClick}>Login</Button>
+        <div className="home--header-button">
+          <Button onClick={handleHeaderLoginButtonClick}>Sign in</Button>
         </div>
       </Row>
       <Row>
