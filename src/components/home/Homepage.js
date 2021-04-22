@@ -50,8 +50,9 @@ function Homepage() {
 
   const query = querySearch(window.location.search);
   const redirectUrl = query.redirect ? decodeURIComponent(query.redirect) : "/";
-
-  const showUsernameField = !window.location.hostname.includes("thecmolist");
+  const hostName = window.location.hostname;
+  const showUsernameField =
+    !hostName.includes("thecmolist") && !hostName.includes("localhost");
 
   const handleFormLeftSubmit = (e) => {
     e.preventDefault();
@@ -112,18 +113,21 @@ function Homepage() {
   return (
     <Container className="home height-100">
       <Row className="home--header">
-        <div className="ml-5">
+        <div>
           <a className="nav__logo" href="/">
             <img src={Logo} alt="CMOList logo"></img>
           </a>
+        </div>
+        <div>
+          <Button onClick={handleLoginClick}>Login</Button>
         </div>
       </Row>
       <Row>
         <Col md="1" sm="0"></Col>
         <Col md="10" sm="12">
           <div className="home--title">
-            CMOlist connects you with the advice and resources you need to
-            succeed
+            Connect with your marketing peers to get the advice and resources
+            you need to succeed
           </div>
         </Col>
         <Col md="1" sm="0"></Col>
@@ -201,7 +205,7 @@ function Homepage() {
         </Col>
         <Col className="px-0" md="6" sm="12">
           <Form className="home--form-right" onSubmit={handleLoginClick}>
-            <div className="home--form-title">Member login</div>
+            <div className="home--form-title">Member Sign in</div>
             <div className="home--form-green-text" />
             <div className="home--form-subtitle">
               Already have an account or received a invitation? Sign in here:
