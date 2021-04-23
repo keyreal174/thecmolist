@@ -30,3 +30,12 @@
     margin-bottom: 30px;
   }
 }
+
+@media (max-width: 768px) {
+  .layout--title {
+    margin-top: 15px;
+  }
+  .layout--children {
+    margin: 15px 0;
+  }
+}

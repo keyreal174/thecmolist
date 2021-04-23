@@ -28,3 +28,15 @@
     margin-bottom: 30px;
   }
 }
+
+@media (max-width: 768px) {
+  .onboarding--form {
+    padding: 10px 17px;
+  }
+  .onboarding--input {
+    border-radius: 8px;
+  }
+  .onboarding--button-wrapper {
+    justify-content: center !important;
+  }
+}

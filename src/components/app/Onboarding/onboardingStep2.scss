@@ -79,3 +79,12 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .onboarding--pill {
+    padding: 6px 12px;
+  }
+  .onboarding--done-wrapper {
+    justify-content: center !important;
+  }
+}

@@ -219,7 +219,10 @@ const OnboardingStep2 = ({
           </CustomCard>
         )}
         <Row>
-          <Col className="d-flex justify-content-end" md="12">
+          <Col
+            className="onboarding--done-wrapper d-flex justify-content-end"
+            md="12"
+          >
             <Button
               className="mt-3 onboarding--done"
               onClick={handleSubmit}
