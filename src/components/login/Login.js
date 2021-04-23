@@ -19,7 +19,10 @@ const loginRequest = (user, password) => {
 };
 
 const linkedinAuthUrl = (from) => {
-  return axios.get("/api/lnkd_auth_url?redirect=" + from);
+  let itkn = Util.getQueryVariable("itkn");
+  return axios.get(
+    "/api/lnkd_auth_url?redirect=" + from + (itkn ? `&itkn=${itkn}` : "")
+  );
 };
 
 class Login extends React.Component {
