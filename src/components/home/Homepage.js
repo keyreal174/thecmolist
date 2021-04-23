@@ -13,12 +13,6 @@ import Logo from "../app/base/Header/svgs/logo.svg";
 import trustedIcon from "./svg/trusted.svg";
 import knowledgeIcon from "./svg/knowledge.svg";
 import informedIcon from "./svg/informed.svg";
-import googleIcon from "./svg/google.svg";
-import dropboxIcon from "./svg/dropbox.svg";
-import walmartIcon from "./svg/walmart.svg";
-import microsoftIcon from "./svg/microsoft.svg";
-import intuitIcon from "./svg/intuit.svg";
-import amazonIcon from "./svg/amazon.svg";
 
 import "./homepage.scss";
 
