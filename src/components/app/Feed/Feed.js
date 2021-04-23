@@ -94,7 +94,7 @@ function RenderFeed({
     const engagement = engagementText.toLowerCase();
 
     if (engagementType === "Answer") {
-      if (parentId) {
+      if ("parent_content_id" in caller) {
         history.push(`/content/${parentId}`);
       } else {
         history.push(`/content/${id}`);

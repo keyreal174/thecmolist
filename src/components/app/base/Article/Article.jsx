@@ -10,8 +10,15 @@ import "./article.scss";
 
 const RenderMarkdownTruncated = ({ numLines, markdown }) => {
   let [expanded, setExpanded] = useState(false);
-  let markdownSanitized = markdown.replace(/\n- /g, "<br />");
-  markdownSanitized = markdownSanitized.replace(/\n\n/g, "<br />");
+  let markdownSanitized = "";
+  // small strings don't need truncation
+  if ((markdown.match(/ /g) || []).length < 40) {
+    expanded = true;
+    window.setTimeout(() => setExpanded(true), 0);
+  } else {
+    markdownSanitized = markdown.replace(/\n- /g, "<br />");
+    markdownSanitized = markdownSanitized.replace(/\n\n/g, "<br />");
+  }
   return expanded ? (
     <Markdown>{markdown}</Markdown>
   ) : (

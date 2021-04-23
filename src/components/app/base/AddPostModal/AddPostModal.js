@@ -31,12 +31,14 @@ function AddPostModal({
   getSuggestions,
   getTopicSuggestions,
 }) {
-  const [allMembers, setAllMembers] = useState(false);
+  // visibility related state
+  const [publicVisibility, setPublicVisibility] = useState(false);
+  const [peersVisibility, setPeersVisibility] = useState(false);
+  const [networkVisibility, setNetworkVisibility] = useState(true);
+
   const [body, setBody] = useState("");
   const [error, setError] = useState("");
   const [groups, setGroups] = useState({});
-  const [onlyMyNetwork, setOnlyMyNetwork] = useState(true);
-  const [publicV, setPublicV] = useState(false);
   const [person, setPerson] = useState("");
   const [photo, setPhoto] = useState("");
   const [role, setRole] = useState("");
@@ -96,9 +98,9 @@ function AddPostModal({
   const handleSubmit = async (e) => {
     const content = {
       contentType,
-      allMembers,
-      onlyMyNetwork,
-      publicV,
+      publicVisibility,
+      peersVisibility,
+      networkVisibility,
       groups,
       title,
       body,
@@ -150,9 +152,9 @@ function AddPostModal({
     setPerson("");
     setPhoto("");
     setRole("");
-    setAllMembers(false);
-    setOnlyMyNetwork(true);
-    setPublicV(false);
+    setPublicVisibility(false);
+    setPeersVisibility(false);
+    setNetworkVisibility(true);
     setShowPersonSection(false);
     setShowPhoto(false);
     setShowVideo(false);
@@ -304,11 +306,11 @@ function AddPostModal({
                       name="members"
                       id="public"
                       type="radio"
-                      checked={publicV}
+                      checked={publicVisibility}
                       onClick={() => {
-                        setPublicV(true);
-                        setAllMembers(false);
-                        setOnlyMyNetwork(false);
+                        setPublicVisibility(true);
+                        setPeersVisibility(false);
+                        setNetworkVisibility(false);
                       }}
                     />
                     <label htmlFor="public">
@@ -321,11 +323,11 @@ function AddPostModal({
                       name="members"
                       id="allnetwork"
                       type="radio"
-                      checked={allMembers}
+                      checked={peersVisibility}
                       onClick={() => {
-                        setPublicV(false);
-                        setAllMembers(true);
-                        setOnlyMyNetwork(false);
+                        setPublicVisibility(false);
+                        setPeersVisibility(true);
+                        setNetworkVisibility(false);
                         // set all groups to true
                         if (groups) {
                           let newGroups = { ...groups };
@@ -347,11 +349,11 @@ function AddPostModal({
                       name="members"
                       id="selectnetwork"
                       type="radio"
-                      checked={onlyMyNetwork}
+                      checked={networkVisibility}
                       onClick={() => {
-                        setPublicV(false);
-                        setAllMembers(false);
-                        setOnlyMyNetwork(true);
+                        setPublicVisibility(false);
+                        setPeersVisibility(false);
+                        setNetworkVisibility(true);
                       }}
                     />
                     <label htmlFor="selectnetwork">
@@ -369,7 +371,7 @@ function AddPostModal({
                           <CustomCheckBox
                             className="modal-section-checkbox-content"
                             checked={groups[groupKey]}
-                            disabled={!onlyMyNetwork}
+                            disabled={!networkVisibility}
                             id={groupKey}
                             key={index}
                             label={groupKey}
