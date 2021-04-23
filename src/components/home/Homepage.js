@@ -7,7 +7,7 @@ import axios from "axios";
 import Spinner from "react-spinner-material";
 import Util from "../util/Util";
 import querySearch from "stringquery";
-import { scriptURL, privacyPolicy } from "../util/constants";
+import { cdn, scriptURL, privacyPolicy } from "../util/constants";
 
 import Logo from "../app/base/Header/svgs/logo.svg";
 import trustedIcon from "./svg/trusted.svg";
@@ -35,12 +35,12 @@ const linkedinAuthUrl = (from) => {
 };
 
 const marketingLeaders = [
-  { img: googleIcon },
-  { img: dropboxIcon },
-  { img: walmartIcon },
-  { img: microsoftIcon },
-  { img: intuitIcon },
-  { img: amazonIcon },
+  { img: `${cdn}/google.png` },
+  { img: `${cdn}/dropbox.png` },
+  { img: `${cdn}/walmart.png` },
+  { img: `${cdn}/Microsoft.png` },
+  { img: `${cdn}/Intuit.png` },
+  { img: `${cdn}/amazon.png` },
 ];
 
 function Homepage() {
