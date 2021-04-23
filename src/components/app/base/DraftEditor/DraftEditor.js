@@ -117,6 +117,7 @@ const DraftEditor = forwardRef(
     const [mention, setMention] = useState(null);
     const [isSharp, setIsSharp] = useState(false);
     const [defaultName, setDefaultName] = useState("");
+    const [lastTrigger, setLastTrigger] = useState("");
 
     // use this to expose a focus method to parent components. see
     // https://reactjs.org/docs/hooks-reference.html#useimperativehandle
@@ -142,6 +143,7 @@ const DraftEditor = forwardRef(
     }, []);
 
     const onOpenChange = useCallback((_open) => {
+      _open ? removeBinding() : applyBinding();
       setOpen(_open);
     }, []);
     const onSearchChange = useCallback(({ trigger, value }) => {
@@ -156,6 +158,7 @@ const DraftEditor = forwardRef(
           setSuggestions(response);
         });
       }
+      setLastTrigger(trigger);
     }, []);
 
     const onChange = (editor_state) => {
@@ -353,7 +356,11 @@ const DraftEditor = forwardRef(
       let mentionReplacedContent = Modifier.replaceText(
         editorState.getCurrentContent(),
         mentionTextSelection,
-        "@",
+        mention
+          ? lastTrigger === "@"
+            ? "@" + mention.name
+            : mention.name
+          : "",
         undefined, // no inline style needed
         undefined
       );
@@ -409,6 +416,18 @@ const DraftEditor = forwardRef(
       return "not-handled";
     };
 
+    const [stateKeyBinding, setStateKeyBinding] = useState(() => (event) =>
+      keyBindingFn(event)
+    );
+
+    const removeBinding = () => {
+      setStateKeyBinding(undefined);
+    };
+
+    const applyBinding = () => {
+      setStateKeyBinding(() => (event) => keyBindingFn(event));
+    };
+
     useEffect(() => {
       if (!show) {
         handleAddPeople(mention);
@@ -443,7 +462,7 @@ const DraftEditor = forwardRef(
               ref={editorRef}
               placeholder={placeholder || ""}
               handleKeyCommand={handleKeyCommand}
-              keyBindingFn={keyBindingFn}
+              keyBindingFn={stateKeyBinding}
             />
             {toolbar && (
               <div className="editor-toolbar">
@@ -476,6 +495,7 @@ const DraftEditor = forwardRef(
                   setShow(isPerson ? "Person" : "Vendor");
                 }
               }}
+              entryComponent={Entry}
             />
           </div>
         </div>
