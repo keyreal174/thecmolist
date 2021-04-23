@@ -5,6 +5,7 @@ import Tick from "../icons/tick.svg";
 import "./CustomCheckBox.scss";
 
 const CustomCheckBox = ({
+  className,
   onChange,
   checked,
   label,
@@ -12,25 +13,27 @@ const CustomCheckBox = ({
   disabled,
 }) => {
   return (
-    <Checkbox
-      icon={
-        <div className={clsx("custom-checkbox-icon", disabled && "disabled")}>
-          <img src={Tick} alt="tick" style={{ userSelect: "none" }} />
-        </div>
-      }
-      name="my-input"
-      checked={checked}
-      onChange={onChange}
-      borderColor="#9597AE"
-      containerClassName="custom-checkbox"
-      labelClassName={clsx(
-        "custom-checkbox-label",
-        checked && useCheckedStyling && "checked",
-        disabled && "disabled"
-      )}
-      label={label}
-      disabled={disabled}
-    />
+    <div className={className}>
+      <Checkbox
+        icon={
+          <div className={clsx("custom-checkbox-icon", disabled && "disabled")}>
+            <img src={Tick} alt="tick" style={{ userSelect: "none" }} />
+          </div>
+        }
+        name="my-input"
+        checked={checked}
+        onChange={onChange}
+        borderColor="#9597AE"
+        containerClassName="custom-checkbox"
+        labelClassName={clsx(
+          "custom-checkbox-label",
+          checked && useCheckedStyling && "checked",
+          disabled && "disabled"
+        )}
+        label={label}
+        disabled={disabled}
+      />
+    </div>
   );
 };
 

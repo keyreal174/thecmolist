@@ -361,10 +361,7 @@ function AddPostModal({
                       <span>(visible only to selected networks)</span>
                     </label>
                   </div>
-                  <div
-                    className="network-checkbox-group"
-                    style={{ display: "flex", marginBottom: "10px" }}
-                  >
+                  <div className="network-checkbox-group">
                     {groups &&
                       Object.keys(groups).map((groupKey, index) => {
                         return (
@@ -402,99 +399,102 @@ function AddPostModal({
                     required={true}
                   />
                 </Col>
-                <Col md="9">
-                  <div className="modal-section-title">
-                    Description <span>{descriptionSubheading}</span>
-                  </div>
-                  <RichEditor
-                    setBody={setBody}
-                    getSuggestions={getSuggestions}
-                    getTopicSuggestions={getTopicSuggestions}
-                    isPersonVendor={isPersonVendor}
-                    setIsPersonVendor={() => setIsPersonVendor(false)}
-                    toolbar={true}
-                  />
-                </Col>
-                <Col md="3">
-                  <ul className="modal-section-body-right-content">
-                    <li>
-                      <Button
-                        className="modal-section-body-content"
-                        onClick={() => handlePersonVendor("Person")}
-                        size="sm"
-                        variant="light"
-                      >
-                        <div>
-                          <img
-                            alt="person icon"
-                            className="modal-section-body-image"
-                            src={`${cdn}/person.png`}
-                          />
-                          @Person
-                        </div>
-                      </Button>
-                    </li>
-                    <li>
-                      <Button
-                        className="modal-section-body-content"
-                        onClick={() => handlePersonVendor("Vendor")}
-                        size="sm"
-                        variant="light"
-                      >
-                        <div>
-                          <img
-                            alt="company icon"
-                            className="modal-section-body-image"
-                            src={`${cdn}/company.png`}
-                          />
-                          @Vendor
-                        </div>
-                      </Button>
-                    </li>
-                    <li>
-                      <Button
-                        className="modal-section-body-content"
-                        onClick={() => handlePhotoClick()}
-                        variant="light"
-                        size="sm"
-                        disabled
-                      >
-                        <div>
-                          <img
-                            alt="photograph icon"
-                            className="modal-section-body-image"
-                            src={`${cdn}/image.png`}
-                          />
-                          Photo
-                        </div>
-                      </Button>
-                      <input
-                        type="file"
-                        id="file"
-                        style={{ display: "none" }}
-                        onChange={handleFileChange}
-                      />
-                    </li>
-                    <li>
-                      <Button
-                        className="modal-section-body-content"
-                        onClick={() => setShowVideo(true)}
-                        variant="light"
-                        size="sm"
-                        disabled
-                      >
-                        <div>
-                          <img
-                            alt="video icon"
-                            className="modal-section-body-image"
-                            src={`${cdn}/video.png`}
-                          />
-                          Video
-                        </div>
-                      </Button>
-                    </li>
-                  </ul>
-                </Col>
+                <div className="modal-rich-editor-section d-flex col-md-12 px-0">
+                  <Col md="9" sm="12">
+                    <div className="modal-section-title">
+                      Description <span>{descriptionSubheading}</span>
+                    </div>
+                    <RichEditor
+                      setBody={setBody}
+                      getSuggestions={getSuggestions}
+                      getTopicSuggestions={getTopicSuggestions}
+                      isPersonVendor={isPersonVendor}
+                      setIsPersonVendor={() => setIsPersonVendor(false)}
+                      toolbar={true}
+                    />
+                  </Col>
+                  <Col md="3" sm="12">
+                    <ul className="modal-section-body-right-content">
+                      <li className="modal-section-list-item">
+                        <Button
+                          className="modal-section-body-content"
+                          onClick={() => handlePersonVendor("Person")}
+                          size="sm"
+                          variant="light"
+                        >
+                          <div>
+                            <img
+                              alt="person icon"
+                              className="modal-section-body-image"
+                              src={`${cdn}/person.png`}
+                            />
+                            @Person
+                          </div>
+                        </Button>
+                      </li>
+
+                      <li className="modal-section-list-item">
+                        <Button
+                          className="modal-section-body-content"
+                          onClick={() => handlePersonVendor("Vendor")}
+                          size="sm"
+                          variant="light"
+                        >
+                          <div>
+                            <img
+                              alt="company icon"
+                              className="modal-section-body-image"
+                              src={`${cdn}/company.png`}
+                            />
+                            @Vendor
+                          </div>
+                        </Button>
+                      </li>
+                      <li className="modal-section-list-item">
+                        <Button
+                          className="modal-section-body-content"
+                          onClick={() => handlePhotoClick()}
+                          variant="light"
+                          size="sm"
+                          disabled
+                        >
+                          <div>
+                            <img
+                              alt="photograph icon"
+                              className="modal-section-body-image"
+                              src={`${cdn}/image.png`}
+                            />
+                            Photo
+                          </div>
+                        </Button>
+                        <input
+                          type="file"
+                          id="file"
+                          style={{ display: "none" }}
+                          onChange={handleFileChange}
+                        />
+                      </li>
+                      <li className="modal-section-list-item">
+                        <Button
+                          className="modal-section-body-content"
+                          onClick={() => setShowVideo(true)}
+                          variant="light"
+                          size="sm"
+                          disabled
+                        >
+                          <div>
+                            <img
+                              alt="video icon"
+                              className="modal-section-body-image"
+                              src={`${cdn}/video.png`}
+                            />
+                            Video
+                          </div>
+                        </Button>
+                      </li>
+                    </ul>
+                  </Col>
+                </div>
                 <Col md="12">
                   <div
                     className={`modal-image-wrapper ${

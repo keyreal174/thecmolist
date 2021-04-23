@@ -192,7 +192,9 @@
 }
 
 .network-checkbox-group {
+  display: flex;
   flex-wrap: wrap;
+  margin-bottom: 10px;
 
   .custom-checkbox-label {
     color: $text-1;
@@ -204,5 +206,35 @@
     margin-right: 20px;
     font-size: 16px;
     white-space: nowrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .add-person-modal {
+    &.visible {
+      width: 90% !important;
+      max-width: 90%;
+      top: 20px;
+      left: 5%;
+    }
+  }
+  .modal-rich-editor-section {
+    flex-direction: column-reverse;
+  }
+  .modal-section-body-right-content {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .modal-section-list-item {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .modal-section-body-content {
+    border-radius: 22px;
+    padding: 0 20px;
+    width: 90%;
+  }
+  .modal-section-checkbox-content {
+    max-width: 50%;
   }
 }
