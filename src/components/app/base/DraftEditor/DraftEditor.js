@@ -52,6 +52,44 @@ const ensureLink = (link) => {
   }
 };
 
+function Entry(props) {
+  const { mention, theme, searchValue, isFocused, ...parentProps } = props;
+
+  return (
+    <div {...parentProps}>
+      <div className={clsx(theme?.mentionSuggestionsEntryContainer, "d-flex")}>
+        {mention.avatar && (
+          <div
+            className={clsx(
+              theme?.mentionSuggestionsEntryContainerLeft,
+              "d-flex align-items-center"
+            )}
+          >
+            <img
+              src={mention.avatar}
+              className={theme?.mentionSuggestionsEntryAvatar}
+              role="presentation"
+            />
+          </div>
+        )}
+
+        <div
+          className={clsx(
+            theme?.mentionSuggestionsEntryContainerRight,
+            "d-flex align-items-center"
+          )}
+        >
+          <div className={theme?.mentionSuggestionsEntryText}>
+            {mention.name.startsWith("@")
+              ? mention.name.slice(1)
+              : mention.name}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const DraftEditor = forwardRef(
   (
     {
