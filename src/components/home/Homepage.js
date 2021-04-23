@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import { Button, Container, Row, Col, Form } from "react-bootstrap";
 import Footer from "../app/base/Footer/Footer";
 import LinkedIn from "../login/icons/linkedin.svg";
@@ -10,7 +10,6 @@ import querySearch from "stringquery";
 import { cdn, scriptURL, privacyPolicy } from "../util/constants";
 
 import Logo from "../app/base/Header/svgs/logo.svg";
-import marketIcon from "./svg/market.svg";
 import trustedIcon from "./svg/trusted.svg";
 import knowledgeIcon from "./svg/knowledge.svg";
 import informedIcon from "./svg/informed.svg";
@@ -30,12 +29,12 @@ const linkedinAuthUrl = (from) => {
 };
 
 const marketingLeaders = [
-  { img: `${cdn}/Adobe.png` },
-  { img: `${cdn}/Intuit.png` },
+  { img: `${cdn}/google.png` },
+  { img: `${cdn}/dropbox.png` },
   { img: `${cdn}/walmart.png` },
   { img: `${cdn}/Microsoft.png` },
-  { img: `${cdn}/Uber.png` },
-  { img: `${cdn}/LinkedIn.png` },
+  { img: `${cdn}/Intuit.png` },
+  { img: `${cdn}/amazon.png` },
 ];
 
 function Homepage() {
@@ -50,8 +49,9 @@ function Homepage() {
 
   const query = querySearch(window.location.search);
   const redirectUrl = query.redirect ? decodeURIComponent(query.redirect) : "/";
-
-  const showUsernameField = !window.location.hostname.includes("thecmolist");
+  const hostName = window.location.hostname;
+  const showUsernameField =
+    !hostName.includes("thecmolist") && !hostName.includes("localhost");
 
   const handleFormLeftSubmit = (e) => {
     e.preventDefault();
@@ -96,6 +96,12 @@ function Homepage() {
       });
   };
 
+  const history = useHistory();
+  const handleHeaderLoginButtonClick = () => {
+    console.log("click");
+    history.push("/login");
+  };
+
   const handleLinkedInClick = (e) => {
     e.preventDefault();
     window.location.href = linkedInUrl;
@@ -112,18 +118,21 @@ function Homepage() {
   return (
     <Container className="home height-100">
       <Row className="home--header">
-        <div className="ml-5">
+        <div>
           <a className="nav__logo" href="/">
             <img src={Logo} alt="CMOList logo"></img>
           </a>
+        </div>
+        <div className="home--header-button">
+          <Button onClick={handleHeaderLoginButtonClick}>Sign in</Button>
         </div>
       </Row>
       <Row>
         <Col md="1" sm="0"></Col>
         <Col md="10" sm="12">
           <div className="home--title">
-            CMOlist connects you with the advice and resources you need to
-            succeed
+            Connect with your marketing peers to get the advice and resources
+            you need to succeed
           </div>
         </Col>
         <Col md="1" sm="0"></Col>
@@ -201,7 +210,7 @@ function Homepage() {
         </Col>
         <Col className="px-0" md="6" sm="12">
           <Form className="home--form-right" onSubmit={handleLoginClick}>
-            <div className="home--form-title">Member login</div>
+            <div className="home--form-title">Member Sign in</div>
             <div className="home--form-green-text" />
             <div className="home--form-subtitle">
               Already have an account or received a invitation? Sign in here:
