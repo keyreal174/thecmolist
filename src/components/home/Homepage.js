@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import { Button, Container, Row, Col, Form } from "react-bootstrap";
 import Footer from "../app/base/Footer/Footer";
 import LinkedIn from "../login/icons/linkedin.svg";
@@ -43,8 +43,9 @@ function Homepage() {
 
   const query = querySearch(window.location.search);
   const redirectUrl = query.redirect ? decodeURIComponent(query.redirect) : "/";
-
-  const showUsernameField = !window.location.hostname.includes("thecmolist");
+  const hostName = window.location.hostname;
+  const showUsernameField =
+    !hostName.includes("thecmolist") && !hostName.includes("localhost");
 
   const handleFormLeftSubmit = (e) => {
     e.preventDefault();
@@ -89,6 +90,12 @@ function Homepage() {
       });
   };
 
+  const history = useHistory();
+  const handleHeaderLoginButtonClick = () => {
+    console.log("click");
+    history.push("/login");
+  };
+
   const handleLinkedInClick = (e) => {
     e.preventDefault();
     window.location.href = linkedInUrl;
@@ -105,10 +112,13 @@ function Homepage() {
   return (
     <Container className="home height-100">
       <Row className="home--header">
-        <div className="ml-5">
+        <div>
           <a className="nav__logo" href="/">
             CMO<span>list</span>
           </a>
+        </div>
+        <div className="home--header-button">
+          <Button onClick={handleHeaderLoginButtonClick}>Sign in</Button>
         </div>
       </Row>
       <Row>

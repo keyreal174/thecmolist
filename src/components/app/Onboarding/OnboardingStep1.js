@@ -138,7 +138,7 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
             </Col>
           </Row>
           <Row>
-            <Col md="12" sm="6">
+            <Col md="6" sm="12">
               <Form.Label>Open to networking</Form.Label>
               <div className="d-flex">
                 <Form.Check
@@ -161,8 +161,8 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
                 />
               </div>
             </Col>
-            <Col md="12" sm="6">
-              <Form.Label>Open to advising</Form.Label>
+            <Col md="6" sm="12">
+              <Form.Label>Open to adviding</Form.Label>
               <div className="d-flex">
                 <Form.Check
                   className="onboarding--radio"
@@ -187,7 +187,10 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
           </Row>
         </form>
         <Row>
-          <Col md="12" className="d-flex justify-content-end">
+          <Col
+            md="12"
+            className="onboarding--button-wrapper d-flex justify-content-end"
+          >
             <Button
               className="onboarding--button"
               form="onboarding_step-1"
