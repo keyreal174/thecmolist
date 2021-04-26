@@ -8,7 +8,7 @@ import {
   getEngagementForId,
 } from "../base/EngagementButtons/EngagementButtons";
 import DiscussionComment from "../base/DiscussionComment/DiscussionComment";
-
+import Entities from "../base/Entities/Entities";
 import AnswerIcon from "../base/icons/answer.svg";
 import InsightfulIcon from "../base/icons/insightful.svg";
 import InsightfulCheckedIcon from "../base/icons/insightful_checked.svg";
@@ -136,7 +136,11 @@ const ContentDetail = ({
             author && author.length > 0 ? `Reply to ${author}` : "Reply"
           }
           handleDiscussionCommentSubmit={handleSubmit}
-        />
+        >
+          {content.entities && content.entities.length > 0 && (
+            <Entities entities={content.entities} />
+          )}
+        </Article>
         {content && content.replies && content.replies.length > 0 && (
           <div className="question-answer-section-replies">{`${numberOfReplies} answers`}</div>
         )}

@@ -451,6 +451,7 @@ const Feed = (props) => {
             feedTitle={bannerTitle}
             profileStats={props.profileStats}
             feedData={props.activeFeed}
+            feedLoading={props.feedLoading}
             moreData={props.activeFeedHasMoreData}
             feedAbout={props.activeFeedAbout}
             memberList={props.activeFeedMembers}

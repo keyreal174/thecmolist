@@ -23,6 +23,7 @@ const RenderMarkdownTruncated = ({ numLines, markdown }) => {
     <Markdown>{markdown}</Markdown>
   ) : (
     <ShowMoreText
+      anchorClass="article-show-more"
       lines={numLines}
       more="See more"
       less=""
@@ -149,7 +150,7 @@ function Article(props) {
                   <div className="article-subtitle">{props.subtitle}</div>
                 )}
                 {props.articletext && props.articletext.markdown && (
-                  <div className="article-text">
+                  <div className="article-text article-blue-link">
                     {props.articletextlines ? (
                       <RenderMarkdownTruncated
                         numLines={props.articletextlines}
