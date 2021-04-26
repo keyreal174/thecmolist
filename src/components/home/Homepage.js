@@ -158,7 +158,7 @@ function Homepage() {
             id="left-form"
             onSubmit={handleFormLeftSubmit}
           >
-            <div className="home--form-title">Join CMOlist</div>
+            <div className="home--form-title">Apply for Membership</div>
             <div className="home--form-green-text">Currently invite only</div>
             <div className="home--form-subtitle">
               Fill out the form below to apply:
@@ -213,7 +213,7 @@ function Homepage() {
         </Col>
         <Col className="px-0" md="6" sm="12">
           <Form className="home--form-right" onSubmit={handleLoginClick}>
-            <div className="home--form-title">Sign in</div>
+            <div className="home--form-title">Member Login</div>
             <div className="home--form-green-text" />
             <div className="home--form-subtitle">
               Already have an account or received a invitation? Sign in here:
