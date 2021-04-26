@@ -124,3 +124,10 @@
     }
   }
 }
+
+@media (min-width: 1200px) {
+  .network--share-content {
+    max-width: 250px;
+    padding-right: 0;
+  }
+}
