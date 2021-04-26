@@ -138,3 +138,12 @@
     }
   }
 }
+
+@media (min-width: 800px) {
+  .network--simple-top-banner {
+    min-width: calc(100% - 260px);
+  }
+  .network--simple-top-banner-wrapper {
+    flex-wrap: unset;
+  }
+}
