@@ -80,6 +80,10 @@
     &-button {
       display: none;
     }
+    &-logo {
+      display: block;
+      margin: auto 50px;
+    }
   }
   &--title {
     color: $text-1;
