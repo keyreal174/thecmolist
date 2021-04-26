@@ -32,7 +32,19 @@ const EngagementButtons = ({
   className,
   engagementButtons,
   onEngagementButtonClick,
+  onEngagementButtonMouseEnter,
+  onEngagementButtonMouseLeave,
 }) => {
+  const handleMouseEnter = (type, text) => {
+    if (onEngagementButtonMouseEnter) {
+      onEngagementButtonMouseEnter(type, text);
+    }
+  };
+  const handleMouseLeave = (type, text) => {
+    if (onEngagementButtonMouseLeave) {
+      onEngagementButtonMouseLeave(type, text);
+    }
+  };
   return engagementButtons && engagementButtons.length ? (
     <div className={`engagement-buttons ${className}`}>
       {engagementButtons &&
@@ -50,6 +62,8 @@ const EngagementButtons = ({
                   }`}
                   variant="light"
                   onClick={onEngagementButtonClick.bind(this, type, text)}
+                  onMouseEnter={handleMouseEnter.bind(this, type, text)}
+                  onMouseLeave={handleMouseLeave.bind(this, type, text)}
                 >
                   <img
                     alt={`Icon for button ${index}`}

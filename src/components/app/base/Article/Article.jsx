@@ -43,8 +43,10 @@ function Article(props) {
     props.articletext ||
     props.subtext ||
     props.images;
-  let engagementButtons = props.engagementButtons;
-  let onEngagementButtonClick = props.onEngagementButtonClick;
+  const engagementButtons = props.engagementButtons;
+  const onEngagementButtonClick = props.onEngagementButtonClick;
+  const onEngagementButtonMouseEnter = props?.onEngagementButtonMouseEnter;
+  const onEngagementButtonMouseLeave = props?.onEngagementButtonMouseLeave;
   const withMargin = props.withMargin;
 
   return (
@@ -233,6 +235,8 @@ function Article(props) {
             `}
             engagementButtons={engagementButtons}
             onEngagementButtonClick={onEngagementButtonClick}
+            onEngagementButtonMouseEnter={onEngagementButtonMouseEnter}
+            onEngagementButtonMouseLeave={onEngagementButtonMouseLeave}
           />
           {props.showDiscussionComment && (
             <DiscussionComment
