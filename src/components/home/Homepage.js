@@ -7,9 +7,9 @@ import axios from "axios";
 import Spinner from "react-spinner-material";
 import Util from "../util/Util";
 import querySearch from "stringquery";
-import { scriptURL, privacyPolicy } from "../util/constants";
+import { cdn, scriptURL, privacyPolicy } from "../util/constants";
 
-import marketIcon from "./svg/market.svg";
+import Logo from "../app/base/Header/svgs/logo.svg";
 import trustedIcon from "./svg/trusted.svg";
 import knowledgeIcon from "./svg/knowledge.svg";
 import informedIcon from "./svg/informed.svg";
@@ -30,6 +30,15 @@ const linkedinAuthUrl = (from) => {
     "/api/lnkd_auth_url?redirect=" + from + (itkn ? `&itkn=${itkn}` : "")
   );
 };
+
+const marketingLeaders = [
+  { img: `${cdn}/google.png` },
+  { img: `${cdn}/dropbox.png` },
+  { img: `${cdn}/walmart.png` },
+  { img: `${cdn}/Microsoft.png` },
+  { img: `${cdn}/Intuit.png` },
+  { img: `${cdn}/amazon.png` },
+];
 
 function Homepage() {
   let location = useLocation();
@@ -114,7 +123,7 @@ function Homepage() {
       <Row className="home--header">
         <div>
           <a className="nav__logo" href="/">
-            CMO<span>list</span>
+            <img src={Logo} alt="CMOList logo"></img>
           </a>
         </div>
         <div className="home--header-button">
@@ -125,8 +134,8 @@ function Homepage() {
         <Col md="1" sm="0"></Col>
         <Col md="10" sm="12">
           <div className="home--title">
-            Connecting marketing leaders with the advice and resources they need
-            to succeed
+            Connect with your marketing peers to get the advice and resources
+            you need to succeed
           </div>
         </Col>
         <Col md="1" sm="0"></Col>
@@ -135,8 +144,9 @@ function Homepage() {
         <Col md="2" sm="0"></Col>
         <Col md="8" sm="12">
           <div className="home--subtitle">
-            CMOlist enables marketing leaders to learn from each other by
-            sharing critical insights, best practices, and proven vendors.
+            CMOlist is a private knowledge network that helps marketing leaders
+            learn from each other by sharing critical insights, best practices,
+            and proven vendors.
           </div>
         </Col>
         <Col md="2" sm="0"></Col>
@@ -284,20 +294,21 @@ function Homepage() {
           </Form>
         </Col>
       </Row>
-      <Row>
-        <Col md="12" sm="12">
+      <Row className="home--leaders">
+        <Col className="px-0" md="12" sm="12">
           <div className="home--leaders-section">
             <div className="home--leaders-section-title">
-              Join marketing leaders from world-class companies including
+              Developed in close collaboration with marketing executives from
+              leading companies including
             </div>
             <Row
               sm="12"
               md="12"
               className="home--leaders-section-items-wrapper"
             >
-              {[...Array(6)].map((_, index) => (
+              {marketingLeaders.map(({ img }, index) => (
                 <Col md="2" sm="6" className="home--leaders-section-item">
-                  <img alt={`item ${index}`} src={marketIcon} />
+                  <img alt={`item ${index}`} src={img} />
                 </Col>
               ))}
             </Row>
@@ -331,7 +342,7 @@ function Homepage() {
                 />
                 <div className="home--share-item-title">Unlock knowledge</div>
                 <div className="home--share-item-subtitle">
-                  Turn emails, slacks, and wikis  into structured and searchable
+                  Turn emails, slacks, and wikis into structured and searchable
                   marketing knowledge
                 </div>
               </Col>
