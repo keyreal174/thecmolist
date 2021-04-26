@@ -185,8 +185,9 @@
     &-item {
       margin-bottom: 30px;
       img {
-        width: 100px;
         height: 60px;
+        object-fit: contain;
+        width: 100px;
       }
     }
   }
