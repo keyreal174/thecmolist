@@ -162,7 +162,7 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
               </div>
             </Col>
             <Col md="6" sm="12">
-              <Form.Label>Open to adviding</Form.Label>
+              <Form.Label>Open to advising</Form.Label>
               <div className="d-flex">
                 <Form.Check
                   className="onboarding--radio"
