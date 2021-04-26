@@ -97,6 +97,23 @@
   }
 }
 
+.network--share-content {
+  padding-left: 0;
+  max-width: 250px;
+  min-width: 250px;
+}
+
+.network--simple-top-banner-wrapper {
+  justify-content: space-between;
+}
+
+.simple-top-banner--background-image {
+  img {
+    max-width: 50%;
+    height: 100%;
+  }
+}
+
 @media (max-width: 768px) {
   .network--share-content,
   .network--popular-topics {
@@ -122,12 +139,5 @@
     &.open {
       display: none;
     }
-  }
-}
-
-@media (min-width: 1200px) {
-  .network--share-content {
-    max-width: 250px;
-    padding-right: 0;
   }
 }
