@@ -97,6 +97,20 @@
   }
 }
 
+.network--share-content {
+  padding-left: 0;
+  max-width: 250px;
+  min-width: 250px;
+}
+
+.network--simple-top-banner-wrapper {
+  justify-content: space-between;
+}
+
+.simple-top-banner--background-image {
+  max-width: 100%;
+}
+
 @media (max-width: 768px) {
   .network--share-content,
   .network--popular-topics {

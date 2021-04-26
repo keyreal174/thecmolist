@@ -153,7 +153,7 @@ const Network = (props) => {
               mobileMenuOpen && "open"
             )}
           >
-            <Col className="network--simple-top-banner" md="9">
+            <Col className="network--simple-top-banner" md="7" xl="9" sm="12">
               <SimpleTopBanner
                 // disable for now... buttonText="Invite"
                 onClick={handleInviteModalClick}
@@ -162,7 +162,7 @@ const Network = (props) => {
                 image={bannerImage}
               />
             </Col>
-            <Col className="network--share-content" md="3">
+            <Col className="network--share-content" md="4">
               <div className="mt-3">
                 <MyNetwork saveContent={props.saveContent} />
               </div>
