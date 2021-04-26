@@ -108,10 +108,7 @@
 }
 
 .simple-top-banner--background-image {
-  img {
-    max-width: 50%;
-    height: 100%;
-  }
+  max-width: 100%;
 }
 
 @media (max-width: 768px) {
