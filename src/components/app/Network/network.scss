@@ -148,3 +148,21 @@
     flex-wrap: unset;
   }
 }
+
+.network--feed {
+  .article-body.row {
+    margin-left: 0;
+  }
+  .article--image,
+  .article-img {
+    max-width: 50px;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+  }
+  .article--content {
+    margin: 0px !important;
+    padding: 0 10px;
+    max-width: calc(100% - 60px);
+  }
+}
