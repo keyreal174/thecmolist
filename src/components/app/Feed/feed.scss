@@ -175,7 +175,8 @@
 .feed-right-container {
   padding-right: 0px;
   padding-left: 0px;
-  max-width: 270px;
+  min-width: 250px;
+  max-width: 250px;
 }
 
 .feed-box {
@@ -401,14 +402,19 @@
 }
 
 @media (min-width: 1200px) {
-  .feed-right-container {
-    max-width: 250px;
-  }
   .feed--profile-stats {
     max-width: 300px;
   }
   .feed--feed {
     width: calc(100% - 565px);
+    flex: unset;
+    max-width: unset;
+  }
+}
+
+@media (min-width: 768px) {
+  .feed--feed {
+    width: calc(75% - 250px);
     flex: unset;
     max-width: unset;
   }
