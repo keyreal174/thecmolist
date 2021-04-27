@@ -18,11 +18,14 @@
 }
 
 .topic-link {
-  font-weight: 500;
-  font-size: 17px;
-  display: block;
-  line-height: 1.2;
   color: $brand;
+  display: block;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .topic-description {
