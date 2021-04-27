@@ -123,7 +123,7 @@
   }
   .network--simple-top-banner {
     .simple-top-banner {
-      margin: 0 !important;
+      margin-right: 35px;
     }
   }
   .filter-btn-group {
@@ -168,12 +168,14 @@
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  .article--content {
-    .article-badge {
-      right: -15px;
-    }
-    .badge--connect-button {
-      min-width: unset;
+  .network--feed {
+    .article--content {
+      .article-badge {
+        right: -15px;
+      }
+      .badge--connect-button {
+        min-width: unset;
+      }
     }
   }
 }
