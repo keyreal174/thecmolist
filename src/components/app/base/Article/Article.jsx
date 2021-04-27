@@ -87,7 +87,7 @@ function Article(props) {
           <div className="article-body article-wrap">
             <Row>
               {props.image && props.image.length > 0 && (
-                <Col sm="2" lg="2">
+                <Col className="article-img--wrapper">
                   <div className="article-img">
                     <img
                       src={props.image}
@@ -102,8 +102,9 @@ function Article(props) {
                 </Col>
               )}
               <Col
-                sm={props.image && props.image.length > 0 ? "10" : "12"}
-                lg={props.image && props.image.length > 0 ? "10" : "12"}
+                className="article--content"
+                sm={props.image && props.image.length > 0 ? "11" : "12"}
+                lg={props.image && props.image.length > 0 ? "11" : "12"}
               >
                 <h2 className="article-title">
                   {props.headline.markdown ? (
