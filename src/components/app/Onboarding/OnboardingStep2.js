@@ -192,7 +192,7 @@ const OnboardingStep2 = ({
                   onChange={handleChange}
                 >
                   {pils.map((p, index) => {
-                    if (index < 13 || showMore) {
+                    if (index < 12 || showMore) {
                       return (
                         <ToggleButton
                           value={p}

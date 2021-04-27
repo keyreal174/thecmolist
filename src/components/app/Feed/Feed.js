@@ -404,7 +404,7 @@ const Feed = (props) => {
                   image={bannerImage}
                   saveContent={props.saveContent}
                   followTopic={handleTopicFollowClick}
-                  topic={topic}
+                  topic={isTopic ? topic : null}
                 />
               )}
             </div>
