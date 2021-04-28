@@ -41,7 +41,7 @@ const Notifications = (props) => {
             </div>
           )}
           {feedData.length > 0 && props.moreData && (
-            <div className="row">
+            <div className="row notifications--show-more">
               <div className="col-md-2 mt-2 mx-auto">
                 <button
                   className="btn btn__load-more"
