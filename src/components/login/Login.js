@@ -141,7 +141,7 @@ class Login extends React.Component {
                 required=""
               />
               <button
-                className="btn btn-block btn-linkedin button-login"
+                className="btn btn-block btn-linkedin button-login login--login"
                 name="Submit"
                 value="Login"
                 type="Submit"

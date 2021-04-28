@@ -87,7 +87,7 @@ function Article(props) {
           <div className="article-body article-wrap">
             <Row>
               {props.image && props.image.length > 0 && (
-                <Col sm="2" lg="1">
+                <Col sm="2" lg="1" className="article--image">
                   <div className="article-img">
                     <img
                       src={props.image}
@@ -102,6 +102,7 @@ function Article(props) {
                 </Col>
               )}
               <Col
+                className="article--content"
                 sm={props.image && props.image.length > 0 ? "10" : "12"}
                 lg={props.image && props.image.length > 0 ? "11" : "12"}
               >

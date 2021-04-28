@@ -97,6 +97,10 @@
   justify-content: flex-end;
 }
 
+.filter {
+  margin: 0;
+}
+
 @media (max-width: 991px) {
   .section-title {
     font-size: 18px;
@@ -124,6 +128,9 @@
   .filter-btn-group button {
     margin-right: 0;
   }
+  .filter {
+    overflow: scroll;
+  }
 }
 
 @media (max-width: 575px) {
@@ -140,6 +147,7 @@
   line-height: 21px;
   min-height: 41px;
   padding: 9px 21px !important;
+  margin-bottom: 20px;
 
   &-active,
   &:active {

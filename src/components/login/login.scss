@@ -58,6 +58,10 @@
   &--footer {
     margin-top: 460px;
   }
+  &--linkedIn,
+  &--login {
+    width: 100%;
+  }
 }
 
 @media (max-width: 768px) {

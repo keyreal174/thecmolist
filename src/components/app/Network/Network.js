@@ -153,7 +153,7 @@ const Network = (props) => {
               mobileMenuOpen && "open"
             )}
           >
-            <Col className="network--simple-top-banner" md="7" xl="9" sm="12">
+            <Col className="network--simple-top-banner" md="8" sm="12">
               <SimpleTopBanner
                 // disable for now... buttonText="Invite"
                 onClick={handleInviteModalClick}
@@ -193,7 +193,7 @@ const Network = (props) => {
           />
           <div
             className={clsx(
-              "network--filter-wrapper mt-4 mb-4",
+              "network--filter-wrapper",
               mobileMenuOpen && "open"
             )}
           >

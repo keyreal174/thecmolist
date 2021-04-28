@@ -80,6 +80,10 @@
     &-button {
       display: none;
     }
+    &-logo {
+      display: block;
+      margin: auto 50px;
+    }
   }
   &--title {
     color: $text-1;
@@ -126,14 +130,14 @@
     }
   }
   &--form-left {
-    background: $white;
+    background: #e0e9ff;
     border-bottom-left-radius: 23px;
     border-top-left-radius: 23px;
     padding: 60px;
     height: 604px;
   }
   &--form-right {
-    background: #e0e9ff;
+    background: $white;
     border-bottom-right-radius: 23px;
     border-top-right-radius: 23px;
     padding: 60px;
@@ -300,13 +304,14 @@
       margin: 0px;
     }
     &--form-left {
-      display: none;
-    }
-    &--form-right {
+      height: unset;
       border-radius: 20px;
       margin-top: 10px;
       padding: 30px;
       height: unset;
+    }
+    &--form-right {
+      display: none;
     }
     &--leaders {
       margin: 18px 18px 30px 18px;

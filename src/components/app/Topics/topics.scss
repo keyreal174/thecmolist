@@ -18,11 +18,14 @@
 }
 
 .topic-link {
-  font-weight: 500;
-  font-size: 17px;
-  display: block;
-  line-height: 1.2;
   color: $brand;
+  display: block;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .topic-description {
@@ -42,9 +45,6 @@
 }
 
 @media (max-width: 768px) {
-  .topics--simple-top-banner {
-    margin: 10px 17px;
-  }
   .topics--item-wrapper {
     flex: 0 0 50%;
     max-width: 50%;
@@ -52,12 +52,19 @@
   .topic-wrapper .btn {
     min-width: unset;
   }
-  .topics--wrapper {
-    margin: 10px 2px;
-  }
   .wrapper {
     &.open {
       display: none;
+    }
+  }
+  .simple-top-banner,
+  .topics--wrapper {
+    margin: 10px 17px;
+  }
+  .topics--item-wrapper {
+    padding: 0;
+    &:nth-child(2n) {
+      padding-left: 15px;
     }
   }
 }
