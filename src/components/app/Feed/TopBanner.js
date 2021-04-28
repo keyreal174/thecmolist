@@ -94,7 +94,7 @@ const TopBanner = ({
             </div>
           </div>
         </CustomCard>
-        <CustomCard>
+        <CustomCard className="top-banner--right-column">
           <div className="d-flex flex-column text-center py-3 px-1">
             <Button
               className="btn-blue mb-2 top-banner-button"

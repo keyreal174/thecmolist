@@ -473,13 +473,6 @@
 }
 
 @media (max-width: 1200px) {
-  .profile--left-section,
-  .profile--right-section,
-  .profile-about,
-  .profile--filters,
-  .profile--article-item {
-    margin: 10px 17px;
-  }
   .profile--popular-topics {
     display: none;
   }
@@ -528,5 +521,15 @@
     &.open {
       display: none;
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .profile--left-section,
+  .profile--right-section,
+  .profile-about,
+  .profile--filters,
+  .profile--article-item {
+    margin: 10px 17px;
   }
 }

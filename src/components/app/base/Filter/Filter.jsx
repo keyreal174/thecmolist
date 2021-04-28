@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Badge, Container, Row, Col, Button, Form } from "react-bootstrap";
+import { Badge, Row, Col, Button, Form } from "react-bootstrap";
 import "./filter.scss";
 
 function Filter(props) {
@@ -12,7 +12,7 @@ function Filter(props) {
 
   let hasFilters = props.filters && props.filters.length > 0;
   return (
-    <Container className={props.className ? props.className : "pt-3 pb-2"}>
+    <div className={props.className ? props.className : "pt-3 pb-2"}>
       <Row className="align-items-center mb-2">
         <Col md={props.sortable || props.children ? "9" : "12"}>
           <div className="filter-wrapper">
@@ -71,7 +71,7 @@ function Filter(props) {
         )}
         <Col md="3">{props.children}</Col>
       </Row>
-    </Container>
+    </div>
   );
 }
 
