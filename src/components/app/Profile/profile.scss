@@ -472,7 +472,7 @@
   margin-bottom: 25px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .profile--left-section,
   .profile--right-section,
   .profile-about,
@@ -503,7 +503,9 @@
     position: relative;
     height: unset;
   }
-
+  .profile--right-section {
+    margin-top: 17px;
+  }
   .profile--filters {
     .filter-btn-group {
       padding-bottom: 0;
