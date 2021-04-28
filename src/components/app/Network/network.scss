@@ -115,6 +115,7 @@
 .network--simple-top-banner-wrapper {
   display: flex;
   min-width: calc(100% - 250px);
+  margin: 0;
 }
 
 .network--simple-top-banner {
@@ -148,6 +149,10 @@
   .network--simple-top-banner {
     max-width: 94%;
     padding: 0;
+  }
+  .network--simple-top-banner-wrapper {
+    margin-left: -15px;
+    margin-right: -15px;
   }
 }
 

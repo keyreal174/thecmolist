@@ -12,7 +12,9 @@ function Filter(props) {
 
   let hasFilters = props.filters && props.filters.length > 0;
   return (
-    <div className={props.className ? props.className : "pt-3 pb-2"}>
+    <Row
+      className={`filter ${props.className ? props.className : "pt-3 pb-2"}`}
+    >
       <Row className="align-items-center mb-2">
         <Col md={props.sortable || props.children ? "9" : "12"}>
           <div className="filter-wrapper">
@@ -71,7 +73,7 @@ function Filter(props) {
         )}
         <Col md="3">{props.children}</Col>
       </Row>
-    </div>
+    </Row>
   );
 }
 

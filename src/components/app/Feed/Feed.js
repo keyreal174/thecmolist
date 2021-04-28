@@ -198,7 +198,7 @@ function RenderDashboard(props) {
   const { className, feedLoading, profileStats, saveContent } = props;
 
   return (
-    <div className={className}>
+    <Row className={className}>
       <Col className="feed--profile-stats" md="3">
         <div className="feed--sticky-content">
           {profileStats && <ProfileStats profileStats={profileStats} />}
@@ -231,7 +231,7 @@ function RenderDashboard(props) {
         saveContent={props.saveContent}
         isGroupOrTopic={props.isGroupOrTopic}
       />
-    </div>
+    </Row>
   );
 }
 

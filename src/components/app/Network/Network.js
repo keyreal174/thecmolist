@@ -147,7 +147,7 @@ const Network = (props) => {
       <Container className="height-100">
         <div className="wrapper">
           <Header onToggle={handleToggle} />
-          <div
+          <Row
             className={clsx(
               "network--simple-top-banner-wrapper",
               mobileMenuOpen && "open"
@@ -167,7 +167,7 @@ const Network = (props) => {
                 <MyNetwork saveContent={props.saveContent} />
               </div>
             </Col>
-          </div>
+          </Row>
           <AddMemberModal
             firstButtonText="Cancel"
             secondButtonText="Send invitation"
