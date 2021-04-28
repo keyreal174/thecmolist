@@ -153,7 +153,7 @@ function Homepage() {
       </Row>
       <Row className="home--form">
         <Col className="px-0" md="6" sm="12">
-          <Form className="home--form-right" onSubmit={handleLoginClick}>
+          <Form className="home--form-left" onSubmit={handleLoginClick}>
             <div className="home--form-title">Member Login</div>
             <div className="home--form-green-text" />
             <div className="home--form-subtitle">
@@ -236,7 +236,7 @@ function Homepage() {
         </Col>
         <Col className="px-0" md="6" sm="12">
           <Form
-            className="home--form-left"
+            className="home--form-right"
             id="left-form"
             onSubmit={handleFormLeftSubmit}
           >
