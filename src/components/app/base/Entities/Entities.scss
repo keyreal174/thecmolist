@@ -1,5 +1,13 @@
 @import "../../../../sass/globals.scss";
 
+.entities-wrapper {
+  border-top: 1px solid #d3e0f5;
+  margin-left: -16px;
+  margin-right: -16px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
 .entities {
   &--divider {
     border-top: $border-card;
