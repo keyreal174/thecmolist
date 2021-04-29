@@ -21,6 +21,7 @@ const Vendors = (props) => {
   const fetchData = async () => await props.fetchActiveVendors();
   const [filterIdx, setFilterIdx] = useState(0);
   const [filters, setFilters] = useState([]);
+  const [showFilters, setShowFilters] = useState(true);
   const [bannerTitle, setBannerTitle] = useState("");
   const [bannerImage, setBannerImage] = useState("");
   const feedData = props.feedData;
@@ -69,6 +70,7 @@ const Vendors = (props) => {
               enabled: true,
             });
             idx = newFilters.length - 1;
+            setShowFilters(false);
           }
         }
       }
@@ -127,16 +129,21 @@ const Vendors = (props) => {
             onSubmit={props.inviteNewMember}
             show={showInviteModal}
           />
-          <div
-            className={clsx("vendors--filters mb-4", mobileMenuOpen && "open")}
-          >
-            <Filter
-              className="mt-1 network--filter"
-              filterIdx={filterIdx}
-              filters={filters}
-              onChange={(idx) => changeFilter(idx)}
-            />
-          </div>
+          {showFilters && (
+            <div
+              className={clsx(
+                "vendors--filters mb-4",
+                mobileMenuOpen && "open"
+              )}
+            >
+              <Filter
+                className="mt-1 network--filter"
+                filterIdx={filterIdx}
+                filters={filters}
+                onChange={(idx) => changeFilter(idx)}
+              />
+            </div>
+          )}
           <Row>
             {props.activeFeedSubFilters &&
               props.activeFeedSubFilters.length > 0 && (

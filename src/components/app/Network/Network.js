@@ -22,6 +22,7 @@ const Network = (props) => {
   const fetchData = async () => await props.fetchActiveNetwork();
   const [filterIdx, setFilterIdx] = useState(0);
   const [filters, setFilters] = useState([]);
+  const [showFilters, setShowFilters] = useState(true);
   const [bannerTitle, setBannerTitle] = useState("");
   const [bannerImage, setBannerImage] = useState("");
   const feedData = props.feedData;
@@ -68,6 +69,7 @@ const Network = (props) => {
             enabled: true,
           });
           idx = newFilters.length - 1;
+          setShowFilters(false);
         }
       }
     }
@@ -191,19 +193,21 @@ const Network = (props) => {
             toggle={toggleFollowModal}
             followUser={connectUser}
           />
-          <div
-            className={clsx(
-              "network--filter-wrapper",
-              mobileMenuOpen && "open"
-            )}
-          >
-            <Filter
-              className="mt-1 network--filter"
-              filterIdx={filterIdx}
-              filters={filters}
-              onChange={(idx) => changeFilter(idx)}
-            />
-          </div>
+          {showFilters && (
+            <div
+              className={clsx(
+                "network--filter-wrapper",
+                mobileMenuOpen && "open"
+              )}
+            >
+              <Filter
+                className="mt-1 network--filter"
+                filterIdx={filterIdx}
+                filters={filters}
+                onChange={(idx) => changeFilter(idx)}
+              />
+            </div>
+          )}
           <Row>
             {props.activeFeedSubFilters &&
               props.activeFeedSubFilters.length > 0 && (

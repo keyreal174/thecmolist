@@ -103,17 +103,17 @@ const TopBanner = ({
               Ask a Question
             </Button>
             <Button
+              className="btn-white top-banner-button"
+              onClick={() => handleShow("project")}
+            >
+              Share Project/Vendor
+            </Button>
+            <Button
               className="btn-white mb-2 top-banner-button"
               variant="outline-primary"
               onClick={() => handleShow("article")}
             >
               Share an Article
-            </Button>
-            <Button
-              className="btn-white top-banner-button"
-              onClick={() => handleShow("project")}
-            >
-              Share Project/Vendor
             </Button>
             <AddPostModal
               contentType={contentType}
