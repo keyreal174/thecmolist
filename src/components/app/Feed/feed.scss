@@ -380,6 +380,15 @@
 .feed--dashboard {
   margin: 10px 0;
 }
+.feed--wrapper {
+  .article--image {
+    min-width: 60px;
+    min-height: 60px;
+  }
+  .article--content {
+    max-width: calc(100% - 60px);
+  }
+}
 
 @media (max-width: 768px) {
   .filter-btn-group {
