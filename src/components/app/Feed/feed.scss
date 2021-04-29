@@ -380,15 +380,6 @@
 .feed--dashboard {
   margin: 10px 0;
 }
-.feed--wrapper {
-  .article--image {
-    min-width: 60px;
-    min-height: 60px;
-  }
-  .article--content {
-    max-width: calc(100% - 60px);
-  }
-}
 
 @media (max-width: 768px) {
   .filter-btn-group {
@@ -428,6 +419,17 @@
   .feed--filters,
   .feed--dashboard {
     margin: 10px 17px;
+  }
+  .feed-dashboard-cell .article-img img {
+    height: 60px !important;
+    width: 60px !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .feed-dashboard-cell .article-img img {
+    height: 40px;
+    width: 40px;
   }
 }
 
