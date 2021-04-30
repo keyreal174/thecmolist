@@ -376,9 +376,12 @@
 }
 
 .feed-page-top-banner,
-.feed--filters,
 .feed--dashboard {
   margin: 10px 0;
+}
+
+.feed-divider {
+  margin-top: -10px;
 }
 
 @media (max-width: 768px) {

@@ -15,7 +15,7 @@ function Filter(props) {
     <Row
       className={`filter ${props.className ? props.className : "pt-3 pb-2"}`}
     >
-      <Row className="align-items-center mb-2">
+      <Row className="align-items-center">
         <Col md={props.sortable || props.children ? "9" : "12"}>
           <div className="filter-wrapper">
             {props.title && <h2 className="section-title">{props.title}</h2>}
