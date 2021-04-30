@@ -8,7 +8,7 @@ const Entities = ({ entities }) => {
 
   return (
     <>
-      <div className="feed-box-content mt-3">
+      <div className="feed-box-content entities-wrapper mt-3">
         {entities
           .filter((item, i) => i < 3 || showMore)
           .map(({ image, name, role, link }, index) => (
