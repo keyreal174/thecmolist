@@ -34,7 +34,6 @@ const OnboardingStep2 = ({
     "Sharing my expertise & supporting my peers",
     "Learning about new marketing trends & tech",
     "Advising or board roles",
-    "Other",
   ];
   const [selectedOptions, setSelectedOptions] = useState([]);
   const history = useHistory();

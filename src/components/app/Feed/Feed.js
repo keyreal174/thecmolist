@@ -43,6 +43,7 @@ function RenderRightContainer({
   feedAbout,
   memberList,
   vendorList,
+  activeGroup,
   saveContent,
   isGroupOrTopic,
 }) {
@@ -52,6 +53,7 @@ function RenderRightContainer({
         <Fragment>
           <MyNetwork
             title={feedTitle && feedTitle.length > 0 ? feedTitle : "-"}
+            activeGroup={activeGroup}
             saveContent={saveContent}
           />
           {buildYourNetworkItems && buildYourNetworkItems.length > 0 && (
@@ -228,6 +230,7 @@ function RenderDashboard(props) {
         feedAbout={props.feedAbout}
         memberList={props.memberList}
         vendorList={props.vendorList}
+        activeGroup={props.activeGroup}
         saveContent={props.saveContent}
         isGroupOrTopic={props.isGroupOrTopic}
       />
@@ -402,6 +405,9 @@ const Feed = (props) => {
                   title={bannerTitle}
                   subtitle={"Workspace"}
                   image={bannerImage}
+                  activeGroup={
+                    filterIdx < filters.length ? filters[filterIdx].slug : null
+                  }
                   saveContent={props.saveContent}
                   followTopic={handleTopicFollowClick}
                   topic={isTopic ? topic : null}
@@ -462,6 +468,9 @@ const Feed = (props) => {
             feedAbout={props.activeFeedAbout}
             memberList={props.activeFeedMembers}
             vendorList={props.activeFeedVendors}
+            activeGroup={
+              filterIdx < filters.length ? filters[filterIdx].slug : null
+            }
             saveContent={props.saveContent}
             fetchActiveFeed={props.fetchActiveFeed}
             reactions={props.reactions}
