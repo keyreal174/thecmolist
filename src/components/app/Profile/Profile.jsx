@@ -278,7 +278,7 @@ const Profile = (props) => {
         <Header onToggle={handleToggle} />
         <div className={clsx("wrapper", mobileMenuOpen && "open")}>
           <Row className="profile--wrapper">
-            <Col md="8" sm="12">
+            <Col xl="8" md="12" sm="12">
               <div className="profile--left-section">
                 <img
                   src={profileBackgroundImage}
@@ -364,7 +364,7 @@ const Profile = (props) => {
               </div>
             </Col>
 
-            <Col md="4" sm="12">
+            <Col xl="4" md="12" sm="12">
               <CustomCard heading="Intro" className="profile--right-section">
                 <div className="right-section--details">
                   {profileCompany && (
@@ -498,14 +498,14 @@ const Profile = (props) => {
 
         {profileFirstName && hasDataOnCurrentFeed && (
           <Row className={clsx("profile--feed", mobileMenuOpen && "open")}>
-            <Col md="4" className="profile--popular-topics">
+            <Col xl="4" className="profile--popular-topics">
               <PopularTopics
                 heading={"Popular #topics and Spaces"}
                 topicList={topicList}
                 onSubfilterChange={onSubfilterChange}
               />
             </Col>
-            <Col md="8">
+            <Col xl="8" md="12">
               <TransitionGroup enter={enableAnimations} exit={enableAnimations}>
                 {filteredFeedData.map((feed, idx) => {
                   let badge = null;

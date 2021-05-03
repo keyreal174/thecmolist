@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect, Suspense, useRef } from "react";
 import { Alert, Button, Container, Form, Row, Col } from "react-bootstrap";
 import { cdn } from "../../../util/constants";
 import Util from "../../../util/Util";
@@ -8,6 +8,7 @@ import clsx from "clsx";
 const VendorType = ["Company", "Product", "Contractor"];
 
 function AddPersonModal({ show, handleClose, setMention, defaultName }) {
+  const nameRef = useRef();
   const [name, setName] = useState(defaultName);
   const [link, setLink] = useState("");
   const [error, setError] = useState({});
@@ -59,6 +60,12 @@ function AddPersonModal({ show, handleClose, setMention, defaultName }) {
     setName(defaultName);
   }, [defaultName]);
 
+  useEffect(() => {
+    if (show && nameRef && nameRef.current) {
+      nameRef.current.focus();
+    }
+  }, [show]);
+
   return (
     <>
       <div className={clsx("add-person-modal", show && "visible")}>
@@ -109,7 +116,7 @@ function AddPersonModal({ show, handleClose, setMention, defaultName }) {
                           onChange={(e) => setName(e.target.value)}
                           placeholder="Full name"
                           value={name}
-                          autoFocus
+                          ref={nameRef}
                         />
                         {error && error.name && (
                           <p className="error">{error.name}</p>

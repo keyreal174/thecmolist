@@ -121,7 +121,7 @@ function Homepage() {
   return (
     <Container className="home height-100">
       <Row className="home--header">
-        <div>
+        <div className="home--header-logo">
           <a className="nav__logo" href="/">
             <img src={Logo} alt="CMOList logo"></img>
           </a>
@@ -153,67 +153,8 @@ function Homepage() {
       </Row>
       <Row className="home--form">
         <Col className="px-0" md="6" sm="12">
-          <Form
-            className="home--form-left"
-            id="left-form"
-            onSubmit={handleFormLeftSubmit}
-          >
-            <div className="home--form-title">Join CMOlist</div>
-            <div className="home--form-green-text">Currently invite only</div>
-            <div className="home--form-subtitle">
-              Fill out the form below to apply:
-            </div>
-            <Row>
-              <Col>
-                <Form.Group>
-                  <Form.Label className="home--label">Name</Form.Label>
-                  <Form.Control
-                    className="home--input"
-                    placeHolder="First name, Last name"
-                    required={true}
-                    id="name"
-                  />
-                </Form.Group>
-                <Form.Group>
-                  <Form.Label className="home--label">Email</Form.Label>
-                  <Form.Control
-                    className="home--input"
-                    placeHolder="name@company.com"
-                    required={true}
-                    id="email"
-                    type="email"
-                  />
-                </Form.Group>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Form.Group>
-                  <Form.Label className="home--label">LinkedIn</Form.Label>
-                  <Form.Control
-                    className="home--input"
-                    placeHolder="https://linkedin.com/in/linkedinID"
-                    required={true}
-                    id="linkedIn"
-                  />
-                </Form.Group>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Button
-                  type="submit"
-                  className="btn__homepage btn__homepage-blue signup--form-apply"
-                >
-                  Apply
-                </Button>
-              </Col>
-            </Row>
-          </Form>
-        </Col>
-        <Col className="px-0" md="6" sm="12">
-          <Form className="home--form-right" onSubmit={handleLoginClick}>
-            <div className="home--form-title">Sign in</div>
+          <Form className="home--form-left" onSubmit={handleLoginClick}>
+            <div className="home--form-title">Member Login</div>
             <div className="home--form-green-text" />
             <div className="home--form-subtitle">
               Already have an account or received a invitation? Sign in here:
@@ -289,6 +230,65 @@ function Homepage() {
                   Any questions or problems signing in? Please contact us at{" "}
                   <a href="mailto:hello@theCMOlist.com">hello@theCMOlist.com</a>
                 </p>
+              </Col>
+            </Row>
+          </Form>
+        </Col>
+        <Col className="px-0" md="6" sm="12">
+          <Form
+            className="home--form-right"
+            id="left-form"
+            onSubmit={handleFormLeftSubmit}
+          >
+            <div className="home--form-title">Apply for Membership</div>
+            <div className="home--form-green-text">Currently invite only</div>
+            <div className="home--form-subtitle">
+              Fill out the form below to apply:
+            </div>
+            <Row>
+              <Col>
+                <Form.Group>
+                  <Form.Label className="home--label">Name</Form.Label>
+                  <Form.Control
+                    className="home--input"
+                    placeHolder="First name, Last name"
+                    required={true}
+                    id="name"
+                  />
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label className="home--label">Email</Form.Label>
+                  <Form.Control
+                    className="home--input"
+                    placeHolder="name@company.com"
+                    required={true}
+                    id="email"
+                    type="email"
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Form.Group>
+                  <Form.Label className="home--label">LinkedIn</Form.Label>
+                  <Form.Control
+                    className="home--input"
+                    placeHolder="https://linkedin.com/in/linkedinID"
+                    required={true}
+                    id="linkedIn"
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Button
+                  type="submit"
+                  className="btn__homepage btn__homepage-blue signup--form-apply"
+                >
+                  Apply
+                </Button>
               </Col>
             </Row>
           </Form>

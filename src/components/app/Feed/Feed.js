@@ -404,7 +404,7 @@ const Feed = (props) => {
                   image={bannerImage}
                   saveContent={props.saveContent}
                   followTopic={handleTopicFollowClick}
-                  topic={topic}
+                  topic={isTopic ? topic : null}
                 />
               )}
             </div>
@@ -423,28 +423,34 @@ const Feed = (props) => {
 
           <div className="feed-divider">
             <div className="section-break" />
-            {subSelectors.map((sel, idx) => {
-              return (
-                <Fragment key={idx}>
-                  {idx === 0 ? <span>&nbsp;</span> : <span>&nbsp;|&nbsp;</span>}
-                  {idx === activeSelector ? (
-                    <span style={{ fontWeight: 600, lineHeight: "25px" }}>
-                      {sel.title}
-                    </span>
-                  ) : (
-                    <Button
-                      className="button-as-link"
-                      style={{ paddingTop: "0px", paddingBottom: "0px" }}
-                      onClick={() => {
-                        changeSubFilter(idx);
-                      }}
-                    >
-                      {sel.title}
-                    </Button>
-                  )}
-                </Fragment>
-              );
-            })}
+            <div className="section-subselectors">
+              {subSelectors.map((sel, idx) => {
+                return (
+                  <Fragment key={idx}>
+                    {idx === 0 ? (
+                      <span>&nbsp;</span>
+                    ) : (
+                      <span>&nbsp;|&nbsp;</span>
+                    )}
+                    {idx === activeSelector ? (
+                      <span style={{ fontWeight: 600, lineHeight: "25px" }}>
+                        {sel.title}
+                      </span>
+                    ) : (
+                      <Button
+                        className="button-as-link"
+                        style={{ paddingTop: "0px", paddingBottom: "0px" }}
+                        onClick={() => {
+                          changeSubFilter(idx);
+                        }}
+                      >
+                        {sel.title}
+                      </Button>
+                    )}
+                  </Fragment>
+                );
+              })}
+            </div>
           </div>
           <RenderDashboard
             className={clsx("feed--dashboard", mobileMenuOpen && "open")}

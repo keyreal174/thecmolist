@@ -305,7 +305,11 @@ const DraftEditor = forwardRef(
         let mentionReplacedContent = Modifier.replaceText(
           editorState.getCurrentContent(),
           mentionTextSelection,
-          mention ? mention.name : "",
+          mention
+            ? lastTrigger === "@"
+              ? "@" + mention.name
+              : mention.name
+            : "",
           undefined, // no inline style needed
           entityKey
         );
@@ -356,11 +360,7 @@ const DraftEditor = forwardRef(
       let mentionReplacedContent = Modifier.replaceText(
         editorState.getCurrentContent(),
         mentionTextSelection,
-        mention
-          ? lastTrigger === "@"
-            ? "@" + mention.name
-            : mention.name
-          : "",
+        "@",
         undefined, // no inline style needed
         undefined
       );

@@ -94,7 +94,7 @@ const TopBanner = ({
             </div>
           </div>
         </CustomCard>
-        <CustomCard>
+        <CustomCard className="top-banner--right-column">
           <div className="d-flex flex-column text-center py-3 px-1">
             <Button
               className="btn-blue mb-2 top-banner-button"
@@ -104,16 +104,16 @@ const TopBanner = ({
             </Button>
             <Button
               className="btn-white mb-2 top-banner-button"
+              onClick={() => handleShow("project")}
+            >
+              Share Project/Vendor
+            </Button>
+            <Button
+              className="btn-white top-banner-button"
               variant="outline-primary"
               onClick={() => handleShow("article")}
             >
               Share an Article
-            </Button>
-            <Button
-              className="btn-white top-banner-button"
-              onClick={() => handleShow("project")}
-            >
-              Share Project/Vendor
             </Button>
             <AddPostModal
               contentType={contentType}
