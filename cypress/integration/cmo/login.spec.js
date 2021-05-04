@@ -2,12 +2,12 @@
 
 context('Login', () => {
   beforeEach(() => {
-    cy.visit('/')
+    cy.visit('/login')
   })
 
   it('Login (username/pw)', () => {
     // type email and test
-    cy.get('input[name="email"]')
+    cy.get('input[type="email"]')
       .type('testuser@gmail.com').should('have.value', 'testuser@gmail.com')
 
       // .type() with special character sequences
@@ -25,7 +25,7 @@ context('Login', () => {
       .should('have.value', 'testuser@gmail.com')
 
     // type password and test
-    cy.get('input[name="password"]')
+    cy.get('input[type="password"]')
       .type('password123').should('have.value', 'password123')
 
       // .type() with special character sequences
@@ -43,7 +43,7 @@ context('Login', () => {
       .should('have.value', 'password123')
 
     // submit
-    cy.get('.home--form-right')
+    cy.get('.login--form.form-signin')
       .submit()
 
     // check redirect url
@@ -59,38 +59,36 @@ context('Login', () => {
 
   it('Logout', () => {
     // type email and test
-    cy.get('input[name="email"]')
+    cy.get('input[type="email"]')
       .type('testuser@gmail.com')
 
     // type password and test
-    cy.get('input[name="password"]')
+    cy.get('input[type="password"]')
       .type('password123')
 
     // submit
-    cy.get('.home--form-right')
+    cy.get('.login--form.form-signin')
       .submit()
 
     // check redirect url
     cy.url().should('include', '/feed')
 
-    cy.get('#basic-nav-dropdown')
+    cy.get('#basic-navbar-nav #basic-nav-dropdown')
       .click()
 
     cy.get('#basic-navbar-nav > div.navbar-nav > div > div > a:nth-child(3)')
       .click()
 
-    cy.url().should('include', '/')
-    cy.get('#root > div > div > div.home--form.row > div:nth-child(2) > form > div.home--form-subtitle')
-      .should('have.text', 'Already have an account or received a invitation? Sign in here:')
+    cy.url().should('include', '/home')
   })
 
   it('Block unauthorized login, display good error message', () => {
     // type email and test
-    cy.get('input[name="email"]')
+    cy.get('input[type="email"]')
       .type('test@gmail.com')
 
     // type password and test
-    cy.get('input[name="password"]')
+    cy.get('input[type="password"]')
       .type('password')
 
     cy.on('uncaught:exception', (err, runnable) => {
@@ -107,7 +105,7 @@ context('Login', () => {
       return false
     })
 
-    cy.get('.home--form-right')
+    cy.get('.login--form.form-signin')
       .submit()
   })
 })
