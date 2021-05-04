@@ -41,11 +41,6 @@ const EngagementStats = ({
         <>
           <EngagementStat
             handleClick={onStatButtonClick}
-            value={numberOfViews}
-            text="Views"
-          />
-          <EngagementStat
-            handleClick={onStatButtonClick}
             value={numberOfLikes}
             text="Likes"
           />
@@ -53,6 +48,11 @@ const EngagementStats = ({
             handleClick={onStatButtonClick}
             value={numberOfInsightful}
             text="Insightful"
+          />
+          <EngagementStat
+            handleClick={onStatButtonClick}
+            value={numberOfViews}
+            text="Views"
           />
         </>
       )}

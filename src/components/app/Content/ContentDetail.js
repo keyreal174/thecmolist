@@ -81,6 +81,10 @@ const ContentDetail = ({
   const contentId = content && content.content_id;
   const author = content && content.content ? content.content.author : "";
 
+  const numberOfInsightful = 1;
+  const numberOfViews = 2;
+  const numberOfLikes = 3;
+
   return (
     <>
       <Col
@@ -127,8 +131,12 @@ const ContentDetail = ({
             this,
             content
           )}
+          numberOfInsightful={numberOfInsightful}
+          numberOfLikes={numberOfLikes}
+          numberOfViews={numberOfViews}
           style={{ paddingBottom: "10px" }}
           showDiscussionComment={true}
+          showStats={true}
           discussionCommentAuthor={author}
           profile={profileStats.profile}
           useRichEditor={true}
