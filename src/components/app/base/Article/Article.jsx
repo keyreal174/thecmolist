@@ -234,6 +234,11 @@ function Article(props) {
             `}
             engagementButtons={engagementButtons}
             onEngagementButtonClick={onEngagementButtonClick}
+            numberOfInsightful={props.numberOfInsightful}
+            numberOfLikes={props.numberOfLikes}
+            numberOfViews={props.numberOfViews}
+            onStatButtonClick={props.onStatButtonClick}
+            showStats={props.showStats}
           />
           {props.showDiscussionComment && (
             <DiscussionComment
