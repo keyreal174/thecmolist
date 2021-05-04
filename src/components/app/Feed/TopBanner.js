@@ -32,6 +32,7 @@ const TopBanner = ({
   title,
   subtitle,
   image,
+  activeGroup,
   saveContent,
   followTopic,
   topic,
@@ -117,6 +118,7 @@ const TopBanner = ({
             </Button>
             <AddPostModal
               contentType={contentType}
+              activeGroup={activeGroup}
               show={showContentModal}
               onSubmit={handleSubmit}
               handleClose={handleClose}

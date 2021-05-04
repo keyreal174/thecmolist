@@ -1,5 +1,37 @@
 @import "../../../../sass/globals.scss";
 
+.fadeElementIn {
+  opacity: 1;
+  animation: fade-element-in 200ms ease;
+  z-index: 100;
+}
+
+.fadeAndSlideElementIn {
+  opacity: 1;
+  animation: fade-slide-element-in 1000ms ease;
+  transition-delay: 0ms;
+}
+
+@keyframes fade-element-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-slide-element-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
 .nav-app {
   justify-content: flex-end;
   margin-left: 45px;
@@ -162,7 +194,7 @@
 .profile-dropdown {
   color: $text-2 !important;
   font-size: 13px;
-  font-weight: 499;
+  font-weight: 500;
 }
 
 .header-search {
@@ -388,6 +420,7 @@
 
     img {
       margin-right: 20px;
+      margin-top: 10px;
     }
     &.active {
       border-bottom: none;
@@ -436,7 +469,7 @@
   .header {
     margin-bottom: 110px;
     &.open {
-      margin-bottom: 500px;
+      margin-bottom: 600px;
     }
   }
   .navbar-dropdown--wrapper,
@@ -448,6 +481,10 @@
   }
   .navbar--search {
     display: none;
+  }
+  .profile-dropdown {
+    font-size: 16px;
+    margin-left: 10px;
   }
 }
 

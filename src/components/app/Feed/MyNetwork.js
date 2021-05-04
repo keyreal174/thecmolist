@@ -45,6 +45,7 @@ const MyNetwork = (props) => {
           </Button>
           <AddPostModal
             contentType={contentType}
+            activeGroup={props.activeGroup}
             show={showContentModal}
             onSubmit={handleSubmit}
             handleClose={handleClose}

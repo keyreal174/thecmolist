@@ -27,6 +27,7 @@ function AddPostModal({
   handleClose,
   onSubmit,
   show,
+  activeGroup,
   suggestions,
   getSuggestions,
   getTopicSuggestions,
@@ -38,7 +39,7 @@ function AddPostModal({
 
   const [body, setBody] = useState("");
   const [error, setError] = useState("");
-  const [groups, setGroups] = useState({});
+  const [groups, setGroups] = useState([]);
   const [person, setPerson] = useState("");
   const [photo, setPhoto] = useState("");
   const [role, setRole] = useState("");
@@ -85,16 +86,6 @@ function AddPostModal({
     setIsTypeLoading(false);
   };
 
-  const groupNameToSlug = (g) => {
-    if (profileStats && profileStats.profile && profileStats.profile.groups) {
-      let profileGroups = profileStats.profile.groups;
-      let gIdx = profileGroups.findIndex((psg) => psg.name === g);
-      if (gIdx >= 0 && profileGroups[gIdx].slug) {
-        return profileGroups[gIdx].slug;
-      }
-    }
-    return g;
-  };
   const handleSubmit = async (e) => {
     const content = {
       contentType,
@@ -110,9 +101,7 @@ function AddPostModal({
       role,
     };
     if (groups) {
-      content.groups = Object.keys(groups)
-        .filter((g) => groups[g])
-        .map(groupNameToSlug);
+      content.groups = groups.filter((g) => g.checked).map((g) => g.slug);
     }
 
     setError("");
@@ -128,21 +117,6 @@ function AddPostModal({
       handleClose();
       cleanFields();
     }
-  };
-
-  const getGroupsObject = (groups) => {
-    let aux = {};
-
-    if (groups && groups.length > 0) {
-      groups.forEach(({ name, checked }) => {
-        // for the beta we will set all groups to be checked
-        aux[name] = true;
-        // REMOVE this line post beta
-        //aux[name] = checked;
-      });
-    }
-
-    return aux;
   };
 
   const cleanFields = () => {
@@ -166,6 +140,36 @@ function AddPostModal({
     cleanFields();
   };
 
+  const setPreselectedGroup = (postGroups) => {
+    console.log(activeGroup);
+    if (activeGroup) {
+      console.log(activeGroup);
+      if (activeGroup === "my-network") {
+        setPublicVisibility(true);
+        setPeersVisibility(false);
+        setNetworkVisibility(false);
+      } else if (activeGroup === "my-peers") {
+        setPublicVisibility(false);
+        setPeersVisibility(true);
+        setNetworkVisibility(false);
+      } else {
+        if (postGroups && postGroups.length > 0) {
+          setPublicVisibility(false);
+          setPeersVisibility(false);
+          setNetworkVisibility(true);
+          postGroups.forEach((g) => {
+            if (g.slug === activeGroup) {
+              g.checked = true;
+            } else {
+              g.checked = false;
+            }
+          });
+          setGroups(postGroups.slice());
+        }
+      }
+    }
+  };
+
   useEffect(() => {
     const fetch = async () => {
       try {
@@ -185,8 +189,12 @@ function AddPostModal({
       profileStats.profile.groups &&
       profileStats.profile.groups.length > 0
     ) {
-      const { groups: actualGroups } = profileStats.profile;
-      setGroups(getGroupsObject(actualGroups));
+      let groupsObj = profileStats.profile.groups.map((g) => ({
+        ...g,
+        checked: true,
+      }));
+      setGroups(groupsObj);
+      setPreselectedGroup(groupsObj);
     }
   }, [profileStats]);
 
@@ -212,6 +220,13 @@ function AddPostModal({
       setSecondButtonText("Share Article");
     }
   }, [contentType]);
+
+  useEffect(() => {
+    if (show) {
+      console.log("vShow");
+      setPreselectedGroup(groups);
+    }
+  }, [show]);
 
   const handlePhotoClick = () => {
     const file = document.getElementById("file");
@@ -330,12 +345,12 @@ function AddPostModal({
                         setNetworkVisibility(false);
                         // set all groups to true
                         if (groups) {
-                          let newGroups = { ...groups };
-                          let groupKeys = Object.keys(groups);
-                          groupKeys.forEach((name) => {
-                            newGroups[name] = true;
-                          });
-                          setGroups(newGroups);
+                          setGroups(
+                            groups.map((g) => ({
+                              ...g,
+                              checked: true,
+                            }))
+                          );
                         }
                       }}
                     />
@@ -363,21 +378,24 @@ function AddPostModal({
                   </div>
                   <div className="network-checkbox-group">
                     {groups &&
-                      Object.keys(groups).map((groupKey, index) => {
+                      groups.map((group, index) => {
                         return (
                           <CustomCheckBox
                             className="modal-section-checkbox-content"
-                            checked={groups[groupKey]}
+                            checked={group.checked}
                             disabled={!networkVisibility}
-                            id={groupKey}
+                            id={group.name}
                             key={index}
-                            label={groupKey}
-                            name={groupKey}
+                            label={group.name}
+                            name={group.name}
                             onChange={(e) => {
-                              setGroups({
-                                ...groups,
-                                [groupKey]: e,
-                              });
+                              let idx = groups.findIndex(
+                                (g) => g.slug === group.slug
+                              );
+                              if (idx >= 0) {
+                                groups[idx].checked = e;
+                                setGroups(groups.slice());
+                              }
                             }}
                             type="checkbox"
                           />

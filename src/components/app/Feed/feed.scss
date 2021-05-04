@@ -420,6 +420,24 @@
   .feed--dashboard {
     margin: 10px 17px;
   }
+  .feed-dashboard-cell .article-img img {
+    height: 60px !important;
+    width: 60px !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .feed-dashboard-cell .article-img img {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+@media (min-width: 1201px) and (max-width: 1300px) {
+  .feed-dashboard-cell .article-img img {
+    height: 50px;
+    width: 50px;
+  }
 }
 
 @media (min-height: 1000px) {
