@@ -31,7 +31,6 @@ export const getEngagementForId = (contentId, engagementType, reactions) => {
 const EngagementStats = ({
   numberOfInsightful,
   numberOfLikes,
-  numberOfViews,
   onStatButtonClick,
   showStats,
 }) => {
@@ -48,11 +47,6 @@ const EngagementStats = ({
             handleClick={onStatButtonClick}
             value={numberOfInsightful}
             text="Insightful"
-          />
-          <EngagementStat
-            handleClick={onStatButtonClick}
-            value={numberOfViews}
-            text="Views"
           />
         </>
       )}
@@ -84,7 +78,6 @@ const EngagementButtons = ({
   engagementButtons,
   numberOfInsightful,
   numberOfLikes,
-  numberOfViews,
   onEngagementButtonClick,
   onStatButtonClick,
   showStats,
@@ -123,7 +116,6 @@ const EngagementButtons = ({
       <EngagementStats
         numberOfInsightful={numberOfInsightful}
         numberOfLikes={numberOfLikes}
-        numberOfViews={numberOfViews}
         onStatButtonClick={onStatButtonClick}
         showStats={showStats}
       />

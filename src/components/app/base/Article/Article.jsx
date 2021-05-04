@@ -236,7 +236,6 @@ function Article(props) {
             onEngagementButtonClick={onEngagementButtonClick}
             numberOfInsightful={props.numberOfInsightful}
             numberOfLikes={props.numberOfLikes}
-            numberOfViews={props.numberOfViews}
             onStatButtonClick={props.onStatButtonClick}
             showStats={props.showStats}
           />

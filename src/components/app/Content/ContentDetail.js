@@ -82,7 +82,6 @@ const ContentDetail = ({
   const author = content && content.content ? content.content.author : "";
 
   const numberOfInsightful = 1;
-  const numberOfViews = 2;
   const numberOfLikes = 3;
 
   return (
@@ -133,7 +132,6 @@ const ContentDetail = ({
           )}
           numberOfInsightful={numberOfInsightful}
           numberOfLikes={numberOfLikes}
-          numberOfViews={numberOfViews}
           style={{ paddingBottom: "10px" }}
           showDiscussionComment={true}
           showStats={true}
