@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from "react";
+import React, { useEffect, useRef, useState, Fragment } from "react";
 import { connect } from "react-redux";
 import { useLocation } from "react-router";
 import { Container, Row, Col, Button } from "react-bootstrap";
@@ -73,16 +73,39 @@ function RenderFeed({
   changeReaction,
   feedData,
   fetchActiveFeed,
+  feedLoading,
   moreData,
   profileStats,
   reactions,
 }) {
+  const loadMoreRef = useRef(null);
+  const loadMoreScroll = (entries) => {
+    if (entries && entries.length > 0) {
+      const target = entries[0];
+      if (target.isIntersecting && !feedLoading) {
+        console.log("Feed fetch data");
+        fetchActiveFeed();
+      }
+    }
+  };
   let onLoadMoreClick = (e) => {
     e.preventDefault();
     e.target && e.target.blur && e.target.blur();
     fetchActiveFeed();
   };
   let feedMoreData = feedData.length > 0 && moreData;
+  useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.25,
+    };
+    const observer = new IntersectionObserver(loadMoreScroll, options);
+    if (loadMoreRef && loadMoreRef.current) {
+      observer.observe(loadMoreRef.current);
+    }
+    return () => loadMoreRef.current && observer.unobserve(loadMoreRef.current);
+  }, [loadMoreRef]);
 
   const history = useHistory();
 
@@ -183,9 +206,10 @@ function RenderFeed({
         <div className="row">
           <div className="col-md-2 mt-2 mx-auto">
             <button
-              className="btn btn__load-more"
+              className="btn btn__load-more invisible"
               type="button"
               onClick={onLoadMoreClick}
+              ref={loadMoreRef}
             >
               Show more
             </button>
@@ -218,6 +242,7 @@ function RenderDashboard(props) {
             changeReaction={props.changeReaction}
             feedData={props.feedData}
             fetchActiveFeed={props.fetchActiveFeed}
+            feedLoading={props.feedLoading}
             moreData={props.moreData}
             profileStats={profileStats}
             reactions={props.reactions}
