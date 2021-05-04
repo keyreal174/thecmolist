@@ -28,60 +28,105 @@ export const getEngagementForId = (contentId, engagementType, reactions) => {
   );
 };
 
+const EngagementStats = ({
+  numberOfInsightful,
+  numberOfLikes,
+  numberOfViews,
+  onStatButtonClick,
+  showStats,
+}) => {
+  return (
+    <div className="engagement-stats--wrapper">
+      {showStats && (
+        <>
+          <EngagementStat
+            handleClick={onStatButtonClick}
+            value={numberOfViews}
+            text="Views"
+          />
+          <EngagementStat
+            handleClick={onStatButtonClick}
+            value={numberOfLikes}
+            text="Likes"
+          />
+          <EngagementStat
+            handleClick={onStatButtonClick}
+            value={numberOfInsightful}
+            text="Insightful"
+          />
+        </>
+      )}
+    </div>
+  );
+};
+
+const EngagementStat = ({ handleClick, value, text }) => {
+  return (
+    <>
+      {value && (
+        <Button
+          className="engagement-stat--wrapper"
+          onClick={handleClick}
+          variant="link"
+        >
+          <span>
+            <strong className="engagement-stat--value">{value}</strong>
+            {" ".concat(text)}
+          </span>
+        </Button>
+      )}
+    </>
+  );
+};
+
 const EngagementButtons = ({
   className,
   engagementButtons,
-  onEngagementButtonClick,
-  showStats = true,
-  numberOfViews,
+  numberOfInsightful,
   numberOfLikes,
-  numberOfInsightfull,
+  numberOfViews,
+  onEngagementButtonClick,
+  onStatButtonClick,
+  showStats,
 }) => {
   return engagementButtons && engagementButtons.length ? (
     <div className={`engagement-buttons--wrapper ${className}`}>
       <div className="engagement-buttons--items">
-        {engagementButtons &&
-          engagementButtons.map(
-            ({ text, type, icon, iconChecked, number, checked }, index) => {
-              let auxIcon = icon;
-              if (checked && iconChecked) {
-                auxIcon = iconChecked;
-              }
-              return (
-                <div key={text}>
-                  <Button
-                    className={`engagement-buttons--item ${
-                      checked ? "checked" : ""
-                    }`}
-                    variant="light"
-                    onClick={onEngagementButtonClick.bind(this, type, text)}
-                  >
-                    <img
-                      alt={`Icon for button ${index}`}
-                      className="engagement-buttons--item-image"
-                      src={auxIcon}
-                    />
-                    <span>{text}</span>
-                    {number > 0 && <span>{` (${number}) `}</span>}
-                  </Button>
-                </div>
-              );
+        {engagementButtons.map(
+          ({ text, type, icon, iconChecked, number, checked }, index) => {
+            let auxIcon = icon;
+            if (checked && iconChecked) {
+              auxIcon = iconChecked;
             }
-          )}
+            return (
+              <div key={text}>
+                <Button
+                  className={`engagement-buttons--item ${
+                    checked ? "checked" : ""
+                  }`}
+                  variant="light"
+                  onClick={onEngagementButtonClick.bind(this, type, text)}
+                >
+                  <img
+                    alt={`Icon for button ${index}`}
+                    className="engagement-buttons--item-image"
+                    src={auxIcon}
+                  />
+                  <span>{text}</span>
+                  {number > 0 && <span>{` (${number}) `}</span>}
+                </Button>
+              </div>
+            );
+          }
+        )}
       </div>
-      {engagementButtons && showStats && (
-        <div className="engagement-buttons--stats">
-          {numberOfViews && (
-            <Button variant="link">{`${numberOfViews} Views`}</Button>
-          )}
-          {numberOfLikes && (
-            <Button variant="link">{`${numberOfLikes} Likes`}</Button>
-          )}
-          {numberOfInsightfull && (
-            <Button variant="link">{`${numberOfInsightfull} Insightfull`}</Button>
-          )}
-        </div>
-      )}
+      <EngagementStats
+        numberOfInsightful={numberOfInsightful}
+        numberOfLikes={numberOfLikes}
+        numberOfViews={numberOfViews}
+        onStatButtonClick={onStatButtonClick}
+        showStats={showStats}
+      />
     </div>
   ) : null;
 };

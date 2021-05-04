@@ -32,3 +32,19 @@
     display: flex;
   }
 }
+
+.engagement-stats {
+  &--wrapper {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.engagement-stat {
+  &--wrapper {
+    color: $text-1;
+    &:hover {
+      color: $text-1;
+    }
+  }
+}
