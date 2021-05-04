@@ -12,6 +12,10 @@ export const setReaction = (contentId, type) => {
   });
 };
 
+export const getReactionsForPost = (contentId) => {
+  return axios.get(`/api/reactions/${contentId}`);
+};
+
 const initReactionModelForContent = () => {
   return {
     num_thanks: 0,
