@@ -84,6 +84,12 @@ const EngagementButtons = ({
 }) => {
   return engagementButtons && engagementButtons.length ? (
     <div className={`engagement-buttons--wrapper ${className}`}>
+      <EngagementStats
+        numberOfInsightful={numberOfInsightful}
+        numberOfLikes={numberOfLikes}
+        onStatButtonClick={onStatButtonClick}
+        showStats={showStats}
+      />
       <div className="engagement-buttons--items">
         {engagementButtons.map(
           ({ text, type, icon, iconChecked, number, checked }, index) => {
@@ -113,12 +119,6 @@ const EngagementButtons = ({
           }
         )}
       </div>
-      <EngagementStats
-        numberOfInsightful={numberOfInsightful}
-        numberOfLikes={numberOfLikes}
-        onStatButtonClick={onStatButtonClick}
-        showStats={showStats}
-      />
     </div>
   ) : null;
 };
