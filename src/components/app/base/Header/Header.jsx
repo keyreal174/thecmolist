@@ -205,7 +205,11 @@ function Header({
             aria-controls="basic-navbar-nav"
           />
           <Navbar.Brand
-            className={clsx("header--logo", mobileMenuOpen && "open")}
+            className={clsx(
+              "header--logo",
+              mobileMenuOpen && "open",
+              mobileMenuOpen && "fadeElementIn"
+            )}
             href="/feed"
           >
             <img src={Logo} alt="CMOList brand logo" />
@@ -232,7 +236,7 @@ function Header({
             options={options}
             goSearchPage={goSearchPage}
           />
-          <Nav>
+          <Nav className={clsx(mobileMenuOpen && "fadeAndSlideElementIn")}>
             <Nav.Link as={NavLink} to="/feed">
               <img src={HomeIcon} alt="" />
               <div>Home</div>
