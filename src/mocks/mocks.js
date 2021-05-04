@@ -31,7 +31,7 @@ if (process.env.NODE_ENV !== "production") {
   MockedApiRefinedSearch = require("./api_refinedsearch.json");
   MockedApiVendorProfile = require("./api_vendor.json");
   MockedApiVendorsProfile = require("./api_vendors.json");
-  MockedApiReactionsByPost = require("api_reactions_by_post.json");
+  MockedApiReactionsByPost = require("./api_reactions_by_post.json");
   MockedApiSuggestions = require("./api_suggestions.json");
   MockedApiOnboarding = require("./api_onboarding.json");
 }
