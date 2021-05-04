@@ -2,18 +2,18 @@
 
 context('Login', () => {
   beforeEach(() => {
-    cy.visit('/')
+    cy.visit('/login')
   })
 
   it("Load 'All' tab in feed", () => {
     // type email and test
-    cy.get('input[name="email"]')
+    cy.get('input[type="email"]')
       .type('testuser@gmail.com')
     // type password and test
-    cy.get('input[name="password"]')
+    cy.get('input[type="password"]')
       .type('password123')
     // submit
-    cy.get('.home--form-right')
+    cy.get('.login--form.form-signin')
       .submit()
 
     // Feed Page
@@ -30,13 +30,13 @@ context('Login', () => {
 
   it("Load My peers tab in feed", () => {
     // type email and test
-    cy.get('input[name="email"]')
+    cy.get('input[type="email"]')
       .type('testuser@gmail.com')
     // type password and test
-    cy.get('input[name="password"]')
+    cy.get('input[type="password"]')
       .type('password123')
     // submit
-    cy.get('.home--form-right')
+    cy.get('.login--form.form-signin')
       .submit()
 
     // Feed Page
@@ -58,13 +58,13 @@ context('Login', () => {
 
   it("Load Signalfire marketing tab in feed", () => {
     // type email and test
-    cy.get('input[name="email"]')
+    cy.get('input[type="email"]')
       .type('testuser@gmail.com')
     // type password and test
-    cy.get('input[name="password"]')
+    cy.get('input[type="password"]')
       .type('password123')
     // submit
-    cy.get('.home--form-right')
+    cy.get('.login--form.form-signin')
       .submit()
 
     // Feed Page
@@ -87,13 +87,13 @@ context('Login', () => {
 
   it("Load all three tabs, tab through filters (All/Q&A/Projects/Articles)", () => {
     // type email and test
-    cy.get('input[name="email"]')
+    cy.get('input[type="email"]')
       .type('testuser@gmail.com')
     // type password and test
-    cy.get('input[name="password"]')
+    cy.get('input[type="password"]')
       .type('password123')
     // submit
-    cy.get('.home--form-right')
+    cy.get('.login--form.form-signin')
       .submit()
 
     // Feed Page
@@ -132,28 +132,27 @@ context('Login', () => {
       .should('have.length', 2)
 
     // Q&A filter
-    cy.get('#root > div > div > div.wrapper > div.feed-divider > button:nth-child(5)')
+    cy.get('#root > div > div > div.wrapper > div.feed-divider > div.section-subselectors > button:nth-child(4)')
       .click()
     cy.get('.article-wrapper')
       .should('have.length', 2)
 
     // All filter
-    cy.get('#root > div > div > div.wrapper > div.feed-divider > button:nth-child(3)')
+    cy.get('#root > div > div > div.wrapper > div.feed-divider > div.section-subselectors > button:nth-child(2)')
       .click()
     cy.get('.article-wrapper')
       .should('have.length', 2)
 
     // Updates & Insights filter
-    cy.get('#root > div > div > div.wrapper > div.feed-divider > button:nth-child(7)')
+    cy.get('#root > div > div > div.wrapper > div.feed-divider > div.section-subselectors > button:nth-child(6)')
       .click()
     cy.get('.article-wrapper')
       .should('have.length', 1)
 
-    // Updates & Insights filter
-    cy.get('#root > div > div > div.wrapper > div.feed-divider > button:nth-child(9)')
+    // Articles & News
+    cy.get('#root > div > div > div.wrapper > div.feed-divider > div.section-subselectors > button:nth-child(8)')
       .click()
     cy.get('.article-wrapper')
       .should('have.length', 1)
-
   })
 })
