@@ -55,12 +55,14 @@ const EngagementStats = ({
 };
 
 const EngagementStat = ({ handleClick, value, text }) => {
+  const textToLowerCase = text && text.toLowerCase();
+
   return (
     <>
       {value && (
         <Button
           className="engagement-stat--wrapper"
-          onClick={handleClick}
+          onClick={handleClick.bind(this, textToLowerCase)}
           variant="link"
         >
           <span>

@@ -2,31 +2,36 @@ import React, { useState } from "react";
 import Article from "../base/Article/Article";
 import CustomCard from "../base/CustomCard/CustomCard";
 import clsx from "clsx";
-import { Col } from "react-bootstrap";
+import { Col, Modal } from "react-bootstrap";
 import {
   getCheckedForEngagementType,
   getEngagementForId,
 } from "../base/EngagementButtons/EngagementButtons";
+import { AllMembersList } from "../Feed/AllMembers";
 import DiscussionComment from "../base/DiscussionComment/DiscussionComment";
 import Entities from "../base/Entities/Entities";
+import { cdn } from "../../util/constants";
+
 import AnswerIcon from "../base/icons/answer.svg";
 import InsightfulIcon from "../base/icons/insightful.svg";
 import InsightfulCheckedIcon from "../base/icons/insightful_checked.svg";
 import ThanksIcon from "../base/icons/thanks.svg";
 import ThanksCheckedIcon from "../base/icons/thanks_checked.svg";
-import { cdn } from "../../util/constants";
 
 const ContentDetail = ({
   content,
   profileStats,
   mobileMenuOpen,
   reactions,
+  reactionsById,
   saveCommentToContent,
   saveCommentToReply,
   saveReactionToCallerType,
   setError,
 }) => {
   const [focusCommentToggle, setFocusCommentToggle] = useState(true);
+  const [showStatModal, setShowStatModal] = useState(false);
+  const [statType, setStatType] = useState("");
   const focusError = () => {
     const errorSection = document.getElementById("error-section");
     window.scrollTo(0, 0);
@@ -81,8 +86,13 @@ const ContentDetail = ({
   const contentId = content && content.content_id;
   const author = content && content.content ? content.content.author : "";
 
-  const numberOfInsightful = 1;
-  const numberOfLikes = 3;
+  const handleStatButtonClick = (key) => {
+    setShowStatModal(true);
+    setStatType(key);
+  };
+  const handleCloseButtonClick = () => {
+    setShowStatModal(false);
+  };
 
   return (
     <>
@@ -130,8 +140,9 @@ const ContentDetail = ({
             this,
             content
           )}
-          numberOfInsightful={numberOfInsightful}
-          numberOfLikes={numberOfLikes}
+          numberOfInsightful={reactionsById["insightful"]?.length}
+          numberOfLikes={reactionsById["likes"]?.length}
+          onStatButtonClick={handleStatButtonClick}
           style={{ paddingBottom: "10px" }}
           showDiscussionComment={true}
           showStats={true}
@@ -147,6 +158,14 @@ const ContentDetail = ({
             <Entities entities={content.entities} />
           )}
         </Article>
+        <Modal show={showStatModal} onHide={handleCloseButtonClick}>
+          <Modal.Header closeButton>
+            <Modal.Title>Stats by user</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <AllMembersList list={reactionsById[statType]} />
+          </Modal.Body>
+        </Modal>
         {content && content.replies && content.replies.length > 0 && (
           <div className="question-answer-section-replies">{`${numberOfReplies} answers`}</div>
         )}
