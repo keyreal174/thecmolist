@@ -376,9 +376,24 @@
 }
 
 .feed-page-top-banner,
-.feed--filters,
 .feed--dashboard {
   margin: 10px 0;
+}
+
+.feed-divider {
+  margin-top: -10px;
+}
+.feed-subselector--selected-option,
+.feed-subselector--button {
+  font-weight: 600;
+  line-height: 26px;
+  font-size: 16px;
+}
+
+.feed-subselector--button {
+  padding-bottom: 0;
+  padding-top: 0;
+  margin-bottom: 2px;
 }
 
 @media (max-width: 768px) {

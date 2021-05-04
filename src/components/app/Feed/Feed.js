@@ -464,13 +464,12 @@ const Feed = (props) => {
                       <span>&nbsp;|&nbsp;</span>
                     )}
                     {idx === activeSelector ? (
-                      <span style={{ fontWeight: 600, lineHeight: "25px" }}>
+                      <span className="feed-subselector--selected-option">
                         {sel.title}
                       </span>
                     ) : (
                       <Button
-                        className="button-as-link"
-                        style={{ paddingTop: "0px", paddingBottom: "0px" }}
+                        className="feed-subselector--button button-as-link"
                         onClick={() => {
                           changeSubFilter(idx);
                         }}

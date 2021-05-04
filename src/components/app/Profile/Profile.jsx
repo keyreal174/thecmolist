@@ -488,7 +488,7 @@ const Profile = (props) => {
 
           {profileFirstName && (
             <Filter
-              classname="profile--filters"
+              className="profile--filters"
               filterIdx={filterIdx}
               filters={filters}
               onChange={(idx) => setFilterId(idx)}
