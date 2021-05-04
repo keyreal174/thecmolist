@@ -32,51 +32,56 @@ const EngagementButtons = ({
   className,
   engagementButtons,
   onEngagementButtonClick,
-  onEngagementButtonMouseEnter,
-  onEngagementButtonMouseLeave,
+  showStats = true,
+  numberOfViews,
+  numberOfLikes,
+  numberOfInsightfull,
 }) => {
-  const handleMouseEnter = (type, text) => {
-    if (onEngagementButtonMouseEnter) {
-      onEngagementButtonMouseEnter(type, text);
-    }
-  };
-  const handleMouseLeave = (type, text) => {
-    if (onEngagementButtonMouseLeave) {
-      onEngagementButtonMouseLeave(type, text);
-    }
-  };
   return engagementButtons && engagementButtons.length ? (
-    <div className={`engagement-buttons ${className}`}>
-      {engagementButtons &&
-        engagementButtons.map(
-          ({ text, type, icon, iconChecked, number, checked }, index) => {
-            let auxIcon = icon;
-            if (checked && iconChecked) {
-              auxIcon = iconChecked;
+    <div className={`engagement-buttons--wrapper ${className}`}>
+      <div className="engagement-buttons--items">
+        {engagementButtons &&
+          engagementButtons.map(
+            ({ text, type, icon, iconChecked, number, checked }, index) => {
+              let auxIcon = icon;
+              if (checked && iconChecked) {
+                auxIcon = iconChecked;
+              }
+              return (
+                <div key={text}>
+                  <Button
+                    className={`engagement-buttons--item ${
+                      checked ? "checked" : ""
+                    }`}
+                    variant="light"
+                    onClick={onEngagementButtonClick.bind(this, type, text)}
+                  >
+                    <img
+                      alt={`Icon for button ${index}`}
+                      className="engagement-buttons--item-image"
+                      src={auxIcon}
+                    />
+                    <span>{text}</span>
+                    {number > 0 && <span>{` (${number}) `}</span>}
+                  </Button>
+                </div>
+              );
             }
-            return (
-              <div key={text}>
-                <Button
-                  className={`engagement-buttons-button ${
-                    checked ? "checked" : ""
-                  }`}
-                  variant="light"
-                  onClick={onEngagementButtonClick.bind(this, type, text)}
-                  onMouseEnter={handleMouseEnter.bind(this, type, text)}
-                  onMouseLeave={handleMouseLeave.bind(this, type, text)}
-                >
-                  <img
-                    alt={`Icon for button ${index}`}
-                    className="engagement-buttons-image"
-                    src={auxIcon}
-                  />
-                  <span>{text}</span>
-                  {number > 0 && <span>{` (${number}) `}</span>}
-                </Button>
-              </div>
-            );
-          }
-        )}
+          )}
+      </div>
+      {engagementButtons && showStats && (
+        <div className="engagement-buttons--stats">
+          {numberOfViews && (
+            <Button variant="link">{`${numberOfViews} Views`}</Button>
+          )}
+          {numberOfLikes && (
+            <Button variant="link">{`${numberOfLikes} Likes`}</Button>
+          )}
+          {numberOfInsightfull && (
+            <Button variant="link">{`${numberOfInsightfull} Insightfull`}</Button>
+          )}
+        </div>
+      )}
     </div>
   ) : null;
 };
