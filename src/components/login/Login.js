@@ -93,24 +93,6 @@ class Login extends React.Component {
   }
 
   render() {
-    let isMobile = Util.isMobile();
-    let isStaging =
-      window.location &&
-      window.location.hostname &&
-      window.location.hostname.includes("-staging");
-    if (isMobile && !isStaging) {
-      return (
-        <div className="container">
-          <div className="mt100">
-            <form name="Login_Form" className="form-signin form-group">
-              <p className="form-signin-heading">
-                CMOlist is currently only available through desktop browsers
-              </p>
-            </form>
-          </div>
-        </div>
-      );
-    }
     return (
       <div className="container">
         <div className="mt100 row no-gutters">

@@ -95,7 +95,7 @@ function RenderMobileDropdown({ saveContent, history, mobileMenuOpen }) {
     <div className={clsx("navbar-dropdown--wrapper", mobileMenuOpen && "open")}>
       <NavDropdown
         className="navbar-dropdown"
-        title="Share experience"
+        title="Post"
         id="basic-nav-dropdown"
       >
         <NavDropdown.Item

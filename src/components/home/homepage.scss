@@ -279,6 +279,7 @@
         border-radius: 20px;
         border-color: $gray-3;
         color: $brand;
+        margin-top: 10px;
       }
     }
     &--title {
@@ -406,7 +407,15 @@
       }
     }
     &--header {
-      padding: 20px;
+      padding: 11px;
+      &-logo {
+        display: block;
+        margin-left: 20px;
+
+        .nav__logo img {
+          height: 30px;
+        }
+      }
     }
   }
 }
