@@ -3,7 +3,7 @@ import { useLocation } from "react-router";
 import { connect } from "react-redux";
 import { Container } from "react-bootstrap";
 import clsx from "clsx";
-import Header from "../base/Header/Header";
+import Layout from "../base/Layout/Layout";
 import Footer from "../base/Footer/Footer";
 import Filter from "../base/Filter/Filter";
 import RenderList from "./RenderList";
@@ -107,40 +107,41 @@ const Search = (props) => {
   };
 
   return (
-    <Container className="height-100">
-      <div className="wrapper">
-        <Header onToggle={handleToggle} />
-        <div className={clsx("search--content", mobileMenuOpen && "open")}>
-          <Filter
-            className="mt-1"
-            filterIdx={filterIdx}
-            filters={filters}
-            onChange={(idx) => {
-              changeFilter(idx);
-              showMore(filters[idx]["slug"]);
-            }}
-          />
-          <div className="mt-3">
-            {modules && (
-              <RenderList
-                connectUser={props.connectUser}
-                changeReaction={props.changeReaction}
-                disconnectUser={props.disconnectUser}
-                fetchMoreRefinedData={fetchMoreRefinedData}
-                filters={filters}
-                invalidateFeed={props.invalidateFeed}
-                isFull={isFull}
-                localConnectedUsers={props.localConnectedUsers}
-                modules={modules}
-                moreData={props.moreData}
-                reactions={props.reactions}
-                showMore={showMore}
-              />
-            )}
+    <Layout onToggle={handleToggle}>
+      <Container className="height-100">
+        <div className="wrapper">
+          <div className={clsx("search--content", mobileMenuOpen && "open")}>
+            <Filter
+              className="mt-1"
+              filterIdx={filterIdx}
+              filters={filters}
+              onChange={(idx) => {
+                changeFilter(idx);
+                showMore(filters[idx]["slug"]);
+              }}
+            />
+            <div className="mt-3">
+              {modules && (
+                <RenderList
+                  connectUser={props.connectUser}
+                  changeReaction={props.changeReaction}
+                  disconnectUser={props.disconnectUser}
+                  fetchMoreRefinedData={fetchMoreRefinedData}
+                  filters={filters}
+                  invalidateFeed={props.invalidateFeed}
+                  isFull={isFull}
+                  localConnectedUsers={props.localConnectedUsers}
+                  modules={modules}
+                  moreData={props.moreData}
+                  reactions={props.reactions}
+                  showMore={showMore}
+                />
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    </Container>
+      </Container>
+    </Layout>
   );
 };
 
