@@ -658,12 +658,12 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
+    changeReaction: dispatch.reactionModel.changeReaction,
+    connectUser: dispatch.userModel.connectUser,
+    deletePost: dispatch.profileModel.deletePost,
+    disconnectUser: dispatch.userModel.disconnectUser,
     fetchProfile: dispatch.profileModel.fetchProfile,
     saveProfile: dispatch.profileModel.saveProfile,
-    deletePost: dispatch.profileModel.deletePost,
-    connectUser: dispatch.userModel.connectUser,
-    disconnectUser: dispatch.userModel.disconnectUser,
-    changeReaction: dispatch.reactionModel.changeReaction,
   };
 };
 
