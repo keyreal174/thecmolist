@@ -4,7 +4,7 @@ import AddPostModal from "../AddPostModal/AddPostModal";
 import clsx from "clsx";
 import { AsyncTypeahead, TypeaheadMenu } from "react-bootstrap-typeahead";
 import { connect } from "react-redux";
-import { Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown, Button, Container } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router";
 import PersonHeader from "../PersonHeader/PersonHeader";
@@ -198,99 +198,101 @@ function Header({
       <div
         className={clsx("container-fullwidth", mobileMenuOpen && "open")}
       ></div>
-      <Navbar expand="md" variant="white" onToggle={handleToggle}>
-        <div className="d-flex">
-          <Navbar.Toggle
-            className={clsx("navbar-toggler", mobileMenuOpen && "open")}
-            aria-controls="basic-navbar-nav"
-          />
-          <Navbar.Brand
-            className={clsx(
-              "header--logo",
-              mobileMenuOpen && "open",
-              mobileMenuOpen && "fadeElementIn"
-            )}
-            href="/feed"
-          >
-            <img src={Logo} alt="CMOList brand logo" />
-            <span className="header--tag">Beta</span>
-          </Navbar.Brand>
-          <RenderMobileDropdown
-            saveContent={saveContent}
-            history={history}
-            mobileMenuOpen={mobileMenuOpen}
-          />
-        </div>
-        <RenderSearch
-          className={clsx("navbar--mobile-search", mobileMenuOpen && "open")}
-          isLoading={isLoading}
-          handleSearch={handleSearch}
-          options={options}
-          goSearchPage={goSearchPage}
-        />
-        <Navbar.Collapse className="nav-app" id="basic-navbar-nav">
+      <Container>
+        <Navbar expand="md" variant="white" onToggle={handleToggle}>
+          <div className="d-flex">
+            <Navbar.Toggle
+              className={clsx("navbar-toggler", mobileMenuOpen && "open")}
+              aria-controls="basic-navbar-nav"
+            />
+            <Navbar.Brand
+              className={clsx(
+                "header--logo",
+                mobileMenuOpen && "open",
+                mobileMenuOpen && "fadeElementIn"
+              )}
+              href="/feed"
+            >
+              <img src={Logo} alt="CMOList brand logo" />
+              <span className="header--tag">Beta</span>
+            </Navbar.Brand>
+            <RenderMobileDropdown
+              saveContent={saveContent}
+              history={history}
+              mobileMenuOpen={mobileMenuOpen}
+            />
+          </div>
           <RenderSearch
-            className="navbar--search"
+            className={clsx("navbar--mobile-search", mobileMenuOpen && "open")}
             isLoading={isLoading}
             handleSearch={handleSearch}
             options={options}
             goSearchPage={goSearchPage}
           />
-          <Nav className={clsx(mobileMenuOpen && "fadeAndSlideElementIn")}>
-            <Nav.Link as={NavLink} to="/feed">
-              <img src={HomeIcon} alt="" />
-              <div>Home</div>
-              <div className="header--separator"></div>
-            </Nav.Link>
-            <Nav.Link as={NavLink} to="/network">
-              <img src={Group} alt="" />
-              <div>My Networks</div>
-              <div className="header--separator"></div>
-            </Nav.Link>
-            <Nav.Link as={NavLink} to="/topics">
-              <img src={Apps} alt="" />
-              <div>Topics</div>
-              <div className="header--separator"></div>
-            </Nav.Link>
-            <Nav.Link as={NavLink} to="/notifications">
-              <img src={Notification} alt="" />
-              <div>Notifications</div>
-              <div className="header--separator"></div>
-              {notificationCount > 0 && (
-                <div className="notifications--wrapper">
-                  <img
-                    className="notifications--rectangle"
-                    src={Rectangle2}
-                    alt="Amount rectangle"
-                  />
-                  <span className="notifications--number">
-                    {notificationCount}
-                  </span>
-                </div>
-              )}
-            </Nav.Link>
+          <Navbar.Collapse className="nav-app" id="basic-navbar-nav">
+            <RenderSearch
+              className="navbar--search"
+              isLoading={isLoading}
+              handleSearch={handleSearch}
+              options={options}
+              goSearchPage={goSearchPage}
+            />
+            <Nav className={clsx(mobileMenuOpen && "fadeAndSlideElementIn")}>
+              <Nav.Link as={NavLink} to="/feed">
+                <img src={HomeIcon} alt="" />
+                <div>Home</div>
+                <div className="header--separator"></div>
+              </Nav.Link>
+              <Nav.Link as={NavLink} to="/network">
+                <img src={Group} alt="" />
+                <div>My Networks</div>
+                <div className="header--separator"></div>
+              </Nav.Link>
+              <Nav.Link as={NavLink} to="/topics">
+                <img src={Apps} alt="" />
+                <div>Topics</div>
+                <div className="header--separator"></div>
+              </Nav.Link>
+              <Nav.Link as={NavLink} to="/notifications">
+                <img src={Notification} alt="" />
+                <div>Notifications</div>
+                <div className="header--separator"></div>
+                {notificationCount > 0 && (
+                  <div className="notifications--wrapper">
+                    <img
+                      className="notifications--rectangle"
+                      src={Rectangle2}
+                      alt="Amount rectangle"
+                    />
+                    <span className="notifications--number">
+                      {notificationCount}
+                    </span>
+                  </div>
+                )}
+              </Nav.Link>
 
-            <NavDropdown
-              className={
-                window.location.href.includes("/profile/") ? "active" : ""
-              }
-              alignRight
-              title={<PersonHeader profile={profileStats.profile} />}
-              id="basic-nav-dropdown"
-            >
-              <NavDropdown.Item className="profile-dropdown" href="/profile">
-                Profile
-              </NavDropdown.Item>
-              <NavDropdown.Item className="profile-dropdown" href="/settings">
-                Settings
-              </NavDropdown.Item>
-              <NavDropdown.Item className="profile-dropdown" href="/logout">
-                Logout
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+              <NavDropdown
+                className={
+                  window.location.href.includes("/profile/") ? "active" : ""
+                }
+                alignRight
+                title={<PersonHeader profile={profileStats.profile} />}
+                id="basic-nav-dropdown"
+              >
+                <NavDropdown.Item className="profile-dropdown" href="/profile">
+                  Profile
+                </NavDropdown.Item>
+                <NavDropdown.Item className="profile-dropdown" href="/settings">
+                  Settings
+                </NavDropdown.Item>
+                <NavDropdown.Item className="profile-dropdown" href="/logout">
+                  Logout
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+      </Container>
     </div>
   );
 }
