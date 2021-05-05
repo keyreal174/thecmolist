@@ -158,7 +158,11 @@ const ContentDetail = ({
             <Entities entities={content.entities} />
           )}
         </Article>
-        <Modal show={showStatModal} onHide={handleCloseButtonClick}>
+        <Modal
+          className="content-detail--modal"
+          show={showStatModal}
+          onHide={handleCloseButtonClick}
+        >
           <Modal.Header closeButton>
             <Modal.Title>Stats by user</Modal.Title>
           </Modal.Header>
