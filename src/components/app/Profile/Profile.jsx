@@ -90,6 +90,9 @@ const Profile = (props) => {
   const [showDeletePost, setShowDeletePost] = useState(false);
   const [showFollowModal, setShowFollowModal] = useState(false);
   const [showMore, setShowMore] = useState(false);
+
+  const userName = Util.parsePath(window.location.href).trailingPath;
+
   const reactions = props.reactions;
 
   useEffect(() => {
@@ -179,7 +182,6 @@ const Profile = (props) => {
   };
 
   const connectUser = async (payload) => {
-    let userName = Util.parsePath(window.location.href).trailingPath;
     Analytics.sendClickEvent(`Followed user ${userName} from profile page`);
     try {
       await props.connectUser(payload);
@@ -193,6 +195,23 @@ const Profile = (props) => {
 
   const toggleFollowModal = () => {
     setShowFollowModal((value) => !value);
+  };
+
+  const handleDisconnectButtonClick = async () => {
+    const disconnect = props.disconnectUser;
+    const userName = Util.parsePath(window.location.href).trailingPath;
+
+    if (disconnect) {
+      try {
+        await disconnect({ user: userName });
+        setConnectedUser(false);
+      } catch (err) {
+        console.log(
+          `An error occurred connecting with user: ${userName}`,
+          err.toString()
+        );
+      }
+    }
   };
 
   useEffect(() => {
@@ -333,16 +352,20 @@ const Profile = (props) => {
                       <div className="btn-wrapper d-flex">
                         {!connectedUser ? (
                           <Button
-                            className="profile--follow-button edit-profile"
+                            className="btn badge--connect-button mr-3"
                             variant="primary"
                             onClick={() => toggleFollowModal()}
                           >
-                            + Connect
+                            Connect
                           </Button>
                         ) : (
-                          <span className="profile-connected-label mt-1">
+                          <Button
+                            className="btn badge--connected-button mr-3"
+                            variant="primary"
+                            onClick={handleDisconnectButtonClick}
+                          >
                             Connected
-                          </span>
+                          </Button>
                         )}
                         <Button
                           className="btn-white edit-profile"
@@ -639,6 +662,7 @@ const mapDispatch = (dispatch) => {
     saveProfile: dispatch.profileModel.saveProfile,
     deletePost: dispatch.profileModel.deletePost,
     connectUser: dispatch.userModel.connectUser,
+    disconnectUser: dispatch.userModel.disconnectUser,
     changeReaction: dispatch.reactionModel.changeReaction,
   };
 };
