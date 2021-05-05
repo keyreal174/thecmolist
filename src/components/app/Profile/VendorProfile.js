@@ -12,6 +12,7 @@ import Article from "../base/Article/Article";
 import Entities from "../base/Entities/Entities";
 import Footer from "../base/Footer/Footer";
 import Util from "../../util/Util";
+import { vendorProfileHeader } from "../../util/constants";
 import {
   getCheckedForEngagementType,
   getEngagementForId,
@@ -417,8 +418,7 @@ const VendorProfile = (props) => {
     }
   };
   const reactions = props.reactions;
-  const profileBackgroundUrl =
-    "https://d3k6hg21rt7gsh.cloudfront.net/icons/profile--header.png";
+  const profileBackgroundUrl = vendorProfileHeader;
 
   const handleToggle = () => {
     setMobileMenuOpen(!mobileMenuOpen);
