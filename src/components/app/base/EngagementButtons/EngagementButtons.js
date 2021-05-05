@@ -28,15 +28,72 @@ export const getEngagementForId = (contentId, engagementType, reactions) => {
   );
 };
 
+const EngagementStats = ({
+  numberOfInsightful,
+  numberOfLikes,
+  onStatButtonClick,
+  showStats,
+}) => {
+  return (
+    <div className="engagement-stats--wrapper">
+      {showStats && (
+        <>
+          <EngagementStat
+            handleClick={onStatButtonClick}
+            value={numberOfLikes}
+            text="Likes"
+          />
+          <EngagementStat
+            handleClick={onStatButtonClick}
+            value={numberOfInsightful}
+            text="Insightful"
+          />
+        </>
+      )}
+    </div>
+  );
+};
+
+const EngagementStat = ({ handleClick, value, text }) => {
+  const textToLowerCase = text && text.toLowerCase();
+
+  return (
+    <>
+      {value && (
+        <Button
+          className="engagement-stat--wrapper"
+          onClick={handleClick.bind(this, textToLowerCase)}
+          variant="link"
+        >
+          <span>
+            <strong className="engagement-stat--value">{value}</strong>
+            {" ".concat(text)}
+          </span>
+        </Button>
+      )}
+    </>
+  );
+};
+
 const EngagementButtons = ({
   className,
   engagementButtons,
+  numberOfInsightful,
+  numberOfLikes,
   onEngagementButtonClick,
+  onStatButtonClick,
+  showStats,
 }) => {
   return engagementButtons && engagementButtons.length ? (
-    <div className={`engagement-buttons ${className}`}>
-      {engagementButtons &&
-        engagementButtons.map(
+    <div className={`engagement-buttons--wrapper ${className}`}>
+      <EngagementStats
+        numberOfInsightful={numberOfInsightful}
+        numberOfLikes={numberOfLikes}
+        onStatButtonClick={onStatButtonClick}
+        showStats={showStats}
+      />
+      <div className="engagement-buttons--items">
+        {engagementButtons.map(
           ({ text, type, icon, iconChecked, number, checked }, index) => {
             let auxIcon = icon;
             if (checked && iconChecked) {
@@ -45,7 +102,7 @@ const EngagementButtons = ({
             return (
               <div key={text}>
                 <Button
-                  className={`engagement-buttons-button ${
+                  className={`engagement-buttons--item ${
                     checked ? "checked" : ""
                   }`}
                   variant="light"
@@ -53,7 +110,7 @@ const EngagementButtons = ({
                 >
                   <img
                     alt={`Icon for button ${index}`}
-                    className="engagement-buttons-image"
+                    className="engagement-buttons--item-image"
                     src={auxIcon}
                   />
                   <span>{text}</span>
@@ -63,6 +120,7 @@ const EngagementButtons = ({
             );
           }
         )}
+      </div>
     </div>
   ) : null;
 };

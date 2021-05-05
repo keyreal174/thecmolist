@@ -12,6 +12,10 @@ export const setReaction = (contentId, type) => {
   });
 };
 
+export const getReactionsForPost = (contentId) => {
+  return axios.get(`/api/reactions/${contentId}`);
+};
+
 const initReactionModelForContent = () => {
   return {
     num_thanks: 0,
@@ -86,6 +90,7 @@ export default {
   name: "reactionModel",
   state: {
     reactions: {},
+    reactionsById: {},
   },
   reducers: {
     setReactions: (oldState, data) => {
@@ -126,6 +131,12 @@ export default {
 
       return newState;
     },
+    setReactionsById: (oldState, data) => {
+      return {
+        ...oldState,
+        reactionsById: data,
+      };
+    },
   },
   effects: (dispatch) => ({
     async changeReaction(data) {
@@ -138,8 +149,20 @@ export default {
         }
         await setReaction(id, engagementName);
         dispatch.reactionModel.setReaction({ id, type: engagementName });
+        dispatch.reactionModel.setReactionsById({});
       } catch (err) {
         throw new Error("Could not change reaction: " + err.toString());
+      }
+    },
+    async getReactionsById(id) {
+      try {
+        const response = await getReactionsForPost(id);
+        const { data } = response;
+        dispatch.reactionModel.setReactionsById(data);
+      } catch (err) {
+        throw new Error(
+          "Could not get reactions for content id: " + err.toString()
+        );
       }
     },
   }),

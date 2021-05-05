@@ -13,6 +13,7 @@ var MockAdapter,
   MockedApiRefinedSearch,
   MockedApiVendorProfile,
   MockedApiVendorsProfile,
+  MockedApiReactionsByPost,
   MockedApiSuggestions,
   MockedApiOnboarding;
 if (process.env.NODE_ENV !== "production") {
@@ -30,6 +31,7 @@ if (process.env.NODE_ENV !== "production") {
   MockedApiRefinedSearch = require("./api_refinedsearch.json");
   MockedApiVendorProfile = require("./api_vendor.json");
   MockedApiVendorsProfile = require("./api_vendors.json");
+  MockedApiReactionsByPost = require("./api_reactions_by_post.json");
   MockedApiSuggestions = require("./api_suggestions.json");
   MockedApiOnboarding = require("./api_onboarding.json");
 }
@@ -103,6 +105,11 @@ function MockRequests() {
       path: /\/api\/lnkd_auth_url.*/,
       responseCode: 200,
       response: { url: "https://auth_with_linkedIn" },
+    },
+    {
+      path: /\/api\/reactions\/\d+.*/,
+      responseCode: 200,
+      response: MockedApiReactionsByPost,
     },
   ];
 

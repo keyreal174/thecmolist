@@ -13,6 +13,7 @@ const Content = ({
   fetchContent,
   match,
   getProfileStats,
+  getReactionsById,
   ...rest
 }) => {
   const [error, setError] = useState("");
@@ -36,6 +37,22 @@ const Content = ({
 
   useEffect(() => {
     const fetch = async () => await getProfileStats();
+
+    fetch();
+  }, []);
+
+  useEffect(() => {
+    const {
+      params: { id },
+    } = match;
+    const fetch = async () => {
+      try {
+        console.log("id", id);
+        await getReactionsById(id);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
 
     fetch();
   }, []);
@@ -97,6 +114,7 @@ const mapState = (state) => {
     content: state.contentModel.content,
     contentLoading: state.contentModel.contentLoading,
     reactions: state.reactionModel.reactions,
+    reactionsById: state.reactionModel.reactionsById,
     profileStats: state.profileModel.profileStats,
   };
 };
@@ -108,6 +126,7 @@ const mapDispatch = (dispatch) => {
     saveCommentToReply: dispatch.contentModel.saveCommentToReply,
     saveReactionToCallerType: dispatch.contentModel.saveReactionToCallerType,
     getProfileStats: dispatch.profileModel.getProfileStats,
+    getReactionsById: dispatch.reactionModel.getReactionsById,
   };
 };
 

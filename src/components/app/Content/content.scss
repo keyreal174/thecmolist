@@ -85,6 +85,13 @@
   }
 }
 
+.content-detail--modal {
+  text-align: center;
+  .modal-content {
+    margin: 50% auto;
+  }
+}
+
 @media (max-width: 768px) {
   .content--error,
   .content--content,
