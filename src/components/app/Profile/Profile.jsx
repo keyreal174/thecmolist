@@ -207,7 +207,7 @@ const Profile = (props) => {
         setConnectedUser(false);
       } catch (err) {
         console.log(
-          `An error occurred connecting with user: ${userName}`,
+          `An error occurred disconnecting with user: ${userName}`,
           err.toString()
         );
       }
