@@ -232,7 +232,11 @@ function RenderDashboard(props) {
       </Col>
 
       <Col className="feed--feed" md="6">
-        <AskQuestion className="feed--ask-question" saveContent={saveContent} />
+        <AskQuestion
+          className="feed--ask-question"
+          activeGroup={props.activeGroup}
+          saveContent={saveContent}
+        />
         {feedLoading ? (
           <div className="mt-3 mb-5">
             <ActivityIndicator className="element-center feed-activity-indicator" />

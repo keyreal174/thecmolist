@@ -93,7 +93,7 @@ const ProfileIntro = ({
   profileIndustry,
 }) => {
   return (
-    <Col md="4">
+    <Col xl="4" md="12" sm="12">
       <CustomCard heading="Intro" className="profile--right-section">
         <div className="right-section--details">
           {profileCity && (
@@ -166,7 +166,7 @@ const ProfileOverview = ({
 }) => {
   const history = useHistory();
   return (
-    <Col md="8">
+    <Col xl="8" md="12" sm="12">
       <div className={clsx("profile--left-section")}>
         <img
           src={profileBackgroundUrl}
@@ -464,14 +464,14 @@ const VendorProfile = (props) => {
 
         {profileName && hasDataOnCurrentFeed && (
           <Row className={clsx("profile--feed", mobileMenuOpen && "open")}>
-            <Col md="4">
+            <Col xl="4" className="profile--popular-topics">
               <PopularTopics
                 heading={"Popular #topics and Spaces"}
                 onSubfilterChange={onSubfilterChange}
                 topicList={topicsList}
               />
             </Col>
-            <Col md="8">
+            <Col xl="8" md="12">
               <TransitionGroup enter={enableAnimations} exit={enableAnimations}>
                 {filteredFeedData.map((feed, idx) => {
                   return (

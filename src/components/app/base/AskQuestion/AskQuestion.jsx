@@ -6,7 +6,7 @@ import EditSquareIcon from "../icons/edit_square.svg";
 import AddPostModal from "../AddPostModal/AddPostModal";
 import "./AskQuestion.scss";
 
-const AskQuestion = ({ className, saveContent }) => {
+const AskQuestion = ({ className, saveContent, activeGroup }) => {
   const [question, setQuestion] = useState("");
   const [showPostModal, setShowPostModal] = useState(false);
   const history = useHistory();
@@ -38,6 +38,7 @@ const AskQuestion = ({ className, saveContent }) => {
         />
         <AddPostModal
           contentType="question"
+          activeGroup={activeGroup}
           firstButtonText={"Cancel"}
           handleClose={handleClose}
           modalTitle="Ask a question"
