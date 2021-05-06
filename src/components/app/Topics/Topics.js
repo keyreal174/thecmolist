@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
 import Column from "./TopicColumn";
 import clsx from "clsx";
+import Layout from "../base/Layout/Layout";
 import Footer from "../base/Footer/Footer";
-import Header from "../base/Header/Header";
 import SimpleTopBanner from "../base/SimpleTopBanner/SimpleTopBanner";
 import "./topics.scss";
 
@@ -20,9 +20,8 @@ const Topics = (props) => {
   };
 
   return (
-    <>
+    <Layout onToggle={handleToggle}>
       <Container className="height-100">
-        <Header onToggle={handleToggle} />
         <div className={clsx("wrapper", mobileMenuOpen && "open")}>
           <SimpleTopBanner
             className="topics--simple-top-banner"
@@ -46,7 +45,7 @@ const Topics = (props) => {
           <Footer />
         </div>
       </Container>
-    </>
+    </Layout>
   );
 };
 

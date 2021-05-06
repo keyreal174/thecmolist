@@ -4,6 +4,7 @@ import { useLocation } from "react-router";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { CSSTransition } from "react-transition-group";
 import Entities from "../base/Entities/Entities";
+import Layout from "../base/Layout/Layout";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Filter from "../base/Filter/Filter";
@@ -423,10 +424,9 @@ const Feed = (props) => {
   };
 
   return (
-    <>
+    <Layout onToggle={handleToggle}>
       <Container className="height-100">
         <div className="wrapper">
-          <Header onToggle={handleToggle} />
           <CSSTransition in={isGroup} timeout={500} classNames="top-banner">
             <div>
               {(isGroup || isTopic) && (
@@ -519,7 +519,7 @@ const Feed = (props) => {
 
         <Footer className={clsx("feed--footer", mobileMenuOpen && "open")} />
       </Container>
-    </>
+    </Layout>
   );
 };
 

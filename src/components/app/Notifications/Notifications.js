@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Container, Form } from "react-bootstrap";
-import Header from "../base/Header/Header";
+import Layout from "../base/Layout/Layout";
 import Footer from "../base/Footer/Footer";
 import InviteModal from "../base/ShareModule/InviteModal";
 import Article from "../base/Article/Article";
@@ -18,10 +18,9 @@ const Notifications = (props) => {
   let feedData = props.feedData;
 
   return (
-    <>
+    <Layout>
       <Container className="height-100">
         <div className="wrapper">
-          <Header />
           <div className="notifications--feed">
             {feedData &&
               feedData.map((feed, idx) => {
@@ -66,7 +65,7 @@ const Notifications = (props) => {
           <Footer />
         </div>
       </Container>
-    </>
+    </Layout>
   );
 };
 

@@ -5,7 +5,7 @@ import { Button, Container, Row, Col } from "react-bootstrap";
 import Filter from "../base/Filter/Filter";
 import Article from "../base/Article/Article";
 import UserCard from "../base/UserCard/UserCard";
-import Header from "../base/Header/Header";
+import Layout from "../base/Layout/Layout";
 import Footer from "../base/Footer/Footer";
 import Banner from "../base/Banner/Banner";
 import ShareModule from "../base/ShareModule/ShareModule";
@@ -220,9 +220,8 @@ class Category extends React.Component {
       <CSSTransition {...props} classNames="profile-article-transition" />
     ); // define here to pass props down from parent -> child
     return (
-      <>
+      <Layout>
         <Container className="height-100">
-          <Header />
           <div className="wrapper">
             <Banner>
               <div className="square-logo">
@@ -494,7 +493,7 @@ class Category extends React.Component {
             <Footer />
           </div>
         </Container>
-      </>
+      </Layout>
     );
   }
 }

@@ -3,7 +3,7 @@ import { useLocation } from "react-router";
 import { connect } from "react-redux";
 import { Col, Row, Container } from "react-bootstrap";
 import clsx from "clsx";
-import Header from "../base/Header/Header";
+import Layout from "../base/Layout/Layout";
 import Footer from "../base/Footer/Footer";
 import Filter from "../base/Filter/Filter";
 import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
@@ -145,10 +145,9 @@ const Network = (props) => {
   };
 
   return (
-    <>
+    <Layout onToggle={handleToggle}>
       <Container className="height-100">
         <div className="wrapper">
-          <Header onToggle={handleToggle} />
           <Row
             className={clsx(
               "network--simple-top-banner-wrapper",
@@ -251,7 +250,7 @@ const Network = (props) => {
           />
         </div>
       </Container>
-    </>
+    </Layout>
   );
 };
 

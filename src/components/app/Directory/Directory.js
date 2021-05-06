@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import axios from "axios";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Header from "../base/Header/Header";
+import Layout from "../base/Layout/Layout";
 import Footer from "../base/Footer/Footer";
 import Banner from "../base/Banner/Banner";
 
@@ -106,9 +106,8 @@ class Directory extends React.Component {
       );
     };
     return (
-      <>
+      <Layout>
         <Container className="height-100">
-          <Header />
           <div className="wrapper">
             <Banner>
               <div className="square-logo">
@@ -144,7 +143,7 @@ class Directory extends React.Component {
             <Footer />
           </div>
         </Container>
-      </>
+      </Layout>
     );
   }
 }
