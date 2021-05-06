@@ -3,29 +3,22 @@ import { NavDropdown, Badge } from "react-bootstrap";
 import clsx from "clsx";
 
 const FilterMobile = (props) => {
-  const [filterIdx, setFilterIdx] = useState(props.filterIdx || 0);
-  useEffect(() => {
-    if ("filterIdx" in props) {
-      setFilterIdx(props.filterIdx);
-    }
-  }, [props]);
-
   return (
     <div className="filter-dropdown--wrapper">
       <NavDropdown
         className="navbar-dropdown filter-dropdown"
-        key={filterIdx}
-        title={props.filters[filterIdx]?.title}
+        key={props.filterIdx}
+        title={props.filters[props.filterIdx]?.title}
       >
         {props.filters.map((filter, idx) => (
           <NavDropdown.Item
             key={idx}
             onClick={() => {
-              setFilterIdx(idx);
+              props.setFilterIdx(idx);
               props.onChange && props.onChange(idx);
             }}
             className={clsx(
-              idx === filterIdx && "filter-dropdown-item-enabled"
+              idx === props.filterIdx && "filter-dropdown-item-enabled"
             )}
           >
             {filter.title}
