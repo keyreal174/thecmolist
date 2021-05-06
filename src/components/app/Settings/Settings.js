@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Container, Form, Col, Alert } from "react-bootstrap";
 import clsx from "clsx";
-import Header from "../base/Header/Header";
+import Layout from "../base/Layout/Layout";
 import Footer from "../base/Footer/Footer";
 import Separator from "../base/Separator/Separator";
 
@@ -99,69 +99,72 @@ const Settings = ({ settings, saveSetting, getSetting }) => {
   };
 
   return (
-    <Container className="height-100">
-      <Header onToggle={handleToggle} />
-      <div className={clsx("wrapper settings", mobileMenuOpen && "open")}>
-        <h2 className="section-title pt-4 py-3">Settings</h2>
-        <div className="account-settings mt-2">
-          <h2 className="section-title">Account Settings</h2>
-          <Separator className="settings-separator" />
-          <Form onSubmit={handleSubmit}>
-            <div className="account-settings-info">
-              {error && (
-                <Alert variant="danger" className="mb-0 mt-2">
-                  {error}
-                </Alert>
-              )}
-              <Separator className="settings-separator" />
-              <div className="account-settings-sub-info">
-                <h3 className="section-sub-title mb-4">
-                  Update email notifications
-                </h3>
-                <Form.Group>
-                  <Form.Check
-                    custom
-                    type="checkbox"
-                    id="discussion-checkbox"
-                    label="Discussions"
-                    checked={account.allowDiscussions}
-                    onChange={handleDiscussion}
-                  />
-                  <Form.Check
-                    custom
-                    type="checkbox"
-                    id="activity-checkbox"
-                    label="Activity digest"
-                    checked={account.allowActivity}
-                    onChange={handleActivity}
-                  />
-                </Form.Group>
-              </div>
-            </div>
+    <Layout onToggle={handleToggle}>
+      <Container className="height-100">
+        <div className={clsx("wrapper settings", mobileMenuOpen && "open")}>
+          <h2 className="section-title pt-4 py-3">Settings</h2>
+          <div className="account-settings mt-2">
+            <h2 className="section-title">Account Settings</h2>
             <Separator className="settings-separator" />
-            <div className="account-settings-submit-info mt-3 text-center d-flex justify-content-end">
-              <button
-                className="btn__homepage btn__homepage-white btn__share-module-share mr-3 account-settings-button"
-                style={{ margin: "initial" }}
-                onClick={handleCancel}
-                type="button"
-              >
-                Cancel
-              </button>
-              <button
-                type="submit"
-                className="btn__homepage btn__homepage-blue btn__share-module-share account-settings-button"
-                style={{ margin: "initial" }}
-              >
-                Update
-              </button>
-            </div>
-          </Form>
+            <Form onSubmit={handleSubmit}>
+              <div className="account-settings-info">
+                {error && (
+                  <Alert variant="danger" className="mb-0 mt-2">
+                    {error}
+                  </Alert>
+                )}
+                <Separator className="settings-separator" />
+                <div className="account-settings-sub-info">
+                  <h3 className="section-sub-title mb-4">
+                    Update email notifications
+                  </h3>
+                  <Form.Group>
+                    <Form.Check
+                      custom
+                      type="checkbox"
+                      id="discussion-checkbox"
+                      label="Discussions"
+                      checked={account.allowDiscussions}
+                      onChange={handleDiscussion}
+                    />
+                    <Form.Check
+                      custom
+                      type="checkbox"
+                      id="activity-checkbox"
+                      label="Activity digest"
+                      checked={account.allowActivity}
+                      onChange={handleActivity}
+                    />
+                  </Form.Group>
+                </div>
+              </div>
+              <Separator className="settings-separator" />
+              <div className="account-settings-submit-info mt-3 text-center d-flex justify-content-end">
+                <button
+                  className="btn__homepage btn__homepage-white btn__share-module-share mr-3 account-settings-button"
+                  style={{ margin: "initial" }}
+                  onClick={handleCancel}
+                  type="button"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="btn__homepage btn__homepage-blue btn__share-module-share account-settings-button"
+                  style={{ margin: "initial" }}
+                >
+                  Update
+                </button>
+              </div>
+            </Form>
+          </div>
         </div>
-      </div>
 
-      <Footer className={clsx("settings--footer", mobileMenuOpen && "open")} />
-    </Container>
+        <Footer
+          className={clsx("settings--footer", mobileMenuOpen && "open")}
+        />
+      </Container>
+    </Layout>
   );
 };
 

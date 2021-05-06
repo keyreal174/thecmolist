@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Alert, Container, Col, Row } from "react-bootstrap";
 import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
-import Header from "../base/Header/Header";
+import Layout from "../base/Layout/Layout";
 import Footer from "../base/Footer/Footer";
 import ContentDetail from "./ContentDetail";
 import clsx from "clsx";
@@ -62,10 +62,9 @@ const Content = ({
   };
 
   return (
-    <>
+    <Layout onToggle={handleToggle}>
       <Container className="height-100">
         <div className="wrapper">
-          <Header onToggle={handleToggle} />
           {error && (
             <Row className={clsx("content--error", mobileMenuOpen && "open")}>
               <Col md="12">
@@ -105,7 +104,7 @@ const Content = ({
           </Row>
         </div>
       </Container>
-    </>
+    </Layout>
   );
 };
 

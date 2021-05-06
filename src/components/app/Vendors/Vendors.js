@@ -3,7 +3,7 @@ import { useLocation } from "react-router";
 import { connect } from "react-redux";
 import { Col, Row, Container } from "react-bootstrap";
 import clsx from "clsx";
-import Header from "../base/Header/Header";
+import Layout from "../base/Layout/Layout";
 import Footer from "../base/Footer/Footer";
 import Filter from "../base/Filter/Filter";
 import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
@@ -98,10 +98,9 @@ const Vendors = (props) => {
   };
 
   return (
-    <>
+    <Layout onToggle={handleToggle}>
       <Container className="height-100">
         <div className="wrapper">
-          <Header onToggle={handleToggle} />
           <SimpleTopBanner
             // disable for now... buttonText="Invite"
             className={clsx(
@@ -184,7 +183,7 @@ const Vendors = (props) => {
           />
         </div>
       </Container>
-    </>
+    </Layout>
   );
 };
 

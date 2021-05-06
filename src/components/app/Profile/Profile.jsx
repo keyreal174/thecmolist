@@ -6,7 +6,7 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import ShowMoreText from "react-show-more-text";
 import CustomCard from "../base/CustomCard/CustomCard";
-import Header from "../base/Header/Header";
+import Layout from "../base/Layout/Layout";
 import Filter from "../base/Filter/Filter";
 import Article from "../base/Article/Article";
 import Entities from "../base/Entities/Entities";
@@ -90,6 +90,9 @@ const Profile = (props) => {
   const [showDeletePost, setShowDeletePost] = useState(false);
   const [showFollowModal, setShowFollowModal] = useState(false);
   const [showMore, setShowMore] = useState(false);
+
+  const userName = Util.parsePath(window.location.href).trailingPath;
+
   const reactions = props.reactions;
 
   useEffect(() => {
@@ -179,7 +182,6 @@ const Profile = (props) => {
   };
 
   const connectUser = async (payload) => {
-    let userName = Util.parsePath(window.location.href).trailingPath;
     Analytics.sendClickEvent(`Followed user ${userName} from profile page`);
     try {
       await props.connectUser(payload);
@@ -193,6 +195,23 @@ const Profile = (props) => {
 
   const toggleFollowModal = () => {
     setShowFollowModal((value) => !value);
+  };
+
+  const handleDisconnectButtonClick = async () => {
+    const disconnect = props.disconnectUser;
+    const userName = Util.parsePath(window.location.href).trailingPath;
+
+    if (disconnect) {
+      try {
+        await disconnect({ user: userName });
+        setConnectedUser(false);
+      } catch (err) {
+        console.log(
+          `An error occurred disconnecting with user: ${userName}`,
+          err.toString()
+        );
+      }
+    }
   };
 
   useEffect(() => {
@@ -273,9 +292,8 @@ const Profile = (props) => {
   };
 
   return (
-    <>
+    <Layout onToggle={handleToggle}>
       <Container className="height-100">
-        <Header onToggle={handleToggle} />
         <div className={clsx("wrapper", mobileMenuOpen && "open")}>
           <Row className="profile--wrapper">
             <Col xl="8" md="12" sm="12">
@@ -333,16 +351,20 @@ const Profile = (props) => {
                       <div className="btn-wrapper d-flex">
                         {!connectedUser ? (
                           <Button
-                            className="profile--follow-button edit-profile"
+                            className="btn badge--connect-button mr-3"
                             variant="primary"
                             onClick={() => toggleFollowModal()}
                           >
-                            + Connect
+                            Connect
                           </Button>
                         ) : (
-                          <span className="profile-connected-label mt-1">
+                          <Button
+                            className="btn badge--connected-button mr-3"
+                            variant="primary"
+                            onClick={handleDisconnectButtonClick}
+                          >
                             Connected
-                          </span>
+                          </Button>
                         )}
                         <Button
                           className="btn-white edit-profile"
@@ -622,7 +644,7 @@ const Profile = (props) => {
         />
         <Footer className={clsx("profile--footer", mobileMenuOpen && "open")} />
       </Container>
-    </>
+    </Layout>
   );
 };
 
@@ -635,11 +657,12 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
+    changeReaction: dispatch.reactionModel.changeReaction,
+    connectUser: dispatch.userModel.connectUser,
+    deletePost: dispatch.profileModel.deletePost,
+    disconnectUser: dispatch.userModel.disconnectUser,
     fetchProfile: dispatch.profileModel.fetchProfile,
     saveProfile: dispatch.profileModel.saveProfile,
-    deletePost: dispatch.profileModel.deletePost,
-    connectUser: dispatch.userModel.connectUser,
-    changeReaction: dispatch.reactionModel.changeReaction,
   };
 };
 

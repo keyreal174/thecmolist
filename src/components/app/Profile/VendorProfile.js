@@ -6,7 +6,7 @@ import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import ShowMoreText from "react-show-more-text";
 import CustomCard from "../base/CustomCard/CustomCard";
 import clsx from "clsx";
-import Header from "../base/Header/Header";
+import Layout from "../base/Layout/Layout";
 import Filter from "../base/Filter/Filter";
 import Article from "../base/Article/Article";
 import Entities from "../base/Entities/Entities";
@@ -425,9 +425,8 @@ const VendorProfile = (props) => {
   };
 
   return (
-    <>
+    <Layout onToggle={handleToggle}>
       <Container className="height-100">
-        <Header onToggle={handleToggle} />
         <div className={clsx("wrapper", mobileMenuOpen && "open")}>
           <Row className="profile--wrapper">
             <ProfileOverview
@@ -561,7 +560,7 @@ const VendorProfile = (props) => {
         )}
         <Footer className={clsx("profile--footer", mobileMenuOpen && "open")} />
       </Container>
-    </>
+    </Layout>
   );
 };
 

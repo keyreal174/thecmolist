@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import axios from "axios";
 import { Container, Button } from "react-bootstrap";
-import Header from "../base/Header/Header";
+import Layout from "../base/Layout/Layout";
 import Footer from "../base/Footer/Footer";
 import Filter from "../base/Filter/Filter";
 import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
@@ -66,10 +66,9 @@ class DiscussionList extends React.Component {
     let discussionListLoading = this.state.discussionListLoading;
     let discussionData = this.state.discussionData;
     return (
-      <>
+      <Layout>
         <Container className="height-100">
           <div className="wrapper">
-            <Header />
             {discussionListLoading ? (
               <div className="mt-3 mb-5">
                 <ActivityIndicator className="element-center feed-activity-indicator" />
@@ -257,7 +256,7 @@ class DiscussionList extends React.Component {
 
           <Footer />
         </Container>
-      </>
+      </Layout>
     );
   }
 }

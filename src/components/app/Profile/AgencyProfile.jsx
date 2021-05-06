@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import Header from "../base/Header/Header";
+import Layout from "../base/Layout/Layout";
 import Banner from "../base/Banner/Banner";
 import Article from "../base/Article/Article";
 import Footer from "../base/Footer/Footer";
@@ -176,9 +176,8 @@ class AgencyProfile extends React.Component {
     };
 
     return (
-      <>
+      <Layout>
         <Container className="height-100">
-          <Header />
           <div className="wrapper">
             <Banner>
               {this.state.agencyImage && (
@@ -422,7 +421,7 @@ class AgencyProfile extends React.Component {
 
           <Footer />
         </Container>
-      </>
+      </Layout>
     );
   }
 }

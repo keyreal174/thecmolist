@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Badge, Row, Col, Button, Form } from "react-bootstrap";
+import FilterMobile from "./FilterMobile";
 import "./filter.scss";
 
 function Filter(props) {
@@ -12,68 +13,78 @@ function Filter(props) {
 
   let hasFilters = props.filters && props.filters.length > 0;
   return (
-    <Row
-      className={`filter ${props.className ? props.className : "pt-3 pb-2"}`}
-    >
-      <Row className="align-items-center">
-        <Col md={props.sortable || props.children ? "9" : "12"}>
-          <div className="filter-wrapper">
-            {props.title && <h2 className="section-title">{props.title}</h2>}
-            <div className="filter-btn-group" data-toggle="buttons">
-              {hasFilters ? (
-                props.filters.map((filter, idx) => {
-                  const active = idx === filterIdx;
-                  let className = "filter--button";
+    <>
+      <Row
+        className={`filter filter-desktop ${
+          props.className ? props.className : "pt-3 pb-2"
+        }`}
+      >
+        <Row className="align-items-center">
+          <Col md={props.sortable || props.children ? "9" : "12"}>
+            <div className="filter-wrapper">
+              {props.title && <h2 className="section-title">{props.title}</h2>}
+              <div className="filter-btn-group" data-toggle="buttons">
+                {hasFilters ? (
+                  props.filters.map((filter, idx) => {
+                    const active = idx === filterIdx;
+                    let className = "filter--button";
 
-                  if (active) {
-                    className += " filter--button-active";
-                  }
-                  if (!filter.enabled) {
-                    className += " filter--button-disable";
-                  }
-                  return (
-                    <Button
-                      key={idx}
-                      active={active}
-                      className={className}
-                      disabled={!filter.enabled}
-                      onClick={() => {
-                        setFilterIdx(idx);
-                        props.onChange && props.onChange(idx);
-                      }}
-                    >
-                      {filter.title}
-                      {filter.count && (
-                        <Badge pill variant="danger" className="filter-badge">
-                          {filter.count}
-                        </Badge>
-                      )}
-                    </Button>
-                  );
-                })
-              ) : (
-                <div className="filter-placeholder" />
-              )}
-            </div>
-          </div>
-        </Col>
-        {props.sortable && (
-          <Col md="3">
-            <div className="sort">
-              <span>Sort by:</span>
-              <div className="select-wrapper">
-                <Form.Control as="select" custom>
-                  <option>Recent</option>
-                  <option>Top</option>
-                  <option>Name</option>
-                </Form.Control>
+                    if (active) {
+                      className += " filter--button-active";
+                    }
+                    if (!filter.enabled) {
+                      className += " filter--button-disable";
+                    }
+                    return (
+                      <Button
+                        key={idx}
+                        active={active}
+                        className={className}
+                        disabled={!filter.enabled}
+                        onClick={() => {
+                          setFilterIdx(idx);
+                          props.onChange && props.onChange(idx);
+                        }}
+                      >
+                        {filter.title}
+                        {filter.count && (
+                          <Badge pill variant="danger" className="filter-badge">
+                            {filter.count}
+                          </Badge>
+                        )}
+                      </Button>
+                    );
+                  })
+                ) : (
+                  <div className="filter-placeholder" />
+                )}
               </div>
             </div>
           </Col>
-        )}
-        <Col md="3">{props.children}</Col>
+          {props.sortable && (
+            <Col md="3">
+              <div className="sort">
+                <span>Sort by:</span>
+                <div className="select-wrapper">
+                  <Form.Control as="select" custom>
+                    <option>Recent</option>
+                    <option>Top</option>
+                    <option>Name</option>
+                  </Form.Control>
+                </div>
+              </div>
+            </Col>
+          )}
+          <Col md="3">{props.children}</Col>
+        </Row>
       </Row>
-    </Row>
+      <FilterMobile
+        onChange={props.onChange}
+        filterIdx={filterIdx}
+        filters={props.filters}
+        setFilterIdx={setFilterIdx}
+      />
+    </>
   );
 }
 

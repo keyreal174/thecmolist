@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router";
 import clsx from "clsx";
-import Header from "../base/Header/Header";
+import Layout from "../base/Layout/Layout";
 import Footer from "../base/Footer/Footer";
 import Separator from "../base/Separator/Separator";
 import { AsyncTypeahead, TypeaheadMenu } from "react-bootstrap-typeahead";
@@ -168,353 +168,358 @@ const VendorProfileEdit = (props) => {
   };
 
   return (
-    <Container className="profile height-100">
-      <Header onToggle={handleToggle} />
-      <Form
-        className={clsx(
-          "mb-5",
-          "vendor-profile--form",
-          mobileMenuOpen && "open"
-        )}
-      >
-        <div className="card-box mt-2">
-          <div className="profile--cover-wrapper">
-            <img
-              className="profile--cover"
-              alt="profile"
-              src={coverImage}
-            ></img>
-            <input
-              type="file"
-              id="file"
-              ref={coverInputFile}
-              onChange={onCoverInputFileChange}
-              style={{ display: "none" }}
-            />
-            <div className="profile--edit-cover">
-              {coverImageUploading ? (
-                <Button
-                  className="btn-white"
-                  variant="outline-primary"
-                  disabled
-                >
-                  Uploading...
-                </Button>
-              ) : (
-                <Button
-                  disabled
-                  className="btn-white mt-3"
-                  variant="outline-primary"
-                  onClick={() => {
-                    coverInputFile &&
-                      coverInputFile.current &&
-                      coverInputFile.current.click();
-                  }}
-                >
-                  Edit Cover Image
-                </Button>
-              )}
+    <Layout onToggle={handleToggle}>
+      <Container className="profile height-100">
+        <Form
+          className={clsx(
+            "mb-5",
+            "vendor-profile--form",
+            mobileMenuOpen && "open"
+          )}
+        >
+          <div className="card-box mt-2">
+            <div className="profile--cover-wrapper">
+              <img
+                className="profile--cover"
+                alt="profile"
+                src={coverImage}
+              ></img>
+              <input
+                type="file"
+                id="file"
+                ref={coverInputFile}
+                onChange={onCoverInputFileChange}
+                style={{ display: "none" }}
+              />
+              <div className="profile--edit-cover">
+                {coverImageUploading ? (
+                  <Button
+                    className="btn-white"
+                    variant="outline-primary"
+                    disabled
+                  >
+                    Uploading...
+                  </Button>
+                ) : (
+                  <Button
+                    disabled
+                    className="btn-white mt-3"
+                    variant="outline-primary"
+                    onClick={() => {
+                      coverInputFile &&
+                        coverInputFile.current &&
+                        coverInputFile.current.click();
+                    }}
+                  >
+                    Edit Cover Image
+                  </Button>
+                )}
+              </div>
             </div>
-          </div>
-          <div className="d-flex flex-column px-3">
-            <img
-              className="profile--image rounded-circle"
-              src={image}
-              style={{ width: 150, height: 150 }}
-              alt=""
-            />
-            <input
-              type="file"
-              id="file"
-              ref={inputFile}
-              onChange={onInputFileChange}
-              style={{ display: "none" }}
-            />
-            <div className="profile--edit-image">
-              {imageUploading ? (
-                <Button
-                  className="btn-white"
-                  variant="outline-primary"
-                  disabled
-                >
-                  Uploading...
-                </Button>
-              ) : (
-                <Button
-                  className="btn-white mt-3"
-                  variant="outline-primary"
-                  onClick={() => {
-                    inputFile && inputFile.current && inputFile.current.click();
-                  }}
-                >
-                  Edit Profile Image
-                </Button>
-              )}
-            </div>
-          </div>
-        </div>
-        <div className="card-box py-3 px-3">
-          <div className="profile--row-title">
-            <div>
-              <h2 className="profile-edit-section-title mb-3 px-4">Overview</h2>
-              <Separator className="card-separator" />
-            </div>
-            <Row className="profile--row mt-5">
-              <Col md="12" sm="12">
-                <Form.Label>Vendor</Form.Label>
-                <div className="vendor-profile-type-list">
-                  {VendorType.map((vendor, index) => {
-                    return (
-                      <Form.Check
-                        key={index}
-                        label={vendor}
-                        name="vendortype"
-                        value={vendor}
-                        id={vendor}
-                        checked={vendor === vendorType}
-                        onChange={(e) => {
-                          setVendorType(e.target.value);
-                        }}
-                        type="radio"
-                      />
-                    );
-                  })}
-                </div>
-              </Col>
-            </Row>
-            <Row className="profile--row">
-              {vendorType === "Company" ? (
-                <>
-                  <Col md="6" sm="12">
-                    <Form.Label>Company name</Form.Label>
-                    <Form.Control
-                      className="profile--input"
-                      placeholder=""
-                      value={companyName}
-                      onChange={(e) => setCompanyName(e.target.value)}
-                    />
-                  </Col>
-                  <Col md="6" sm="12">
-                    <Form.Label>Company LinkedIn URL</Form.Label>
-                    <Form.Control
-                      className="profile--input"
-                      placeholder=""
-                      value={companyLinkedin}
-                      onChange={(e) => setCompanyLinkedin(e.target.value)}
-                    />
-                  </Col>
-                </>
-              ) : vendorType === "Product" ? (
-                <>
-                  <Col md="6" sm="12">
-                    <Form.Label>Product name</Form.Label>
-                    <Form.Control
-                      className="profile--input"
-                      placeholder=""
-                      value={companyName}
-                      onChange={(e) => setCompanyName(e.target.value)}
-                    />
-                  </Col>
-                  <Col md="6" sm="12">
-                    <Form.Label>Company LinkedIn URL</Form.Label>
-                    <Form.Control
-                      className="profile--input"
-                      placeholder=""
-                      value={companyLinkedin}
-                      onChange={(e) => setCompanyLinkedin(e.target.value)}
-                    />
-                  </Col>
-                </>
-              ) : (
-                <>
-                  <Col md="6" sm="12">
-                    <Form.Label>Contractor name</Form.Label>
-                    <Form.Control
-                      className="profile--input"
-                      placeholder=""
-                      value={companyName}
-                      onChange={(e) => setCompanyName(e.target.value)}
-                    />
-                  </Col>
-                  <Col md="6" sm="12">
-                    <Form.Label>Contractor LinkedIn URL</Form.Label>
-                    <Form.Control
-                      className="profile--input"
-                      placeholder=""
-                      value={companyLinkedin}
-                      onChange={(e) => setCompanyLinkedin(e.target.value)}
-                    />
-                  </Col>
-                </>
-              )}
-            </Row>
-            <Row className="profile--row">
-              {vendorType === "Company" ? (
-                <Col md="6" sm="12">
-                  <Form.Label>Company Website</Form.Label>
-                  <Form.Control
-                    className="profile--input"
-                    placeholder=""
-                    value={companyWebsite}
-                    onChange={(e) => setCompanyWebsite(e.target.value)}
-                  />
-                </Col>
-              ) : vendorType === "Product" ? (
-                <Col md="6" sm="12">
-                  <Form.Label>Product Website</Form.Label>
-                  <Form.Control
-                    className="profile--input"
-                    placeholder=""
-                    value={companyWebsite}
-                    onChange={(e) => setCompanyWebsite(e.target.value)}
-                  />
-                </Col>
-              ) : (
-                <Col md="6" sm="12">
-                  <Form.Label>Contractor Website</Form.Label>
-                  <Form.Control
-                    className="profile--input"
-                    placeholder=""
-                    value={companyWebsite}
-                    onChange={(e) => setCompanyWebsite(e.target.value)}
-                  />
-                </Col>
-              )}
-              <Col md="6" sm="12">
-                <Form.Label>Twitter</Form.Label>
-                <Form.Control
-                  className="profile--input"
-                  placeholder="@handle"
-                  value={twitter}
-                  onChange={(e) => setTwitter(e.target.value)}
-                />
-              </Col>
-            </Row>
-            <Row className="profile--row mb-5">
-              <Col md="4" sm="12">
-                <Form.Label>City</Form.Label>
-                <Form.Control
-                  className="profile--input"
-                  placeholder=""
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)}
-                />
-              </Col>
-              <Col md="4" sm="12">
-                <Form.Label>State/Province</Form.Label>
-                <Form.Control
-                  className="profile--input"
-                  placeholder=""
-                  value={province}
-                  onChange={(e) => setProvince(e.target.value)}
-                />
-              </Col>
-              <Col md="4" sm="12">
-                <Form.Label>Country</Form.Label>
-                <Form.Control
-                  className="profile--input"
-                  placeholder=""
-                  value={country}
-                  onChange={(e) => setCountry(e.target.value)}
-                />
-              </Col>
-            </Row>
-          </div>
-          <div className="profile--row-title about mt-4">
-            <div>
-              <h2 className="profile-edit-section-title mb-3 px-4">About</h2>
-              <Separator className="card-separator" />
-            </div>
-            <Row className="profile--row mt-5">
-              <Col md="12" sm="12">
-                <Form.Label>Description (optional)</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  className="profile--textarea"
-                  rows="3"
-                  placeholder=""
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                />
-              </Col>
-            </Row>
-            <Row className="profile--row">
-              <Col md="6" sm="12">
-                <Form.Label>Areas of marketing expertise</Form.Label>
-                <AsyncTypeahead
-                  id="async-global-search"
-                  className="expertise--input"
-                  isLoading={isTypeaheadLoading}
-                  labelKey="name"
-                  multiple
-                  minLength={0}
-                  onSearch={handleSearch}
-                  options={typeaheadOptions}
-                  emptyLabel=""
-                  renderMenu={(results, menuProps) => {
-                    if (!results.length) {
-                      return null;
-                    }
-                    return (
-                      <TypeaheadMenu
-                        options={results}
-                        labelKey="name"
-                        {...menuProps}
-                      />
-                    );
-                  }}
-                  selected={selectedAreasOfExpertise}
-                  onChange={(selectedOption) => {
-                    setSelectedAreasOfExpertise(selectedOption);
-                  }}
-                  placeholder=""
-                  renderMenuItemChildren={(option) => (
-                    <React.Fragment>
-                      <span>{option.name}</span>
-                    </React.Fragment>
-                  )}
-                />
-              </Col>
-              <Col md="6" sm="12">
-                <Form.Label>Company Industry</Form.Label>
-                <Form.Control
-                  className="profile--input"
-                  placeholder="Choose vendor Industry"
-                  value={companyIndustry}
-                  onChange={(e) => setCompanyIndustry(e.target.value)}
-                />
-              </Col>
-            </Row>
-          </div>
-          <div className="mt-4">
-            <div>
-              <Separator className="card-separator" />
-            </div>
-            <div className="d-flex justify-content-end">
-              <div className="pt-3">
-                <Button
-                  className="btn-white mr-2"
-                  variant="outline-primary"
-                  onClick={handleCancel}
-                >
-                  Cancel
-                </Button>
-                <Button
-                  className="btn-white modal-primary-button"
-                  variant="outline-primary"
-                  onClick={handleSubmit}
-                >
-                  Save
-                </Button>
+            <div className="d-flex flex-column px-3">
+              <img
+                className="profile--image rounded-circle"
+                src={image}
+                style={{ width: 150, height: 150 }}
+                alt=""
+              />
+              <input
+                type="file"
+                id="file"
+                ref={inputFile}
+                onChange={onInputFileChange}
+                style={{ display: "none" }}
+              />
+              <div className="profile--edit-image">
+                {imageUploading ? (
+                  <Button
+                    className="btn-white"
+                    variant="outline-primary"
+                    disabled
+                  >
+                    Uploading...
+                  </Button>
+                ) : (
+                  <Button
+                    className="btn-white mt-3"
+                    variant="outline-primary"
+                    onClick={() => {
+                      inputFile &&
+                        inputFile.current &&
+                        inputFile.current.click();
+                    }}
+                  >
+                    Edit Profile Image
+                  </Button>
+                )}
               </div>
             </div>
           </div>
-        </div>
-      </Form>
-      <Footer
-        className={clsx("vendor-profile--footer", mobileMenuOpen && "open")}
-      />
-    </Container>
+          <div className="card-box py-3 px-3">
+            <div className="profile--row-title">
+              <div>
+                <h2 className="profile-edit-section-title mb-3 px-4">
+                  Overview
+                </h2>
+                <Separator className="card-separator" />
+              </div>
+              <Row className="profile--row mt-5">
+                <Col md="12" sm="12">
+                  <Form.Label>Vendor</Form.Label>
+                  <div className="vendor-profile-type-list">
+                    {VendorType.map((vendor, index) => {
+                      return (
+                        <Form.Check
+                          key={index}
+                          label={vendor}
+                          name="vendortype"
+                          value={vendor}
+                          id={vendor}
+                          checked={vendor === vendorType}
+                          onChange={(e) => {
+                            setVendorType(e.target.value);
+                          }}
+                          type="radio"
+                        />
+                      );
+                    })}
+                  </div>
+                </Col>
+              </Row>
+              <Row className="profile--row">
+                {vendorType === "Company" ? (
+                  <>
+                    <Col md="6" sm="12">
+                      <Form.Label>Company name</Form.Label>
+                      <Form.Control
+                        className="profile--input"
+                        placeholder=""
+                        value={companyName}
+                        onChange={(e) => setCompanyName(e.target.value)}
+                      />
+                    </Col>
+                    <Col md="6" sm="12">
+                      <Form.Label>Company LinkedIn URL</Form.Label>
+                      <Form.Control
+                        className="profile--input"
+                        placeholder=""
+                        value={companyLinkedin}
+                        onChange={(e) => setCompanyLinkedin(e.target.value)}
+                      />
+                    </Col>
+                  </>
+                ) : vendorType === "Product" ? (
+                  <>
+                    <Col md="6" sm="12">
+                      <Form.Label>Product name</Form.Label>
+                      <Form.Control
+                        className="profile--input"
+                        placeholder=""
+                        value={companyName}
+                        onChange={(e) => setCompanyName(e.target.value)}
+                      />
+                    </Col>
+                    <Col md="6" sm="12">
+                      <Form.Label>Company LinkedIn URL</Form.Label>
+                      <Form.Control
+                        className="profile--input"
+                        placeholder=""
+                        value={companyLinkedin}
+                        onChange={(e) => setCompanyLinkedin(e.target.value)}
+                      />
+                    </Col>
+                  </>
+                ) : (
+                  <>
+                    <Col md="6" sm="12">
+                      <Form.Label>Contractor name</Form.Label>
+                      <Form.Control
+                        className="profile--input"
+                        placeholder=""
+                        value={companyName}
+                        onChange={(e) => setCompanyName(e.target.value)}
+                      />
+                    </Col>
+                    <Col md="6" sm="12">
+                      <Form.Label>Contractor LinkedIn URL</Form.Label>
+                      <Form.Control
+                        className="profile--input"
+                        placeholder=""
+                        value={companyLinkedin}
+                        onChange={(e) => setCompanyLinkedin(e.target.value)}
+                      />
+                    </Col>
+                  </>
+                )}
+              </Row>
+              <Row className="profile--row">
+                {vendorType === "Company" ? (
+                  <Col md="6" sm="12">
+                    <Form.Label>Company Website</Form.Label>
+                    <Form.Control
+                      className="profile--input"
+                      placeholder=""
+                      value={companyWebsite}
+                      onChange={(e) => setCompanyWebsite(e.target.value)}
+                    />
+                  </Col>
+                ) : vendorType === "Product" ? (
+                  <Col md="6" sm="12">
+                    <Form.Label>Product Website</Form.Label>
+                    <Form.Control
+                      className="profile--input"
+                      placeholder=""
+                      value={companyWebsite}
+                      onChange={(e) => setCompanyWebsite(e.target.value)}
+                    />
+                  </Col>
+                ) : (
+                  <Col md="6" sm="12">
+                    <Form.Label>Contractor Website</Form.Label>
+                    <Form.Control
+                      className="profile--input"
+                      placeholder=""
+                      value={companyWebsite}
+                      onChange={(e) => setCompanyWebsite(e.target.value)}
+                    />
+                  </Col>
+                )}
+                <Col md="6" sm="12">
+                  <Form.Label>Twitter</Form.Label>
+                  <Form.Control
+                    className="profile--input"
+                    placeholder="@handle"
+                    value={twitter}
+                    onChange={(e) => setTwitter(e.target.value)}
+                  />
+                </Col>
+              </Row>
+              <Row className="profile--row mb-5">
+                <Col md="4" sm="12">
+                  <Form.Label>City</Form.Label>
+                  <Form.Control
+                    className="profile--input"
+                    placeholder=""
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                  />
+                </Col>
+                <Col md="4" sm="12">
+                  <Form.Label>State/Province</Form.Label>
+                  <Form.Control
+                    className="profile--input"
+                    placeholder=""
+                    value={province}
+                    onChange={(e) => setProvince(e.target.value)}
+                  />
+                </Col>
+                <Col md="4" sm="12">
+                  <Form.Label>Country</Form.Label>
+                  <Form.Control
+                    className="profile--input"
+                    placeholder=""
+                    value={country}
+                    onChange={(e) => setCountry(e.target.value)}
+                  />
+                </Col>
+              </Row>
+            </div>
+            <div className="profile--row-title about mt-4">
+              <div>
+                <h2 className="profile-edit-section-title mb-3 px-4">About</h2>
+                <Separator className="card-separator" />
+              </div>
+              <Row className="profile--row mt-5">
+                <Col md="12" sm="12">
+                  <Form.Label>Description (optional)</Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    className="profile--textarea"
+                    rows="3"
+                    placeholder=""
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                  />
+                </Col>
+              </Row>
+              <Row className="profile--row">
+                <Col md="6" sm="12">
+                  <Form.Label>Areas of marketing expertise</Form.Label>
+                  <AsyncTypeahead
+                    id="async-global-search"
+                    className="expertise--input"
+                    isLoading={isTypeaheadLoading}
+                    labelKey="name"
+                    multiple
+                    minLength={0}
+                    onSearch={handleSearch}
+                    options={typeaheadOptions}
+                    emptyLabel=""
+                    renderMenu={(results, menuProps) => {
+                      if (!results.length) {
+                        return null;
+                      }
+                      return (
+                        <TypeaheadMenu
+                          options={results}
+                          labelKey="name"
+                          {...menuProps}
+                        />
+                      );
+                    }}
+                    selected={selectedAreasOfExpertise}
+                    onChange={(selectedOption) => {
+                      setSelectedAreasOfExpertise(selectedOption);
+                    }}
+                    placeholder=""
+                    renderMenuItemChildren={(option) => (
+                      <React.Fragment>
+                        <span>{option.name}</span>
+                      </React.Fragment>
+                    )}
+                  />
+                </Col>
+                <Col md="6" sm="12">
+                  <Form.Label>Company Industry</Form.Label>
+                  <Form.Control
+                    className="profile--input"
+                    placeholder="Choose vendor Industry"
+                    value={companyIndustry}
+                    onChange={(e) => setCompanyIndustry(e.target.value)}
+                  />
+                </Col>
+              </Row>
+            </div>
+            <div className="mt-4">
+              <div>
+                <Separator className="card-separator" />
+              </div>
+              <div className="d-flex justify-content-end">
+                <div className="pt-3">
+                  <Button
+                    className="btn-white mr-2"
+                    variant="outline-primary"
+                    onClick={handleCancel}
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    className="btn-white modal-primary-button"
+                    variant="outline-primary"
+                    onClick={handleSubmit}
+                  >
+                    Save
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Form>
+        <Footer
+          className={clsx("vendor-profile--footer", mobileMenuOpen && "open")}
+        />
+      </Container>
+    </Layout>
   );
 };
 
