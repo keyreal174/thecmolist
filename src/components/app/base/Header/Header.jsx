@@ -195,9 +195,6 @@ function Header({
         mobileMenuOpen && "open"
       )}
     >
-      <div
-        className={clsx("container-fullwidth", mobileMenuOpen && "open")}
-      ></div>
       <Container>
         <Navbar expand="md" variant="white" onToggle={handleToggle}>
           <div className="d-flex">

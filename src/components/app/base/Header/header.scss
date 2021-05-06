@@ -411,7 +411,7 @@
 
     &.show {
       opacity: 1 !important;
-      height: 100%;
+      height: auto;
     }
   }
   .nav-app .nav-link {
@@ -439,7 +439,6 @@
   }
   .navbar-collapse {
     margin-top: 20px;
-    height: 481px;
   }
   .header--separator {
     width: calc(95% - 55px);
