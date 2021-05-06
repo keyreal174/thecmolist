@@ -101,6 +101,13 @@
   margin: 0;
 }
 
+.filter-desktop {
+  display: block;
+}
+.filter-dropdown--wrapper {
+  display: none;
+}
+
 @media (max-width: 991px) {
   .section-title {
     font-size: 18px;
@@ -130,6 +137,34 @@
   }
   .filter {
     overflow: scroll;
+  }
+  .filter-desktop {
+    display: none;
+  }
+  .filter-dropdown--wrapper {
+    display: flex;
+
+    .navbar-dropdown.filter-dropdown {
+      position: relative;
+      top: initial;
+      margin-left: auto;
+      margin-right: 16px;
+      background-color: $white;
+
+      a.dropdown-toggle {
+        width: 200px;
+        text-align: center;
+      }
+
+      .dropdown-menu {
+        right: 0 !important;
+
+        .filter-dropdown-item-enabled {
+          background: $blue;
+          color: $white;
+        }
+      }
+    }
   }
 }
 

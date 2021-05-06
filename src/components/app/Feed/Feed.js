@@ -8,6 +8,7 @@ import Layout from "../base/Layout/Layout";
 import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Filter from "../base/Filter/Filter";
+import FilterMobile from "../base/Filter/FilterMobile";
 import Article from "../base/Article/Article";
 import InviteModal from "../base/ShareModule/InviteModal";
 import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
@@ -442,8 +443,14 @@ const Feed = (props) => {
           </CSSTransition>
 
           {!isTopic && (
-            <div style={{ width: "100%" }}>
+            <div style={{ width: "100%" }} className="position-relative">
               <Filter
+                className={clsx("mt-4 feed--filters", mobileMenuOpen && "open")}
+                filterIdx={filterIdx}
+                filters={filters}
+                onChange={(idx) => changeFilter(idx)}
+              />
+              <FilterMobile
                 className={clsx("mt-4 feed--filters", mobileMenuOpen && "open")}
                 filterIdx={filterIdx}
                 filters={filters}

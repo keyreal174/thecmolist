@@ -13,7 +13,9 @@ function Filter(props) {
   let hasFilters = props.filters && props.filters.length > 0;
   return (
     <Row
-      className={`filter ${props.className ? props.className : "pt-3 pb-2"}`}
+      className={`filter filter-desktop ${
+        props.className ? props.className : "pt-3 pb-2"
+      }`}
     >
       <Row className="align-items-center">
         <Col md={props.sortable || props.children ? "9" : "12"}>
