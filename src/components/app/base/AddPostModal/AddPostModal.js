@@ -326,6 +326,15 @@ function AddPostModal({
                         setPublicVisibility(true);
                         setPeersVisibility(false);
                         setNetworkVisibility(false);
+                        // set all groups to true
+                        if (groups) {
+                          setGroups(
+                            groups.map((g) => ({
+                              ...g,
+                              checked: true,
+                            }))
+                          );
+                        }
                       }}
                     />
                     <label htmlFor="public">
@@ -343,12 +352,12 @@ function AddPostModal({
                         setPublicVisibility(false);
                         setPeersVisibility(true);
                         setNetworkVisibility(false);
-                        // set all groups to true
+                        // set all groups to false
                         if (groups) {
                           setGroups(
                             groups.map((g) => ({
                               ...g,
-                              checked: true,
+                              checked: false,
                             }))
                           );
                         }
