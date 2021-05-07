@@ -68,7 +68,7 @@ const EngagementStat = ({ handleClick, value, text }) => {
       {value && (
         <Button
           className="engagement-stat--wrapper"
-          onClick={handleClick.bind(this, textToLowerCase)}
+          onClick={(contentId) => handleClick(textToLowerCase, contentId)}
           variant="link"
         >
           <span>
