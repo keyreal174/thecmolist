@@ -5,7 +5,7 @@ import Avatar from "../base/Avatar/Avatar";
 export const AllMembersList = ({ list }) => {
   return (
     <>
-      {list &&
+      {list.length > 0 &&
         list.map(({ image, name, role, link }, index) => {
           return (
             <a href={link} key={index}>
