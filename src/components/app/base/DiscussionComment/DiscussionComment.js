@@ -5,6 +5,7 @@ import clsx from "clsx";
 import { Button, Form } from "react-bootstrap";
 import { connect } from "react-redux";
 import { cdn } from "../../../util/constants";
+import Util from "../../../util/Util";
 
 import "./discussionComment.scss";
 
@@ -27,6 +28,7 @@ const DiscussionComment = ({
   const [isPersonVendor, setIsPersonVendor] = useState(false);
   const textAreaEl = useRef(null);
   const richeditorEl = useRef(null);
+  const viewIsMobile = Util.isMobile();
 
   const handleButtonClick = (e) => {
     let text = comment;
@@ -146,7 +148,10 @@ const DiscussionComment = ({
       )}
       {
         <Button
-          className={clsx("comment-button", show && "show")}
+          className={clsx(
+            "comment-button",
+            viewIsMobile ? "show" : show && "show"
+          )}
           onClick={handleButtonClick}
           variant="primary"
         >

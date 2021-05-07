@@ -104,6 +104,14 @@
   }
 }
 
+@media (max-width: 575px) {
+  .comment {
+    &--buttons {
+      display: none;
+    }
+  }
+}
+
 @media (max-width: 991px) {
   .modal-section-body-text {
     display: none;
