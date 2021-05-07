@@ -32,6 +32,8 @@ const ContentDetail = ({
   const [focusCommentToggle, setFocusCommentToggle] = useState(true);
   const [showStatModal, setShowStatModal] = useState(false);
   const [statType, setStatType] = useState("");
+  const [selectedContentId, setSelectedContentId] = useState(0);
+
   const focusError = () => {
     const errorSection = document.getElementById("error-section");
     window.scrollTo(0, 0);
@@ -86,12 +88,38 @@ const ContentDetail = ({
   const contentId = content && content.content_id;
   const author = content && content.content ? content.content.author : "";
 
-  const handleStatButtonClick = (key) => {
+  const handleStatButtonClick = (key, contentId) => {
     setShowStatModal(true);
     setStatType(key);
+    setSelectedContentId(contentId);
   };
   const handleCloseButtonClick = () => {
     setShowStatModal(false);
+  };
+
+  const numberOfLikes = getEngagementForId(contentId, "thanks", reactions);
+  const numberOfInsightful = getEngagementForId(
+    contentId,
+    "insightful",
+    reactions
+  );
+
+  const getListOfStatById = (type, id) => {
+    let list;
+
+    if (Object.keys(reactionsById).length) {
+      if (reactionsById.content.contentId === id) {
+        list = reactionsById.content.reactions;
+      } else {
+        reactionsById.replies.forEach((reply) => {
+          if (reply.contentId === id) {
+            list = reply.reactions;
+          }
+        });
+      }
+      return list && list[type];
+    }
+    return [];
   };
 
   return (
@@ -120,7 +148,7 @@ const ContentDetail = ({
               type: "Reaction",
               icon: ThanksIcon,
               iconChecked: ThanksCheckedIcon,
-              number: getEngagementForId(contentId, "thanks", reactions),
+              number: numberOfLikes,
             },
             {
               checked: getCheckedForEngagementType(
@@ -132,7 +160,7 @@ const ContentDetail = ({
               type: "Reaction",
               icon: InsightfulIcon,
               iconChecked: InsightfulCheckedIcon,
-              number: getEngagementForId(contentId, "insightful", reactions),
+              number: numberOfInsightful,
             },
           ]}
           focusComment={focusCommentToggle}
@@ -140,9 +168,9 @@ const ContentDetail = ({
             this,
             content
           )}
-          numberOfInsightful={reactionsById["insightful"]?.length}
-          numberOfLikes={reactionsById["likes"]?.length}
-          onStatButtonClick={handleStatButtonClick}
+          numberOfInsightful={numberOfInsightful}
+          numberOfLikes={numberOfLikes}
+          onStatButtonClick={handleStatButtonClick.bind(this, contentId)}
           style={{ paddingBottom: "10px" }}
           showDiscussionComment={true}
           showStats={true}
@@ -167,7 +195,9 @@ const ContentDetail = ({
             <Modal.Title>Stats by user</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <AllMembersList list={reactionsById[statType]} />
+            <AllMembersList
+              list={getListOfStatById(selectedContentId, statType)}
+            />
           </Modal.Body>
         </Modal>
         {content && content.replies && content.replies.length > 0 && (
@@ -179,6 +209,16 @@ const ContentDetail = ({
             content.replies.length > 0 &&
             content.replies.map((reply, index) => {
               const replyId = reply.content_id;
+              const replyLikes = getEngagementForId(
+                replyId,
+                "thanks",
+                reactions
+              );
+              const replyInsightful = getEngagementForId(
+                replyId,
+                "insightful",
+                reactions
+              );
 
               return (
                 <Article
@@ -204,7 +244,7 @@ const ContentDetail = ({
                       type: "Reaction",
                       icon: ThanksIcon,
                       iconChecked: ThanksCheckedIcon,
-                      number: getEngagementForId(replyId, "thanks", reactions),
+                      number: replyLikes,
                     },
                     {
                       checked: getCheckedForEngagementType(
@@ -216,17 +256,17 @@ const ContentDetail = ({
                       type: "Reaction",
                       icon: InsightfulIcon,
                       iconChecked: InsightfulCheckedIcon,
-                      number: getEngagementForId(
-                        replyId,
-                        "insightful",
-                        reactions
-                      ),
+                      number: replyInsightful,
                     },
                   ]}
                   onEngagementButtonClick={handleEngagementButtonClick.bind(
                     this,
                     reply
                   )}
+                  onStatButtonClick={handleStatButtonClick.bind(this, replyId)}
+                  numberOfInsightful={replyInsightful}
+                  numberOfLikes={replyLikes}
+                  showStats={true}
                   showDiscussionComment={true}
                   discussionCommentAuthor={author}
                   handleDiscussionCommentSubmit={handleSubmitToReply.bind(
