@@ -92,12 +92,6 @@
     top: unset !important;
     margin: 10px 0px;
   }
-  .isMyProfile .article-badge {
-    position: absolute;
-    width: initial !important;
-    top: 10px !important;
-    margin: 0;
-  }
   .search-page-article {
     .article-wrapper .article-badge {
       margin: 10px 60px;
@@ -110,11 +104,5 @@
   }
   .search--article-item {
     margin: 10px 17px;
-  }
-}
-
-@media (max-width: 576px) {
-  .isMyProfile .article-badge {
-    top: -60px !important;
   }
 }

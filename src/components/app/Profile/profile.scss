@@ -540,4 +540,16 @@
   .profile--feed {
     margin-top: 0;
   }
+  .isMyProfile .article-badge {
+    position: absolute;
+    width: initial !important;
+    top: 10px !important;
+    margin: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .isMyProfile .article-badge {
+    top: -60px !important;
+  }
 }
