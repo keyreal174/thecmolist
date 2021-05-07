@@ -399,6 +399,9 @@
       }
     }
   }
+  .navbar-dropdown.post-dropdown a::after {
+    right: 0px;
+  }
   .navbar-nav {
     flex-direction: column;
   }
