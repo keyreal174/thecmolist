@@ -25,8 +25,8 @@ const VendorsFeed = ({ feedData, moreData, fetchData }) => {
             );
           })}
         {feedData && feedData.length === 0 && (
-          <div className="wrapper article-wrapper">
-            <div className="no-feed-data-header">No vendors here yet.</div>
+          <div className="wrapper article-wrapper no-feed-data-header">
+            <div>No vendors here yet.</div>
           </div>
         )}
         {moreData && (

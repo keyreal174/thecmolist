@@ -199,8 +199,8 @@ function RenderFeed({
         })}
 
       {feedData.length === 0 && (
-        <div className="wrapper article-wrapper">
-          <div className="no-feed-data-header">No content yet</div>
+        <div className="wrapper article-wrapper no-feed-data-header">
+          <div>No content yet</div>
         </div>
       )}
       {feedMoreData && (

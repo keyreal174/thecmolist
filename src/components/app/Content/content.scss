@@ -86,7 +86,10 @@
 }
 
 .content-detail--modal {
-  text-align: center;
+  .modal-title {
+    text-transform: capitalize;
+    padding-left: 0px;
+  }
   .modal-content {
     margin: 50% auto;
   }

@@ -549,13 +549,11 @@ const VendorProfile = (props) => {
         {profileName && !hasDataOnCurrentFeed && (
           <div
             className={clsx(
-              "wrapper article-wrapper",
+              "wrapper article-wrapper no-feed-data-header",
               mobileMenuOpen && "open"
             )}
           >
-            <div className="no-feed-data-header">
-              {profileName} hasn't shared anything here yet
-            </div>
+            <div>{profileName} hasn't shared anything here yet</div>
           </div>
         )}
         <Footer className={clsx("profile--footer", mobileMenuOpen && "open")} />

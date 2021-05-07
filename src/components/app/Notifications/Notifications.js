@@ -35,8 +35,8 @@ const Notifications = (props) => {
           </div>
 
           {feedData.length === 0 && (
-            <div className="wrapper article-wrapper">
-              <div className="no-feed-data-header">No notifications yet.</div>
+            <div className="wrapper article-wrapper no-feed-data-header">
+              <div>No notifications yet.</div>
             </div>
           )}
           {feedData.length > 0 && props.moreData && (

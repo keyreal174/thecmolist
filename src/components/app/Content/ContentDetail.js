@@ -164,7 +164,7 @@ const ContentDetail = ({
           onHide={handleCloseButtonClick}
         >
           <Modal.Header closeButton>
-            <Modal.Title>Stats by user</Modal.Title>
+            <Modal.Title>{statType}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <AllMembersList list={reactionsById[statType]} />

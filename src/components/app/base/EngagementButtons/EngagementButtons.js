@@ -56,7 +56,13 @@ const EngagementStats = ({
 
 const EngagementStat = ({ handleClick, value, text }) => {
   const textToLowerCase = text && text.toLowerCase();
-
+  let displayText = "";
+  if (text) {
+    displayText = " ".concat(text);
+    if (value === 1 && displayText.endsWith("s")) {
+      displayText = displayText.slice(0, -1);
+    }
+  }
   return (
     <>
       {value && (
@@ -67,7 +73,7 @@ const EngagementStat = ({ handleClick, value, text }) => {
         >
           <span>
             <strong className="engagement-stat--value">{value}</strong>
-            {" ".concat(text)}
+            {displayText}
           </span>
         </Button>
       )}

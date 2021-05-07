@@ -619,13 +619,11 @@ const Profile = (props) => {
         {profileFirstName && !hasDataOnCurrentFeed && (
           <div
             className={clsx(
-              "wrapper article-wrapper",
+              "wrapper article-wrapper no-feed-data-header",
               mobileMenuOpen && "open"
             )}
           >
-            <div className="no-feed-data-header">
-              {profileFirstName} hasn't shared anything here yet
-            </div>
+            <div>{profileFirstName} hasn't shared anything here yet</div>
           </div>
         )}
 
