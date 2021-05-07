@@ -117,7 +117,7 @@ const ContentDetail = ({
           }
         });
       }
-      return list && list[type];
+      return list ? list[type] || [];
     }
     return [];
   };
