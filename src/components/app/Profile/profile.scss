@@ -399,6 +399,8 @@
     height: 215px;
     width: 100%;
     object-fit: cover;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
   }
 }
 .right-section {
@@ -537,5 +539,17 @@
   }
   .profile--feed {
     margin-top: 0;
+  }
+  .isMyProfile .article-badge {
+    position: absolute;
+    width: initial !important;
+    top: 10px !important;
+    margin: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .isMyProfile .article-badge {
+    top: -60px !important;
   }
 }

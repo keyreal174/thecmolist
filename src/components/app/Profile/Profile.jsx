@@ -548,7 +548,8 @@ const Profile = (props) => {
                         key={idx}
                         className={clsx(
                           "profile--article-item",
-                          idx !== 0 && "mt-1"
+                          idx !== 0 && "mt-1",
+                          badge && "isMyProfile"
                         )}
                         {...feed.content}
                         badge={badge}
