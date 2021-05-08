@@ -154,4 +154,46 @@ context('Login', () => {
     cy.get('.article-wrapper')
       .should('have.length', 1)
   })
+
+  it("Click edit topics, follow a topic, then return to feed", () => {
+    // type email and test
+    cy.get('input[type="email"]')
+      .type('testuser@gmail.com')
+    // type password and test
+    cy.get('input[type="password"]')
+      .type('password123')
+    // submit
+    cy.get('.login--form.form-signin')
+      .submit()
+
+    cy.get('.feed--dashboard')
+      .then(result => {
+        if (result.find('.profile-stats--empty-message').length) {
+          cy.get('.profile-stats--edit')
+          .click()
+          cy.get('.topics--wrapper')
+            .find('.btn_following')
+            .first()
+            .click()
+          cy.visit("/feed")
+          cy.get('.profile-stats__spaces-section div')
+            .should('have.length', 1)
+        } else {
+          cy.get('.profile-stats__spaces-section')
+            .find('div')
+            .then(res => {
+              const length = res.length
+              cy.get('.profile-stats--edit')
+                .click()
+              cy.get('.topics--wrapper')
+                .find('.btn_following')
+                .first()
+                .click()
+              cy.visit("/feed")
+              cy.get('.profile-stats__spaces-section div')
+                .should('have.length', length + 1)
+            })
+        }
+      })
+  })
 })
