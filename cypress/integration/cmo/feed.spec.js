@@ -196,4 +196,134 @@ context('Login', () => {
         }
       })
   })
+
+  it("Click on topic in my topic", () => {
+    // type email and test
+    cy.get('input[type="email"]')
+      .type('testuser@gmail.com')
+    // type password and test
+    cy.get('input[type="password"]')
+      .type('password123')
+    // submit
+    cy.get('.login--form.form-signin')
+      .submit()
+
+    cy.get('.feed--dashboard')
+      .then(result => {
+        if (result.find('.profile-stats__space-title').length) {
+          const title = result.find('.profile-stats__space-title').first().text()
+          cy.get('.profile-stats__space-title')
+            .first()
+            .click()
+
+          cy.get('.feed-page-top-banner-content h3')
+            .should('have.text', title.slice(1))
+        }
+      })
+  })
+
+  it("Click on my topics edit button, remove topic, go back to feedpage", () => {
+    // type email and test
+    cy.get('input[type="email"]')
+      .type('testuser@gmail.com')
+    // type password and test
+    cy.get('input[type="password"]')
+      .type('password123')
+    // submit
+    cy.get('.login--form.form-signin')
+      .submit()
+
+    cy.get('.feed--dashboard')
+      .then(result => {
+        if (result.find('.profile-stats__space-title').length) {
+          cy.get('.profile-stats__space-title')
+            .then(res => {
+              const length = res.length
+              cy.get('.profile-stats--edit')
+                .click()
+              cy.get('.topics--wrapper')
+                .find('.btn_followed')
+                .first()
+                .click()
+              cy.visit("/feed")
+              cy.get('.profile-stats__space-title')
+                .should('have.length', length - 1)
+            })
+        }
+      })
+  })
+
+  it("Load all three tabs, observe All Members", () => {
+    // type email and test
+    cy.get('input[type="email"]')
+      .type('testuser@gmail.com')
+    // type password and test
+    cy.get('input[type="password"]')
+      .type('password123')
+    // submit
+    cy.get('.login--form.form-signin')
+      .submit()
+
+    // Feed Page
+    cy.url().should('include', '/feed')
+
+    cy.get('.feed-box-content')
+      .find('a')
+      .should('have.length.gt', 1)
+
+    cy.get('.filter--button:nth-child(2)')
+      .click()
+
+    cy.get('.feed-box-content')
+      .find('a')
+      .should('have.length.gt', 1)
+
+    cy.get('.filter--button:nth-child(3)')
+      .click()
+
+    cy.get('.feed-box-content')
+      .find('a')
+      .should('have.length.gt', 1)
+  })
+
+  it("Load all three tabs, All members, See All", () => {
+    // type email and test
+    cy.get('input[type="email"]')
+      .type('testuser@gmail.com')
+    // type password and test
+    cy.get('input[type="password"]')
+      .type('password123')
+    // submit
+    cy.get('.login--form.form-signin')
+      .submit()
+
+    // Feed Page
+    cy.url().should('include', '/feed')
+    cy.get('.see-all-button')
+      .click()
+    cy.url().should('include', '/network#my-network')
+    cy.get('.filter--button:nth-child(1)')
+      .should('have.class', 'active')
+
+    cy.visit('/feed')
+    cy.get('.filter--button:nth-child(2)')
+      .click()
+    cy.wait(500)
+    cy.get('.see-all-button')
+      .click()
+    cy.url().should('include', '/network#my-peers')
+    cy.get('.filter--button:nth-child(2)')
+      .should('have.class', 'active')
+
+    cy.visit('/feed')
+    cy.get('.filter--button:nth-child(3)')
+      .click()
+    cy.wait(500)
+    cy.get('.see-all-button')
+      .eq(1)
+      .click()
+    cy.url().should('include', '/network#signalfire-marketing')
+    cy.get('.filter--button:nth-child(3)')
+      .should('have.class', 'active')
+  })
 })
