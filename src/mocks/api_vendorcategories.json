@@ -1,0 +1,72 @@
+{
+  "categories": [
+    {
+      "name": "CRM",
+      "tools": [
+        {
+          "name": "Saleforce",
+          "icon": "https://www.clipartmax.com/png/middle/102-1029458_salesforce-began-in-1999-with-a-vision-of-reinventing-salesforce-com-logo.png"
+        },
+        {
+          "name": "Hubspot",
+          "icon": "https://cdn3.iconfinder.com/data/icons/logos-and-brands-adobe/512/168_Hubspot-512.png"
+        },
+        {
+          "name": "Sugar CRM",
+          "icon": "https://s3.amazonaws.com/tracxn-data-image/logo/company/3p7TDqvW_400x400_1590732388663.png"
+        }
+      ]
+    },
+    {
+      "name": "Marketing Automation",
+      "tools": [
+        {
+          "name": "Saleforce",
+          "icon": "https://www.clipartmax.com/png/middle/102-1029458_salesforce-began-in-1999-with-a-vision-of-reinventing-salesforce-com-logo.png"
+        },
+        {
+          "name": "Hubspot",
+          "icon": "https://cdn3.iconfinder.com/data/icons/logos-and-brands-adobe/512/168_Hubspot-512.png"
+        },
+        {
+          "name": "Sugar CRM",
+          "icon": "https://s3.amazonaws.com/tracxn-data-image/logo/company/3p7TDqvW_400x400_1590732388663.png"
+        }
+      ]
+    },
+    {
+      "name": "Analytics",
+      "tools": [
+        {
+          "name": "Saleforce",
+          "icon": "https://www.clipartmax.com/png/middle/102-1029458_salesforce-began-in-1999-with-a-vision-of-reinventing-salesforce-com-logo.png"
+        },
+        {
+          "name": "Hubspot",
+          "icon": "https://cdn3.iconfinder.com/data/icons/logos-and-brands-adobe/512/168_Hubspot-512.png"
+        },
+        {
+          "name": "Sugar CRM",
+          "icon": "https://s3.amazonaws.com/tracxn-data-image/logo/company/3p7TDqvW_400x400_1590732388663.png"
+        }
+      ]
+    },
+    {
+      "name": "Content Management",
+      "tools": [
+        {
+          "name": "Saleforce",
+          "icon": "https://www.clipartmax.com/png/middle/102-1029458_salesforce-began-in-1999-with-a-vision-of-reinventing-salesforce-com-logo.png"
+        },
+        {
+          "name": "Hubspot",
+          "icon": "https://cdn3.iconfinder.com/data/icons/logos-and-brands-adobe/512/168_Hubspot-512.png"
+        },
+        {
+          "name": "Sugar CRM",
+          "icon": "https://s3.amazonaws.com/tracxn-data-image/logo/company/3p7TDqvW_400x400_1590732388663.png"
+        }
+      ]
+    }
+  ]
+}
