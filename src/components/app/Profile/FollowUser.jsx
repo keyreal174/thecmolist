@@ -119,7 +119,7 @@ function FollowUserModal(props) {
             variant="outline-primary"
             onClick={follow}
           >
-            Connect
+            Follow
           </Button>
         </Modal.Footer>
       </Modal>

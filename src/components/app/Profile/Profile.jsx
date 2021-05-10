@@ -355,7 +355,7 @@ const Profile = (props) => {
                             variant="primary"
                             onClick={() => toggleFollowModal()}
                           >
-                            Connect
+                            Follow
                           </Button>
                         ) : (
                           <Button
@@ -363,7 +363,7 @@ const Profile = (props) => {
                             variant="primary"
                             onClick={handleDisconnectButtonClick}
                           >
-                            Connected
+                            Following
                           </Button>
                         )}
                         <Button
