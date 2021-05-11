@@ -11,6 +11,8 @@ import Filter from "../base/Filter/Filter";
 import Article from "../base/Article/Article";
 import Entities from "../base/Entities/Entities";
 import Footer from "../base/Footer/Footer";
+import Badge from "../base/Badge/Badge";
+import Analytics from "../../util/Analytics";
 import Util from "../../util/Util";
 import { vendorProfileHeader } from "../../util/constants";
 import {
@@ -347,6 +349,33 @@ const VendorProfile = (props) => {
     setFeedData(prevFeedData);
   };
 
+  const connectUser = async (payload) => {
+    let userName = payload.username;
+    Analytics.sendClickEvent(
+      `Followed user ${userName} from vendor profile page`
+    );
+    try {
+      await props.connectUser({ user: userName });
+    } catch (err) {
+      console.log(`An error occurred connecting with user: ${userName}`);
+      console.log(err);
+    }
+  };
+
+  const disconnectUser = async (payload) => {
+    let userName = payload.username;
+    Analytics.sendClickEvent(
+      `Unfollowed user ${userName} from vendor profile page`
+    );
+    try {
+      payload.isConnected = false;
+      await props.disconnectUser({ user: userName });
+    } catch (err) {
+      console.log(`An error occurred disconnecting with user: ${userName}`);
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     if (feedData.length > 0) {
       const f = feedData.map((feed) => ({
@@ -463,14 +492,16 @@ const VendorProfile = (props) => {
 
         {profileName && hasDataOnCurrentFeed && (
           <Row className={clsx("profile--feed", mobileMenuOpen && "open")}>
-            <Col xl="4" className="profile--popular-topics">
-              <PopularTopics
-                heading={"Popular #topics and Spaces"}
-                onSubfilterChange={onSubfilterChange}
-                topicList={topicsList}
-              />
-            </Col>
-            <Col xl="8" md="12">
+            {topicsList.length > 0 && (
+              <Col xl="4" className="profile--popular-topics">
+                <PopularTopics
+                  heading={"Popular #topics and Spaces"}
+                  onSubfilterChange={onSubfilterChange}
+                  topicList={topicsList}
+                />
+              </Col>
+            )}
+            <Col xl={topicsList.length > 0 ? "8" : "12"} md="12">
               <TransitionGroup enter={enableAnimations} exit={enableAnimations}>
                 {filteredFeedData.map((feed, idx) => {
                   return (
@@ -482,55 +513,67 @@ const VendorProfile = (props) => {
                           idx !== 0 && "mt-1"
                         )}
                         {...feed.content}
-                        engagementButtons={[
-                          {
-                            checked: true,
-                            text: feed.replyText || "Reply",
-                            type: "Answer",
-                            icon: AnswerIcon,
-                            number: getEngagementForId(
-                              feed.content_id,
-                              "answer",
-                              reactions
-                            ),
-                          },
-                          {
-                            checked: getCheckedForEngagementType(
-                              feed.content_id,
-                              "thanks",
-                              reactions
-                            ),
-                            text: "Like",
-                            type: "Reaction",
-                            icon: ThanksIcon,
-                            iconChecked: ThanksCheckedIcon,
-                            number: getEngagementForId(
-                              feed.content_id,
-                              "thanks",
-                              reactions
-                            ),
-                          },
-                          {
-                            checked: getCheckedForEngagementType(
-                              feed.content_id,
-                              "insightful",
-                              reactions
-                            ),
-                            text: "Insightful",
-                            type: "Reaction",
-                            icon: InsightfulIcon,
-                            iconChecked: InsightfulCheckedIcon,
-                            number: getEngagementForId(
-                              feed.content_id,
-                              "insightful",
-                              reactions
-                            ),
-                          },
-                        ]}
+                        engagementButtons={
+                          feed.content_id && [
+                            {
+                              checked: true,
+                              text: feed.replyText || "Reply",
+                              type: "Answer",
+                              icon: AnswerIcon,
+                              number: getEngagementForId(
+                                feed.content_id,
+                                "answer",
+                                reactions
+                              ),
+                            },
+                            {
+                              checked: getCheckedForEngagementType(
+                                feed.content_id,
+                                "thanks",
+                                reactions
+                              ),
+                              text: "Like",
+                              type: "Reaction",
+                              icon: ThanksIcon,
+                              iconChecked: ThanksCheckedIcon,
+                              number: getEngagementForId(
+                                feed.content_id,
+                                "thanks",
+                                reactions
+                              ),
+                            },
+                            {
+                              checked: getCheckedForEngagementType(
+                                feed.content_id,
+                                "insightful",
+                                reactions
+                              ),
+                              text: "Insightful",
+                              type: "Reaction",
+                              icon: InsightfulIcon,
+                              iconChecked: InsightfulCheckedIcon,
+                              number: getEngagementForId(
+                                feed.content_id,
+                                "insightful",
+                                reactions
+                              ),
+                            },
+                          ]
+                        }
                         onEngagementButtonClick={handleEngagementButtonClick.bind(
                           this,
                           feed
                         )}
+                        badge={
+                          feed.content.username ? (
+                            <Badge
+                              localConnectedUsers={props.localConnectedUsers}
+                              feed={feed.content}
+                              connectUser={connectUser}
+                              disconnectUser={disconnectUser}
+                            />
+                          ) : null
+                        }
                       >
                         {feed.parent_content && (
                           <Article {...feed.parent_content} />
@@ -566,6 +609,7 @@ const mapState = (state) => {
   return {
     profile: state.vendorModel.profile,
     reactions: state.reactionModel.reactions,
+    localConnectedUsers: state.userModel.localConnectedUsers,
   };
 };
 
@@ -573,6 +617,8 @@ const mapDispatch = (dispatch) => {
   return {
     fetchVendor: dispatch.vendorModel.fetchVendor,
     changeReaction: dispatch.reactionModel.changeReaction,
+    connectUser: dispatch.userModel.connectUser,
+    disconnectUser: dispatch.userModel.disconnectUser,
   };
 };
 

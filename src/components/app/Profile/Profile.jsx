@@ -553,50 +553,52 @@ const Profile = (props) => {
                         )}
                         {...feed.content}
                         badge={badge}
-                        engagementButtons={[
-                          {
-                            checked: true,
-                            text: feed.replyText || "Reply",
-                            type: "Answer",
-                            icon: AnswerIcon,
-                            number:
-                              feed.comments && feed.comments.length > 0
-                                ? feed.comments.length
-                                : null,
-                          },
-                          {
-                            checked: getCheckedForEngagementType(
-                              feed.content_id,
-                              "thanks",
-                              reactions
-                            ),
-                            text: "Like",
-                            type: "Reaction",
-                            icon: ThanksIcon,
-                            iconChecked: ThanksCheckedIcon,
-                            number: getEngagementForId(
-                              feed.content_id,
-                              "thanks",
-                              reactions
-                            ),
-                          },
-                          {
-                            checked: getCheckedForEngagementType(
-                              feed.content_id,
-                              "insightful",
-                              reactions
-                            ),
-                            text: "Insightful",
-                            type: "Reaction",
-                            icon: InsightfulIcon,
-                            iconChecked: InsightfulCheckedIcon,
-                            number: getEngagementForId(
-                              feed.content_id,
-                              "insightful",
-                              reactions
-                            ),
-                          },
-                        ]}
+                        engagementButtons={
+                          feed.content_id && [
+                            {
+                              checked: true,
+                              text: feed.replyText || "Reply",
+                              type: "Answer",
+                              icon: AnswerIcon,
+                              number:
+                                feed.comments && feed.comments.length > 0
+                                  ? feed.comments.length
+                                  : null,
+                            },
+                            {
+                              checked: getCheckedForEngagementType(
+                                feed.content_id,
+                                "thanks",
+                                reactions
+                              ),
+                              text: "Like",
+                              type: "Reaction",
+                              icon: ThanksIcon,
+                              iconChecked: ThanksCheckedIcon,
+                              number: getEngagementForId(
+                                feed.content_id,
+                                "thanks",
+                                reactions
+                              ),
+                            },
+                            {
+                              checked: getCheckedForEngagementType(
+                                feed.content_id,
+                                "insightful",
+                                reactions
+                              ),
+                              text: "Insightful",
+                              type: "Reaction",
+                              icon: InsightfulIcon,
+                              iconChecked: InsightfulCheckedIcon,
+                              number: getEngagementForId(
+                                feed.content_id,
+                                "insightful",
+                                reactions
+                              ),
+                            },
+                          ]
+                        }
                         focusComment={true}
                         onEngagementButtonClick={handleEngagementButtonClick.bind(
                           this,
