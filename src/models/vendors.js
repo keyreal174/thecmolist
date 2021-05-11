@@ -29,6 +29,10 @@ const vendorRequest = (sort, filter, subfilter, token) => {
 const postNewMember = (data) => {
   axios.post("/api/vendors/invite", data);
 };
+
+const getVendorCategoriesRequest = () => {
+  return axios.get("/api/vendor_categories");
+};
 export default {
   name: "vendorsModel",
   state: {
@@ -40,6 +44,7 @@ export default {
     activeFilter: "",
     activeSubFilter: "",
     sortOrder: "Top",
+    vendorCategories: [],
   },
   reducers: {
     initFeedDataForKey: (oldState, filterKey) => {
@@ -123,6 +128,12 @@ export default {
       return {
         ...oldState,
         sortOrder,
+      };
+    },
+    setVendorCategories: (oldState, data) => {
+      return {
+        ...oldState,
+        vendorCategories: data,
       };
     },
   },
@@ -224,6 +235,16 @@ export default {
         await postNewMember(data);
       } catch (error) {
         throw new Error("Can not add new member");
+      }
+    },
+    async getVendorCategories() {
+      try {
+        const response = await getVendorCategoriesRequest();
+        dispatch.vendorsModel.setVendorCategories(
+          response.data.categories || []
+        );
+      } catch (error) {
+        throw new Error("Can not get vendor categories.");
       }
     },
   }),

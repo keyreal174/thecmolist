@@ -11,6 +11,7 @@ import Filter from "../base/Filter/Filter";
 import Article from "../base/Article/Article";
 import Entities from "../base/Entities/Entities";
 import Footer from "../base/Footer/Footer";
+import AddVendors from "../base/AddVendors/AddVendors";
 import Badge from "../base/Badge/Badge";
 import Analytics from "../../util/Analytics";
 import Util from "../../util/Util";
@@ -270,6 +271,7 @@ const VendorProfile = (props) => {
   const [showDeletePost, setShowDeletePost] = useState(false);
   const [showFollowModal, setShowFollowModal] = useState(false);
   const [showMore, setShowMore] = useState(false);
+  const [showAddVendor, setShowAddVendor] = useState(false);
   const history = useHistory();
 
   useEffect(() => {
@@ -453,6 +455,10 @@ const VendorProfile = (props) => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
+  const toggleAddVendorModal = () => {
+    setShowAddVendor((value) => !value);
+  };
+
   return (
     <Layout onToggle={handleToggle}>
       <Container className="height-100">
@@ -480,14 +486,24 @@ const VendorProfile = (props) => {
             description={profileDescription}
             areasOfExpertise={profileAreasOfExpertise}
           />
-          {profileName && (
-            <Filter
-              className="profile--filters"
-              filterIdx={filterIdx}
-              filters={filters}
-              onChange={(idx) => setFilterId(idx)}
-            ></Filter>
-          )}
+          <div className="vendor-profile-filter-and-addvendor">
+            {profileName && (
+              <Filter
+                className="profile--filters"
+                filterIdx={filterIdx}
+                filters={filters}
+                onChange={(idx) => setFilterId(idx)}
+              ></Filter>
+            )}
+            <div className="filter-btn-group flex-grow-1 text-right">
+              <Button
+                className="filter--button filter--button-active active m-0"
+                onClick={toggleAddVendorModal}
+              >
+                Add Vendor
+              </Button>
+            </div>
+          </div>
         </div>
 
         {profileName && hasDataOnCurrentFeed && (
@@ -601,6 +617,7 @@ const VendorProfile = (props) => {
         )}
         <Footer className={clsx("profile--footer", mobileMenuOpen && "open")} />
       </Container>
+      <AddVendors show={showAddVendor} handleClose={toggleAddVendorModal} />
     </Layout>
   );
 };
