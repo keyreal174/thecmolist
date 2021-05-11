@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 import {
   Button,
   Col,
@@ -39,7 +40,15 @@ const PopularTool = ({ tool }) => {
   );
 };
 
-const AddVendors = ({ show, handleClose, categories }) => {
+const AddVendors = ({
+  show,
+  handleClose,
+  getVendorCategories,
+  vendorCategories,
+}) => {
+  useEffect(() => {
+    getVendorCategories();
+  }, []);
   return (
     <>
       <Modal
@@ -59,12 +68,12 @@ const AddVendors = ({ show, handleClose, categories }) => {
         </Modal.Header>
         <Modal.Body>
           <Container>
-            {categories.map((cate, i) => (
+            {vendorCategories.map((cate, i) => (
               <Row key={i} className="mb-3 align-items-center">
                 <Col md={4}>
                   <CategoryDropdown
                     category={cate}
-                    categoryList={categories}
+                    categoryList={vendorCategories}
                     categoryId={i}
                   />
                 </Col>
@@ -101,4 +110,16 @@ const AddVendors = ({ show, handleClose, categories }) => {
   );
 };
 
-export default AddVendors;
+const mapState = (state) => {
+  return {
+    vendorCategories: state.vendorsModel.vendorCategories,
+  };
+};
+
+const mapDispatch = (dispatch) => {
+  return {
+    getVendorCategories: dispatch.vendorsModel.getVendorCategories,
+  };
+};
+
+export default connect(mapState, mapDispatch)(AddVendors);

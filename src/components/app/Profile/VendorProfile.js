@@ -275,7 +275,6 @@ const VendorProfile = (props) => {
   useEffect(() => {
     document.title = "Profile";
     props.fetchVendor(Util.parsePath(window.location.href).trailingPath);
-    props.getVendorCategories();
   }, []);
 
   useEffect(() => {
@@ -575,11 +574,7 @@ const VendorProfile = (props) => {
         )}
         <Footer className={clsx("profile--footer", mobileMenuOpen && "open")} />
       </Container>
-      <AddVendors
-        show={showAddVendor}
-        handleClose={toggleAddVendorModal}
-        categories={props.vendorCategories}
-      />
+      <AddVendors show={showAddVendor} handleClose={toggleAddVendorModal} />
     </Layout>
   );
 };
@@ -588,7 +583,6 @@ const mapState = (state) => {
   return {
     profile: state.vendorModel.profile,
     reactions: state.reactionModel.reactions,
-    vendorCategories: state.vendorsModel.vendorCategories,
   };
 };
 
@@ -596,7 +590,6 @@ const mapDispatch = (dispatch) => {
   return {
     fetchVendor: dispatch.vendorModel.fetchVendor,
     changeReaction: dispatch.reactionModel.changeReaction,
-    getVendorCategories: dispatch.vendorsModel.getVendorCategories,
   };
 };
 
