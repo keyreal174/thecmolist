@@ -245,9 +245,9 @@ function Header({
                 <div>My Networks</div>
                 <div className="header--separator"></div>
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/topics">
+              <Nav.Link as={NavLink} to="/vendors">
                 <img src={Apps} alt="" />
-                <div>Topics</div>
+                <div>Vendors</div>
                 <div className="header--separator"></div>
               </Nav.Link>
               <Nav.Link as={NavLink} to="/notifications">

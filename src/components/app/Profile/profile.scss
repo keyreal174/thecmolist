@@ -451,6 +451,11 @@
 
 .profile--feed {
   margin-top: 25px;
+  .article--content {
+    .article-badge {
+      top: -5px;
+    }
+  }
 }
 
 .profile {
