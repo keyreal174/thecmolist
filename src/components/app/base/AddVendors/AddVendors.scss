@@ -1,15 +1,23 @@
 @import "../../../../sass/globals.scss";
 
 .vendor-category-modal {
-  .close {
-    position: absolute;
-    right: 16px;
+  .modal-header {
+    .close {
+      position: absolute;
+      right: 16px;
+    }
   }
 
   .modal-footer {
     button {
       min-width: 120px;
     }
+  }
+}
+
+#form-add-vendors {
+  .row:last-child {
+    margin-bottom: 0 !important;
   }
 }
 

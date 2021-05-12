@@ -22,6 +22,12 @@ export const postContent = (content) => {
   });
 };
 
+export const postVendors = (vendors) => {
+  return axios.post("/api/vendors", {
+    data: vendors,
+  });
+};
+
 export default {
   name: "contentModel",
   state: {
@@ -151,6 +157,17 @@ export default {
         }
       } catch (error) {
         throw new Error("Could not save content");
+      }
+    },
+    async saveVendors(data) {
+      try {
+        if (data) {
+          const response = await postVendors(data);
+        } else {
+          throw new Error("Could not save vendors without data");
+        }
+      } catch (error) {
+        throw new Error("Could not save vendors");
       }
     },
   }),

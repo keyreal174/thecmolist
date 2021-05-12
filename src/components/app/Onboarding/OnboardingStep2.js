@@ -14,6 +14,53 @@ import { connect } from "react-redux";
 import "./onboardingStep2.scss";
 import { useHistory } from "react-router";
 import { CSSTransition } from "react-transition-group";
+import AddVendors from "../base/AddVendors/AddVendors";
+
+const RenderCMOList = ({
+  value,
+  handleChange,
+  pils,
+  handleButtonClick,
+  showMore,
+}) => {
+  return (
+    <>
+      <Row className="onboarding--pill-wrapper">
+        <Col md="12">
+          <ToggleButtonGroup
+            className="d-flex flex-wrap"
+            type="checkbox"
+            value={value}
+            onChange={handleChange}
+          >
+            {pils.map((p, index) => {
+              if (index < 12 || showMore) {
+                return (
+                  <ToggleButton
+                    value={p}
+                    className="onboarding--pill"
+                  >{`#${p}`}</ToggleButton>
+                );
+              }
+            })}
+          </ToggleButtonGroup>
+        </Col>
+      </Row>
+      <Row className="position-relative">
+        <Col md="12" className="d-flex justify-content-center">
+          <div className="onboarding--divider"></div>
+          <Button
+            variant="link"
+            className="onboarding--show-more"
+            onClick={handleButtonClick}
+          >
+            {showMore ? "Show Less" : "Show more"}
+          </Button>
+        </Col>
+      </Row>
+    </>
+  );
+};
 
 const OnboardingStep2 = ({
   categories,
@@ -182,39 +229,9 @@ const OnboardingStep2 = ({
         </CSSTransition>
         {!showGetIntro && (
           <CustomCard className="onboarding--card">
-            <Row className="onboarding--pill-wrapper">
-              <Col md="12">
-                <ToggleButtonGroup
-                  className="d-flex flex-wrap"
-                  type="checkbox"
-                  value={value}
-                  onChange={handleChange}
-                >
-                  {pils.map((p, index) => {
-                    if (index < 12 || showMore) {
-                      return (
-                        <ToggleButton
-                          value={p}
-                          className="onboarding--pill"
-                        >{`#${p}`}</ToggleButton>
-                      );
-                    }
-                  })}
-                </ToggleButtonGroup>
-              </Col>
-            </Row>
-            <Row className="position-relative">
-              <Col md="12" className="d-flex justify-content-center">
-                <div className="onboarding--divider"></div>
-                <Button
-                  variant="link"
-                  className="onboarding--show-more"
-                  onClick={handleButtonClick}
-                >
-                  {showMore ? "Show Less" : "Show more"}
-                </Button>
-              </Col>
-            </Row>
+            <div className="p-4">
+              <AddVendors submitAfter={() => setShowGetIntro(true)} />
+            </div>
           </CustomCard>
         )}
         <Row>
@@ -222,13 +239,24 @@ const OnboardingStep2 = ({
             className="onboarding--done-wrapper d-flex justify-content-end"
             md="12"
           >
-            <Button
-              className="mt-3 onboarding--done"
-              onClick={handleSubmit}
-              disabled={loading}
-            >
-              Done
-            </Button>
+            {showGetIntro ? (
+              <Button
+                className="mt-3 onboarding--done"
+                onClick={handleSubmit}
+                disabled={loading}
+              >
+                Done
+              </Button>
+            ) : (
+              <Button
+                className="mt-3 onboarding--done"
+                disabled={loading}
+                type="submit"
+                form="form-add-vendors"
+              >
+                Done
+              </Button>
+            )}
           </Col>
         </Row>
       </>
