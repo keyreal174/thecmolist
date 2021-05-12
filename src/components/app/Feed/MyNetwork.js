@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { Button } from "react-bootstrap";
 import CustomCard from "../base/CustomCard/CustomCard";
@@ -20,6 +20,17 @@ const MyNetwork = (props) => {
     const id = await props.saveContent(content);
     history.push(`/content/${id}`);
   };
+
+  useEffect(() => {
+    if (
+      !showContentModal &&
+      props.activeGroup &&
+      window.location.href.endsWith("#addpost")
+    ) {
+      setContentType("project");
+      setShowContentModal(true);
+    }
+  }, [props.activeGroup]);
 
   return (
     <CustomCard heading={props.title}>

@@ -24,6 +24,7 @@ const ContentDetail = ({
   mobileMenuOpen,
   reactions,
   reactionsById,
+  getReactionsById,
   saveCommentToContent,
   saveCommentToReply,
   saveReactionToCallerType,
@@ -85,13 +86,14 @@ const ContentDetail = ({
 
   const numberOfReplies =
     content && content.replies ? content.replies.length : 0;
-  const contentId = content && content.content_id;
+  const contentId = content ? content.content_id : -1;
   const author = content && content.content ? content.content.author : "";
 
-  const handleStatButtonClick = (key, contentId) => {
+  const handleStatButtonClick = (cId, key) => {
     setShowStatModal(true);
+    getReactionsById(cId);
+    setSelectedContentId(cId);
     setStatType(key);
-    setSelectedContentId(contentId);
   };
   const handleCloseButtonClick = () => {
     setShowStatModal(false);
@@ -104,10 +106,10 @@ const ContentDetail = ({
     reactions
   );
 
-  const getListOfStatById = (type, id) => {
+  const getListOfStatById = (id, type) => {
     let list;
 
-    if (Object.keys(reactionsById).length) {
+    if (reactionsById && Object.keys(reactionsById).length) {
       if (reactionsById.content && reactionsById.content.contentId === id) {
         list = reactionsById.content.reactions;
       } else {

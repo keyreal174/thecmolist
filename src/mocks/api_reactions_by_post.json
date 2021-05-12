@@ -43,49 +43,5 @@
         }
       ]
     }
-  },
-  "replies": [
-    {
-      "contentId": 123,
-      "reactions": {
-        "likes": [
-          {
-            "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5Ijoic210cGNvbS0tcHJvZmlsZS5zdmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEwMCwiaGVpZ2h0IjoxMDAsImZpdCI6ImNvdmVyIn19fQ==",
-            "name": "Hilary Orteta - 231",
-            "role": "CMO at Songbird",
-            "link": "/profile/hilary"
-          }
-        ],
-        "insightful": [
-          {
-            "image": "https://d3k6hg21rt7gsh.cloudfront.net/default-agency-image.png",
-            "name": "John Smith",
-            "role": "CMO at Moder Media",
-            "link": "/profile/jhon"
-          }
-        ]
-      }
-    },
-    {
-      "contentId": 456,
-      "reactions": {
-        "likes": [
-          {
-            "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5Ijoic210cGNvbS0tcHJvZmlsZS5zdmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEwMCwiaGVpZ2h0IjoxMDAsImZpdCI6ImNvdmVyIn19fQ==",
-            "name": "Hilary Orteta - 231",
-            "role": "CMO at Songbird",
-            "link": "/profile/hilary"
-          }
-        ],
-        "insightful": [
-          {
-            "image": "https://d3k6hg21rt7gsh.cloudfront.net/default-agency-image.png",
-            "name": "John Smith",
-            "role": "CMO at Moder Media",
-            "link": "/profile/jhon"
-          }
-        ]
-      }
-    }
-  ]
+  }
 }

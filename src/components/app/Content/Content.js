@@ -41,22 +41,6 @@ const Content = ({
     fetch();
   }, []);
 
-  useEffect(() => {
-    const {
-      params: { id },
-    } = match;
-    const fetch = async () => {
-      try {
-        console.log("id", id);
-        await getReactionsById(id);
-      } catch (error) {
-        setError(error.message);
-      }
-    };
-
-    fetch();
-  }, []);
-
   const handleToggle = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
@@ -94,6 +78,7 @@ const Content = ({
                 {...rest}
                 mobileMenuOpen={mobileMenuOpen}
                 setError={setError}
+                getReactionsById={getReactionsById}
               />
             )}
           </Row>
