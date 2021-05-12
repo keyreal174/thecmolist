@@ -39,7 +39,7 @@ const PopularTool = ({ tool }) => {
 };
 
 const AddVendors = ({
-  handleClose,
+  submitAfter,
   getVendorCategories,
   vendorCategories,
   getSuggestions,
@@ -75,7 +75,7 @@ const AddVendors = ({
       };
     });
     await saveVendors(vendors);
-    handleClose && handleClose();
+    submitAfter && submitAfter();
   };
 
   return (

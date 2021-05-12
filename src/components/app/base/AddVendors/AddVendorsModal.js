@@ -29,7 +29,7 @@ const AddVendorsModal = ({ show, handleClose, saveVendors }) => {
         </Modal.Header>
         <Modal.Body>
           <Container>
-            <AddVendors handleClose={handleClose} />
+            <AddVendors submitAfter={() => handleClose()} />
           </Container>
         </Modal.Body>
         <Modal.Footer>
