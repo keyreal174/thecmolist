@@ -15,7 +15,8 @@
     },
     "num_pass": 0,
     "num_thanks": 5,
-    "num_insightful": 10
+    "num_insightful": 10,
+    "canEdit": true
   },
   "reactions": [
     {
@@ -45,7 +46,8 @@
         },
         "articletext": "We have used Hubspot extensively for our business, and are generally very happy with them. We started with a custom solution, and it look us a month to swich. The results have been dramatic, and feel free to",
         "num_thanks": 2,
-        "num_insightful": 4
+        "num_insightful": 4,
+        "canEdit": true
       },
       "comments": [
         {
