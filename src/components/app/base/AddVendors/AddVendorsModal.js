@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { Button, Col, Container, Modal, Row } from "react-bootstrap";
 import AddVendors from "./AddVendors";
@@ -25,7 +25,7 @@ const AddVendorsModal = ({ show, handleClose }) => {
         </Modal.Header>
         <Modal.Body>
           <Container>
-            <AddVendors handleClose={handleClose} />
+            <AddVendors submitAfter={() => handleClose()} />
           </Container>
         </Modal.Body>
         <Modal.Footer>

@@ -15,6 +15,12 @@
   }
 }
 
+#form-add-vendors {
+  .row:last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
 .vendor-category-dropdown {
   position: relative;
   top: initial;
