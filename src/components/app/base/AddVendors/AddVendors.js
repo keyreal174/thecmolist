@@ -1,13 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import { Button, Col, Form, NavDropdown, Row } from "react-bootstrap";
 import {
-  Button,
-  Col,
-  Container,
-  Modal,
-  NavDropdown,
-  Row,
-} from "react-bootstrap";
+  AsyncTypeahead,
+  Typeahead,
+  TypeaheadMenu,
+} from "react-bootstrap-typeahead";
 import clsx from "clsx";
 import "./AddVendors.scss";
 
@@ -41,84 +39,118 @@ const PopularTool = ({ tool }) => {
 };
 
 const AddVendors = ({
-  show,
   handleClose,
   getVendorCategories,
   vendorCategories,
+  getSuggestions,
+  saveVendors,
 }) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [myTools, setMyTools] = useState({});
+  const [options, setOptions] = useState([]);
+
   useEffect(() => {
     getVendorCategories();
   }, []);
+
+  const handleSearch = async (query) => {
+    setIsLoading(true);
+    const data = await getSuggestions(query);
+    const options = data.map((i, index) => ({
+      id: index,
+      slug: i.slug,
+      name: i.name,
+    }));
+
+    setOptions(options);
+    setIsLoading(false);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const vendors = vendorCategories.map((cate) => {
+      return {
+        category: cate,
+        vendors: myTools[cate.name] || [],
+      };
+    });
+    await saveVendors(vendors);
+    handleClose && handleClose();
+  };
+
   return (
-    <>
-      <Modal
-        className="modal vendor-category-modal"
-        show={show}
-        onHide={handleClose}
-        size="lg"
-      >
-        <Modal.Header closeButton as="h4">
-          <Container>
-            <Row>
-              <Col md={4}>Category</Col>
-              <Col md={4}>My Tools</Col>
-              <Col md={4}>Popular Tools</Col>
-            </Row>
-          </Container>
-        </Modal.Header>
-        <Modal.Body>
-          <Container>
-            {vendorCategories.map((cate, i) => (
-              <Row key={i} className="mb-3 align-items-center">
-                <Col md={4}>
-                  <CategoryDropdown
-                    category={cate}
-                    categoryList={vendorCategories}
-                    categoryId={i}
+    <Form id="form-add-vendors" onSubmit={handleSubmit}>
+      {vendorCategories.map((cate, i) => (
+        <Row key={i} className="mb-3 align-items-center">
+          <Col md={4}>
+            <CategoryDropdown
+              category={cate}
+              categoryList={[]}
+              categoryId={i}
+            />
+          </Col>
+          <Col md={4}>
+            <AsyncTypeahead
+              id="async-global-search"
+              isLoading={isLoading}
+              labelKey="name"
+              multiple
+              minLength={0}
+              onSearch={handleSearch}
+              options={options}
+              emptyLabel=""
+              renderMenu={(results, menuProps) => {
+                if (!results.length) {
+                  return null;
+                }
+                return (
+                  <TypeaheadMenu
+                    options={results}
+                    labelKey="name"
+                    {...menuProps}
                   />
-                </Col>
-                <Col md={4}></Col>
-                <Col md={4}>
-                  <div className="vendor-category--popular-tools">
-                    {cate.tools.map((tool, ti) => (
-                      <PopularTool tool={tool} key={ti} />
-                    ))}
-                  </div>
-                </Col>
-              </Row>
-            ))}
-          </Container>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button
-            className="btn-white modal-cancel-button"
-            variant="outline-primary"
-            onClick={handleClose}
-          >
-            Cancel
-          </Button>
-          <Button
-            className="btn__homepage-blue modal-ok-button"
-            variant="primary"
-            onClick={handleClose}
-          >
-            Post
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </>
+                );
+              }}
+              onChange={(selectedOption) => {
+                console.log(selectedOption);
+                setMyTools((value) => ({
+                  ...value,
+                  [cate.name]: selectedOption,
+                }));
+              }}
+              placeholder="Search & select tool(s)"
+              renderMenuItemChildren={(option) => (
+                <React.Fragment>
+                  <span>{option.name}</span>
+                </React.Fragment>
+              )}
+            />
+          </Col>
+          <Col md={4}>
+            <div className="vendor-category--popular-tools">
+              {cate.tools.map((tool, ti) => (
+                <PopularTool tool={tool} key={ti} />
+              ))}
+            </div>
+          </Col>
+        </Row>
+      ))}
+    </Form>
   );
 };
 
 const mapState = (state) => {
   return {
     vendorCategories: state.vendorsModel.vendorCategories,
+    suggestions: state.suggestionsModel.suggestions,
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
     getVendorCategories: dispatch.vendorsModel.getVendorCategories,
+    getSuggestions: dispatch.suggestionsModel.getSuggestions,
+    saveVendors: dispatch.contentModel.saveVendors,
   };
 };
 

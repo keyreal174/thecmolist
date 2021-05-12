@@ -11,7 +11,7 @@ import Filter from "../base/Filter/Filter";
 import Article from "../base/Article/Article";
 import Entities from "../base/Entities/Entities";
 import Footer from "../base/Footer/Footer";
-import AddVendors from "../base/AddVendors/AddVendors";
+import AddVendorsModal from "../base/AddVendors/AddVendorsModal";
 import Badge from "../base/Badge/Badge";
 import Analytics from "../../util/Analytics";
 import Util from "../../util/Util";
@@ -617,7 +617,10 @@ const VendorProfile = (props) => {
         )}
         <Footer className={clsx("profile--footer", mobileMenuOpen && "open")} />
       </Container>
-      <AddVendors show={showAddVendor} handleClose={toggleAddVendorModal} />
+      <AddVendorsModal
+        show={showAddVendor}
+        handleClose={toggleAddVendorModal}
+      />
     </Layout>
   );
 };
