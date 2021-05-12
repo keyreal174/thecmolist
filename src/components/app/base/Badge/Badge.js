@@ -19,7 +19,7 @@ const Badge = ({ localConnectedUsers, feed, connectUser, disconnectUser }) => {
         onClick={handleConnectedButtonClick}
         type="button"
       >
-        Connected
+        Following
       </button>
     ) : (
       <button
@@ -27,7 +27,7 @@ const Badge = ({ localConnectedUsers, feed, connectUser, disconnectUser }) => {
         type="button"
         onClick={handleConnectButtonClick}
       >
-        Connect
+        Follow
       </button>
     )
   ) : null;

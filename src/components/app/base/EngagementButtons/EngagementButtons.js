@@ -57,7 +57,10 @@ const EngagementStats = ({
 const EngagementStat = ({ handleClick, value, text }) => {
   const textToLowerCase = text && text.toLowerCase();
   let displayText = "";
-  if (text) {
+  if (!text || !value) {
+    return <span />;
+  }
+  if (text && text.length > 0) {
     displayText = " ".concat(text);
     if (value === 1 && displayText.endsWith("s")) {
       displayText = displayText.slice(0, -1);

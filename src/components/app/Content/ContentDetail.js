@@ -108,14 +108,15 @@ const ContentDetail = ({
     let list;
 
     if (Object.keys(reactionsById).length) {
-      if (reactionsById.content.contentId === id) {
+      if (reactionsById.content && reactionsById.content.contentId === id) {
         list = reactionsById.content.reactions;
       } else {
-        reactionsById.replies.forEach((reply) => {
-          if (reply.contentId === id) {
-            list = reply.reactions;
-          }
-        });
+        reactionsById.replies &&
+          reactionsById.replies.forEach((reply) => {
+            if (reply.contentId === id) {
+              list = reply.reactions;
+            }
+          });
       }
       return list ? list[type] : [];
     }

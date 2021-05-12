@@ -35,7 +35,7 @@ const MyNetwork = (props) => {
             className="btn-white mb-2"
             onClick={() => handleShow("project")}
           >
-            Share Project/Vendor
+            Share Campaign
           </Button>
           <Button
             className="btn-white mb-2"
