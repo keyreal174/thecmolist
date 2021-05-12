@@ -5,11 +5,7 @@ import AddVendors from "./AddVendors";
 import clsx from "clsx";
 import "./AddVendors.scss";
 
-const AddVendorsModal = ({ show, handleClose, saveVendors }) => {
-  const handleSubmit = async () => {
-    await saveVendors();
-  };
-
+const AddVendorsModal = ({ show, handleClose }) => {
   return (
     <>
       <Modal
@@ -54,16 +50,4 @@ const AddVendorsModal = ({ show, handleClose, saveVendors }) => {
   );
 };
 
-const mapState = (state) => {
-  return {
-    suggestions: state.suggestionsModel.suggestions,
-  };
-};
-
-const mapDispatch = (dispatch) => {
-  return {
-    saveVendors: dispatch.contentModel.saveVendors,
-  };
-};
-
-export default connect(mapState, mapDispatch)(AddVendorsModal);
+export default AddVendorsModal;
