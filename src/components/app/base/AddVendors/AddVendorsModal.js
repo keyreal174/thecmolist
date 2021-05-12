@@ -6,6 +6,15 @@ import clsx from "clsx";
 import "./AddVendors.scss";
 
 const AddVendorsModal = ({ show, handleClose }) => {
+  useEffect(() => {
+    if (show) {
+      document.body.style.height = "100vh";
+    }
+    return () => {
+      document.body.style.height = "100%";
+    };
+  }, [show]);
+
   return (
     <>
       <Modal
