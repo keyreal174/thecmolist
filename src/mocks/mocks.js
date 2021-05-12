@@ -292,6 +292,10 @@ function MockRequests() {
     return [200, { success: true, error: null }];
   });
 
+  mock.onPost(new RegExp("/api/vendors")).reply((data) => {
+    return [200, { success: true, error: null }];
+  });
+
   mock.onDelete(new RegExp("/api/post/*")).reply(() => {
     return [200, { success: true, error: null }];
   });

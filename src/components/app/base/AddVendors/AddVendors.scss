@@ -1,9 +1,11 @@
 @import "../../../../sass/globals.scss";
 
 .vendor-category-modal {
-  .close {
-    position: absolute;
-    right: 16px;
+  .modal-header {
+    .close {
+      position: absolute;
+      right: 16px;
+    }
   }
 
   .modal-footer {

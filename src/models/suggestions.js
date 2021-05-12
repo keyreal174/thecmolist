@@ -1,7 +1,9 @@
 import axios from "axios";
 
-export const fetchSuggestionsRequest = (query) => {
-  return axios.get(`/api/entity_suggestions?q=${query || ""}`);
+export const fetchSuggestionsRequest = (query, filter) => {
+  return filter
+    ? axios.get(`/api/entity_suggestions?filter=vendor&q=${query || ""}`)
+    : axios.get(`/api/entity_suggestions?q=${query || ""}`);
 };
 
 export const fetchTopicSuggestionsRequest = (query) => {
