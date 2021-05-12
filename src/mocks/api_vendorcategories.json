@@ -5,14 +5,17 @@
       "tools": [
         {
           "name": "Saleforce",
+          "slug": "saleforce",
           "icon": "https://www.clipartmax.com/png/middle/102-1029458_salesforce-began-in-1999-with-a-vision-of-reinventing-salesforce-com-logo.png"
         },
         {
           "name": "Hubspot",
+          "slug": "hubspot",
           "icon": "https://cdn3.iconfinder.com/data/icons/logos-and-brands-adobe/512/168_Hubspot-512.png"
         },
         {
           "name": "Sugar CRM",
+          "slug": "sugar_crm",
           "icon": "https://s3.amazonaws.com/tracxn-data-image/logo/company/3p7TDqvW_400x400_1590732388663.png"
         }
       ]
@@ -22,14 +25,17 @@
       "tools": [
         {
           "name": "Saleforce",
+          "slug": "saleforce",
           "icon": "https://www.clipartmax.com/png/middle/102-1029458_salesforce-began-in-1999-with-a-vision-of-reinventing-salesforce-com-logo.png"
         },
         {
           "name": "Hubspot",
+          "slug": "hubspot",
           "icon": "https://cdn3.iconfinder.com/data/icons/logos-and-brands-adobe/512/168_Hubspot-512.png"
         },
         {
           "name": "Sugar CRM",
+          "slug": "sugar_crm",
           "icon": "https://s3.amazonaws.com/tracxn-data-image/logo/company/3p7TDqvW_400x400_1590732388663.png"
         }
       ]
@@ -39,14 +45,17 @@
       "tools": [
         {
           "name": "Saleforce",
+          "slug": "saleforce",
           "icon": "https://www.clipartmax.com/png/middle/102-1029458_salesforce-began-in-1999-with-a-vision-of-reinventing-salesforce-com-logo.png"
         },
         {
           "name": "Hubspot",
+          "slug": "hubspot",
           "icon": "https://cdn3.iconfinder.com/data/icons/logos-and-brands-adobe/512/168_Hubspot-512.png"
         },
         {
           "name": "Sugar CRM",
+          "slug": "sugar_crm",
           "icon": "https://s3.amazonaws.com/tracxn-data-image/logo/company/3p7TDqvW_400x400_1590732388663.png"
         }
       ]
@@ -56,14 +65,17 @@
       "tools": [
         {
           "name": "Saleforce",
+          "slug": "saleforce",
           "icon": "https://www.clipartmax.com/png/middle/102-1029458_salesforce-began-in-1999-with-a-vision-of-reinventing-salesforce-com-logo.png"
         },
         {
           "name": "Hubspot",
+          "slug": "hubspot",
           "icon": "https://cdn3.iconfinder.com/data/icons/logos-and-brands-adobe/512/168_Hubspot-512.png"
         },
         {
           "name": "Sugar CRM",
+          "slug": "sugar_crm",
           "icon": "https://s3.amazonaws.com/tracxn-data-image/logo/company/3p7TDqvW_400x400_1590732388663.png"
         }
       ]
