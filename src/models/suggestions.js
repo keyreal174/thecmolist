@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const fetchSuggestionsRequest = (query, filter) => {
   return filter
-    ? axios.get(`/api/entity_suggestions?filter=vendor&q=${query || ""}`)
+    ? axios.get(`/api/entity_suggestions?filter=${filter}&q=${query || ""}`)
     : axios.get(`/api/entity_suggestions?q=${query || ""}`);
 };
 
@@ -34,9 +34,10 @@ export default {
     },
   },
   effects: (dispatch) => ({
-    async getSuggestions(query) {
+    async getSuggestions(payload) {
       try {
-        const response = await fetchSuggestionsRequest(query);
+        const { query, filter } = payload;
+        const response = await fetchSuggestionsRequest(query, filter);
         const { suggestions } = response.data;
         dispatch.suggestionsModel.updateSuggestions(suggestions);
         return suggestions;
