@@ -164,9 +164,9 @@ const AddVendors = ({
       };
     });
     setVendors(vendorTemp);
-    const categoryTemp = vendorCategories.filter((_, i) => i < 3);
+    const categoryTemp = vendorCategories.filter((_, i) => i < 5);
     setCategories(categoryTemp);
-    setAvailableCategories(vendorCategories.filter((_, i) => i >= 3));
+    setAvailableCategories(vendorCategories.filter((_, i) => i >= 5));
   }, [vendorCategories]);
 
   const changeCategory = (cid, oid) => {
