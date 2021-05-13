@@ -9,17 +9,19 @@ import {
 import clsx from "clsx";
 import "./AddVendors.scss";
 
-const CategoryDropdown = ({ category, categoryList, categoryId }) => {
+const CategoryDropdown = ({
+  category,
+  categoryList,
+  categoryId,
+  changeCategory,
+}) => {
   return (
     <NavDropdown
       className="navbar-dropdown vendor-category-dropdown"
-      title={category.name}
+      title={category?.name}
     >
       {categoryList.map((item, idx) => (
-        <NavDropdown.Item
-          key={idx}
-          className={clsx(idx === categoryId && "filter-dropdown-item-enabled")}
-        >
+        <NavDropdown.Item key={idx} onClick={() => changeCategory(idx)}>
           {item.name}
         </NavDropdown.Item>
       ))}
@@ -46,6 +48,8 @@ const RenderVendorCategoryRow = ({
   cate,
   getSuggestions,
   updateVendors,
+  availableCategories,
+  changeCategory,
 }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [myTools, setMyTools] = useState([]);
@@ -73,19 +77,27 @@ const RenderVendorCategoryRow = ({
     );
   };
 
+  const handleChangeCategory = (cid) => {
+    changeCategory(cid, id);
+  };
+
   useEffect(() => {
-    updateVendors([...myTools]);
+    updateVendors && updateVendors([...myTools]);
   }, [myTools]);
 
   return (
     <Row className="mb-3 align-items-center">
       <Col md={4}>
-        <CategoryDropdown category={cate} categoryList={[]} categoryId={id} />
+        <CategoryDropdown
+          category={cate}
+          categoryList={availableCategories}
+          categoryId={id}
+          changeCategory={handleChangeCategory}
+        />
       </Col>
       <Col md={4}>
         <AsyncTypeahead
           id="async-global-search"
-          key={cate.name + id}
           isLoading={isLoading}
           labelKey="name"
           multiple
@@ -103,7 +115,6 @@ const RenderVendorCategoryRow = ({
           }}
           selected={myTools}
           onChange={(selectedOption) => {
-            console.log(selectedOption);
             setMyTools(selectedOption);
           }}
           placeholder="Search & select tool(s)"
@@ -116,13 +127,14 @@ const RenderVendorCategoryRow = ({
       </Col>
       <Col md={4}>
         <div className="vendor-category--popular-tools">
-          {cate.tools.map((tool, ti) => (
-            <PopularTool
-              tool={tool}
-              key={ti}
-              onSelectTool={() => onSelectTool(tool, cate.name)}
-            />
-          ))}
+          {cate &&
+            cate.tools.map((tool, ti) => (
+              <PopularTool
+                tool={tool}
+                key={ti}
+                onSelectTool={() => onSelectTool(tool, cate.name)}
+              />
+            ))}
         </div>
       </Col>
     </Row>
@@ -137,6 +149,8 @@ const AddVendors = ({
   saveVendors,
 }) => {
   const [vendors, setVendors] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [availableCategories, setAvailableCategories] = useState([]);
 
   useEffect(() => {
     getVendorCategories();
@@ -150,7 +164,41 @@ const AddVendors = ({
       };
     });
     setVendors(vendorTemp);
+    const categoryTemp = vendorCategories.filter((_, i) => i < 3);
+    setCategories(categoryTemp);
+    setAvailableCategories(vendorCategories.filter((_, i) => i >= 3));
   }, [vendorCategories]);
+
+  const changeCategory = (cid, oid) => {
+    const cCategory = availableCategories[cid];
+    const oCategory = categories[oid];
+
+    setCategories((value) =>
+      value.map((item, i) => {
+        if (i === oid) {
+          return cCategory;
+        }
+        return item;
+      })
+    );
+
+    setAvailableCategories((value) =>
+      value.map((item, i) => {
+        if (i === cid) {
+          return oCategory;
+        }
+        return item;
+      })
+    );
+  };
+
+  const addNewCategory = (cid, oid) => {
+    const cCategory = availableCategories[cid];
+
+    setCategories((value) => [...value, cCategory]);
+
+    setAvailableCategories((value) => value.filter((_, i) => i !== cid));
+  };
 
   const updateVendors = (tools, name) => {
     const vendorTemp = vendors.map((temp) => {
@@ -173,15 +221,23 @@ const AddVendors = ({
 
   return (
     <Form id="form-add-vendors" onSubmit={handleSubmit}>
-      {vendorCategories.map((cate, i) => (
+      {categories.map((cate, i) => (
         <RenderVendorCategoryRow
           key={i}
           id={i}
           cate={cate}
           getSuggestions={getSuggestions}
           updateVendors={(tools) => updateVendors(tools, cate.name)}
+          availableCategories={availableCategories}
+          changeCategory={changeCategory}
         />
       ))}
+      {availableCategories.length > 0 && (
+        <RenderVendorCategoryRow
+          availableCategories={availableCategories}
+          changeCategory={addNewCategory}
+        />
+      )}
     </Form>
   );
 };
