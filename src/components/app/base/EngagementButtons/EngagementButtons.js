@@ -55,7 +55,7 @@ const EngagementStats = ({
 };
 
 const EngagementStat = ({ handleClick, value, text }) => {
-  const textToLowerCase = text && text.toLowerCase();
+  const textToLowerCase = text ? text.toLowerCase() : null;
   let displayText = "";
   if (!text || !value) {
     return <span />;
@@ -71,7 +71,7 @@ const EngagementStat = ({ handleClick, value, text }) => {
       {value && (
         <Button
           className="engagement-stat--wrapper"
-          onClick={(contentId) => handleClick(textToLowerCase, contentId)}
+          onClick={() => handleClick(textToLowerCase)}
           variant="link"
         >
           <span>

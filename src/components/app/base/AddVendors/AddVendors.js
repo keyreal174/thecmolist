@@ -57,7 +57,7 @@ const RenderVendorCategoryRow = ({
 
   const handleSearch = async (query) => {
     setIsLoading(true);
-    const data = await getSuggestions(query);
+    const data = await getSuggestions({ query: query, filter: "vendors" });
     const options = data.map((i, index) => ({
       id: index,
       slug: i.slug,

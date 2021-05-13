@@ -149,7 +149,7 @@ const DraftEditor = forwardRef(
     const onSearchChange = useCallback(({ trigger, value }) => {
       if (trigger === "@") {
         setIsSharp(true);
-        getSuggestions(value).then((response) => {
+        getSuggestions({ query: value }).then((response) => {
           setSuggestions([...response, ...MentionLast]);
         });
       } else {

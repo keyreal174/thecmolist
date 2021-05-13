@@ -14,6 +14,9 @@ const BuildYourNetwork = ({ buildYourNetworkItems }) => {
                   checked={item.checked}
                   label={item.content}
                   useCheckedStyling
+                  onChange={() => {
+                    if (item.link) window.location.href = item.link;
+                  }}
                 />
               </div>
             );
