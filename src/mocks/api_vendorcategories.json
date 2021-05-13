@@ -1,152 +1,773 @@
 {
   "categories": [
     {
-      "name": "Audenience Data & Enhancement",
+      "name": "audiencedata",
+      "description": "Audenience Data & Enhancement",
       "tools": [
         {
           "name": "Clearbit",
           "slug": "clearbit",
-          "icon": "https://www.clipartmax.com/png/middle/102-1029458_salesforce-began-in-1999-with-a-vision-of-reinventing-salesforce-com-logo.png"
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYyMDg3NDI5NjU5MmEucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0="
         },
         {
           "name": "Zoominfo",
           "slug": "zoominfo",
-          "icon": "https://www.clipartmax.com/png/middle/102-1029458_salesforce-began-in-1999-with-a-vision-of-reinventing-salesforce-com-logo.png"
-        },
-        {
-          "name": "Adapt",
-          "slug": "adapt",
-          "icon": "https://www.clipartmax.com/png/middle/102-1029458_salesforce-began-in-1999-with-a-vision-of-reinventing-salesforce-com-logo.png"
-        },
-        {
-          "name": "Datanyze",
-          "slug": "datanyze",
-          "icon": "https://www.clipartmax.com/png/middle/102-1029458_salesforce-began-in-1999-with-a-vision-of-reinventing-salesforce-com-logo.png"
-        },
-        {
-          "name": "Demandbase",
-          "slug": "demandbase",
-          "icon": "https://www.clipartmax.com/png/middle/102-1029458_salesforce-began-in-1999-with-a-vision-of-reinventing-salesforce-com-logo.png"
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTk0OTc1OXouanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19"
         }
       ]
     },
     {
-      "name": "Conversational Marketing & Chat",
+      "name": "conversationalmarketing",
+      "description": "Conversational Marketing & Chat",
       "tools": [
         {
           "name": "Drift",
           "slug": "drift",
-          "icon": "https://www.clipartmax.com/png/middle/102-1029458_salesforce-began-in-1999-with-a-vision-of-reinventing-salesforce-com-logo.png"
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTQwNDc3OGRyaWZ0LmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ=="
         },
         {
           "name": "Intercom",
           "slug": "intercom",
-          "icon": "https://www.clipartmax.com/png/middle/102-1029458_salesforce-began-in-1999-with-a-vision-of-reinventing-salesforce-com-logo.png"
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzY2NDM3NDk4M0EucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0="
         },
         {
           "name": "Podium",
           "slug": "podium",
-          "icon": "https://www.clipartmax.com/png/middle/102-1029458_salesforce-began-in-1999-with-a-vision-of-reinventing-salesforce-com-logo.png"
-        },
-        {
-          "name": "Qualified",
-          "slug": "qualified",
-          "icon": "https://www.clipartmax.com/png/middle/102-1029458_salesforce-began-in-1999-with-a-vision-of-reinventing-salesforce-com-logo.png"
-        },
-        {
-          "name": "Birdeye",
-          "slug": "birdeye",
-          "icon": "https://www.clipartmax.com/png/middle/102-1029458_salesforce-began-in-1999-with-a-vision-of-reinventing-salesforce-com-logo.png"
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYyMDg3NDczMDA2MGEuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19"
         }
       ]
     },
     {
-      "name": "Customer Relationship Marketing (CRM)",
+      "name": "crm",
+      "description": "Customer Relationship Marketing (CRM)",
       "tools": [
         {
-          "name": "Saleforce",
-          "slug": "saleforce",
-          "icon": "https://www.clipartmax.com/png/middle/102-1029458_salesforce-began-in-1999-with-a-vision-of-reinventing-salesforce-com-logo.png"
+          "name": "Salesforce",
+          "slug": "salesforce",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIzODA5NDYyNlMuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19"
         },
         {
-          "name": "Hubspot",
+          "name": "HubSpot",
           "slug": "hubspot",
-          "icon": "https://cdn3.iconfinder.com/data/icons/logos-and-brands-adobe/512/168_Hubspot-512.png"
-        },
-        {
-          "name": "Sugar CRM",
-          "slug": "sugar_crm",
-          "icon": "https://s3.amazonaws.com/tracxn-data-image/logo/company/3p7TDqvW_400x400_1590732388663.png"
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0="
         },
         {
           "name": "ActiveCampaign",
-          "slug": "activeCampaign",
-          "icon": "https://s3.amazonaws.com/tracxn-data-image/logo/company/3p7TDqvW_400x400_1590732388663.png"
-        },
-        {
-          "name": "pipedrive",
-          "slug": "sugar_crm",
-          "icon": "https://s3.amazonaws.com/tracxn-data-image/logo/company/3p7TDqvW_400x400_1590732388663.png"
+          "slug": "activecampaign",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxODI3MDQwMDY3N2EuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19"
         }
       ]
     },
     {
-      "name": "Marketing Automation",
+      "name": "marketingautomation",
+      "description": "Marketing & Campain Automation",
       "tools": [
         {
-          "name": "Saleforce",
-          "slug": "saleforce",
-          "icon": "https://www.clipartmax.com/png/middle/102-1029458_salesforce-began-in-1999-with-a-vision-of-reinventing-salesforce-com-logo.png"
+          "name": "ActiveCampaign",
+          "slug": "activecampaign",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
         },
         {
-          "name": "Hubspot",
+          "name": "HubSpot",
           "slug": "hubspot",
-          "icon": "https://cdn3.iconfinder.com/data/icons/logos-and-brands-adobe/512/168_Hubspot-512.png"
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0="
         },
         {
-          "name": "Sugar CRM",
-          "slug": "sugar_crm",
-          "icon": "https://s3.amazonaws.com/tracxn-data-image/logo/company/3p7TDqvW_400x400_1590732388663.png"
+          "name": "Marketo",
+          "slug": "marketo",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
         }
       ]
     },
     {
-      "name": "Analytics",
+      "name": "websitetools",
+      "description": "Web Experience Building & Management",
       "tools": [
         {
-          "name": "Saleforce",
-          "slug": "saleforce",
-          "icon": "https://www.clipartmax.com/png/middle/102-1029458_salesforce-began-in-1999-with-a-vision-of-reinventing-salesforce-com-logo.png"
+          "name": "WordPress",
+          "slug": "wordpress",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
         },
         {
-          "name": "Hubspot",
-          "slug": "hubspot",
-          "icon": "https://cdn3.iconfinder.com/data/icons/logos-and-brands-adobe/512/168_Hubspot-512.png"
+          "name": "Squarespace",
+          "slug": "squarespace",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
         },
         {
-          "name": "Sugar CRM",
-          "slug": "sugar_crm",
-          "icon": "https://s3.amazonaws.com/tracxn-data-image/logo/company/3p7TDqvW_400x400_1590732388663.png"
+          "name": "Webflow",
+          "slug": "webflow",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
         }
       ]
     },
     {
-      "name": "Content Management",
+      "name": "accountbasedmarketing",
+      "description": "Account Based Marketing (ABM)",
       "tools": [
         {
-          "name": "Saleforce",
-          "slug": "saleforce",
-          "icon": "https://www.clipartmax.com/png/middle/102-1029458_salesforce-began-in-1999-with-a-vision-of-reinventing-salesforce-com-logo.png"
-        },
-        {
-          "name": "Hubspot",
+          "name": "HubSpot",
           "slug": "hubspot",
-          "icon": "https://cdn3.iconfinder.com/data/icons/logos-and-brands-adobe/512/168_Hubspot-512.png"
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0="
         },
         {
-          "name": "Sugar CRM",
-          "slug": "sugar_crm",
-          "icon": "https://s3.amazonaws.com/tracxn-data-image/logo/company/3p7TDqvW_400x400_1590732388663.png"
+          "name": "Terminus",
+          "slug": "terminus",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Demandbase",
+          "slug": "demandbase",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        }
+      ]
+    },
+    {
+      "name": "affiliatemarketing",
+      "description": "Affiliate Marketing",
+      "tools": [
+        {
+          "name": "Impact",
+          "slug": "impact",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "PartnerStack",
+          "slug": "partnerstack",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        }
+      ]
+    },
+    {
+      "name": "channelmarketing",
+      "description": "Channel Marketing",
+      "tools": [
+        {
+          "name": "Zift Solutions",
+          "slug": "zift solutions",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "ZINFI",
+          "slug": "zinfi",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Impartner PRM",
+          "slug": "impartner",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        }
+      ]
+    },
+    {
+      "name": "communitymarketing",
+      "description": "Community Marketing",
+      "tools": [
+        {
+          "name": "Bevy",
+          "slug": "bevy",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Disqus",
+          "slug": "disqus",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "LinkedIn Groups",
+          "slug": "linkedin",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        }
+      ]
+    },
+    {
+      "name": "contentmanagement",
+      "description": "Content & Asset Management",
+      "tools": [
+        {
+          "name": "Canto",
+          "slug": "canto",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Brandfolder",
+          "slug": "brandfolder",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Bynder",
+          "slug": "bynder",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        }
+      ]
+    },
+    {
+      "name": "contentmarketing",
+      "description": "Content Marketing",
+      "tools": [
+        {
+          "name": "WordPress",
+          "slug": "wordpress",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "SEMrush",
+          "slug": "semrush",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "StoryChief ",
+          "slug": "storychief",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        }
+      ]
+    },
+    {
+      "name": "customerdataplatform",
+      "description": "Customer Data Platform",
+      "tools": [
+        {
+          "name": "Segment",
+          "slug": "segment",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Acquia",
+          "slug": "acquia",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Blueshift ",
+          "slug": "blueshift",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        }
+      ]
+    },
+    {
+      "name": "customerintelligence",
+      "description": "Customer & Business Intelligence",
+      "tools": [
+        {
+          "name": "Looker",
+          "slug": "looker",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Domo",
+          "slug": "domo",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "MicroStrategy",
+          "slug": "microstrategy",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        }
+      ]
+    },
+    {
+      "name": "datamanagementplatform",
+      "description": "Data Management Platform",
+      "tools": [
+        {
+          "name": "Lotame",
+          "slug": "lotame",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Salesforce",
+          "slug": "salesforce",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "OnAudience ",
+          "slug": "onaudience",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        }
+      ]
+    },
+    {
+      "name": "datavisualization",
+      "description": "Dashboards & Visualization",
+      "tools": [
+        {
+          "name": "Tableau",
+          "slug": "tableau",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "GoodData",
+          "slug": "gooddata",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "adverity ",
+          "slug": "adverity",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        }
+      ]
+    },
+    {
+      "name": "displayadvertising",
+      "description": "Display Advertising",
+      "tools": [
+        {
+          "name": "ActiveCampaign",
+          "slug": "activecampaign",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Constant Contact",
+          "slug": "constant contact",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "HubSpot",
+          "slug": "hubspot",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0="
+        }
+      ]
+    },
+    {
+      "name": "ecommercemarketing",
+      "description": "Ecommerce Marketing",
+      "tools": [
+        {
+          "name": "Google Shopping",
+          "slug": "google shopping",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Amazon DSP",
+          "slug": "amazon",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        }
+      ]
+    },
+    {
+      "name": "ecommercetools",
+      "description": "Ecommerce Platforms & Carts",
+      "tools": [
+        {
+          "name": "Shopify",
+          "slug": "shopify",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "BigCommerce",
+          "slug": "bigcommerce",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Magento",
+          "slug": "magneto",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        }
+      ]
+    },
+    {
+      "name": "emailmarketing",
+      "description": "Email Marketing",
+      "tools": [
+        {
+          "name": "Mailchimp",
+          "slug": "mailchimp",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Salesforce Email Studio",
+          "slug": "salesforce email studio",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Customer.io",
+          "slug": "customerio",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        }
+      ]
+    },
+    {
+      "name": "eventmarketing",
+      "description": "Event Marketing",
+      "tools": [
+        {
+          "name": "Eventbrite",
+          "slug": "eventbrite",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Cvent",
+          "slug": "cvent",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Splash",
+          "slug": "splash",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        }
+      ]
+    },
+    {
+      "name": "inboundmarketing",
+      "description": "Inbound Marketing",
+      "tools": [
+        {
+          "name": "HubSpot",
+          "slug": "hubspot",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0="
+        },
+        {
+          "name": "Typeform",
+          "slug": "typeform",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Unbounce",
+          "slug": "unbounce",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        }
+      ]
+    },
+    {
+      "name": "influencermarketing",
+      "description": "Influencer Marketing",
+      "tools": [
+        {
+          "name": "CreatorIQ",
+          "slug": "creatoriq",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        }
+      ]
+    },
+    {
+      "name": "interactivecontent",
+      "description": "Interactive Content",
+      "tools": [
+        {
+          "name": "Adobe",
+          "slug": "adobe",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "ContentTools",
+          "slug": "contenttools",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "ClearSlide",
+          "slug": "clearslide",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        }
+      ]
+    },
+    {
+      "name": "localmarketing",
+      "description": "Local Marketing",
+      "tools": [
+        {
+          "name": "Birdeye",
+          "slug": "birdeye",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Yext",
+          "slug": "yext",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Semrush",
+          "slug": "semrush",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        }
+      ]
+    },
+    {
+      "name": "loyaltymarketing",
+      "description": "Loyalty Marketing",
+      "tools": [
+        {
+          "name": "Fivestars",
+          "slug": "fivestars",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "LevelUp",
+          "slug": "levelup",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        }
+      ]
+    },
+    {
+      "name": "marketinganalytics",
+      "description": "Marketing Analytics",
+      "tools": [
+        {
+          "name": "HubSpot",
+          "slug": "hubspot",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0="
+        },
+        {
+          "name": "Looker",
+          "slug": "looker",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Adobe Campaign",
+          "slug": "adobe",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        }
+      ]
+    },
+    {
+      "name": "marketingoptimization",
+      "description": "Optimization, Personalization & Testing",
+      "tools": [
+        {
+          "name": "Optimizely",
+          "slug": "optimizely",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Google Analytics",
+          "slug": "google analytics",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Unbounce",
+          "slug": "unbounce",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        }
+      ]
+    },
+    {
+      "name": "mobileanalytics",
+      "description": "Mobile Analytics",
+      "tools": [
+        {
+          "name": "Google Analytics",
+          "slug": "google analytics",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Amplitude",
+          "slug": "amplitude",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Mixpanel",
+          "slug": "mixpanel",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        }
+      ]
+    },
+    {
+      "name": "mobileappmarketing",
+      "description": "Mobile App Marketing",
+      "tools": []
+    },
+    {
+      "name": "mobilemarketing",
+      "description": "Mobile Marketing",
+      "tools": [
+        {
+          "name": "OneSignal",
+          "slug": "onesignal",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "iterable",
+          "slug": "iterable",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Branch",
+          "slug": "branch",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        }
+      ]
+    },
+    {
+      "name": "nativeadvertising",
+      "description": "Native/Content Advertising",
+      "tools": [
+        {
+          "name": "StackAdapt",
+          "slug": "stackadapt",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Nativo",
+          "slug": "nativo",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        }
+      ]
+    },
+    {
+      "name": "outofhomeadvertising",
+      "description": "Out-of-Home Advertising",
+      "tools": []
+    },
+    {
+      "name": "partnermarketing",
+      "description": "Partner Marketing",
+      "tools": []
+    },
+    {
+      "name": "performancemarketing",
+      "description": "Performance Marketing",
+      "tools": []
+    },
+    {
+      "name": "printadvertising",
+      "description": "Print Advertising",
+      "tools": []
+    },
+    {
+      "name": "programmaticadertising",
+      "description": "Programmatic Advertising",
+      "tools": [
+        {
+          "name": "DoubleClick",
+          "slug": "doubleclick",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Adroll",
+          "slug": "adroll",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Adobe",
+          "slug": "adobe",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        }
+      ]
+    },
+    {
+      "name": "radioadvertising",
+      "description": "Radio Advertising",
+      "tools": []
+    },
+    {
+      "name": "referralmarketing",
+      "description": "Referral Marketing",
+      "tools": []
+    },
+    {
+      "name": "retailmarketing",
+      "description": "Retail Marketing",
+      "tools": []
+    },
+    {
+      "name": "salesautomation",
+      "description": "Sales Automation & Intelligence",
+      "tools": [
+        {
+          "name": "Gong",
+          "slug": "gong",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "HubSpot",
+          "slug": "hubspot",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0="
+        },
+        {
+          "name": "Chorus.ai",
+          "slug": "chorus",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        }
+      ]
+    },
+    {
+      "name": "sem",
+      "description": "Search Engine Marketing (SEM)",
+      "tools": [
+        {
+          "name": "Semrush",
+          "slug": "semrush",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        }
+      ]
+    },
+    {
+      "name": "seo",
+      "description": "Search Engine Optimization (SEO)",
+      "tools": [
+        {
+          "name": "Semrush",
+          "slug": "semrush",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Ahrefs",
+          "slug": "ahrefs",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Moz Pro",
+          "slug": "moz",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        }
+      ]
+    },
+    {
+      "name": "socialadvertising",
+      "description": "Social Advertising",
+      "tools": []
+    },
+    {
+      "name": "socialmediamarketing",
+      "description": "Social Media Marketing",
+      "tools": [
+        {
+          "name": "Sprout Social",
+          "slug": "sprout social",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Hootsuite",
+          "slug": "hootsuite",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Buffer",
+          "slug": "buffer",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        }
+      ]
+    },
+    {
+      "name": "tvadvertising",
+      "description": "TV Advertising",
+      "tools": []
+    },
+    {
+      "name": "videoadvertising",
+      "description": "Video Advertising",
+      "tools": []
+    },
+    {
+      "name": "videomarketing",
+      "description": "Video Marketing",
+      "tools": []
+    },
+    {
+      "name": "webanalytics",
+      "description": "Web Analytics",
+      "tools": [
+        {
+          "name": "Google Analytics",
+          "slug": "google-analytics",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Adobe Analytics",
+          "slug": "adobe",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
+        },
+        {
+          "name": "Mixpanel",
+          "slug": "mixpanel",
+          "icon": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png"
         }
       ]
     }
