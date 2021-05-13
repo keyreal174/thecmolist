@@ -1,6 +1,10 @@
 @import "../../../../sass/globals.scss";
 
 .vendor-category-modal {
+  .modal-dialog {
+    max-width: 1200px;
+  }
+
   .modal-header {
     .close {
       position: absolute;
@@ -46,6 +50,11 @@
     top: 16px;
     left: initial;
     padding: 0px;
+  }
+
+  div.dropdown-menu.show {
+    max-height: 410px;
+    overflow: auto;
   }
 }
 
