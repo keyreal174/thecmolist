@@ -62,6 +62,7 @@ const RenderVendorCategoryRow = ({
       id: index,
       slug: i.slug,
       name: i.name,
+      needsInsert: i.needsInsert,
     }));
 
     setOptions(options);
