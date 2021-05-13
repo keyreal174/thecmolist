@@ -34,6 +34,12 @@
   text-align: left !important;
   padding-left: 0px;
 
+  a.dropdown-toggle {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   a:after {
     position: absolute;
     right: 10px;
@@ -45,15 +51,14 @@
 
 .vendor-category--popular-tools {
   display: flex;
+  flex-wrap: wrap;
 
   &--tool {
     width: 50px;
     text-align: center;
     cursor: pointer;
-
-    & + & {
-      margin-left: 10px;
-    }
+    margin-bottom: 10px;
+    margin-right: 10px;
 
     &--icon {
       width: 100%;

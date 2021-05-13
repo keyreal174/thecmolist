@@ -1,7 +1,67 @@
 {
   "categories": [
     {
-      "name": "CRM",
+      "name": "Audenience Data & Enhancement",
+      "tools": [
+        {
+          "name": "Clearbit",
+          "slug": "clearbit",
+          "icon": "https://www.clipartmax.com/png/middle/102-1029458_salesforce-began-in-1999-with-a-vision-of-reinventing-salesforce-com-logo.png"
+        },
+        {
+          "name": "Zoominfo",
+          "slug": "zoominfo",
+          "icon": "https://www.clipartmax.com/png/middle/102-1029458_salesforce-began-in-1999-with-a-vision-of-reinventing-salesforce-com-logo.png"
+        },
+        {
+          "name": "Adapt",
+          "slug": "adapt",
+          "icon": "https://www.clipartmax.com/png/middle/102-1029458_salesforce-began-in-1999-with-a-vision-of-reinventing-salesforce-com-logo.png"
+        },
+        {
+          "name": "Datanyze",
+          "slug": "datanyze",
+          "icon": "https://www.clipartmax.com/png/middle/102-1029458_salesforce-began-in-1999-with-a-vision-of-reinventing-salesforce-com-logo.png"
+        },
+        {
+          "name": "Demandbase",
+          "slug": "demandbase",
+          "icon": "https://www.clipartmax.com/png/middle/102-1029458_salesforce-began-in-1999-with-a-vision-of-reinventing-salesforce-com-logo.png"
+        }
+      ]
+    },
+    {
+      "name": "Conversational Marketing & Chat",
+      "tools": [
+        {
+          "name": "Drift",
+          "slug": "drift",
+          "icon": "https://www.clipartmax.com/png/middle/102-1029458_salesforce-began-in-1999-with-a-vision-of-reinventing-salesforce-com-logo.png"
+        },
+        {
+          "name": "Intercom",
+          "slug": "intercom",
+          "icon": "https://www.clipartmax.com/png/middle/102-1029458_salesforce-began-in-1999-with-a-vision-of-reinventing-salesforce-com-logo.png"
+        },
+        {
+          "name": "Podium",
+          "slug": "podium",
+          "icon": "https://www.clipartmax.com/png/middle/102-1029458_salesforce-began-in-1999-with-a-vision-of-reinventing-salesforce-com-logo.png"
+        },
+        {
+          "name": "Qualified",
+          "slug": "qualified",
+          "icon": "https://www.clipartmax.com/png/middle/102-1029458_salesforce-began-in-1999-with-a-vision-of-reinventing-salesforce-com-logo.png"
+        },
+        {
+          "name": "Birdeye",
+          "slug": "birdeye",
+          "icon": "https://www.clipartmax.com/png/middle/102-1029458_salesforce-began-in-1999-with-a-vision-of-reinventing-salesforce-com-logo.png"
+        }
+      ]
+    },
+    {
+      "name": "Customer Relationship Marketing (CRM)",
       "tools": [
         {
           "name": "Saleforce",
@@ -15,6 +75,16 @@
         },
         {
           "name": "Sugar CRM",
+          "slug": "sugar_crm",
+          "icon": "https://s3.amazonaws.com/tracxn-data-image/logo/company/3p7TDqvW_400x400_1590732388663.png"
+        },
+        {
+          "name": "ActiveCampaign",
+          "slug": "activeCampaign",
+          "icon": "https://s3.amazonaws.com/tracxn-data-image/logo/company/3p7TDqvW_400x400_1590732388663.png"
+        },
+        {
+          "name": "pipedrive",
           "slug": "sugar_crm",
           "icon": "https://s3.amazonaws.com/tracxn-data-image/logo/company/3p7TDqvW_400x400_1590732388663.png"
         }
