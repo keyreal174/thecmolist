@@ -4,7 +4,7 @@ import CustomCheckBox from "../base/CustomCheckBox/CustomCheckBox";
 
 const BuildYourNetwork = ({ buildYourNetworkItems }) => {
   return (
-    <CustomCard heading="Build your marketing knowledge Networks">
+    <CustomCard heading="Get the most out of using CMOlist">
       <div>
         {buildYourNetworkItems &&
           buildYourNetworkItems.map((item, index) => {
