@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import { connect } from "react-redux";
-import { Col, Row, Container } from "react-bootstrap";
+import { Col, Row, Container, Button } from "react-bootstrap";
 import clsx from "clsx";
 import Layout from "../base/Layout/Layout";
 import Footer from "../base/Footer/Footer";
@@ -10,6 +10,7 @@ import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
 import PopularTopics from "../base/PopularTopics/PopularTopics";
 import SimpleTopBanner from "../base/SimpleTopBanner/SimpleTopBanner";
 import AddMemberModal from "../base/AddMemberModal/AddMemberModal";
+import AddVendorsModal from "../base/AddVendors/AddVendorsModal";
 import VendorsFeed from "./VendorsFeed";
 import Analytics from "../../util/Analytics";
 import { cdn } from "../../util/constants";
@@ -24,6 +25,7 @@ const Vendors = (props) => {
   const [showFilters, setShowFilters] = useState(true);
   const [bannerTitle, setBannerTitle] = useState("");
   const [bannerImage, setBannerImage] = useState("");
+  const [showAddVendor, setShowAddVendor] = useState(false);
   const feedData = props.feedData;
   const changeDashboardHeader = (idx) => {
     if (idx < filters.length) {
@@ -97,6 +99,10 @@ const Vendors = (props) => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
+  const toggleAddVendorModal = () => {
+    setShowAddVendor((value) => !value);
+  };
+
   return (
     <Layout onToggle={handleToggle}>
       <Container className="height-100">
@@ -131,7 +137,7 @@ const Vendors = (props) => {
           {showFilters && (
             <div
               className={clsx(
-                "vendors--filters mb-4",
+                "vendors--filters mb-4 d-flex",
                 mobileMenuOpen && "open"
               )}
             >
@@ -141,6 +147,17 @@ const Vendors = (props) => {
                 filters={filters}
                 onChange={(idx) => changeFilter(idx)}
               />
+              <div
+                className="filter-btn-group flex-grow-1 text-right pt-1"
+                style={{ minWidth: 135 }}
+              >
+                <Button
+                  className="filter--button filter--button-active active m-0"
+                  onClick={toggleAddVendorModal}
+                >
+                  Add Vendor
+                </Button>
+              </div>
             </div>
           )}
           <Row>
@@ -183,6 +200,10 @@ const Vendors = (props) => {
           />
         </div>
       </Container>
+      <AddVendorsModal
+        show={showAddVendor}
+        handleClose={toggleAddVendorModal}
+      />
     </Layout>
   );
 };

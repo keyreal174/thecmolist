@@ -22,7 +22,8 @@ const CategoryDropdown = ({
     >
       {categoryList.map((item, idx) => (
         <NavDropdown.Item key={idx} onClick={() => changeCategory(idx)}>
-          {item.name}
+          <p className="category-dropdown--name"># {item.name}</p>
+          <p className="category-dropdown--description">{item.description}</p>
         </NavDropdown.Item>
       ))}
     </NavDropdown>
@@ -222,23 +223,30 @@ const AddVendors = ({
 
   return (
     <Form id="form-add-vendors" onSubmit={handleSubmit}>
-      {categories.map((cate, i) => (
-        <RenderVendorCategoryRow
-          key={i}
-          id={i}
-          cate={cate}
-          getSuggestions={getSuggestions}
-          updateVendors={(tools) => updateVendors(tools, cate.name)}
-          availableCategories={availableCategories}
-          changeCategory={changeCategory}
-        />
-      ))}
-      {availableCategories.length > 0 && (
-        <RenderVendorCategoryRow
-          availableCategories={availableCategories}
-          changeCategory={addNewCategory}
-        />
-      )}
+      <Row className="form-add-vendors--header">
+        <Col md={4}>Category</Col>
+        <Col md={4}>My Tools</Col>
+        <Col md={4}>Popular Tools</Col>
+      </Row>
+      <div className="form-add-vendors--content">
+        {categories.map((cate, i) => (
+          <RenderVendorCategoryRow
+            key={i}
+            id={i}
+            cate={cate}
+            getSuggestions={getSuggestions}
+            updateVendors={(tools) => updateVendors(tools, cate.name)}
+            availableCategories={availableCategories}
+            changeCategory={changeCategory}
+          />
+        ))}
+        {availableCategories.length > 0 && (
+          <RenderVendorCategoryRow
+            availableCategories={availableCategories}
+            changeCategory={addNewCategory}
+          />
+        )}
+      </div>
     </Form>
   );
 };
