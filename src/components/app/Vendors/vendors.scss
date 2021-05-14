@@ -138,4 +138,18 @@
   .vendors--filters {
     margin: 10px 17px;
   }
+
+  .vendors--filters {
+    flex-direction: column;
+
+    .filter-btn-group {
+      .filter--button {
+        width: 100%;
+        margin-left: 16px !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
 }
