@@ -14,15 +14,10 @@ const AddVendorsModal = ({ show, handleClose }) => {
         onHide={handleClose}
         size="lg"
       >
-        <Modal.Header closeButton as="h4">
-          <Container>
-            <Row>
-              <Col md={4}>Category</Col>
-              <Col md={4}>My Tools</Col>
-              <Col md={4}>Popular Tools</Col>
-            </Row>
-          </Container>
-        </Modal.Header>
+        <div className="close-modal" onClick={handleClose}>
+          <span aria-hidden="true">×</span>
+          <span className="sr-only">Close</span>
+        </div>
         <Modal.Body>
           <Container>
             <AddVendors submitAfter={() => handleClose()} />

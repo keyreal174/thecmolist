@@ -254,7 +254,7 @@ const OnboardingStep2 = ({
                 type="submit"
                 form="form-add-vendors"
               >
-                Done
+                Share 4 more Vendors to Continue
               </Button>
             )}
           </Col>

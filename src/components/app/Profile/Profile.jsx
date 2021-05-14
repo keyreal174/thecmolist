@@ -16,6 +16,7 @@ import {
   getCheckedForEngagementType,
   getEngagementForId,
 } from "../base/EngagementButtons/EngagementButtons";
+import AddVendorsModal from "../base/AddVendors/AddVendorsModal";
 import DeletePost from "./DeletePost";
 import FollowUserModal from "./FollowUser";
 import Util from "../../util/Util";
@@ -90,6 +91,7 @@ const Profile = (props) => {
   const [showDeletePost, setShowDeletePost] = useState(false);
   const [showFollowModal, setShowFollowModal] = useState(false);
   const [showMore, setShowMore] = useState(false);
+  const [showAddVendor, setShowAddVendor] = useState(false);
 
   const userName = Util.parsePath(window.location.href).trailingPath;
 
@@ -289,6 +291,10 @@ const Profile = (props) => {
 
   const handleToggle = () => {
     setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const toggleAddVendorModal = () => {
+    setShowAddVendor((value) => !value);
   };
 
   return (
@@ -507,15 +513,24 @@ const Profile = (props) => {
               </Row>
             </CustomCard>
           )}
-
-          {profileFirstName && (
-            <Filter
-              className="profile--filters"
-              filterIdx={filterIdx}
-              filters={filters}
-              onChange={(idx) => setFilterId(idx)}
-            ></Filter>
-          )}
+          <div className="vendor-profile-filter-and-addvendor">
+            {profileFirstName && (
+              <Filter
+                className="profile--filters"
+                filterIdx={filterIdx}
+                filters={filters}
+                onChange={(idx) => setFilterId(idx)}
+              ></Filter>
+            )}
+            <div className="filter-btn-group flex-grow-1 text-right">
+              <Button
+                className="filter--button filter--button-active active m-0"
+                onClick={toggleAddVendorModal}
+              >
+                Add Vendor
+              </Button>
+            </div>
+          </div>
         </div>
 
         {profileFirstName && hasDataOnCurrentFeed && (
@@ -645,6 +660,10 @@ const Profile = (props) => {
         />
         <Footer className={clsx("profile--footer", mobileMenuOpen && "open")} />
       </Container>
+      <AddVendorsModal
+        show={showAddVendor}
+        handleClose={toggleAddVendorModal}
+      />
     </Layout>
   );
 };
