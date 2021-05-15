@@ -10,7 +10,7 @@
       { "name": "Insightful", "count": 11 }
     ],
     "groups": [
-      { "name": "My Peers", "slug": "my-peers", "checked": true },
+      { "name": "My Experts", "slug": "my-peers", "checked": true },
       {
         "name": "Signal Fire Marketing",
         "slug": "signal-fire-marketing",

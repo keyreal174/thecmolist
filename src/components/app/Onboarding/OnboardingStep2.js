@@ -152,7 +152,7 @@ const OnboardingStep2 = ({
       title={
         showGetIntro
           ? "One last step..."
-          : "Select your interests so that we can personalize CMOlist for you"
+          : "Add your marketing tools to your profile"
       }
     >
       <>
@@ -241,7 +241,7 @@ const OnboardingStep2 = ({
           >
             {showGetIntro ? (
               <Button
-                className="mt-3 onboarding--done"
+                className="mt-3 onboarding--button"
                 onClick={handleSubmit}
                 disabled={loading}
               >
@@ -249,12 +249,12 @@ const OnboardingStep2 = ({
               </Button>
             ) : (
               <Button
-                className="mt-3 onboarding--done"
+                className="mt-3 onboarding--button"
                 disabled={loading}
                 type="submit"
                 form="form-add-vendors"
               >
-                Share 4 more Vendors to Continue
+                Continue
               </Button>
             )}
           </Col>

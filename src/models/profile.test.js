@@ -288,7 +288,7 @@ const profileStatsData = {
     },
   ],
   groups: [
-    { name: "My Peers", checked: true },
+    { name: "My Experts", checked: true },
     { name: "Signal Fire Marketing", checked: true },
     { name: "Dropbox", checked: false },
     { name: "Pagerduty Marketing", checked: false },

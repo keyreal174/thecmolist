@@ -18,6 +18,11 @@ const AddVendorsModal = ({ show, handleClose }) => {
           <span aria-hidden="true">×</span>
           <span className="sr-only">Close</span>
         </div>
+        <Modal.Header closeButton as="h4">
+          <Modal.Title className="vendor-category-modal">
+            Add vendors to your marketing stack
+          </Modal.Title>
+        </Modal.Header>
         <Modal.Body>
           <Container>
             <AddVendors submitAfter={() => handleClose()} />
@@ -37,7 +42,7 @@ const AddVendorsModal = ({ show, handleClose }) => {
             type="submit"
             form="form-add-vendors"
           >
-            Post
+            Add Vendors
           </Button>
         </Modal.Footer>
       </Modal>

@@ -38,7 +38,7 @@ const Vendors = (props) => {
     getProfileStats().then((profileStats) => {
       let newFilters = [
         { title: "All", slug: "my-network", enabled: true },
-        { title: "My Peers", slug: "my-peers", enabled: true },
+        { title: "My Experts", slug: "my-peers", enabled: true },
       ];
       if (profileStats && profileStats.profile && profileStats.profile.groups) {
         newFilters = newFilters.concat(

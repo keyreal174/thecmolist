@@ -273,7 +273,7 @@ const Feed = (props) => {
   const subSelectors = [
     { title: "All", slug: "all" },
     { title: "Questions & Answers", slug: "question" },
-    { title: "Updates & Insights", slug: "project" },
+    { title: "Campaigns & Updates", slug: "project" },
     { title: "Articles & News", slug: "article" },
   ];
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -321,7 +321,7 @@ const Feed = (props) => {
   const initFeedPage = (profileStats, isTopicPage) => {
     let newFilters = [
       { title: "All", slug: "my-network", enabled: true },
-      { title: "My Peers", slug: "my-peers", enabled: true },
+      { title: "My Experts", slug: "my-peers", enabled: true },
     ];
     setGroupFilterStartIdx(newFilters.length);
     if (profileStats && profileStats.profile && profileStats.profile.groups) {

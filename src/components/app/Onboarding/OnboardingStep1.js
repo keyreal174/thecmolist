@@ -88,7 +88,7 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
         <span
           style={{ textAlign: "left", display: "block", paddingLeft: "40px" }}
         >
-          Welcome {firstname}! Please review and update your member profile
+          Welcome {firstname}! Please create your member profile
         </span>
       }
     >
@@ -192,7 +192,7 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
             className="onboarding--button-wrapper d-flex justify-content-end"
           >
             <Button
-              className="onboarding--button"
+              className="mt-3 onboarding--button"
               form="onboarding_step-1"
               type="submit"
               disable={loading}

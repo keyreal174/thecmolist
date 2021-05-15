@@ -18,7 +18,7 @@ const CategoryDropdown = ({
   return (
     <NavDropdown
       className="navbar-dropdown vendor-category-dropdown"
-      title={category?.name}
+      title={category && category.name ? "#" + category.name : ""}
     >
       {categoryList.map((item, idx) => (
         <NavDropdown.Item key={idx} onClick={() => changeCategory(idx)}>

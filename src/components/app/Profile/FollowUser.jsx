@@ -56,15 +56,14 @@ function FollowUserModal(props) {
             <span className="text-capitalize">
               {props.firstname || props.username}
             </span>{" "}
-            to your list of trusted <b>peers</b>
+            to your list of trusted <b>experts</b>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Fragment>
             <Form.Label className="mt-2">
-              Build your <b>trusted peer network</b> by inviting and connecting
-              only with marketing peers that <b>you know</b> and whose{" "}
-              <b>advice you trust</b>
+              See updates and news from {props.firstname || props.username} in
+              your feed
             </Form.Label>
             <Form.Label className="mt-3">
               <b>Endorse</b>{" "}

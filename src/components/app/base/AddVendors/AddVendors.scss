@@ -99,6 +99,7 @@
     height: 45px;
     text-align: left !important;
     padding-left: 0px;
+    font-size: 18px;
 
     &.show {
       a.dropdown-toggle {
@@ -118,7 +119,7 @@
       &:after {
         position: absolute;
         right: 16px;
-        top: 10px;
+        top: 8px;
         left: initial;
         padding: 0px;
         content: url("../icons/down_tick.svg");

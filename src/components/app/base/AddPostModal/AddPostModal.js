@@ -208,11 +208,9 @@ function AddPostModal({
       setSecondButtonText("Ask Question");
     } else if (contentType === "project") {
       setTitleHeading("Title");
-      setTitlePlaceholder(
-        "Be specific and imagine you're describing this project to another person"
-      );
-      setModalTitle("Share a marketing project launch or vendor experience");
-      setSecondButtonText("Share Update");
+      setModalTitle("Share a campaign or update");
+      setTitlePlaceholder(" ");
+      setSecondButtonText("Share Campaign");
     } else if (contentType === "article") {
       setTitleHeading("Article URL");
       setTitlePlaceholder("http://");
@@ -364,8 +362,8 @@ function AddPostModal({
                       }}
                     />
                     <label htmlFor="allnetwork">
-                      My Peers
-                      <span>(visible only to your Peers)</span>
+                      My Followers
+                      <span>(visible only to your Followers)</span>
                     </label>
                   </div>
                   <div className="share-group-checkbox">
