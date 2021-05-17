@@ -22,8 +22,16 @@
     color: $text-1;
     font-size: 35px;
     line-height: 45px;
-    text-align: center;
+    text-align: left;
     margin-top: 45px;
+    padding-left: 40px;
+  }
+  &--subtitle {
+    color: $text-2;
+    font-size: 17px;
+    line-height: 22px;
+    text-align: left;
+    margin-top: 10px;
   }
   &--children {
     margin-top: 42px;

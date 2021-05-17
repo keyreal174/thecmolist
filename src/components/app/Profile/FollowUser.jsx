@@ -63,7 +63,8 @@ function FollowUserModal(props) {
           <Fragment>
             <Form.Label className="mt-2">
               See updates and news from {props.firstname || props.username} in
-              your feed
+              your feed.
+              <br />
             </Form.Label>
             <Form.Label className="mt-3">
               <b>Endorse</b>{" "}

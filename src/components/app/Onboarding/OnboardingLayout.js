@@ -3,7 +3,7 @@ import { Container, Col, ProgressBar, Row } from "react-bootstrap";
 import Logo from "../base/Header/svgs/logo.svg";
 import "./onboardingLayout.scss";
 
-const OnboardingLayout = ({ children, now, title }) => {
+const OnboardingLayout = ({ children, now, title, subtitle }) => {
   return (
     <Container>
       <Row className="layout--header">
@@ -36,6 +36,11 @@ const OnboardingLayout = ({ children, now, title }) => {
       </Row>
       <Row className="layout--title">
         <Col md="12">{title}</Col>
+        {subtitle && (
+          <Col md="12" className="layout--subtitle">
+            {subtitle}
+          </Col>
+        )}
       </Row>
       <Row className="layout--children">
         <Col md="12">{children}</Col>

@@ -294,6 +294,13 @@ const Profile = (props) => {
   };
 
   const toggleAddVendorModal = () => {
+    if (showAddVendor) {
+      // i.e. we're closing the dialog, trigger a refresh in case
+      // some content was added
+      props.fetchProfile({
+        userName: Util.parsePath(window.location.href).trailingPath,
+      });
+    }
     setShowAddVendor((value) => !value);
   };
 
@@ -522,14 +529,16 @@ const Profile = (props) => {
                 onChange={(idx) => setFilterId(idx)}
               ></Filter>
             )}
-            <div className="filter-btn-group flex-grow-1 text-right">
-              <Button
-                className="filter--button filter--button-active active m-0"
-                onClick={toggleAddVendorModal}
-              >
-                Add Vendor
-              </Button>
-            </div>
+            {isMyProfile && (
+              <div className="filter-btn-group flex-grow-1 text-right">
+                <Button
+                  className="filter--button filter--button-active active m-0"
+                  onClick={toggleAddVendorModal}
+                >
+                  Add Vendor
+                </Button>
+              </div>
+            )}
           </div>
         </div>
 
@@ -550,7 +559,6 @@ const Profile = (props) => {
                     badge = (
                       <span
                         className="cursor-pointer noselect"
-                        style={{ display: "block", marginTop: "-10px" }}
                         onClick={() => showDeletePostModal(feed)}
                       >
                         ✖

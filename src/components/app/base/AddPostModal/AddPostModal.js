@@ -141,13 +141,17 @@ function AddPostModal({
   };
 
   const setPreselectedGroup = (postGroups) => {
-    console.log(activeGroup);
     if (activeGroup) {
-      console.log(activeGroup);
       if (activeGroup === "my-network") {
         setPublicVisibility(true);
         setPeersVisibility(false);
         setNetworkVisibility(false);
+        if (postGroups && postGroups.length > 0) {
+          show &&
+            postGroups &&
+            postGroups.length > 0 &&
+            setGroups(postGroups.map((g) => ({ ...g, checked: true })));
+        }
       } else if (activeGroup === "my-peers") {
         setPublicVisibility(false);
         setPeersVisibility(true);
@@ -221,7 +225,6 @@ function AddPostModal({
 
   useEffect(() => {
     if (show) {
-      console.log("vShow");
       setPreselectedGroup(groups);
     }
   }, [show]);
@@ -609,7 +612,7 @@ function AddPostModal({
                     onChange={(selectedOption) => {
                       setTopics(selectedOption);
                     }}
-                    placeholder="Choose one or more #topics or #locations that describe what your question is about"
+                    placeholder="Choose one or more #topics that describe what your campaign or update is about"
                     renderMenuItemChildren={(option) => (
                       <React.Fragment>
                         <span>{option.name}</span>

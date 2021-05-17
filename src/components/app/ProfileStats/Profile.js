@@ -28,8 +28,8 @@ const Profile = ({ profileStats }) => {
                 </a>
               </div>
               <div className="profile-stats__edit-button text-center">
-                <a alt="edit profile" href="/profile_edit">
-                  Edit Profile
+                <a alt="edit profile" href="/profile">
+                  View Profile
                 </a>
               </div>
             </div>

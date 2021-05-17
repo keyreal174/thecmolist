@@ -85,9 +85,7 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
     <OnboardingLayout
       now={50}
       title={
-        <span
-          style={{ textAlign: "left", display: "block", paddingLeft: "40px" }}
-        >
+        <span style={{ textAlign: "left", display: "block" }}>
           Welcome {firstname}! Please create your member profile
         </span>
       }
@@ -135,54 +133,6 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
                 onChange={handleHeadlineChange}
                 value={headline}
               />
-            </Col>
-          </Row>
-          <Row>
-            <Col md="6" sm="12">
-              <Form.Label>Open to networking</Form.Label>
-              <div className="d-flex">
-                <Form.Check
-                  className="onboarding--radio"
-                  type="radio"
-                  label="Yes"
-                  required
-                  name="networking"
-                  onChange={handleNetworkingYesChange}
-                  checked={networkingYes}
-                />
-                <Form.Check
-                  className="onboarding--radio"
-                  type="radio"
-                  label="No"
-                  required
-                  name="networking"
-                  onChange={handleNetworkingNoChange}
-                  checked={networkingNo}
-                />
-              </div>
-            </Col>
-            <Col md="6" sm="12">
-              <Form.Label>Open to advising</Form.Label>
-              <div className="d-flex">
-                <Form.Check
-                  className="onboarding--radio"
-                  type="radio"
-                  label="Yes"
-                  required
-                  name="advising"
-                  onChange={handleAdvisingYesChange}
-                  checked={advisingYes}
-                />
-                <Form.Check
-                  className="onboarding--radio"
-                  type="radio"
-                  label="No"
-                  required
-                  name="advising"
-                  onChange={handleAdvisingNoChange}
-                  checked={advisingNo}
-                />
-              </div>
             </Col>
           </Row>
         </form>

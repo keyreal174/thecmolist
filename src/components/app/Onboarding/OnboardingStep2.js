@@ -152,7 +152,12 @@ const OnboardingStep2 = ({
       title={
         showGetIntro
           ? "One last step..."
-          : "Add your marketing tools to your profile"
+          : "Please share your favorite marketing tools with your peers to be able to see their marketing stacks"
+      }
+      subtitle={
+        showGetIntro
+          ? null
+          : "You can also add or update this information later"
       }
     >
       <>
