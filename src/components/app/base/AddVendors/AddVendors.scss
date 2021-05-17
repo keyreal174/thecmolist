@@ -46,10 +46,18 @@
       line-height: 32.5px;
       font-weight: bold;
     }
+
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
   }
 
   .form-add-vendors--content {
     padding: 30px 40px;
+
+    div.col-md-4 {
+      margin-bottom: 15px;
+    }
   }
 
   .form-control {
@@ -115,6 +123,7 @@
       text-overflow: ellipsis;
       color: $text-2;
       font-weight: 500;
+      padding: 10px 20px !important;
 
       &:after {
         position: absolute;
@@ -131,10 +140,10 @@
 
     div.dropdown-menu.show {
       max-height: 300px;
-      width: 200px;
       overflow: auto;
       border-radius: 6px;
-      transform: translate(65%, 30px) !important;
+      width: 100%;
+      // transform: translate(65%, 30px) !important;
       // inset: -15px 15px auto auto !important;
 
       &::-webkit-scrollbar {
@@ -161,7 +170,18 @@
           font-size: 11px;
           line-height: 14.5px;
         }
+
+        @media screen and (max-width: 768px) {
+          background: #ffffff;
+          border: none;
+          border-radius: 0;
+          text-align: initial;
+        }
       }
+    }
+
+    div.dropdown-menu a {
+      border-radius: 0;
     }
   }
 
