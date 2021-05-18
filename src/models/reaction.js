@@ -98,6 +98,7 @@ export default {
       return {
         ...oldState,
         reactions: {
+          ...oldState.reactions,
           ...reactions,
         },
       };

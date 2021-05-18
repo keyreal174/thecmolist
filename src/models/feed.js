@@ -116,6 +116,8 @@ export default {
       );
       const data = response.data;
       dispatch.feedModel.setFeedDataForKey(filterKey, data);
+      const filteredData = data.feedData.filter((feed) => "content_id" in feed);
+      dispatch.reactionModel.setReactions(filteredData);
     },
     async changeDashboardFilter(payload, rootState) {
       // filter = Group (All Members, etc), subfilter = Type of content (Q/A, Posts, etc)

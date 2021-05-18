@@ -64,8 +64,8 @@ function FollowUserModal(props) {
             <Form.Label className="mt-2">
               See updates and news from {props.firstname || props.username} in
               your feed.
-              <br />
             </Form.Label>
+            <br />
             <Form.Label className="mt-3">
               <b>Endorse</b>{" "}
               <span className="text-capitalize">
