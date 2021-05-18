@@ -142,8 +142,6 @@
       overflow: auto;
       border-radius: 6px;
       width: 100%;
-      // transform: translate(65%, 30px) !important;
-      // inset: -15px 15px auto auto !important;
 
       &::-webkit-scrollbar {
         width: 0px;
@@ -159,14 +157,14 @@
 
         .category-dropdown--name {
           font-weight: bold;
-          font-size: 13px;
+          font-size: 16px;
           line-height: 17px;
           color: $text-1;
         }
 
         .category-dropdown--description {
           color: $text-3;
-          font-size: 11px;
+          font-size: 13px;
           line-height: 14.5px;
         }
 
