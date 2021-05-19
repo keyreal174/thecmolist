@@ -95,6 +95,42 @@
   }
 }
 
+.edit-content-btn {
+  position: absolute;
+  right: 0px;
+  top: -80px;
+}
+
+.article-wrapper-content-detail {
+  .article-badge {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+
+    .edit-content-btn {
+      position: absolute;
+      right: 0px;
+      top: -80px;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .article-wrapper-content-detail {
+    .article-badge {
+      position: relative;
+      right: initial;
+      top: initial;
+
+      .edit-content-btn {
+        position: relative;
+        right: initial;
+        top: initial;
+      }
+    }
+  }
+}
+
 @media (max-width: 768px) {
   .content--error,
   .content--content,

@@ -87,13 +87,13 @@ export default {
 
           const response = await getContent(id);
           const data = response.data;
-
           dispatch.contentModel.setContent(data);
           dispatch.reactionModel.setReactions(data);
         } else {
           throw new Error("Id not provided.");
         }
       } catch (err) {
+        console.log(err);
         throw new Error("Could not fetch content.");
       } finally {
         dispatch.contentModel.setLoading(false);
@@ -147,6 +147,7 @@ export default {
     },
     async saveContent(data) {
       try {
+        console.log(data);
         if (data) {
           const response = await postContent(data);
           const content = response.data;
@@ -156,7 +157,8 @@ export default {
           throw new Error("Could not save content without data");
         }
       } catch (error) {
-        throw new Error("Could not save content");
+        console.log(error);
+        // throw new Error("Could not save content");
       }
     },
     async saveVendors(data) {
