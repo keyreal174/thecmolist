@@ -22,6 +22,12 @@ export const postContent = (content) => {
   });
 };
 
+export const postEditedContent = (content) => {
+  return axios.post("/api/edit_content", {
+    data: content,
+  });
+};
+
 export const postVendors = (vendors) => {
   return axios.post("/api/vendors", {
     data: vendors,
@@ -147,7 +153,6 @@ export default {
     },
     async saveContent(data) {
       try {
-        console.log(data);
         if (data) {
           const response = await postContent(data);
           const content = response.data;
@@ -157,8 +162,21 @@ export default {
           throw new Error("Could not save content without data");
         }
       } catch (error) {
-        console.log(error);
-        // throw new Error("Could not save content");
+        throw new Error("Could not save content");
+      }
+    },
+    async saveEditedContent(data) {
+      try {
+        if (data) {
+          const response = await postEditedContent(data);
+          const content = response.data;
+          dispatch.contentModel.setContent(content);
+          return content.content_id;
+        } else {
+          throw new Error("Could not save content without data");
+        }
+      } catch (error) {
+        throw new Error("Could not save content");
       }
     },
     async saveVendors(data) {

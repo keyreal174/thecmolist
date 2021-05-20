@@ -8,8 +8,7 @@ import "./EditPostModal.scss";
 const EditPostModal = ({
   content,
   contentId,
-  getContent,
-  saveContent,
+  saveEditedContent,
   handleClose,
   show,
 }) => {
@@ -50,7 +49,7 @@ const EditPostModal = ({
           },
         };
 
-    await saveContent(newContent);
+    await saveEditedContent(newContent);
     handleClose();
   };
 
@@ -120,8 +119,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    getContent: dispatch.contentModel.fetchContent,
-    saveContent: dispatch.contentModel.saveContent,
+    saveEditedContent: dispatch.contentModel.saveEditedContent,
   };
 };
 
