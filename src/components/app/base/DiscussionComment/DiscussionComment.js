@@ -162,7 +162,7 @@ const DiscussionComment = ({
   );
 };
 
-const mapStateToProps = () => {};
+const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch) => {
   return {

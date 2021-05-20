@@ -22,6 +22,12 @@ export const postContent = (content) => {
   });
 };
 
+export const postEditedContent = (content) => {
+  return axios.post("/api/edit_content", {
+    data: content,
+  });
+};
+
 export const postVendors = (vendors) => {
   return axios.post("/api/vendors", {
     data: vendors,
@@ -87,13 +93,13 @@ export default {
 
           const response = await getContent(id);
           const data = response.data;
-
           dispatch.contentModel.setContent(data);
           dispatch.reactionModel.setReactions(data);
         } else {
           throw new Error("Id not provided.");
         }
       } catch (err) {
+        console.log(err);
         throw new Error("Could not fetch content.");
       } finally {
         dispatch.contentModel.setLoading(false);
@@ -149,6 +155,20 @@ export default {
       try {
         if (data) {
           const response = await postContent(data);
+          const content = response.data;
+          dispatch.contentModel.setContent(content);
+          return content.content_id;
+        } else {
+          throw new Error("Could not save content without data");
+        }
+      } catch (error) {
+        throw new Error("Could not save content");
+      }
+    },
+    async saveEditedContent(data) {
+      try {
+        if (data) {
+          const response = await postEditedContent(data);
           const content = response.data;
           dispatch.contentModel.setContent(content);
           return content.content_id;

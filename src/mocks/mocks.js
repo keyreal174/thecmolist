@@ -198,6 +198,43 @@ function MockRequests() {
     ];
   });
 
+  mock.onPost("/api/edit_content").reply(() => {
+    return [
+      200,
+      {
+        content_id: 12102948,
+        content: {
+          header: {
+            markdown: "Vas Swaminathan, Engineering Leader at Uber verified ",
+            subtext: "Asked a question #inbound #SaaS",
+            image:
+              "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NTgxMDIzMjMwOWltYWdlLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
+          },
+          headline: {
+            markdown:
+              "Do you have any experience with deploying @HubSpot for a SaaS business with both a direct and self-serve model?",
+          },
+          articletext:
+            "We are a series A B2B startup with a custom solution that no have a product defined to use. Any recommendation is more than welcomed",
+          num_thanks: 5,
+          num_insightful: 10,
+        },
+        reactions: [
+          {
+            type: "thanks",
+            checked: true,
+          },
+          {
+            type: "insightful",
+            checked: false,
+          },
+        ],
+        replies: [],
+        related_questions: [],
+      },
+    ];
+  });
+
   mock.onPost("/api/profile").reply(() => {
     return [200, { success: true, error: null }];
   });
