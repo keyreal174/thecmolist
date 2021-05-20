@@ -1,0 +1,38 @@
+#edit-content-form {
+  display: none;
+
+  .modal-footer {
+    button {
+      min-width: 120px;
+    }
+  }
+
+  &.show {
+    display: block;
+  }
+}
+
+.markdown-preview {
+  display: none;
+
+  &--content {
+    flex: 1 1 auto;
+    padding: 15px;
+  }
+
+  &--footer {
+    border-top: 1px solid #d3e0f5;
+    padding: 15px;
+    text-align: right;
+
+    button {
+      margin: 0;
+    }
+  }
+}
+
+.markdown-preview.show {
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+}

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Article from "../base/Article/Article";
 import CustomCard from "../base/CustomCard/CustomCard";
 import clsx from "clsx";
-import { Col, Modal } from "react-bootstrap";
+import { Button, Col, Modal } from "react-bootstrap";
 import {
   getCheckedForEngagementType,
   getEngagementForId,
@@ -10,6 +10,7 @@ import {
 import { AllMembersList } from "../Feed/AllMembers";
 import DiscussionComment from "../base/DiscussionComment/DiscussionComment";
 import Entities from "../base/Entities/Entities";
+import EditPostModal from "../base/EditPostModal/EditPostModal";
 import { cdn } from "../../util/constants";
 
 import AnswerIcon from "../base/icons/answer.svg";
@@ -34,6 +35,8 @@ const ContentDetail = ({
   const [showStatModal, setShowStatModal] = useState(false);
   const [statType, setStatType] = useState("");
   const [selectedContentId, setSelectedContentId] = useState(0);
+  const [showEditPostModal, setShowEditPostModal] = useState(false);
+  const [selectedContent, setSelectedContent] = useState(null);
 
   const focusError = () => {
     const errorSection = document.getElementById("error-section");
@@ -125,6 +128,25 @@ const ContentDetail = ({
     return [];
   };
 
+  const toggleEditPostModal = () => {
+    setShowEditPostModal((value) => !value);
+  };
+
+  const badge = (content) => {
+    return content?.content?.canEdit ? (
+      <Button
+        className="edit-content-btn"
+        onClick={() => {
+          toggleEditPostModal();
+          setSelectedContentId(content.content_id);
+          setSelectedContent(content);
+        }}
+      >
+        Edit
+      </Button>
+    ) : null;
+  };
+
   return (
     <>
       <Col
@@ -184,6 +206,8 @@ const ContentDetail = ({
             author && author.length > 0 ? `Reply to ${author}` : "Reply"
           }
           handleDiscussionCommentSubmit={handleSubmit}
+          badge={badge(content)}
+          className="article-wrapper-content-detail"
         >
           {content.entities && content.entities.length > 0 && (
             <Entities entities={content.entities} />
@@ -277,6 +301,8 @@ const ContentDetail = ({
                     reply
                   )}
                   profile={profileStats.profile}
+                  badge={badge(reply)}
+                  className="article-wrapper-content-detail"
                 >
                   <div className="question-comments-section">
                     {reply.comments &&
@@ -330,6 +356,12 @@ const ContentDetail = ({
           </CustomCard>
         </Col>
       )}
+      <EditPostModal
+        show={showEditPostModal}
+        handleClose={toggleEditPostModal}
+        contentId={selectedContentId}
+        content={selectedContent}
+      />
     </>
   );
 };
