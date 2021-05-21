@@ -59,7 +59,12 @@ const CategoryDropdown = ({
               }}
               onKeyDown={(e) => {
                 if (e.key === "ArrowUp" || e.key === "ArrowDown") {
-                  if (dropref && dropref.current) {
+                  if (
+                    dropref &&
+                    dropref.current &&
+                    dropref.current.children &&
+                    dropref.current.children.length > 0
+                  ) {
                     dropref.current.children[0].focus();
                   }
                 }
