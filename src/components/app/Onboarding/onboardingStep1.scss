@@ -19,6 +19,10 @@
     border-radius: 23px;
     background: $brand;
     min-width: 160px;
+
+    &-welcome {
+      margin-top: 66px !important;
+    }
   }
   &--form {
     background: $white;

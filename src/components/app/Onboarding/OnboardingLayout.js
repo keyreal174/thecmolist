@@ -2,11 +2,12 @@ import React from "react";
 import { Container, Col, ProgressBar, Row } from "react-bootstrap";
 import Logo from "../base/Header/svgs/logo.svg";
 import "./onboardingLayout.scss";
+import clsx from "clsx";
 
 const OnboardingLayout = ({ children, now, title, subtitle }) => {
   return (
     <Container>
-      <Row className="layout--header">
+      <Row className={clsx("layout--header", !now && "layout--header-welcome")}>
         <div className="layout--header-background"></div>
         <Col md="12" className="layout--header-logo">
           <span>
@@ -14,25 +15,27 @@ const OnboardingLayout = ({ children, now, title, subtitle }) => {
             <span className="header--tag">Beta</span>
           </span>
         </Col>
-        <Col md="12">
-          <div className="d-flex justify-content-around">
-            <div className={`${now >= 50 ? "font-weight-bold" : ""}`}>
-              Create your profile
+        {now > 0 && (
+          <Col md="12">
+            <div className="d-flex justify-content-around">
+              <div className={`${now >= 50 ? "font-weight-bold" : ""}`}>
+                Create your profile
+              </div>
+              <div className={`${now === 100 ? "font-weight-bold" : ""}`}>
+                Personalize your experience
+              </div>
             </div>
-            <div className={`${now === 100 ? "font-weight-bold" : ""}`}>
-              Personalize your experience
+            <div className="d-flex align-items-center">
+              <span className="mr-3 font-weight-bold">Start</span>
+              <ProgressBar
+                now={now}
+                className="w-100 mt-1"
+                style={{ height: 15 }}
+              />
+              <span className="ml-3 font-weight-bold">Finish</span>
             </div>
-          </div>
-          <div className="d-flex align-items-center">
-            <span className="mr-3 font-weight-bold">Start</span>
-            <ProgressBar
-              now={now}
-              className="w-100 mt-1"
-              style={{ height: 15 }}
-            />
-            <span className="ml-3 font-weight-bold">Finish</span>
-          </div>
-        </Col>
+          </Col>
+        )}
       </Row>
       <Row className="layout--title">
         <Col md="12">{title}</Col>
