@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { connect } from "react-redux";
 import {
   Button,
@@ -36,6 +36,7 @@ const CategoryDropdown = ({
   categoryId,
   changeCategory,
 }) => {
+  const dropref = useRef();
   const [value, setValue] = useState("");
   return (
     <div>
@@ -56,23 +57,32 @@ const CategoryDropdown = ({
                   e.preventDefault();
                 }
               }}
+              onKeyDown={(e) => {
+                if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+                  if (dropref && dropref.current) {
+                    dropref.current.children[0].focus();
+                  }
+                }
+              }}
               value={value}
             />
           </div>
-          {categoryList
-            .filter((item) => item.name.toLowerCase().includes(value))
-            .map((item, idx) => (
-              <Dropdown.Item
-                key={idx}
-                eventKey={idx}
-                onClick={() => changeCategory(item)}
-              >
-                <p className="category-dropdown--name"># {item.name}</p>
-                <p className="category-dropdown--description">
-                  {item.description}
-                </p>
-              </Dropdown.Item>
-            ))}
+          <div ref={dropref}>
+            {categoryList
+              .filter((item) => item.name.toLowerCase().includes(value))
+              .map((item, idx) => (
+                <Dropdown.Item
+                  key={idx}
+                  eventKey={idx}
+                  onClick={() => changeCategory(item)}
+                >
+                  <p className="category-dropdown--name"># {item.name}</p>
+                  <p className="category-dropdown--description">
+                    {item.description}
+                  </p>
+                </Dropdown.Item>
+              ))}
+          </div>
         </Dropdown.Menu>
       </Dropdown>
     </div>
