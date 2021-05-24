@@ -18,6 +18,13 @@
       align-self: center;
     }
   }
+  &--header-welcome {
+    height: 100px;
+
+    .layout--header-background {
+      height: 100px;
+    }
+  }
   &--title {
     color: $text-1;
     font-size: 35px;
@@ -39,11 +46,71 @@
   }
 }
 
+.onboarding-title {
+  color: $text-1;
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 73px;
+  max-width: 900px;
+}
+
 @media (max-width: 768px) {
   .layout--title {
     margin-top: 15px;
   }
   .layout--children {
     margin: 15px 0;
+  }
+}
+
+// Welcome Onboarding Component
+.layout--children {
+  .home--share {
+    &-items-wrapper {
+      justify-content: space-around;
+    }
+
+    &-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: auto;
+      width: 364px;
+      max-width: 364px;
+
+      @media screen and (max-width: 440px) {
+        width: 290px;
+        max-width: 290px;
+      }
+
+      &-image {
+        width: 84px;
+        height: 84px;
+        margin: 55px 120px 35px;
+
+        @media screen and (max-width: 440px) {
+          margin: 55px 90px 35px;
+        }
+      }
+
+      &-title {
+        font-size: 26px;
+        line-height: 30px;
+        margin-bottom: 27px;
+        color: $text-1;
+
+        @media screen and (max-width: 440px) {
+          font-size: 20px;
+          line-height: 25px;
+        }
+      }
+
+      &-subtitle {
+        padding: 0 8px;
+        font-size: 18px;
+        line-height: 25px;
+        color: $text-2;
+      }
+    }
   }
 }
