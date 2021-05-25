@@ -109,20 +109,21 @@
     font-size: 18px;
 
     &.show {
-      a.dropdown-toggle {
+      & > a {
         &:after {
           content: url("../icons/up_tick.svg");
         }
       }
     }
 
-    a.dropdown-toggle {
+    & > a {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       color: $text-2;
       font-weight: 500;
-      padding: 10px 20px !important;
+      padding: 8px 20px !important;
+      display: block;
 
       &:after {
         position: absolute;
@@ -218,4 +219,8 @@
       }
     }
   }
+}
+
+.category-filter-text .form-control {
+  border-radius: 1px !important;
 }

@@ -1,6 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { connect } from "react-redux";
-import { Button, Col, Form, NavDropdown, Row } from "react-bootstrap";
+import {
+  Button,
+  Col,
+  Dropdown,
+  Form,
+  FormControl,
+  NavDropdown,
+  Row,
+} from "react-bootstrap";
 import {
   AsyncTypeahead,
   Typeahead,
@@ -9,24 +17,80 @@ import {
 import clsx from "clsx";
 import "./AddVendors.scss";
 
+const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
+  <a
+    href=""
+    ref={ref}
+    onClick={(e) => {
+      e.preventDefault();
+      onClick(e);
+    }}
+  >
+    {children}
+  </a>
+));
+
 const CategoryDropdown = ({
   category,
   categoryList,
   categoryId,
   changeCategory,
 }) => {
+  const dropref = useRef();
+  const [value, setValue] = useState("");
   return (
-    <NavDropdown
-      className="navbar-dropdown vendor-category-dropdown"
-      title={category && category.name ? "#" + category.name : ""}
-    >
-      {categoryList.map((item, idx) => (
-        <NavDropdown.Item key={idx} onClick={() => changeCategory(idx)}>
-          <p className="category-dropdown--name"># {item.name}</p>
-          <p className="category-dropdown--description">{item.description}</p>
-        </NavDropdown.Item>
-      ))}
-    </NavDropdown>
+    <div>
+      <Dropdown className="navbar-dropdown vendor-category-dropdown">
+        <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
+          {category && category.name ? "#" + category.name : ""}
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu>
+          <div className="px-3 mb-2 category-filter-text">
+            <FormControl
+              autoFocus
+              className="px-3"
+              placeholder="Type to filter..."
+              onChange={(e) => setValue(e.target.value)}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                }
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+                  if (
+                    dropref &&
+                    dropref.current &&
+                    dropref.current.children &&
+                    dropref.current.children.length > 0
+                  ) {
+                    dropref.current.children[0].focus();
+                  }
+                }
+              }}
+              value={value}
+            />
+          </div>
+          <div ref={dropref}>
+            {categoryList
+              .filter((item) => item.name.toLowerCase().includes(value))
+              .map((item, idx) => (
+                <Dropdown.Item
+                  key={idx}
+                  eventKey={idx}
+                  onClick={() => changeCategory(item)}
+                >
+                  <p className="category-dropdown--name"># {item.name}</p>
+                  <p className="category-dropdown--description">
+                    {item.description}
+                  </p>
+                </Dropdown.Item>
+              ))}
+          </div>
+        </Dropdown.Menu>
+      </Dropdown>
+    </div>
   );
 };
 
@@ -79,8 +143,8 @@ const RenderVendorCategoryRow = ({
     );
   };
 
-  const handleChangeCategory = (cid) => {
-    changeCategory(cid, id);
+  const handleChangeCategory = (citem) => {
+    changeCategory(citem, id);
   };
 
   useEffect(() => {
@@ -171,8 +235,10 @@ const AddVendors = ({
     setAvailableCategories(vendorCategories.filter((_, i) => i >= 5));
   }, [vendorCategories]);
 
-  const changeCategory = (cid, oid) => {
-    const cCategory = availableCategories[cid];
+  const changeCategory = (citem, oid) => {
+    const cCategory = availableCategories.find(
+      (item) => item.name === citem.name
+    );
     const oCategory = categories[oid];
 
     setCategories((value) =>
@@ -186,7 +252,7 @@ const AddVendors = ({
 
     setAvailableCategories((value) =>
       value.map((item, i) => {
-        if (i === cid) {
+        if (item.name === citem.name) {
           return oCategory;
         }
         return item;
