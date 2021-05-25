@@ -6,6 +6,7 @@ import Content from "./components/app/Content/Content";
 import Directory from "./components/app/Directory/Directory";
 import Feed from "./components/app/Feed/Feed";
 import Homepage from "./components/home/Homepage";
+import NewHomepage from "./components/home/NewHomepage";
 import Login from "./components/login/Login";
 import Logout from "./components/login/Logout";
 import Network from "./components/app/Network/Network";
@@ -83,7 +84,7 @@ class App extends React.Component {
             }
           />
           <Route exact path="/home">
-            <Homepage />
+            <NewHomepage />
           </Route>
           <Route exact path="/signup">
             <Signup />
