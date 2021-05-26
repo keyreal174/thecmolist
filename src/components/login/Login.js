@@ -7,7 +7,7 @@ import Util from "../util/Util";
 import Logo from "../app/base/Header/svgs/logo.svg";
 import Footer from "../app/base/Footer/Footer";
 import "./login.scss";
-import { privacyPolicy } from "../util/constants";
+import { userPolicy, privacyPolicy } from "../util/constants";
 import LinkedInIcon from "./icons/linkedin.svg";
 
 const loginRequest = (user, password) => {
@@ -154,13 +154,14 @@ class Login extends React.Component {
                 Sign in with Linkedin
               </a>
               <p className="login--disclaimer">
-                By signing in, you agree to our <a href="#">User Agreement</a>{" "}
-                and <a href={privacyPolicy}>Privacy Policy</a>.
+                By signing in, you agree to our{" "}
+                <a href={userPolicy}>User Agreement</a> and{" "}
+                <a href={privacyPolicy}>Privacy Policy</a>.
               </p>
               <p className="login--question">
                 Any questions or problems signing in? Please contact us at{" "}
                 <strong className="login--contact-email">
-                  hello@thecmolist.com
+                  <a href="mailto:hello@theCMOlist.com">hello@theCMOlist.com</a>
                 </strong>
                 .
               </p>
@@ -168,7 +169,7 @@ class Login extends React.Component {
               <p className="login--signup">
                 New to CMOlist ?{" "}
                 <strong>
-                  <a href="#" onClick={() => console.log("apply now")}>
+                  <a href="./signup" onClick={() => console.log("apply now")}>
                     Apply now
                   </a>
                 </strong>
