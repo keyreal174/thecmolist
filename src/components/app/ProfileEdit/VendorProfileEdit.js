@@ -290,7 +290,7 @@ const VendorProfileEdit = (props) => {
                 {vendorType === "Company" ? (
                   <>
                     <Col md="6" sm="12">
-                      <Form.Label>Company name</Form.Label>
+                      <Form.Label>Agency name</Form.Label>
                       <Form.Control
                         className="profile--input"
                         placeholder=""
@@ -311,7 +311,7 @@ const VendorProfileEdit = (props) => {
                 ) : vendorType === "Product" ? (
                   <>
                     <Col md="6" sm="12">
-                      <Form.Label>Product name</Form.Label>
+                      <Form.Label>Tool name</Form.Label>
                       <Form.Control
                         className="profile--input"
                         placeholder=""
@@ -355,7 +355,7 @@ const VendorProfileEdit = (props) => {
               <Row className="profile--row">
                 {vendorType === "Company" ? (
                   <Col md="6" sm="12">
-                    <Form.Label>Company Website</Form.Label>
+                    <Form.Label>Agency Website</Form.Label>
                     <Form.Control
                       className="profile--input"
                       placeholder=""
@@ -365,7 +365,7 @@ const VendorProfileEdit = (props) => {
                   </Col>
                 ) : vendorType === "Product" ? (
                   <Col md="6" sm="12">
-                    <Form.Label>Product Website</Form.Label>
+                    <Form.Label>Tool Website</Form.Label>
                     <Form.Control
                       className="profile--input"
                       placeholder=""

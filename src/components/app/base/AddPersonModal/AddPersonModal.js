@@ -5,7 +5,7 @@ import Util from "../../../util/Util";
 import "./AddPersonModal.scss";
 import clsx from "clsx";
 
-const VendorType = ["Company", "Product", "Contractor"];
+const VendorType = ["Tool", "Agency", "Contractor"];
 
 function AddPersonModal({ show, handleClose, setMention, defaultName }) {
   const nameRef = useRef();
@@ -137,7 +137,7 @@ function AddPersonModal({ show, handleClose, setMention, defaultName }) {
                           onChange={(e) => setLink(e.target.value)}
                           placeholder={
                             isPerson
-                              ? "https://linkedin.com/in/linkedinID"
+                              ? "https://linkedin.com/in/linkedin_ID"
                               : "URL"
                           }
                           value={link}
