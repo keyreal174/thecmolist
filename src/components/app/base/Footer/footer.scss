@@ -1,3 +1,5 @@
+@import "../../../../sass/variables";
+
 .footer {
   min-height: 60px;
 }
@@ -55,5 +57,56 @@
   }
   .footer__menu a {
     margin: 0 10px;
+  }
+}
+
+/* home footer */
+.home-footer {
+  background: #2e3469;
+  padding: 20px 0;
+
+  .footer {
+    &__copyright {
+      color: $text-3;
+    }
+
+    &__social_icons {
+      & > a {
+        padding: 0 12px;
+      }
+    }
+
+    &__left {
+      @media screen and(max-width: 767px) {
+        margin-bottom: 20px;
+      }
+    }
+
+    &__menu {
+      a {
+        color: white !important;
+        font-size: 14px;
+        line-height: 27px;
+        font-weight: 400;
+        padding: 0 15px;
+      }
+
+      @media screen and(max-width: 991px) {
+        & a {
+          padding: 0;
+          margin-left: 10px;
+        }
+      }
+
+      @media screen and(max-width: 767px) {
+        flex-direction: column;
+        align-items: center;
+
+        & li {
+          padding-bottom: 10px;
+          padding-top: 10px;
+        }
+      }
+    }
   }
 }
