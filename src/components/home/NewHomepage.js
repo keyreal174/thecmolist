@@ -122,7 +122,8 @@ function Homepage() {
                   {marketingLeaders.map(({ img }, index) => (
                     <Col
                       md="2"
-                      sm="6"
+                      sm="4"
+                      xs="6"
                       className="home--leaders-section-item text-center"
                     >
                       <img alt={`item ${index}`} src={img} />
