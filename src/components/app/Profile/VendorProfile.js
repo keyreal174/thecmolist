@@ -93,6 +93,7 @@ const ProfileIntro = ({
   profileMail,
   profileLinkedin,
   profileTwitter,
+  profileWebsite,
   profileIndustry,
 }) => {
   return (
@@ -127,20 +128,40 @@ const ProfileIntro = ({
             <div className="right-section--linkdin right-section--item">
               <img
                 className="right-section--item-img"
-                alt="linkedin"
+                alt="LinkedIn"
                 src={LinkedIn}
               />
               <a href={profileLinkedin}>Linkedin</a>
             </div>
           )}
           {profileTwitter && (
-            <div className="right-section--linkdin right-section--item">
+            <div className="right-section--twitter right-section--item">
               <img
                 className="right-section--item-img"
                 alt="twitter"
                 src={Twitter}
               />
               <a href={profileTwitter}>Twitter</a>
+            </div>
+          )}
+          {profileWebsite && (
+            <div className="right-section--website right-section--item">
+              <img
+                className="right-section--item-img"
+                alt="Company Website"
+                src={Website}
+              />
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={profileWebsite}
+                //                 profileWebsite.startsWith("http")
+                //                   ? profileWebsite
+                //                   : "https://" + profileWebsite
+                //               }
+              >
+                Website
+              </a>
             </div>
           )}
           {profileIndustry && (
@@ -196,9 +217,7 @@ const ProfileOverview = ({
                         ? profileWebsite
                         : "https://" + profileWebsite
                     }
-                  >
-                    <img className="overview-link-img" src={Website} alt="" />
-                  </a>
+                  ></a>
                 </span>
               )}
             </h2>
@@ -473,6 +492,7 @@ const VendorProfile = (props) => {
               profileMail={profileMail}
               profileLinkedin={profileLinkedin}
               profileTwitter={profileTwitter}
+              profileWebsite={{ profileWebsite }}
               profileIndustry={profileIndustry}
             />
           </Row>
