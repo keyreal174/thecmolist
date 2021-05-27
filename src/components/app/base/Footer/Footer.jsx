@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "./footer.css";
+import "./footer.scss";
 import { userPolicy, privacyPolicy } from "../../../util/constants";
 
 function Footer({ className }) {

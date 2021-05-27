@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Button, Container, Row, Col, Form } from "react-bootstrap";
 import AnimationText from "../app/base/AnimationText/AnimationText";
-import Footer from "../app/base/Footer/Footer";
+import HomeFooter from "../app/base/Footer/HomeFooter";
 import Spinner from "react-spinner-material";
 import Logo from "../app/base/Header/svgs/logo.svg";
 import HomeSVG from "./svg/home.svg";
@@ -33,7 +33,7 @@ function Homepage() {
   };
 
   return (
-    <div>
+    <div className="home--page">
       <div className="home--header">
         <Container>
           <div className="home--header-logo">
@@ -59,19 +59,21 @@ function Homepage() {
               <Row>
                 <Col md="6">
                   <div className="home--title text-left">
-                    <div>Connect with your peers</div>
-                    <div className="d-flex">
-                      <span className="mr-2"> to get the marketing</span>
-                      <AnimationText
-                        strings={[
-                          "advice",
-                          "tools",
-                          "agencies",
-                          "contractors",
-                          "playbooks",
-                          "news",
-                        ]}
-                      />
+                    <div className="">
+                      <span className="mr-2">
+                        Connect with your marketing peers to get the
+                      </span>
+                      <span>
+                        <AnimationText
+                          strings={[
+                            "advice",
+                            "tools",
+                            "agencies",
+                            "contractors",
+                            "insights",
+                          ]}
+                        />
+                      </span>
                     </div>
                     <div>you need to succeed</div>
                   </div>
@@ -90,11 +92,11 @@ function Homepage() {
                     </Button>
                   </div>
                 </Col>
-                <Col md="6">
+                <Col md="6" className="d-flex align-items-center">
                   <img
                     src={HomeSVG}
-                    alt="CMOList CMO Questions Graphic"
-                    className="home--svg"
+                    alt="CMOList home svg"
+                    className="home--svg img-fluid"
                   ></img>
                 </Col>
               </Row>
@@ -191,7 +193,7 @@ function Homepage() {
           </Row>
         </Container>
       </div>
-      <Footer className="home--footer" />
+      <HomeFooter className="home--footer" />
     </div>
   );
 }
