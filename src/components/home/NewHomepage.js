@@ -42,7 +42,13 @@ function Homepage() {
             </a>
           </div>
           <div className="home--header-button">
-            <Button onClick={handleHeaderLoginButtonClick}>Sign in</Button>
+            <Button
+              className="btn-white"
+              variant="primary"
+              onClick={handleHeaderLoginButtonClick}
+            >
+              Sign in
+            </Button>
           </div>
         </Container>
       </div>
@@ -77,7 +83,11 @@ function Homepage() {
                     vendors.
                   </div>
                   <div className="home--apply-button">
-                    <Button className="btn-blue" variant="primary">
+                    <Button
+                      className="btn-blue"
+                      variant="primary"
+                      onClick="window.location.href='/signup"
+                    >
                       Apply For Membership
                     </Button>
                   </div>
@@ -100,8 +110,7 @@ function Homepage() {
             <Col className="px-0" md="12" sm="12">
               <div className="home--leaders-section">
                 <div className="home--leaders-section-title">
-                  Developed in close collaboration with marketing executives
-                  from leading companies
+                  Developed in collaboration with leading marketers from
                 </div>
                 <Row
                   sm="12"

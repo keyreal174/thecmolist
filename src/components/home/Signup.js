@@ -25,9 +25,9 @@ function Signup() {
       <div className="row no-gutters">
         <div className="col-md-3" />
         <div className="col-md-6">
-          <div className="signup--logo nav__logo">
+          <a className="signup--logo nav__logo" href="/">
             <img src={Logo} alt="CMOList brand logo" />
-          </div>
+          </a>
           <form
             className="signup--form"
             name="submit-to-google-sheet"
