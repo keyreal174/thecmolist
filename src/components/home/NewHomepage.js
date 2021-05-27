@@ -61,7 +61,8 @@ function Homepage() {
                   <div className="home--title text-left">
                     <div className="">
                       <span className="mr-2">
-                        Connect with your marketing peers to get the
+                        Connect with your peers <br></br>
+                        to get the marketing
                       </span>
                       <span>
                         <AnimationText
@@ -70,7 +71,8 @@ function Homepage() {
                             "tools",
                             "agencies",
                             "contractors",
-                            "insights",
+                            "playbooks",
+                            "news",
                           ]}
                         />
                       </span>
