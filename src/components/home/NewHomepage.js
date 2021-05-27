@@ -88,7 +88,7 @@ function Homepage() {
                     <Button
                       className="btn-blue"
                       variant="primary"
-                      onClick="window.location.href='/signup"
+                      onClick={() => (window.location.href = "/signup")}
                     >
                       Apply For Membership
                     </Button>
