@@ -42,7 +42,13 @@ function Homepage() {
             </a>
           </div>
           <div className="home--header-button">
-            <Button onClick={handleHeaderLoginButtonClick}>Sign in</Button>
+            <Button
+              className="btn-white"
+              variant="primary"
+              onClick={handleHeaderLoginButtonClick}
+            >
+              Sign in
+            </Button>
           </div>
         </Container>
       </div>
@@ -53,16 +59,17 @@ function Homepage() {
               <Row>
                 <Col md="6">
                   <div className="home--title text-left">
-                    <div>Connect with your marketing</div>
+                    <div>Connect with your peers</div>
                     <div className="d-flex">
-                      <span className="mr-2">peers to get the</span>
+                      <span className="mr-2"> to get the marketing</span>
                       <AnimationText
                         strings={[
                           "advice",
                           "tools",
                           "agencies",
                           "contractors",
-                          "insights",
+                          "playbooks",
+                          "news",
                         ]}
                       />
                     </div>
@@ -74,7 +81,11 @@ function Homepage() {
                     vendors.
                   </div>
                   <div className="home--apply-button">
-                    <Button className="btn-blue" variant="primary">
+                    <Button
+                      className="btn-blue"
+                      variant="primary"
+                      onClick="window.location.href='/signup"
+                    >
                       Apply For Membership
                     </Button>
                   </div>
@@ -82,7 +93,7 @@ function Homepage() {
                 <Col md="6">
                   <img
                     src={HomeSVG}
-                    alt="CMOList home svg"
+                    alt="CMOList CMO Questions Graphic"
                     className="home--svg"
                   ></img>
                 </Col>
@@ -97,8 +108,7 @@ function Homepage() {
             <Col className="px-0" md="12" sm="12">
               <div className="home--leaders-section">
                 <div className="home--leaders-section-title">
-                  Developed in close collaboration with marketing executives
-                  from leading companies
+                  Developed in collaboration with leading marketers from
                 </div>
                 <Row
                   sm="12"
