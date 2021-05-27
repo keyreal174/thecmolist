@@ -327,21 +327,6 @@ const Profile = (props) => {
                     <h2 className="overview-header mb-1">
                       {profileFirstName}&nbsp;
                       {profileLastName}&nbsp;
-                      {profileWebsite.length > 0 && (
-                        <span className="overview-link-button">
-                          <a
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            href={profileWebsite}
-                          >
-                            <img
-                              className="overview-link-img"
-                              src={Website}
-                              alt=""
-                            />
-                          </a>
-                        </span>
-                      )}
                     </h2>
                     <div className="overview-subheadline">
                       {profileTitle} at {profileCompany}
@@ -406,7 +391,7 @@ const Profile = (props) => {
                     <div className="right-section--job right-section--item">
                       <img
                         className="right-section--item-img"
-                        alt="work"
+                        alt="Work"
                         src={Education}
                       />
                       {`${profileTitle} at `}
@@ -417,7 +402,7 @@ const Profile = (props) => {
                     <div className="right-section--live right-section--item">
                       <img
                         className="right-section--item-img"
-                        alt="location"
+                        alt="Location"
                         src={Location}
                       />
                       Lives in{" "}
@@ -430,7 +415,7 @@ const Profile = (props) => {
                     <div className="right-section--followers right-section--item">
                       <img
                         className="right-section--item-img"
-                        alt="followers"
+                        alt="Followers"
                         src={Group}
                       />
                       Followed by{" "}
@@ -441,7 +426,7 @@ const Profile = (props) => {
                     <div className="right-section--email right-section--item">
                       <img
                         className="right-section--item-img"
-                        alt="mail"
+                        alt="Email"
                         src={Mail}
                       />
                       <a href={"mailto:" + profileMail}>Email</a>
@@ -451,10 +436,20 @@ const Profile = (props) => {
                     <div className="right-section--linkdin right-section--item">
                       <img
                         className="right-section--item-img"
-                        alt="linkedin"
+                        alt="LinkedIn"
                         src={LinkedIn}
                       />
                       <a href={profileLinkedin}>Linkedin</a>
+                    </div>
+                  )}
+                  {profileWebsite && profileWebsite.length > 0 && (
+                    <div className="right-section--website right-section--item">
+                      <img
+                        className="right-section--item-img"
+                        alt="Website"
+                        src={Website}
+                      />
+                      <a href={profileWebsite}>Website</a>
                     </div>
                   )}
                 </div>
@@ -512,9 +507,13 @@ const Profile = (props) => {
                   </div>
                 </Col>
                 <Col md="6">
-                  <Form.Label>Open to advising</Form.Label>
+                  <Form.Label className="profile-about--open-title">
+                    Open to advising
+                  </Form.Label>
                   <div>
-                    <span>{profileAbout.advising ? "Yes" : "No"}</span>
+                    <span className="profile-about--open-content">
+                      {profileAbout.advising ? "Yes" : "No"}
+                    </span>
                   </div>
                 </Col>
               </Row>
