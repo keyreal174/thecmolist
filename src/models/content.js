@@ -34,6 +34,12 @@ export const postVendors = (vendors) => {
   });
 };
 
+export const postSkills = (skills) => {
+  return axios.post("/api/skills", {
+    data: skills,
+  });
+};
+
 export default {
   name: "contentModel",
   state: {
@@ -188,6 +194,17 @@ export default {
         }
       } catch (error) {
         throw new Error("Could not save vendors");
+      }
+    },
+    async saveSkills(data) {
+      try {
+        if (data) {
+          const response = await postSkills(data);
+        } else {
+          throw new Error("Could not save skills without data");
+        }
+      } catch (error) {
+        throw new Error("Could not save skills");
       }
     },
   }),

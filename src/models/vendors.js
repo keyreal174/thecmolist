@@ -33,6 +33,11 @@ const postNewMember = (data) => {
 const getVendorCategoriesRequest = () => {
   return axios.get("/api/vendor_categories");
 };
+
+const getSkillCategoriesRequest = () => {
+  return axios.get("/api/skill_categories");
+};
+
 export default {
   name: "vendorsModel",
   state: {
@@ -45,6 +50,7 @@ export default {
     activeSubFilter: "",
     sortOrder: "Top",
     vendorCategories: [],
+    skillCategories: [],
   },
   reducers: {
     initFeedDataForKey: (oldState, filterKey) => {
@@ -134,6 +140,12 @@ export default {
       return {
         ...oldState,
         vendorCategories: data,
+      };
+    },
+    setSkillCategories: (oldState, data) => {
+      return {
+        ...oldState,
+        skillCategories: data,
       };
     },
   },
@@ -245,6 +257,16 @@ export default {
         );
       } catch (error) {
         throw new Error("Can not get vendor categories.");
+      }
+    },
+    async getSkillCategories() {
+      try {
+        const response = await getSkillCategoriesRequest();
+        dispatch.vendorsModel.setSkillCategories(
+          response.data.categories || []
+        );
+      } catch (error) {
+        throw new Error("Can not get skill categories.");
       }
     },
   }),
