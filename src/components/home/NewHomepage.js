@@ -38,7 +38,7 @@ function Homepage() {
         <Container>
           <div className="home--header-logo">
             <a className="nav__logo" href="/">
-              <img src={Logo} alt="CMOList logo"></img>
+              <img src={Logo} alt="CMOList logo" width="170"></img>
             </a>
           </div>
           <div className="home--header-button">

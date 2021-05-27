@@ -26,7 +26,7 @@ function Signup() {
         <div className="col-md-3" />
         <div className="col-md-6">
           <a className="signup--logo nav__logo" href="/">
-            <img src={Logo} alt="CMOList brand logo" />
+            <img src={Logo} alt="CMOList brand logo" width="170" />
           </a>
           <form
             className="signup--form"
