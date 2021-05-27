@@ -219,8 +219,8 @@
     background: $white;
     min-height: 180px;
     padding-top: 70px;
-    padding-left: 200px;
-    padding-right: 200px;
+    padding-left: 30px;
+    padding-right: 30px;
     padding-bottom: 30px;
 
     &-section {
@@ -241,6 +241,8 @@
           height: 60px;
           object-fit: contain;
           width: 100px;
+          padding-left: 5px;
+          padding-right: 5px;
         }
       }
     }
@@ -248,7 +250,6 @@
 
   &--share {
     padding: 80px 0 107px;
-    padding-left: 30px;
     background-color: #fafafa;
 
     @media screen and (max-width: 767px) {
@@ -343,6 +344,7 @@
     &--title {
       font-size: 32px;
       line-height: 40px;
+      font-family: "Cormorant Garamond", serif;
     }
     &--description {
       font-size: 24px;
@@ -497,13 +499,9 @@
         &-item {
           background-color: $white;
           border-radius: 20px;
-          flex: 0 45%;
           height: 104px;
           margin-bottom: 10px;
-          margin-left: 5px;
-          margin-right: 10px;
           padding: 0;
-          width: 45% !important;
 
           img {
             display: block;
@@ -521,7 +519,6 @@
       &-title {
         font-size: 28px;
         line-height: 36px;
-        font-weight: 700;
         text-align: center;
         margin-bottom: 20px;
       }
@@ -581,6 +578,32 @@
         font-size: 18px;
         line-height: 20px;
       }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .home--header {
+    padding-left: 15px;
+  }
+  .home--hero {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .home--leaders {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .home--share {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 359px) {
+  .home--share-items-wrapper {
+    .home--share-item {
+      width: 280px !important;
     }
   }
 }

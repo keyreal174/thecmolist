@@ -38,7 +38,7 @@ function Homepage() {
         <Container>
           <div className="home--header-logo">
             <a className="nav__logo" href="/">
-              <img src={Logo} alt="CMOList logo"></img>
+              <img src={Logo} alt="CMOList logo" width="170"></img>
             </a>
           </div>
           <div className="home--header-button">
@@ -61,7 +61,8 @@ function Homepage() {
                   <div className="home--title text-left">
                     <div className="">
                       <span className="mr-2">
-                        Connect with your marketing peers to get the
+                        Connect with your peers <br></br>
+                        to get the marketing
                       </span>
                       <span>
                         <AnimationText
@@ -70,7 +71,8 @@ function Homepage() {
                             "tools",
                             "agencies",
                             "contractors",
-                            "insights",
+                            "playbooks",
+                            "news",
                           ]}
                         />
                       </span>
@@ -120,7 +122,8 @@ function Homepage() {
                   {marketingLeaders.map(({ img }, index) => (
                     <Col
                       md="2"
-                      sm="6"
+                      sm="4"
+                      xs="6"
                       className="home--leaders-section-item text-center"
                     >
                       <img alt={`item ${index}`} src={img} />

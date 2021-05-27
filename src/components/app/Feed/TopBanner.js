@@ -107,7 +107,7 @@ const TopBanner = ({
               className="btn-white mb-2 top-banner-button"
               onClick={() => handleShow("project")}
             >
-              Share Campaign
+              Share Playbook
             </Button>
             <Button
               className="btn-white top-banner-button"

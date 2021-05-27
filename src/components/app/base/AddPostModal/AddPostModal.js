@@ -212,9 +212,9 @@ function AddPostModal({
       setSecondButtonText("Ask Question");
     } else if (contentType === "project") {
       setTitleHeading("Title");
-      setModalTitle("Share a campaign or update");
+      setModalTitle("Share a marketing playbook or insight");
       setTitlePlaceholder(" ");
-      setSecondButtonText("Share Campaign");
+      setSecondButtonText("Share Playbook");
     } else if (contentType === "article") {
       setTitleHeading("Article URL");
       setTitlePlaceholder("http://");

@@ -99,14 +99,14 @@ class Login extends React.Component {
           <div className="col-md-3" />
           <div className="col-md-6">
             <a className="login--logo nav__logo" href="/">
-              <img src={Logo} alt="CMOList brand logo" />
+              <img src={Logo} alt="CMOList brand logo" width="170" />
             </a>
             <form
               name="Login_Form"
-              className="login--form form-signin form-group"
+              className="login--form form-signin form-group position-relative"
               onSubmit={this.handleSubmit.bind(this)}
             >
-              <h2 className="login--title">Sign in into CMOlist</h2>
+              <h2 className="login--title">Sign into CMOlist</h2>
               <input
                 type="email"
                 className="form-control form-username input-field"
