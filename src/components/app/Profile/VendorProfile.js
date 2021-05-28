@@ -222,7 +222,12 @@ const ProfileOverview = ({
               )}
             </h2>
             <div className="overview-subheadline">
-              {profileTitle && `${profileTitle}`}
+              {profileTitle &&
+                (profileTitle === "Company"
+                  ? "Agency"
+                  : profileTitle === "Product"
+                  ? "Tool"
+                  : "Contractor")}
             </div>
           </div>
         )}

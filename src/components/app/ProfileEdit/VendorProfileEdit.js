@@ -10,7 +10,7 @@ import { Container, Button, Form, Row, Col } from "react-bootstrap";
 import { vendorProfileHeader } from "../../util/constants";
 import Util from "../../util/Util";
 
-const VendorType = ["Company", "Product", "Contractor"];
+const VendorType = ["Product", "Company", "Contractor"];
 
 const VendorProfileEdit = (props) => {
   const history = useHistory();

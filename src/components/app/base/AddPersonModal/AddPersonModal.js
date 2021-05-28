@@ -5,7 +5,7 @@ import Util from "../../../util/Util";
 import "./AddPersonModal.scss";
 import clsx from "clsx";
 
-const VendorType = ["Company", "Product", "Contractor"];
+const VendorType = ["Product", "Company", "Contractor"];
 
 function AddPersonModal({ show, handleClose, setMention, defaultName }) {
   const nameRef = useRef();
