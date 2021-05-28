@@ -30,7 +30,7 @@ const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
   </a>
 ));
 
-const CategoryDropdown = ({
+export const CategoryDropdown = ({
   category,
   categoryList,
   categoryId,
@@ -108,13 +108,14 @@ const PopularTool = ({ tool, onSelectTool }) => {
   );
 };
 
-const RenderVendorCategoryRow = ({
+export const RenderVendorCategoryRow = ({
   id,
   cate,
   getSuggestions,
   updateVendors,
   availableCategories,
   changeCategory,
+  skill,
 }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [myTools, setMyTools] = useState([]);
@@ -183,7 +184,9 @@ const RenderVendorCategoryRow = ({
           onChange={(selectedOption) => {
             setMyTools(selectedOption);
           }}
-          placeholder="Search & select tool(s)"
+          placeholder={
+            skill ? "Summarize your expertise" : "Search & select tool(s)"
+          }
           renderMenuItemChildren={(option) => (
             <React.Fragment>
               <span>{option.name}</span>
@@ -192,16 +195,18 @@ const RenderVendorCategoryRow = ({
         />
       </Col>
       <Col md={4}>
-        <div className="vendor-category--popular-tools">
-          {cate &&
-            cate.tools.map((tool, ti) => (
-              <PopularTool
-                tool={tool}
-                key={ti}
-                onSelectTool={() => onSelectTool(tool, cate.name)}
-              />
-            ))}
-        </div>
+        {!skill && (
+          <div className="vendor-category--popular-tools">
+            {cate &&
+              cate.tools.map((tool, ti) => (
+                <PopularTool
+                  tool={tool}
+                  key={ti}
+                  onSelectTool={() => onSelectTool(tool, cate.name)}
+                />
+              ))}
+          </div>
+        )}
       </Col>
     </Row>
   );
@@ -261,11 +266,13 @@ const AddVendors = ({
   };
 
   const addNewCategory = (cid, oid) => {
-    const cCategory = availableCategories[cid];
+    const cCategory = availableCategories.find((c) => c.name === cid.name);
 
     setCategories((value) => [...value, cCategory]);
 
-    setAvailableCategories((value) => value.filter((_, i) => i !== cid));
+    setAvailableCategories((value) =>
+      value.filter((c, i) => c.name !== cid.name)
+    );
   };
 
   const updateVendors = (tools, name) => {

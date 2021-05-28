@@ -1,0 +1,81 @@
+{
+  "categories": [
+    {
+      "name": "mobilemarketing",
+      "description": "Mobile Marketing"
+    },
+    {
+      "name": "nativeadvertising",
+      "description": "Native/Content Advertising"
+    },
+    {
+      "name": "outofhomeadvertising",
+      "description": "Out-of-Home Advertising"
+    },
+    {
+      "name": "partnermarketing",
+      "description": "Partner Marketing"
+    },
+    {
+      "name": "performancemarketing",
+      "description": "Performance Marketing"
+    },
+    {
+      "name": "printadvertising",
+      "description": "Print Advertising"
+    },
+    {
+      "name": "programmaticadertising",
+      "description": "Programmatic Advertising"
+    },
+    {
+      "name": "radioadvertising",
+      "description": "Radio Advertising"
+    },
+    {
+      "name": "referralmarketing",
+      "description": "Referral Marketing"
+    },
+    {
+      "name": "retailmarketing",
+      "description": "Retail Marketing"
+    },
+    {
+      "name": "salesautomation",
+      "description": "Sales Automation & Intelligence"
+    },
+    {
+      "name": "sem",
+      "description": "Search Engine Marketing (SEM)"
+    },
+    {
+      "name": "seo",
+      "description": "Search Engine Optimization (SEO)"
+    },
+    {
+      "name": "socialadvertising",
+      "description": "Social Advertising",
+      "tools": []
+    },
+    {
+      "name": "socialmediamarketing",
+      "description": "Social Media Marketing"
+    },
+    {
+      "name": "tvadvertising",
+      "description": "TV Advertising"
+    },
+    {
+      "name": "videoadvertising",
+      "description": "Video Advertising"
+    },
+    {
+      "name": "videomarketing",
+      "description": "Video Marketing"
+    },
+    {
+      "name": "webanalytics",
+      "description": "Web Analytics"
+    }
+  ]
+}

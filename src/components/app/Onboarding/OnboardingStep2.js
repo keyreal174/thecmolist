@@ -15,7 +15,7 @@ import "./onboardingStep2.scss";
 import { useHistory } from "react-router";
 import { CSSTransition } from "react-transition-group";
 import AddVendors from "../base/AddVendors/AddVendors";
-
+import AddSkills from "../base/AddSkills/AddSkills";
 const RenderCMOList = ({
   value,
   handleChange,
@@ -74,6 +74,7 @@ const OnboardingStep2 = ({
   const [showMore, setShowMore] = useState(false);
   const [showGetIntro, setShowGetIntro] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [step, setStep] = useState(1);
   const introOptions = [
     "Getting marketing advice",
     "Building my marketing network",
@@ -152,6 +153,8 @@ const OnboardingStep2 = ({
       title={
         showGetIntro
           ? "One last step..."
+          : step === 1
+          ? "Share your areas of marketing expertise with your peers"
           : "Please share your favorite marketing tools with your peers to be able to see their marketing stacks"
       }
       subtitle={
@@ -232,13 +235,20 @@ const OnboardingStep2 = ({
             <div />
           )}
         </CSSTransition>
-        {!showGetIntro && (
-          <CustomCard className="onboarding--card">
-            <div className="p-4">
-              <AddVendors submitAfter={() => setShowGetIntro(true)} />
-            </div>
-          </CustomCard>
-        )}
+        {!showGetIntro &&
+          (step === 1 ? (
+            <CustomCard className="onboarding--card">
+              <div className="p-4">
+                <AddSkills submitAfter={() => setStep(2)} />
+              </div>
+            </CustomCard>
+          ) : (
+            <CustomCard className="onboarding--card">
+              <div className="p-4">
+                <AddVendors submitAfter={() => setShowGetIntro(true)} />
+              </div>
+            </CustomCard>
+          ))}
         <Row>
           <Col
             className="onboarding--done-wrapper d-flex justify-content-end"
