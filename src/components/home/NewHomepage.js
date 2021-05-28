@@ -114,7 +114,14 @@ function Homepage() {
                 <div className="home--leaders-section-title">
                   Developed in collaboration with leading marketers from
                 </div>
-                <Row
+                <div className="home--leaders-section-items-wrapper">
+                  {marketingLeaders.map(({ img }, index) => (
+                    <div key={index} className="home--leaders-section-item">
+                      <img alt={`item ${index}`} src={img} />
+                    </div>
+                  ))}
+                </div>
+                {/* <Row
                   sm="12"
                   md="12"
                   className="home--leaders-section-items-wrapper"
@@ -129,7 +136,7 @@ function Homepage() {
                       <img alt={`item ${index}`} src={img} />
                     </Col>
                   ))}
-                </Row>
+                </Row> */}
               </div>
             </Col>
           </Row>
