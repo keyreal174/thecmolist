@@ -224,6 +224,11 @@
     padding-bottom: 30px;
 
     &-section {
+      &-items-wrapper {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
       &-title {
         color: $text-1;
         font-size: 26px;
@@ -237,6 +242,8 @@
       }
       &-item {
         margin-bottom: 30px;
+        min-width: 200px;
+        text-align: center;
         img {
           height: 60px;
           object-fit: contain;
@@ -346,24 +353,6 @@
       line-height: 40px;
       font-family: "Cormorant Garamond", serif;
     }
-    &--description {
-      font-size: 24px;
-      line-height: 30px;
-    }
-    &--apply-button {
-      button {
-        padding: 16px 32px;
-        font-size: 20px;
-        line-height: 32px;
-
-        &:hover,
-        &:focus {
-          padding: 16px 32px;
-          font-size: 20px;
-          line-height: 32px;
-        }
-      }
-    }
     &--form {
       padding: 0px;
     }
@@ -416,23 +405,7 @@
       line-height: 36px;
     }
     &--description {
-      font-size: 20px;
-      line-height: 24px;
       margin-bottom: 32px;
-    }
-    &--apply-button {
-      button {
-        padding: 12px 24px;
-        font-size: 16px;
-        line-height: 24px;
-
-        &:hover,
-        &:focus {
-          padding: 12px 24px;
-          font-size: 16px;
-          line-height: 24px;
-        }
-      }
     }
     &--subtitle {
       font-size: 17px;
@@ -502,6 +475,7 @@
           height: 104px;
           margin-bottom: 10px;
           padding: 0;
+          min-width: 150px;
 
           img {
             display: block;
