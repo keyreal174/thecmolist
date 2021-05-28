@@ -271,7 +271,14 @@ const VendorProfileEdit = (props) => {
                       return (
                         <Form.Check
                           key={index}
-                          label={vendor}
+                          label={
+                            vendor === "Company"
+                              ? "Agency"
+                              : vendor === "Product"
+                              ? "Tool"
+                              : "Contractor"
+                          }
+                          //                          label={vendor}
                           name="vendortype"
                           value={vendor}
                           id={vendor}
@@ -299,7 +306,7 @@ const VendorProfileEdit = (props) => {
                       />
                     </Col>
                     <Col md="6" sm="12">
-                      <Form.Label>Company LinkedIn URL</Form.Label>
+                      <Form.Label>Agency LinkedIn URL</Form.Label>
                       <Form.Control
                         className="profile--input"
                         placeholder=""
@@ -320,7 +327,7 @@ const VendorProfileEdit = (props) => {
                       />
                     </Col>
                     <Col md="6" sm="12">
-                      <Form.Label>Company LinkedIn URL</Form.Label>
+                      <Form.Label>Tool LinkedIn URL</Form.Label>
                       <Form.Control
                         className="profile--input"
                         placeholder=""

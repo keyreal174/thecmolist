@@ -5,7 +5,7 @@ import Util from "../../../util/Util";
 import "./AddPersonModal.scss";
 import clsx from "clsx";
 
-const VendorType = ["Tool", "Agency", "Contractor"];
+const VendorType = ["Company", "Product", "Contractor"];
 
 function AddPersonModal({ show, handleClose, setMention, defaultName }) {
   const nameRef = useRef();
@@ -89,7 +89,14 @@ function AddPersonModal({ show, handleClose, setMention, defaultName }) {
                               return (
                                 <Form.Check
                                   key={index}
-                                  label={vendor}
+                                  label={
+                                    vendor === "Company"
+                                      ? "Agency"
+                                      : vendor === "Product"
+                                      ? "Tool"
+                                      : "Contractor"
+                                  }
+                                  //                                 label={vendor}
                                   name="vendortype"
                                   value={vendor}
                                   id={vendor}
@@ -108,7 +115,11 @@ function AddPersonModal({ show, handleClose, setMention, defaultName }) {
                         <label>
                           {isPerson
                             ? "Please enter the person's full name"
-                            : vendorType + " name"}
+                            : vendorType === "Company"
+                            ? "Agency name"
+                            : vendorType === "Product"
+                            ? "Tool name"
+                            : "Contractor name"}
                         </label>
                         <Form.Control
                           as="input"
@@ -126,9 +137,11 @@ function AddPersonModal({ show, handleClose, setMention, defaultName }) {
                         <label>
                           {isPerson
                             ? "Person's Linkedin URL"
-                            : vendorType === "Contractor"
-                            ? "Linkedin URL"
-                            : vendorType + " URL"}
+                            : vendorType === "Company"
+                            ? "Agency website"
+                            : vendorType === "Product"
+                            ? "Tool website"
+                            : "Linkedin URL"}
                         </label>
                         <Form.Control
                           as="input"
