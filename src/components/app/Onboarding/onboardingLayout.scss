@@ -27,18 +27,19 @@
   }
   &--title {
     color: $text-1;
-    font-size: 35px;
-    line-height: 45px;
+    font-size: 56px;
+    line-height: 1.2;
     text-align: left;
     margin-top: 45px;
-    padding-left: 40px;
+    padding-left: 10px;
+    max-width: 1200px;
   }
   &--subtitle {
     color: $text-2;
-    font-size: 17px;
+    font-size: 24px;
     line-height: 22px;
     text-align: left;
-    margin-top: 10px;
+    margin-top: 20px;
   }
   &--children {
     margin-top: 42px;
@@ -48,7 +49,7 @@
 
 .onboarding-title {
   color: $text-1;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 56px;
   line-height: 73px;
   max-width: 900px;

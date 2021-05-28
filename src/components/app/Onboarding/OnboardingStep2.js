@@ -154,8 +154,8 @@ const OnboardingStep2 = ({
         showGetIntro
           ? "One last step..."
           : step === 1
-          ? "Share your areas of marketing expertise with your peers"
-          : "Please share your favorite marketing tools with your peers to be able to see their marketing stacks"
+          ? "Share your expertise with your peers"
+          : "Share your marketing stack with your peers"
       }
       subtitle={
         showGetIntro
@@ -208,8 +208,7 @@ const OnboardingStep2 = ({
               <Row className="onboarding--pill-wrapper">
                 <Col>
                   <Form.Label>
-                    Add a quick blurb about yourself to share with your
-                    colleagues
+                    Please introduce yourself to your peers
                   </Form.Label>
                   {introError && introError.length > 0 && (
                     <Alert className="mb-1 mt-1" variant="danger">

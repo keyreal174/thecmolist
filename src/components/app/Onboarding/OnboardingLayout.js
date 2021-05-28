@@ -11,7 +11,7 @@ const OnboardingLayout = ({ children, now, title, subtitle }) => {
         <div className="layout--header-background"></div>
         <Col md="12" className="layout--header-logo">
           <span>
-            <img src={Logo} alt="CMOList brand logo" />
+            <img src={Logo} alt="CMOList brand logo" width="170" />
             <span className="header--tag">Beta</span>
           </span>
         </Col>

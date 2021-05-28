@@ -155,12 +155,12 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
       now={isWelcome ? 0 : 50}
       title={
         <span
-          className="onboarding-title"
+          className="layout--title"
           style={{ textAlign: "left", display: "block" }}
         >
           {isWelcome
-            ? "Welcome to CMOlist"
-            : `Welcome ${firstname}! Please create your member profile`}
+            ? `Hello ${firstname}, welcome to CMOlist!`
+            : `Please create your member profile`}
         </span>
       }
       isWelcome={isWelcome}
