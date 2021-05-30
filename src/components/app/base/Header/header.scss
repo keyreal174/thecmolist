@@ -12,6 +12,12 @@
   transition-delay: 0ms;
 }
 
+.fadeAndSlideElementInFast {
+  opacity: 1;
+  animation: fade-slide-element-in 400ms ease;
+  transition-delay: 0ms;
+}
+
 @keyframes fade-element-in {
   0% {
     opacity: 0;

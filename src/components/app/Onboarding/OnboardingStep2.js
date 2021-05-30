@@ -149,7 +149,7 @@ const OnboardingStep2 = ({
 
   return (
     <OnboardingLayout
-      now={100}
+      now={step === 1 ? 75 : 100}
       title={
         showGetIntro
           ? "One last step..."
@@ -236,13 +236,13 @@ const OnboardingStep2 = ({
         </CSSTransition>
         {!showGetIntro &&
           (step === 1 ? (
-            <CustomCard className="onboarding--card">
+            <CustomCard className="onboarding--card fadeAndSlideElementInFast">
               <div className="p-4">
                 <AddSkills submitAfter={() => setStep(2)} />
               </div>
             </CustomCard>
           ) : (
-            <CustomCard className="onboarding--card">
+            <CustomCard className="onboarding--card fadeAndSlideElementInFast">
               <div className="p-4">
                 <AddVendors submitAfter={() => setShowGetIntro(true)} />
               </div>

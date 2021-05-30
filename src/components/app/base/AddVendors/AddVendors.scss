@@ -57,6 +57,19 @@
     div.col-md-4 {
       margin-bottom: 15px;
     }
+
+    .skills-text-area {
+      margin-top: -15px;
+      padding: 10px;
+      height: 45px;
+      color: $text-2;
+    }
+
+    @media screen and (max-width: 750px) {
+      .skills-text-area {
+        margin-top: -10px;
+      }
+    }
   }
 
   .form-control {

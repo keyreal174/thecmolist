@@ -15,11 +15,128 @@ import {
   TypeaheadMenu,
 } from "react-bootstrap-typeahead";
 import clsx from "clsx";
-import {
-  CategoryDropdown,
-  RenderVendorCategoryRow,
-} from "../AddVendors/AddVendors";
-// import "./AddVendors.scss";
+
+const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
+  <a
+    href=""
+    ref={ref}
+    onClick={(e) => {
+      e.preventDefault();
+      onClick(e);
+    }}
+  >
+    {children}
+  </a>
+));
+
+const CategoryDropdown = ({
+  category,
+  categoryList,
+  categoryId,
+  changeCategory,
+}) => {
+  const dropref = useRef();
+  const [value, setValue] = useState("");
+  return (
+    <div>
+      <Dropdown className="navbar-dropdown vendor-category-dropdown">
+        <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
+          {category && category.name ? "#" + category.name : ""}
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu>
+          <div className="px-3 mb-2 category-filter-text">
+            <FormControl
+              autoFocus
+              className="px-3"
+              placeholder="Type to filter..."
+              onChange={(e) => setValue(e.target.value)}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                }
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+                  if (
+                    dropref &&
+                    dropref.current &&
+                    dropref.current.children &&
+                    dropref.current.children.length > 0
+                  ) {
+                    dropref.current.children[0].focus();
+                  }
+                }
+              }}
+              value={value}
+            />
+          </div>
+          <div ref={dropref}>
+            {categoryList
+              .filter((item) => item.name.toLowerCase().includes(value))
+              .map((item, idx) => (
+                <Dropdown.Item
+                  key={idx}
+                  eventKey={idx}
+                  onClick={() => changeCategory(item)}
+                >
+                  <p className="category-dropdown--name"># {item.name}</p>
+                  <p className="category-dropdown--description">
+                    {item.description}
+                  </p>
+                </Dropdown.Item>
+              ))}
+          </div>
+        </Dropdown.Menu>
+      </Dropdown>
+    </div>
+  );
+};
+
+const RenderSkillCategoryRow = ({
+  id,
+  cate,
+  updateSkills,
+  availableCategories,
+  changeCategory,
+  skill,
+}) => {
+  const [mySkill, setMySkill] = useState("");
+
+  const handleChangeCategory = (citem) => {
+    changeCategory(citem, id);
+  };
+
+  useEffect(() => {
+    updateSkills && updateSkills(mySkill);
+  }, [mySkill]);
+
+  return (
+    <Row className="mb-3 align-items-center">
+      <Col md={4}>
+        <CategoryDropdown
+          category={cate}
+          categoryList={availableCategories}
+          categoryId={id}
+          changeCategory={handleChangeCategory}
+        />
+      </Col>
+      <Col md={8}>
+        <Form.Control
+          as="textarea"
+          className="skills-text-area"
+          placeholder="Summarize your experience"
+          rows={1}
+          name="headline"
+          onChange={(e) => {
+            setMySkill(e.target.value);
+          }}
+          value={mySkill}
+        />
+      </Col>
+    </Row>
+  );
+};
 
 const AddSkills = ({
   submitAfter,
@@ -40,7 +157,7 @@ const AddSkills = ({
     const skillTemp = skillCategories.map((cate) => {
       return {
         category: cate.name,
-        skills: [],
+        skill: "",
       };
     });
     setSkills(skillTemp);
@@ -84,12 +201,12 @@ const AddSkills = ({
     );
   };
 
-  const updateSkills = (tools, name) => {
+  const updateSkills = (skill, name) => {
     const skillTemp = skills.map((temp) => {
       if (temp.category === name) {
         return {
           category: temp.category,
-          skills: tools,
+          skill: skill,
         };
       }
       return temp;
@@ -111,19 +228,19 @@ const AddSkills = ({
       </Row>
       <div className="form-add-vendors--content">
         {categories.map((cate, i) => (
-          <RenderVendorCategoryRow
+          <RenderSkillCategoryRow
             key={i}
             id={i}
             cate={cate}
             getSuggestions={getSuggestions}
             availableCategories={availableCategories}
-            updateVendors={(tools) => updateSkills(tools, cate.name)}
+            updateSkills={(skill) => updateSkills(skill, cate.name)}
             changeCategory={changeCategory}
             skill
           />
         ))}
         {availableCategories.length > 0 && (
-          <RenderVendorCategoryRow
+          <RenderSkillCategoryRow
             availableCategories={availableCategories}
             changeCategory={addNewCategory}
             skill
