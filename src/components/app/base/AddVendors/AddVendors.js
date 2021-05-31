@@ -185,7 +185,7 @@ export const RenderVendorCategoryRow = ({
             setMyTools(selectedOption);
           }}
           placeholder={
-            skill ? "Summarize your expertise" : "Search & select tool(s)"
+            skill ? "Summarize your experience" : "Search & select tool(s)"
           }
           renderMenuItemChildren={(option) => (
             <React.Fragment>
