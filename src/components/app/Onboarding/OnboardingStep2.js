@@ -266,7 +266,7 @@ const OnboardingStep2 = ({
                 className="mt-3 onboarding--button"
                 disabled={loading}
                 type="submit"
-                form="form-add-vendors"
+                form={step === 1 ? "form-add-skills" : "form-add-vendors"}
               >
                 Continue
               </Button>
