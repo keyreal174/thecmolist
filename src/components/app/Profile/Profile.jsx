@@ -552,7 +552,7 @@ const Profile = (props) => {
                 />
               )}
             </Col>
-            <Col xl="8" md="12">
+            <Col xl={topicList.length > 0 ? "8" : "12"} md="12">
               <TransitionGroup enter={enableAnimations} exit={enableAnimations}>
                 {filteredFeedData.map((feed, idx) => {
                   let badge = null;
