@@ -33,11 +33,11 @@ const OnboardingWelcome = ({ loading, changeStep }) => {
             alt="knowledge icon"
           />
           <div className="home--share-item-title">
-            View marketing stacks and comaigns
+            View marketing stacks and playbooks
           </div>
           <div className="home--share-item-subtitle">
-            Browse proven marketing stacks and campaigns shared by your peersand
-            industry experts
+            Browse proven marketing stacks and playbooks shared by your peers
+            and industry experts
           </div>
         </Col>
         <Col className="home--share-item" md="3" sm="12">
@@ -47,10 +47,10 @@ const OnboardingWelcome = ({ loading, changeStep }) => {
             alt="informed icon"
           />
           <div className="home--share-item-title">
-            Stay informed & learn form leading marketers
+            Stay informed & learn from leading marketers
           </div>
           <div className="home--share-item-subtitle">
-            Network with your peers and view marketing insights from industry
+            Network with your peers and follow marketing insights from industry
             experts
           </div>
         </Col>

@@ -223,8 +223,8 @@ const AddSkills = ({
   return (
     <Form id="form-add-vendors" onSubmit={handleSubmit}>
       <Row className="form-add-vendors--header">
-        <Col md={4}>Category</Col>
         <Col md={4}>Expertise</Col>
+        <Col md={4}>Experience</Col>
       </Row>
       <div className="form-add-vendors--content">
         {categories.map((cate, i) => (
