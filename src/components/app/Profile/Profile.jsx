@@ -309,6 +309,13 @@ const Profile = (props) => {
   };
 
   const toggleAddSkillModal = () => {
+    if (showAddSkill) {
+      // i.e. we're closing the dialog, trigger a refresh in case
+      // some content was added
+      props.fetchProfile({
+        userName: Util.parsePath(window.location.href).trailingPath,
+      });
+    }
     setShowAddSkill((value) => !value);
   };
 
