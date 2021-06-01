@@ -224,7 +224,11 @@ const AddSkills = ({
   };
 
   return (
-    <Form id="form-add-vendors" onSubmit={handleSubmit}>
+    <Form
+      className="form-add-vendors"
+      id="form-add-skills"
+      onSubmit={handleSubmit}
+    >
       <Row className="form-add-vendors--header">
         <Col md={4}>Expertise</Col>
         <Col md={4}>Experience</Col>
