@@ -208,12 +208,55 @@
         ]
       },
       {
+        "title": "My Expertise",
+        "enabled": true,
+        "data": [
+          {
+            "content": {
+              "headline": {
+                "markdown": "[yo-wassup](/technology/yo-wassup)"
+              },
+              "slug": "yo-wassup",
+              "subheadlines": [
+                {
+                  "markdown": "Technologies: [Social Media Analytics](/directory/social-media-analytics), [Web and Content Software](/directory/web-and-content-software), [Account-Based Analytics](/directory/account-based-analytics)"
+                }
+              ],
+              "collections": [
+                "Social Media Analytics",
+                "Web and Content Software",
+                "Account-Based Analytics"
+              ],
+              "subtitle": "",
+              "articletext": "nn\nvv\nzzz",
+              "articletextlines": 4,
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/default-agency-image.png",
+              "imageDisplay": "square",
+              "review_scores": [],
+              "mostRecentReview": "2020-08-20T16:52:49.031Z",
+              "num_thanks": 3,
+              "num_insightful": 2
+            },
+            "reactions": [
+              {
+                "type": "thanks",
+                "checked": true
+              },
+              {
+                "type": "insightful",
+                "checked": false
+              }
+            ]
+          }
+        ]
+      },
+      {
         "title": "My Contractors",
         "enabled": false,
         "data": []
       }
     ],
-    "isMyProfile": false,
+    "isMyProfile": true,
     "isNewUser": true
   }
 }

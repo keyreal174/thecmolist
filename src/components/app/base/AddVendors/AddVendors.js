@@ -295,7 +295,11 @@ const AddVendors = ({
   };
 
   return (
-    <Form id="form-add-vendors" onSubmit={handleSubmit}>
+    <Form
+      className="form-add-vendors"
+      id="form-add-vendors"
+      onSubmit={handleSubmit}
+    >
       <Row className="form-add-vendors--header">
         <Col md={4}>Category</Col>
         <Col md={4}>My Tools</Col>

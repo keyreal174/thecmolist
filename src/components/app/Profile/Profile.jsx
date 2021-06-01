@@ -17,6 +17,7 @@ import {
   getEngagementForId,
 } from "../base/EngagementButtons/EngagementButtons";
 import AddVendorsModal from "../base/AddVendors/AddVendorsModal";
+import AddSkillsModal from "../base/AddSkills/AddSkillsModal";
 import DeletePost from "./DeletePost";
 import FollowUserModal from "./FollowUser";
 import Util from "../../util/Util";
@@ -79,6 +80,7 @@ const Profile = (props) => {
   const [followedUser, setFollowedUser] = useState(false);
 
   const [filterIdx, setFilterIdx] = useState(0);
+  const [filterTitle, setFilterTitle] = useState("");
   const [enableAnimations, setEnableAnimations] = useState(true);
   const [postSlug, setPostSlug] = useState("");
   const [filters, setFilters] = useState([]);
@@ -92,6 +94,7 @@ const Profile = (props) => {
   const [showFollowModal, setShowFollowModal] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const [showAddVendor, setShowAddVendor] = useState(false);
+  const [showAddSkill, setShowAddSkill] = useState(false);
 
   const userName = Util.parsePath(window.location.href).trailingPath;
 
@@ -170,6 +173,7 @@ const Profile = (props) => {
     prevFeedData[filterIdx].subfilter = "";
     setFeedData(prevFeedData);
     setFilterIdx(idx);
+    setFilterTitle(feedData[idx]?.title);
     setHasDataOnCurrentFeed(
       feedData[idx] && feedData[idx].data && feedData[idx].data.length > 0
     );
@@ -302,6 +306,10 @@ const Profile = (props) => {
       });
     }
     setShowAddVendor((value) => !value);
+  };
+
+  const toggleAddSkillModal = () => {
+    setShowAddSkill((value) => !value);
   };
 
   return (
@@ -528,16 +536,26 @@ const Profile = (props) => {
                 onChange={(idx) => setFilterId(idx)}
               ></Filter>
             )}
-            {isMyProfile && (
-              <div className="filter-btn-group flex-grow-1 text-right">
-                <Button
-                  className="filter--button filter--button-active active m-0"
-                  onClick={toggleAddVendorModal}
-                >
-                  Add Vendor
-                </Button>
-              </div>
-            )}
+            {isMyProfile &&
+              (filterTitle === "My Expertise" ? (
+                <div className="filter-btn-group flex-grow-1 text-right">
+                  <Button
+                    className="filter--button filter--button-active active m-0"
+                    onClick={toggleAddSkillModal}
+                  >
+                    Add Expertise
+                  </Button>
+                </div>
+              ) : (
+                <div className="filter-btn-group flex-grow-1 text-right">
+                  <Button
+                    className="filter--button filter--button-active active m-0"
+                    onClick={toggleAddVendorModal}
+                  >
+                    Add Vendor
+                  </Button>
+                </div>
+              ))}
           </div>
         </div>
 
@@ -673,6 +691,7 @@ const Profile = (props) => {
         show={showAddVendor}
         handleClose={toggleAddVendorModal}
       />
+      <AddSkillsModal show={showAddSkill} handleClose={toggleAddSkillModal} />
     </Layout>
   );
 };
