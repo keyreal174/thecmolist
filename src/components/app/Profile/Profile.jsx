@@ -544,11 +544,13 @@ const Profile = (props) => {
         {profileFirstName && hasDataOnCurrentFeed && (
           <Row className={clsx("profile--feed", mobileMenuOpen && "open")}>
             <Col xl="4" className="profile--popular-topics">
-              <PopularTopics
-                heading={"Popular #topics and Spaces"}
-                topicList={topicList}
-                onSubfilterChange={onSubfilterChange}
-              />
+              {topicList && topicList.length > 0 && (
+                <PopularTopics
+                  heading={"Popular #topics and Spaces"}
+                  topicList={topicList}
+                  onSubfilterChange={onSubfilterChange}
+                />
+              )}
             </Col>
             <Col xl="8" md="12">
               <TransitionGroup enter={enableAnimations} exit={enableAnimations}>

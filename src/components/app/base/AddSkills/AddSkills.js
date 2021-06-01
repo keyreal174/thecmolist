@@ -111,6 +111,10 @@ const RenderSkillCategoryRow = ({
     updateSkills && updateSkills(mySkill);
   }, [mySkill]);
 
+  let placeholderText = "";
+  if (cate && cate.description && cate.description.length > 0) {
+    placeholderText = `Summarize your ${cate.description} expertise`;
+  }
   return (
     <Row className="mb-3 align-items-center">
       <Col md={4}>
@@ -125,7 +129,7 @@ const RenderSkillCategoryRow = ({
         <Form.Control
           as="textarea"
           className="skills-text-area"
-          placeholder="Summarize your experience"
+          placeholder={placeholderText}
           rows={1}
           name="headline"
           onChange={(e) => {
@@ -142,7 +146,6 @@ const AddSkills = ({
   submitAfter,
   getSkillCategories,
   skillCategories,
-  getSuggestions,
   saveSkills,
 }) => {
   const [skills, setSkills] = useState([]);
@@ -232,7 +235,6 @@ const AddSkills = ({
             key={i}
             id={i}
             cate={cate}
-            getSuggestions={getSuggestions}
             availableCategories={availableCategories}
             updateSkills={(skill) => updateSkills(skill, cate.name)}
             changeCategory={changeCategory}
@@ -261,7 +263,6 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     getSkillCategories: dispatch.vendorsModel.getSkillCategories,
-    getSuggestions: dispatch.suggestionsModel.getSuggestions,
     saveSkills: dispatch.contentModel.saveSkills,
   };
 };
