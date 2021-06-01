@@ -30,7 +30,7 @@ const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
   </a>
 ));
 
-export const CategoryDropdown = ({
+const CategoryDropdown = ({
   category,
   categoryList,
   categoryId,
@@ -108,7 +108,7 @@ const PopularTool = ({ tool, onSelectTool }) => {
   );
 };
 
-export const RenderVendorCategoryRow = ({
+const RenderVendorCategoryRow = ({
   id,
   cate,
   getSuggestions,

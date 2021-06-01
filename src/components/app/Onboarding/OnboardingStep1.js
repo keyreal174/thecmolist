@@ -159,7 +159,9 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
           style={{ textAlign: "left", display: "block" }}
         >
           {isWelcome
-            ? `Hello ${firstname}, welcome to CMOlist!`
+            ? !loading
+              ? `Hello ${firstname}, welcome to CMOlist!`
+              : ""
             : `Please create your member profile`}
         </span>
       }
@@ -173,7 +175,7 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
       ) : (
         <>
           <form
-            className="onboarding--form"
+            className="onboarding--form fadeAndSlideElementInFast"
             id="onboarding_step-1"
             name="onboarding_step-1"
             onSubmit={(e) => handleSubmit(e)}

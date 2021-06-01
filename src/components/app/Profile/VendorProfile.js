@@ -154,11 +154,11 @@ const ProfileIntro = ({
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href={profileWebsite}
-                //                 profileWebsite.startsWith("http")
-                //                   ? profileWebsite
-                //                   : "https://" + profileWebsite
-                //               }
+                href={
+                  profileWebsite.startsWith("http")
+                    ? profileWebsite
+                    : "https://" + profileWebsite
+                }
               >
                 Website
               </a>
@@ -497,7 +497,7 @@ const VendorProfile = (props) => {
               profileMail={profileMail}
               profileLinkedin={profileLinkedin}
               profileTwitter={profileTwitter}
-              profileWebsite={{ profileWebsite }}
+              profileWebsite={profileWebsite}
               profileIndustry={profileIndustry}
             />
           </Row>
