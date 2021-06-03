@@ -101,7 +101,7 @@ const TopBanner = ({
               className="btn-blue mb-2 top-banner-button"
               onClick={() => handleShow("question")}
             >
-              Ask a Question
+              Ask Question
             </Button>
             <Button
               className="btn-white mb-2 top-banner-button"
@@ -114,7 +114,7 @@ const TopBanner = ({
               variant="outline-primary"
               onClick={() => handleShow("article")}
             >
-              Share an Article
+              Share Article
             </Button>
             <AddPostModal
               contentType={contentType}
