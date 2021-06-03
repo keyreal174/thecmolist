@@ -545,7 +545,7 @@ const Profile = (props) => {
             )}
             {isMyProfile &&
               (filterTitle === "My Expertise" ? (
-                <div className="filter-btn-group flex-grow-1 text-right">
+                <div className="filter-btn-group flex-grow-1 text-right filter-add-vendor-btn">
                   <Button
                     className="filter--button filter--button-active active m-0"
                     onClick={toggleAddSkillModal}
@@ -554,7 +554,7 @@ const Profile = (props) => {
                   </Button>
                 </div>
               ) : (
-                <div className="filter-btn-group flex-grow-1 text-right">
+                <div className="filter-btn-group flex-grow-1 text-right filter-add-vendor-btn">
                   <Button
                     className="filter--button filter--button-active active m-0"
                     onClick={toggleAddVendorModal}
