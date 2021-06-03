@@ -148,7 +148,7 @@ const Vendors = (props) => {
                 onChange={(idx) => changeFilter(idx)}
               />
               <div
-                className="filter-btn-group flex-grow-1 text-right pt-1"
+                className="filter-btn-group flex-grow-1 text-right filter-add-vendor-btn"
                 style={{ minWidth: 135 }}
               >
                 <Button

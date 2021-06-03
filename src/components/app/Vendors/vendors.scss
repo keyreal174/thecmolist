@@ -140,16 +140,50 @@
   }
 
   .vendors--filters {
-    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 
-    .filter-btn-group {
-      .filter--button {
-        width: 100%;
-        margin-left: 16px !important;
+    .filter-add-vendor-btn {
+      flex-grow: unset !important;
+      button {
+        margin: 0 !important;
       }
     }
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 500px) {
+  .vendors--filters {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .filter-add-vendor-btn button {
+      width: 212px;
+    }
+  }
+}
+
+.filter-add-vendor-btn {
+  width: 212px;
+
+  button {
+    font-size: 16px;
+  }
+
+  @media (max-width: 768px) {
+    padding-bottom: 0;
+  }
+
+  @media (max-width: 576px) {
+    flex-grow: unset !important;
+  }
+
+  @media (max-width: 500px) {
+    margin-top: 16px;
+    margin-left: 16px;
+
+    &.filter-btn-group {
+      padding: 0;
+    }
+  }
 }

@@ -535,17 +535,18 @@
 .vendor-profile-filter-and-addvendor {
   display: flex;
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
+    justify-content: space-between;
+    align-items: center;
+
     .filter-btn-group {
       justify-content: flex-end;
     }
   }
 
   @media (max-width: 576px) {
-    flex-direction: column;
-
     .filter-btn-group {
-      padding: 10px 17px 0;
+      padding: 0 17px 0;
       justify-content: flex-end;
 
       button {
@@ -554,9 +555,15 @@
       }
     }
   }
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .profile--left-section,
   .profile--right-section,
   .profile-about,

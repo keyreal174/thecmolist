@@ -73,7 +73,9 @@ const CategoryDropdown = ({
           </div>
           <div ref={dropref}>
             {categoryList
-              .filter((item) => item.name.toLowerCase().includes(value))
+              .filter((item) =>
+                item.name.toLowerCase().includes((value || "").toLowerCase())
+              )
               .map((item, idx) => (
                 <Dropdown.Item
                   key={idx}
