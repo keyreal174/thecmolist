@@ -104,14 +104,14 @@ function RenderMobileDropdown({ saveContent, history, mobileMenuOpen }) {
           Ask Question
         </NavDropdown.Item>
         <NavDropdown.Item
+          onClick={handleNavDropdownItemClick.bind(this, "project")}
+        >
+          Share Playbook
+        </NavDropdown.Item>
+        <NavDropdown.Item
           onClick={handleNavDropdownItemClick.bind(this, "article")}
         >
           Share Article
-        </NavDropdown.Item>
-        <NavDropdown.Item
-          onClick={handleNavDropdownItemClick.bind(this, "project")}
-        >
-          Share experience
         </NavDropdown.Item>
       </NavDropdown>
       <AddPostModal
