@@ -155,7 +155,7 @@ const Vendors = (props) => {
                   className="filter--button filter--button-active active m-0"
                   onClick={toggleAddVendorModal}
                 >
-                  Add Vendor
+                  + Add Vendor
                 </Button>
               </div>
             </div>

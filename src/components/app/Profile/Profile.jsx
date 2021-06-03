@@ -550,7 +550,7 @@ const Profile = (props) => {
                     className="filter--button filter--button-active active m-0"
                     onClick={toggleAddSkillModal}
                   >
-                    Add Expertise
+                    + Add Expertise
                   </Button>
                 </div>
               ) : (
@@ -559,7 +559,7 @@ const Profile = (props) => {
                     className="filter--button filter--button-active active m-0"
                     onClick={toggleAddVendorModal}
                   >
-                    Add Vendor
+                    + Add Vendor
                   </Button>
                 </div>
               ))}
