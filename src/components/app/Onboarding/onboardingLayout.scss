@@ -77,10 +77,6 @@
 // Welcome Onboarding Component
 .layout--children {
   .home--share {
-    &-items-wrapper {
-      justify-content: space-around;
-    }
-
     &-item {
       display: flex;
       flex-direction: column;
@@ -98,10 +94,10 @@
       &-image {
         width: 84px;
         height: 84px;
-        margin: 0px 120px 35px;
 
         @media screen and (max-width: 440px) {
-          margin: 0px 90px 35px;
+          width: 64px;
+          height: 64px;
         }
       }
 
@@ -132,5 +128,11 @@
     .home--share-items-wrapper .home--share-item {
       width: 100% !important;
     }
+  }
+}
+
+.progress-bar-header {
+  @media (max-width: 700px) {
+    display: none !important;
   }
 }
