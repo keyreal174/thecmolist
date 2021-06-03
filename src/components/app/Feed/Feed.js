@@ -273,7 +273,7 @@ const Feed = (props) => {
   const subSelectors = [
     { title: "All", slug: "all" },
     { title: "Questions & Answers", slug: "question" },
-    { title: "Playbooks & Updates", slug: "project" },
+    { title: "Campaigns & Updates", slug: "project" },
     { title: "Articles & News", slug: "article" },
   ];
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
