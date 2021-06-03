@@ -209,7 +209,7 @@ function AddPostModal({
         "Be specific and imagine you're asking a question to another person"
       );
       setModalTitle("Ask a marketing question");
-      setSecondButtonText("Post Question");
+      setSecondButtonText("Post");
     } else if (contentType === "project") {
       setTitleHeading("Title");
       setModalTitle("Share a marketing playbook or insight");
@@ -219,7 +219,7 @@ function AddPostModal({
       setTitleHeading("Article URL");
       setTitlePlaceholder("http://");
       setModalTitle("Share marketing news or article");
-      setSecondButtonText("Post Article");
+      setSecondButtonText("Post");
     }
   }, [contentType]);
 
