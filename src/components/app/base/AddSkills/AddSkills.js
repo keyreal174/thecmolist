@@ -113,7 +113,7 @@ const RenderSkillCategoryRow = ({
 
   let placeholderText = "";
   if (cate && cate.description && cate.description.length > 0) {
-    placeholderText = `Summarize your ${cate.description} expertise`;
+    placeholderText = `Summarize your ${cate.description} experience`;
   }
   return (
     <Row className="mb-3 align-items-center">
