@@ -59,7 +59,7 @@ function Homepage() {
               <Row>
                 <Col md="6">
                   <div className="home--title text-left">
-                    <div className="">
+                    <div className="desktop">
                       <span className="mr-2">
                         Connect with your peers <br></br>
                         to get the marketing
@@ -74,6 +74,26 @@ function Homepage() {
                             "playbooks",
                             "news",
                           ]}
+                          id="animationText"
+                        />
+                      </span>
+                    </div>
+                    <div className="mobile">
+                      <span className="mr-2">
+                        Connect with your <br></br>
+                        peers to get the <br></br>marketing
+                      </span>
+                      <span>
+                        <AnimationText
+                          strings={[
+                            "advice",
+                            "tools",
+                            "agencies",
+                            "contractors",
+                            "playbooks",
+                            "news",
+                          ]}
+                          id="animationText1"
                         />
                       </span>
                     </div>

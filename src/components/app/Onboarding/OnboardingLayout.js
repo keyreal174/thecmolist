@@ -17,7 +17,7 @@ const OnboardingLayout = ({ children, now, title, subtitle }) => {
         </Col>
         {now > 0 && (
           <Col md="12">
-            <div className="d-flex justify-content-around">
+            <div className="d-flex justify-content-around progress-bar-header">
               <div className={`${now >= 50 ? "font-weight-bold" : ""}`}>
                 Create your profile
               </div>

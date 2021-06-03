@@ -178,8 +178,7 @@ const OnboardingStep2 = ({
               </Row>
               <Row className="onboarding--pill-mid">
                 {introOptions.map((o, idx) => (
-                  <Col key={idx} md="6" sm="12">
-                    <span>{o}</span>
+                  <Col key={idx} md="6" sm="12" className="d-flex">
                     <div className="onboarding--pill-check">
                       <Form.Check
                         className=""
@@ -202,6 +201,7 @@ const OnboardingStep2 = ({
                         }}
                       />
                     </div>
+                    <span>{o}</span>
                   </Col>
                 ))}
               </Row>

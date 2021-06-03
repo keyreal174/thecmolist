@@ -31,13 +31,12 @@
     line-height: 1.2;
     text-align: left;
     margin-top: 45px;
-    padding-left: 10px;
     max-width: 1200px;
   }
   &--subtitle {
     color: $text-2;
     font-size: 24px;
-    line-height: 22px;
+    line-height: 30px;
     text-align: left;
     margin-top: 20px;
   }
@@ -58,19 +57,26 @@
 @media (max-width: 768px) {
   .layout--title {
     margin-top: 15px;
+    font-size: 40px;
   }
   .layout--children {
     margin: 15px 0;
   }
 }
 
+@media (max-width: 500px) {
+  .layout--title {
+    font-size: 28px;
+    text-align: center !important;
+  }
+  .layout--subtitle {
+    text-align: center;
+  }
+}
+
 // Welcome Onboarding Component
 .layout--children {
   .home--share {
-    &-items-wrapper {
-      justify-content: space-around;
-    }
-
     &-item {
       display: flex;
       flex-direction: column;
@@ -88,10 +94,10 @@
       &-image {
         width: 84px;
         height: 84px;
-        margin: 55px 120px 35px;
 
         @media screen and (max-width: 440px) {
-          margin: 55px 90px 35px;
+          width: 64px;
+          height: 64px;
         }
       }
 
@@ -114,5 +120,19 @@
         color: $text-2;
       }
     }
+  }
+}
+
+@media (max-width: 359px) {
+  .layout--children {
+    .home--share-items-wrapper .home--share-item {
+      width: 100% !important;
+    }
+  }
+}
+
+.progress-bar-header {
+  @media (max-width: 700px) {
+    display: none !important;
   }
 }
