@@ -79,8 +79,8 @@ const OnboardingStep2 = ({
     "Getting marketing advice",
     "Building my marketing network",
     "Staying in touch with my peers",
-    "Sharing my expertise",
-    "Learning about new marketing trends",
+    "Sharing my expertise & supporting my peers",
+    "Learning about new marketing trends & tech",
     "Advising or board roles",
   ];
   const [selectedOptions, setSelectedOptions] = useState([]);
