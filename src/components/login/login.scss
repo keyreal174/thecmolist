@@ -34,12 +34,14 @@
     font-size: 12px;
     width: 200px;
     margin: 15px auto 66px;
+    line-height: 1.4;
   }
-  &--questions {
+  &--question {
     font-size: 15px;
     text-align: center;
     display: block;
     color: $text-2;
+    line-height: 1.4;
   }
   &--contact-email {
     color: $brand;
@@ -63,6 +65,8 @@
   &--linkedIn,
   &--login {
     width: 100%;
+    font-weight: 600;
+    font-size: 16px;
   }
 }
 

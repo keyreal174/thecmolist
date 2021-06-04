@@ -28,8 +28,17 @@ const Profile = ({ profileStats }) => {
                 </a>
               </div>
               <div className="profile-stats__edit-button text-center">
-                <a alt="edit profile" href="/profile">
-                  View Profile
+                View{" "}
+                <a alt="View profile" href="/profile">
+                  Profile
+                </a>{" "}
+                |{" "}
+                <a alt="View My Stack" href="/profile">
+                  Stack
+                </a>{" "}
+                |{" "}
+                <a alt="View My Expertise" href="/profile">
+                  Expertise
                 </a>
               </div>
             </div>
