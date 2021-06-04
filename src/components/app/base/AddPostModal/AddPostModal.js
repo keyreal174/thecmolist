@@ -294,7 +294,12 @@ function AddPostModal({
   };
   return (
     <>
-      <Modal className="modal" show={show} onHide={handleClose} size="lg">
+      <Modal
+        className="modal add-post-modal"
+        show={show}
+        onHide={handleClose}
+        size="lg"
+      >
         <Modal.Header closeButton as="h4">
           <Modal.Title className="modal-title">{modalTitle}</Modal.Title>
         </Modal.Header>
@@ -626,7 +631,7 @@ function AddPostModal({
         </Modal.Body>
         <Modal.Footer>
           <Button
-            className="btn-white modal-cancel-button"
+            className="btn-white modal-cancel-button standard-btn"
             variant="outline-primary"
             onClick={() => handleCancel()}
             disabled={isLoading}
@@ -634,7 +639,7 @@ function AddPostModal({
             {firstButtonText}
           </Button>
           <Button
-            className="btn__homepage-blue modal-ok-button"
+            className="btn__homepage-blue modal-ok-button standard-btn"
             disabled={isLoading}
             variant="primary"
             type="submit"

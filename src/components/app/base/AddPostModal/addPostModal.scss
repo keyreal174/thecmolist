@@ -1,5 +1,13 @@
 @import "../../../../sass/globals.scss";
 
+@media (min-width: 768px) {
+  .add-post-modal {
+    .modal-dialog {
+      max-width: 700px;
+    }
+  }
+}
+
 .modal {
   font-size: 14px;
   &-content {
@@ -163,6 +171,10 @@
   border-color: $brand;
 }
 
+.standard-btn {
+  min-width: 120px;
+}
+
 .person-modal-backdrop {
   position: fixed;
   top: 0;
@@ -209,7 +221,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .add-person-modal {
     &.visible {
       width: 90% !important;
