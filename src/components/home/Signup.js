@@ -64,8 +64,7 @@ function Signup() {
                 Sign Up for beta access
               </h2>
               <span className="signup-attn">
-                Apply below to be notified when CMOlist is available for early
-                access.
+                Apply below to join the CMOlist beta
               </span>
             </div>
             <div className="form-group">
@@ -113,7 +112,7 @@ function Signup() {
                 type="submit"
                 className="btn__homepage btn__homepage-blue signup--form-apply"
               >
-                Apply
+                Apply for Membership
               </button>
             </div>
             <div className="form-group">
