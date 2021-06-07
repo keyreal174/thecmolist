@@ -28,8 +28,7 @@ const marketingLeaders = [
 function Homepage() {
   const history = useHistory();
   const handleHeaderLoginButtonClick = () => {
-    console.log("click");
-    history.push("/login");
+    history.push("/login" + (window.location.search || ""));
   };
 
   return (

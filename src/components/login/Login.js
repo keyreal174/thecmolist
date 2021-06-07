@@ -98,7 +98,10 @@ class Login extends React.Component {
         <div className="mt100 row no-gutters">
           <div className="col-md-3" />
           <div className="col-md-6">
-            <a className="login--logo nav__logo" href="/">
+            <a
+              className="login--logo nav__logo"
+              href={"/home" + (window.location.search || "")}
+            >
               <img src={Logo} alt="CMOList brand logo" width="170" />
             </a>
             <form

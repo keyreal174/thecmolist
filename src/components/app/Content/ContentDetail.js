@@ -133,7 +133,7 @@ const ContentDetail = ({
   };
 
   const badge = (content) => {
-    return content?.content?.canEdit ? (
+    return content?.canEdit ? (
       <Button
         className="edit-content-btn"
         onClick={() => {
