@@ -257,6 +257,8 @@
       }
     ],
     "isMyProfile": true,
+    "canShowStack": false,
+    "canShowSkills": false,
     "isNewUser": true
   }
 }

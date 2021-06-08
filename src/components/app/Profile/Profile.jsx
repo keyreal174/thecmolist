@@ -61,6 +61,8 @@ const Profile = (props) => {
   const history = useHistory();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isMyProfile, setIsMyProfile] = useState(false);
+  const [canShowStack, setCanShowStack] = useState(false);
+  const [canShowSkills, setCanShowSkills] = useState(false);
   const [profileFirstName, setProfileFirstName] = useState("");
   const [profileLastName, setProfileLastName] = useState("");
   const [profileUserName, setProfileUserName] = useState("");
@@ -110,6 +112,8 @@ const Profile = (props) => {
   useEffect(() => {
     if (props.profile && Object.keys(props.profile).length > 0) {
       setIsMyProfile(props.profile.isMyProfile || "");
+      setCanShowSkills(props.profile.canShowSkills || "");
+      setCanShowStack(props.profile.canShowStack || "");
       setProfileFirstName(props.profile.firstName || "");
       setProfileLastName(props.profile.lastName || "");
       setProfileUserName(props.profile.userName || "");
@@ -544,7 +548,7 @@ const Profile = (props) => {
               ></Filter>
             )}
             {isMyProfile &&
-              (filterTitle === "My Expertise" ? (
+              (filterTitle === "My Expertise" && canShowSkills ? (
                 <div className="filter-btn-group flex-grow-1 text-right filter-add-vendor-btn">
                   <Button
                     className="filter--button filter--button-active active m-0"
@@ -553,7 +557,7 @@ const Profile = (props) => {
                     + Add Expertise
                   </Button>
                 </div>
-              ) : (
+              ) : filterTitle !== "My Expertise" && canShowStack ? (
                 <div className="filter-btn-group flex-grow-1 text-right filter-add-vendor-btn">
                   <Button
                     className="filter--button filter--button-active active m-0"
@@ -562,7 +566,7 @@ const Profile = (props) => {
                     + Add Vendor
                   </Button>
                 </div>
-              ))}
+              ) : null)}
           </div>
         </div>
 
