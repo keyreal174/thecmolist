@@ -585,7 +585,8 @@ const Profile = (props) => {
             <Col xl={topicList.length > 0 ? "8" : "12"} md="12">
               <div
                 className={clsx(
-                  (!canShowStack || !canShowSkills) &&
+                  ((filterTitle !== "My Expertise" && !canShowStack) ||
+                    (filterTitle === "My Expertise" && !canShowSkills)) &&
                     "add-vendor-blocker-wrapper"
                 )}
               >
@@ -609,7 +610,8 @@ const Profile = (props) => {
                     <div className="filter-btn-group">{AddVendorButton()}</div>
                   </div>
                 )}
-                {(!canShowStack || !canShowSkills) && (
+                {((filterTitle !== "My Expertise" && !canShowStack) ||
+                  (filterTitle === "My Expertise" && !canShowSkills)) && (
                   <div className="add-vendor-blocker-opacity"></div>
                 )}
                 <TransitionGroup
