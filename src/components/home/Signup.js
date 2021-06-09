@@ -78,22 +78,20 @@ function Signup() {
                 id="marketing_leader"
               />
               <CustomRadioButton
-                label="Agency or marketign technology firm"
+                label="Marketing vendor"
                 name="role"
                 value="agency_or_technology_firm"
                 id="agency_or_technology_firm"
               />
             </div>
-            <hr
-              style={{ "margin-top": "30px", border: "1px solid lightgray" }}
-            />
+            <hr style={{ "margin-top": "30px" }} />
             <div className="form-group">
               <h2 className="signup--header signup--header-beta">
-                Sign Up for beta access
+                Apply for Membership
               </h2>
               <span className="signup-attn">
-                Sign up below to be notified when CMOlist is available for early
-                access.
+                Please fill out the information below <br></br>
+                to apply for a free membership
               </span>
             </div>
             <div className="form-inputs-group">
@@ -113,9 +111,7 @@ function Signup() {
                 </button>
               </div>
             </div>
-            <hr
-              style={{ "margin-top": "30px", border: "1px solid lightgray" }}
-            />
+            <hr style={{ "margin-top": "30px" }} />
             <div className="form-group">
               <span className="signup-attn signup--form-link">
                 Already on CMOlist? <a href="/login">Sign in</a>
