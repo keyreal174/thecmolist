@@ -1,4 +1,6 @@
-import React from "react";
+import clsx from "clsx";
+import React, { useState } from "react";
+import CustomRadioButton from "../app/base/CustomRadioButton/CustomRadioButton";
 import Footer from "../app/base/Footer/Footer";
 import Logo from "../app/base/Header/svgs/logo.svg";
 import "./Signup.scss";
@@ -19,12 +21,45 @@ function handleSubmit(e) {
     });
 }
 
+const FormGroup = ({ name, type, placeholder }) => {
+  const [isFocus, setIsFocus] = useState(false);
+  const [value, setValue] = useState("");
+
+  return (
+    <div className="form-group position-relative">
+      <input
+        name={name}
+        type={type}
+        placeholder={!isFocus ? placeholder : ""}
+        className={clsx(
+          "input-field max-input-width signup--form-input",
+          (isFocus || value) && "none-border"
+        )}
+        required
+        onFocus={() => setIsFocus((value) => !value)}
+        onBlur={() => setIsFocus((value) => !value)}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <fieldset
+        className={clsx(
+          "form-group-fieldset",
+          isFocus && "is-focus",
+          value && "has-text"
+        )}
+      >
+        <legend>
+          <span>{placeholder}</span>
+        </legend>
+      </fieldset>
+    </div>
+  );
+};
+
 function Signup() {
   return (
     <div className="signup--wrapper container wrapper">
-      <div className="row no-gutters">
-        <div className="col-md-3" />
-        <div className="col-md-6">
+      <div>
+        <div className="signup--container">
           <a className="signup--logo nav__logo" href="/">
             <img src={Logo} alt="CMOList brand logo" width="170" />
           </a>
@@ -36,25 +71,18 @@ function Signup() {
           >
             <div className="form-group">
               <h2 className="signup--header">Apply to join CMOlist as a </h2>
-              <input
-                className="signup--radio input-field signup-radio"
-                type="radio"
-                id="marketing_leader"
+              <CustomRadioButton
+                label="Marketing leader"
                 name="role"
                 value="marketing_leader"
+                id="marketing_leader"
               />
-              <label for="marketing_leader">Marketing leader</label>
-              <br />
-              <input
-                className="signup--radio input-field signup-radio"
-                type="radio"
-                id="agency_or_technology_firm"
+              <CustomRadioButton
+                label="Agency or marketign technology firm"
                 name="role"
                 value="agency_or_technology_firm"
+                id="agency_or_technology_firm"
               />
-              <label for="agency_or_technology_firm">
-                Agency or marketign technology firm
-              </label>
             </div>
             <hr
               style={{ "margin-top": "30px", border: "1px solid lightgray" }}
@@ -64,57 +92,30 @@ function Signup() {
                 Sign Up for beta access
               </h2>
               <span className="signup-attn">
-                Apply below to join the CMOlist beta
+                Sign up below to be notified when CMOlist is available for early
+                access.
               </span>
             </div>
-            <div className="form-group">
-              <label className="label-field signup--form-label" for="name">
-                Name
-              </label>
-              <br />
-              <input
-                name="name"
-                type="text"
-                placeholder="First name, Last name"
-                className="input-field max-input-width signup--form-input"
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label className="label-field signup--form-label" for="email">
-                Email
-              </label>
-              <br />
-              <input
-                name="email"
-                type="email"
-                placeholder="name@company.com"
-                className="input-field max-input-width signup--form-input"
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label className="label-field signup--form-label" for="linkedIn">
-                Linkedin URL
-              </label>
-              <br />
-              <input
+            <div className="form-inputs-group">
+              <FormGroup name="name" type="text" placeholder="Name" />
+              <FormGroup name="email" type="email" placeholder="Email" />
+              <FormGroup
                 name="linkedIn"
                 type="linkedIn"
-                placeholder="https://linkedin.com/in/linkedIn"
-                className="input-field max-input-width signup--form-input"
-                required
+                placeholder="LinkedIn URL"
               />
+              <div className="form-group">
+                <button
+                  type="submit"
+                  className="btn__homepage btn__homepage-blue signup--form-apply"
+                >
+                  Apply
+                </button>
+              </div>
             </div>
-
-            <div className="form-group">
-              <button
-                type="submit"
-                className="btn__homepage btn__homepage-blue signup--form-apply"
-              >
-                Apply for Membership
-              </button>
-            </div>
+            <hr
+              style={{ "margin-top": "30px", border: "1px solid lightgray" }}
+            />
             <div className="form-group">
               <span className="signup-attn signup--form-link">
                 Already on CMOlist? <a href="/login">Sign in</a>
@@ -122,7 +123,6 @@ function Signup() {
             </div>
           </form>
         </div>
-        <div className="col-md-3"></div>
       </div>
       <Footer className="signup--footer" />
     </div>
