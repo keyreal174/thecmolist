@@ -28,7 +28,6 @@ const Profile = ({ profileStats }) => {
                 </a>
               </div>
               <div className="profile-stats__edit-button text-center">
-                View{" "}
                 <a alt="View profile" href="/profile">
                   Profile
                 </a>{" "}
