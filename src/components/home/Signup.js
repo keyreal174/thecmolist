@@ -78,7 +78,7 @@ function Signup() {
                 id="marketing_leader"
               />
               <CustomRadioButton
-                label="Marketing vendor"
+                label="Agency or marketing technology firm"
                 name="role"
                 value="agency_or_technology_firm"
                 id="agency_or_technology_firm"
