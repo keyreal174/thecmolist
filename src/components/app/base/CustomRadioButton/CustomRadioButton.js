@@ -4,12 +4,18 @@ import RadioButton from "../icons/radiobutton.svg";
 import RadioButtonChecked from "../icons/radiobutton_checked.svg";
 import "./CustomRadioButton.scss";
 
-const CustomRadioButton = ({ className, label, id, value, name }) => {
+const CustomRadioButton = ({ className, label, id, value, name, checked }) => {
   return (
     <div className={className}>
       <label className="radio-container">
         {label}
-        <input type="radio" name={name} value={value} id={id} />
+        <input
+          type="radio"
+          name={name}
+          value={value}
+          id={id}
+          checked={checked}
+        />
         <span className="radio-checkmark"></span>
       </label>
     </div>

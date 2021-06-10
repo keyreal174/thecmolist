@@ -76,6 +76,7 @@ function Signup() {
                 name="role"
                 value="marketing_leader"
                 id="marketing_leader"
+                checked="checked"
               />
               <CustomRadioButton
                 label="Marketing vendor"
