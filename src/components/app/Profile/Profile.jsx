@@ -605,7 +605,7 @@ const Profile = (props) => {
                   <div className="add-vendor-blocker-modal">
                     <p>
                       Please share at least five vendors to be able to view your
-                      peer's marketing stacks
+                      peers' marketing stacks
                     </p>
                     <div className="filter-btn-group">
                       <AddVendorButton isVendor={true} />
@@ -616,7 +616,7 @@ const Profile = (props) => {
                   <div className="add-vendor-blocker-modal">
                     <p>
                       Please share at least <b>three</b> areas of expertise
-                      before being able to view your peer's marketing expertise
+                      before being able to view your peers' marketing expertise
                     </p>
                     <div className="filter-btn-group">
                       <AddVendorButton />
