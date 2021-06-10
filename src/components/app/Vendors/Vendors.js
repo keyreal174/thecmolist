@@ -103,10 +103,19 @@ const Vendors = (props) => {
     setShowAddVendor((value) => !value);
   };
 
+  const AddVendorButton = () => (
+    <Button
+      className="filter--button filter--button-active active m-0"
+      onClick={toggleAddVendorModal}
+    >
+      + Add Vendor
+    </Button>
+  );
+
   return (
     <Layout onToggle={handleToggle}>
       <Container className="height-100">
-        <div className="wrapper">
+        <div className="wrapper position-relative">
           <SimpleTopBanner
             // disable for now... buttonText="Invite"
             className={clsx(
@@ -118,6 +127,9 @@ const Vendors = (props) => {
             subtitle={"Vendors"}
             image={bannerImage}
           />
+          <div className="mobile-add-vendor-button">
+            <AddVendorButton />
+          </div>
           <AddMemberModal
             firstButtonText="Cancel"
             secondButtonText="Send invitation"
@@ -148,15 +160,10 @@ const Vendors = (props) => {
                 onChange={(idx) => changeFilter(idx)}
               />
               <div
-                className="filter-btn-group flex-grow-1 text-right filter-add-vendor-btn"
+                className="filter-btn-group flex-grow-1 text-right filter-add-vendor-btn desktop-add-vendor-button"
                 style={{ minWidth: 135 }}
               >
-                <Button
-                  className="filter--button filter--button-active active m-0"
-                  onClick={toggleAddVendorModal}
-                >
-                  + Add Vendor
-                </Button>
+                <AddVendorButton />
               </div>
             </div>
           )}
