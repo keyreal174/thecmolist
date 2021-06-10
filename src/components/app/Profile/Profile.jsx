@@ -61,6 +61,8 @@ const Profile = (props) => {
   const history = useHistory();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isMyProfile, setIsMyProfile] = useState(false);
+  const [canShowStack, setCanShowStack] = useState(false);
+  const [canShowSkills, setCanShowSkills] = useState(false);
   const [profileFirstName, setProfileFirstName] = useState("");
   const [profileLastName, setProfileLastName] = useState("");
   const [profileUserName, setProfileUserName] = useState("");
@@ -110,6 +112,8 @@ const Profile = (props) => {
   useEffect(() => {
     if (props.profile && Object.keys(props.profile).length > 0) {
       setIsMyProfile(props.profile.isMyProfile || "");
+      setCanShowSkills(props.profile.canShowSkills || "");
+      setCanShowStack(props.profile.canShowStack || "");
       setProfileFirstName(props.profile.firstName || "");
       setProfileLastName(props.profile.lastName || "");
       setProfileUserName(props.profile.userName || "");
@@ -317,6 +321,28 @@ const Profile = (props) => {
       });
     }
     setShowAddSkill((value) => !value);
+  };
+
+  const AddVendorButton = ({ isVendor }) => (
+    <Button
+      className="filter--button filter--button-active active m-0"
+      onClick={() =>
+        !isVendor ? toggleAddSkillModal() : toggleAddVendorModal()
+      }
+    >
+      {!isVendor ? "+ Add Expertise" : "+ Add Vendor"}
+    </Button>
+  );
+
+  const XBadge = ({ feed }) => {
+    return isMyProfile ? (
+      <span
+        className="cursor-pointer noselect"
+        onClick={() => showDeletePostModal(feed)}
+      >
+        ✖
+      </span>
+    ) : null;
   };
 
   return (
@@ -546,21 +572,11 @@ const Profile = (props) => {
             {isMyProfile &&
               (filterTitle === "My Expertise" ? (
                 <div className="filter-btn-group flex-grow-1 text-right filter-add-vendor-btn">
-                  <Button
-                    className="filter--button filter--button-active active m-0"
-                    onClick={toggleAddSkillModal}
-                  >
-                    + Add Expertise
-                  </Button>
+                  <AddVendorButton />
                 </div>
               ) : (
                 <div className="filter-btn-group flex-grow-1 text-right filter-add-vendor-btn">
-                  <Button
-                    className="filter--button filter--button-active active m-0"
-                    onClick={toggleAddVendorModal}
-                  >
-                    + Add Vendor
-                  </Button>
+                  <AddVendorButton isVendor={true} />
                 </div>
               ))}
           </div>
@@ -578,93 +594,119 @@ const Profile = (props) => {
               )}
             </Col>
             <Col xl={topicList.length > 0 ? "8" : "12"} md="12">
-              <TransitionGroup enter={enableAnimations} exit={enableAnimations}>
-                {filteredFeedData.map((feed, idx) => {
-                  let badge = null;
-                  if (isMyProfile) {
-                    badge = (
-                      <span
-                        className="cursor-pointer noselect"
-                        onClick={() => showDeletePostModal(feed)}
-                      >
-                        ✖
-                      </span>
+              <div
+                className={clsx(
+                  ((filterTitle !== "My Expertise" && !canShowStack) ||
+                    (filterTitle === "My Expertise" && !canShowSkills)) &&
+                    "add-vendor-blocker-wrapper"
+                )}
+              >
+                {filterTitle !== "My Expertise" && !canShowStack && (
+                  <div className="add-vendor-blocker-modal">
+                    <p>
+                      Please share at least five vendors to be able to view your
+                      peer's marketing stacks
+                    </p>
+                    <div className="filter-btn-group">
+                      <AddVendorButton isVendor={true} />
+                    </div>
+                  </div>
+                )}
+                {filterTitle === "My Expertise" && !canShowSkills && (
+                  <div className="add-vendor-blocker-modal">
+                    <p>
+                      Please share at least <b>three</b> areas of expertise
+                      before being able to view your peer's marketing expertise
+                    </p>
+                    <div className="filter-btn-group">
+                      <AddVendorButton />
+                    </div>
+                  </div>
+                )}
+                {((filterTitle !== "My Expertise" && !canShowStack) ||
+                  (filterTitle === "My Expertise" && !canShowSkills)) && (
+                  <div className="add-vendor-blocker-opacity"></div>
+                )}
+                <TransitionGroup
+                  enter={enableAnimations}
+                  exit={enableAnimations}
+                >
+                  {filteredFeedData.map((feed, idx) => {
+                    return (
+                      <FadeTransition key={idx}>
+                        <Article
+                          key={idx}
+                          className={clsx(
+                            "profile--article-item",
+                            idx !== 0 && "mt-1",
+                            isMyProfile && "isMyProfile"
+                          )}
+                          {...feed.content}
+                          badge={<XBadge feed={feed} />}
+                          engagementButtons={
+                            feed.content_id && [
+                              {
+                                checked: true,
+                                text: feed.replyText || "Reply",
+                                type: "Answer",
+                                icon: AnswerIcon,
+                                number:
+                                  feed.comments && feed.comments.length > 0
+                                    ? feed.comments.length
+                                    : null,
+                              },
+                              {
+                                checked: getCheckedForEngagementType(
+                                  feed.content_id,
+                                  "thanks",
+                                  reactions
+                                ),
+                                text: "Like",
+                                type: "Reaction",
+                                icon: ThanksIcon,
+                                iconChecked: ThanksCheckedIcon,
+                                number: getEngagementForId(
+                                  feed.content_id,
+                                  "thanks",
+                                  reactions
+                                ),
+                              },
+                              {
+                                checked: getCheckedForEngagementType(
+                                  feed.content_id,
+                                  "insightful",
+                                  reactions
+                                ),
+                                text: "Insightful",
+                                type: "Reaction",
+                                icon: InsightfulIcon,
+                                iconChecked: InsightfulCheckedIcon,
+                                number: getEngagementForId(
+                                  feed.content_id,
+                                  "insightful",
+                                  reactions
+                                ),
+                              },
+                            ]
+                          }
+                          focusComment={true}
+                          onEngagementButtonClick={handleEngagementButtonClick.bind(
+                            this,
+                            feed
+                          )}
+                        >
+                          {feed.parent_content && (
+                            <Article {...feed.parent_content} />
+                          )}
+                          {feed.entities?.length > 0 && (
+                            <Entities entities={feed.entities} />
+                          )}
+                        </Article>
+                      </FadeTransition>
                     );
-                  }
-                  return (
-                    <FadeTransition key={idx}>
-                      <Article
-                        key={idx}
-                        className={clsx(
-                          "profile--article-item",
-                          idx !== 0 && "mt-1",
-                          badge && "isMyProfile"
-                        )}
-                        {...feed.content}
-                        badge={badge}
-                        engagementButtons={
-                          feed.content_id && [
-                            {
-                              checked: true,
-                              text: feed.replyText || "Reply",
-                              type: "Answer",
-                              icon: AnswerIcon,
-                              number:
-                                feed.comments && feed.comments.length > 0
-                                  ? feed.comments.length
-                                  : null,
-                            },
-                            {
-                              checked: getCheckedForEngagementType(
-                                feed.content_id,
-                                "thanks",
-                                reactions
-                              ),
-                              text: "Like",
-                              type: "Reaction",
-                              icon: ThanksIcon,
-                              iconChecked: ThanksCheckedIcon,
-                              number: getEngagementForId(
-                                feed.content_id,
-                                "thanks",
-                                reactions
-                              ),
-                            },
-                            {
-                              checked: getCheckedForEngagementType(
-                                feed.content_id,
-                                "insightful",
-                                reactions
-                              ),
-                              text: "Insightful",
-                              type: "Reaction",
-                              icon: InsightfulIcon,
-                              iconChecked: InsightfulCheckedIcon,
-                              number: getEngagementForId(
-                                feed.content_id,
-                                "insightful",
-                                reactions
-                              ),
-                            },
-                          ]
-                        }
-                        focusComment={true}
-                        onEngagementButtonClick={handleEngagementButtonClick.bind(
-                          this,
-                          feed
-                        )}
-                      >
-                        {feed.parent_content && (
-                          <Article {...feed.parent_content} />
-                        )}
-                        {feed.entities?.length > 0 && (
-                          <Entities entities={feed.entities} />
-                        )}
-                      </Article>
-                    </FadeTransition>
-                  );
-                })}
-              </TransitionGroup>
+                  })}
+                </TransitionGroup>
+              </div>
             </Col>
           </Row>
         )}
