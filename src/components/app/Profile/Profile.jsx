@@ -323,7 +323,7 @@ const Profile = (props) => {
     setShowAddSkill((value) => !value);
   };
 
-  const AddVendorButton = (isVendor) => (
+  const AddVendorButton = ({ isVendor }) => (
     <Button
       className="filter--button filter--button-active active m-0"
       onClick={() =>
@@ -333,6 +333,17 @@ const Profile = (props) => {
       {!isVendor ? "+ Add Expertise" : "+ Add Vendor"}
     </Button>
   );
+
+  const XBadge = ({ feed }) => {
+    return isMyProfile ? (
+      <span
+        className="cursor-pointer noselect"
+        onClick={() => showDeletePostModal(feed)}
+      >
+        ✖
+      </span>
+    ) : null;
+  };
 
   return (
     <Layout onToggle={handleToggle}>
@@ -561,11 +572,11 @@ const Profile = (props) => {
             {isMyProfile &&
               (filterTitle === "My Expertise" ? (
                 <div className="filter-btn-group flex-grow-1 text-right filter-add-vendor-btn">
-                  {AddVendorButton()}
+                  <AddVendorButton />
                 </div>
               ) : (
                 <div className="filter-btn-group flex-grow-1 text-right filter-add-vendor-btn">
-                  {AddVendorButton(true)}
+                  <AddVendorButton isVendor={true} />
                 </div>
               ))}
           </div>
@@ -597,7 +608,7 @@ const Profile = (props) => {
                       peer's marketing stacks
                     </p>
                     <div className="filter-btn-group">
-                      {AddVendorButton(true)}
+                      <AddVendorButton isVendor={true} />
                     </div>
                   </div>
                 )}
@@ -607,7 +618,9 @@ const Profile = (props) => {
                       Please share at least <b>three</b> areas of expertise
                       before being able to view your peer's marketing expertise
                     </p>
-                    <div className="filter-btn-group">{AddVendorButton()}</div>
+                    <div className="filter-btn-group">
+                      <AddVendorButton />
+                    </div>
                   </div>
                 )}
                 {((filterTitle !== "My Expertise" && !canShowStack) ||
@@ -619,17 +632,6 @@ const Profile = (props) => {
                   exit={enableAnimations}
                 >
                   {filteredFeedData.map((feed, idx) => {
-                    let badge = null;
-                    if (isMyProfile) {
-                      badge = (
-                        <span
-                          className="cursor-pointer noselect"
-                          onClick={() => showDeletePostModal(feed)}
-                        >
-                          ✖
-                        </span>
-                      );
-                    }
                     return (
                       <FadeTransition key={idx}>
                         <Article
@@ -637,10 +639,10 @@ const Profile = (props) => {
                           className={clsx(
                             "profile--article-item",
                             idx !== 0 && "mt-1",
-                            badge && "isMyProfile"
+                            isMyProfile && "isMyProfile"
                           )}
                           {...feed.content}
-                          badge={badge}
+                          badge={<XBadge feed={feed} />}
                           engagementButtons={
                             feed.content_id && [
                               {
