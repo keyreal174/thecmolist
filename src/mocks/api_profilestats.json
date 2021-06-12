@@ -77,10 +77,17 @@
   },
   "buildYourNetwork": [
     { "checked": false, "content": "Fill out your profile" },
-    { "checked": false, "content": "Add five tools to your marketing stack" },
     {
       "checked": false,
-      "content": "Add three areas of expertise to your profile"
+      "content": "Add five tools to your marketing stack",
+      "showAddVendorButton": true,
+      "isVendor": true
+    },
+    {
+      "checked": false,
+      "content": "Add three areas of expertise to your profile",
+      "showAddVendorButton": true,
+      "isVendor": false
     },
     { "checked": false, "content": "Follow five experts" },
     { "checked": false, "content": "Upvote three good answers" },
