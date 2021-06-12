@@ -76,10 +76,14 @@
     ]
   },
   "buildYourNetwork": [
-    { "checked": false, "content": "Invite your team" },
-    { "checked": true, "content": "Invite your peers" },
     { "checked": false, "content": "Fill out your profile" },
-    { "checked": true, "content": "Ask your first question" },
-    { "checked": true, "content": "Answer a question" }
+    { "checked": false, "content": "Add five tools to your marketing stack" },
+    {
+      "checked": false,
+      "content": "Add three areas of expertise to your profile"
+    },
+    { "checked": false, "content": "Follow five experts" },
+    { "checked": false, "content": "Upvote three good answers" },
+    { "checked": true, "content": "Share one Playbook" }
   ]
 }
