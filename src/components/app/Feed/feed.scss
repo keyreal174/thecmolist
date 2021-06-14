@@ -486,3 +486,24 @@
     max-width: unset;
   }
 }
+
+// Post onboarding button
+.post-onboarding-btn {
+  transform: translate(30px, -12px);
+  width: 150px;
+}
+
+.build-your-network {
+  label.custom-checkbox {
+    align-items: flex-start !important;
+
+    & > span:first-child {
+      position: relative;
+      top: 2px;
+    }
+
+    & > span.custom-checkbox-label {
+      margin-left: 9px !important;
+    }
+  }
+}
