@@ -3,9 +3,7 @@
 context('Login', () => {
   beforeEach(() => {
     cy.visit('/login')
-  })
 
-  it("Load 'All' tab in feed", () => {
     // type email and test
     cy.get('input[type="email"]')
       .type('testuser@gmail.com')
@@ -15,7 +13,9 @@ context('Login', () => {
     // submit
     cy.get('.login--form.form-signin')
       .submit()
+  })
 
+  it("Load 'All' tab in feed", () => {
     // Feed Page
     cy.url().should('include', '/feed')
     // profile stats badge visible
@@ -28,16 +28,6 @@ context('Login', () => {
   })
 
   it("Load My peers tab in feed", () => {
-    // type email and test
-    cy.get('input[type="email"]')
-      .type('testuser@gmail.com')
-    // type password and test
-    cy.get('input[type="password"]')
-      .type('password123')
-    // submit
-    cy.get('.login--form.form-signin')
-      .submit()
-
     // Feed Page
     cy.url().should('include', '/feed')
 
@@ -46,7 +36,7 @@ context('Login', () => {
     // profile stats badge visible
     cy.get('.filter--button:nth-child(2)')
       .should('have.class', 'active')
-      .should('have.text', 'My Peers')
+      .should('have.text', 'My Experts')
     
     // 0 posts visible
     cy.get('.article-wrapper')
@@ -56,16 +46,6 @@ context('Login', () => {
   })
 
   it("Load Signalfire marketing tab in feed", () => {
-    // type email and test
-    cy.get('input[type="email"]')
-      .type('testuser@gmail.com')
-    // type password and test
-    cy.get('input[type="password"]')
-      .type('password123')
-    // submit
-    cy.get('.login--form.form-signin')
-      .submit()
-
     // Feed Page
     cy.url().should('include', '/feed')
 
@@ -85,16 +65,6 @@ context('Login', () => {
   })
 
   it("Load all three tabs, tab through filters (All/Q&A/Projects/Articles)", () => {
-    // type email and test
-    cy.get('input[type="email"]')
-      .type('testuser@gmail.com')
-    // type password and test
-    cy.get('input[type="password"]')
-      .type('password123')
-    // submit
-    cy.get('.login--form.form-signin')
-      .submit()
-
     // Feed Page
     cy.url().should('include', '/feed')
 
@@ -109,12 +79,12 @@ context('Login', () => {
     cy.get('.article-wrapper')
       .should('have.length', 2)
 
-    // My Peers tab
+    // My Experts tab
     cy.get('.filter--button:nth-child(2)')
       .click()
     cy.get('.filter--button:nth-child(2)')
       .should('have.class', 'active')
-      .should('have.text', 'My Peers')
+      .should('have.text', 'My Experts')
     cy.url().should('include', '/feed')
     cy.get('.article-wrapper')
       .should('have.length', 1)
@@ -156,16 +126,6 @@ context('Login', () => {
   })
 
   it("Click edit topics, follow a topic, then return to feed", () => {
-    // type email and test
-    cy.get('input[type="email"]')
-      .type('testuser@gmail.com')
-    // type password and test
-    cy.get('input[type="password"]')
-      .type('password123')
-    // submit
-    cy.get('.login--form.form-signin')
-      .submit()
-
     cy.get('.feed--dashboard')
       .then(result => {
         if (result.find('.profile-stats--empty-message').length) {
@@ -198,16 +158,6 @@ context('Login', () => {
   })
 
   it("Click on topic in my topic", () => {
-    // type email and test
-    cy.get('input[type="email"]')
-      .type('testuser@gmail.com')
-    // type password and test
-    cy.get('input[type="password"]')
-      .type('password123')
-    // submit
-    cy.get('.login--form.form-signin')
-      .submit()
-
     cy.get('.feed--dashboard')
       .then(result => {
         if (result.find('.profile-stats__space-title').length) {
@@ -223,16 +173,6 @@ context('Login', () => {
   })
 
   it("Click on my topics edit button, remove topic, go back to feedpage", () => {
-    // type email and test
-    cy.get('input[type="email"]')
-      .type('testuser@gmail.com')
-    // type password and test
-    cy.get('input[type="password"]')
-      .type('password123')
-    // submit
-    cy.get('.login--form.form-signin')
-      .submit()
-
     cy.get('.feed--dashboard')
       .then(result => {
         if (result.find('.profile-stats__space-title').length) {
@@ -254,16 +194,6 @@ context('Login', () => {
   })
 
   it("Load all three tabs, observe All Members", () => {
-    // type email and test
-    cy.get('input[type="email"]')
-      .type('testuser@gmail.com')
-    // type password and test
-    cy.get('input[type="password"]')
-      .type('password123')
-    // submit
-    cy.get('.login--form.form-signin')
-      .submit()
-
     // Feed Page
     cy.url().should('include', '/feed')
 
@@ -287,16 +217,6 @@ context('Login', () => {
   })
 
   it("Load all three tabs, All members, See All", () => {
-    // type email and test
-    cy.get('input[type="email"]')
-      .type('testuser@gmail.com')
-    // type password and test
-    cy.get('input[type="password"]')
-      .type('password123')
-    // submit
-    cy.get('.login--form.form-signin')
-      .submit()
-
     // Feed Page
     cy.url().should('include', '/feed')
     cy.get('.see-all-button')
@@ -326,4 +246,44 @@ context('Login', () => {
     cy.get('.filter--button:nth-child(3)')
       .should('have.class', 'active')
   })
+
+  it("Add a reaction to a feed post", () => {
+    cy.get('.feed-dashboard-cell:nth-child(1) .engagement-buttons--wrapper .engagement-buttons--items div:nth-child(2) button')
+      .then(result => {
+        let count = 0;
+        if (result.find('span').length > 1) {
+          count = result.find('span').last().text().replace(/\D/g, "")
+        }
+        
+        if (count === 0) {
+          cy.get('.feed-dashboard-cell:nth-child(1) .engagement-buttons--wrapper .engagement-buttons--items div:nth-child(2) button')
+            .click()
+  
+          cy.get('.feed-dashboard-cell:nth-child(1) .engagement-buttons--wrapper .engagement-buttons--items div:nth-child(2) button span:nth-child(3)')
+            .should('have.text', ` (${parseInt(count) + 1}) `)
+        }
+      })
+  })
+
+  it("Remove a reaction from a feed post", () => {
+    cy.get('.feed-dashboard-cell:nth-child(1) .engagement-buttons--wrapper .engagement-buttons--items div:nth-child(2) button')
+      .then(result => {
+        let count = 0;
+        if (result.find('span').length > 1) {
+          count = result.find('span').last().text().replace(/\D/g, "")
+        }
+
+        if (parseInt(count) === 1) {
+          cy.get('.feed-dashboard-cell:nth-child(1) .engagement-buttons--wrapper .engagement-buttons--items div:nth-child(2) button')
+            .click()
+  
+          cy.get('.feed-dashboard-cell:nth-child(1) .engagement-buttons--wrapper .engagement-buttons--items div:nth-child(2) button')
+            .find('span')
+            .should(($span) => {
+              expect($span).to.have.length(1)
+            })
+        }
+      })
+  })
+
 })
