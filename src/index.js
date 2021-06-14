@@ -22,6 +22,7 @@ import vendorModel from "./models/vendor";
 import vendorsModel from "./models/vendors";
 import fileModel from "./models/file";
 import suggestionsModel from "./models/suggestions";
+import Util from "./components/util/Util";
 
 const store = init({
   models: {
@@ -43,7 +44,9 @@ const store = init({
   },
 });
 
-ReactGA.initialize("UA-175211100-1");
+if (Util.inProduction()) {
+  ReactGA.initialize("UA-194054031-1");
+}
 
 ReactDOM.render(
   <React.StrictMode>
