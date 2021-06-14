@@ -81,13 +81,13 @@
       "checked": false,
       "content": "Add five tools to your marketing stack",
       "showAddVendorButton": true,
-      "isVendor": true
+      "showAddSkillsButton": false
     },
     {
       "checked": false,
       "content": "Add three areas of expertise to your profile",
-      "showAddVendorButton": true,
-      "isVendor": false
+      "showAddVendorButton": false,
+      "showAddSkillsButton": true
     },
     { "checked": false, "content": "Follow five experts" },
     { "checked": false, "content": "Upvote three good answers" },

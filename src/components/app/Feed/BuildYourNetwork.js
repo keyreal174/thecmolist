@@ -45,9 +45,9 @@ const BuildYourNetwork = ({ buildYourNetworkItems }) => {
                     if (item.link) window.location.href = item.link;
                   }}
                 />
-                {item.showAddVendorButton && (
+                {(item.showAddVendorButton || item.showAddSkillsButton) && (
                   <AddVendorButton
-                    isVendor={item.isVendor ? true : false}
+                    isVendor={item.showAddVendorButton}
                     toggleAddVendorModal={toggleAddVendorModal}
                     toggleAddSkillModal={toggleAddSkillModal}
                   />
