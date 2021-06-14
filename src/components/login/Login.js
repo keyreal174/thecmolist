@@ -110,6 +110,19 @@ class Login extends React.Component {
               onSubmit={this.handleSubmit.bind(this)}
             >
               <h2 className="login--title">Sign into CMOlist</h2>
+              <a
+                className="login--linkedIn btn btn-block btn-social btn-linkedin button-login"
+                href={this.state.linkedInUrl}
+                onClick={() => console.log("login with linkedin")}
+              >
+                <img alt="LinkedIn Icon" src={LinkedInIcon} />
+                Sign in with Linkedin
+              </a>
+              <p className="login--disclaimer">
+                By signing in, you agree to our{" "}
+                <a href={userPolicy}>User Agreement</a> and{" "}
+                <a href={privacyPolicy}>Privacy Policy</a>.
+              </p>
               <input
                 type="email"
                 className="form-control form-username input-field"
@@ -148,19 +161,6 @@ class Login extends React.Component {
                   />
                 </div>
               </button>
-              <a
-                className="login--linkedIn btn btn-block btn-social btn-linkedin button-login"
-                href={this.state.linkedInUrl}
-                onClick={() => console.log("login with linkedin")}
-              >
-                <img alt="LinkedIn Icon" src={LinkedInIcon} />
-                Sign in with Linkedin
-              </a>
-              <p className="login--disclaimer">
-                By signing in, you agree to our{" "}
-                <a href={userPolicy}>User Agreement</a> and{" "}
-                <a href={privacyPolicy}>Privacy Policy</a>.
-              </p>
               <p className="login--question">
                 Any questions or problems signing in? Please contact us at{" "}
                 <strong className="login--contact-email">
