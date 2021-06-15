@@ -433,7 +433,7 @@ function AddPostModal({
                   />
                 </Col>
                 <div className="modal-rich-editor-section d-flex col-md-12 px-0">
-                  <Col md="9" sm="12">
+                  <Col md="12">
                     <div className="modal-section-title">
                       Description <span>{descriptionSubheading}</span>
                     </div>
@@ -477,52 +477,6 @@ function AddPostModal({
                         </div>
                       </Button>
                     </div>
-                  </Col>
-                  <Col md="3" sm="12">
-                    <ul className="modal-section-body-right-content">
-                      <li className="modal-section-list-item">
-                        <Button
-                          className="modal-section-body-content"
-                          onClick={() => handlePhotoClick()}
-                          variant="light"
-                          size="sm"
-                          disabled
-                        >
-                          <div>
-                            <img
-                              alt="photograph icon"
-                              className="modal-section-body-image"
-                              src={`${cdn}/image.png`}
-                            />
-                            Photo
-                          </div>
-                        </Button>
-                        <input
-                          type="file"
-                          id="file"
-                          style={{ display: "none" }}
-                          onChange={handleFileChange}
-                        />
-                      </li>
-                      <li className="modal-section-list-item">
-                        <Button
-                          className="modal-section-body-content"
-                          onClick={() => setShowVideo(true)}
-                          variant="light"
-                          size="sm"
-                          disabled
-                        >
-                          <div>
-                            <img
-                              alt="video icon"
-                              className="modal-section-body-image"
-                              src={`${cdn}/video.png`}
-                            />
-                            Video
-                          </div>
-                        </Button>
-                      </li>
-                    </ul>
                   </Col>
                 </div>
                 <Col md="12">
