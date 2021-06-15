@@ -445,44 +445,41 @@ function AddPostModal({
                       setIsPersonVendor={() => setIsPersonVendor(false)}
                       toolbar={true}
                     />
+                    <div className="rich-editor-vendor-btns">
+                      <Button
+                        className="modal-section-body-content"
+                        onClick={() => handlePersonVendor("Person")}
+                        size="sm"
+                        variant="light"
+                      >
+                        <div>
+                          <img
+                            alt="person icon"
+                            className="modal-section-body-image"
+                            src={`${cdn}/person.png`}
+                          />
+                          <span>@Person</span>
+                        </div>
+                      </Button>
+                      <Button
+                        className="modal-section-body-content"
+                        onClick={() => handlePersonVendor("Vendor")}
+                        size="sm"
+                        variant="light"
+                      >
+                        <div>
+                          <img
+                            alt="company icon"
+                            className="modal-section-body-image"
+                            src={`${cdn}/company.png`}
+                          />
+                          <span>@Vendor</span>
+                        </div>
+                      </Button>
+                    </div>
                   </Col>
                   <Col md="3" sm="12">
                     <ul className="modal-section-body-right-content">
-                      <li className="modal-section-list-item">
-                        <Button
-                          className="modal-section-body-content"
-                          onClick={() => handlePersonVendor("Person")}
-                          size="sm"
-                          variant="light"
-                        >
-                          <div>
-                            <img
-                              alt="person icon"
-                              className="modal-section-body-image"
-                              src={`${cdn}/person.png`}
-                            />
-                            @Person
-                          </div>
-                        </Button>
-                      </li>
-
-                      <li className="modal-section-list-item">
-                        <Button
-                          className="modal-section-body-content"
-                          onClick={() => handlePersonVendor("Vendor")}
-                          size="sm"
-                          variant="light"
-                        >
-                          <div>
-                            <img
-                              alt="company icon"
-                              className="modal-section-body-image"
-                              src={`${cdn}/company.png`}
-                            />
-                            @Vendor
-                          </div>
-                        </Button>
-                      </li>
                       <li className="modal-section-list-item">
                         <Button
                           className="modal-section-body-content"
