@@ -246,6 +246,12 @@
   }
 }
 
+.modal-section-checkbox-content {
+  label.custom-checkbox {
+    margin-bottom: 0;
+  }
+}
+
 @media (max-width: 767px) {
   .add-person-modal {
     &.visible {
