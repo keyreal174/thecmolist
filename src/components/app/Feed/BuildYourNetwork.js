@@ -23,10 +23,20 @@ const BuildYourNetwork = ({ buildYourNetworkItems }) => {
   const [showAddSkills, setShowAddSkill] = useState(false);
 
   const toggleAddVendorModal = () => {
+    if (showAddVendor) {
+      // i.e. we're closing the dialog, trigger a refresh in case
+      // some content was added
+      window.location.reload();
+    }
     setShowAddVendor((value) => !value);
   };
 
   const toggleAddSkillModal = () => {
+    if (showAddSkills) {
+      // i.e. we're closing the dialog, trigger a refresh in case
+      // some content was added
+      window.location.reload();
+    }
     setShowAddSkill((value) => !value);
   };
 
