@@ -143,6 +143,12 @@
     align-items: center;
     justify-content: space-between;
 
+    .filter-dropdown--wrapper {
+      .filter-dropdown {
+        margin-left: 0;
+      }
+    }
+
     .filter-add-vendor-btn {
       flex-grow: unset !important;
       button {

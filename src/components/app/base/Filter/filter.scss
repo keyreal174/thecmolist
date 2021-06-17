@@ -152,12 +152,13 @@
       background-color: $white;
 
       a.dropdown-toggle {
-        width: 200px;
+        min-width: 200px;
         text-align: center;
       }
 
       .dropdown-menu {
         right: 0 !important;
+        width: fit-content;
 
         .filter-dropdown-item-enabled {
           background: $blue;
