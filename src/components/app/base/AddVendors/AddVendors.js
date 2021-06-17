@@ -253,9 +253,9 @@ const RenderVendorCategoryRow = ({
           <Col md={6}>
             <Form.Control
               as="textarea"
-              className="profile--textarea vendor--profile--textarea"
+              className="profile--textarea vendor--profile--textarea fadeAndSlideElementInFast"
               rows="1"
-              placeholder={`Why did you selected ${tool.name}?`}
+              placeholder={`Why did you select ${tool.name}?`}
               onChange={(e) => onToolSumarize(e, tool)}
             />
           </Col>
