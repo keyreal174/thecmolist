@@ -247,3 +247,10 @@
   white-space: nowrap;
   display: block;
 }
+
+.vendor--profile--textarea.form-control {
+  padding: 10px;
+  height: 45px;
+  color: #656989;
+  overflow: hidden;
+}
