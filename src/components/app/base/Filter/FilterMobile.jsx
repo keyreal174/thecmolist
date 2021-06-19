@@ -20,7 +20,6 @@ const FilterMobile = (props) => {
             className={clsx(
               idx === props.filterIdx && "filter-dropdown-item-enabled"
             )}
-            // style={{ whiteSpace: "break-spaces" }}
           >
             {filter.title}
             {filter.count && (

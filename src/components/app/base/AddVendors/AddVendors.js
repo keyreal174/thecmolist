@@ -122,6 +122,7 @@ const RenderVendorCategoryRow = ({
   const [isLoading, setIsLoading] = useState(false);
   const [myTools, setMyTools] = useState([]);
   const [options, setOptions] = useState([]);
+  const [toolSumarize, setToolSumarize] = useState([]);
 
   const handleSearch = async (query) => {
     setIsLoading(true);
@@ -139,7 +140,13 @@ const RenderVendorCategoryRow = ({
 
   const onSelectTool = (tool, cate) => {
     setMyTools((value) =>
-      [...(value || []), tool].filter(
+      [
+        ...(value || []),
+        {
+          ...tool,
+          review: "",
+        },
+      ].filter(
         (t, index, self) =>
           index === self.findIndex((item) => item.name === t.name)
       )
@@ -150,67 +157,111 @@ const RenderVendorCategoryRow = ({
     changeCategory(citem, id);
   };
 
+  const onToolSumarize = (e, tool) => {
+    const slug = tool.slug || tool.id;
+    const temp = myTools.map((t) => {
+      if (t.slug === slug || t.id === slug) {
+        return {
+          ...t,
+          review: e.target.value,
+        };
+      }
+      return t;
+    });
+
+    setMyTools(temp);
+  };
+
+  const onChangeSelctedOptions = (selectedOption) => {
+    const sOption = selectedOption.map((item) => ({
+      ...item,
+      review: item.review || "",
+    }));
+
+    setMyTools(sOption);
+  };
+
   useEffect(() => {
     updateVendors && updateVendors([...myTools]);
   }, [myTools]);
 
   return (
-    <Row className="mb-3 align-items-center">
-      <Col md={4}>
-        <CategoryDropdown
-          category={cate}
-          categoryList={availableCategories}
-          categoryId={id}
-          changeCategory={handleChangeCategory}
-        />
-      </Col>
-      <Col md={4}>
-        <AsyncTypeahead
-          id="async-global-search"
-          isLoading={isLoading}
-          labelKey="name"
-          multiple
-          minLength={0}
-          onSearch={handleSearch}
-          options={options}
-          emptyLabel=""
-          renderMenu={(results, menuProps) => {
-            if (!results.length) {
-              return null;
-            }
-            return (
-              <TypeaheadMenu options={results} labelKey="name" {...menuProps} />
-            );
-          }}
-          selected={myTools}
-          onChange={(selectedOption) => {
-            setMyTools(selectedOption);
-          }}
-          placeholder={
-            skill ? "Summarize your experience" : "Search & select tool(s)"
-          }
-          renderMenuItemChildren={(option) => (
-            <React.Fragment>
-              <span>{option.name}</span>
-            </React.Fragment>
-          )}
-        />
-      </Col>
-      <Col md={4}>
-        {!skill && (
-          <div className="vendor-category--popular-tools">
-            {cate &&
-              cate.tools.map((tool, ti) => (
-                <PopularTool
-                  tool={tool}
-                  key={ti}
-                  onSelectTool={() => onSelectTool(tool, cate.name)}
+    <div className="mb-3">
+      <Row className="align-items-center">
+        <Col md={4}>
+          <CategoryDropdown
+            category={cate}
+            categoryList={availableCategories}
+            categoryId={id}
+            changeCategory={handleChangeCategory}
+          />
+        </Col>
+        <Col md={4}>
+          <AsyncTypeahead
+            id="async-global-search"
+            isLoading={isLoading}
+            labelKey="name"
+            multiple
+            minLength={0}
+            onSearch={handleSearch}
+            options={options}
+            emptyLabel=""
+            renderMenu={(results, menuProps) => {
+              if (!results.length) {
+                return null;
+              }
+              return (
+                <TypeaheadMenu
+                  options={results}
+                  labelKey="name"
+                  {...menuProps}
                 />
-              ))}
-          </div>
-        )}
-      </Col>
-    </Row>
+              );
+            }}
+            selected={myTools}
+            onChange={(selectedOption) => {
+              onChangeSelctedOptions(selectedOption);
+            }}
+            placeholder={
+              skill ? "Summarize your experience" : "Search & select tool(s)"
+            }
+            renderMenuItemChildren={(option) => (
+              <React.Fragment>
+                <span>{option.name}</span>
+              </React.Fragment>
+            )}
+          />
+        </Col>
+        <Col md={4}>
+          {!skill && (
+            <div className="vendor-category--popular-tools">
+              {cate &&
+                cate.tools.map((tool, ti) => (
+                  <PopularTool
+                    tool={tool}
+                    key={ti}
+                    onSelectTool={() => onSelectTool(tool, cate.name)}
+                  />
+                ))}
+            </div>
+          )}
+        </Col>
+      </Row>
+      {myTools.map((tool, index) => (
+        <Row key={index} className="mb-2">
+          <Col md={4}></Col>
+          <Col md={6}>
+            <Form.Control
+              as="textarea"
+              className="profile--textarea vendor--profile--textarea fadeAndSlideElementInFast"
+              rows="1"
+              placeholder={`Why did you select ${tool.name}?`}
+              onChange={(e) => onToolSumarize(e, tool)}
+            />
+          </Col>
+        </Row>
+      ))}
+    </div>
   );
 };
 
@@ -287,6 +338,7 @@ const AddVendors = ({
       }
       return temp;
     });
+
     setVendors(vendorTemp);
   };
 
