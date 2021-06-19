@@ -132,6 +132,15 @@ const Profile = (props) => {
       setConnectedUser(props.profile.connectedUser);
       setFollowedUser(props.profile.followedUser);
       props.profile.feedData && createSubfilters(props.profile.feedData);
+
+      const feedtext = window.location.href.split("#")[1];
+      const id = props.profile.feedData.findIndex(
+        (item) =>
+          (item.title === "My Expertise" && feedtext === "expertise") ||
+          (item.title === "My Marketing Stack" && feedtext === "stack")
+      );
+
+      setFilterIdx(id === -1 ? 0 : id);
     }
   }, [props.profile]);
 

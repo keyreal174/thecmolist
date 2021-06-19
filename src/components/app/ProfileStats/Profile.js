@@ -32,11 +32,11 @@ const Profile = ({ profileStats }) => {
                   Profile
                 </a>{" "}
                 |{" "}
-                <a alt="View My Stack" href="/profile">
+                <a alt="View My Stack" href="/profile#stack">
                   Stack
                 </a>{" "}
                 |{" "}
-                <a alt="View My Expertise" href="/profile">
+                <a alt="View My Expertise" href="/profile#expertise">
                   Expertise
                 </a>
               </div>
