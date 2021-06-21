@@ -106,6 +106,10 @@ export default class Util {
     return window.location.host === "localhost:3000";
   }
 
+  static inProduction() {
+    return window.location.host.includes("thecmolist.com");
+  }
+
   static inTestContainer() {
     return process.env.JEST_WORKER_ID !== undefined;
   }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { connect } from "react-redux";
 import clsx from "clsx";
 import { useHistory } from "react-router";
@@ -345,6 +345,20 @@ const Profile = (props) => {
     ) : null;
   };
 
+  let feedBlockerText = null;
+  let feedBlockerAddVendor = false;
+  if (feedData[filterIdx]) {
+    if (
+      feedData[filterIdx].blockerText &&
+      feedData[filterIdx].blockerText.length > 0
+    ) {
+      feedBlockerText = feedData[filterIdx].blockerText;
+    }
+    if ("blockerAddVendor" in feedData[filterIdx]) {
+      feedBlockerAddVendor = feedData[filterIdx].blockerAddVendor;
+    }
+  }
+
   return (
     <Layout onToggle={handleToggle}>
       <Container className="height-100">
@@ -596,36 +610,19 @@ const Profile = (props) => {
             <Col xl={topicList.length > 0 ? "8" : "12"} md="12">
               <div
                 className={clsx(
-                  ((filterTitle !== "My Expertise" && !canShowStack) ||
-                    (filterTitle === "My Expertise" && !canShowSkills)) &&
-                    "add-vendor-blocker-wrapper"
+                  feedBlockerText && "add-vendor-blocker-wrapper"
                 )}
               >
-                {filterTitle !== "My Expertise" && !canShowStack && (
-                  <div className="add-vendor-blocker-modal">
-                    <p>
-                      Please share at least five vendors to be able to view your
-                      peers' marketing stacks
-                    </p>
-                    <div className="filter-btn-group">
-                      <AddVendorButton isVendor={true} />
+                {feedBlockerText && (
+                  <Fragment>
+                    <div className="add-vendor-blocker-modal">
+                      <p>{feedBlockerText}</p>
+                      <div className="filter-btn-group">
+                        <AddVendorButton isVendor={feedBlockerAddVendor} />
+                      </div>
                     </div>
-                  </div>
-                )}
-                {filterTitle === "My Expertise" && !canShowSkills && (
-                  <div className="add-vendor-blocker-modal">
-                    <p>
-                      Please share at least <b>three</b> areas of expertise
-                      before being able to view your peers' marketing expertise
-                    </p>
-                    <div className="filter-btn-group">
-                      <AddVendorButton />
-                    </div>
-                  </div>
-                )}
-                {((filterTitle !== "My Expertise" && !canShowStack) ||
-                  (filterTitle === "My Expertise" && !canShowSkills)) && (
-                  <div className="add-vendor-blocker-opacity"></div>
+                    <div className="add-vendor-blocker-opacity"></div>
+                  </Fragment>
                 )}
                 <TransitionGroup
                   enter={enableAnimations}

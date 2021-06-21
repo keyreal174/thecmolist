@@ -116,7 +116,7 @@
 }
 
 .network-list-item .article-text {
-  max-width: 75%;
+  max-width: 95%;
 }
 
 @media (max-width: 768px) {
@@ -142,6 +142,12 @@
   .vendors--filters {
     align-items: center;
     justify-content: space-between;
+
+    .filter-dropdown--wrapper {
+      .filter-dropdown {
+        margin-left: 0;
+      }
+    }
 
     .filter-add-vendor-btn {
       flex-grow: unset !important;

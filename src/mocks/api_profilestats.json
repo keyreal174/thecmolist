@@ -12,7 +12,7 @@
     "groups": [
       { "name": "My Experts", "slug": "my-peers", "checked": true },
       {
-        "name": "Signal Fire Marketing",
+        "name": "Signal Fire Marketing Leader",
         "slug": "signal-fire-marketing",
         "checked": true,
         "image": "https://pbs.twimg.com/profile_images/1351647748722814976/erAltAIZ_400x400.jpg"
@@ -76,10 +76,21 @@
     ]
   },
   "buildYourNetwork": [
-    { "checked": false, "content": "Invite your team" },
-    { "checked": true, "content": "Invite your peers" },
     { "checked": false, "content": "Fill out your profile" },
-    { "checked": true, "content": "Ask your first question" },
-    { "checked": true, "content": "Answer a question" }
+    {
+      "checked": false,
+      "content": "Add five tools to your marketing stack",
+      "showAddVendorButton": true,
+      "showAddSkillsButton": false
+    },
+    {
+      "checked": false,
+      "content": "Add three areas of expertise to your profile",
+      "showAddVendorButton": false,
+      "showAddSkillsButton": true
+    },
+    { "checked": false, "content": "Follow five experts" },
+    { "checked": false, "content": "Upvote three good answers" },
+    { "checked": true, "content": "Share one Playbook" }
   ]
 }

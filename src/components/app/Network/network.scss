@@ -134,6 +134,12 @@
   }
   .network--filter-wrapper {
     margin: 0 17px;
+
+    .filter-dropdown--wrapper {
+      .filter-dropdown {
+        margin-left: 0;
+      }
+    }
   }
   .filter-btn-group {
     padding-bottom: 10px;

@@ -166,6 +166,8 @@
       },
       {
         "title": "My Technologies",
+        "blockerText": "Please share at least five vendors to be able to view your peers' marketing stacks",
+        "blockerAddVendor": true,
         "enabled": true,
         "data": [
           {
@@ -209,6 +211,7 @@
       },
       {
         "title": "My Expertise",
+        "blockerText": "Please share at least three areas of expertise before being able to view your peers' marketing expertise",
         "enabled": true,
         "data": [
           {
@@ -257,8 +260,6 @@
       }
     ],
     "isMyProfile": true,
-    "canShowStack": false,
-    "canShowSkills": false,
     "isNewUser": true
   }
 }
