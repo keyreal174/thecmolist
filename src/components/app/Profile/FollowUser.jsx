@@ -62,16 +62,16 @@ function FollowUserModal(props) {
         <Modal.Body>
           <Fragment>
             <Form.Label className="mt-2">
-              See updates and news from {props.firstname || props.username} in
-              your feed.
+              See <b>advice</b>, <b>playbooks</b> and <b>news</b> from{" "}
+              {props.firstname || props.username} in your feed.
             </Form.Label>
             <br />
             <Form.Label className="mt-3">
-              <b>Endorse</b>{" "}
+              Follow{" "}
               <span className="text-capitalize">
                 {props.firstname || props.username}
               </span>{" "}
-              for one or more marketing skills
+              for these topics of leave blank to view all of their posts
             </Form.Label>
             <AsyncTypeahead
               id="async-global-search"
