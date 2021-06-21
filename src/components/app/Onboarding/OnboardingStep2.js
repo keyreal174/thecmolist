@@ -76,12 +76,12 @@ const OnboardingStep2 = ({
   const [loading, setLoading] = useState(false);
   const [step, setStep] = useState(1);
   const introOptions = [
-    "Getting marketing advice",
-    "Building my marketing network",
-    "Staying in touch with my peers",
-    "Sharing my expertise",
-    "Learning about new marketing trends",
-    "Advising or board roles",
+    "Get marketing advice",
+    "Build my marketing network",
+    "Stay in touch with my peers",
+    "Share my expertise",
+    "Learn about new marketing trends",
+    "Find advisor or board roles",
   ];
   const [selectedOptions, setSelectedOptions] = useState([]);
   const history = useHistory();
@@ -154,8 +154,8 @@ const OnboardingStep2 = ({
         showGetIntro
           ? "One last step..."
           : step === 1
-          ? "Share your expertise with your peers"
-          : "Share your marketing stack with your peers"
+          ? "Share three or more areas of expertise for which could you provide advice to your peers"
+          : "Share your five or more of your most impactful marketing tools with your peers"
       }
       subtitle={
         showGetIntro
@@ -173,7 +173,9 @@ const OnboardingStep2 = ({
             <CustomCard className="onboarding--card">
               <Row className="onboarding--pill-head">
                 <Col>
-                  <Form.Label>What are you most interested in?</Form.Label>
+                  <Form.Label>
+                    How can CMOlist help you be more successful?
+                  </Form.Label>
                 </Col>
               </Row>
               <Row className="onboarding--pill-mid">
