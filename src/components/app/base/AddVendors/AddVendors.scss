@@ -249,8 +249,11 @@
 }
 
 .vendor--profile--textarea.form-control {
-  padding: 10px;
-  height: 45px;
+  padding: 6px 10px;
+  height: 34px;
   color: #656989;
+  font-size: 14px;
+  background-color: #f3f7ff;
+  min-height: 34px;
   overflow: hidden;
 }
