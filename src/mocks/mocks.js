@@ -13,6 +13,7 @@ var MockAdapter,
   MockedApiRefinedSearch,
   MockedApiVendorProfile,
   MockedApiVendorsProfile,
+  MockedApiVendorList,
   MockedApiVendorCategories,
   MockedApiSkillCategories,
   MockedApiReactionsByPost,
@@ -33,6 +34,7 @@ if (process.env.NODE_ENV !== "production") {
   MockedApiRefinedSearch = require("./api_refinedsearch.json");
   MockedApiVendorProfile = require("./api_vendor.json");
   MockedApiVendorsProfile = require("./api_vendors.json");
+  MockedApiVendorList = require("./api_vendorlist.json");
   MockedApiVendorCategories = require("./api_vendorcategories.json");
   MockedApiSkillCategories = require("./api_skillcategories.json");
   MockedApiReactionsByPost = require("./api_reactions_by_post.json");
@@ -66,6 +68,11 @@ function MockRequests() {
       path: /\/api\/vendors.*/,
       responseCode: 200,
       response: MockedApiVendorsProfile,
+    },
+    {
+      path: /\/api\/vendor_list.*/,
+      responseCode: 200,
+      response: MockedApiVendorList,
     },
     {
       path: /\/api\/vendor_categories/,

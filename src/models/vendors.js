@@ -26,6 +26,32 @@ const vendorRequest = (sort, filter, subfilter, token) => {
   return axios.get(url, { headers });
 };
 
+const vendorListRequest = (sort, filter, subfilter, token) => {
+  let headers = {
+    "timezone-offset": new Date().getTimezoneOffset(),
+  };
+  let url = "/api/vendor_list?";
+  if (sort) {
+    url += `sort=${sort.toLowerCase()}`;
+  }
+  if (filter) {
+    if (sort) {
+      url += "&";
+    }
+    url += `filter=${filter}`;
+  }
+  if (subfilter) {
+    if (!filter) {
+      throw new Error("Cannot have a subfilter without a filter");
+    }
+    url += `&subfilter=${subfilter}`;
+  }
+  if (token) {
+    headers.token = token;
+  }
+  return axios.get(url, { headers });
+};
+
 const postNewMember = (data) => {
   axios.post("/api/vendors/invite", data);
 };
@@ -51,6 +77,7 @@ export default {
     sortOrder: "Top",
     vendorCategories: [],
     skillCategories: [],
+    vendorList: [],
   },
   reducers: {
     initFeedDataForKey: (oldState, filterKey) => {
@@ -146,6 +173,12 @@ export default {
       return {
         ...oldState,
         skillCategories: data,
+      };
+    },
+    setVendorList: (oldState, data) => {
+      return {
+        ...oldState,
+        vendorList: data,
       };
     },
   },
@@ -267,6 +300,24 @@ export default {
         );
       } catch (error) {
         throw new Error("Can not get skill categories.");
+      }
+    },
+    async fetchVendorList(filterKey, rootState) {
+      try {
+        const { activeFilter, sortOrder } = rootState.vendorsModel;
+        dispatch.vendorsModel.setLoading(true);
+
+        const response = await vendorListRequest(
+          sortOrder,
+          filterKey | activeFilter,
+          "",
+          ""
+        );
+        dispatch.vendorsModel.setVendorList(response.data.vendorList);
+      } catch (error) {
+        throw new Error("Can not fetch vendor list");
+      } finally {
+        dispatch.vendorsModel.setLoading(false);
       }
     },
   }),
