@@ -11,7 +11,7 @@ import PopularTopics from "../base/PopularTopics/PopularTopics";
 import SimpleTopBanner from "../base/SimpleTopBanner/SimpleTopBanner";
 import AddMemberModal from "../base/AddMemberModal/AddMemberModal";
 import AddVendorsModal from "../base/AddVendors/AddVendorsModal";
-import VendorsFeed from "./VendorsFeed";
+import VendorList from "./VendorList";
 import Analytics from "../../util/Analytics";
 import { cdn } from "../../util/constants";
 import "./vendors.scss";
@@ -175,17 +175,7 @@ const Vendors = (props) => {
                   <ActivityIndicator className="element-center feed-activity-indicator" />
                 </div>
               ) : (
-                <>
-                  {props.vendorList &&
-                    props.vendorList.map((vendor, i) => (
-                      <VendorsFeed key={i} {...props} vendor={vendor} />
-                    ))}
-                  {props.vendorList && props.vendorList.length === 0 && (
-                    <div className="wrapper article-wrapper no-feed-data-header">
-                      <div>No vendors here yet.</div>
-                    </div>
-                  )}
-                </>
+                <VendorList vendorList={props.vendorList} />
               )}
             </Col>
           </Row>

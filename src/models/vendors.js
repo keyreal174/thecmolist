@@ -304,15 +304,10 @@ export default {
     },
     async fetchVendorList(filterKey, rootState) {
       try {
-        const { activeFilter, sortOrder } = rootState.vendorsModel;
+        const { sortOrder } = rootState.vendorsModel;
         dispatch.vendorsModel.setLoading(true);
 
-        const response = await vendorListRequest(
-          sortOrder,
-          filterKey | activeFilter,
-          "",
-          ""
-        );
+        const response = await vendorListRequest(sortOrder, filterKey, "", "");
         dispatch.vendorsModel.setVendorList(response.data.vendorList);
       } catch (error) {
         throw new Error("Can not fetch vendor list");
