@@ -16,6 +16,11 @@
               "markdown": "Cambridge"
             }
           ],
+          "connections": [
+            {
+              "markdown": "[@Jenifer Smith](/vendor/jenifer_smith), [@Hillary](/vendor/hillary), and [@Kyle](/vendor/kyle)"
+            }
+          ],
           "name": "Hubspot",
           "username": "hubspot"
         },

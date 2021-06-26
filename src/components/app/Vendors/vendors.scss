@@ -240,12 +240,28 @@
   }
 }
 
+.vendors--feed--wrapper {
+  @media screen and (max-width: 767px) {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
 .vendor-list-container {
   display: flex;
+
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+  }
 
   .vendor-list-info {
     width: 380px;
     margin-right: 20px;
+    margin-bottom: 20px;
+
+    @media screen and (max-width: 767px) {
+      width: auto;
+    }
 
     h1 {
       color: $text-1;
@@ -271,5 +287,14 @@
     .vendor-article-text {
       font-size: 14px;
     }
+  }
+
+  .vendor-card-divider {
+    height: 1px;
+    background: #9597ae;
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
   }
 }

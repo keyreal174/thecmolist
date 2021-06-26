@@ -64,6 +64,26 @@ const VendorCard = ({ item }) => {
           {item.articletext}
         </ShowMoreText>
       </div>
+      <div className="text-center">
+        {item.connections && (
+          <>
+            <div className="vendor-card-divider"></div>
+            <p>12 connections including</p>
+            <div
+              className="article-subheadlines mr-0"
+              style={{ maxWidth: "100%" }}
+            >
+              {item.connections.map((connect, idx) => {
+                return (
+                  <div key={idx} className="article-subheadline">
+                    <Markdown>{connect.markdown}</Markdown>
+                  </div>
+                );
+              })}
+            </div>
+          </>
+        )}
+      </div>
     </CustomCard>
   );
 };

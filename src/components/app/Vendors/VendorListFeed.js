@@ -29,7 +29,7 @@ const VendorsFeed = ({ vendor }) => {
             {vendor.vendors
               .filter((_, i) => i < 3)
               .map((item, index) => (
-                <Col md={4} sm={12} key={index}>
+                <Col xl={4} lg={6} md={12} key={index}>
                   <VendorCard item={item} />
                 </Col>
               ))}

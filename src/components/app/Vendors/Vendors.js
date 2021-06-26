@@ -165,7 +165,7 @@ const Vendors = (props) => {
               </div>
             </div>
           )}
-          <Row>
+          <Row className="vendors--feed--wrapper">
             <Col
               className={clsx("vendors--feed", mobileMenuOpen && "open")}
               md="12"
