@@ -85,9 +85,9 @@ function Article(props) {
       {articleBodyContentPresent && (
         <div>
           <div className="article-body article-wrap">
-            <div className="d-flex">
+            <Row>
               {props.image && props.image.length > 0 && (
-                <div className="article--image mr-3">
+                <Col sm="2" lg="1" className="article--image">
                   <div className="article-img">
                     <img
                       src={props.image}
@@ -99,9 +99,13 @@ function Article(props) {
                       }
                     />
                   </div>
-                </div>
+                </Col>
               )}
-              <div className="article--content">
+              <Col
+                className="article--content"
+                sm={props.image && props.image.length > 0 ? "10" : "12"}
+                lg={props.image && props.image.length > 0 ? "11" : "12"}
+              >
                 <h2 className="article-title">
                   {props.headline.markdown ? (
                     <Markdown>{props.headline.markdown}</Markdown>
@@ -209,8 +213,8 @@ function Article(props) {
                   </div>
                 )}
                 <Gallery images={props.images} />
-              </div>
-            </div>
+              </Col>
+            </Row>
             {props.children && (
               <Row>
                 <Col sm="12" lg="12">
