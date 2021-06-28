@@ -24,6 +24,7 @@ function RenderSearch({
   options,
   goSearchPage,
 }) {
+  const [activeIndex, setActiveIndex] = useState(-1);
   return (
     <AsyncTypeahead
       className={clsx("header-search", className)}
@@ -46,7 +47,7 @@ function RenderSearch({
         window.location.href = selectedOption[0].link;
       }}
       onKeyDown={(e) => {
-        if (e.key === "Enter") {
+        if (e.key === "Enter" && activeIndex === -1) {
           goSearchPage();
         }
       }}
@@ -66,9 +67,18 @@ function RenderSearch({
         </Fragment>
       )}
     >
-      <Button className="search-btn" variant="submit">
-        <img src={Search} alt="" />
-      </Button>
+      {(props) => {
+        // From https://stackoverflow.com/questions/63275021/react-bootstrap-typeahead-handling-enter-key-if-no-menu-item-selected
+        // We use this method to check whether an item is selected in the typeahead menu
+        // The Typeahead component exposes partial internal state, including
+        // the index of the highlighted menu item.
+        setActiveIndex(props.activeIndex);
+        return (
+          <Button className="search-btn" variant="submit">
+            <img src={Search} alt="" />
+          </Button>
+        );
+      }}
     </AsyncTypeahead>
   );
 }
@@ -174,12 +184,13 @@ function Header({
   const notificationCount = 0; // FUTURE: fetch this from a model
 
   const goSearchPage = () => {
-    history.push({
-      pathname: "/search",
-      state: {
-        query: searchQuery,
-      },
-    });
+    // disable this for now as the full search page isn't ready yet
+    // history.push({
+    //   pathname: "/search",
+    //   state: {
+    //     query: searchQuery,
+    //   },
+    // });
   };
 
   const handleToggle = () => {
