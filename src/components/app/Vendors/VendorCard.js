@@ -73,13 +73,9 @@ const VendorCard = ({ item }) => {
               className="article-subheadlines mr-0"
               style={{ maxWidth: "100%" }}
             >
-              {item.connections.map((connect, idx) => {
-                return (
-                  <div key={idx} className="article-subheadline">
-                    <Markdown>{connect.markdown}</Markdown>
-                  </div>
-                );
-              })}
+              <div className="article-subheadline">
+                <Markdown>{item.connections.markdown}</Markdown>
+              </div>
             </div>
           </>
         )}
