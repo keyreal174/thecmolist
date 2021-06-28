@@ -221,3 +221,80 @@
     display: none;
   }
 }
+
+// vendor list
+.vendor-list-divider {
+  position: relative;
+  text-align: right;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  &::after {
+    content: "";
+    width: calc(100% - 120px);
+    border-bottom: solid 1px #c9ced1;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    z-index: 1;
+  }
+}
+
+.vendors--feed--wrapper {
+  @media screen and (max-width: 767px) {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+.vendor-list-container {
+  display: flex;
+
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+  }
+
+  .vendor-list-info {
+    width: 380px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+
+    @media screen and (max-width: 767px) {
+      width: auto;
+    }
+
+    h1 {
+      color: $text-1;
+      font-size: 32px;
+    }
+
+    p {
+      color: $text-2;
+      font-size: 18px;
+      line-height: 22px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      border-radius: 20px;
+      opacity: 0.8;
+    }
+  }
+
+  .vendor-list-vendors {
+    flex: 1;
+
+    .vendor-article-text {
+      font-size: 14px;
+    }
+  }
+
+  .vendor-card-divider {
+    height: 1px;
+    background: #9597ae;
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+}

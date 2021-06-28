@@ -248,9 +248,9 @@ const RenderVendorCategoryRow = ({
         </Col>
       </Row>
       {myTools.map((tool, index) => (
-        <Row key={index} className="mb-2">
-          <Col md={4}></Col>
-          <Col md={6}>
+        <Row key={index} className="mb-2 mytool-review">
+          <Col md={4} sm={12}></Col>
+          <Col md={6} sm={12}>
             <Form.Control
               as="textarea"
               className="profile--textarea vendor--profile--textarea fadeAndSlideElementInFast"

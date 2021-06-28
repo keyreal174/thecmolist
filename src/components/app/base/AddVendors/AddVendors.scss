@@ -69,8 +69,18 @@
     @media screen and (max-width: 767px) {
       padding: 10px 0;
 
+      & > div {
+        margin-bottom: 3rem !important;
+      }
+
       .skills-text-area {
         margin-top: -10px;
+      }
+
+      .mytool-review {
+        div.col-md-4 {
+          margin-bottom: 0;
+        }
       }
     }
   }
