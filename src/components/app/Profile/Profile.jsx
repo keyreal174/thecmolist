@@ -137,7 +137,7 @@ const Profile = (props) => {
       const id = props.profile.feedData.findIndex(
         (item) =>
           (item.title === "My Expertise" && feedtext === "expertise") ||
-          (item.title === "My Marketing Stack" && feedtext === "stack")
+          (item.title === "My Stack" && feedtext === "stack")
       );
 
       setFilterIdx(id === -1 ? 0 : id);
