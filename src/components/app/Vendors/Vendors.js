@@ -11,7 +11,7 @@ import PopularTopics from "../base/PopularTopics/PopularTopics";
 import SimpleTopBanner from "../base/SimpleTopBanner/SimpleTopBanner";
 import AddMemberModal from "../base/AddMemberModal/AddMemberModal";
 import AddVendorsModal from "../base/AddVendors/AddVendorsModal";
-import VendorsFeed from "./VendorsFeed";
+import VendorList from "./VendorList";
 import Analytics from "../../util/Analytics";
 import { cdn } from "../../util/constants";
 import "./vendors.scss";
@@ -19,14 +19,12 @@ import "./vendors.scss";
 const Vendors = (props) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
-  const fetchData = async () => await props.fetchActiveVendors();
   const [filterIdx, setFilterIdx] = useState(0);
   const [filters, setFilters] = useState([]);
   const [showFilters, setShowFilters] = useState(true);
   const [bannerTitle, setBannerTitle] = useState("");
   const [bannerImage, setBannerImage] = useState("");
   const [showAddVendor, setShowAddVendor] = useState(false);
-  const feedData = props.feedData;
   const changeDashboardHeader = (idx) => {
     if (idx < filters.length) {
       setBannerTitle(filters[idx].title);
@@ -80,7 +78,7 @@ const Vendors = (props) => {
       setBannerTitle(newFilters[idx].title);
       setBannerImage(newFilters[idx].image);
       setFilterIdx(idx);
-      props.changeFilter(newFilters[idx].slug);
+      props.fetchVendorList(newFilters[idx].slug);
       changeDashboardHeader(idx);
     });
   }, []);
@@ -167,37 +165,17 @@ const Vendors = (props) => {
               </div>
             </div>
           )}
-          <Row>
-            {props.activeFeedSubFilters &&
-              props.activeFeedSubFilters.length > 0 && (
-                <Col className="vendors--popular-topics" md="4">
-                  <PopularTopics
-                    onSubfilterChange={(f) => {
-                      props.changeSubFilter(f.slug || f.title);
-                    }}
-                    topicList={props.activeFeedSubFilters}
-                  />
-                </Col>
-              )}
+          <Row className="vendors--feed--wrapper">
             <Col
               className={clsx("vendors--feed", mobileMenuOpen && "open")}
-              md={
-                props.activeFeedSubFilters &&
-                props.activeFeedSubFilters.length > 0
-                  ? "8"
-                  : "12"
-              }
+              md="12"
             >
               {props.loadingVendors ? (
                 <div className="mt-3 mb-5">
                   <ActivityIndicator className="element-center feed-activity-indicator" />
                 </div>
               ) : (
-                <VendorsFeed
-                  {...props}
-                  fetchData={fetchData}
-                  feedData={feedData}
-                />
+                <VendorList vendorList={props.vendorList} />
               )}
             </Col>
           </Row>
@@ -221,12 +199,14 @@ const mapState = (state) => {
     feedData: state.vendorsModel.activeFeed,
     moreData: state.vendorsModel.activeFeedHasMoreData,
     loadingVendors: state.vendorsModel.loadingVendors,
+    vendorList: state.vendorsModel.vendorList,
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
     fetchActiveVendors: dispatch.vendorsModel.fetchActiveVendors,
+    fetchVendorList: dispatch.vendorsModel.fetchVendorList,
     changeFilter: dispatch.vendorsModel.changeFilter,
     changeSubFilter: dispatch.vendorsModel.changeSubFilter,
     inviteNewMember: dispatch.vendorsModel.inviteNewMember,

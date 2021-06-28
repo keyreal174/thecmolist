@@ -1,0 +1,133 @@
+{
+  "vendorList": [
+    {
+      "name": "Awareness",
+      "description": "Tools and partners to help create awareness for your company",
+      "link": "http://foo",
+      "vendors": [
+        {
+          "headline": {
+            "markdown": "[Hubspot](/vendor/hubspot)"
+          },
+          "articletext": "HubSpot is a leading CRM platform that provides software and support to help businesses grow better. Our platform includes marketing, sales, service, and website management products that start free and scale to meet our customers needs at any stage of growth. Today, thousands of customers around the world use our powerful and easy-to-use tools and integrations to attract, engage, and delight customers.",
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+          "subheadlines": [
+            {
+              "markdown": "Cambridge"
+            }
+          ],
+          "connections": {
+            "markdown": "[@Jenifer Smith](/vendor/jenifer_smith), [@Hillary](/vendor/hillary), and [@Kyle](/vendor/kyle)"
+          },
+          "name": "Hubspot",
+          "username": "hubspot"
+        },
+        {
+          "headline": {
+            "markdown": "[Gong](/vendor/gong)"
+          },
+          "articletext": "Gong.io enables revenue teams to realize their fullest potential by unveiling customer reality. The patented Gong Revenue Intelligence Platform captures and understands every customer interaction then delivers insights at scale, empowering revenue teams to make decisions based on data instead of opinions. #RevenueIntelligence",
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNDk2OTU5OWdvbmcuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
+          "subheadlines": [
+            {
+              "markdown": "Palo Alto"
+            }
+          ],
+          "name": "Gong",
+          "username": "gong"
+        },
+        {
+          "headline": {
+            "markdown": "[Drift](/vendor/drift)"
+          },
+          "articletext": "Drift is the Conversational Marketing platform that combines chat, email, video, and automation to remove the friction from business buying. With Drift, you can start conversations with future customers now, on their terms -- not days later. There are over 50,000 businesses that use Drift today to generate more revenue, shrink sales cycles, and make buying easy. Our mission is to use conversations to make business buying frictionless, more enjoyable, and more human.",
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTQwNDc3OGRyaWZ0LmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
+          "subheadlines": [
+            {
+              "markdown": "Boston"
+            }
+          ],
+          "name": "Drift",
+          "username": "drift"
+        },
+        {
+          "headline": {
+            "markdown": "[ZoomInfo](/vendor/zoominfo)"
+          },
+          "articletext": "HubSpot is a leading CRM platform that provides software and support to help businesses grow better. Our platform includes marketing, sales, service, and website management products that start free and scale to meet our customers needs at any stage of growth. Today, thousands of customers around the world use our powerful and easy-to-use tools and integrations to attract, engage, and delight customers.",
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTk0OTc1OXouanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
+          "subheadlines": [
+            {
+              "markdown": "Vancouver"
+            }
+          ],
+          "name": "ZoomInfo",
+          "username": "zoominfo"
+        }
+      ]
+    },
+    {
+      "name": "Reach",
+      "description": "Tools and partners to target and message your customers",
+      "link": "http://foo",
+      "vendors": [
+        {
+          "headline": {
+            "markdown": "[Hubspot](/vendor/hubspot)"
+          },
+          "articletext": "HubSpot is a leading CRM platform that provides software and support to help businesses grow better. Our platform includes marketing, sales, service, and website management products that start free and scale to meet our customers needs at any stage of growth. Today, thousands of customers around the world use our powerful and easy-to-use tools and integrations to attract, engage, and delight customers.",
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+          "subheadlines": [
+            {
+              "markdown": "Cambridge"
+            }
+          ],
+          "name": "Hubspot",
+          "username": "hubspot"
+        },
+        {
+          "headline": {
+            "markdown": "[Gong](/vendor/gong)"
+          },
+          "articletext": "Gong.io enables revenue teams to realize their fullest potential by unveiling customer reality. The patented Gong Revenue Intelligence Platform captures and understands every customer interaction then delivers insights at scale, empowering revenue teams to make decisions based on data instead of opinions. #RevenueIntelligence",
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNDk2OTU5OWdvbmcuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
+          "subheadlines": [
+            {
+              "markdown": "Palo Alto"
+            }
+          ],
+          "name": "Gong",
+          "username": "gong"
+        },
+        {
+          "headline": {
+            "markdown": "[Drift](/vendor/drift)"
+          },
+          "articletext": "Drift is the Conversational Marketing platform that combines chat, email, video, and automation to remove the friction from business buying. With Drift, you can start conversations with future customers now, on their terms -- not days later. There are over 50,000 businesses that use Drift today to generate more revenue, shrink sales cycles, and make buying easy. Our mission is to use conversations to make business buying frictionless, more enjoyable, and more human.",
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTQwNDc3OGRyaWZ0LmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
+          "subheadlines": [
+            {
+              "markdown": "Boston"
+            }
+          ],
+          "name": "Drift",
+          "username": "drift"
+        },
+        {
+          "headline": {
+            "markdown": "[ZoomInfo](/vendor/zoominfo)"
+          },
+          "articletext": "HubSpot is a leading CRM platform that provides software and support to help businesses grow better. Our platform includes marketing, sales, service, and website management products that start free and scale to meet our customers needs at any stage of growth. Today, thousands of customers around the world use our powerful and easy-to-use tools and integrations to attract, engage, and delight customers.",
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTk0OTc1OXouanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
+          "subheadlines": [
+            {
+              "markdown": "Vancouver"
+            }
+          ],
+          "name": "ZoomInfo",
+          "username": "zoominfo"
+        }
+      ]
+    }
+  ]
+}
