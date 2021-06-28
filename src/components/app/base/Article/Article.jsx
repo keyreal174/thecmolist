@@ -85,7 +85,7 @@ function Article(props) {
       {articleBodyContentPresent && (
         <div>
           <div className="article-body article-wrap">
-            <div className="d-flex">
+            <div className="d-flex position-relative">
               {props.image && props.image.length > 0 && (
                 <div className="article--image mr-3">
                   <div className="article-img">
