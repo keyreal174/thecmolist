@@ -1,0 +1,50 @@
+{
+  "name": "Awareness",
+  "description": "Tools and partners to help create awareness for your company",
+  "categories": [
+    {
+      "name": "#contentmarketing",
+      "description": "abc",
+      "vendors": [
+        {
+          "name": "Hubspot",
+          "link": "/foo",
+          "description": "HubSpot is a leading CRM platform that provides software and support to help businesses grow better. Our platform includes marketing, sales, service, and website management products that start free and scale to meet our customers needs at any stage of growth. Today, thousands of customers around the world use our powerful and easy-to-use tools and integrations to attract, engage, and delight customers.",
+          "connections": [
+            {
+              "name": "Vas Swaminathan",
+              "image": "abc.jpeg",
+              "text": "abc def",
+              "link": "/profile/vas"
+            },
+            {
+              "name": "Vas Swaminathan",
+              "image": "abc.jpeg",
+              "text": "abc def",
+              "link": "/profile/vas"
+            },
+            {
+              "name": "Vas Swaminathan",
+              "image": "abc.jpeg",
+              "text": "abc def",
+              "link": "/profile/vas"
+            }
+          ]
+        },
+        {
+          "name": "Iterable",
+          "link": "/foo",
+          "description": "abc def",
+          "connections": [
+            {
+              "name": "Vas Swaminathan",
+              "image": "abc.jpeg",
+              "text": "abc def",
+              "link": "/profile/vas"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

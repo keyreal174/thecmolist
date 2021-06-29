@@ -12,6 +12,7 @@ import SimpleTopBanner from "../base/SimpleTopBanner/SimpleTopBanner";
 import AddMemberModal from "../base/AddMemberModal/AddMemberModal";
 import AddVendorsModal from "../base/AddVendors/AddVendorsModal";
 import VendorList from "./VendorList";
+import VendorsDetail from "./VendorsDetail";
 import Analytics from "../../util/Analytics";
 import { cdn } from "../../util/constants";
 import "./vendors.scss";
@@ -25,6 +26,7 @@ const Vendors = (props) => {
   const [bannerTitle, setBannerTitle] = useState("");
   const [bannerImage, setBannerImage] = useState("");
   const [showAddVendor, setShowAddVendor] = useState(false);
+  const [seeAll, setSeeAll] = useState(false);
   const changeDashboardHeader = (idx) => {
     if (idx < filters.length) {
       setBannerTitle(filters[idx].title);
@@ -110,6 +112,11 @@ const Vendors = (props) => {
     </Button>
   );
 
+  const getVendorsDetail = () => {
+    props.fetchVendorsDetail("awareness");
+    setSeeAll(true);
+  };
+
   return (
     <Layout onToggle={handleToggle}>
       <Container className="height-100">
@@ -174,6 +181,8 @@ const Vendors = (props) => {
                 <div className="mt-3 mb-5">
                   <ActivityIndicator className="element-center feed-activity-indicator" />
                 </div>
+              ) : seeAll ? (
+                <VendorsDetail />
               ) : (
                 <VendorList vendorList={props.vendorList} />
               )}
@@ -200,11 +209,13 @@ const mapState = (state) => {
     moreData: state.vendorsModel.activeFeedHasMoreData,
     loadingVendors: state.vendorsModel.loadingVendors,
     vendorList: state.vendorsModel.vendorList,
+    vendorsDetail: state.vendorsModel.vendorsDetail,
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
+    fetchVendorsDetail: dispatch.vendorsModel.fetchVendorsDetail,
     fetchActiveVendors: dispatch.vendorsModel.fetchActiveVendors,
     fetchVendorList: dispatch.vendorsModel.fetchVendorList,
     changeFilter: dispatch.vendorsModel.changeFilter,
