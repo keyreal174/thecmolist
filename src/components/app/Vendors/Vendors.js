@@ -7,7 +7,6 @@ import Layout from "../base/Layout/Layout";
 import Footer from "../base/Footer/Footer";
 import Filter from "../base/Filter/Filter";
 import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
-import PopularTopics from "../base/PopularTopics/PopularTopics";
 import SimpleTopBanner from "../base/SimpleTopBanner/SimpleTopBanner";
 import AddMemberModal from "../base/AddMemberModal/AddMemberModal";
 import AddVendorsModal from "../base/AddVendors/AddVendorsModal";
@@ -172,22 +171,27 @@ const Vendors = (props) => {
               </div>
             </div>
           )}
-          <Row className="vendors--feed--wrapper">
-            <Col
-              className={clsx("vendors--feed", mobileMenuOpen && "open")}
-              md="12"
-            >
-              {props.loadingVendors ? (
-                <div className="mt-3 mb-5">
-                  <ActivityIndicator className="element-center feed-activity-indicator" />
-                </div>
-              ) : seeAll ? (
-                <VendorsDetail />
-              ) : (
-                <VendorList vendorList={props.vendorList} />
-              )}
-            </Col>
-          </Row>
+          {seeAll ? (
+            <VendorsDetail props={props} mobileMenuOpen={mobileMenuOpen} />
+          ) : (
+            <Row className="vendors--feed--wrapper">
+              <Col
+                className={clsx("vendors--feed", mobileMenuOpen && "open")}
+                md="12"
+              >
+                {props.loadingVendors ? (
+                  <div className="mt-3 mb-5">
+                    <ActivityIndicator className="element-center feed-activity-indicator" />
+                  </div>
+                ) : (
+                  <VendorList
+                    vendorList={props.vendorList}
+                    getVendorsDetail={getVendorsDetail}
+                  />
+                )}
+              </Col>
+            </Row>
+          )}
 
           <Footer
             className={clsx("vendors--footer", mobileMenuOpen && "open")}

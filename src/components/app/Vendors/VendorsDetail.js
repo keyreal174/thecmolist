@@ -1,46 +1,46 @@
-import React from "react";
+import React, { useEffect } from "react";
+import clsx from "clsx";
+import { Row, Col } from "react-bootstrap";
+import PopularTopics from "../base/PopularTopics/PopularTopics";
+import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
 import VendorsFeed from "./VendorsFeed";
 
-const VendorsDetail = (props) => {
+const VendorsDetail = ({ props, mobileMenuOpen }) => {
+  useEffect(() => {
+    const fetchData = async () => await props.fetchVendorsDetail();
+    fetchData();
+  }, []);
+
   return (
     <>
-      {/*<Row>
-        {props.activeFeedSubFilters &&
-          props.activeFeedSubFilters.length > 0 && (
-            <Col className="network--popular-topics" md="4">
-              <PopularTopics
-                onSubfilterChange={(f) => {
-                  props.changeSubFilter(f.slug || f.title);
-                }}
-                topicList={props.activeFeedSubFilters}
-              />
-            </Col>
-          )}
+      <Row className="vendors--feed--wrapper">
+        {props.activeFeedSubFilters && props.activeFeedSubFilters.length > 0 && (
+          <Col className="vendors--popular-topics" md="4">
+            <PopularTopics
+              onSubfilterChange={(f) => {
+                props.changeSubFilter(f.slug || f.title);
+              }}
+              topicList={props.activeFeedSubFilters}
+            />
+          </Col>
+        )}
         <Col
-          className={clsx("network--feed", mobileMenuOpen && "open")}
+          className={clsx("vendors--feed", mobileMenuOpen && "open")}
           md={
-            props.activeFeedSubFilters &&
-            props.activeFeedSubFilters.length > 0
+            props.activeFeedSubFilters && props.activeFeedSubFilters.length > 0
               ? "8"
               : "12"
           }
         >
-          {props.loadingNetwork ? (
+          {props.loadingVendors ? (
             <div className="mt-3 mb-5">
               <ActivityIndicator className="element-center feed-activity-indicator" />
             </div>
           ) : (
-            <NetworkFeed
-              {...props}
-              connectUser={onConnectClick}
-              disconnectUser={disconnectUser}
-              localConnectedUsers={props.localConnectedUsers}
-              fetchData={fetchData}
-              feedData={feedData}
-            />
+            <VendorsFeed {...props} feedData={props.vendorsDetail} />
           )}
         </Col>
-          </Row>*/}
+      </Row>
     </>
   );
 };

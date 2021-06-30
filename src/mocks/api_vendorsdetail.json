@@ -46,5 +46,31 @@
         }
       ]
     }
+  ],
+  "filters": [
+    {
+      "title": "Baidu Advertising",
+      "count": 1
+    },
+    {
+      "title": "Packaging Design",
+      "count": 1
+    },
+    {
+      "title": "SEM",
+      "count": 2
+    },
+    {
+      "title": "Saas",
+      "count": 1
+    },
+    {
+      "title": "Latam",
+      "count": 3
+    },
+    {
+      "title": "TV Advertising",
+      "count": 4
+    }
   ]
 }

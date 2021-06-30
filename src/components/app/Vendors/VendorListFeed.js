@@ -3,7 +3,7 @@ import { Button, Col, Row } from "react-bootstrap";
 import VendorCard from "./VendorCard";
 import "./vendors.scss";
 
-const VendorsFeed = ({ vendor }) => {
+const VendorsFeed = ({ vendor, getVendorsDetail }) => {
   // FIXME: for the beta we disable pagination as the BE returns all data
   // POST BETA remove this
   return (
@@ -18,7 +18,8 @@ const VendorsFeed = ({ vendor }) => {
           <Button
             className="filter--button filter--button-active active m-0"
             onClick={() => {
-              window.location.href = vendor.link;
+              // window.location.href = vendor.link;
+              getVendorsDetail();
             }}
           >
             See All
