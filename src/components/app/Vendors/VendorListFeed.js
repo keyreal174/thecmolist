@@ -9,7 +9,7 @@ const VendorsFeed = ({ vendor }) => {
   return (
     <>
       <div className="vendor-list-divider">
-        <p>Trend Vendors</p>
+        <p>Trending Vendors</p>
       </div>
       <div className="vendor-list-container">
         <div className="vendor-list-info">

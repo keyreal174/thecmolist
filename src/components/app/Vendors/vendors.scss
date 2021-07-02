@@ -227,11 +227,12 @@
   position: relative;
   text-align: right;
   padding-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 14px;
+  font-size: 15px;
 
   &::after {
     content: "";
-    width: calc(100% - 120px);
+    width: calc(100% - 140px);
     border-bottom: solid 1px #c9ced1;
     position: absolute;
     left: 0;
@@ -270,7 +271,7 @@
 
     p {
       color: $text-2;
-      font-size: 18px;
+      font-size: 16px;
       line-height: 22px;
       margin-bottom: 20px;
     }
@@ -285,7 +286,7 @@
     flex: 1;
 
     .vendor-article-text {
-      font-size: 14px;
+      font-size: 15px;
     }
   }
 
