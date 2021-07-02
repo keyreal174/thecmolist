@@ -77,7 +77,7 @@ function MockRequests() {
       response: MockedApiVendorList,
     },
     {
-      path: /\/api\/vendors_detail.*/,
+      path: /\/api\/vendor_detail.*/,
       responseCode: 200,
       response: MockedApiVendorsDetail,
     },

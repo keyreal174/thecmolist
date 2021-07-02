@@ -18,8 +18,7 @@ const VendorsFeed = ({ vendor, getVendorsDetail }) => {
           <Button
             className="filter--button filter--button-active active m-0"
             onClick={() => {
-              // window.location.href = vendor.link;
-              getVendorsDetail();
+              window.location.href = vendor.link;
             }}
           >
             See All

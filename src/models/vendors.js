@@ -56,7 +56,7 @@ const vendorsDetailRequest = (name, token) => {
   let headers = {
     "timezone-offset": new Date().getTimezoneOffset(),
   };
-  let url = `/api/vendors_detail/${name}`;
+  let url = `/api/vendor_detail/${name}`;
   if (token) {
     headers.token = token;
   }
@@ -337,6 +337,7 @@ export default {
       try {
         dispatch.vendorsModel.setLoading(true);
         const response = await vendorsDetailRequest(name);
+        console.log(response.data);
         dispatch.vendorsModel.setVendorsDetail(response.data);
       } catch (error) {
         throw new Error("Can not fetch vendor list");

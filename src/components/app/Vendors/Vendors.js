@@ -25,7 +25,7 @@ const Vendors = (props) => {
   const [bannerTitle, setBannerTitle] = useState("");
   const [bannerImage, setBannerImage] = useState("");
   const [showAddVendor, setShowAddVendor] = useState(false);
-  const [seeAll, setSeeAll] = useState(false);
+  const [isDetail, setIsDetail] = useState(false);
   const changeDashboardHeader = (idx) => {
     if (idx < filters.length) {
       setBannerTitle(filters[idx].title);
@@ -79,7 +79,11 @@ const Vendors = (props) => {
       setBannerTitle(newFilters[idx].title);
       setBannerImage(newFilters[idx].image);
       setFilterIdx(idx);
-      props.fetchVendorList(newFilters[idx].slug);
+      if (location && location.pathname.includes("/vendors/")) {
+        setIsDetail(true);
+      } else {
+        props.fetchVendorList(newFilters[idx].slug);
+      }
       changeDashboardHeader(idx);
     });
   }, []);
@@ -110,11 +114,6 @@ const Vendors = (props) => {
       + Add Vendor
     </Button>
   );
-
-  const getVendorsDetail = () => {
-    props.fetchVendorsDetail("awareness");
-    setSeeAll(true);
-  };
 
   return (
     <Layout onToggle={handleToggle}>
@@ -171,8 +170,13 @@ const Vendors = (props) => {
               </div>
             </div>
           )}
-          {seeAll ? (
-            <VendorsDetail props={props} mobileMenuOpen={mobileMenuOpen} />
+          {isDetail ? (
+            <VendorsDetail
+              fetchVendorsDetail={props.fetchVendorsDetail}
+              vendorsDetail={props.vendorsDetail}
+              loadingVendors={props.loadingVendors}
+              mobileMenuOpen={mobileMenuOpen}
+            />
           ) : (
             <Row className="vendors--feed--wrapper">
               <Col
@@ -184,10 +188,7 @@ const Vendors = (props) => {
                     <ActivityIndicator className="element-center feed-activity-indicator" />
                   </div>
                 ) : (
-                  <VendorList
-                    vendorList={props.vendorList}
-                    getVendorsDetail={getVendorsDetail}
-                  />
+                  <VendorList vendorList={props.vendorList} />
                 )}
               </Col>
             </Row>
