@@ -299,3 +299,39 @@
     margin-bottom: 15px;
   }
 }
+
+.vendor-detail-category {
+  margin-bottom: 15px;
+
+  &--name {
+    font-size: 24px;
+    font-weight: 500;
+    color: $brand;
+  }
+
+  &--description {
+    color: $text-3;
+  }
+}
+
+.vendors--popular-topics-customhead {
+  a {
+    color: $brand;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  h2 {
+    margin-top: 8px;
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+
+  p {
+    color: $text-3;
+    font-weight: 400;
+    font-size: 15px;
+  }
+}

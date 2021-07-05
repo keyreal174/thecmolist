@@ -3,7 +3,12 @@ import CustomCard from "../CustomCard/CustomCard";
 import { Button } from "react-bootstrap";
 import "./popularTopics.scss";
 
-const PopularTopics = ({ heading, topicList, onSubfilterChange }) => {
+const PopularTopics = ({
+  heading,
+  topicList,
+  onSubfilterChange,
+  customHeading,
+}) => {
   const [cachedList, setCachedList] = useState([]);
   const [showMore, setShowMore] = useState(false);
   const [activeTopicIdx, setActiveTopicIdx] = useState(-1);
@@ -37,6 +42,7 @@ const PopularTopics = ({ heading, topicList, onSubfilterChange }) => {
     <CustomCard
       className="popular-topics"
       heading={heading || "Popular #topics"}
+      customHeading={customHeading}
     >
       <div className="popular-topics--content">
         <div className="popular-topics--wrapper">

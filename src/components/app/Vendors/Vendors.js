@@ -7,11 +7,11 @@ import Layout from "../base/Layout/Layout";
 import Footer from "../base/Footer/Footer";
 import Filter from "../base/Filter/Filter";
 import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
-import PopularTopics from "../base/PopularTopics/PopularTopics";
 import SimpleTopBanner from "../base/SimpleTopBanner/SimpleTopBanner";
 import AddMemberModal from "../base/AddMemberModal/AddMemberModal";
 import AddVendorsModal from "../base/AddVendors/AddVendorsModal";
 import VendorList from "./VendorList";
+import VendorsDetail from "./VendorsDetail";
 import Analytics from "../../util/Analytics";
 import { cdn } from "../../util/constants";
 import "./vendors.scss";
@@ -25,6 +25,7 @@ const Vendors = (props) => {
   const [bannerTitle, setBannerTitle] = useState("");
   const [bannerImage, setBannerImage] = useState("");
   const [showAddVendor, setShowAddVendor] = useState(false);
+  const [isDetail, setIsDetail] = useState(false);
   const changeDashboardHeader = (idx) => {
     if (idx < filters.length) {
       setBannerTitle(filters[idx].title);
@@ -78,7 +79,11 @@ const Vendors = (props) => {
       setBannerTitle(newFilters[idx].title);
       setBannerImage(newFilters[idx].image);
       setFilterIdx(idx);
-      props.fetchVendorList(newFilters[idx].slug);
+      if (location && location.pathname.includes("/vendors/")) {
+        setIsDetail(true);
+      } else {
+        props.fetchVendorList(newFilters[idx].slug);
+      }
       changeDashboardHeader(idx);
     });
   }, []);
@@ -165,20 +170,30 @@ const Vendors = (props) => {
               </div>
             </div>
           )}
-          <Row className="vendors--feed--wrapper">
-            <Col
-              className={clsx("vendors--feed", mobileMenuOpen && "open")}
-              md="12"
-            >
-              {props.loadingVendors ? (
-                <div className="mt-3 mb-5">
-                  <ActivityIndicator className="element-center feed-activity-indicator" />
-                </div>
-              ) : (
-                <VendorList vendorList={props.vendorList} />
-              )}
-            </Col>
-          </Row>
+          {isDetail ? (
+            <VendorsDetail
+              fetchVendorsDetail={props.fetchVendorsDetail}
+              changeSubFilter={props.changeSubFilter}
+              vendorsDetail={props.vendorsDetail}
+              loadingVendors={props.loadingVendors}
+              mobileMenuOpen={mobileMenuOpen}
+            />
+          ) : (
+            <Row className="vendors--feed--wrapper">
+              <Col
+                className={clsx("vendors--feed", mobileMenuOpen && "open")}
+                md="12"
+              >
+                {props.loadingVendors ? (
+                  <div className="mt-3 mb-5">
+                    <ActivityIndicator className="element-center feed-activity-indicator" />
+                  </div>
+                ) : (
+                  <VendorList vendorList={props.vendorList} />
+                )}
+              </Col>
+            </Row>
+          )}
 
           <Footer
             className={clsx("vendors--footer", mobileMenuOpen && "open")}
@@ -200,11 +215,13 @@ const mapState = (state) => {
     moreData: state.vendorsModel.activeFeedHasMoreData,
     loadingVendors: state.vendorsModel.loadingVendors,
     vendorList: state.vendorsModel.vendorList,
+    vendorsDetail: state.vendorsModel.vendorsDetail,
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
+    fetchVendorsDetail: dispatch.vendorsModel.fetchVendorsDetail,
     fetchActiveVendors: dispatch.vendorsModel.fetchActiveVendors,
     fetchVendorList: dispatch.vendorsModel.fetchVendorList,
     changeFilter: dispatch.vendorsModel.changeFilter,

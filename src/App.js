@@ -317,6 +317,18 @@ class App extends React.Component {
             }
           />
           <Route
+            path="/vendors/:id"
+            render={(props) =>
+              this.state.authed ? (
+                <Vendors />
+              ) : (
+                <Redirect
+                  to={{ pathname: "/login", state: { from: props.location } }}
+                />
+              )
+            }
+          />
+          <Route
             exact
             path="/onboarding_step1"
             render={(props) =>

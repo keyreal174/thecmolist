@@ -52,6 +52,17 @@ const vendorListRequest = (sort, filter, subfilter, token) => {
   return axios.get(url, { headers });
 };
 
+const vendorsDetailRequest = (name, token) => {
+  let headers = {
+    "timezone-offset": new Date().getTimezoneOffset(),
+  };
+  let url = `/api/vendor_detail/${name}`;
+  if (token) {
+    headers.token = token;
+  }
+  return axios.get(url, { headers });
+};
+
 const postNewMember = (data) => {
   axios.post("/api/vendors/invite", data);
 };
@@ -78,6 +89,7 @@ export default {
     vendorCategories: [],
     skillCategories: [],
     vendorList: [],
+    vendorsDetail: {},
   },
   reducers: {
     initFeedDataForKey: (oldState, filterKey) => {
@@ -179,6 +191,12 @@ export default {
       return {
         ...oldState,
         vendorList: data,
+      };
+    },
+    setVendorsDetail: (oldState, data) => {
+      return {
+        ...oldState,
+        vendorsDetail: data,
       };
     },
   },
@@ -311,6 +329,17 @@ export default {
         dispatch.vendorsModel.setVendorList(response.data.vendorList);
       } catch (error) {
         throw new Error("Can not fetch vendor list");
+      } finally {
+        dispatch.vendorsModel.setLoading(false);
+      }
+    },
+    async fetchVendorsDetail(name) {
+      try {
+        dispatch.vendorsModel.setLoading(true);
+        const response = await vendorsDetailRequest(name);
+        dispatch.vendorsModel.setVendorsDetail(response.data);
+      } catch (error) {
+        throw new Error("Can not fetch vendor detail");
       } finally {
         dispatch.vendorsModel.setLoading(false);
       }

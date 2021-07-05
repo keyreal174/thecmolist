@@ -1,9 +1,10 @@
 import React from "react";
-import Article from "../base/Article/Article";
 import clsx from "clsx";
+import Article from "../base/Article/Article";
+import VendorConnections from "./VendorConnections";
 import "./vendors.scss";
 
-const VendorsFeed = ({ feedData, moreData, fetchData }) => {
+const VendorsFeed = ({ feedData, moreData }) => {
   // FIXME: for the beta we disable pagination as the BE returns all data
   // POST BETA remove this
   moreData = false;
@@ -21,7 +22,11 @@ const VendorsFeed = ({ feedData, moreData, fetchData }) => {
                   "vendors--feed-item"
                 )}
                 {...feed}
-              />
+              >
+                {feed.connections && feed.connections.length > 0 && (
+                  <VendorConnections connections={feed.connections} />
+                )}
+              </Article>
             );
           })}
         {feedData && feedData.length === 0 && (
@@ -32,11 +37,7 @@ const VendorsFeed = ({ feedData, moreData, fetchData }) => {
         {moreData && (
           <div className="row">
             <div className="col-md-2 mt-2 mx-auto">
-              <button
-                className="btn btn__load-more"
-                type="button"
-                onClick={fetchData}
-              >
+              <button className="btn btn__load-more" type="button">
                 Show more
               </button>
             </div>

@@ -3,7 +3,7 @@
     {
       "name": "Awareness",
       "description": "Tools and partners to help create awareness for your company",
-      "link": "http://foo",
+      "link": "/vendors/awareness",
       "vendors": [
         {
           "headline": {
@@ -69,7 +69,7 @@
     {
       "name": "Reach",
       "description": "Tools and partners to target and message your customers",
-      "link": "http://foo",
+      "link": "/vendors/reach",
       "vendors": [
         {
           "headline": {
