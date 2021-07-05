@@ -1,0 +1,208 @@
+{
+  "name": "Awareness",
+  "description": "Tools and partners to help create awareness for your company",
+  "categories": [
+    {
+      "name": "#contentmarketing",
+      "description": "abc",
+      "vendors": [
+        {
+          "description": "HubSpot is a leading CRM platform that provides software and support to help businesses grow better. Our platform includes marketing, sales, service, and website management products that start free and scale to meet our customers needs at any stage of growth. Today, thousands of customers around the world use our powerful and easy-to-use tools and integrations to attract, engage, and delight customers.",
+          "headline": {
+            "markdown": "[Hubspot](/vendor/hubspot)"
+          },
+          "articletext": "HubSpot is a leading CRM platform that provides software and support to help businesses grow better. Our platform includes marketing, sales, service, and website management products that start free and scale to meet our customers needs at any stage of growth. Today, thousands of customers around the world use our powerful and easy-to-use tools and integrations to attract, engage, and delight customers.",
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+          "subheadlines": [
+            {
+              "markdown": "Cambridge"
+            }
+          ],
+          "connections": [
+            {
+              "name": "Vas Swaminathan",
+              "role": "CMO at PagerDuty",
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+              "text": "We look at many different CXM solutions, and Merkle cost half of original thing. We look at many different CXM solutions, and Merkle cost half of original thing.",
+              "link": "/profile/vas"
+            },
+            {
+              "name": "Vas Swaminathan",
+              "role": "CMO at PagerDuty",
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+              "text": "We look at many different CXM solutions, and Merkle cost half of original thing. We look at many different CXM solutions, and Merkle cost half of original thing.",
+              "link": "/profile/vas"
+            },
+            {
+              "name": "Vas Swaminathan",
+              "role": "CMO at PagerDuty",
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+              "text": "We look at many different CXM solutions, and Merkle cost half of original thing. We look at many different CXM solutions, and Merkle cost half of original thing.",
+              "link": "/profile/vas"
+            }
+          ]
+        },
+        {
+          "description": "HubSpot is a leading CRM platform that provides software and support to help businesses grow better. Our platform includes marketing, sales, service, and website management products that start free and scale to meet our customers needs at any stage of growth. Today, thousands of customers around the world use our powerful and easy-to-use tools and integrations to attract, engage, and delight customers.",
+          "headline": {
+            "markdown": "[Hubspot](/vendor/hubspot)"
+          },
+          "articletext": "HubSpot is a leading CRM platform that provides software and support to help businesses grow better. Our platform includes marketing, sales, service, and website management products that start free and scale to meet our customers needs at any stage of growth. Today, thousands of customers around the world use our powerful and easy-to-use tools and integrations to attract, engage, and delight customers.",
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+          "subheadlines": [
+            {
+              "markdown": "Cambridge"
+            }
+          ],
+          "connections": [
+            {
+              "name": "Vas Swaminathan",
+              "role": "CMO at PagerDuty",
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+              "text": "We look at many different CXM solutions, and Merkle cost half of original thing. We look at many different CXM solutions, and Merkle cost half of original thing.",
+              "link": "/profile/vas"
+            },
+            {
+              "name": "Vas Swaminathan",
+              "role": "CMO at PagerDuty",
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+              "text": "We look at many different CXM solutions, and Merkle cost half of original thing. We look at many different CXM solutions, and Merkle cost half of original thing.",
+              "link": "/profile/vas"
+            },
+            {
+              "name": "Vas Swaminathan",
+              "role": "CMO at PagerDuty",
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+              "text": "We look at many different CXM solutions, and Merkle cost half of original thing. We look at many different CXM solutions, and Merkle cost half of original thing.",
+              "link": "/profile/vas"
+            },
+            {
+              "name": "Vas Swaminathan",
+              "role": "CMO at PagerDuty",
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+              "text": "We look at many different CXM solutions, and Merkle cost half of original thing. We look at many different CXM solutions, and Merkle cost half of original thing.",
+              "link": "/profile/vas"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "#contentmarketing",
+      "description": "abc",
+      "vendors": [
+        {
+          "description": "HubSpot is a leading CRM platform that provides software and support to help businesses grow better. Our platform includes marketing, sales, service, and website management products that start free and scale to meet our customers needs at any stage of growth. Today, thousands of customers around the world use our powerful and easy-to-use tools and integrations to attract, engage, and delight customers.",
+          "headline": {
+            "markdown": "[Hubspot](/vendor/hubspot)"
+          },
+          "articletext": "HubSpot is a leading CRM platform that provides software and support to help businesses grow better. Our platform includes marketing, sales, service, and website management products that start free and scale to meet our customers needs at any stage of growth. Today, thousands of customers around the world use our powerful and easy-to-use tools and integrations to attract, engage, and delight customers.",
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+          "subheadlines": [
+            {
+              "markdown": "Cambridge"
+            }
+          ],
+          "connections": [
+            {
+              "name": "Vas Swaminathan",
+              "role": "CMO at PagerDuty",
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+              "text": "We look at many different CXM solutions, and Merkle cost half of original thing. We look at many different CXM solutions, and Merkle cost half of original thing.",
+              "link": "/profile/vas"
+            },
+            {
+              "name": "Vas Swaminathan",
+              "role": "CMO at PagerDuty",
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+              "text": "We look at many different CXM solutions, and Merkle cost half of original thing. We look at many different CXM solutions, and Merkle cost half of original thing.",
+              "link": "/profile/vas"
+            },
+            {
+              "name": "Vas Swaminathan",
+              "role": "CMO at PagerDuty",
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+              "text": "We look at many different CXM solutions, and Merkle cost half of original thing. We look at many different CXM solutions, and Merkle cost half of original thing.",
+              "link": "/profile/vas"
+            }
+          ]
+        },
+        {
+          "description": "HubSpot is a leading CRM platform that provides software and support to help businesses grow better. Our platform includes marketing, sales, service, and website management products that start free and scale to meet our customers needs at any stage of growth. Today, thousands of customers around the world use our powerful and easy-to-use tools and integrations to attract, engage, and delight customers.",
+          "headline": {
+            "markdown": "[Hubspot](/vendor/hubspot)"
+          },
+          "articletext": "HubSpot is a leading CRM platform that provides software and support to help businesses grow better. Our platform includes marketing, sales, service, and website management products that start free and scale to meet our customers needs at any stage of growth. Today, thousands of customers around the world use our powerful and easy-to-use tools and integrations to attract, engage, and delight customers.",
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+          "subheadlines": [
+            {
+              "markdown": "Cambridge"
+            }
+          ],
+          "connections": [
+            {
+              "name": "Vas Swaminathan",
+              "role": "CMO at PagerDuty",
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+              "text": "We look at many different CXM solutions, and Merkle cost half of original thing. We look at many different CXM solutions, and Merkle cost half of original thing.",
+              "link": "/profile/vas"
+            },
+            {
+              "name": "Vas Swaminathan",
+              "role": "CMO at PagerDuty",
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+              "text": "We look at many different CXM solutions, and Merkle cost half of original thing. We look at many different CXM solutions, and Merkle cost half of original thing.",
+              "link": "/profile/vas"
+            },
+            {
+              "name": "Vas Swaminathan",
+              "role": "CMO at PagerDuty",
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+              "text": "We look at many different CXM solutions, and Merkle cost half of original thing. We look at many different CXM solutions, and Merkle cost half of original thing.",
+              "link": "/profile/vas"
+            },
+            {
+              "name": "Vas Swaminathan",
+              "role": "CMO at PagerDuty",
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+              "text": "We look at many different CXM solutions, and Merkle cost half of original thing. We look at many different CXM solutions, and Merkle cost half of original thing.",
+              "link": "/profile/vas"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "title": "#Baidu Advertising",
+      "count": 1,
+      "slug": "Baidu-Advertising"
+    },
+    {
+      "title": "#Packaging Design",
+      "count": 1,
+      "slug": "Packaging-Design"
+    },
+    {
+      "title": "#SEM",
+      "count": 2,
+      "slug": "SEM"
+    },
+    {
+      "title": "#Saas",
+      "count": 1,
+      "slug": "Saas"
+    },
+    {
+      "title": "#Latam",
+      "count": 3,
+      "slug": "Latam"
+    },
+    {
+      "title": "#TV Advertising",
+      "count": 4,
+      "slug": "TV-Advertising"
+    }
+  ]
+}

@@ -3,7 +3,7 @@
     {
       "name": "Awareness",
       "description": "Tools and partners to help create awareness for your company",
-      "link": "http://foo",
+      "link": "/vendors/awareness",
       "vendors": [
         {
           "headline": {
@@ -17,6 +17,7 @@
             }
           ],
           "connections": {
+            "num_connections": 12,
             "markdown": "[@Jenifer Smith](/vendor/jenifer_smith), [@Hillary](/vendor/hillary), and [@Kyle](/vendor/kyle)"
           },
           "name": "Hubspot",
@@ -69,7 +70,7 @@
     {
       "name": "Reach",
       "description": "Tools and partners to target and message your customers",
-      "link": "http://foo",
+      "link": "/vendors/reach",
       "vendors": [
         {
           "headline": {

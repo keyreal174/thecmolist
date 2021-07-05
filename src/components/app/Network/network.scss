@@ -181,12 +181,11 @@
     max-width: 50px;
     width: 50px;
     height: 50px;
-    padding: 0 5px;
   }
   .article--content {
     margin: 0px !important;
     max-width: calc(100% - 60px);
-    padding: 0 0 0 25px;
+    padding: 0;
     .article-badge {
       top: -5px;
     }
