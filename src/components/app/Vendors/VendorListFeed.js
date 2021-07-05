@@ -3,7 +3,7 @@ import { Button, Col, Row } from "react-bootstrap";
 import VendorCard from "./VendorCard";
 import "./vendors.scss";
 
-const VendorsFeed = ({ vendor, getVendorsDetail }) => {
+const VendorListFeed = ({ vendor }) => {
   // FIXME: for the beta we disable pagination as the BE returns all data
   // POST BETA remove this
   return (
@@ -39,4 +39,4 @@ const VendorsFeed = ({ vendor, getVendorsDetail }) => {
     </>
   );
 };
-export default VendorsFeed;
+export default VendorListFeed;

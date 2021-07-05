@@ -1,6 +1,7 @@
 import React from "react";
-import Article from "../base/Article/Article";
 import clsx from "clsx";
+import Article from "../base/Article/Article";
+import VendorConnections from "./VendorConnections";
 import "./vendors.scss";
 
 const VendorsFeed = ({ feedData, moreData }) => {
@@ -21,7 +22,11 @@ const VendorsFeed = ({ feedData, moreData }) => {
                   "vendors--feed-item"
                 )}
                 {...feed}
-              />
+              >
+                {feed.connections && feed.connections.length > 0 && (
+                  <VendorConnections connections={feed.connections} />
+                )}
+              </Article>
             );
           })}
         {feedData && feedData.length === 0 && (

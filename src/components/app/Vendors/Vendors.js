@@ -173,6 +173,7 @@ const Vendors = (props) => {
           {isDetail ? (
             <VendorsDetail
               fetchVendorsDetail={props.fetchVendorsDetail}
+              changeSubFilter={props.changeSubFilter}
               vendorsDetail={props.vendorsDetail}
               loadingVendors={props.loadingVendors}
               mobileMenuOpen={mobileMenuOpen}

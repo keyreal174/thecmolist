@@ -337,10 +337,9 @@ export default {
       try {
         dispatch.vendorsModel.setLoading(true);
         const response = await vendorsDetailRequest(name);
-        console.log(response.data);
         dispatch.vendorsModel.setVendorsDetail(response.data);
       } catch (error) {
-        throw new Error("Can not fetch vendor list");
+        throw new Error("Can not fetch vendor detail");
       } finally {
         dispatch.vendorsModel.setLoading(false);
       }

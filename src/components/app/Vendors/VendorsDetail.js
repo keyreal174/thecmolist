@@ -19,6 +19,7 @@ const Category = ({ name, description }) => {
 const VendorsDetail = ({
   vendorsDetail,
   fetchVendorsDetail,
+  changeSubFilter,
   loadingVendors,
   mobileMenuOpen,
 }) => {
@@ -35,7 +36,8 @@ const VendorsDetail = ({
             <Col className="vendors--popular-topics" md="4">
               <PopularTopics
                 onSubfilterChange={(f) => {
-                  // props.changeSubFilter(f.slug || f.title);
+                  // Need to check for this changeSubFilter module
+                  changeSubFilter(f.slug || f.title);
                 }}
                 topicList={vendorsDetail.filters}
                 customHeading={
@@ -64,7 +66,7 @@ const VendorsDetail = ({
               <div>
                 {vendorsDetail.categories &&
                   vendorsDetail.categories.map((category, i) => (
-                    <div key={i}>
+                    <div key={i} className="mb-4">
                       <Category
                         name={category.name}
                         description={category.description}
