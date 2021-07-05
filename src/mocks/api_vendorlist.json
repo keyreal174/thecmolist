@@ -17,6 +17,7 @@
             }
           ],
           "connections": {
+            "num_connections": 12,
             "markdown": "[@Jenifer Smith](/vendor/jenifer_smith), [@Hillary](/vendor/hillary), and [@Kyle](/vendor/kyle)"
           },
           "name": "Hubspot",
