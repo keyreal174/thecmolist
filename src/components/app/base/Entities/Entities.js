@@ -19,16 +19,15 @@ const Entities = ({ entities, isConnection }) => {
         {entities
           .filter((item, i) => i < 3 || showMore)
           .map(({ image, name, role, link, text }, index) => (
-            <a href={link} key={index}>
-              <Avatar
-                key={index}
-                image={image}
-                heading={name}
-                subHeading={role}
-                text={text}
-                isConnection={isConnection}
-              />
-            </a>
+            <Avatar
+              key={index}
+              image={image}
+              heading={name}
+              subHeading={role}
+              text={text}
+              isConnection={isConnection}
+              link={link}
+            />
           ))}
       </div>
       <div>

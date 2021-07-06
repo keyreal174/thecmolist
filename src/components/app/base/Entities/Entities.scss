@@ -16,10 +16,10 @@
 
 .connections-wrapper::after {
   content: "";
-  width: calc(100% - 230px);
+  width: calc(100% - 31px);
   border-bottom: solid 1px #c9ced1;
   position: absolute;
-  left: 231px;
+  left: 32px;
   top: 5px;
   z-index: 1;
 }
@@ -30,11 +30,13 @@
     width: 100%;
     left: 0;
     bottom: 60px;
+    margin-top: 2px;
   }
   &-showmore--button {
     text-align: center;
     bottom: 15px;
     left: 115px;
+    margin-top: 12px;
     > button {
       color: $brand;
     }

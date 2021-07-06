@@ -270,7 +270,7 @@
     }
 
     p {
-      color: $text-1;
+      color: $text-3;
       font-size: 16px;
       line-height: 22px;
       margin-bottom: 20px;
@@ -285,14 +285,33 @@
   .vendor-list-vendors {
     flex: 1;
 
+    .row {
+      & > div {
+        padding-left: 6px;
+        padding-right: 6px;
+
+        @media screen and (max-width: 767px) {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+      }
+    }
+
     .vendor-article-text {
       font-size: 15px;
     }
   }
 
+  .vendor-card-connections {
+    p {
+      font-size: 15px;
+      color: $text-3;
+    }
+  }
+
   .vendor-card-divider {
     height: 1px;
-    background: #9597ae;
+    background: $gray-4;
     margin-left: -20px;
     margin-right: -20px;
     margin-top: 15px;
@@ -334,4 +353,11 @@
     font-weight: 400;
     font-size: 15px;
   }
+}
+
+.no-vendor-list-header {
+  padding: 0 20px;
+  color: $text-1;
+  font-size: 20px;
+  font-weight: 500;
 }

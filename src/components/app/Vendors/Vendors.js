@@ -26,6 +26,7 @@ const Vendors = (props) => {
   const [bannerImage, setBannerImage] = useState("");
   const [showAddVendor, setShowAddVendor] = useState(false);
   const [isDetail, setIsDetail] = useState(false);
+  const [categoryTitle, setCategoryTitle] = useState("");
   const changeDashboardHeader = (idx) => {
     if (idx < filters.length) {
       setBannerTitle(filters[idx].title);
@@ -115,6 +116,11 @@ const Vendors = (props) => {
     </Button>
   );
 
+  const getCategoryTitle = (title) => {
+    setCategoryTitle(title);
+    toggleAddVendorModal();
+  };
+
   return (
     <Layout onToggle={handleToggle}>
       <Container className="height-100">
@@ -177,6 +183,8 @@ const Vendors = (props) => {
               vendorsDetail={props.vendorsDetail}
               loadingVendors={props.loadingVendors}
               mobileMenuOpen={mobileMenuOpen}
+              toggleAddVendorModal={toggleAddVendorModal}
+              getCategoryTitle={getCategoryTitle}
             />
           ) : (
             <Row className="vendors--feed--wrapper">
@@ -203,6 +211,7 @@ const Vendors = (props) => {
       <AddVendorsModal
         show={showAddVendor}
         handleClose={toggleAddVendorModal}
+        categoryTitle={categoryTitle}
       />
     </Layout>
   );
