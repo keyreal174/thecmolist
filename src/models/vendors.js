@@ -258,9 +258,7 @@ export default {
             "",
             null
           );
-          let data = response.data;
-          data.sortOrder = sortOrder;
-          dispatch.vendorsModel.setFeedDataForKey(filterKey, data);
+          dispatch.vendorsModel.setVendorList(response.data.vendorList);
         } finally {
           dispatch.vendorsModel.setLoading(false);
         }
@@ -284,8 +282,7 @@ export default {
           subFilterToChangeTo,
           null
         );
-        let data = response.data;
-        dispatch.vendorsModel.setFeedDataForKey(activeFilter, data);
+        dispatch.vendorsModel.setVendorList(response.data.vendorList);
       } catch (error) {
         console.log(error);
         throw new Error("Can not change sub filter");
