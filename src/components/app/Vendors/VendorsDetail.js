@@ -19,7 +19,6 @@ const Category = ({ name, description }) => {
 const VendorsDetail = ({
   vendorsDetail,
   fetchVendorsDetail,
-  changeSubFilter,
   loadingVendors,
   mobileMenuOpen,
 }) => {
@@ -28,18 +27,25 @@ const VendorsDetail = ({
     fetchData();
   }, []);
 
+  const changeSubFilter = (title) => {
+    document.getElementById(title).scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <>
       {vendorsDetail && (
         <Row className="vendors--feed--wrapper">
-          {vendorsDetail.filters && vendorsDetail.filters.length > 0 && (
+          {vendorsDetail.categories && vendorsDetail.categories.length > 0 && (
             <Col className="vendors--popular-topics" md="4">
               <PopularTopics
                 onSubfilterChange={(f) => {
                   // Need to check for this changeSubFilter module
-                  changeSubFilter(f.slug || f.title);
+                  changeSubFilter(f.title);
                 }}
-                topicList={vendorsDetail.filters}
+                topicList={vendorsDetail.categories.map((c) => ({
+                  title: c.name,
+                  count: c.vendors.length || 0,
+                }))}
                 customHeading={
                   <div className="vendors--popular-topics-customhead">
                     <a onClick={() => window.history.back()}>{"< Back"}</a>
@@ -53,7 +59,7 @@ const VendorsDetail = ({
           <Col
             className={clsx("vendors--feed", mobileMenuOpen && "open")}
             md={
-              vendorsDetail.filters && vendorsDetail.filters.length > 0
+              vendorsDetail.categories && vendorsDetail.categories.length > 0
                 ? "8"
                 : "12"
             }
@@ -66,7 +72,7 @@ const VendorsDetail = ({
               <div>
                 {vendorsDetail.categories &&
                   vendorsDetail.categories.map((category, i) => (
-                    <div key={i} className="mb-4">
+                    <div key={i} className="mb-4" id={category.name}>
                       <Category
                         name={category.name}
                         description={category.description}

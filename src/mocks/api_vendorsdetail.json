@@ -29,14 +29,14 @@
             {
               "name": "Vas Swaminathan",
               "role": "CMO at PagerDuty",
-              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNDk2OTU5OWdvbmcuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
               "text": "We look at many different CXM solutions, and Merkle cost half of original thing. We look at many different CXM solutions, and Merkle cost half of original thing.",
               "link": "/profile/vas"
             },
             {
               "name": "Vas Swaminathan",
               "role": "CMO at PagerDuty",
-              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTQwNDc3OGRyaWZ0LmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
               "text": "We look at many different CXM solutions, and Merkle cost half of original thing. We look at many different CXM solutions, and Merkle cost half of original thing.",
               "link": "/profile/vas"
             }
@@ -88,7 +88,7 @@
       ]
     },
     {
-      "name": "#contentmarketing",
+      "name": "#seo",
       "description": "abc",
       "vendors": [
         {
@@ -171,38 +171,6 @@
           ]
         }
       ]
-    }
-  ],
-  "filters": [
-    {
-      "title": "#Baidu Advertising",
-      "count": 1,
-      "slug": "Baidu-Advertising"
-    },
-    {
-      "title": "#Packaging Design",
-      "count": 1,
-      "slug": "Packaging-Design"
-    },
-    {
-      "title": "#SEM",
-      "count": 2,
-      "slug": "SEM"
-    },
-    {
-      "title": "#Saas",
-      "count": 1,
-      "slug": "Saas"
-    },
-    {
-      "title": "#Latam",
-      "count": 3,
-      "slug": "Latam"
-    },
-    {
-      "title": "#TV Advertising",
-      "count": 4,
-      "slug": "TV-Advertising"
     }
   ]
 }
