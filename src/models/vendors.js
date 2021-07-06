@@ -252,7 +252,7 @@ export default {
         try {
           dispatch.vendorsModel.setLoading(true);
           const { sortOrder } = rootState.vendorsModel;
-          const response = await vendorRequest(
+          const response = await vendorListRequest(
             sortOrder,
             filterKey.toLowerCase(),
             "",
@@ -278,7 +278,7 @@ export default {
         dispatch.vendorsModel.clearActiveFeedData();
         dispatch.vendorsModel.setActiveSubFilter(subFilterToChangeTo);
         dispatch.vendorsModel.setLoading(true);
-        const response = await vendorRequest(
+        const response = await vendorListRequest(
           sortOrder,
           activeFilter,
           subFilterToChangeTo,

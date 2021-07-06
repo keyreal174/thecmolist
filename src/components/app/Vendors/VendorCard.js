@@ -68,7 +68,7 @@ const VendorCard = ({ item }) => {
         {item.connections && (
           <>
             <div className="vendor-card-divider"></div>
-            <p>12 connections including</p>
+            <p>{item.connections.num_connections} connections including</p>
             <div
               className="article-subheadlines mr-0"
               style={{ maxWidth: "100%" }}
