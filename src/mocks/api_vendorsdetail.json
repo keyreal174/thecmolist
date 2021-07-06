@@ -3,6 +3,11 @@
   "description": "Tools and partners to help create awareness for your company",
   "categories": [
     {
+      "name": "#market",
+      "description": "market",
+      "vendors": []
+    },
+    {
       "name": "#contentmarketing",
       "description": "abc",
       "vendors": [

@@ -64,7 +64,7 @@ const VendorCard = ({ item }) => {
           {item.articletext}
         </ShowMoreText>
       </div>
-      <div className="text-center">
+      <div className="text-center vendor-card-connections">
         {item.connections && (
           <>
             <div className="vendor-card-divider"></div>
