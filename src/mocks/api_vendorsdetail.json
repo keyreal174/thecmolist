@@ -3,12 +3,17 @@
   "description": "Tools and partners to help create awareness for your company",
   "categories": [
     {
-      "name": "#market",
-      "description": "market",
+      "name": "audiencedata",
+      "description": "audiencedata",
       "vendors": []
     },
     {
-      "name": "#contentmarketing",
+      "name": "webanalytics",
+      "description": "webanalytics",
+      "vendors": []
+    },
+    {
+      "name": "contentmarketing",
       "description": "abc",
       "vendors": [
         {
@@ -93,7 +98,7 @@
       ]
     },
     {
-      "name": "#seo",
+      "name": "seo",
       "description": "abc",
       "vendors": [
         {

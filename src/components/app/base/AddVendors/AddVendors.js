@@ -271,6 +271,7 @@ const AddVendors = ({
   vendorCategories,
   getSuggestions,
   saveVendors,
+  categoryTitle,
 }) => {
   const [vendors, setVendors] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -281,16 +282,40 @@ const AddVendors = ({
   }, []);
 
   useEffect(() => {
-    const vendorTemp = vendorCategories.map((cate) => {
-      return {
-        category: cate.name,
-        vendors: [],
-      };
-    });
-    setVendors(vendorTemp);
-    const categoryTemp = vendorCategories.filter((_, i) => i < 5);
-    setCategories(categoryTemp);
-    setAvailableCategories(vendorCategories.filter((_, i) => i >= 5));
+    if (vendorCategories && vendorCategories.length > 0) {
+      const vendorTemp = vendorCategories.map((cate) => {
+        return {
+          category: cate.name,
+          vendors: [],
+        };
+      });
+      setVendors(vendorTemp);
+      let category;
+      if (categoryTitle)
+        category = vendorCategories.findIndex(
+          (item) => item.name === categoryTitle
+        );
+      const categoryTemp =
+        category === -1
+          ? vendorCategories.filter((_, i) => i < 5)
+          : category !== -1 && category > 4
+          ? [
+              vendorCategories[category],
+              ...vendorCategories.filter((_, i) => i < 4),
+            ]
+          : [
+              vendorCategories[category],
+              ...vendorCategories.filter((_, i) => i < 5 && i !== category),
+            ];
+      setCategories(categoryTemp);
+      if (category !== -1 && category > 4) {
+        setAvailableCategories(
+          vendorCategories.filter((_, i) => i >= 4 && i !== category)
+        );
+      } else {
+        setAvailableCategories(vendorCategories.filter((_, i) => i >= 5));
+      }
+    }
   }, [vendorCategories]);
 
   const changeCategory = (citem, oid) => {

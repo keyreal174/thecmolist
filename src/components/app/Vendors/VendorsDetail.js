@@ -8,7 +8,7 @@ import VendorsFeed from "./VendorsFeed";
 const Category = ({ name, description }) => {
   return (
     <div className="vendor-detail-category">
-      <span className="vendor-detail-category--name">{name}</span>
+      <span className="vendor-detail-category--name">#{name}</span>
       <span className="vendor-detail-category--description">
         &nbsp;- {description}
       </span>
@@ -21,6 +21,7 @@ const VendorsDetail = ({
   fetchVendorsDetail,
   loadingVendors,
   mobileMenuOpen,
+  getCategoryTitle,
 }) => {
   useEffect(() => {
     const fetchData = async () => await fetchVendorsDetail();
@@ -77,7 +78,10 @@ const VendorsDetail = ({
                         name={category.name}
                         description={category.description}
                       />
-                      <VendorsFeed feedData={category.vendors} />
+                      <VendorsFeed
+                        feedData={category.vendors}
+                        getCategoryTitle={() => getCategoryTitle(category.name)}
+                      />
                     </div>
                   ))}
               </div>

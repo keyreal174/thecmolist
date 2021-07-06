@@ -5,16 +5,16 @@ import Article from "../base/Article/Article";
 import VendorConnections from "./VendorConnections";
 import "./vendors.scss";
 
-const VendorsFeed = ({ feedData, moreData }) => {
+const VendorsFeed = ({ feedData, getCategoryTitle }) => {
   // FIXME: for the beta we disable pagination as the BE returns all data
   // POST BETA remove this
-  moreData = false;
+  let moreData = false;
 
   const AddVendorButton = () => (
     <Button
       className="filter--button filter--button-active active m-0"
-      style={{ borderRadius: 20 }}
-      onClick={() => console.log("23423")}
+      style={{ borderRadius: 20, opacity: 0.8 }}
+      onClick={getCategoryTitle}
     >
       + Add Vendor
     </Button>
