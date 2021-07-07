@@ -40,11 +40,7 @@ const Avatar = ({ image, heading, subHeading, text, isConnection, link }) => {
           </p>
         </div>
         {isConnection && (
-          <p className="avatar-content-text font-italic">
-            <ShowMoreText lines={1} more="" less="" width={0}>
-              {text}
-            </ShowMoreText>
-          </p>
+          <p className="avatar-content-text font-italic">{text}</p>
         )}
       </div>
     </div>

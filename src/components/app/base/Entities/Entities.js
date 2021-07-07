@@ -15,7 +15,7 @@ const Entities = ({ entities, isConnection }) => {
           isConnection && "connections-wrapper"
         )}
       >
-        <p>12 Connections including</p>
+        <p>12 connections including</p>
         {entities
           .filter((item, i) => i < 3 || showMore)
           .map(({ image, name, role, link, text }, index) => (

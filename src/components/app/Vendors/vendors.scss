@@ -358,6 +358,11 @@
 .no-vendor-list-header {
   padding: 0 20px;
   color: $text-1;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 500;
+
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
 }

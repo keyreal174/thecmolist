@@ -1,7 +1,7 @@
 @import "../../../../sass/globals.scss";
 
 .entities-wrapper {
-  border-top: 1px solid #d3e0f5;
+  border-top: 1px solid $gray-3;
   margin-left: -16px;
   margin-right: -16px;
   padding-left: 16px;
@@ -10,18 +10,7 @@
 }
 
 .entities-wrapper.connections-wrapper {
-  border: none;
   padding-left: 32px;
-}
-
-.connections-wrapper::after {
-  content: "";
-  width: calc(100% - 31px);
-  border-bottom: solid 1px #c9ced1;
-  position: absolute;
-  left: 32px;
-  top: 5px;
-  z-index: 1;
 }
 
 .entities {
