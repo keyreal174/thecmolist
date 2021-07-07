@@ -508,3 +508,10 @@
     }
   }
 }
+
+// remove engagement-buttons--items border-bottom in feed page
+.feed--wrapper {
+  .engagement-buttons--items {
+    border-bottom: none;
+  }
+}

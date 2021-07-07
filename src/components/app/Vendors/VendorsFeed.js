@@ -5,7 +5,7 @@ import Article from "../base/Article/Article";
 import VendorConnections from "./VendorConnections";
 import "./vendors.scss";
 
-const VendorsFeed = ({ feedData, getCategoryTitle }) => {
+const VendorsFeed = ({ feedData, getCategoryTitle, name }) => {
   // FIXME: for the beta we disable pagination as the BE returns all data
   // POST BETA remove this
   let moreData = false;
@@ -13,7 +13,7 @@ const VendorsFeed = ({ feedData, getCategoryTitle }) => {
   const AddVendorButton = () => (
     <Button
       className="filter--button filter--button-active active m-0"
-      style={{ borderRadius: 20, opacity: 0.8 }}
+      style={{ borderRadius: 20, opacity: 0.8, whiteSpace: "nowrap" }}
       onClick={getCategoryTitle}
     >
       + Add Vendor
@@ -43,8 +43,9 @@ const VendorsFeed = ({ feedData, getCategoryTitle }) => {
           })}
         {feedData && feedData.length === 0 && (
           <div className="wrapper no-vendor-list-header d-flex align-items-center">
-            <div className="mr-4">
-              Your peers have not yet shared any Content Marketing vendors
+            <div className="mr-4 mb-3">
+              Your peers have not yet shared any{" "}
+              <span className="text-capitalize">{name}</span> vendors
             </div>
             <AddVendorButton />
           </div>
