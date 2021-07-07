@@ -13,7 +13,7 @@ const VendorsFeed = ({ feedData, getCategoryTitle, name }) => {
   const AddVendorButton = () => (
     <Button
       className="filter--button filter--button-active active m-0"
-      style={{ borderRadius: 20, opacity: 0.8 }}
+      style={{ borderRadius: 20, opacity: 0.8, whiteSpace: "nowrap" }}
       onClick={getCategoryTitle}
     >
       + Add Vendor
@@ -43,7 +43,7 @@ const VendorsFeed = ({ feedData, getCategoryTitle, name }) => {
           })}
         {feedData && feedData.length === 0 && (
           <div className="wrapper no-vendor-list-header d-flex align-items-center">
-            <div className="mr-4">
+            <div className="mr-4 mb-3">
               Your peers have not yet shared any{" "}
               <span className="text-capitalize">{name}</span> vendors
             </div>
