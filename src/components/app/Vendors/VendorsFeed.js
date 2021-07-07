@@ -43,7 +43,7 @@ const VendorsFeed = ({ feedData, getCategoryTitle, name }) => {
           })}
         {feedData && feedData.length === 0 && (
           <div className="wrapper no-vendor-list-header d-flex align-items-center">
-            <div className="mr-4 mb-3">
+            <div className="mr-4">
               Your peers have not yet shared any{" "}
               <span className="text-capitalize">{name}</span> vendors
             </div>
