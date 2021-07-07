@@ -12,6 +12,7 @@ import AddMemberModal from "../base/AddMemberModal/AddMemberModal";
 import AddVendorsModal from "../base/AddVendors/AddVendorsModal";
 import VendorList from "./VendorList";
 import VendorsDetail from "./VendorsDetail";
+import Util from "../../util/Util";
 import Analytics from "../../util/Analytics";
 import { cdn } from "../../util/constants";
 import "./vendors.scss";
@@ -82,6 +83,11 @@ const Vendors = (props) => {
       setFilterIdx(idx);
       if (location && location.pathname.includes("/vendors/")) {
         setIsDetail(true);
+        let path = Util.parsePath(window.location.href).trailingPath;
+        props.fetchVendorsDetail({
+          slug: path,
+          filter: newFilters[idx].slug,
+        });
       } else {
         props.fetchVendorList(newFilters[idx].slug);
       }
@@ -91,7 +97,15 @@ const Vendors = (props) => {
 
   const changeFilter = (idx) => {
     setFilterIdx(idx);
-    props.changeFilter(filters[idx].slug);
+    if (isDetail) {
+      let path = Util.parsePath(window.location.href).trailingPath;
+      props.fetchVendorsDetail({
+        slug: path,
+        filter: filters[idx].slug,
+      });
+    } else {
+      props.changeFilter(filters[idx].slug);
+    }
     changeDashboardHeader(idx);
   };
 
@@ -178,7 +192,6 @@ const Vendors = (props) => {
           )}
           {isDetail ? (
             <VendorsDetail
-              fetchVendorsDetail={props.fetchVendorsDetail}
               changeSubFilter={props.changeSubFilter}
               vendorsDetail={props.vendorsDetail}
               loadingVendors={props.loadingVendors}

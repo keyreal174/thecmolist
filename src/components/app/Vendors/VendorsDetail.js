@@ -18,16 +18,10 @@ const Category = ({ name, description }) => {
 
 const VendorsDetail = ({
   vendorsDetail,
-  fetchVendorsDetail,
   loadingVendors,
   mobileMenuOpen,
   getCategoryTitle,
 }) => {
-  useEffect(() => {
-    const fetchData = async () => await fetchVendorsDetail();
-    fetchData();
-  }, []);
-
   const changeSubFilter = (title) => {
     document.getElementById(title).scrollIntoView({ behavior: "smooth" });
   };
@@ -44,7 +38,7 @@ const VendorsDetail = ({
                   changeSubFilter(f.title);
                 }}
                 topicList={vendorsDetail.categories.map((c) => ({
-                  title: c.name,
+                  title: "#" + c.name,
                   count: c.vendors.length || 0,
                 }))}
                 customHeading={
@@ -73,7 +67,7 @@ const VendorsDetail = ({
               <div>
                 {vendorsDetail.categories &&
                   vendorsDetail.categories.map((category, i) => (
-                    <div key={i} className="mb-4" id={category.name}>
+                    <div key={i} className="mb-4" id={"#" + category.name}>
                       <Category
                         name={category.name}
                         description={category.description}

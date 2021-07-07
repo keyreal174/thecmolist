@@ -52,11 +52,11 @@ const vendorListRequest = (sort, filter, subfilter, token) => {
   return axios.get(url, { headers });
 };
 
-const vendorsDetailRequest = (name, token) => {
+const vendorsDetailRequest = (name, filter, token) => {
   let headers = {
     "timezone-offset": new Date().getTimezoneOffset(),
   };
-  let url = `/api/vendor_detail/${name}`;
+  let url = `/api/vendor_detail/${name}?filter=${filter}`;
   if (token) {
     headers.token = token;
   }
@@ -330,10 +330,11 @@ export default {
         dispatch.vendorsModel.setLoading(false);
       }
     },
-    async fetchVendorsDetail(name) {
+    async fetchVendorsDetail(data) {
       try {
+        let { slug, filter } = data;
         dispatch.vendorsModel.setLoading(true);
-        const response = await vendorsDetailRequest(name);
+        const response = await vendorsDetailRequest(slug, filter);
         dispatch.vendorsModel.setVendorsDetail(response.data);
       } catch (error) {
         throw new Error("Can not fetch vendor detail");
