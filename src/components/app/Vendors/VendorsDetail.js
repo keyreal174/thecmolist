@@ -81,6 +81,7 @@ const VendorsDetail = ({
                       <VendorsFeed
                         feedData={category.vendors}
                         getCategoryTitle={() => getCategoryTitle(category.name)}
+                        name={category.name}
                       />
                     </div>
                   ))}

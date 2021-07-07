@@ -158,21 +158,25 @@ function Article(props) {
                     )}
                   </div>
                 )}
-                {props.articletext && props.articletext.length > 0 && (
-                  <div className="article-text">
-                    <ShowMoreText
-                      lines={
-                        props.articletextlines ? props.articletextlines : 2
-                      }
-                      keepNewLines={true}
-                      more="See more"
-                      less=""
-                      width={0}
-                    >
-                      {props.articletext}
-                    </ShowMoreText>
-                  </div>
-                )}
+                {props.articletext &&
+                  props.articletext.length > 0 &&
+                  (props.articletextlines ? (
+                    <div className="article-text">
+                      <ShowMoreText
+                        lines={
+                          props.articletextlines ? props.articletextlines : 2
+                        }
+                        keepNewLines={true}
+                        more="See more"
+                        less=""
+                        width={0}
+                      >
+                        {props.articletext}
+                      </ShowMoreText>
+                    </div>
+                  ) : (
+                    <div className="article-text">{props.articletext}</div>
+                  ))}
                 {props.subtext && (
                   <div className="article-labels">
                     {props.subtext.map((subtxt) => {
