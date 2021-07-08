@@ -8,13 +8,15 @@ const VendorCard = ({ item }) => {
   return (
     <CustomCard>
       <div className="avatar-thumb text-center mr-0 mb-2">
-        <img
-          className="rounded-circle"
-          src={item.image}
-          width="39"
-          height="39"
-          alt="avatar"
-        />
+        <a href={item.contentlink ? item.contentlink : ""}>
+          <img
+            className="rounded-circle"
+            src={item.image}
+            width="39"
+            height="39"
+            alt="avatar"
+          />
+        </a>
       </div>
       <h2 className="article-title text-center">
         {item.headline.markdown ? (

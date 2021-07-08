@@ -54,11 +54,13 @@ function Article(props) {
       {props.header && (
         <div className="article-wrapper-header">
           {props.header.image && (
-            <img
-              alt="profile"
-              className="article-wrapper-image"
-              src={props.header.image}
-            />
+            <a href={props.contentlink ? props.contentlink : ""}>
+              <img
+                alt="profile"
+                className="article-wrapper-image"
+                src={props.header.image}
+              />
+            </a>
           )}
           <div>
             <div className="article-wrapper-title">
@@ -89,15 +91,17 @@ function Article(props) {
               {props.image && props.image.length > 0 && (
                 <div className="article--image mr-3">
                   <div className="article-img">
-                    <img
-                      src={props.image}
-                      alt=""
-                      className={
-                        props.imageDisplay && props.imageDisplay === "square"
-                          ? "article-img-square"
-                          : ""
-                      }
-                    />
+                    <a href={props.contentlink ? props.contentlink : ""}>
+                      <img
+                        src={props.image}
+                        alt=""
+                        className={
+                          props.imageDisplay && props.imageDisplay === "square"
+                            ? "article-img-square"
+                            : ""
+                        }
+                      />
+                    </a>
                   </div>
                 </div>
               )}
