@@ -5,7 +5,7 @@ import Article from "../base/Article/Article";
 import VendorConnections from "./VendorConnections";
 import "./vendors.scss";
 
-const VendorsFeed = ({ feedData, getCategoryTitle, name }) => {
+const VendorsFeed = ({ feedData, getCategoryTitle, description }) => {
   // FIXME: for the beta we disable pagination as the BE returns all data
   // POST BETA remove this
   let moreData = false;
@@ -45,7 +45,7 @@ const VendorsFeed = ({ feedData, getCategoryTitle, name }) => {
           <div className="wrapper no-vendor-list-header d-flex align-items-center">
             <div className="mr-4">
               Your peers have not yet shared any{" "}
-              <span className="text-capitalize">{name}</span> vendors
+              <span className="text-capitalize">{description}</span> vendors
             </div>
             <AddVendorButton />
           </div>
