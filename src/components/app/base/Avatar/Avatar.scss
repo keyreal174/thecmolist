@@ -17,8 +17,7 @@
   &-heading {
     font-size: 14px;
     font-weight: bold;
-    line-height: 18px;
-    color: $text-1;
+    color: $text-1 !important;
   }
 
   &-subheading {

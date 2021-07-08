@@ -9,7 +9,7 @@ const Category = ({ name, description }) => {
   return (
     <div className="vendor-detail-category">
       <span className="vendor-detail-category--name">#{name}</span>
-      <span className="vendor-detail-category--description">
+      <span className="vendor-detail-category--description text-capitalize">
         &nbsp;- {description}
       </span>
     </div>
@@ -75,7 +75,7 @@ const VendorsDetail = ({
                       <VendorsFeed
                         feedData={category.vendors}
                         getCategoryTitle={() => getCategoryTitle(category.name)}
-                        name={category.name}
+                        description={category.description}
                       />
                     </div>
                   ))}

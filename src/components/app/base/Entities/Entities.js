@@ -17,8 +17,8 @@ const Entities = ({ entities, isConnection }) => {
       >
         <p>
           {entities.length === 1
-            ? "1 Connection including"
-            : entities.length + " Connections including"}{" "}
+            ? "1 connection including"
+            : entities.length + " connections including"}{" "}
         </p>
         {entities
           .filter((item, i) => i < 3 || showMore)
