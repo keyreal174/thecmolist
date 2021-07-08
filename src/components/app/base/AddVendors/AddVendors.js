@@ -290,7 +290,7 @@ const AddVendors = ({
         };
       });
       setVendors(vendorTemp);
-      let category;
+      let category = -1;
       if (categoryTitle)
         category = vendorCategories.findIndex(
           (item) => item.name === categoryTitle
