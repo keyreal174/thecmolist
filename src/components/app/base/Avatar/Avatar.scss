@@ -22,8 +22,18 @@
 
   &-subheading {
     font-size: 12px;
-    line-height: 15.6px;
+    line-height: 12px;
     color: $text-3;
+
+    &.avatar-content-subheading-isConnection {
+      &::before {
+        content: "- ";
+
+        @media screen and (max-width: 767px) {
+          content: "";
+        }
+      }
+    }
   }
 
   &-text {
@@ -33,5 +43,16 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  &-connections {
+    display: flex;
+    align-items: center;
+
+    @media screen and (max-width: 767px) {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 2px;
+    }
   }
 }

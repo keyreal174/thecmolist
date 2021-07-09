@@ -58,8 +58,8 @@ const TopBanner = ({
   return (
     <div className="feed-page-top-banner top-banner-container">
       <div className="d-flex">
-        <CustomCard>
-          <div className="d-flex align-items-center py-3 px-1">
+        <CustomCard className="w-100">
+          <div className="feed-page-top-banner-social d-flex align-items-center py-3 px-1">
             {image ? (
               <div className="feed-page-top-banner-img">
                 <img src={image} alt="Logo" width="100" height="100" />

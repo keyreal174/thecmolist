@@ -32,6 +32,9 @@ const VendorListFeed = ({ vendor }) => {
             />
           </Button>
         </div>
+        <div className="vendor-list-divider mobile">
+          <p>Trending Vendors</p>
+        </div>
         <div className="vendor-list-vendors">
           <Row>
             {vendor.vendors

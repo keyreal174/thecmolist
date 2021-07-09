@@ -116,7 +116,7 @@
 }
 
 .network-list-item .article-text {
-  max-width: 95%;
+  // max-width: 95%;
 }
 
 @media (max-width: 768px) {
@@ -133,7 +133,6 @@
     }
   }
   .vendors--simple-top-banner,
-  .vendors--footer,
   .vendors--feed-item,
   .vendors--filters {
     margin: 10px 17px;
@@ -238,6 +237,18 @@
     left: 0;
     top: 50%;
     z-index: 1;
+  }
+
+  &.mobile {
+    display: none;
+  }
+
+  @media screen and (max-width: 767px) {
+    display: none;
+
+    &.mobile {
+      display: block;
+    }
   }
 }
 

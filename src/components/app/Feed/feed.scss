@@ -288,9 +288,26 @@
   }
 }
 
+.feed-page-top-banner-social {
+  @media screen and (max-width: 767px) {
+    &.align-items-center {
+      align-items: flex-start !important;
+    }
+  }
+}
+
 .feed-page-top-banner-img {
   border-radius: 12px;
   margin-right: 23.5px;
+
+  @media screen and (max-width: 767px) {
+    margin-top: 10px;
+
+    img {
+      width: 40px !important;
+      height: 40px !important;
+    }
+  }
 }
 
 .feed-page-top-banner-placeholder-img {
@@ -301,17 +318,33 @@
 }
 
 .feed-page-top-banner-content {
+  min-width: 1px;
+
   h3 {
     color: $text-1;
     font-size: 26px;
     line-height: 34px;
     font-weight: bold;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+
+    @media screen and (max-width: 767px) {
+      font-size: 20px;
+    }
   }
 
   p {
     font-size: 18px;
     line-height: 23px;
     color: $gray-1;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+
+    @media screen and (max-width: 767px) {
+      font-size: 16px;
+    }
   }
 
   span {

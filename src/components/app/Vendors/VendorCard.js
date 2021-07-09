@@ -55,16 +55,18 @@ const VendorCard = ({ item }) => {
           </div>
         )}
       </div>
-      <div className="vendor-article-text">
-        <ShowMoreText
-          keepNewLines={true}
-          lines={2}
-          more="See more"
-          less="See less"
-          width={0}
-        >
-          {item.articletext}
-        </ShowMoreText>
+      <div className="vendor-article-text" style={{ padding: "0 2px" }}>
+        <div>
+          <ShowMoreText
+            keepNewLines={true}
+            lines={2}
+            more="See more"
+            less="See less"
+            width={0}
+          >
+            {item.articletext}
+          </ShowMoreText>
+        </div>
       </div>
       <div className="text-center vendor-card-connections">
         {item.connections && (
