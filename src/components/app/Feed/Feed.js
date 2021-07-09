@@ -408,15 +408,15 @@ const Feed = (props) => {
     setTopic(auxTopic);
   }, [props.profileStats]);
 
-  const handleTopicFollowClick = (slug) => {
+  const handleTopicFollowClick = async (slug) => {
     const newFollowed = !topicFollowed;
     setTopicFollowed(newFollowed);
     setTopic({
       ...topic,
       followed: newFollowed,
     });
-    props.followTopic(slug);
-    props.getProfileStats();
+    await props.followTopic(slug);
+    await props.getProfileStats();
   };
 
   const handleToggle = () => {
