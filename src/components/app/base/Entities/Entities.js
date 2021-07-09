@@ -15,14 +15,16 @@ const Entities = ({ entities, isConnection }) => {
           isConnection && "connections-wrapper"
         )}
       >
-        <p>
-          {entities.length === 1
-            ? "1 connection"
-            : entities.length +
-              (entities.length > 3
-                ? " connections including"
-                : " connections")}{" "}
-        </p>
+        {isConnection && (
+          <p>
+            {entities.length === 1
+              ? "1 connection"
+              : entities.length +
+                (entities.length > 3
+                  ? " connections including"
+                  : " connections")}{" "}
+          </p>
+        )}
         {entities
           .filter((item, i) => i < 3 || showMore)
           .map(({ image, name, role, link, text }, index) => (
