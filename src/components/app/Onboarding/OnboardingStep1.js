@@ -162,7 +162,7 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
             ? !loading
               ? `Hello ${firstname}, welcome to CMOlist!`
               : ""
-            : `Please create your member profile`}
+            : `Create your member profile`}
         </span>
       }
       isWelcome={isWelcome}
