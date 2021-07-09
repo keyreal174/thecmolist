@@ -18,15 +18,19 @@ const Avatar = ({ image, heading, subHeading, text, isConnection, link }) => {
         </a>
       </div>
       <div className="avatar-content">
-        <div className={clsx(isConnection && "d-flex align-items-center")}>
+        <div className={clsx(isConnection && "avatar-content-connections")}>
           <a
             href={link}
             className={clsx("avatar-content-heading", isConnection && "mr-1")}
           >
             {heading}
           </a>
-          <p className="avatar-content-subheading">
-            {isConnection && " - "}
+          <p
+            className={clsx(
+              "avatar-content-subheading",
+              isConnection && "avatar-content-subheading-isConnection"
+            )}
+          >
             {subHeading}
           </p>
         </div>
