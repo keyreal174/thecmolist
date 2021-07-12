@@ -23,11 +23,11 @@ const Avatar = ({ image, heading, subHeading, text, isConnection, link }) => {
             href={link}
             className={clsx("avatar-content-heading", isConnection && "mr-1")}
           >
-            {heading}
+            <span className="ellipsis-line">{heading}</span>
           </a>
           <p
             className={clsx(
-              "avatar-content-subheading",
+              "avatar-content-subheading ellipsis-line",
               isConnection && "avatar-content-subheading-isConnection"
             )}
           >
