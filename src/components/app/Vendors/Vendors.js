@@ -90,10 +90,11 @@ const Vendors = (props) => {
         });
       } else {
         props.fetchVendorList(newFilters[idx].slug);
+        setIsDetail(false);
       }
       changeDashboardHeader(idx);
     });
-  }, []);
+  }, [location]);
 
   const changeFilter = (idx) => {
     setFilterIdx(idx);
