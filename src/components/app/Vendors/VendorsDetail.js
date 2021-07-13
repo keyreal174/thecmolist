@@ -21,7 +21,7 @@ const VendorsDetail = ({
   loadingVendors,
   mobileMenuOpen,
   getCategoryTitle,
-  fromProfile,
+  allowBackButton,
 }) => {
   const changeSubFilter = (title) => {
     document.getElementById(title).scrollIntoView({ behavior: "smooth" });
@@ -46,7 +46,7 @@ const VendorsDetail = ({
                 }))}
                 customHeading={
                   <div className="vendors--popular-topics-customhead">
-                    {!fromProfile && (
+                    {!allowBackButton && (
                       <a onClick={() => window.history.back()}>{"< Back"}</a>
                     )}
                     <h2>{vendorsDetail.name}</h2>
