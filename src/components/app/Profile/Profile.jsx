@@ -18,6 +18,7 @@ import {
 } from "../base/EngagementButtons/EngagementButtons";
 import AddVendorsModal from "../base/AddVendors/AddVendorsModal";
 import AddSkillsModal from "../base/AddSkills/AddSkillsModal";
+import VendorsDetail from "../Vendors/VendorsDetail";
 import DeletePost from "./DeletePost";
 import FollowUserModal from "./FollowUser";
 import Util from "../../util/Util";
@@ -97,6 +98,8 @@ const Profile = (props) => {
   const [showMore, setShowMore] = useState(false);
   const [showAddVendor, setShowAddVendor] = useState(false);
   const [showAddSkill, setShowAddSkill] = useState(false);
+  const [showCategoryListView, setShowCategoryListView] = useState(false);
+  const [categoryTitle, setCategoryTitle] = useState("");
 
   const userName = Util.parsePath(window.location.href).trailingPath;
 
@@ -249,6 +252,7 @@ const Profile = (props) => {
         setSubfilters(subfilters);
         let feedFilter = currentFeed.subfilter || "";
         setFeedFilter(feedFilter);
+        setShowCategoryListView(currentFeed.showCategoryListView);
         setTopicList(
           Object.keys(subfilters)
             .map((s) => ({
@@ -335,9 +339,10 @@ const Profile = (props) => {
   const AddVendorButton = ({ isVendor }) => (
     <Button
       className="filter--button filter--button-active active m-0"
-      onClick={() =>
-        !isVendor ? toggleAddSkillModal() : toggleAddVendorModal()
-      }
+      onClick={() => {
+        !isVendor ? toggleAddSkillModal() : toggleAddVendorModal();
+        setCategoryTitle("");
+      }}
     >
       {!isVendor ? "+ Add Expertise" : "+ Add Vendor"}
     </Button>
@@ -605,117 +610,143 @@ const Profile = (props) => {
           </div>
         </div>
 
-        {profileFirstName && hasDataOnCurrentFeed && (
-          <Row className={clsx("profile--feed", mobileMenuOpen && "open")}>
-            <Col xl="4" className="profile--popular-topics">
-              {topicList && topicList.length > 0 && (
-                <PopularTopics
-                  heading={"Popular #topics and Spaces"}
-                  topicList={topicList}
-                  onSubfilterChange={onSubfilterChange}
-                />
-              )}
-            </Col>
-            <Col xl={topicList.length > 0 ? "8" : "12"} md="12">
-              <div
-                className={clsx(
-                  feedBlockerText && "add-vendor-blocker-wrapper"
-                )}
-              >
-                {feedBlockerText && (
-                  <Fragment>
-                    <div className="add-vendor-blocker-modal">
-                      <p>{feedBlockerText}</p>
-                      <div className="filter-btn-group">
-                        <AddVendorButton isVendor={feedBlockerAddVendor} />
-                      </div>
+        {profileFirstName &&
+          hasDataOnCurrentFeed &&
+          (showCategoryListView ? (
+            <>
+              {filteredFeedData.map((feed, idx) => {
+                return (
+                  <>
+                    <div key={idx} className="mb-4">
+                      <VendorsDetail
+                        vendorsDetail={feed}
+                        mobileMenuOpen={mobileMenuOpen}
+                        loadingVendors={false}
+                        getCategoryTitle={(title) => {
+                          setCategoryTitle(title);
+                          setShowAddVendor((value) => !value);
+                        }}
+                        allowBackButton={true}
+                      />
+                      {idx < filteredFeedData.length - 1 && (
+                        <div className="vendor-detail-divider"></div>
+                      )}
                     </div>
-                    <div className="add-vendor-blocker-opacity"></div>
-                  </Fragment>
+                  </>
+                );
+              })}
+            </>
+          ) : (
+            <Row className={clsx("profile--feed", mobileMenuOpen && "open")}>
+              <Col xl="4" className="profile--popular-topics">
+                {topicList && topicList.length > 0 && (
+                  <PopularTopics
+                    heading={"Popular #topics and Spaces"}
+                    topicList={topicList}
+                    onSubfilterChange={onSubfilterChange}
+                  />
                 )}
-                <TransitionGroup
-                  enter={enableAnimations}
-                  exit={enableAnimations}
+              </Col>
+              <Col xl={topicList.length > 0 ? "8" : "12"} md="12">
+                <div
+                  className={clsx(
+                    feedBlockerText && "add-vendor-blocker-wrapper"
+                  )}
                 >
-                  {filteredFeedData.map((feed, idx) => {
-                    return (
-                      <FadeTransition key={idx}>
-                        <Article
-                          key={idx}
-                          className={clsx(
-                            "profile--article-item",
-                            idx !== 0 && "mt-1",
-                            isMyProfile && "isMyProfile"
-                          )}
-                          {...feed.content}
-                          badge={<XBadge feed={feed} />}
-                          engagementButtons={
-                            feed.content_id && [
-                              {
-                                checked: true,
-                                text: feed.replyText || "Reply",
-                                type: "Answer",
-                                icon: AnswerIcon,
-                                number:
-                                  feed.comments && feed.comments.length > 0
-                                    ? feed.comments.length
-                                    : null,
-                              },
-                              {
-                                checked: getCheckedForEngagementType(
-                                  feed.content_id,
-                                  "thanks",
-                                  reactions
-                                ),
-                                text: "Like",
-                                type: "Reaction",
-                                icon: ThanksIcon,
-                                iconChecked: ThanksCheckedIcon,
-                                number: getEngagementForId(
-                                  feed.content_id,
-                                  "thanks",
-                                  reactions
-                                ),
-                              },
-                              {
-                                checked: getCheckedForEngagementType(
-                                  feed.content_id,
-                                  "insightful",
-                                  reactions
-                                ),
-                                text: "Insightful",
-                                type: "Reaction",
-                                icon: InsightfulIcon,
-                                iconChecked: InsightfulCheckedIcon,
-                                number: getEngagementForId(
-                                  feed.content_id,
-                                  "insightful",
-                                  reactions
-                                ),
-                              },
-                            ]
-                          }
-                          focusComment={true}
-                          onEngagementButtonClick={handleEngagementButtonClick.bind(
-                            this,
-                            feed
-                          )}
-                        >
-                          {feed.parent_content && (
-                            <Article {...feed.parent_content} />
-                          )}
-                          {feed.entities?.length > 0 && (
-                            <Entities entities={feed.entities} />
-                          )}
-                        </Article>
-                      </FadeTransition>
-                    );
-                  })}
-                </TransitionGroup>
-              </div>
-            </Col>
-          </Row>
-        )}
+                  {feedBlockerText && (
+                    <Fragment>
+                      <div className="add-vendor-blocker-modal">
+                        <p>{feedBlockerText}</p>
+                        <div className="filter-btn-group">
+                          <AddVendorButton isVendor={feedBlockerAddVendor} />
+                        </div>
+                      </div>
+                      <div className="add-vendor-blocker-opacity"></div>
+                    </Fragment>
+                  )}
+                  <TransitionGroup
+                    enter={enableAnimations}
+                    exit={enableAnimations}
+                  >
+                    {filteredFeedData.map((feed, idx) => {
+                      return (
+                        <FadeTransition key={idx}>
+                          <Article
+                            key={idx}
+                            className={clsx(
+                              "profile--article-item",
+                              idx !== 0 && "mt-1",
+                              isMyProfile && "isMyProfile"
+                            )}
+                            {...feed.content}
+                            badge={<XBadge feed={feed} />}
+                            engagementButtons={
+                              feed.content_id && [
+                                {
+                                  checked: true,
+                                  text: feed.replyText || "Reply",
+                                  type: "Answer",
+                                  icon: AnswerIcon,
+                                  number:
+                                    feed.comments && feed.comments.length > 0
+                                      ? feed.comments.length
+                                      : null,
+                                },
+                                {
+                                  checked: getCheckedForEngagementType(
+                                    feed.content_id,
+                                    "thanks",
+                                    reactions
+                                  ),
+                                  text: "Like",
+                                  type: "Reaction",
+                                  icon: ThanksIcon,
+                                  iconChecked: ThanksCheckedIcon,
+                                  number: getEngagementForId(
+                                    feed.content_id,
+                                    "thanks",
+                                    reactions
+                                  ),
+                                },
+                                {
+                                  checked: getCheckedForEngagementType(
+                                    feed.content_id,
+                                    "insightful",
+                                    reactions
+                                  ),
+                                  text: "Insightful",
+                                  type: "Reaction",
+                                  icon: InsightfulIcon,
+                                  iconChecked: InsightfulCheckedIcon,
+                                  number: getEngagementForId(
+                                    feed.content_id,
+                                    "insightful",
+                                    reactions
+                                  ),
+                                },
+                              ]
+                            }
+                            focusComment={true}
+                            onEngagementButtonClick={handleEngagementButtonClick.bind(
+                              this,
+                              feed
+                            )}
+                          >
+                            {feed.parent_content && (
+                              <Article {...feed.parent_content} />
+                            )}
+                            {feed.entities?.length > 0 && (
+                              <Entities entities={feed.entities} />
+                            )}
+                          </Article>
+                        </FadeTransition>
+                      );
+                    })}
+                  </TransitionGroup>
+                </div>
+              </Col>
+            </Row>
+          ))}
         {profileFirstName && !hasDataOnCurrentFeed && (
           <div
             className={clsx(
@@ -745,6 +776,7 @@ const Profile = (props) => {
       <AddVendorsModal
         show={showAddVendor}
         handleClose={toggleAddVendorModal}
+        categoryTitle={categoryTitle}
       />
       <AddSkillsModal show={showAddSkill} handleClose={toggleAddSkillModal} />
     </Layout>

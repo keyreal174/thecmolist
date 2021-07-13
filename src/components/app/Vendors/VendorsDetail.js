@@ -21,6 +21,7 @@ const VendorsDetail = ({
   loadingVendors,
   mobileMenuOpen,
   getCategoryTitle,
+  allowBackButton,
 }) => {
   const changeSubFilter = (title) => {
     document.getElementById(title).scrollIntoView({ behavior: "smooth" });
@@ -35,7 +36,9 @@ const VendorsDetail = ({
               <PopularTopics
                 onSubfilterChange={(f) => {
                   // Need to check for this changeSubFilter module
-                  changeSubFilter(f.title);
+                  const new_title =
+                    "#" + vendorsDetail.name + f.title.split("#")[1];
+                  changeSubFilter(new_title);
                 }}
                 topicList={vendorsDetail.categories.map((c) => ({
                   title: "#" + c.name,
@@ -43,7 +46,9 @@ const VendorsDetail = ({
                 }))}
                 customHeading={
                   <div className="vendors--popular-topics-customhead">
-                    <a onClick={() => window.history.back()}>{"< Back"}</a>
+                    {!allowBackButton && (
+                      <a onClick={() => window.history.back()}>{"< Back"}</a>
+                    )}
                     <h2>{vendorsDetail.name}</h2>
                     <p>{vendorsDetail.description}</p>
                   </div>
@@ -67,7 +72,11 @@ const VendorsDetail = ({
               <div>
                 {vendorsDetail.categories &&
                   vendorsDetail.categories.map((category, i) => (
-                    <div key={i} className="mb-4" id={"#" + category.name}>
+                    <div
+                      key={i}
+                      className="mb-4"
+                      id={"#" + vendorsDetail.name + category.name}
+                    >
                       <Category
                         name={category.name}
                         description={category.description}

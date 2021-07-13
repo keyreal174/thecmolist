@@ -29,7 +29,7 @@ const VendorsFeed = ({ feedData, getCategoryTitle, description }) => {
               <Article
                 key={idx}
                 className={clsx(
-                  idx && "mt-1",
+                  idx && "mt-3",
                   "network-list-item",
                   "vendors--feed-item"
                 )}

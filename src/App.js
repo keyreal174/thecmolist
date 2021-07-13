@@ -305,7 +305,7 @@ class App extends React.Component {
             }
           />
           <Route
-            path="/vendors"
+            path="/vendors/:id"
             render={(props) =>
               this.state.authed ? (
                 <Vendors />
@@ -317,7 +317,7 @@ class App extends React.Component {
             }
           />
           <Route
-            path="/vendors/:id"
+            path="/vendors"
             render={(props) =>
               this.state.authed ? (
                 <Vendors />
