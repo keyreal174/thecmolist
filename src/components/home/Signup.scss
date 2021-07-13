@@ -41,8 +41,8 @@
     font-size: 28px;
     line-height: 36px;
     font-weight: 700;
-    padding-bottom: 16px;
-    padding-top: 21px;
+    padding-bottom: 10px;
+    padding-top: 32px;
     &-beta {
       text-align: center;
     }
@@ -91,7 +91,7 @@
     text-align: center;
     padding-bottom: 37px;
     padding-top: 9px;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 27px;
   }
   &--footer {
@@ -100,7 +100,7 @@
 }
 
 .form-inputs-group {
-  margin-top: 56px;
+  margin-top: 32px;
   padding: 0 20px;
 
   .form-group {
