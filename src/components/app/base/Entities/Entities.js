@@ -16,7 +16,7 @@ const Entities = ({ entities, isConnection }) => {
         )}
       >
         {isConnection && (
-          <p>
+          <p className="connections-wrapper-header">
             {entities.length === 1
               ? "1 connection"
               : entities.length +
