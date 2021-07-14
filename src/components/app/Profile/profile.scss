@@ -650,3 +650,9 @@
 .profile--vendors--feed--wrapper .connections-wrapper-header {
   display: none;
 }
+
+.profile--vendors--feed--wrapper .avatar-content-text {
+  white-space: normal;
+  overflow: auto;
+  text-overflow: initial;
+}
