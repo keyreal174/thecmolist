@@ -223,7 +223,7 @@ const RenderVendorCategoryRow = ({
               onChangeSelctedOptions(selectedOption);
             }}
             placeholder={
-              skill ? "Summarize your experience" : "Search & select tool(s)"
+              skill ? "Summarize your experience" : "Search & select vendor(s)"
             }
             renderMenuItemChildren={(option) => (
               <React.Fragment>
@@ -381,8 +381,8 @@ const AddVendors = ({
     >
       <Row className="form-add-vendors--header">
         <Col md={4}>Category</Col>
-        <Col md={4}>My Tools</Col>
-        <Col md={4}>Popular Tools</Col>
+        <Col md={4}>My Vendors</Col>
+        <Col md={4}>Popular Vendors</Col>
       </Row>
       <div className="form-add-vendors--content">
         {categories.map((cate, i) => (
