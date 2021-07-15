@@ -77,6 +77,11 @@ const Vendors = (props) => {
           }
         }
       }
+
+      if (location && location.state && location.state.filterIdx) {
+        idx = location.state.filterIdx;
+      }
+
       setFilters(newFilters);
       setBannerTitle(newFilters[idx].title);
       setBannerImage(newFilters[idx].image);
@@ -199,6 +204,7 @@ const Vendors = (props) => {
               mobileMenuOpen={mobileMenuOpen}
               toggleAddVendorModal={toggleAddVendorModal}
               getCategoryTitle={getCategoryTitle}
+              filterIdx={filterIdx}
             />
           ) : (
             <Row className="vendors--feed--wrapper">
@@ -211,7 +217,10 @@ const Vendors = (props) => {
                     <ActivityIndicator className="element-center feed-activity-indicator" />
                   </div>
                 ) : (
-                  <VendorList vendorList={props.vendorList} />
+                  <VendorList
+                    vendorList={props.vendorList}
+                    filterIdx={filterIdx}
+                  />
                 )}
               </Col>
             </Row>

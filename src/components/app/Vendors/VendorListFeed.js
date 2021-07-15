@@ -1,10 +1,12 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { Button, Col, Row } from "react-bootstrap";
 import VendorCard from "./VendorCard";
 import Arrow from "../base/icons/next_arrow.svg";
 import "./vendors.scss";
 
-const VendorListFeed = ({ vendor }) => {
+const VendorListFeed = ({ vendor, filterIdx }) => {
+  const history = useHistory();
   // FIXME: for the beta we disable pagination as the BE returns all data
   // POST BETA remove this
   return (
@@ -19,7 +21,12 @@ const VendorListFeed = ({ vendor }) => {
           <Button
             className="filter--button filter--button-active active m-0 d-flex align-items-center"
             onClick={() => {
-              window.location.href = vendor.link;
+              history.push({
+                pathname: vendor.link,
+                state: {
+                  filterIdx: filterIdx,
+                },
+              });
             }}
           >
             See All

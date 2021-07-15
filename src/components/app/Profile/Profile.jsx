@@ -627,6 +627,7 @@ const Profile = (props) => {
                           setShowAddVendor((value) => !value);
                         }}
                         allowBackButton={true}
+                        showCategoryListView={true}
                       />
                       {idx < filteredFeedData.length - 1 && (
                         <div className="vendor-detail-divider"></div>
