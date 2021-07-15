@@ -4,7 +4,7 @@ import CustomCard from "../base/CustomCard/CustomCard";
 
 const Feature = ({ image, name, role, link }) => {
   const goViewStack = () => {
-    document.href = link;
+    window.location.href = link;
   };
 
   return (
