@@ -32,7 +32,7 @@ function Footer({ className }) {
             <a className="footer__logo" href="/feed">
               CMO<span>list</span>
             </a>
-            <span className="footer__copyright">&copy; 2020</span>
+            <span className="footer__copyright">&copy; 2021</span>
           </div>
         </Col>
       </Row>

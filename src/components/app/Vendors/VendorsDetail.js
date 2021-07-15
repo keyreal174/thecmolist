@@ -25,6 +25,7 @@ const VendorsDetail = ({
   allowBackButton,
   showCategoryListView,
   filterIdx,
+  className,
 }) => {
   const history = useHistory();
   const changeSubFilter = (title) => {
@@ -34,7 +35,7 @@ const VendorsDetail = ({
   return (
     <>
       {vendorsDetail && (
-        <Row className="vendors--feed--wrapper">
+        <Row className={clsx("vendors--feed--wrapper", className)}>
           {vendorsDetail.categories && vendorsDetail.categories.length > 0 && (
             <Col className="vendors--popular-topics" md="4">
               <PopularTopics

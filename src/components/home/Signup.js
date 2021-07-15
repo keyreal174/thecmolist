@@ -115,7 +115,7 @@ function Signup() {
             <hr style={{ "margin-top": "30px" }} />
             <div className="form-group">
               <span className="signup-attn signup--form-link">
-                Already on CMOlist? <a href="/login">Sign in</a>
+                Already a CMOlist member? <a href="/login">Sign in</a>
               </span>
             </div>
           </form>
