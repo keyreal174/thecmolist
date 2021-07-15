@@ -619,6 +619,7 @@ const Profile = (props) => {
                   <>
                     <div key={idx} className="mb-4">
                       <VendorsDetail
+                        className={"profile--vendors--feed--wrapper"}
                         vendorsDetail={feed}
                         mobileMenuOpen={mobileMenuOpen}
                         loadingVendors={false}

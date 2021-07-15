@@ -22,6 +22,7 @@ const VendorsDetail = ({
   mobileMenuOpen,
   getCategoryTitle,
   allowBackButton,
+  className,
 }) => {
   const changeSubFilter = (title) => {
     document.getElementById(title).scrollIntoView({ behavior: "smooth" });
@@ -30,7 +31,7 @@ const VendorsDetail = ({
   return (
     <>
       {vendorsDetail && (
-        <Row className="vendors--feed--wrapper">
+        <Row className={clsx("vendors--feed--wrapper", className)}>
           {vendorsDetail.categories && vendorsDetail.categories.length > 0 && (
             <Col className="vendors--popular-topics" md="4">
               <PopularTopics
