@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { connect } from "react-redux";
 import clsx from "clsx";
-import { useHistory } from "react-router";
+import { useHistory, useLocation } from "react-router";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import ShowMoreText from "react-show-more-text";
@@ -60,6 +60,7 @@ const RenderList = ({ arr }) => {
 
 const Profile = (props) => {
   const history = useHistory();
+  const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isMyProfile, setIsMyProfile] = useState(false);
   const [canShowStack, setCanShowStack] = useState(false);
@@ -146,6 +147,22 @@ const Profile = (props) => {
       setFilterIdx(id === -1 ? 0 : id);
     }
   }, [props.profile]);
+
+  useEffect(() => {
+    if (
+      location &&
+      location.state &&
+      location.state.myStack &&
+      props.profile &&
+      Object.keys(props.profile).length > 0
+    ) {
+      const id = props.profile.feedData.findIndex(
+        (item) => item.title === "My Stack"
+      );
+
+      setFilterIdx(id);
+    }
+  }, [location, props.profile]);
 
   const createSubfilters = (feedDa) => {
     let newFeedData = feedDa.slice();

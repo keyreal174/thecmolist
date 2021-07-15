@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router";
 import { Button, Col, Row } from "react-bootstrap";
 import VendorCard from "./VendorCard";
 import Arrow from "../base/icons/next_arrow.svg";
