@@ -30,7 +30,7 @@ const VendorsFeed = ({
       <a
         className="m-0"
         style={{ whiteSpace: "nowrap", cursor: "pointer", color: "#2962ff" }}
-        onClick={() => console.log("My Stack")}
+        onClick={getCategoryTitle}
       >
         + My Stack
       </a>
