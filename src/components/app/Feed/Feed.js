@@ -37,6 +37,7 @@ import ThanksCheckedIcon from "../base/icons/thanks_checked.svg";
 
 import "./feed.scss";
 import clsx from "clsx";
+import FeaturedStacks from "./FeaturedStacks";
 
 function RenderRightContainer({
   feedTitle,
@@ -243,15 +244,23 @@ function RenderDashboard(props) {
             <ActivityIndicator className="element-center feed-activity-indicator" />
           </div>
         ) : (
-          <RenderFeed
-            changeReaction={props.changeReaction}
-            feedData={props.feedData}
-            fetchActiveFeed={props.fetchActiveFeed}
-            feedLoading={props.feedLoading}
-            moreData={props.moreData}
-            profileStats={profileStats}
-            reactions={props.reactions}
-          />
+          <>
+            {props.featuredStacks && (
+              <FeaturedStacks
+                key={props.featuredStacks.length}
+                featuredStacks={props.featuredStacks}
+              />
+            )}
+            <RenderFeed
+              changeReaction={props.changeReaction}
+              feedData={props.feedData}
+              fetchActiveFeed={props.fetchActiveFeed}
+              feedLoading={props.feedLoading}
+              moreData={props.moreData}
+              profileStats={profileStats}
+              reactions={props.reactions}
+            />
+          </>
         )}
       </Col>
       <RenderRightContainer
@@ -496,6 +505,7 @@ const Feed = (props) => {
             feedAbout={props.activeFeedAbout}
             memberList={props.activeFeedMembers}
             vendorList={props.activeFeedVendors}
+            featuredStacks={props.activeFeedFeaturedStacks}
             activeGroup={
               filterIdx < filters.length ? filters[filterIdx].slug : null
             }
@@ -530,6 +540,7 @@ const mapState = (state) => {
     activeFeedHasMoreData: state.feedModel.activeFeedHasMoreData,
     activeFeedMembers: state.feedModel.activeFeedMembers,
     activeFeedVendors: state.feedModel.activeFeedVendors,
+    activeFeedFeaturedStacks: state.feedModel.activeFeedFeaturedStacks,
     feedLoading: state.feedModel.feedLoading,
     filterIdx: state.feedModel.filterIdx,
     profileStats: state.profileModel.profileStats,
