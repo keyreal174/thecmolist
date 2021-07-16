@@ -211,7 +211,10 @@ const Vendors = (props) => {
                     <ActivityIndicator className="element-center feed-activity-indicator" />
                   </div>
                 ) : (
-                  <VendorList vendorList={props.vendorList} />
+                  <VendorList
+                    vendorList={props.vendorList}
+                    vendorListBlockerText={props.vendorListBlockerText}
+                  />
                 )}
               </Col>
             </Row>
@@ -238,6 +241,7 @@ const mapState = (state) => {
     moreData: state.vendorsModel.activeFeedHasMoreData,
     loadingVendors: state.vendorsModel.loadingVendors,
     vendorList: state.vendorsModel.vendorList,
+    vendorListBlockerText: state.vendorsModel.vendorListBlockerText,
     vendorsDetail: state.vendorsModel.vendorsDetail,
   };
 };
