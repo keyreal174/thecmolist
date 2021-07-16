@@ -7,6 +7,10 @@ import "./onboardingStep1.scss";
 import trustedIcon from "../../home/svg/trusted.svg";
 import knowledgeIcon from "../../home/svg/knowledge.svg";
 import informedIcon from "../../home/svg/informed.svg";
+import {
+  companyStageOptions,
+  companyIndustryOptions,
+} from "../ProfileEdit/ProfileEditOptions";
 
 const OnboardingWelcome = ({ loading, changeStep }) => {
   return (
@@ -75,20 +79,6 @@ const OnboardingWelcome = ({ loading, changeStep }) => {
 
 const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
   const history = useHistory();
-  const handleSubmit = (e) => {
-    setLoading(true);
-    const formData = {
-      title,
-      companyName,
-      headline,
-      networking: networkingYes ? true : false,
-      advising: advisingYes ? true : false,
-    };
-    submitOnboardingStep1(formData);
-    history.push("onboarding_step2" + window.location.search);
-    setLoading(false);
-  };
-
   const [loading, setLoading] = useState(false);
   const [firstname, setFirstname] = useState("");
   const [title, setTitle] = useState("");
@@ -98,6 +88,10 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
   const [networkingNo, setNetworkingNo] = useState("");
   const [advisingYes, setAdvisingYes] = useState("");
   const [advisingNo, setAdvisingNo] = useState("");
+  const [companyIndustry, setCompanyIndustry] = useState(
+    companyIndustryOptions[0].slug
+  );
+  const [companyStage, setCompanyStage] = useState(companyStageOptions[0].slug);
   const [isWelcome, setIsWelcome] = useState(true);
 
   useEffect(() => {
@@ -148,6 +142,21 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
   const handleAdvisingNoChange = () => {
     setAdvisingYes(false);
     setAdvisingNo(true);
+  };
+  const handleSubmit = (e) => {
+    setLoading(true);
+    const formData = {
+      title,
+      companyName,
+      headline,
+      companyIndustry,
+      companyStage,
+      networking: networkingYes ? true : false,
+      advising: advisingYes ? true : false,
+    };
+    submitOnboardingStep1(formData);
+    history.push("onboarding_step2" + window.location.search);
+    setLoading(false);
   };
 
   return (
@@ -202,6 +211,38 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
                   onChange={handleCompanyNameChange}
                   value={companyName}
                 />
+              </Col>
+            </Row>
+            <Row>
+              <Col sm="12" md="6">
+                <Form.Label>Company Industry</Form.Label>
+                <Form.Control
+                  as="select"
+                  className="onboarding--select"
+                  value={companyIndustry}
+                  onChange={(e) => setCompanyIndustry(e.target.value)}
+                >
+                  {companyIndustryOptions.map((i) => (
+                    <option key={i.slug} value={i.slug}>
+                      {i.description}
+                    </option>
+                  ))}
+                </Form.Control>
+              </Col>
+              <Col sm="12" md="6">
+                <Form.Label>Company Stage</Form.Label>
+                <Form.Control
+                  as="select"
+                  className="onboarding--select"
+                  value={companyStage}
+                  onChange={(e) => setCompanyStage(e.target.value)}
+                >
+                  {companyStageOptions.map((i) => (
+                    <option key={i.slug} value={i.slug}>
+                      {i.description}
+                    </option>
+                  ))}
+                </Form.Control>
               </Col>
             </Row>
             <Row>
