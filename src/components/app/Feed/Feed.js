@@ -234,33 +234,32 @@ function RenderDashboard(props) {
       </Col>
 
       <Col className="feed--feed" md="6">
-        <AskQuestion
-          className="feed--ask-question"
-          activeGroup={props.activeGroup}
-          saveContent={saveContent}
-        />
+        {props.featuredStacks ? (
+          <FeaturedStacks
+            key={props.featuredStacks.length}
+            featuredStacks={props.featuredStacks}
+          />
+        ) : (
+          <AskQuestion
+            className="feed--ask-question"
+            activeGroup={props.activeGroup}
+            saveContent={saveContent}
+          />
+        )}
         {feedLoading ? (
           <div className="mt-3 mb-5">
             <ActivityIndicator className="element-center feed-activity-indicator" />
           </div>
         ) : (
-          <>
-            {props.featuredStacks && (
-              <FeaturedStacks
-                key={props.featuredStacks.length}
-                featuredStacks={props.featuredStacks}
-              />
-            )}
-            <RenderFeed
-              changeReaction={props.changeReaction}
-              feedData={props.feedData}
-              fetchActiveFeed={props.fetchActiveFeed}
-              feedLoading={props.feedLoading}
-              moreData={props.moreData}
-              profileStats={profileStats}
-              reactions={props.reactions}
-            />
-          </>
+          <RenderFeed
+            changeReaction={props.changeReaction}
+            feedData={props.feedData}
+            fetchActiveFeed={props.fetchActiveFeed}
+            feedLoading={props.feedLoading}
+            moreData={props.moreData}
+            profileStats={profileStats}
+            reactions={props.reactions}
+          />
         )}
       </Col>
       <RenderRightContainer
