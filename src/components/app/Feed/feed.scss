@@ -548,3 +548,52 @@
     border-bottom: none;
   }
 }
+
+// Featured stacks
+.featured-stacks {
+  margin-left: -8px;
+  margin-right: -8px;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  &-item {
+    width: 100%;
+    min-width: 215px;
+    flex: 1;
+
+    .user-img {
+      img {
+        width: 60px;
+        height: 60px;
+        box-sizing: border-box;
+        background-clip: content-box;
+        border: 2px solid transparent;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    }
+
+    .user-name {
+      font-weight: bold;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: #232e34;
+      font-size: 20px;
+      line-height: 26px;
+      margin-bottom: 4px;
+    }
+
+    .user-role {
+      color: #9597ae;
+      font-size: 16px;
+      line-height: 20.8px;
+      margin-bottom: 11.5px;
+    }
+
+    .view-stack-btn {
+      border-radius: 20px;
+      padding: 5px 20px;
+    }
+  }
+}

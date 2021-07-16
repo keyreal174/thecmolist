@@ -199,7 +199,7 @@ function Homepage() {
                 <a className="nav__logo" href="/">
                   CMO<span>list</span>
                 </a>
-                <span className="footer__copyright">&copy; 2020</span>
+                <span className="footer__copyright">&copy; 2021</span>
               </div>
             </div>
           </div>
