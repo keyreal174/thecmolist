@@ -14,18 +14,10 @@ const icons = [
     img: Facebook,
     url: "https://twitter.com/CMOlistHQ",
   },
-  //  {
-  //   img: Facebook,
-  //   url: "/",
-  //  },
   {
     img: Instagram,
     url: "https://www.linkedin.com/company/cmolist",
   },
-  //  {
-  //   img: Location,
-  //    url: "/",
-  //  },
   {
     img: Message,
     url: "mailto:hello@theCMOlist.com",
