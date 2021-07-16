@@ -37,6 +37,7 @@ import ThanksCheckedIcon from "../base/icons/thanks_checked.svg";
 
 import "./feed.scss";
 import clsx from "clsx";
+import FeaturedStacks from "./FeaturedStacks";
 
 function RenderRightContainer({
   feedTitle,
@@ -233,11 +234,18 @@ function RenderDashboard(props) {
       </Col>
 
       <Col className="feed--feed" md="6">
-        <AskQuestion
-          className="feed--ask-question"
-          activeGroup={props.activeGroup}
-          saveContent={saveContent}
-        />
+        {props.featuredStacks ? (
+          <FeaturedStacks
+            key={props.featuredStacks.length}
+            featuredStacks={props.featuredStacks}
+          />
+        ) : (
+          <AskQuestion
+            className="feed--ask-question"
+            activeGroup={props.activeGroup}
+            saveContent={saveContent}
+          />
+        )}
         {feedLoading ? (
           <div className="mt-3 mb-5">
             <ActivityIndicator className="element-center feed-activity-indicator" />
@@ -496,6 +504,7 @@ const Feed = (props) => {
             feedAbout={props.activeFeedAbout}
             memberList={props.activeFeedMembers}
             vendorList={props.activeFeedVendors}
+            featuredStacks={props.activeFeedFeaturedStacks}
             activeGroup={
               filterIdx < filters.length ? filters[filterIdx].slug : null
             }
@@ -530,6 +539,7 @@ const mapState = (state) => {
     activeFeedHasMoreData: state.feedModel.activeFeedHasMoreData,
     activeFeedMembers: state.feedModel.activeFeedMembers,
     activeFeedVendors: state.feedModel.activeFeedVendors,
+    activeFeedFeaturedStacks: state.feedModel.activeFeedFeaturedStacks,
     feedLoading: state.feedModel.feedLoading,
     filterIdx: state.feedModel.filterIdx,
     profileStats: state.profileModel.profileStats,
