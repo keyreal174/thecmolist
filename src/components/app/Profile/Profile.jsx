@@ -27,6 +27,10 @@ import {
   cdn,
   profileImage as profileBackgroundImage,
 } from "../../util/constants";
+import {
+  companyStageOptions,
+  companyIndustryOptions,
+} from "../ProfileEdit/ProfileEditOptions";
 import "./profile.scss";
 
 import AnswerIcon from "../base/icons/answer.svg";
@@ -71,6 +75,8 @@ const Profile = (props) => {
   const [profileImage, setProfileImage] = useState("");
   const [profileTitle, setProfileTitle] = useState("");
   const [profileCompany, setProfileCompany] = useState("");
+  const [profileCompanyIndustry, setProfileCompanyIndustry] = useState("");
+  const [profileCompanyStage, setProfileCompanyStage] = useState("");
   const [profileCity, setProfileCity] = useState("");
   const [profileState, setProfileState] = useState("");
   const [profileCountry, setProfileCountry] = useState("");
@@ -124,6 +130,8 @@ const Profile = (props) => {
       setProfileImage(props.profile.image || "");
       setProfileTitle(props.profile.title || "");
       setProfileCompany(props.profile.company || "");
+      setProfileCompanyStage(props.profile.companyStage || "");
+      setProfileCompanyIndustry(props.profile.companyIndustry || "");
       setProfileCity(props.profile.city || "");
       setProfileState(props.profile.state || "");
       setProfileCountry(props.profile.country || "");
@@ -559,6 +567,43 @@ const Profile = (props) => {
                   </div>
                 </Col>
               </Row>
+              {(profileCompanyIndustry.length > 0 ||
+                profileCompanyStage.length > 0) && (
+                <Row className="profile-about--experience">
+                  {profileCompanyIndustry && (
+                    <Col md="6">
+                      <Form.Label className="profile-about--experience-title">
+                        Company Industry
+                      </Form.Label>
+                      <div>
+                        <span>
+                          {
+                            companyIndustryOptions.find(
+                              (o) => o.slug === profileCompanyIndustry
+                            ).description
+                          }
+                        </span>
+                      </div>
+                    </Col>
+                  )}
+                  {profileCompanyStage && (
+                    <Col md="6">
+                      <Form.Label className="profile-about--experience-title">
+                        Company Stage
+                      </Form.Label>
+                      <div>
+                        <span>
+                          {
+                            companyStageOptions.find(
+                              (o) => o.slug === profileCompanyStage
+                            ).description
+                          }
+                        </span>
+                      </div>
+                    </Col>
+                  )}
+                </Row>
+              )}
               <Row className="profile-about--experience">
                 {profileAbout.areasOfExpertise && (
                   <Col md="6">
