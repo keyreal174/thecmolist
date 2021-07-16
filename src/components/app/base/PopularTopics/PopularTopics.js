@@ -41,7 +41,7 @@ const PopularTopics = ({
   return (
     <CustomCard
       className="popular-topics"
-      heading={heading || "Expertise"}
+      heading={heading}
       customHeading={customHeading}
     >
       <div className="popular-topics--content">
