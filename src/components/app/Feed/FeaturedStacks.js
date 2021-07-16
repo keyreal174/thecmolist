@@ -33,7 +33,7 @@ const Feature = ({ image, name, role, link }) => {
 };
 
 const FeaturedStacks = ({ featuredStacks }) => {
-  return (
+  return featuredStacks && featuredStacks.length > 0 ? (
     <CustomCard heading="Featured marketing stacks">
       <div className="d-flex featured-stacks">
         {featuredStacks.map((feature, i) => (
@@ -47,6 +47,8 @@ const FeaturedStacks = ({ featuredStacks }) => {
         ))}
       </div>
     </CustomCard>
+  ) : (
+    <div />
   );
 };
 
