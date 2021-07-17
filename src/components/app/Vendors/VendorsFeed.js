@@ -5,7 +5,12 @@ import Article from "../base/Article/Article";
 import VendorConnections from "./VendorConnections";
 import "./vendors.scss";
 
-const VendorsFeed = ({ feedData, getCategoryTitle, description }) => {
+const VendorsFeed = ({
+  feedData,
+  getCategoryTitle,
+  description,
+  showCategoryListView,
+}) => {
   // FIXME: for the beta we disable pagination as the BE returns all data
   // POST BETA remove this
   let moreData = false;
@@ -20,6 +25,18 @@ const VendorsFeed = ({ feedData, getCategoryTitle, description }) => {
     </a>
   );
 
+  const badge = () => {
+    return showCategoryListView ? (
+      <a
+        className="m-0"
+        style={{ whiteSpace: "nowrap", cursor: "pointer", color: "#2962ff" }}
+        onClick={getCategoryTitle}
+      >
+        + My Stack
+      </a>
+    ) : null;
+  };
+
   return (
     <>
       <React.Fragment>
@@ -33,6 +50,7 @@ const VendorsFeed = ({ feedData, getCategoryTitle, description }) => {
                   "network-list-item",
                   "vendors--feed-item"
                 )}
+                badge={badge()}
                 {...feed}
               >
                 {feed.connections && feed.connections.length > 0 && (

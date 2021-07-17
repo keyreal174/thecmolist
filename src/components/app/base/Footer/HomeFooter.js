@@ -11,24 +11,16 @@ import Message from "../icons/message.svg";
 
 const icons = [
   {
-    img: Twitter,
-    url: "/",
-  },
-  {
     img: Facebook,
-    url: "/",
+    url: "https://twitter.com/CMOlistHQ",
   },
   {
     img: Instagram,
-    url: "/",
-  },
-  {
-    img: Location,
-    url: "/",
+    url: "https://www.linkedin.com/company/cmolist",
   },
   {
     img: Message,
-    url: "/",
+    url: "mailto:hello@theCMOlist.com",
   },
 ];
 

@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { connect } from "react-redux";
 import clsx from "clsx";
-import { useHistory } from "react-router";
+import { useHistory, useLocation } from "react-router";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Form, Button, Row, Col, Container } from "react-bootstrap";
 import ShowMoreText from "react-show-more-text";
@@ -28,6 +28,10 @@ import {
   cdn,
   profileImage as profileBackgroundImage,
 } from "../../util/constants";
+import {
+  companyStageOptions,
+  companyIndustryOptions,
+} from "../ProfileEdit/ProfileEditOptions";
 import "./profile.scss";
 
 import AnswerIcon from "../base/icons/answer.svg";
@@ -61,6 +65,7 @@ const RenderList = ({ arr }) => {
 
 const Profile = (props) => {
   const history = useHistory();
+  const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isMyProfile, setIsMyProfile] = useState(false);
   const [canShowStack, setCanShowStack] = useState(false);
@@ -71,6 +76,8 @@ const Profile = (props) => {
   const [profileImage, setProfileImage] = useState("");
   const [profileTitle, setProfileTitle] = useState("");
   const [profileCompany, setProfileCompany] = useState("");
+  const [profileCompanyIndustry, setProfileCompanyIndustry] = useState("");
+  const [profileCompanyStage, setProfileCompanyStage] = useState("");
   const [profileCity, setProfileCity] = useState("");
   const [profileState, setProfileState] = useState("");
   const [profileCountry, setProfileCountry] = useState("");
@@ -124,6 +131,8 @@ const Profile = (props) => {
       setProfileImage(props.profile.image || "");
       setProfileTitle(props.profile.title || "");
       setProfileCompany(props.profile.company || "");
+      setProfileCompanyStage(props.profile.companyStage || "");
+      setProfileCompanyIndustry(props.profile.companyIndustry || "");
       setProfileCity(props.profile.city || "");
       setProfileState(props.profile.state || "");
       setProfileCountry(props.profile.country || "");
@@ -147,6 +156,22 @@ const Profile = (props) => {
       setFilterIdx(id === -1 ? 0 : id);
     }
   }, [props.profile]);
+
+  useEffect(() => {
+    if (
+      location &&
+      location.state &&
+      location.state.myStack &&
+      props.profile &&
+      Object.keys(props.profile).length > 0
+    ) {
+      const id = props.profile.feedData.findIndex(
+        (item) => item.title === "My Stack"
+      );
+
+      setFilterIdx(id);
+    }
+  }, [location, props.profile]);
 
   const createSubfilters = (feedDa) => {
     let newFeedData = feedDa.slice();
@@ -543,6 +568,43 @@ const Profile = (props) => {
                   </div>
                 </Col>
               </Row>
+              {(profileCompanyIndustry.length > 0 ||
+                profileCompanyStage.length > 0) && (
+                <Row className="profile-about--experience">
+                  {profileCompanyIndustry && (
+                    <Col md="6">
+                      <Form.Label className="profile-about--experience-title">
+                        Company Industry
+                      </Form.Label>
+                      <div>
+                        <span>
+                          {
+                            companyIndustryOptions.find(
+                              (o) => o.slug === profileCompanyIndustry
+                            ).description
+                          }
+                        </span>
+                      </div>
+                    </Col>
+                  )}
+                  {profileCompanyStage && (
+                    <Col md="6">
+                      <Form.Label className="profile-about--experience-title">
+                        Company Stage
+                      </Form.Label>
+                      <div>
+                        <span>
+                          {
+                            companyStageOptions.find(
+                              (o) => o.slug === profileCompanyStage
+                            ).description
+                          }
+                        </span>
+                      </div>
+                    </Col>
+                  )}
+                </Row>
+              )}
               <Row className="profile-about--experience">
                 {profileAbout.areasOfExpertise && (
                   <Col md="6">
@@ -629,6 +691,7 @@ const Profile = (props) => {
                           setShowAddVendor((value) => !value);
                         }}
                         allowBackButton={true}
+                        showCategoryListView={true}
                       />
                       {idx < filteredFeedData.length - 1 && (
                         <div className="vendor-detail-divider"></div>

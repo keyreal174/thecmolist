@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import clsx from "clsx";
 import { Button, Row, Col } from "react-bootstrap";
 import PopularTopics from "../base/PopularTopics/PopularTopics";
@@ -23,6 +24,8 @@ const VendorsDetail = ({
   mobileMenuOpen,
   getCategoryTitle,
   allowBackButton,
+  showCategoryListView,
+  filterIdx,
   className,
   vendorListBlockerText,
   handleInviteModal,
@@ -38,6 +41,7 @@ const VendorsDetail = ({
     </Button>
   );
 
+  const history = useHistory();
   const changeSubFilter = (title) => {
     document.getElementById(title).scrollIntoView({ behavior: "smooth" });
   };
@@ -62,7 +66,16 @@ const VendorsDetail = ({
                 customHeading={
                   <div className="vendors--popular-topics-customhead">
                     {!allowBackButton && (
-                      <a onClick={() => window.history.back()}>{"< Back"}</a>
+                      <a
+                        onClick={() =>
+                          history.push({
+                            pathname: "/vendors",
+                            state: { filterIdx },
+                          })
+                        }
+                      >
+                        {"< Back"}
+                      </a>
                     )}
                     <h2>{vendorsDetail.name}</h2>
                     <p>{vendorsDetail.description}</p>
@@ -109,6 +122,7 @@ const VendorsDetail = ({
                         feedData={category.vendors}
                         getCategoryTitle={() => getCategoryTitle(category.name)}
                         description={category.description}
+                        showCategoryListView={showCategoryListView}
                       />
                     </div>
                   ))}

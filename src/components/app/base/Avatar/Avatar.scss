@@ -18,6 +18,10 @@
     font-size: 14px;
     font-weight: bold;
     color: $text-1 !important;
+
+    &:hover {
+      text-decoration: underline !important;
+    }
   }
 
   &-subheading {

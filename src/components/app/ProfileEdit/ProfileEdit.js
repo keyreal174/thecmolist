@@ -15,6 +15,10 @@ import {
   ProgressBar,
 } from "react-bootstrap";
 import { profileImage } from "../../util/constants";
+import {
+  companyStageOptions,
+  companyIndustryOptions,
+} from "./ProfileEditOptions";
 import "./profileEdit.scss";
 
 const ProfileEdit = (props) => {
@@ -434,20 +438,32 @@ const ProfileEdit = (props) => {
                 <Col sm="12" md="6">
                   <Form.Label>Company Industry</Form.Label>
                   <Form.Control
-                    className="profile--input"
-                    placeholder=""
+                    as="select"
+                    className="profile--select"
                     value={companyIndustry}
                     onChange={(e) => setCompanyIndustry(e.target.value)}
-                  />
+                  >
+                    {companyIndustryOptions.map((i) => (
+                      <option key={i.slug} value={i.slug}>
+                        {i.description}
+                      </option>
+                    ))}
+                  </Form.Control>
                 </Col>
                 <Col sm="12" md="6">
-                  <Form.Label>Company Stage (e.g., Series A)</Form.Label>
+                  <Form.Label>Company Stage</Form.Label>
                   <Form.Control
-                    className="profile--input"
-                    placeholder=""
+                    as="select"
+                    className="profile--select"
                     value={companyStage}
                     onChange={(e) => setCompanyStage(e.target.value)}
-                  />
+                  >
+                    {companyStageOptions.map((i) => (
+                      <option key={i.slug} value={i.slug}>
+                        {i.description}
+                      </option>
+                    ))}
+                  </Form.Control>
                 </Col>
               </Row>
             </div>

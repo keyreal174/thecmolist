@@ -79,6 +79,11 @@ const Vendors = (props) => {
           }
         }
       }
+
+      if (location && location.state && location.state.filterIdx) {
+        idx = location.state.filterIdx;
+      }
+
       setFilters(newFilters);
       setBannerTitle(newFilters[idx].title);
       setBannerImage(newFilters[idx].image);
@@ -206,6 +211,7 @@ const Vendors = (props) => {
               toggleAddVendorModal={toggleAddVendorModal}
               getCategoryTitle={getCategoryTitle}
               handleInviteModal={toggleInviteModal}
+              filterIdx={filterIdx}
             />
           ) : (
             <Row className="vendors--feed--wrapper">
@@ -222,6 +228,7 @@ const Vendors = (props) => {
                     vendorList={props.vendorList}
                     vendorListBlockerText={props.vendorListBlockerText}
                     handleInviteModal={toggleInviteModal}
+                    filterIdx={filterIdx}
                   />
                 )}
               </Col>
