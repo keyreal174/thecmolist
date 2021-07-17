@@ -10,6 +10,7 @@ import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
 import SimpleTopBanner from "../base/SimpleTopBanner/SimpleTopBanner";
 import AddMemberModal from "../base/AddMemberModal/AddMemberModal";
 import AddVendorsModal from "../base/AddVendors/AddVendorsModal";
+import InviteModal from "../base/ShareModule/InviteModal";
 import VendorList from "./VendorList";
 import VendorsDetail from "./VendorsDetail";
 import Util from "../../util/Util";
@@ -28,6 +29,7 @@ const Vendors = (props) => {
   const [showAddVendor, setShowAddVendor] = useState(false);
   const [isDetail, setIsDetail] = useState(false);
   const [categoryTitle, setCategoryTitle] = useState("");
+  const [inviteModalShow, setInviteModalShow] = useState(false);
   const changeDashboardHeader = (idx) => {
     if (idx < filters.length) {
       setBannerTitle(filters[idx].title);
@@ -122,6 +124,10 @@ const Vendors = (props) => {
     setShowAddVendor((value) => !value);
   };
 
+  const toggleInviteModal = () => {
+    setInviteModalShow((value) => !value);
+  };
+
   const AddVendorButton = () => (
     <Button
       className="filter--button filter--button-active active m-0"
@@ -199,6 +205,7 @@ const Vendors = (props) => {
               mobileMenuOpen={mobileMenuOpen}
               toggleAddVendorModal={toggleAddVendorModal}
               getCategoryTitle={getCategoryTitle}
+              handleInviteModal={toggleInviteModal}
             />
           ) : (
             <Row className="vendors--feed--wrapper">
@@ -214,6 +221,7 @@ const Vendors = (props) => {
                   <VendorList
                     vendorList={props.vendorList}
                     vendorListBlockerText={props.vendorListBlockerText}
+                    handleInviteModal={toggleInviteModal}
                   />
                 )}
               </Col>
@@ -229,6 +237,14 @@ const Vendors = (props) => {
         show={showAddVendor}
         handleClose={toggleAddVendorModal}
         categoryTitle={categoryTitle}
+      />
+      <InviteModal
+        show={inviteModalShow}
+        onHide={() => setInviteModalShow(false)}
+        onSuccess={(data) => {
+          props.saveUserInvite(data);
+          setInviteModalShow(false);
+        }}
       />
     </Layout>
   );
@@ -255,6 +271,7 @@ const mapDispatch = (dispatch) => {
     changeSubFilter: dispatch.vendorsModel.changeSubFilter,
     inviteNewMember: dispatch.vendorsModel.inviteNewMember,
     getProfileStats: dispatch.profileModel.getProfileStats,
+    saveUserInvite: dispatch.userModel.saveInvite,
   };
 };
 
