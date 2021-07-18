@@ -212,6 +212,7 @@ const Network = (props) => {
               props.activeFeedSubFilters.length > 0 && (
                 <Col className="network--popular-topics" md="4">
                   <PopularTopics
+                    heading={"Expertise"}
                     onSubfilterChange={(f) => {
                       props.changeSubFilter(f.slug || f.title);
                     }}
