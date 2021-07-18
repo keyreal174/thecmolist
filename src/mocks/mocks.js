@@ -151,7 +151,7 @@ function MockRequests() {
       },
     ];
   });
-  mock.onGet("/api/logout").reply((config) => {
+  mock.onPost("/api/logout").reply((config) => {
     return [
       200,
       { success: true, error: null },

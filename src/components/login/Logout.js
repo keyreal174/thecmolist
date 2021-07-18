@@ -3,7 +3,7 @@ import axios from "axios";
 import Util from "../util/Util";
 
 export const logoutRequest = (dispatch) => {
-  return axios.get("/api/logout");
+  return axios.post("/api/logout");
 };
 
 class Logout extends React.Component {
