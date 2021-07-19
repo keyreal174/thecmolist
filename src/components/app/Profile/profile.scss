@@ -590,57 +590,6 @@
   }
 }
 
-// Add vendor blocker modal
-// Give opacity to background
-.add-vendor-blocker-modal {
-  background-color: #ffffff;
-  border: 1px solid #d3e0f5;
-  border-radius: 10px;
-  padding: 48px 28px;
-  max-width: 400px;
-  text-align: center;
-  position: absolute;
-  z-index: 2;
-  left: calc(50% - 180px);
-  top: 90px;
-
-  box-shadow: 0 5px 10px rgba(24, 45, 76, 0.1);
-  -webkit-box-shadow: 0 5px 10px rgba(24, 45, 76, 0.1);
-  -moz-box-shadow: 0 5px 10px rgba(24, 45, 76, 0.1);
-
-  p {
-    font-size: 18px;
-    line-height: 26px;
-    margin-bottom: 20px;
-    color: $text-1;
-  }
-}
-
-.add-vendor-blocker-opacity {
-  width: 100%;
-  min-height: 300px;
-  max-height: 750px;
-  height: 100%;
-  position: absolute;
-  z-index: 1;
-  background: white;
-  background: linear-gradient(
-    180deg,
-    hsla(0, 0%, 100%, 0.5) 0,
-    hsla(0, 0%, 100%, 0.7) 150px,
-    hsla(0, 0%, 100%, 0.95) 200px,
-    #fff
-  );
-}
-
-.add-vendor-blocker-wrapper {
-  max-height: 750px;
-  min-height: 300px;
-  overflow: hidden;
-  position: relative;
-  border-radius: 12px;
-}
-
 .vendor-detail-divider {
   width: 100%;
   height: 1px;

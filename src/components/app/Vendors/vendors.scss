@@ -388,3 +388,23 @@
     }
   }
 }
+
+// BlockerText
+.add-vendor-blocker-wrapper.vendor-list-page-wrapper {
+  .add-vendor-blocker-opacity {
+    width: calc(100% - 391px);
+    left: 391px;
+    top: 100px;
+  }
+
+  .add-vendor-blocker-modal {
+    top: 300px;
+    right: 291px;
+    left: inherit;
+    padding: 28px 28px;
+
+    button {
+      padding: 5px 30px !important;
+    }
+  }
+}

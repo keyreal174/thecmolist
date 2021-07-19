@@ -19,6 +19,7 @@ import {
 import AddVendorsModal from "../base/AddVendors/AddVendorsModal";
 import AddSkillsModal from "../base/AddSkills/AddSkillsModal";
 import VendorsDetail from "../Vendors/VendorsDetail";
+import BlockerText from "../base/BlockerText/BlockerText";
 import DeletePost from "./DeletePost";
 import FollowUserModal from "./FollowUser";
 import Util from "../../util/Util";
@@ -718,15 +719,9 @@ const Profile = (props) => {
                   )}
                 >
                   {feedBlockerText && (
-                    <Fragment>
-                      <div className="add-vendor-blocker-modal">
-                        <p>{feedBlockerText}</p>
-                        <div className="filter-btn-group">
-                          <AddVendorButton isVendor={feedBlockerAddVendor} />
-                        </div>
-                      </div>
-                      <div className="add-vendor-blocker-opacity"></div>
-                    </Fragment>
+                    <BlockerText blockerText={feedBlockerText}>
+                      <AddVendorButton isVendor={feedBlockerAddVendor} />
+                    </BlockerText>
                   )}
                   <TransitionGroup
                     enter={enableAnimations}

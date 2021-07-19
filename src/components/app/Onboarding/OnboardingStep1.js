@@ -88,10 +88,8 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
   const [networkingNo, setNetworkingNo] = useState("");
   const [advisingYes, setAdvisingYes] = useState("");
   const [advisingNo, setAdvisingNo] = useState("");
-  const [companyIndustry, setCompanyIndustry] = useState(
-    companyIndustryOptions[0].slug
-  );
-  const [companyStage, setCompanyStage] = useState(companyStageOptions[0].slug);
+  const [companyIndustry, setCompanyIndustry] = useState("");
+  const [companyStage, setCompanyStage] = useState("");
   const [isWelcome, setIsWelcome] = useState(true);
 
   useEffect(() => {
@@ -221,7 +219,9 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
                   className="onboarding--select"
                   value={companyIndustry}
                   onChange={(e) => setCompanyIndustry(e.target.value)}
+                  required
                 >
+                  <option value="">Select your Company Industry</option>
                   {companyIndustryOptions.map((i) => (
                     <option key={i.slug} value={i.slug}>
                       {i.description}
@@ -236,7 +236,9 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
                   className="onboarding--select"
                   value={companyStage}
                   onChange={(e) => setCompanyStage(e.target.value)}
+                  required
                 >
+                  <option value="">Select your Company Stage</option>
                   {companyStageOptions.map((i) => (
                     <option key={i.slug} value={i.slug}>
                       {i.description}
