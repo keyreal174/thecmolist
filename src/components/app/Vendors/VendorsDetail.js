@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import clsx from "clsx";
-import { Row, Col } from "react-bootstrap";
+import { Button, Row, Col } from "react-bootstrap";
 import PopularTopics from "../base/PopularTopics/PopularTopics";
 import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
+import BlockerText from "../base/BlockerText/BlockerText";
 import VendorsFeed from "./VendorsFeed";
 
 const Category = ({ name, description }) => {
@@ -26,7 +27,20 @@ const VendorsDetail = ({
   showCategoryListView,
   filterIdx,
   className,
+  vendorListBlockerText,
+  handleInviteModal,
 }) => {
+  const AddInviteButton = () => (
+    <Button
+      className="filter--button filter--button-active active m-0"
+      onClick={() => {
+        handleInviteModal();
+      }}
+    >
+      + Invite
+    </Button>
+  );
+
   const history = useHistory();
   const changeSubFilter = (title) => {
     document.getElementById(title).scrollIntoView({ behavior: "smooth" });
@@ -83,7 +97,16 @@ const VendorsDetail = ({
                 <ActivityIndicator className="element-center feed-activity-indicator" />
               </div>
             ) : (
-              <div>
+              <div
+                className={clsx(
+                  vendorsDetail.blockerText && "add-vendor-blocker-wrapper"
+                )}
+              >
+                {vendorsDetail.blockerText && (
+                  <BlockerText blockerText={vendorsDetail.blockerText}>
+                    <AddInviteButton />
+                  </BlockerText>
+                )}
                 {vendorsDetail.categories &&
                   vendorsDetail.categories.map((category, i) => (
                     <div

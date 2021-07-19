@@ -1,0 +1,29 @@
+.carousel-section {
+  max-width: 342px;
+  margin: 0 auto;
+
+  &-icon {
+    margin-bottom: 40px;
+  }
+
+  &-title {
+    color: white;
+    font-weight: bold;
+    font-size: 26px;
+    line-height: 30px;
+    text-align: center;
+    margin-bottom: 22px;
+  }
+
+  &-content {
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 25px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+  }
+}
+
+.carousel-indicators {
+  bottom: -100px;
+}

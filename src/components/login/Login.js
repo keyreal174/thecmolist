@@ -3,11 +3,12 @@ import { withRouter } from "react-router";
 import axios from "axios";
 import Spinner from "react-spinner-material";
 import querySearch from "stringquery";
+import Slider from "./Slider";
 import Util from "../util/Util";
-import Logo from "../app/base/Header/svgs/logo.svg";
 import Footer from "../app/base/Footer/Footer";
 import "./login.scss";
 import { userPolicy, privacyPolicy } from "../util/constants";
+import Logo from "./icons/logo.svg";
 import LinkedInIcon from "./icons/linkedin.svg";
 
 const loginRequest = (user, password) => {
@@ -94,16 +95,9 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="mt100 row no-gutters">
-          <div className="col-md-3" />
-          <div className="col-md-6">
-            <a
-              className="login--logo nav__logo"
-              href={"/home" + (window.location.search || "")}
-            >
-              <img src={Logo} alt="CMOList brand logo" width="170" />
-            </a>
+      <div className="login">
+        <div className="login--container">
+          <div className="login--left-wrapper">
             <form
               name="Login_Form"
               className="login--form form-signin form-group position-relative"
@@ -111,12 +105,12 @@ class Login extends React.Component {
             >
               <h2 className="login--title">Sign into CMOlist</h2>
               <a
-                className="login--linkedIn btn btn-block btn-social btn-linkedin button-login"
+                className="login--linkedIn btn btn-block btn-linkedin button-login"
                 href={this.state.linkedInUrl}
                 onClick={() => console.log("login with linkedin")}
               >
                 <img alt="LinkedIn Icon" src={LinkedInIcon} />
-                Sign in with Linkedin
+                <span>Sign in with Linkedin</span>
               </a>
               <p className="login--disclaimer">
                 By signing in, you agree to our{" "}
@@ -168,18 +162,33 @@ class Login extends React.Component {
                 </strong>
                 .
               </p>
-              <div className="login--separator"></div>
-              <p className="login--signup">
-                New to CMOlist ?{" "}
-                <strong>
-                  <a href="./signup" onClick={() => console.log("apply now")}>
-                    Apply now
-                  </a>
-                </strong>
-              </p>
             </form>
+            <div className="login--separator"></div>
+            <p className="login--signup">
+              New to CMOlist ?{" "}
+              <strong>
+                <a href="./signup" onClick={() => console.log("apply now")}>
+                  Apply now
+                </a>
+              </strong>
+            </p>
           </div>
-          <div className="col-md-3"></div>
+          <div className="login--right-wrapper">
+            <a
+              className="login--logo nav__logo"
+              href={"/home" + (window.location.search || "")}
+            >
+              <img
+                src={Logo}
+                alt="CMOList brand logo"
+                width="163"
+                height="33"
+              />
+            </a>
+            <div className="login--slider">
+              <Slider />
+            </div>
+          </div>
         </div>
         <Footer className="login--footer" />
       </div>
