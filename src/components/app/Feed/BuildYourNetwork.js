@@ -3,6 +3,7 @@ import CustomCard from "../base/CustomCard/CustomCard";
 import CustomCheckBox from "../base/CustomCheckBox/CustomCheckBox";
 import AddVendorsModal from "../base/AddVendors/AddVendorsModal";
 import AddSkillsModal from "../base/AddSkills/AddSkillsModal";
+import InviteModal from "../base/ShareModule/InviteModal";
 import { Button } from "react-bootstrap";
 
 const AddVendorButton = ({
@@ -18,9 +19,19 @@ const AddVendorButton = ({
   </Button>
 );
 
-const BuildYourNetwork = ({ buildYourNetworkItems }) => {
+const AddInviteButton = ({ setShowInviteModal }) => (
+  <Button
+    className="btn-white btn btn-primary post-onboarding-btn"
+    onClick={() => setShowInviteModal(true)}
+  >
+    + Invite
+  </Button>
+);
+
+const BuildYourNetwork = ({ buildYourNetworkItems, saveUserInvite }) => {
   const [showAddVendor, setShowAddVendor] = useState(false);
   const [showAddSkills, setShowAddSkill] = useState(false);
+  const [showInviteModal, setShowInviteModal] = useState(false);
 
   const toggleAddVendorModal = () => {
     if (showAddVendor) {
@@ -62,6 +73,9 @@ const BuildYourNetwork = ({ buildYourNetworkItems }) => {
                     toggleAddSkillModal={toggleAddSkillModal}
                   />
                 )}
+                {item.showInviteButton && (
+                  <AddInviteButton setShowInviteModal={setShowInviteModal} />
+                )}
               </div>
             );
           })}
@@ -71,6 +85,14 @@ const BuildYourNetwork = ({ buildYourNetworkItems }) => {
         handleClose={toggleAddVendorModal}
       />
       <AddSkillsModal show={showAddSkills} handleClose={toggleAddSkillModal} />
+      <InviteModal
+        show={showInviteModal}
+        onHide={() => setShowInviteModal(false)}
+        onSuccess={(data) => {
+          saveUserInvite(data);
+          setShowInviteModal(false);
+        }}
+      />
     </CustomCard>
   );
 };

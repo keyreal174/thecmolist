@@ -48,6 +48,7 @@ function RenderRightContainer({
   activeGroup,
   saveContent,
   isGroupOrTopic,
+  saveUserInvite,
 }) {
   return (
     <Col md="3" className="feed-right-container">
@@ -59,7 +60,10 @@ function RenderRightContainer({
             saveContent={saveContent}
           />
           {buildYourNetworkItems && buildYourNetworkItems.length > 0 && (
-            <BuildYourNetwork buildYourNetworkItems={buildYourNetworkItems} />
+            <BuildYourNetwork
+              buildYourNetworkItems={buildYourNetworkItems}
+              saveUserInvite={saveUserInvite}
+            />
           )}
         </Fragment>
       ) : (
@@ -271,6 +275,7 @@ function RenderDashboard(props) {
         activeGroup={props.activeGroup}
         saveContent={props.saveContent}
         isGroupOrTopic={props.isGroupOrTopic}
+        saveUserInvite={props.saveUserInvite}
       />
     </Row>
   );
@@ -513,6 +518,7 @@ const Feed = (props) => {
             reactions={props.reactions}
             changeReaction={props.changeReaction}
             isGroupOrTopic={isGroup || isTopic}
+            saveUserInvite={props.saveUserInvite}
           />
           <InviteModal
             show={inviteModalShow}
