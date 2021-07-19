@@ -89,6 +89,7 @@ export default {
     vendorCategories: [],
     skillCategories: [],
     vendorList: [],
+    vendorListBlockerText: "",
     vendorsDetail: {},
   },
   reducers: {
@@ -190,7 +191,8 @@ export default {
     setVendorList: (oldState, data) => {
       return {
         ...oldState,
-        vendorList: data,
+        vendorList: data.vendorList,
+        vendorListBlockerText: data.blockerText,
       };
     },
     setVendorsDetail: (oldState, data) => {
@@ -258,7 +260,7 @@ export default {
             "",
             null
           );
-          dispatch.vendorsModel.setVendorList(response.data.vendorList);
+          dispatch.vendorsModel.setVendorList(response.data);
         } finally {
           dispatch.vendorsModel.setLoading(false);
         }
@@ -282,7 +284,7 @@ export default {
           subFilterToChangeTo,
           null
         );
-        dispatch.vendorsModel.setVendorList(response.data.vendorList);
+        dispatch.vendorsModel.setVendorList(response.data);
       } catch (error) {
         console.log(error);
         throw new Error("Can not change sub filter");
@@ -323,7 +325,7 @@ export default {
         dispatch.vendorsModel.setLoading(true);
 
         const response = await vendorListRequest(sortOrder, filterKey, "", "");
-        dispatch.vendorsModel.setVendorList(response.data.vendorList);
+        dispatch.vendorsModel.setVendorList(response.data);
       } catch (error) {
         throw new Error("Can not fetch vendor list");
       } finally {
