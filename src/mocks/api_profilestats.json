@@ -91,6 +91,11 @@
     },
     { "checked": false, "content": "Follow five experts" },
     { "checked": false, "content": "Upvote three good answers" },
-    { "checked": true, "content": "Share one Playbook" }
+    { "checked": true, "content": "Share one Playbook" },
+    {
+      "checked": false,
+      "content": "Invite other trusted marketing leaders",
+      "showInviteButton": true
+    }
   ]
 }
