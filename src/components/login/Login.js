@@ -194,7 +194,6 @@ class Login extends React.Component {
             </div>
           </div>
         </div>
-        {/* <Footer className="login--footer" /> */}
       </div>
     );
   }
