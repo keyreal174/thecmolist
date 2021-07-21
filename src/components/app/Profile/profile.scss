@@ -605,3 +605,22 @@
   overflow: auto;
   text-overflow: initial;
 }
+
+.profile-page-blocker-wrapper {
+  .add-vendor-blocker-opacity {
+    width: 66.666667%;
+    left: 33.333333%;
+    top: 100px;
+  }
+
+  .add-vendor-blocker-modal {
+    top: 300px;
+    right: 291px;
+    left: inherit;
+    padding: 28px 28px;
+
+    button {
+      padding: 5px 30px !important;
+    }
+  }
+}
