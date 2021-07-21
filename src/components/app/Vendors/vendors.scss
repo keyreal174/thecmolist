@@ -408,3 +408,10 @@
     }
   }
 }
+.add-vendor-blocker-wrapper {
+  .filter-btn-group {
+    @media screen and (max-width: 767px) {
+      display: block;
+    }
+  }
+}

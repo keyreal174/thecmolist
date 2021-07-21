@@ -581,7 +581,7 @@ const Profile = (props) => {
                           {
                             companyIndustryOptions.find(
                               (o) => o.slug === profileCompanyIndustry
-                            ).description
+                            )?.description
                           }
                         </span>
                       </div>
@@ -597,7 +597,7 @@ const Profile = (props) => {
                           {
                             companyStageOptions.find(
                               (o) => o.slug === profileCompanyStage
-                            ).description
+                            )?.description
                           }
                         </span>
                       </div>
@@ -676,7 +676,17 @@ const Profile = (props) => {
         {profileFirstName &&
           hasDataOnCurrentFeed &&
           (showCategoryListView ? (
-            <>
+            <div
+              className={clsx(
+                feedBlockerText &&
+                  "add-vendor-blocker-wrapper profile-page-blocker-wrapper"
+              )}
+            >
+              {feedBlockerText && (
+                <BlockerText blockerText={feedBlockerText}>
+                  <AddVendorButton isVendor={feedBlockerAddVendor} />
+                </BlockerText>
+              )}
               {filteredFeedData.map((feed, idx) => {
                 return (
                   <>
@@ -700,7 +710,7 @@ const Profile = (props) => {
                   </>
                 );
               })}
-            </>
+            </div>
           ) : (
             <Row className={clsx("profile--feed", mobileMenuOpen && "open")}>
               <Col xl="4" className="profile--popular-topics">
