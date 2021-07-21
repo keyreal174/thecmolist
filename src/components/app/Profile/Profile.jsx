@@ -581,7 +581,7 @@ const Profile = (props) => {
                           {
                             companyIndustryOptions.find(
                               (o) => o.slug === profileCompanyIndustry
-                            ).description
+                            )?.description
                           }
                         </span>
                       </div>
@@ -597,7 +597,7 @@ const Profile = (props) => {
                           {
                             companyStageOptions.find(
                               (o) => o.slug === profileCompanyStage
-                            ).description
+                            )?.description
                           }
                         </span>
                       </div>
