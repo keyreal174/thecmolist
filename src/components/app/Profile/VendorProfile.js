@@ -369,7 +369,8 @@ const VendorProfile = (props) => {
   const onSubfilterChange = (key) => {
     let prevFeedData = feedData.slice();
     let prevFeedFilter = prevFeedData[filterIdx].subfilter;
-    prevFeedData[filterIdx].subfilter = key === prevFeedFilter ? "" : key;
+    prevFeedData[filterIdx].subfilter =
+      key.title === prevFeedFilter ? "" : key.title;
     setFeedData(prevFeedData);
   };
 
