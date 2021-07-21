@@ -27,7 +27,6 @@ const VendorsDetail = ({
   showCategoryListView,
   filterIdx,
   className,
-  vendorListBlockerText,
   handleInviteModal,
 }) => {
   const AddInviteButton = () => (
@@ -45,6 +44,7 @@ const VendorsDetail = ({
   const changeSubFilter = (title) => {
     document.getElementById(title).scrollIntoView({ behavior: "smooth" });
   };
+  console.log(vendorsDetail);
 
   return (
     <>
