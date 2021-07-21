@@ -10,6 +10,7 @@ import "./login.scss";
 import { userPolicy, privacyPolicy } from "../util/constants";
 import Logo from "./icons/logo.svg";
 import LinkedInIcon from "./icons/linkedin.svg";
+import Cross from "./icons/cross-group.svg";
 
 const loginRequest = (user, password) => {
   var postBody = {
@@ -96,7 +97,7 @@ class Login extends React.Component {
   render() {
     return (
       <div className="login">
-        <div className="login--container">
+        <div className="login--container w-100">
           <div className="login--left-wrapper">
             <form
               name="Login_Form"
@@ -174,6 +175,9 @@ class Login extends React.Component {
             </p>
           </div>
           <div className="login--right-wrapper">
+            <div className="login--right-wrapper-cross">
+              <img src={Cross} alt="Cross" />
+            </div>
             <a
               className="login--logo nav__logo"
               href={"/home" + (window.location.search || "")}
@@ -190,7 +194,7 @@ class Login extends React.Component {
             </div>
           </div>
         </div>
-        <Footer className="login--footer" />
+        {/* <Footer className="login--footer" /> */}
       </div>
     );
   }
