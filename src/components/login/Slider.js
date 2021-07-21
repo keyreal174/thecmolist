@@ -3,11 +3,16 @@ import { Carousel } from "react-bootstrap";
 import Icon1 from "./icons/Login-Icon1.svg";
 import Icon2 from "./icons/Login-Icon2.svg";
 import Icon3 from "./icons/Login-Icon3.svg";
+import NextIcon from "./icons/arrow-circle-right.svg";
+import PrevIcon from "./icons/arrow-circle-left.svg";
 import "./Slider.scss";
 
 const Slider = () => {
+  const NextButton = <img src={NextIcon} className="" />;
+  const PrevButton = <img src={PrevIcon} className="" />;
+
   return (
-    <Carousel controls={false} interval={null}>
+    <Carousel nextIcon={NextButton} prevIcon={PrevButton}>
       <Carousel.Item>
         <div className="text-center carousel-section">
           <img className="carousel-section-icon" src={Icon1} alt="First Icon" />

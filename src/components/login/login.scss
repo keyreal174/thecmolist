@@ -1,8 +1,19 @@
 @import "../../sass/globals.scss";
 
 .login {
-  max-width: 1440px;
+  max-width: 1200px;
+  padding: 20px;
   margin: 0 auto;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &-flex-wrapper {
+    flex: 1;
+  }
 
   &--container {
     display: flex;
@@ -13,17 +24,34 @@
     background: #ffffff;
     box-shadow: 0px 0px 4px rgba(21, 62, 102, 0.1);
     border-radius: 20px 0px 0px 20px;
+
+    @media screen and (max-width: 767px) {
+      border-radius: 20px;
+    }
   }
   &--right-wrapper {
-    width: 609px;
-    background: $brand;
-    box-shadow: 0px 0px 4px rgba(21, 62, 102, 0.1);
+    width: 50%;
+    box-shadow: 0px 0px 4px 0px rgba(21, 62, 102, 0.1);
+    background: linear-gradient(140.09deg, #2a3698 10.32%, #7280ff 98.48%);
     border-radius: 0px 20px 20px 0px;
     padding: 68px 56px;
+    position: relative;
+
+    &-cross {
+      position: absolute;
+      top: 0;
+      left: -45px;
+    }
+
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
   }
   &--logo {
     display: block;
     font-size: inherit;
+    position: absolute;
+    z-index: 1;
   }
   &--title {
     color: $text-1;
@@ -58,6 +86,7 @@
     display: block;
     color: $text-2;
     margin-top: 18px;
+    text-align: center;
   }
   &--contact-email {
     color: $brand;
@@ -81,7 +110,11 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    top: -40px;
+    top: 0px;
+
+    .carousel {
+      position: initial;
+    }
   }
 
   .form-control {
