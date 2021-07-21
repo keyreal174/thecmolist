@@ -25,5 +25,27 @@
 }
 
 .carousel-indicators {
-  bottom: -100px;
+  bottom: 40px;
+
+  li {
+    background: url("./icons/indicator.svg");
+    background-repeat: no-repeat;
+    width: 8px;
+    height: 8px;
+  }
+
+  li.active {
+    background: url("./icons/active-indicator.svg");
+    background-repeat: no-repeat;
+    width: 33px;
+    height: 8px;
+  }
+}
+
+.carousel-control-prev {
+  left: -45px;
+}
+
+.carousel-control-next {
+  right: -45px;
 }
