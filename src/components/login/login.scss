@@ -50,6 +50,8 @@
   &--logo {
     display: block;
     font-size: inherit;
+    position: absolute;
+    z-index: 1;
   }
   &--title {
     color: $text-1;
@@ -108,7 +110,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    top: -40px;
+    top: 0px;
 
     .carousel {
       position: initial;
