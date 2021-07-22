@@ -6,14 +6,12 @@ function InviteModal(props) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [linkedIn, setLinkedIn] = useState("");
 
   let closeDialog = () => {
     let data = {
       name,
       email,
       message,
-      linkedIn,
     };
 
     if (Object.keys(data).length > 0) {
@@ -67,17 +65,6 @@ function InviteModal(props) {
                     value={email}
                     required={true}
                     onChange={(e) => setEmail(e.target.value)}
-                  />
-                </Col>
-                <Col className="invite-modal--input" xs={12}>
-                  <Form.Label>Linkedin URL</Form.Label>
-                  <Form.Control
-                    className="invite-module-input"
-                    type="text"
-                    placeholder="https://linkedin.com/linkedinID"
-                    value={linkedIn}
-                    required={true}
-                    onChange={(e) => setLinkedIn(e.target.value)}
                   />
                 </Col>
                 <Col xs={12}>
