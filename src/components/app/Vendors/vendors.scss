@@ -349,6 +349,15 @@
   &--description {
     color: $text-3;
   }
+
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+    align-items: flex-start !important;
+
+    .add-vendor-button {
+      padding: 0 20px;
+    }
+  }
 }
 
 .vendors--popular-topics-customhead {

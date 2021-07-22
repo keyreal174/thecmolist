@@ -3,6 +3,7 @@ import clsx from "clsx";
 import { Button } from "react-bootstrap";
 import Article from "../base/Article/Article";
 import VendorConnections from "./VendorConnections";
+import AddVendorButton from "./VendorButton";
 import "./vendors.scss";
 
 const VendorsFeed = ({
@@ -10,30 +11,27 @@ const VendorsFeed = ({
   getCategoryTitle,
   description,
   showCategoryListView,
+  isMyProfile,
+  showDeletePostModal,
 }) => {
-  // FIXME: for the beta we disable pagination as the BE returns all data
-  // POST BETA remove this
-  let moreData = false;
-
-  const AddVendorButton = () => (
-    <a
-      className="m-0"
-      style={{ whiteSpace: "nowrap", cursor: "pointer", color: "#2962ff" }}
-      onClick={getCategoryTitle}
-    >
-      + Add Vendor
-    </a>
-  );
-
-  const badge = () => {
+  const badge = (feed) => {
     return showCategoryListView ? (
-      <a
-        className="m-0"
-        style={{ whiteSpace: "nowrap", cursor: "pointer", color: "#2962ff" }}
-        onClick={getCategoryTitle}
-      >
-        + My Stack
-      </a>
+      isMyProfile ? (
+        <span
+          className="cursor-pointer noselect"
+          onClick={() => showDeletePostModal(feed)}
+        >
+          ✖
+        </span>
+      ) : (
+        <a
+          className="m-0"
+          style={{ whiteSpace: "nowrap", cursor: "pointer", color: "#2962ff" }}
+          onClick={getCategoryTitle}
+        >
+          + My Stack
+        </a>
+      )
     ) : null;
   };
 
@@ -50,7 +48,7 @@ const VendorsFeed = ({
                   "network-list-item",
                   "vendors--feed-item"
                 )}
-                badge={badge()}
+                badge={badge(feed)}
                 {...feed}
               >
                 {feed.connections && feed.connections.length > 0 && (
@@ -65,16 +63,7 @@ const VendorsFeed = ({
               Your peers have not yet shared any{" "}
               <span className="text-capitalize">{description}</span> vendors
             </div>
-            <AddVendorButton />
-          </div>
-        )}
-        {moreData && (
-          <div className="row">
-            <div className="col-md-2 mt-2 mx-auto">
-              <button className="btn btn__load-more" type="button">
-                Show more
-              </button>
-            </div>
+            <AddVendorButton getCategoryTitle={getCategoryTitle} />
           </div>
         )}
       </React.Fragment>
