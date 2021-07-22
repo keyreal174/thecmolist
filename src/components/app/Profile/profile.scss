@@ -586,7 +586,7 @@
 
 @media (max-width: 576px) {
   .isMyProfile .article-badge {
-    top: -60px !important;
+    // top: -60px !important;
   }
 }
 
@@ -609,7 +609,7 @@
 .profile-page-blocker-wrapper {
   .add-vendor-blocker-opacity {
     width: 66.666667%;
-    left: 33.333333%;
+    left: calc(33.333333% + 10px);
     top: 100px;
 
     @media screen and (max-width: 767px) {
@@ -620,13 +620,18 @@
 
   .add-vendor-blocker-modal {
     top: 300px;
-    right: 291px;
+    right: calc((66.666667% - 410px) / 2);
     left: inherit;
     padding: 28px 28px;
 
     @media screen and (max-width: 991px) {
       right: auto;
-      left: calc(50% - 180px);
+      left: calc(50% - 200px);
+    }
+
+    @media screen and (max-width: 400px) {
+      right: auto;
+      left: inherit;
     }
 
     button {

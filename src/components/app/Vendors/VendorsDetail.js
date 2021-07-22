@@ -6,14 +6,28 @@ import PopularTopics from "../base/PopularTopics/PopularTopics";
 import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
 import BlockerText from "../base/BlockerText/BlockerText";
 import VendorsFeed from "./VendorsFeed";
+import AddVendorButton from "./VendorButton";
 
-const Category = ({ name, description }) => {
+const Category = ({
+  name,
+  description,
+  len,
+  isMyProfile,
+  getCategoryTitle,
+}) => {
   return (
-    <div className="vendor-detail-category">
-      <span className="vendor-detail-category--name">#{name}</span>
-      <span className="vendor-detail-category--description text-capitalize">
-        &nbsp;- {description}
-      </span>
+    <div className="vendor-detail-category d-flex align-items-center justify-content-between">
+      <div className="d-flex align-items-center">
+        <span className="vendor-detail-category--name">#{name}</span>
+        <span className="vendor-detail-category--description text-capitalize">
+          &nbsp;- {description}
+        </span>
+      </div>
+      {len && len > 0 && isMyProfile ? (
+        <div className="add-vendor-button">
+          <AddVendorButton getCategoryTitle={getCategoryTitle} />
+        </div>
+      ) : null}
     </div>
   );
 };
@@ -28,6 +42,8 @@ const VendorsDetail = ({
   filterIdx,
   className,
   handleInviteModal,
+  isMyProfile,
+  showDeletePostModal,
 }) => {
   const AddInviteButton = () => (
     <Button
@@ -44,7 +60,6 @@ const VendorsDetail = ({
   const changeSubFilter = (title) => {
     document.getElementById(title).scrollIntoView({ behavior: "smooth" });
   };
-  console.log(vendorsDetail);
 
   return (
     <>
@@ -117,12 +132,17 @@ const VendorsDetail = ({
                       <Category
                         name={category.name}
                         description={category.description}
+                        getCategoryTitle={() => getCategoryTitle(category.name)}
+                        len={category.vendors?.length || 0}
+                        isMyProfile={isMyProfile}
                       />
                       <VendorsFeed
                         feedData={category.vendors}
                         getCategoryTitle={() => getCategoryTitle(category.name)}
                         description={category.description}
                         showCategoryListView={showCategoryListView}
+                        isMyProfile={isMyProfile}
+                        showDeletePostModal={showDeletePostModal}
                       />
                     </div>
                   ))}

@@ -702,6 +702,8 @@ const Profile = (props) => {
                         }}
                         allowBackButton={true}
                         showCategoryListView={true}
+                        isMyProfile={isMyProfile}
+                        showDeletePostModal={showDeletePostModal}
                       />
                       {idx < filteredFeedData.length - 1 && (
                         <div className="vendor-detail-divider"></div>
