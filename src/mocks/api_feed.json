@@ -390,6 +390,18 @@
       "name": "John Smith",
       "role": "CMO at Moder Media",
       "link": "/profile/jhon"
+    },
+    {
+      "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjg4NDEyNG1hZHMtLXByb2ZpbGUuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+      "name": "John Smith",
+      "role": "CMO at Moder Media",
+      "link": "/profile/jhon"
+    },
+    {
+      "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjg4NDEyNG1hZHMtLXByb2ZpbGUuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+      "name": "John Smith",
+      "role": "CMO at Moder Media",
+      "link": "/profile/jhon"
     }
   ]
 }
