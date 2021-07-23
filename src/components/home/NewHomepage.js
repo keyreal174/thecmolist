@@ -100,8 +100,8 @@ function Homepage() {
                   </div>
                   <div className="home--description">
                     CMOlist enables marketing leaders to learn from each others
-                    by sharing critical insights, best practices, and proven
-                    vendors.
+                    by sharing proven marketing stacks, best practices, and new
+                    insights
                   </div>
                   <div className="home--apply-button">
                     <Button
