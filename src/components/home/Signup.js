@@ -91,8 +91,8 @@ function Signup() {
                 Apply for Membership
               </h2>
               <span className="signup-attn">
-                Please fill out the information below <br></br>
-                to apply for a free membership
+                Membership is limited to marketing leaders and experts. Please
+                fill out the information below to apply for a free membership.
               </span>
             </div>
             <div className="form-inputs-group">
