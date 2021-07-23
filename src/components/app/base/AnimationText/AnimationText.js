@@ -12,7 +12,7 @@ const AnimationText = ({ strings, id, options }) => {
       backSpeed: 80,
       ...(options || {}),
     });
-  }, [strings]);
+  }, [strings.length]);
 
   return <div id={id} className="animationText"></div>;
 };

@@ -1,7 +1,6 @@
 {
   "name": "Awareness",
   "description": "Tools and partners to help create awareness for your company",
-  "blockerText": "Please invite at least two other trusted marketing leaders to be able to view all vendors shared by your peers",
   "categories": [
     {
       "name": "audiencedata",

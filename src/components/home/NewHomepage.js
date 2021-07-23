@@ -161,7 +161,7 @@ function Homepage() {
           </Row>
         </Container>
       </div>
-      <div className="home--share">
+      <div className="home--share" id="aboutHome">
         <Container>
           <Row>
             <Col md="12">
