@@ -551,15 +551,25 @@
 
 // Featured stacks
 .featured-stacks {
-  margin-left: -8px;
-  margin-right: -8px;
-  flex-wrap: wrap;
-  justify-content: center;
+  padding: 0 10px;
 
   &-item {
     width: 100%;
-    min-width: 215px;
+    min-width: 165px;
+    max-width: 33.3333%;
     flex: 1;
+
+    @media screen and (max-width: 1399px) {
+      max-width: 50%;
+    }
+
+    @media screen and (max-width: 1199px) {
+      max-width: 100%;
+    }
+
+    @media screen and (max-width: 1199px) {
+      max-width: 100%;
+    }
 
     .user-img {
       img {
@@ -597,6 +607,18 @@
     .view-stack-btn {
       border-radius: 20px;
       padding: 5px 20px;
+    }
+  }
+
+  .carousel {
+    &-control-prev {
+      left: -30px;
+      width: initial;
+    }
+
+    &-control-next {
+      right: -30px;
+      width: initial;
     }
   }
 }

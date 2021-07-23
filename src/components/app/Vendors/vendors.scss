@@ -340,6 +340,10 @@
 .vendor-detail-category {
   margin-bottom: 15px;
 
+  &-content {
+    flex-wrap: wrap;
+  }
+
   &--name {
     font-size: 24px;
     font-weight: 500;
@@ -423,4 +427,16 @@
       display: block;
     }
   }
+}
+
+.add-vendor-btn {
+  white-space: nowrap;
+  cursor: pointer;
+  color: #2962ff !important;
+  font-weight: 500;
+  border: 1px solid rgb(41, 98, 255);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 16px;
+  line-height: initial;
 }

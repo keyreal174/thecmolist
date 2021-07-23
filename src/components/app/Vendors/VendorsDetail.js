@@ -17,7 +17,7 @@ const Category = ({
 }) => {
   return (
     <div className="vendor-detail-category d-flex align-items-center justify-content-between">
-      <div className="d-flex align-items-center">
+      <div className="d-flex align-items-center vendor-detail-category-content">
         <span className="vendor-detail-category--name">#{name}</span>
         <span className="vendor-detail-category--description text-capitalize">
           &nbsp;- {description}

@@ -46,7 +46,7 @@ function HomeFooter({ className }) {
           <Col md="9">
             <ul className="footer__menu">
               <li>
-                <Link to="/">About</Link>
+                <a href="#aboutHome">About</a>
               </li>
               <li>
                 <a href={userPolicy}>User Agreement</a>

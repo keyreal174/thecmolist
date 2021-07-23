@@ -166,7 +166,6 @@
       },
       {
         "title": "My Stack",
-        "blockerText": "Please share at least five vendors to be able to view your peers' marketing stacks",
         "blockerAddVendor": true,
         "enabled": true,
         "showCategoryListView": true,
