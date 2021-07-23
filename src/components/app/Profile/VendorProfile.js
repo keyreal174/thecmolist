@@ -247,12 +247,6 @@ const ProfileOverview = ({
               >
                 Edit
               </Button>
-              <Button
-                className="edit-profile edit-profile-more"
-                variant="outline-secondary"
-              >
-                <img alt="More icon" src={More} />
-              </Button>
             </div>
           )}
         </React.Fragment>

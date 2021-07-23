@@ -459,19 +459,6 @@ const Profile = (props) => {
                             Following
                           </Button>
                         )}
-                        <Button
-                          className="btn-white edit-profile"
-                          variant="outline-primary"
-                          disabled
-                        >
-                          Message
-                        </Button>
-                        <Button
-                          variant="light"
-                          className="profile--more-button"
-                        >
-                          <img src={More} alt="more icon"></img>
-                        </Button>
                       </div>
                     )}
                   </React.Fragment>
