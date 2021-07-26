@@ -162,7 +162,12 @@ const Vendors = (props) => {
             subtitle={"Vendors"}
             image={bannerImage}
           />
-          <div className="mobile-add-vendor-button">
+          <div
+            className={clsx(
+              "mobile-add-vendor-button",
+              bannerImage && "mobile-add-vendor-button-network"
+            )}
+          >
             <AddVendorButton />
           </div>
           <AddMemberModal
@@ -195,7 +200,10 @@ const Vendors = (props) => {
                 onChange={(idx) => changeFilter(idx)}
               />
               <div
-                className="filter-btn-group flex-grow-1 text-right filter-add-vendor-btn desktop-add-vendor-button"
+                className={clsx(
+                  "filter-btn-group flex-grow-1 text-right filter-add-vendor-btn desktop-add-vendor-button",
+                  bannerImage && "desktop-add-vendor-button-network"
+                )}
                 style={{ minWidth: 135 }}
               >
                 <AddVendorButton />

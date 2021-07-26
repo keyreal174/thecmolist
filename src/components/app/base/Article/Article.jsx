@@ -179,9 +179,9 @@ function Article(props) {
                 )}
                 {props.subtext && (
                   <div className="article-labels">
-                    {props.subtext.map((subtxt) => {
+                    {props.subtext.map((subtxt, index) => {
                       return (
-                        <div className="flex">
+                        <div className="flex" key={index}>
                           {subtxt.text.label && (
                             <span className="article-label">
                               {subtxt.label}

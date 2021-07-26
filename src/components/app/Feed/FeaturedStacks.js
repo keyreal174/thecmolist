@@ -3,6 +3,7 @@ import { Button, Carousel } from "react-bootstrap";
 import CustomCard from "../base/CustomCard/CustomCard";
 import NextIcon from "../../login/icons/arrow-circle-right.svg";
 import PrevIcon from "../../login/icons/arrow-circle-left.svg";
+import InviteButton from "../base/InviteButton/InviteButton";
 
 function useWindowSize() {
   // Initialize state with undefined width/height so server and client renders match
@@ -127,10 +128,15 @@ const FeaturedStacks = ({ featuredStacks }) => {
       <div className="d-flex featured-stacks">
         <Slider featuredStacks={featuredStacks} />
       </div>
-      <p className="text-center">
-        Browse more trusted vendors <b>shared by your peers</b> in the{" "}
-        <a href="#">vendor directory</a>
-      </p>
+      <div className="d-flex cta-message">
+        <p className="text-center mr-3">
+          Invite two other trusted marketing leaders to be able to view{" "}
+          <b>
+            <span>all vendors</span> shared by your peers
+          </b>
+        </p>
+        <InviteButton />
+      </div>
     </CustomCard>
   ) : (
     <div />

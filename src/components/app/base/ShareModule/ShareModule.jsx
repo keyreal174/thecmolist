@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import AddPostModal from "../AddPostModal/AddPostModal";
-import "./sharemodule.css";
+import "./sharemodule.scss";
 
 function ShareModule(props) {
   let newPostClick = () => {

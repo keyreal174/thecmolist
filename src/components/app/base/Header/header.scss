@@ -353,8 +353,12 @@
     background-repeat: no-repeat;
     background-position: center;
     margin-left: -16px;
+    position: relative;
+    top: 2px;
+
     &.open {
       background-image: url("./svgs/cross.svg");
+      top: 7px;
     }
   }
   .navbar-dropdown {
