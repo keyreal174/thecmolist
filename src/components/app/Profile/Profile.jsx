@@ -153,7 +153,7 @@ const Profile = (props) => {
           (item.title === "My Stack" && feedtext === "stack")
       );
 
-      setFilterIdx(id === -1 ? 0 : id);
+      if (!filterIdx) setFilterIdx(id === -1 ? 0 : id);
     }
   }, [props.profile]);
 
