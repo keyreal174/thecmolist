@@ -210,6 +210,10 @@
 
   @media (max-width: 768px) {
     display: block;
+
+    &.mobile-add-vendor-button-network {
+      display: none;
+    }
   }
 }
 
@@ -218,6 +222,11 @@
 
   @media (max-width: 768px) {
     display: none;
+
+    &.desktop-add-vendor-button-network {
+      display: block;
+      margin-left: 0;
+    }
   }
 }
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { Container, Form, Col, Alert } from "react-bootstrap";
 import clsx from "clsx";
@@ -9,6 +10,7 @@ import Separator from "../base/Separator/Separator";
 import "./settings.scss";
 
 const Settings = ({ settings, saveSetting, getSetting }) => {
+  const history = useHistory();
   const [account, setAccount] = useState({
     new_password: "",
     confirm_password: "",
@@ -30,6 +32,7 @@ const Settings = ({ settings, saveSetting, getSetting }) => {
           allowDiscussions: account.allowDiscussions,
           allowActivity: account.allowActivity,
         });
+        history.goBack();
       } catch (err) {
         setError(err);
       }
@@ -47,6 +50,7 @@ const Settings = ({ settings, saveSetting, getSetting }) => {
       allowDiscussions: settings.allowDiscussions,
       allowActivity: settings.allowActivity,
     });
+    history.goBack();
   };
 
   const handleInput = (e) => {

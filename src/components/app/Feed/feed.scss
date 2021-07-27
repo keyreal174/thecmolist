@@ -622,3 +622,23 @@
     }
   }
 }
+
+.cta-message {
+  max-width: 500px;
+  align-items: center;
+  margin: 0 auto;
+
+  p {
+    span {
+      color: $blue;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+
+    p {
+      margin-bottom: 20px;
+    }
+  }
+}

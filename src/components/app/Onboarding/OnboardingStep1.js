@@ -60,6 +60,16 @@ const OnboardingWelcome = ({ loading, changeStep }) => {
         </Col>
       </Row>
       <Row>
+        <Col md="12" className="text-center no-solicitation">
+          <p>
+            This is an open, <b>trusted</b> space for marketing leaders to come
+            together to support each other.
+          </p>
+          <p>
+            Please do not solicit other members or share information outside the
+            network.
+          </p>
+        </Col>
         <Col
           md="12"
           className="onboarding--button-wrapper d-flex justify-content-center"
