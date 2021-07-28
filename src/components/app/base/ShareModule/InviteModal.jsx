@@ -46,7 +46,7 @@ function InviteModal(props) {
           <Fragment>
             <p className="modal-description">
               Invite other <strong>trusted</strong> marketing leaders to learn
-              from their <strong>stacks</strong>, frow your marketing{" "}
+              from their <strong>stacks</strong>, grow your marketing{" "}
               <strong>knowledge network</strong>, and{" "}
               <strong>unlock new capabilities</strong>.
             </p>

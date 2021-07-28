@@ -132,7 +132,7 @@ const FeaturedStacks = ({ featuredStacks }) => {
         <p className="text-center mr-3">
           Invite two other trusted marketing leaders to be able to view{" "}
           <b>
-            <span>all vendors</span> shared by your peers
+            <a href="/vendors">all vendors</a> shared by your peers
           </b>
         </p>
         <InviteButton />

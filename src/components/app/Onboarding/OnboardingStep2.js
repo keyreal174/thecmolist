@@ -154,8 +154,8 @@ const OnboardingStep2 = ({
         showGetIntro
           ? "One last step..."
           : step === 1
-          ? "Select three areas of expertise for which you could provide advice to your trusted peers"
-          : "Share five or more of your most impactful marketing tools with your trusted peers"
+          ? "Share five or more of your most impactful marketing tools with your trusted peers"
+          : "Select three areas of expertise for which you could provide advice to your trusted peers"
       }
       subtitle={
         showGetIntro
@@ -240,13 +240,13 @@ const OnboardingStep2 = ({
           (step === 1 ? (
             <CustomCard className="onboarding--card fadeAndSlideElementInFast">
               <div className="p-4">
-                <AddSkills submitAfter={() => setStep(2)} />
+                <AddVendors submitAfter={() => setStep(2)} />
               </div>
             </CustomCard>
           ) : (
             <CustomCard className="onboarding--card fadeAndSlideElementInFast">
               <div className="p-4">
-                <AddVendors submitAfter={() => setShowGetIntro(true)} />
+                <AddSkills submitAfter={() => setShowGetIntro(true)} />
               </div>
             </CustomCard>
           ))}
@@ -268,7 +268,7 @@ const OnboardingStep2 = ({
                 className="mt-3 onboarding--button"
                 disabled={loading}
                 type="submit"
-                form={step === 1 ? "form-add-skills" : "form-add-vendors"}
+                form={step === 1 ? "form-add-vendors" : "form-add-skills"}
               >
                 Continue
               </Button>
