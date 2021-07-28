@@ -32,7 +32,6 @@ const Settings = ({ settings, saveSetting, getSetting }) => {
           allowDiscussions: account.allowDiscussions,
           allowActivity: account.allowActivity,
         });
-        history.goBack();
       } catch (err) {
         setError(err);
       }

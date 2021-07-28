@@ -1,9 +1,7 @@
 @import "../../../../sass/globals.scss";
 
 .popular-topics {
-  position: relative;
-
-  &--wrapper {
+  position: relative &--wrapper {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
