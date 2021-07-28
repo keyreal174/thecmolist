@@ -162,14 +162,6 @@ const Vendors = (props) => {
             subtitle={"Vendors"}
             image={bannerImage}
           />
-          <div
-            className={clsx(
-              "mobile-add-vendor-button",
-              bannerImage && "mobile-add-vendor-button-network"
-            )}
-          >
-            <AddVendorButton />
-          </div>
           <AddMemberModal
             firstButtonText="Cancel"
             secondButtonText="Send invitation"
@@ -201,10 +193,9 @@ const Vendors = (props) => {
               />
               <div
                 className={clsx(
-                  "filter-btn-group flex-grow-1 text-right filter-add-vendor-btn desktop-add-vendor-button",
-                  bannerImage && "desktop-add-vendor-button-network"
+                  "filter-btn-group flex-grow-1 text-right filter-add-vendor-btn desktop-add-vendor-button"
                 )}
-                style={{ minWidth: 135 }}
+                style={{ minWidth: 150 }}
               >
                 <AddVendorButton />
               </div>
