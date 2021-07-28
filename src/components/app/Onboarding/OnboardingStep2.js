@@ -1,66 +1,13 @@
 import React, { useState, useEffect } from "react";
 import OnboardingLayout from "./OnboardingLayout";
 import CustomCard from "../base/CustomCard/CustomCard";
-import {
-  Alert,
-  Col,
-  Form,
-  Row,
-  ToggleButtonGroup,
-  ToggleButton,
-  Button,
-} from "react-bootstrap";
+import { Alert, Col, Form, Row, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import "./onboardingStep2.scss";
 import { useHistory } from "react-router";
 import { CSSTransition } from "react-transition-group";
 import AddVendors from "../base/AddVendors/AddVendors";
 import AddSkills from "../base/AddSkills/AddSkills";
-const RenderCMOList = ({
-  value,
-  handleChange,
-  pils,
-  handleButtonClick,
-  showMore,
-}) => {
-  return (
-    <>
-      <Row className="onboarding--pill-wrapper">
-        <Col md="12">
-          <ToggleButtonGroup
-            className="d-flex flex-wrap"
-            type="checkbox"
-            value={value}
-            onChange={handleChange}
-          >
-            {pils.map((p, index) => {
-              if (index < 12 || showMore) {
-                return (
-                  <ToggleButton
-                    value={p}
-                    className="onboarding--pill"
-                  >{`#${p}`}</ToggleButton>
-                );
-              }
-            })}
-          </ToggleButtonGroup>
-        </Col>
-      </Row>
-      <Row className="position-relative">
-        <Col md="12" className="d-flex justify-content-center">
-          <div className="onboarding--divider"></div>
-          <Button
-            variant="link"
-            className="onboarding--show-more"
-            onClick={handleButtonClick}
-          >
-            {showMore ? "Show Less" : "Show more"}
-          </Button>
-        </Col>
-      </Row>
-    </>
-  );
-};
 
 const OnboardingStep2 = ({
   categories,
