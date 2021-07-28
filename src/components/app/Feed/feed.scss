@@ -607,6 +607,7 @@
     .view-stack-btn {
       border-radius: 20px;
       padding: 5px 20px;
+      font-weight: 700;
     }
   }
 
@@ -627,6 +628,8 @@
   max-width: 500px;
   align-items: center;
   margin: 0 auto;
+  font-size: 18px;
+  color: $text-1;
 
   p {
     span {
