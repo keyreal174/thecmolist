@@ -34,6 +34,7 @@ const Network = (props) => {
   };
   const initNetworkpage = (profileStats) => {
     let newFilters = [
+      { title: "Suggested", slug: "suggested", enabled: true, highlight: true },
       { title: "All", slug: "my-network", enabled: true },
       { title: "My Experts", slug: "my-peers", enabled: true },
     ];

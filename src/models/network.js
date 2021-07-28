@@ -150,7 +150,6 @@ export default {
           feedData,
         } = rootState.networkModel;
         const dataForFilter = feedData[activeFilter];
-        dispatch.networkModel.setLoading(true);
         const response = await networkRequest(
           sortOrder,
           activeFilter,
@@ -163,8 +162,6 @@ export default {
       } catch (error) {
         console.log(error);
         throw new Error("Can not fetch active network");
-      } finally {
-        dispatch.networkModel.setLoading(false);
       }
     },
     async changeFilter(filterKey, rootState) {

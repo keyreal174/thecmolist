@@ -30,7 +30,11 @@ function Filter(props) {
                     let className = "filter--button";
 
                     if (active) {
-                      className += " filter--button-active";
+                      if (filter.highlight) {
+                        className += " filter--button-highlight";
+                      } else {
+                        className += " filter--button-active";
+                      }
                     }
                     if (!filter.enabled) {
                       className += " filter--button-disable";

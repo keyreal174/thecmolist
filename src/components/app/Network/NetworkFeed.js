@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Article from "../base/Article/Article";
 import Badge from "../base/Badge/Badge";
 import "./network.scss";
@@ -11,9 +11,28 @@ const NetworkFeed = ({
   disconnectUser,
   fetchData,
 }) => {
-  // FIXME: for the beta we disable pagination as the BE returns all data
-  // POST BETA remove this
-  moreData = false;
+  const loadMoreRef = useRef(null);
+  const loadMoreScroll = (entries) => {
+    if (entries && entries.length > 0) {
+      const target = entries[0];
+      if (target.isIntersecting) {
+        console.log("Feed network fetch data");
+        fetchData();
+      }
+    }
+  };
+  useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.25,
+    };
+    const observer = new IntersectionObserver(loadMoreScroll, options);
+    if (loadMoreRef && loadMoreRef.current) {
+      observer.observe(loadMoreRef.current);
+    }
+    return () => loadMoreRef.current && observer.unobserve(loadMoreRef.current);
+  }, [loadMoreRef]);
   return (
     <>
       <React.Fragment>
@@ -45,9 +64,10 @@ const NetworkFeed = ({
         {moreData && (
           <div className="mt-2">
             <button
-              className="btn btn-white btn__load-more network-feed--button"
+              className="btn btn-white btn__load-more network-feed--button invisible"
               type="button"
               onClick={fetchData}
+              ref={loadMoreRef}
             >
               Show more
             </button>

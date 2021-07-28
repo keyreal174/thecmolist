@@ -199,6 +199,14 @@
     color: $text-1 !important;
   }
 
+  &-highlight {
+    background-color: $success !important;
+    color: $white !important;
+    &:hover {
+      color: $white !important;
+    }
+  }
+
   &-active {
     color: $white !important;
     &:hover {
