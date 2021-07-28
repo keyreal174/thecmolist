@@ -19,7 +19,7 @@ const AddSkillsModal = ({ show, handleClose }) => {
         </div>
         <Modal.Header as="h4">
           <Modal.Title className="vendor-category-modal">
-            Add your areas of expertise
+            Add topics for which you could provide advice
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -41,7 +41,7 @@ const AddSkillsModal = ({ show, handleClose }) => {
             type="submit"
             form="form-add-skills"
           >
-            Add Skills
+            Add Topics
           </Button>
         </Modal.Footer>
       </Modal>
