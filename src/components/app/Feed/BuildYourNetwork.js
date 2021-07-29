@@ -33,8 +33,8 @@ const BuildYourNetwork = ({ buildYourNetworkItems, saveUserInvite }) => {
   const [showAddSkills, setShowAddSkill] = useState(false);
   const [showInviteModal, setShowInviteModal] = useState(false);
 
-  const toggleAddVendorModal = () => {
-    if (showAddVendor) {
+  const toggleAddVendorModal = (contentAdded) => {
+    if (showAddVendor && contentAdded) {
       // i.e. we're closing the dialog, trigger a refresh in case
       // some content was added
       window.location.reload();

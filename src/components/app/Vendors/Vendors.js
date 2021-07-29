@@ -125,7 +125,12 @@ const Vendors = (props) => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  const toggleAddVendorModal = () => {
+  const toggleAddVendorModal = (contentAdded) => {
+    if (showAddVendor && contentAdded) {
+      // i.e. we're closing the dialog, trigger a refresh in case
+      // some content was added
+      window.location.reload();
+    }
     setShowAddVendor((value) => !value);
   };
 
