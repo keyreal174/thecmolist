@@ -38,17 +38,32 @@ const Network = (props) => {
       { title: "All", slug: "my-network", enabled: true },
       { title: "My Experts", slug: "my-peers", enabled: true },
     ];
-    if (profileStats && profileStats.profile && profileStats.profile.groups) {
-      newFilters = newFilters.concat(
-        profileStats.profile.groups.map((group) => {
-          return {
-            title: group.name,
-            slug: group.slug,
-            image: group.image || null,
+    if (profileStats && profileStats.profile) {
+      if (
+        profileStats.profile.groups &&
+        profileStats.profile.groups.length > 0
+      ) {
+        newFilters = newFilters.concat(
+          profileStats.profile.groups.map((group) => {
+            return {
+              title: group.name,
+              slug: group.slug,
+              image: group.image || null,
+              enabled: true,
+            };
+          })
+        );
+      } else {
+        newFilters = [
+          {
+            title: "Suggested",
+            slug: "suggested",
             enabled: true,
-          };
-        })
-      );
+            highlight: true,
+          },
+          { title: "My Network", slug: "my-network", enabled: true },
+        ];
+      }
     }
     let idx = 0;
     if (location && location.hash) {

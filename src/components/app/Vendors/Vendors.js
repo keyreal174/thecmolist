@@ -50,18 +50,27 @@ const Vendors = (props) => {
           setIsAdminUser(true);
         }
       }
-      if (profileStats && profileStats.profile && profileStats.profile.groups) {
-        newFilters = newFilters.concat(
-          profileStats.profile.groups.map((group) => {
-            return {
-              title: group.name,
-              slug: group.slug,
-              image: group.image || null,
-              enabled: true,
-            };
-          })
-        );
-        if (profileStats.profile.groups.length > 0) setIsAffiliated(true);
+      if (profileStats && profileStats.profile) {
+        if (
+          profileStats.profile.groups &&
+          profileStats.profile.groups.length > 0
+        ) {
+          setIsAffiliated(true);
+          newFilters = newFilters.concat(
+            profileStats.profile.groups.map((group) => {
+              return {
+                title: group.name,
+                slug: group.slug,
+                image: group.image || null,
+                enabled: true,
+              };
+            })
+          );
+        } else {
+          newFilters = [
+            { title: "My Network", slug: "my-network", enabled: true },
+          ];
+        }
       }
       let idx = 0;
       if (location && location.hash) {
@@ -220,12 +229,12 @@ const Vendors = (props) => {
                 <Alert variant="success">
                   <a
                     className="cursor-pointer"
-                    onClick={() => setInviteModalShow(true)}
+                    onClick={() => (window.location.href = "/network")}
                     style={{ color: "#2962ff" }}
                   >
                     Follow other members
                   </a>{" "}
-                  to view more tursted vendors
+                  to view more trusted vendors
                 </Alert>
               </div>
             )}
