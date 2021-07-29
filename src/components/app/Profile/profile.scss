@@ -1,21 +1,5 @@
 @import "../../../sass/globals.scss";
 
-.logo-wrapper {
-  position: absolute;
-  left: 45px;
-  top: 100px;
-  margin: auto;
-  max-width: 160px;
-  padding: 2px;
-}
-
-.logo-wrapper img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  border: 3px solid white;
-}
-
 .overview {
   background-color: #ffffff;
   border-left: 2px solid #cccccc;
@@ -92,16 +76,15 @@
   padding: 30px;
 }
 
+.overview-summary {
+  margin-left: 24px;
+}
+
 .overview-header {
   font-size: 26px;
   margin-top: 15px;
   font-weight: 400;
   color: rgba(0, 0, 0, 0.9);
-}
-
-.overview-summary {
-  margin-top: 50px;
-  margin-left: 35px;
 }
 
 .overview-subheadline {
@@ -394,6 +377,23 @@
   height: 350px;
 }
 
+.logo-wrapper {
+  margin-top: -115px;
+  margin-left: 24px;
+  max-width: 160px;
+
+  img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid white;
+  }
+
+  @media screen and (max-width: 1199px) {
+    margin-top: -50px;
+  }
+}
+
 .left-section {
   &--image {
     height: 215px;
@@ -401,6 +401,22 @@
     object-fit: cover;
     border-top-left-radius: $border-radius;
     border-top-right-radius: $border-radius;
+
+    @media screen and (max-width: 1199px) {
+      height: 160px;
+    }
+
+    @media screen and (max-width: 991px) {
+      height: 144px;
+    }
+
+    @media screen and (max-width: 991px) {
+      height: 144px;
+    }
+
+    @media screen and (max-width: 767px) {
+      height: 95px;
+    }
   }
 }
 .right-section {
@@ -496,7 +512,7 @@
     .btn-wrapper {
       top: unset;
       bottom: 40px;
-      left: 40px;
+      left: 24px;
     }
   }
   .profile--left-section,
