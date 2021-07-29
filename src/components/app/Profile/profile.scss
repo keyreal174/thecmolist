@@ -467,11 +467,6 @@
 
 .profile--feed {
   margin-top: 25px;
-  .article--content {
-    .article-badge {
-      top: -5px;
-    }
-  }
 }
 
 .profile {
@@ -591,12 +586,6 @@
   }
   .profile--feed {
     margin-top: 0;
-  }
-  .isMyProfile .article-badge {
-    position: absolute;
-    width: initial !important;
-    top: 10px !important;
-    margin: 0;
   }
 }
 
