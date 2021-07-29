@@ -374,23 +374,25 @@ function AddPostModal({
                       <span>(visible only to your Followers)</span>
                     </label>
                   </div>
-                  <div className="share-group-checkbox">
-                    <Form.Check
-                      name="members"
-                      id="selectnetwork"
-                      type="radio"
-                      checked={networkVisibility}
-                      onClick={() => {
-                        setPublicVisibility(false);
-                        setPeersVisibility(false);
-                        setNetworkVisibility(true);
-                      }}
-                    />
-                    <label htmlFor="selectnetwork">
-                      Select networks
-                      <span>(visible only to selected networks)</span>
-                    </label>
-                  </div>
+                  {groups && groups.length > 0 && (
+                    <div className="share-group-checkbox">
+                      <Form.Check
+                        name="members"
+                        id="selectnetwork"
+                        type="radio"
+                        checked={networkVisibility}
+                        onClick={() => {
+                          setPublicVisibility(false);
+                          setPeersVisibility(false);
+                          setNetworkVisibility(true);
+                        }}
+                      />
+                      <label htmlFor="selectnetwork">
+                        Select networks
+                        <span>(visible only to selected networks)</span>
+                      </label>
+                    </div>
+                  )}
                   <div className="network-checkbox-group">
                     {groups &&
                       groups.map((group, index) => {
