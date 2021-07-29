@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import InviteModal from "../ShareModule/InviteModal";
 import "./InviteButton.scss";
 
-const InviteButton = ({ saveUserInvite, lightMode }) => {
+const InviteButton = ({ saveUserInvite, lightMode, isAdminUser }) => {
   const [inviteModalShow, setInviteModalShow] = useState(false);
 
   return (
@@ -20,6 +20,7 @@ const InviteButton = ({ saveUserInvite, lightMode }) => {
       <InviteModal
         show={inviteModalShow}
         onHide={() => setInviteModalShow(false)}
+        isAdminUser={isAdminUser}
         onSuccess={(data) => {
           saveUserInvite(data);
           setInviteModalShow(false);

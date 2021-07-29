@@ -31,6 +31,7 @@ const Vendors = (props) => {
   const [categoryTitle, setCategoryTitle] = useState("");
   const [inviteModalShow, setInviteModalShow] = useState(false);
   const [isAffiliated, setIsAffiliated] = useState(false);
+  const [isAdminUser, setIsAdminUser] = useState(false);
   const changeDashboardHeader = (idx) => {
     if (idx < filters.length) {
       setBannerTitle(filters[idx].title);
@@ -44,6 +45,11 @@ const Vendors = (props) => {
         { title: "All", slug: "my-network", enabled: true },
         { title: "My Experts", slug: "my-peers", enabled: true },
       ];
+      if (profileStats && profileStats.profile) {
+        if (profileStats.profile.isAdminUser) {
+          setIsAdminUser(true);
+        }
+      }
       if (profileStats && profileStats.profile && profileStats.profile.groups) {
         newFilters = newFilters.concat(
           profileStats.profile.groups.map((group) => {
@@ -274,6 +280,7 @@ const Vendors = (props) => {
           props.saveUserInvite(data);
           setInviteModalShow(false);
         }}
+        isAdminUser={isAdminUser}
       />
     </Layout>
   );

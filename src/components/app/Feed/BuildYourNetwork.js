@@ -28,7 +28,11 @@ const AddInviteButton = ({ setShowInviteModal }) => (
   </Button>
 );
 
-const BuildYourNetwork = ({ buildYourNetworkItems, saveUserInvite }) => {
+const BuildYourNetwork = ({
+  buildYourNetworkItems,
+  saveUserInvite,
+  isAdminUser,
+}) => {
   const [showAddVendor, setShowAddVendor] = useState(false);
   const [showAddSkills, setShowAddSkill] = useState(false);
   const [showInviteModal, setShowInviteModal] = useState(false);
@@ -87,6 +91,7 @@ const BuildYourNetwork = ({ buildYourNetworkItems, saveUserInvite }) => {
       <AddSkillsModal show={showAddSkills} handleClose={toggleAddSkillModal} />
       <InviteModal
         show={showInviteModal}
+        isAdminUser={isAdminUser}
         onHide={() => setShowInviteModal(false)}
         onSuccess={(data) => {
           saveUserInvite(data);

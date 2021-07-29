@@ -122,7 +122,7 @@ const Feature = ({ image, name, role, link }) => {
   );
 };
 
-const FeaturedStacks = ({ featuredStacks }) => {
+const FeaturedStacks = ({ featuredStacks, isAdminUser }) => {
   return featuredStacks && featuredStacks.length > 0 ? (
     <CustomCard heading="Featured marketing stacks">
       <div className="d-flex featured-stacks">
@@ -136,7 +136,7 @@ const FeaturedStacks = ({ featuredStacks }) => {
           </b>{" "}
           shared by your peers
         </p>
-        <InviteButton lightMode />
+        <InviteButton lightMode isAdminUser={isAdminUser} />
       </div>
     </CustomCard>
   ) : (

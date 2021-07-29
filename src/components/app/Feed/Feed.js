@@ -49,6 +49,7 @@ function RenderRightContainer({
   saveContent,
   isGroupOrTopic,
   saveUserInvite,
+  isAdminUser,
 }) {
   return (
     <Col md="3" className="feed-right-container">
@@ -63,6 +64,7 @@ function RenderRightContainer({
             <BuildYourNetwork
               buildYourNetworkItems={buildYourNetworkItems}
               saveUserInvite={saveUserInvite}
+              isAdminUser={isAdminUser}
             />
           )}
         </Fragment>
@@ -227,8 +229,13 @@ function RenderFeed({
 }
 
 function RenderDashboard(props) {
-  const { className, feedLoading, profileStats, saveContent } = props;
-
+  const {
+    className,
+    feedLoading,
+    profileStats,
+    saveContent,
+    isAdminUser,
+  } = props;
   return (
     <Row className={className}>
       <Col className="feed--profile-stats" md="3">
@@ -242,6 +249,7 @@ function RenderDashboard(props) {
           <FeaturedStacks
             key={props.featuredStacks.length}
             featuredStacks={props.featuredStacks}
+            isAdminUser={isAdminUser}
           />
         ) : (
           <AskQuestion
@@ -276,6 +284,7 @@ function RenderDashboard(props) {
         saveContent={props.saveContent}
         isGroupOrTopic={props.isGroupOrTopic}
         saveUserInvite={props.saveUserInvite}
+        isAdminUser={isAdminUser}
       />
     </Row>
   );
@@ -301,6 +310,7 @@ const Feed = (props) => {
   const [bannerImage, setBannerImage] = useState("");
   const [isTopic, setIsTopic] = useState(false);
   const [isGroup, setIsGroup] = useState(false);
+  const [isAdminUser, setIsAdminUser] = useState(false);
   const changeDashboardHeader = (idx) => {
     if (idx < filters.length) {
       setBannerTitle(filters[idx].title);
@@ -337,6 +347,11 @@ const Feed = (props) => {
       { title: "My Experts", slug: "my-peers", enabled: true },
     ];
     setGroupFilterStartIdx(newFilters.length);
+    if (profileStats && profileStats.profile) {
+      if (profileStats.profile.isAdminUser) {
+        setIsAdminUser(true);
+      }
+    }
     if (profileStats && profileStats.profile && profileStats.profile.groups) {
       newFilters = newFilters.concat(
         profileStats.profile.groups.map((group) => {
@@ -519,6 +534,7 @@ const Feed = (props) => {
             changeReaction={props.changeReaction}
             isGroupOrTopic={isGroup || isTopic}
             saveUserInvite={props.saveUserInvite}
+            isAdminUser={isAdminUser}
           />
           <InviteModal
             show={inviteModalShow}
@@ -527,6 +543,7 @@ const Feed = (props) => {
               props.saveUserInvite(data);
               setInviteModalShow(false);
             }}
+            isAdminUser={isAdminUser}
           />
 
           {/* wrapper */}
