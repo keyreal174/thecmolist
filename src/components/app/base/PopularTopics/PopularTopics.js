@@ -67,7 +67,7 @@ const PopularTopics = ({
               }
             })}
         </div>
-        <div>
+        <div className="popular-topics--footer">
           {topicList && topicList.length > minTopics && (
             <>
               <div className="popular-topics--divider" />
