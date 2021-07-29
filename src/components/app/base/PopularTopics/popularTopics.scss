@@ -1,7 +1,19 @@
 @import "../../../../sass/globals.scss";
 
 .popular-topics {
-  position: relative &--wrapper {
+  position: sticky;
+  top: 20px;
+
+  .custom-card-body {
+    max-height: calc(100vh - 200px);
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+  }
+
+  &--wrapper {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -22,18 +34,22 @@
     }
   }
 
+  &--footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-left: -20px;
+    text-align: center;
+    background-color: white;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+  }
+
   &--divider {
     border-top: $border-card;
-    position: absolute;
-    width: 100%;
-    left: 0;
-    bottom: 60px;
   }
   &--button {
-    text-align: center;
-    position: absolute;
-    bottom: 15px;
-    left: 115px;
+    margin: 12px 0;
     > button {
       color: $brand;
     }
