@@ -69,12 +69,12 @@ class App extends React.Component {
     };
 
     let hjid, hjsv;
-    if (location.hostname === "cmo-list-staging.herokuapp.com") {
+    if (window.location.hostname === "cmo-list-staging.herokuapp.com") {
       hjid = 2527605;
       hjsv = 6;
     } else if (
-      location.hostname === "thecmolist.com" ||
-      location.hostname.endsWith("thecmolist.com")
+      window.location.hostname === "thecmolist.com" ||
+      window.location.hostname.endsWith("thecmolist.com")
     ) {
       hjid = 2527592;
       hjsv = 6;
