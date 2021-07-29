@@ -130,12 +130,13 @@ const FeaturedStacks = ({ featuredStacks }) => {
       </div>
       <div className="d-flex cta-message">
         <p className="text-center mr-3">
-          View{" "}
+          Invite two other marketing leaders to grow your network and view{" "}
           <b>
             <a href="/vendors">all vendors</a>
           </b>{" "}
-          shared by your<b> trusted peers</b>
+          shared by your peers
         </p>
+        <InviteButton />
       </div>
     </CustomCard>
   ) : (
