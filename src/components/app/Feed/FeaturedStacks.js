@@ -136,7 +136,7 @@ const FeaturedStacks = ({ featuredStacks }) => {
           </b>{" "}
           shared by your peers
         </p>
-        <InviteButton />
+        <InviteButton lightMode />
       </div>
     </CustomCard>
   ) : (
