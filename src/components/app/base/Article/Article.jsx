@@ -54,7 +54,7 @@ function Article(props) {
     >
       <div>
         <div className="article-wrapper-container d-flex">
-          <div className="flex-fill">
+          <div className="flex-fill w-100">
             {props.header && (
               <div className="article-wrapper-header">
                 {props.header.image && (
