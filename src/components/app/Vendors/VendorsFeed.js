@@ -60,8 +60,10 @@ const VendorsFeed = ({
         {feedData && feedData.length === 0 && (
           <div className="wrapper no-vendor-list-header d-flex align-items-center justify-content-between">
             <div className="mr-4 flex-grow-1">
-              Your peers have not yet shared any{" "}
-              <span className="text-capitalize">{description}</span> vendors
+              <i>
+                Your peers have not yet shared any{" "}
+                <span className="text-capitalize">{description}</span> vendors
+              </i>
             </div>
             <AddVendorButton getCategoryTitle={getCategoryTitle} />
           </div>
