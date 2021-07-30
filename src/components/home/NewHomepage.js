@@ -99,7 +99,7 @@ function Homepage() {
                     <div>you need to succeed</div>
                   </div>
                   <div className="home--description">
-                    CMOlist enables marketing leaders to learn from each others
+                    CMOlist enables marketing leaders to learn from each other
                     by sharing proven marketing stacks, best practices, and new
                     insights
                   </div>
