@@ -31,6 +31,7 @@ const Vendors = (props) => {
   const [categoryTitle, setCategoryTitle] = useState("");
   const [inviteModalShow, setInviteModalShow] = useState(false);
   const [isAffiliated, setIsAffiliated] = useState(false);
+  const [isAdminUser, setIsAdminUser] = useState(false);
   const changeDashboardHeader = (idx) => {
     if (idx < filters.length) {
       setBannerTitle(filters[idx].title);
@@ -44,18 +45,32 @@ const Vendors = (props) => {
         { title: "All", slug: "my-network", enabled: true },
         { title: "My Experts", slug: "my-peers", enabled: true },
       ];
-      if (profileStats && profileStats.profile && profileStats.profile.groups) {
-        newFilters = newFilters.concat(
-          profileStats.profile.groups.map((group) => {
-            return {
-              title: group.name,
-              slug: group.slug,
-              image: group.image || null,
-              enabled: true,
-            };
-          })
-        );
-        if (profileStats.profile.groups.length > 0) setIsAffiliated(true);
+      if (profileStats && profileStats.profile) {
+        if (profileStats.profile.isAdminUser) {
+          setIsAdminUser(true);
+        }
+      }
+      if (profileStats && profileStats.profile) {
+        if (
+          profileStats.profile.groups &&
+          profileStats.profile.groups.length > 0
+        ) {
+          setIsAffiliated(true);
+          newFilters = newFilters.concat(
+            profileStats.profile.groups.map((group) => {
+              return {
+                title: group.name,
+                slug: group.slug,
+                image: group.image || null,
+                enabled: true,
+              };
+            })
+          );
+        } else {
+          newFilters = [
+            { title: "My Network", slug: "my-network", enabled: true },
+          ];
+        }
       }
       let idx = 0;
       if (location && location.hash) {
@@ -127,7 +142,12 @@ const Vendors = (props) => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  const toggleAddVendorModal = () => {
+  const toggleAddVendorModal = (contentAdded) => {
+    if (showAddVendor && contentAdded) {
+      // i.e. we're closing the dialog, trigger a refresh in case
+      // some content was added
+      window.location.reload();
+    }
     setShowAddVendor((value) => !value);
   };
 
@@ -207,8 +227,14 @@ const Vendors = (props) => {
             {!isAffiliated && (
               <div className="follow-members">
                 <Alert variant="success">
-                  <a href="/network">Follow other members</a> to view more
-                  tursted vendors
+                  <a
+                    className="cursor-pointer"
+                    onClick={() => (window.location.href = "/network")}
+                    style={{ color: "#2962ff" }}
+                  >
+                    <b>Follow more marketing leaders</b>
+                  </a>{" "}
+                  to grow your network and view more trusted vendors
                 </Alert>
               </div>
             )}
@@ -263,6 +289,7 @@ const Vendors = (props) => {
           props.saveUserInvite(data);
           setInviteModalShow(false);
         }}
+        isAdminUser={isAdminUser}
       />
     </Layout>
   );

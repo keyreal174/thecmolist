@@ -340,8 +340,8 @@ const Profile = (props) => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  const toggleAddVendorModal = () => {
-    if (showAddVendor) {
+  const toggleAddVendorModal = (contentAdded) => {
+    if (showAddVendor && contentAdded) {
       // i.e. we're closing the dialog, trigger a refresh in case
       // some content was added
       props.fetchProfile({

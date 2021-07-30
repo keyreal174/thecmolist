@@ -122,7 +122,7 @@ const Feature = ({ image, name, role, link }) => {
   );
 };
 
-const FeaturedStacks = ({ featuredStacks }) => {
+const FeaturedStacks = ({ featuredStacks, isAdminUser }) => {
   return featuredStacks && featuredStacks.length > 0 ? (
     <CustomCard heading="Featured marketing stacks">
       <div className="d-flex featured-stacks">
@@ -130,12 +130,15 @@ const FeaturedStacks = ({ featuredStacks }) => {
       </div>
       <div className="d-flex cta-message">
         <p className="text-center mr-3">
-          View{" "}
+          Invite two other marketing leaders to grow your network and view{" "}
           <b>
-            <a href="/vendors">all vendors</a>
+            <a href="/vendors" style={{ whiteSpace: "nowrap" }}>
+              all vendors
+            </a>
           </b>{" "}
-          shared by your<b> trusted peers</b>
+          shared by your peers
         </p>
+        <InviteButton lightMode isAdminUser={isAdminUser} />
       </div>
     </CustomCard>
   ) : (

@@ -27,7 +27,7 @@ const AddVendorsModal = ({ show, handleClose, categoryTitle }) => {
           <Container>
             <AddVendors
               categoryTitle={categoryTitle}
-              submitAfter={() => handleClose()}
+              submitAfter={() => handleClose(true)}
             />
           </Container>
         </Modal.Body>
