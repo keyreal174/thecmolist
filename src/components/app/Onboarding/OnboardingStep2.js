@@ -15,8 +15,6 @@ const OnboardingStep2 = ({
   getCategories,
   submitOnboardingStep2,
   getProfileStats,
-  fetchTopics,
-  topics,
 }) => {
   const [value, setValue] = useState([]);
   const [introError, setIntroError] = useState("");
@@ -233,7 +231,6 @@ const OnboardingStep2 = ({
 
 const mapState = (state) => ({
   categories: state.onboardingModel.categories,
-  topics: state.topicsModel.topics,
 });
 
 const mapDispatch = (dispatch) => {
@@ -241,7 +238,6 @@ const mapDispatch = (dispatch) => {
     getCategories: dispatch.onboardingModel.getCategories,
     submitOnboardingStep2: dispatch.onboardingModel.submitOnboardingStep2,
     getProfileStats: dispatch.profileModel.getProfileStats,
-    fetchTopics: dispatch.topicsModel.fetchTopics,
   };
 };
 
