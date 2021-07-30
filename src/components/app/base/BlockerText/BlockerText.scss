@@ -12,7 +12,7 @@
   position: absolute;
   z-index: 3;
   left: calc(50% - 180px);
-  top: 90px;
+  top: 70%;
 
   box-shadow: 0 5px 10px rgba(24, 45, 76, 0.1);
   -webkit-box-shadow: 0 5px 10px rgba(24, 45, 76, 0.1);
@@ -36,9 +36,9 @@
   background: white;
   background: linear-gradient(
     180deg,
-    hsla(0, 0%, 100%, 0.5) 0,
-    hsla(0, 0%, 100%, 0.7) 150px,
-    hsla(0, 0%, 100%, 0.95) 200px,
+    hsla(0, 0%, 100%, 0) 35%,
+    hsla(0, 0%, 100%, 0.7) 50%,
+    hsla(0, 0%, 100%, 0.95) 70%,
     #fff
   );
 }
