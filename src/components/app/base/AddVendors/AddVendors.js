@@ -223,7 +223,7 @@ const RenderVendorCategoryRow = ({
               onChangeSelctedOptions(selectedOption);
             }}
             placeholder={
-              skill ? "Summarize your experience" : "Search & select vendor(s)"
+              skill ? "Summarize your expertise" : "Search & select vendor(s)"
             }
             renderMenuItemChildren={(option) => (
               <React.Fragment>
