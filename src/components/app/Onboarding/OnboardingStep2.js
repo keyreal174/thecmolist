@@ -8,12 +8,15 @@ import { useHistory } from "react-router";
 import { CSSTransition } from "react-transition-group";
 import AddVendors from "../base/AddVendors/AddVendors";
 import AddSkills from "../base/AddSkills/AddSkills";
+import AddTopics from "../base/AddTopics/AddTopics";
 
 const OnboardingStep2 = ({
   categories,
   getCategories,
   submitOnboardingStep2,
   getProfileStats,
+  fetchTopics,
+  topics,
 }) => {
   const [value, setValue] = useState([]);
   const [introError, setIntroError] = useState("");
@@ -193,7 +196,8 @@ const OnboardingStep2 = ({
           ) : (
             <CustomCard className="onboarding--card fadeAndSlideElementInFast">
               <div className="p-4">
-                <AddSkills submitAfter={() => setShowGetIntro(true)} />
+                {/* <AddSkills submitAfter={() => setShowGetIntro(true)} /> */}
+                <AddTopics submitAfter={() => setShowGetIntro(true)} />
               </div>
             </CustomCard>
           ))}
@@ -215,7 +219,7 @@ const OnboardingStep2 = ({
                 className="mt-3 onboarding--button"
                 disabled={loading}
                 type="submit"
-                form={step === 1 ? "form-add-vendors" : "form-add-skills"}
+                form={step === 1 ? "form-add-vendors" : "form-add-topics"}
               >
                 Continue
               </Button>
@@ -229,6 +233,7 @@ const OnboardingStep2 = ({
 
 const mapState = (state) => ({
   categories: state.onboardingModel.categories,
+  topics: state.topicsModel.topics,
 });
 
 const mapDispatch = (dispatch) => {
@@ -236,6 +241,7 @@ const mapDispatch = (dispatch) => {
     getCategories: dispatch.onboardingModel.getCategories,
     submitOnboardingStep2: dispatch.onboardingModel.submitOnboardingStep2,
     getProfileStats: dispatch.profileModel.getProfileStats,
+    fetchTopics: dispatch.topicsModel.fetchTopics,
   };
 };
 

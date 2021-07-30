@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 import {
-  BUtton,
+  Button,
   Col,
+  Form,
   Row,
   ToggleButton,
   ToggleButtonGroup,
@@ -10,12 +12,26 @@ import {
 const AddTopics = ({
   value,
   handleChange,
-  pils,
   handleButtonClick,
   showMore,
+  submitAfter,
+  topics,
+  fetchTopics,
 }) => {
+  useEffect(() => {
+    const fetch = async () => {
+      await fetchTopics();
+    };
+    fetch();
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    submitAfter();
+  };
+
   return (
-    <>
+    <Form onSubmit={handleSubmit} id="form-add-topics">
       <Row className="onboarding--pill-wrapper">
         <Col md="12">
           <ToggleButtonGroup
@@ -24,15 +40,14 @@ const AddTopics = ({
             value={value}
             onChange={handleChange}
           >
-            {pils.map((p, index) => {
-              if (index < 12 || showMore) {
-                return (
-                  <ToggleButton
-                    value={p}
-                    className="onboarding--pill"
-                  >{`#${p}`}</ToggleButton>
-                );
-              }
+            {topics.map((p, index) => {
+              // if (index < 12 || showMore) {
+              return (
+                <ToggleButton value={p.name} className="onboarding--pill">
+                  {p.name}
+                </ToggleButton>
+              );
+              // }
             })}
           </ToggleButtonGroup>
         </Col>
@@ -49,8 +64,20 @@ const AddTopics = ({
           </Button>
         </Col>
       </Row>
-    </>
+    </Form>
   );
 };
 
-export default AddTopics;
+const mapState = (state) => {
+  return {
+    topics: state.topicsModel.topics,
+  };
+};
+
+const mapDispatch = (dispatch) => {
+  return {
+    fetchTopics: dispatch.topicsModel.fetchTopics,
+  };
+};
+
+export default connect(mapState, mapDispatch)(AddTopics);
