@@ -9,7 +9,11 @@ const companyStageOptions = [
   },
   {
     slug: "latestage",
-    description: "Late stage (series D+, public)",
+    description: "Late stage (series D+)",
+  },
+  {
+    slug: "public",
+    description: "Public company",
   },
 ];
 
