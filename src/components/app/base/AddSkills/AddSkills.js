@@ -115,7 +115,7 @@ const RenderSkillCategoryRow = ({
 
   let placeholderText = "";
   if (cate && cate.description && cate.description.length > 0) {
-    placeholderText = `Summarize your ${cate.description} experience`;
+    placeholderText = `Summarize your ${cate.description} expertise`;
   }
   return (
     <Row className="mb-3 align-items-center">
@@ -233,7 +233,7 @@ const AddSkills = ({
     >
       <Row className="form-add-vendors--header">
         <Col md={4}>Topic</Col>
-        <Col md={4}>Experience</Col>
+        <Col md={4}>Expertise</Col>
       </Row>
       <div className="form-add-vendors--content">
         {categories.map((cate, i) => (
