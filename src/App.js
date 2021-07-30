@@ -16,6 +16,7 @@ import OnboardingStep2 from "./components/app/Onboarding/OnboardingStep2.js";
 import Profile from "./components/app/Profile/Profile";
 import ProfileEdit from "./components/app/ProfileEdit/ProfileEdit";
 import ReactGA from "react-ga";
+import { hotjar } from "react-hotjar";
 import Settings from "./components/app/Settings/Settings";
 import Signedup from "./components/home/Signedup";
 import Signup from "./components/home/Signup";
@@ -66,6 +67,24 @@ class App extends React.Component {
       authed:
         Util.inLocalDevelopment() || Util.inTestContainer() || authTokenExists,
     };
+
+    let hjid, hjsv;
+    if (window.location.hostname === "cmo-list-staging.herokuapp.com") {
+      hjid = 2527605;
+      hjsv = 6;
+    } else if (
+      window.location.hostname === "thecmolist.com" ||
+      window.location.hostname.endsWith("thecmolist.com")
+    ) {
+      hjid = 2527592;
+      hjsv = 6;
+    }
+    if (hjid) {
+      hotjar.initialize(hjid, hjsv);
+      if (authTokenExists) {
+        hotjar.identify("USER_ID", { userProperty: Cookies.get("ipipeauth") });
+      }
+    }
   }
 
   render() {

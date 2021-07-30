@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import { connect } from "react-redux";
-import { Col, Row, Container, Button } from "react-bootstrap";
+import { Alert, Col, Row, Container, Button } from "react-bootstrap";
 import clsx from "clsx";
 import Layout from "../base/Layout/Layout";
 import Footer from "../base/Footer/Footer";
@@ -30,6 +30,8 @@ const Vendors = (props) => {
   const [isDetail, setIsDetail] = useState(false);
   const [categoryTitle, setCategoryTitle] = useState("");
   const [inviteModalShow, setInviteModalShow] = useState(false);
+  const [isAffiliated, setIsAffiliated] = useState(false);
+  const [isAdminUser, setIsAdminUser] = useState(false);
   const changeDashboardHeader = (idx) => {
     if (idx < filters.length) {
       setBannerTitle(filters[idx].title);
@@ -43,17 +45,32 @@ const Vendors = (props) => {
         { title: "All", slug: "my-network", enabled: true },
         { title: "My Experts", slug: "my-peers", enabled: true },
       ];
-      if (profileStats && profileStats.profile && profileStats.profile.groups) {
-        newFilters = newFilters.concat(
-          profileStats.profile.groups.map((group) => {
-            return {
-              title: group.name,
-              slug: group.slug,
-              image: group.image || null,
-              enabled: true,
-            };
-          })
-        );
+      if (profileStats && profileStats.profile) {
+        if (profileStats.profile.isAdminUser) {
+          setIsAdminUser(true);
+        }
+      }
+      if (profileStats && profileStats.profile) {
+        if (
+          profileStats.profile.groups &&
+          profileStats.profile.groups.length > 0
+        ) {
+          setIsAffiliated(true);
+          newFilters = newFilters.concat(
+            profileStats.profile.groups.map((group) => {
+              return {
+                title: group.name,
+                slug: group.slug,
+                image: group.image || null,
+                enabled: true,
+              };
+            })
+          );
+        } else {
+          newFilters = [
+            { title: "My Network", slug: "my-network", enabled: true },
+          ];
+        }
       }
       let idx = 0;
       if (location && location.hash) {
@@ -125,7 +142,12 @@ const Vendors = (props) => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  const toggleAddVendorModal = () => {
+  const toggleAddVendorModal = (contentAdded) => {
+    if (showAddVendor && contentAdded) {
+      // i.e. we're closing the dialog, trigger a refresh in case
+      // some content was added
+      window.location.reload();
+    }
     setShowAddVendor((value) => !value);
   };
 
@@ -178,29 +200,45 @@ const Vendors = (props) => {
             onSubmit={props.inviteNewMember}
             show={showInviteModal}
           />
-          {showFilters && (
-            <div
-              className={clsx(
-                "vendors--filters mb-4 d-flex",
-                mobileMenuOpen && "open"
-              )}
-            >
-              <Filter
-                className="mt-1 network--filter"
-                filterIdx={filterIdx}
-                filters={filters}
-                onChange={(idx) => changeFilter(idx)}
-              />
+          <div className="mb-4">
+            {showFilters && (
               <div
                 className={clsx(
-                  "filter-btn-group flex-grow-1 text-right filter-add-vendor-btn desktop-add-vendor-button"
+                  "vendors--filters d-flex",
+                  mobileMenuOpen && "open"
                 )}
-                style={{ minWidth: 150 }}
               >
-                <AddVendorButton />
+                <Filter
+                  className="mt-1 network--filter"
+                  filterIdx={filterIdx}
+                  filters={filters}
+                  onChange={(idx) => changeFilter(idx)}
+                />
+                <div
+                  className={clsx(
+                    "filter-btn-group flex-grow-1 text-right filter-add-vendor-btn desktop-add-vendor-button"
+                  )}
+                  style={{ minWidth: 150 }}
+                >
+                  <AddVendorButton />
+                </div>
               </div>
-            </div>
-          )}
+            )}
+            {!isAffiliated && (
+              <div className="follow-members">
+                <Alert variant="success">
+                  <a
+                    className="cursor-pointer"
+                    onClick={() => (window.location.href = "/network")}
+                    style={{ color: "#2962ff" }}
+                  >
+                    <b>Follow more marketing leaders</b>
+                  </a>{" "}
+                  to grow your network and view more trusted vendors
+                </Alert>
+              </div>
+            )}
+          </div>
           {isDetail ? (
             <VendorsDetail
               changeSubFilter={props.changeSubFilter}
@@ -251,6 +289,7 @@ const Vendors = (props) => {
           props.saveUserInvite(data);
           setInviteModalShow(false);
         }}
+        isAdminUser={isAdminUser}
       />
     </Layout>
   );

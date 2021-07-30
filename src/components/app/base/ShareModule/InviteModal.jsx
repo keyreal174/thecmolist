@@ -48,7 +48,9 @@ function InviteModal(props) {
   const [email1, setEmail1] = useState("");
   const [name2, setName2] = useState("");
   const [email2, setEmail2] = useState("");
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState(
+    "Please join me on CMOlist, a new professional network that enables marketing leaders to support each others by sharing proven marketing stacks, best practies, and new insights."
+  );
   const [collection, setCollection] = useState("");
 
   let closeDialog = (e) => {
@@ -104,7 +106,6 @@ function InviteModal(props) {
                   <Form.Label>Message</Form.Label>
                   <Form.Control
                     as="textarea"
-                    placeholder="Please join me on CMOlist, a new professional network that enables marketing leaders to support each others by sharing proven marketing stacks, best practies, and new insights."
                     rows="3"
                     value={message}
                     required={true}
@@ -112,19 +113,21 @@ function InviteModal(props) {
                   />
                 </Col>
               </Row>
-              <Row>
-                <Col xs={12}>
-                  <Form.Label>Collections</Form.Label>
-                  <Form.Control
-                    as="textarea"
-                    placeholder="Collections"
-                    rows="1"
-                    value={collection}
-                    required={true}
-                    onChange={(e) => setCollection(e.target.value)}
-                  />
-                </Col>
-              </Row>
+              {props.isAdminUser && (
+                <Row>
+                  <Col xs={12}>
+                    <Form.Label>Collections</Form.Label>
+                    <Form.Control
+                      as="textarea"
+                      placeholder="Collections"
+                      rows="1"
+                      value={collection}
+                      required={true}
+                      onChange={(e) => setCollection(e.target.value)}
+                    />
+                  </Col>
+                </Row>
+              )}
             </form>
           </Fragment>
         </Modal.Body>

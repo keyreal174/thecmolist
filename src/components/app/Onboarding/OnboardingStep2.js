@@ -15,6 +15,7 @@ const OnboardingStep2 = ({
   getCategories,
   submitOnboardingStep2,
   getProfileStats,
+  profileStats,
 }) => {
   const [value, setValue] = useState([]);
   const [introError, setIntroError] = useState("");
@@ -37,6 +38,8 @@ const OnboardingStep2 = ({
   useEffect(() => {
     const fetchCategories = async () => await getCategories();
     fetchCategories();
+    const fetchProfileStats = async () => await getProfileStats();
+    fetchProfileStats();
   }, []);
 
   useEffect(() => {
@@ -56,10 +59,14 @@ const OnboardingStep2 = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (intro.length === 0 && !showGetIntro) {
+    const isAfilliated =
+      profileStats &&
+      profileStats.profile &&
+      profileStats.profile.groups.length > 0;
+    if (intro.length === 0 && !showGetIntro && isAfilliated) {
       setShowGetIntro(true);
     } else {
-      if (intro.length === 0) {
+      if (intro.length === 0 && isAfilliated) {
         setIntroError("Please enter an introduction");
       } else {
         setIntroError("");
@@ -231,6 +238,7 @@ const OnboardingStep2 = ({
 
 const mapState = (state) => ({
   categories: state.onboardingModel.categories,
+  profileStats: state.profileModel.profileStats,
 });
 
 const mapDispatch = (dispatch) => {
