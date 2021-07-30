@@ -207,14 +207,8 @@ const Vendors = (props) => {
             {!isAffiliated && (
               <div className="follow-members">
                 <Alert variant="success">
-                  <a
-                    className="cursor-pointer"
-                    onClick={() => setInviteModalShow(true)}
-                    style={{ color: "#2962ff" }}
-                  >
-                    Follow other members
-                  </a>{" "}
-                  to view more tursted vendors
+                  <a href="/network">Follow other members</a> to view more
+                  tursted vendors
                 </Alert>
               </div>
             )}
