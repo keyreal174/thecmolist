@@ -182,12 +182,7 @@ class Login extends React.Component {
               className="login--logo nav__logo"
               href={"/home" + (window.location.search || "")}
             >
-              <img
-                src={Logo}
-                alt="CMOList brand logo"
-                width="163"
-                height="33"
-              />
+              <img src={Logo} alt="CMOlist logo" width="163" height="33" />
             </a>
             <div className="login--slider">
               <Slider />
