@@ -18,11 +18,12 @@ export const AllMembersList = ({ list }) => {
 };
 
 const AllMembers = ({ memberList }) => {
+  let membersHeading = memberList.heading || "All Members";
   let membersLink = memberList.link || "";
   let list = Array.isArray(memberList) ? memberList : memberList.list;
 
   return list && list.length > 0 ? (
-    <CustomCard heading="All Members" seeAllLink={membersLink}>
+    <CustomCard heading={membersHeading} seeAllLink={membersLink}>
       <div className="feed-box-content">
         <AllMembersList list={list} />
       </div>

@@ -58,12 +58,14 @@ const OnboardingStep2 = ({
   const handleChange = (value) => setValue(value);
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e && e.preventDefault();
     const isAfilliated =
       profileStats &&
       profileStats.profile &&
+      profileStats.profile.groups &&
       profileStats.profile.groups.length > 0;
-    if (intro.length === 0 && !showGetIntro && isAfilliated) {
+    let shouldShow = isAfilliated ? intro.length === 0 && !showGetIntro : false;
+    if (shouldShow) {
       setShowGetIntro(true);
     } else {
       if (intro.length === 0 && isAfilliated) {
@@ -212,7 +214,7 @@ const OnboardingStep2 = ({
                   handleChange={handleChange}
                   handleButtonClick={handleButtonClick}
                   handleAddTopicsSubmit={handleAddTopicsSubmit}
-                  submitAfter={() => setShowGetIntro(true)}
+                  submitAfter={() => handleSubmit()}
                 />
               </div>
             </CustomCard>
