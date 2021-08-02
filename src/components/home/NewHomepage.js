@@ -60,48 +60,20 @@ function Homepage() {
                   <div className="home--title text-left">
                     <div className="desktop">
                       <span className="mr-2">
-                        Connect with your peers <br></br>
-                        to get the marketing
-                      </span>
-                      <span>
-                        <AnimationText
-                          strings={[
-                            "advice",
-                            "tools",
-                            "agencies",
-                            "contractors",
-                            "playbooks",
-                            "news",
-                          ]}
-                          id="animationText"
-                        />
+                        The trusted network <br></br>
+                        for marketing leaders
                       </span>
                     </div>
                     <div className="mobile">
                       <span className="mr-2">
-                        Connect with your <br></br>
-                        peers to get the <br></br>marketing
-                      </span>
-                      <span>
-                        <AnimationText
-                          strings={[
-                            "advice",
-                            "tools",
-                            "agencies",
-                            "contractors",
-                            "playbooks",
-                            "news",
-                          ]}
-                          id="animationText1"
-                        />
+                        The trusted network <br></br>
+                        for marketing leaders
                       </span>
                     </div>
-                    <div>you need to succeed</div>
                   </div>
                   <div className="home--description">
-                    CMOlist enables marketing leaders to learn from each other
-                    by sharing proven marketing stacks, best practices, and new
-                    insights
+                    Connect with your peers to find and vet the marketing tools,
+                    agencies, and contractors you need to succeed
                   </div>
                   <div className="home--apply-button">
                     <Button
