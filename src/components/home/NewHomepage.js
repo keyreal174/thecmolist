@@ -58,6 +58,52 @@ function Homepage() {
               <Row>
                 <Col md="6">
                   <div className="home--title text-left">
+                    {/*
+                      <span className="mr-2">
+                        Connect with your peers <br></br>
+                        to get the marketing
+                      </span>
+                      <span>
+                        <AnimationText
+                          strings={[
+                            "advice",
+                            "tools",
+                            "agencies",
+                            "contractors",
+                            "playbooks",
+                            "news",
+                          ]}
+                          id="animationText"
+                        />
+                      </span>
+                    </div>
+                    <div className="mobile">
+                      <span className="mr-2">
+                        Connect with your <br></br>
+                        peers to get the <br></br>marketing
+                      </span>
+                      <span>
+                        <AnimationText
+                          strings={[
+                            "advice",
+                            "tools",
+                            "agencies",
+                            "contractors",
+                            "playbooks",
+                            "news",
+                          ]}
+                          id="animationText1"
+                        />
+                      </span>
+                    </div>
+                    <div>you need to succeed</div>
+                  </div>
+                  <div className="home--description">
+                    CMOlist enables marketing leaders to learn from each other
+                    by sharing proven marketing stacks, best practices, and new
+                    insights
+                  </div>
+*/}
                     <div className="desktop">
                       <span className="mr-2">
                         The trusted network <br></br>
