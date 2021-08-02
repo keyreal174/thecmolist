@@ -232,9 +232,9 @@ const Vendors = (props) => {
                     onClick={() => (window.location.href = "/network")}
                     style={{ color: "#2962ff" }}
                   >
-                    Follow other members
+                    <b>Follow more marketing leaders</b>
                   </a>{" "}
-                  to view more trusted vendors
+                  to grow your network and view more trusted vendors
                 </Alert>
               </div>
             )}

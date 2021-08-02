@@ -132,7 +132,9 @@ const FeaturedStacks = ({ featuredStacks, isAdminUser }) => {
         <p className="text-center mr-3">
           Invite two other marketing leaders to grow your network and view{" "}
           <b>
-            <a href="/vendors">all vendors</a>
+            <a href="/vendors" style={{ whiteSpace: "nowrap" }}>
+              all vendors
+            </a>
           </b>{" "}
           shared by your peers
         </p>
