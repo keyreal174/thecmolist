@@ -11,22 +11,16 @@ import {
 
 const AddTopics = ({
   value,
+  pils,
+  showMore,
   handleChange,
   handleButtonClick,
-  showMore,
   submitAfter,
-  topics,
-  fetchTopics,
+  handleAddTopicsSubmit,
 }) => {
-  useEffect(() => {
-    const fetch = async () => {
-      await fetchTopics();
-    };
-    fetch();
-  }, []);
-
   const handleSubmit = (e) => {
     e.preventDefault();
+    handleAddTopicsSubmit();
     submitAfter();
   };
 
@@ -40,14 +34,14 @@ const AddTopics = ({
             value={value}
             onChange={handleChange}
           >
-            {topics.map((p, index) => {
-              // if (index < 12 || showMore) {
-              return (
-                <ToggleButton value={p.name} className="onboarding--pill">
-                  {p.name}
-                </ToggleButton>
-              );
-              // }
+            {pils.map((p, index) => {
+              if (index < 12 || showMore) {
+                return (
+                  <ToggleButton value={p} className="onboarding--pill">
+                    {`#${p}`}
+                  </ToggleButton>
+                );
+              }
             })}
           </ToggleButtonGroup>
         </Col>
@@ -68,16 +62,4 @@ const AddTopics = ({
   );
 };
 
-const mapState = (state) => {
-  return {
-    topics: state.topicsModel.topics,
-  };
-};
-
-const mapDispatch = (dispatch) => {
-  return {
-    fetchTopics: dispatch.topicsModel.fetchTopics,
-  };
-};
-
-export default connect(mapState, mapDispatch)(AddTopics);
+export default AddTopics;

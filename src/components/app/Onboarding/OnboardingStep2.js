@@ -71,19 +71,6 @@ const OnboardingStep2 = ({
       } else {
         setIntroError("");
         setLoading(true);
-        // map value to slug
-        let userCategories = [];
-        value.forEach((v) => {
-          let category = categories.filter((c) => c.value === v);
-          if (category.length > 0) {
-            userCategories.push(category[0].slug || category[0].value);
-          }
-        });
-        submitOnboardingStep2({
-          categories: userCategories,
-          intro: intro,
-          options: selectedOptions,
-        });
         // refresh profile stats
         getProfileStats().then(() => {
           setLoading(false);
@@ -100,6 +87,22 @@ const OnboardingStep2 = ({
         });
       }
     }
+  };
+
+  const handleAddTopicsSubmit = async () => {
+    // map value to slug
+    let userCategories = [];
+    value.forEach((v) => {
+      let category = categories.filter((c) => c.value === v);
+      if (category.length > 0) {
+        userCategories.push(category[0].slug || category[0].value);
+      }
+    });
+    await submitOnboardingStep2({
+      categories: userCategories,
+      intro: intro,
+      options: selectedOptions,
+    });
   };
 
   return (
@@ -202,7 +205,15 @@ const OnboardingStep2 = ({
             <CustomCard className="onboarding--card fadeAndSlideElementInFast">
               <div className="p-4">
                 {/* <AddSkills submitAfter={() => setShowGetIntro(true)} /> */}
-                <AddTopics submitAfter={() => setShowGetIntro(true)} />
+                <AddTopics
+                  value={value}
+                  pils={pils}
+                  showMore={showMore}
+                  handleChange={handleChange}
+                  handleButtonClick={handleButtonClick}
+                  handleAddTopicsSubmit={handleAddTopicsSubmit}
+                  submitAfter={() => setShowGetIntro(true)}
+                />
               </div>
             </CustomCard>
           ))}
