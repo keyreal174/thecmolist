@@ -23,6 +23,7 @@ const AddTopics = ({
     handleAddTopicsSubmit();
     submitAfter();
   };
+  const minTopics = 21;
 
   return (
     <Form onSubmit={handleSubmit} id="form-add-topics">
@@ -35,7 +36,7 @@ const AddTopics = ({
             onChange={handleChange}
           >
             {pils.map((p, index) => {
-              if (index < 12 || showMore) {
+              if (index < minTopics || showMore) {
                 return (
                   <ToggleButton value={p} className="onboarding--pill">
                     {`#${p}`}

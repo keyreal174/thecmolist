@@ -20,7 +20,7 @@ const AddVendorsModal = ({ show, handleClose, categoryTitle }) => {
         </div>
         <Modal.Header as="h4">
           <Modal.Title className="vendor-category-modal">
-            Add tools or agencies to your marketing stack
+            Share your marketing tools and agencies with your peers
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>

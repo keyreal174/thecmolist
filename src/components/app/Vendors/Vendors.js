@@ -234,7 +234,8 @@ const Vendors = (props) => {
                   >
                     <b>Follow more marketing leaders</b>
                   </a>{" "}
-                  to grow your network and view more trusted vendors
+                  to add their trusted tools, agencies and contractors to your
+                  vendors directory
                 </Alert>
               </div>
             )}
