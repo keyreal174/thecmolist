@@ -30,7 +30,7 @@ const Vendors = (props) => {
   const [isDetail, setIsDetail] = useState(false);
   const [categoryTitle, setCategoryTitle] = useState("");
   const [inviteModalShow, setInviteModalShow] = useState(false);
-  const [isAffiliated, setIsAffiliated] = useState(false);
+  const [isAffiliated, setIsAffiliated] = useState(true);
   const [isAdminUser, setIsAdminUser] = useState(false);
   const changeDashboardHeader = (idx) => {
     if (idx < filters.length) {
@@ -67,6 +67,7 @@ const Vendors = (props) => {
             })
           );
         } else {
+          setIsAffiliated(false);
           newFilters = [
             { title: "My Network", slug: "my-network", enabled: true },
           ];
