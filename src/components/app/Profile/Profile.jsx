@@ -152,8 +152,12 @@ const Profile = (props) => {
           (item.title === "My Expertise" && feedtext === "expertise") ||
           (item.title === "My Stack" && feedtext === "stack")
       );
-
       if (!filterIdx) setFilterIdx(id === -1 ? 0 : id);
+
+      const exp_id = props.profile.feedData.findIndex(
+        (item) => item.title === "My Expertise" && feedtext === "expertise"
+      );
+      if (exp_id !== -1) setFilterTitle("My Expertise");
     }
   }, [props.profile]);
 
@@ -168,7 +172,6 @@ const Profile = (props) => {
       const id = props.profile.feedData.findIndex(
         (item) => item.title === "My Stack"
       );
-
       setFilterIdx(id);
     }
   }, [location, props.profile]);
