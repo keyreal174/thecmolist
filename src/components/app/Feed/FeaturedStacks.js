@@ -130,7 +130,7 @@ const FeaturedStacks = ({ featuredStacks, isAdminUser }) => {
       </div>
       <div className="d-flex cta-message">
         <p className="text-center mr-3">
-          Invite two other marketing leaders to grow your network and view{" "}
+          Invite two trusted marketing leaders to grow your network and view{" "}
           <b>
             <a href="/vendors" style={{ whiteSpace: "nowrap" }}>
               all vendors
