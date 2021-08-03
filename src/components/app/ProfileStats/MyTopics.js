@@ -36,8 +36,8 @@ const MyTopics = ({ profileStats }) => {
         </div>
       ) : (
         <span className="profile-stats--empty-message">
-          Follow <a href="/topics">topics</a> to see updates about specific
-          marketing topics.
+          Follow <a href="/topics">#topics</a> to see questions, playbooks, and
+          news about those marketing topics in your feed
         </span>
       )}
     </CustomCard>

@@ -88,11 +88,11 @@ function Signup() {
             <hr style={{ "margin-top": "30px" }} />
             <div className="form-group">
               <h2 className="signup--header signup--header-beta">
-                Apply for Membership
+                Apply for free Membership
               </h2>
               <span className="signup-attn">
-                Membership is limited to marketing leaders and experts. Please
-                fill out the information below to apply for a free membership.
+                Membership to CMOlist is limited to marketing leaders and
+                experts. Please fill out the information below to apply.
               </span>
             </div>
             <div className="form-inputs-group">
