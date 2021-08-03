@@ -599,7 +599,12 @@ const Profile = (props) => {
                       Marketing expertise
                     </Form.Label>
                     <div>
-                      <RenderList arr={profileAbout.areasOfExpertise} />
+                      {profileAbout.areasOfExpertise &&
+                      profileAbout.areasOfExpertise.length > 0 ? (
+                        <RenderList arr={profileAbout.areasOfExpertise} />
+                      ) : (
+                        <span>None shared</span>
+                      )}
                     </div>
                   </Col>
                 )}
@@ -609,7 +614,12 @@ const Profile = (props) => {
                       Marketing interests
                     </Form.Label>
                     <div>
-                      <RenderList arr={profileAbout.areasOfInterest} />
+                      {profileAbout.areasOfInterest &&
+                      profileAbout.areasOfInterest.length > 0 ? (
+                        <RenderList arr={profileAbout.areasOfInterest} />
+                      ) : (
+                        <span>None shared</span>
+                      )}
                     </div>
                   </Col>
                 )}
