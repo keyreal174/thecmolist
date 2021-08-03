@@ -58,7 +58,7 @@ function Homepage() {
               <Row>
                 <Col md="6">
                   <div className="home--title text-left">
-                    <div className="desktop">
+                    {/*
                       <span className="mr-2">
                         Connect with your peers <br></br>
                         to get the marketing
@@ -99,9 +99,27 @@ function Homepage() {
                     <div>you need to succeed</div>
                   </div>
                   <div className="home--description">
-                    CMOlist enables marketing leaders to learn from each others
+                    CMOlist enables marketing leaders to learn from each other
                     by sharing proven marketing stacks, best practices, and new
                     insights
+                  </div>
+*/}
+                    <div className="desktop">
+                      <span className="mr-2">
+                        The trusted network <br></br>
+                        for marketing leaders
+                      </span>
+                    </div>
+                    <div className="mobile">
+                      <span className="mr-2">
+                        The trusted network <br></br>
+                        for marketing leaders
+                      </span>
+                    </div>
+                  </div>
+                  <div className="home--description">
+                    Connect with your peers to find and vet the marketing tools,
+                    agencies, and contractors you need to succeed
                   </div>
                   <div className="home--apply-button">
                     <Button

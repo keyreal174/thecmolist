@@ -3,7 +3,7 @@ import { Button, Form, Modal, Row, Col } from "react-bootstrap";
 import Close from "../icons/close.svg";
 import "./sharemodule.scss";
 
-const InfoRow = ({ setUserName, setUserEmail }) => {
+const InfoRow = ({ setUserName, setUserEmail, required }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
@@ -16,7 +16,7 @@ const InfoRow = ({ setUserName, setUserEmail }) => {
           type="text"
           placeholder="First name, Last name"
           value={name}
-          required={true}
+          required={required}
           onChange={(e) => {
             setName(e.target.value);
             setUserName(e.target.value);
@@ -30,7 +30,7 @@ const InfoRow = ({ setUserName, setUserEmail }) => {
           type="email"
           placeholder="name@company.com"
           value={email}
-          required={true}
+          required={required}
           onChange={(e) => {
             setEmail(e.target.value);
             setUserEmail(e.target.value);
@@ -49,7 +49,7 @@ function InviteModal(props) {
   const [name2, setName2] = useState("");
   const [email2, setEmail2] = useState("");
   const [message, setMessage] = useState(
-    "Please join me on CMOlist, a new professional network that enables marketing leaders to support each others by sharing proven marketing stacks, best practies, and new insights."
+    "Please join me on CMOlist, a new professional network that enables marketing leaders to support each others by sharing proven marketing stacks, best practices, and new insights."
   );
   const [collection, setCollection] = useState("");
 
@@ -98,9 +98,21 @@ function InviteModal(props) {
               <strong>unlock new capabilities</strong>.
             </p>
             <form id="invite-modal" onSubmit={closeDialog}>
-              <InfoRow setUserName={setName} setUserEmail={setEmail} />
-              <InfoRow setUserName={setName1} setUserEmail={setEmail1} />
-              <InfoRow setUserName={setName2} setUserEmail={setEmail2} />
+              <InfoRow
+                setUserName={setName}
+                setUserEmail={setEmail}
+                required={true}
+              />
+              <InfoRow
+                setUserName={setName1}
+                setUserEmail={setEmail1}
+                required={false}
+              />
+              <InfoRow
+                setUserName={setName2}
+                setUserEmail={setEmail2}
+                required={false}
+              />
               <Row>
                 <Col xs={12}>
                   <Form.Label>Message</Form.Label>
@@ -122,7 +134,7 @@ function InviteModal(props) {
                       placeholder="Collections"
                       rows="1"
                       value={collection}
-                      required={true}
+                      required={false}
                       onChange={(e) => setCollection(e.target.value)}
                     />
                   </Col>

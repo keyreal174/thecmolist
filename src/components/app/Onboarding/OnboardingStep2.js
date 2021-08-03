@@ -8,6 +8,7 @@ import { useHistory } from "react-router";
 import { CSSTransition } from "react-transition-group";
 import AddVendors from "../base/AddVendors/AddVendors";
 import AddSkills from "../base/AddSkills/AddSkills";
+import AddTopics from "../base/AddTopics/AddTopics";
 
 const OnboardingStep2 = ({
   categories,
@@ -57,12 +58,14 @@ const OnboardingStep2 = ({
   const handleChange = (value) => setValue(value);
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e && e.preventDefault();
     const isAfilliated =
       profileStats &&
       profileStats.profile &&
+      profileStats.profile.groups &&
       profileStats.profile.groups.length > 0;
-    if (intro.length === 0 && !showGetIntro && isAfilliated) {
+    let shouldShow = isAfilliated ? intro.length === 0 && !showGetIntro : false;
+    if (shouldShow) {
       setShowGetIntro(true);
     } else {
       if (intro.length === 0 && isAfilliated) {
@@ -70,19 +73,6 @@ const OnboardingStep2 = ({
       } else {
         setIntroError("");
         setLoading(true);
-        // map value to slug
-        let userCategories = [];
-        value.forEach((v) => {
-          let category = categories.filter((c) => c.value === v);
-          if (category.length > 0) {
-            userCategories.push(category[0].slug || category[0].value);
-          }
-        });
-        submitOnboardingStep2({
-          categories: userCategories,
-          intro: intro,
-          options: selectedOptions,
-        });
         // refresh profile stats
         getProfileStats().then(() => {
           setLoading(false);
@@ -101,15 +91,31 @@ const OnboardingStep2 = ({
     }
   };
 
+  const handleAddTopicsSubmit = async () => {
+    // map value to slug
+    let userCategories = [];
+    value.forEach((v) => {
+      let category = categories.filter((c) => c.value === v);
+      if (category.length > 0) {
+        userCategories.push(category[0].slug || category[0].value);
+      }
+    });
+    await submitOnboardingStep2({
+      categories: userCategories,
+      intro: intro,
+      options: selectedOptions,
+    });
+  };
+
   return (
     <OnboardingLayout
       now={step === 1 ? 75 : 100}
       title={
         showGetIntro
-          ? "One last step..."
+          ? "Finally..."
           : step === 1
-          ? "Share five or more of your most impactful marketing tools with your trusted peers"
-          : "Select three areas of expertise for which you could provide advice to your trusted peers"
+          ? "Share five or more of your most impactful marketing tools or agencies with your trusted peers"
+          : "One more step: select topics you would like to learn more about from your peers"
       }
       subtitle={
         showGetIntro
@@ -200,7 +206,16 @@ const OnboardingStep2 = ({
           ) : (
             <CustomCard className="onboarding--card fadeAndSlideElementInFast">
               <div className="p-4">
-                <AddSkills submitAfter={() => setShowGetIntro(true)} />
+                {/* <AddSkills submitAfter={() => setShowGetIntro(true)} /> */}
+                <AddTopics
+                  value={value}
+                  pils={pils}
+                  showMore={showMore}
+                  handleChange={handleChange}
+                  handleButtonClick={handleButtonClick}
+                  handleAddTopicsSubmit={handleAddTopicsSubmit}
+                  submitAfter={() => handleSubmit()}
+                />
               </div>
             </CustomCard>
           ))}
@@ -222,7 +237,7 @@ const OnboardingStep2 = ({
                 className="mt-3 onboarding--button"
                 disabled={loading}
                 type="submit"
-                form={step === 1 ? "form-add-vendors" : "form-add-skills"}
+                form={step === 1 ? "form-add-vendors" : "form-add-topics"}
               >
                 Continue
               </Button>

@@ -102,7 +102,7 @@ function AdminPage() {
                       name="json"
                       as="textarea"
                       rows="3"
-                      required={true}
+                      required={false}
                     />
                   </Form.Group>
                   <Button className="btn__homepage" type="submit">

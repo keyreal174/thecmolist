@@ -185,6 +185,7 @@ const RenderVendorCategoryRow = ({
     updateVendors && updateVendors([...myTools]);
   }, [myTools]);
 
+  const enableAddingVendor = !!getSuggestions;
   return (
     <div className="mb-3">
       <Row className="align-items-center">
@@ -197,40 +198,42 @@ const RenderVendorCategoryRow = ({
           />
         </Col>
         <Col md={4}>
-          <AsyncTypeahead
-            id="async-global-search"
-            isLoading={isLoading}
-            labelKey="name"
-            multiple
-            minLength={0}
-            onSearch={handleSearch}
-            options={options}
-            emptyLabel=""
-            renderMenu={(results, menuProps) => {
-              if (!results.length) {
-                return null;
+          {enableAddingVendor && (
+            <AsyncTypeahead
+              id="async-global-search"
+              isLoading={isLoading}
+              labelKey="name"
+              multiple
+              minLength={0}
+              onSearch={handleSearch}
+              options={options}
+              emptyLabel=""
+              renderMenu={(results, menuProps) => {
+                if (!results.length) {
+                  return null;
+                }
+                return (
+                  <TypeaheadMenu
+                    options={results}
+                    labelKey="name"
+                    {...menuProps}
+                  />
+                );
+              }}
+              selected={myTools}
+              onChange={(selectedOption) => {
+                onChangeSelctedOptions(selectedOption);
+              }}
+              placeholder={
+                skill ? "Summarize your expertise" : "Search & select vendor(s)"
               }
-              return (
-                <TypeaheadMenu
-                  options={results}
-                  labelKey="name"
-                  {...menuProps}
-                />
-              );
-            }}
-            selected={myTools}
-            onChange={(selectedOption) => {
-              onChangeSelctedOptions(selectedOption);
-            }}
-            placeholder={
-              skill ? "Summarize your experience" : "Search & select vendor(s)"
-            }
-            renderMenuItemChildren={(option) => (
-              <React.Fragment>
-                <span>{option.name}</span>
-              </React.Fragment>
-            )}
-          />
+              renderMenuItemChildren={(option) => (
+                <React.Fragment>
+                  <span>{option.name}</span>
+                </React.Fragment>
+              )}
+            />
+          )}
         </Col>
         <Col md={4}>
           {!skill && (

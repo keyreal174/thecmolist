@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 import {
-  BUtton,
+  Button,
   Col,
+  Form,
   Row,
   ToggleButton,
   ToggleButtonGroup,
@@ -9,13 +11,21 @@ import {
 
 const AddTopics = ({
   value,
-  handleChange,
   pils,
-  handleButtonClick,
   showMore,
+  handleChange,
+  handleButtonClick,
+  submitAfter,
+  handleAddTopicsSubmit,
 }) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleAddTopicsSubmit();
+    submitAfter();
+  };
+
   return (
-    <>
+    <Form onSubmit={handleSubmit} id="form-add-topics">
       <Row className="onboarding--pill-wrapper">
         <Col md="12">
           <ToggleButtonGroup
@@ -27,10 +37,9 @@ const AddTopics = ({
             {pils.map((p, index) => {
               if (index < 12 || showMore) {
                 return (
-                  <ToggleButton
-                    value={p}
-                    className="onboarding--pill"
-                  >{`#${p}`}</ToggleButton>
+                  <ToggleButton value={p} className="onboarding--pill">
+                    {`#${p}`}
+                  </ToggleButton>
                 );
               }
             })}
@@ -49,7 +58,7 @@ const AddTopics = ({
           </Button>
         </Col>
       </Row>
-    </>
+    </Form>
   );
 };
 
