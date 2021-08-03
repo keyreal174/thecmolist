@@ -182,7 +182,6 @@ const Network = (props) => {
             </Col>
             <Col className="network--share-content" md="4">
               <div className="mt-3">
-                {/* <MyNetwork saveContent={props.saveContent} /> */}
                 <InviteCard />
               </div>
             </Col>
