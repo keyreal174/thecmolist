@@ -311,6 +311,13 @@
     }
   }
 
+  .vendor-card-container {
+    min-height: 270px;
+    @media screen and (max-width: 767px) {
+      min-height: 210px;
+    }
+  }
+
   .vendor-card-connections {
     p {
       font-size: 15px;
