@@ -49,7 +49,7 @@ function InviteModal(props) {
   const [name2, setName2] = useState("");
   const [email2, setEmail2] = useState("");
   const [message, setMessage] = useState(
-    "Please join me on CMOlist, a new professional network that enables marketing leaders to support each others by sharing proven marketing stacks, best practies, and new insights."
+    "Please join me on CMOlist, a new professional network that enables marketing leaders to support each others by sharing proven marketing stacks, best practices, and new insights."
   );
   const [collection, setCollection] = useState("");
 
