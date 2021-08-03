@@ -256,7 +256,7 @@
 .vendor-list-container {
   display: flex;
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 991px) {
     flex-direction: column;
   }
 
@@ -394,17 +394,37 @@
   .add-vendor-blocker-opacity {
     width: calc(100% - 391px);
     left: 391px;
-    top: 100px;
+
+    @media screen and (max-width: 991px) {
+      left: 0;
+      width: 100%;
+    }
   }
 
   .add-vendor-blocker-modal {
-    top: 70%;
-    right: 291px;
+    right: calc((100% - 391px) / 2 - 200px);
     left: inherit;
     padding: 28px 28px;
 
     button {
       padding: 5px 30px !important;
+    }
+
+    @media screen and (max-width: 991px) {
+      right: calc(50% - 200px);
+    }
+
+    @media screen and (max-width: 476px) {
+      width: calc(100% - 34px);
+      left: 17px;
+    }
+  }
+}
+.add-vendor-blocker-wrapper.vendor-detail-page-wrapper {
+  .add-vendor-blocker-opacity {
+    @media screen and (max-width: 767px) {
+      width: 100%;
+      left: 0;
     }
   }
 }

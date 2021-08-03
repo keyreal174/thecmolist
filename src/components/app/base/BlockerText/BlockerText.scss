@@ -11,8 +11,8 @@
   text-align: center;
   position: absolute;
   z-index: 3;
-  left: calc(50% - 180px);
-  top: 70%;
+  left: calc(50% - 200px);
+  bottom: 20px;
 
   box-shadow: 0 5px 10px rgba(24, 45, 76, 0.1);
   -webkit-box-shadow: 0 5px 10px rgba(24, 45, 76, 0.1);
@@ -23,6 +23,19 @@
     line-height: 26px;
     margin-bottom: 20px;
     color: $text-1;
+  }
+
+  .filter-btn-group {
+    padding-bottom: 0;
+  }
+
+  @media screen and (max-width: 767px) {
+    padding: 24px 16px;
+  }
+
+  @media screen and (max-width: 476px) {
+    width: calc(100% - 60px);
+    left: 30px;
   }
 }
 
@@ -41,6 +54,11 @@
     hsla(0, 0%, 100%, 0.95) 70%,
     #fff
   );
+
+  @media screen and (max-width: 767px) {
+    width: calc(100% - 34px);
+    left: 17px;
+  }
 }
 
 .add-vendor-blocker-wrapper {

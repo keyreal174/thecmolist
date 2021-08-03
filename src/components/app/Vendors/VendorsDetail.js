@@ -114,7 +114,8 @@ const VendorsDetail = ({
             ) : (
               <div
                 className={clsx(
-                  vendorsDetail.blockerText && "add-vendor-blocker-wrapper"
+                  vendorsDetail.blockerText &&
+                    "add-vendor-blocker-wrapper vendor-detail-page-wrapper"
                 )}
               >
                 {vendorsDetail.blockerText && (
