@@ -94,7 +94,7 @@
     { "checked": true, "content": "Share one Playbook" },
     {
       "checked": false,
-      "content": "Invite other trusted marketing leaders",
+      "content": "Invite two trusted marketing leaders",
       "showInviteButton": true
     }
   ]

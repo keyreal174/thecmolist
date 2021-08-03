@@ -19,7 +19,7 @@ const AddSkillsModal = ({ show, handleClose }) => {
         </div>
         <Modal.Header as="h4">
           <Modal.Title className="vendor-category-modal">
-            Add topics for which you could provide advice
+            Share your areas of marketing expertise with your peers
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
