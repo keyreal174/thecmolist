@@ -13,7 +13,7 @@ function Signedup() {
             <img src={Logo} alt="CMOList brand logo" />
           </a>
           <div className="form-group signedup--form">
-            <h2 className="signedup--thanks">Thank you for signing up</h2>
+            <h2 className="signedup--thanks">Thank you for your application</h2>
             <p className="signedup--contact">
               Any questions? Please contact us at{" "}
               <a href="mailto:hello@thecmolist.com">hello@thecmolist.com</a>
