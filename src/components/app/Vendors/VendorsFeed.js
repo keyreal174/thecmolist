@@ -24,11 +24,7 @@ const VendorsFeed = ({
           ✖
         </span>
       ) : (
-        <a
-          className="m-0"
-          style={{ whiteSpace: "nowrap", cursor: "pointer", color: "#2962ff" }}
-          onClick={getCategoryTitle}
-        >
+        <a className="m-0 add-mystack-btn" onClick={getCategoryTitle}>
           + My Stack
         </a>
       )
