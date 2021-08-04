@@ -31,6 +31,10 @@ class Login extends React.Component {
   constructor(props) {
     super(props);
 
+    const isProd =
+      window.location.hostname === "thecmolist.com" ||
+      window.location.hostname.endsWith("thecmolist.com");
+    let showUsernamePw = !isProd;
     let redirectUrl = "/";
     if (this.props.location) {
       let location = this.props.location;
@@ -42,12 +46,16 @@ class Login extends React.Component {
     } else {
       let query = querySearch(window.location.search);
       redirectUrl = query.redirect ? decodeURIComponent(query.redirect) : "/";
+      if (!showUsernamePw && query.showUsername) {
+        showUsernamePw = true;
+      }
     }
 
     this.state = {
       busy: false,
       redirectUrl: redirectUrl,
       linkedInUrl: "",
+      showUsernamePw: showUsernamePw,
     };
 
     document.title = "Login";
@@ -118,44 +126,48 @@ class Login extends React.Component {
                 <a href={userPolicy}>User Agreement</a> and{" "}
                 <a href={privacyPolicy}>Privacy Policy</a>.
               </p>
-              <input
-                type="email"
-                className="form-control form-username input-field"
-                name="Username"
-                placeholder="Email"
-                required=""
-              />
-              <input
-                type="password"
-                className="form-control form-password input-field"
-                style={{ marginBottom: "15px" }}
-                name="Password"
-                placeholder="Password"
-                required=""
-              />
-              <button
-                className="btn btn-block btn-linkedin button-login login--login"
-                name="Submit"
-                value="Login"
-                type="Submit"
-                disabled={this.state.busy}
-              >
-                <span>Login</span>
-                <div
-                  style={{
-                    "margin-top": "5px",
-                    "margin-right": "4px",
-                    float: "right",
-                  }}
-                >
-                  <Spinner
-                    radius={10}
-                    color={"#eee"}
-                    stroke={2}
-                    visible={this.state.busy}
+              {this.state.showUsernamePw && (
+                <div>
+                  <input
+                    type="email"
+                    className="form-control form-username input-field"
+                    name="Username"
+                    placeholder="Email"
+                    required=""
                   />
+                  <input
+                    type="password"
+                    className="form-control form-password input-field"
+                    style={{ marginBottom: "15px" }}
+                    name="Password"
+                    placeholder="Password"
+                    required=""
+                  />
+                  <button
+                    className="btn btn-block btn-linkedin button-login login--login"
+                    name="Submit"
+                    value="Login"
+                    type="Submit"
+                    disabled={this.state.busy}
+                  >
+                    <span>Login</span>
+                    <div
+                      style={{
+                        "margin-top": "5px",
+                        "margin-right": "4px",
+                        float: "right",
+                      }}
+                    >
+                      <Spinner
+                        radius={10}
+                        color={"#eee"}
+                        stroke={2}
+                        visible={this.state.busy}
+                      />
+                    </div>
+                  </button>
                 </div>
-              </button>
+              )}
               <p className="login--question">
                 Any questions or problems signing in? Please contact us at{" "}
                 <strong className="login--contact-email">
