@@ -475,19 +475,6 @@ ul {
   width: 100%;
 }
 
-.form-signin {
-  max-width: 480px;
-  padding: 70px 20px 80px;
-  margin: 0 auto;
-  background-color: #fff;
-  border-radius: 20px;
-}
-
-.form-signin-heading {
-  text-align:center;
-  margin-bottom: 30px;
-}
-
 .form-control {
   position: relative;
   font-size: 16px;

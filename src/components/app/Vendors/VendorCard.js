@@ -6,7 +6,7 @@ import CustomCard from "../base/CustomCard/CustomCard";
 
 const VendorCard = ({ item }) => {
   return (
-    <CustomCard>
+    <CustomCard className="vendor-card-container">
       <div className="avatar-thumb text-center mr-0 mb-2">
         <a href={item.contentlink ? item.contentlink : ""}>
           <img
