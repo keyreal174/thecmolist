@@ -16,6 +16,7 @@ import MyNetwork from "../Feed/MyNetwork";
 import Analytics from "../../util/Analytics";
 import { cdn } from "../../util/constants";
 import "./network.scss";
+import InviteCard from "./Invite";
 
 const Network = (props) => {
   const location = useLocation();
@@ -181,7 +182,7 @@ const Network = (props) => {
             </Col>
             <Col className="network--share-content" md="4">
               <div className="mt-3">
-                <MyNetwork saveContent={props.saveContent} />
+                <InviteCard />
               </div>
             </Col>
           </Row>
