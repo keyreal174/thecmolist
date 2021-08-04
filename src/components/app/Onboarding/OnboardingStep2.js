@@ -114,7 +114,7 @@ const OnboardingStep2 = ({
         showGetIntro
           ? "Finally..."
           : step === 1
-          ? "Share five or more of your most impactful marketing tools or agencies with your trusted peers"
+          ? "Share your 5 favorite marketing tools or agencies with your trusted peers"
           : "One last step: select topics you would like to learn more about from your peers"
       }
       subtitle={
