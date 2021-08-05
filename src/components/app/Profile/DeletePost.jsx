@@ -16,6 +16,7 @@ function DeletePost(props) {
         keyboard={false}
         size="md"
         onHide={props.closeModal}
+        className="delete-post-modal"
       >
         <Modal.Header>
           <Modal.Title>Delete post</Modal.Title>

@@ -42,7 +42,7 @@ const CategoryDropdown = ({
     <div>
       <Dropdown className="navbar-dropdown vendor-category-dropdown">
         <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
-          {category && category.name ? "#" + category.name : ""}
+          {category && category.name ? "#" + category.name : "Select category"}
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
