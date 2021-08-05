@@ -642,3 +642,10 @@
     margin-right: 15px;
   }
 }
+
+// remove padding for delete modal title
+.delete-post-modal {
+  .modal-title {
+    padding-left: 0;
+  }
+}
