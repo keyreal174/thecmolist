@@ -146,15 +146,16 @@ const Profile = (props) => {
       setFollowedUser(props.profile.followedUser);
       props.profile.feedData && createSubfilters(props.profile.feedData);
 
+      const profileFeedData = props.profile.feedData || [];
       const feedtext = window.location.href.split("#")[1];
-      const id = props.profile.feedData.findIndex(
+      const id = profileFeedData.findIndex(
         (item) =>
           (item.title === "My Expertise" && feedtext === "expertise") ||
           (item.title === "My Stack" && feedtext === "stack")
       );
       if (!filterIdx) setFilterIdx(id === -1 ? 0 : id);
 
-      const exp_id = props.profile.feedData.findIndex(
+      const exp_id = profileFeedData.findIndex(
         (item) => item.title === "My Expertise" && feedtext === "expertise"
       );
       if (exp_id !== -1) setFilterTitle("My Expertise");
