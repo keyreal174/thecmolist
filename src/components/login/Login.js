@@ -36,6 +36,7 @@ class Login extends React.Component {
       window.location.hostname.endsWith("thecmolist.com");
     let showUsernamePw = !isProd;
     let redirectUrl = "/";
+    let query = querySearch(window.location.search);
     if (this.props.location) {
       let location = this.props.location;
       let locationFrom =
@@ -44,11 +45,11 @@ class Login extends React.Component {
           : null;
       redirectUrl = locationFrom ? locationFrom : "/";
     } else {
-      let query = querySearch(window.location.search);
       redirectUrl = query.redirect ? decodeURIComponent(query.redirect) : "/";
-      if (!showUsernamePw && query.showUsername) {
-        showUsernamePw = true;
-      }
+    }
+
+    if (!showUsernamePw && query.showUsername) {
+      showUsernamePw = true;
     }
 
     this.state = {
