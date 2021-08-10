@@ -37,6 +37,7 @@ const VendorsDetail = ({
   loadingVendors,
   mobileMenuOpen,
   getCategoryTitle,
+  setLimit,
   allowBackButton,
   showCategoryListView,
   filterIdx,
@@ -140,6 +141,7 @@ const VendorsDetail = ({
                       <VendorsFeed
                         feedData={category.vendors}
                         getCategoryTitle={() => getCategoryTitle(category.name)}
+                        setLimit={(val) => setLimit(val)}
                         description={category.description}
                         showCategoryListView={showCategoryListView}
                         isMyProfile={isMyProfile}

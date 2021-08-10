@@ -30,7 +30,7 @@ const InviteButton = ({ saveUserInvite, lightMode, isAdminUser }) => {
   );
 };
 
-const mapState = (state) => {};
+const mapState = (state) => ({});
 
 const mapDispatch = (dispatch) => {
   return {

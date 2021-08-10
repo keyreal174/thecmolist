@@ -283,6 +283,7 @@ const Vendors = (props) => {
         show={showAddVendor}
         handleClose={toggleAddVendorModal}
         categoryTitle={categoryTitle}
+        limit={0}
       />
       <InviteModal
         show={inviteModalShow}
