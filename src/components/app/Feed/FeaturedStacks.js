@@ -58,7 +58,7 @@ const Slider = ({ featuredStacks }) => {
       const temp = func_chunks(featuredStacks, 2);
       setFeatures(temp);
       setBreakpoint(2);
-    } else if (size.width < 1200 && size.width >= 768 && breakpoint !== 3) {
+    } else if (size.width < 1200 && breakpoint !== 3) {
       const temp = func_chunks(featuredStacks, 1);
       setFeatures(temp);
       setBreakpoint(3);
