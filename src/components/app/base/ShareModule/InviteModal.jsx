@@ -54,6 +54,7 @@ function InviteModal(props) {
   const [collection, setCollection] = useState("");
 
   let closeDialog = (e) => {
+    e.preventDefault();
     let data = {
       info: [
         { name: name, email: email },
