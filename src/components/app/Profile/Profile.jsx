@@ -108,6 +108,7 @@ const Profile = (props) => {
   const [showAddSkill, setShowAddSkill] = useState(false);
   const [showCategoryListView, setShowCategoryListView] = useState(false);
   const [categoryTitle, setCategoryTitle] = useState("");
+  const [limit, setLimit] = useState(null);
 
   const userName = Util.parsePath(window.location.href).trailingPath;
 
@@ -352,6 +353,7 @@ const Profile = (props) => {
         userName: Util.parsePath(window.location.href).trailingPath,
       });
     }
+    setLimit(0);
     setShowAddVendor((value) => !value);
   };
 
@@ -701,6 +703,7 @@ const Profile = (props) => {
                           setCategoryTitle(title);
                           setShowAddVendor((value) => !value);
                         }}
+                        setLimit={(val) => setLimit(val)}
                         allowBackButton={true}
                         showCategoryListView={true}
                         isMyProfile={isMyProfile}
@@ -849,6 +852,7 @@ const Profile = (props) => {
         show={showAddVendor}
         handleClose={toggleAddVendorModal}
         categoryTitle={categoryTitle}
+        limit={limit}
       />
       <AddSkillsModal show={showAddSkill} handleClose={toggleAddSkillModal} />
     </Layout>

@@ -9,6 +9,7 @@ import "./vendors.scss";
 const VendorsFeed = ({
   feedData,
   getCategoryTitle,
+  setLimit,
   description,
   showCategoryListView,
   isMyProfile,
@@ -24,7 +25,13 @@ const VendorsFeed = ({
           ✖
         </span>
       ) : (
-        <a className="m-0 add-mystack-btn" onClick={getCategoryTitle}>
+        <a
+          className="m-0 add-mystack-btn"
+          onClick={() => {
+            getCategoryTitle();
+            setLimit(1);
+          }}
+        >
           + My Stack
         </a>
       )

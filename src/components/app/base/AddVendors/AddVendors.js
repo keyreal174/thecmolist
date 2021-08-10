@@ -275,6 +275,7 @@ const AddVendors = ({
   getSuggestions,
   saveVendors,
   categoryTitle,
+  limit,
 }) => {
   const [vendors, setVendors] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -298,25 +299,33 @@ const AddVendors = ({
         category = vendorCategories.findIndex(
           (item) => item.name === categoryTitle
         );
+
+      const categoryLimit = limit || 5;
       const categoryTemp =
         category === -1
-          ? vendorCategories.filter((_, i) => i < 5)
-          : category !== -1 && category > 4
+          ? vendorCategories.filter((_, i) => i < categoryLimit)
+          : category !== -1 && category > categoryLimit - 1
           ? [
               vendorCategories[category],
-              ...vendorCategories.filter((_, i) => i < 4),
+              ...vendorCategories.filter((_, i) => i < categoryLimit - 1),
             ]
           : [
               vendorCategories[category],
-              ...vendorCategories.filter((_, i) => i < 5 && i !== category),
+              ...vendorCategories.filter(
+                (_, i) => i < categoryLimit && i !== category
+              ),
             ];
       setCategories(categoryTemp);
-      if (category !== -1 && category > 4) {
+      if (category !== -1 && category > categoryLimit - 1) {
         setAvailableCategories(
-          vendorCategories.filter((_, i) => i >= 4 && i !== category)
+          vendorCategories.filter(
+            (_, i) => i >= categoryLimit - 1 && i !== category
+          )
         );
       } else {
-        setAvailableCategories(vendorCategories.filter((_, i) => i >= 5));
+        setAvailableCategories(
+          vendorCategories.filter((_, i) => i >= categoryLimit)
+        );
       }
     }
   }, [vendorCategories]);
