@@ -53,8 +53,8 @@ function Article(props) {
       className={`article-wrapper ${props.className ? props.className : ""}`}
     >
       <div>
-        <div className="article-wrapper-container d-flex">
-          <div className="flex-fill w-100">
+        <div className="article-wrapper-container d-flex justify-content-between">
+          <div className="flex-fill overflow-hidden">
             {props.header && (
               <div className="article-wrapper-header">
                 {props.header.image && (

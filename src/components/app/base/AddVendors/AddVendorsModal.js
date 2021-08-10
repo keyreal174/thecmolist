@@ -5,7 +5,7 @@ import AddVendors from "./AddVendors";
 import clsx from "clsx";
 import "./AddVendors.scss";
 
-const AddVendorsModal = ({ show, handleClose, categoryTitle }) => {
+const AddVendorsModal = ({ show, handleClose, categoryTitle, limit }) => {
   return (
     <>
       <Modal
@@ -27,6 +27,7 @@ const AddVendorsModal = ({ show, handleClose, categoryTitle }) => {
           <Container>
             <AddVendors
               categoryTitle={categoryTitle}
+              limit={limit}
               submitAfter={() => handleClose(true)}
             />
           </Container>
