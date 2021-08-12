@@ -253,7 +253,7 @@ const Vendors = (props) => {
               getCategoryTitle={getCategoryTitle}
               handleInviteModal={toggleInviteModal}
               filterIdx={filterIdx}
-              isMyProfile={true}
+              showVendorBtn={true}
             />
           ) : (
             <Row className="vendors--feed--wrapper">

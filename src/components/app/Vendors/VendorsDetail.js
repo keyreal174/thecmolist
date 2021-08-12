@@ -14,6 +14,7 @@ const Category = ({
   len,
   isMyProfile,
   getCategoryTitle,
+  showVendorBtn,
 }) => {
   return (
     <div className="vendor-detail-category d-flex align-items-center justify-content-between">
@@ -23,7 +24,7 @@ const Category = ({
           &nbsp;- {description}
         </span>
       </div>
-      {len && len > 0 && isMyProfile ? (
+      {len && len > 0 && (isMyProfile || showVendorBtn) ? (
         <div className="add-vendor-button">
           <AddVendorButton getCategoryTitle={getCategoryTitle} />
         </div>
@@ -44,6 +45,7 @@ const VendorsDetail = ({
   handleInviteModal,
   isMyProfile,
   showDeletePostModal,
+  showVendorBtn,
 }) => {
   const AddInviteButton = () => (
     <Button
@@ -136,6 +138,7 @@ const VendorsDetail = ({
                         getCategoryTitle={() => getCategoryTitle(category.name)}
                         len={category.vendors?.length || 0}
                         isMyProfile={isMyProfile}
+                        showVendorBtn={showVendorBtn}
                       />
                       <VendorsFeed
                         feedData={category.vendors}
