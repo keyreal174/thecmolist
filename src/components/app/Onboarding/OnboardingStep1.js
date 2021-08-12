@@ -54,8 +54,8 @@ const OnboardingWelcome = ({ loading, changeStep }) => {
             Connect & collaborate with your peers
           </div>
           <div className="home--share-item-subtitle">
-            Create private spaces to share marketing knowledge only with your
-            trusted peers or team members
+            Create private spaces to manage and share marketing knowledge only
+            with your trusted peers or team members
           </div>
         </Col>
       </Row>
