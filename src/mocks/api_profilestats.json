@@ -97,5 +97,6 @@
       "content": "Invite two trusted marketing leaders",
       "showInviteButton": true
     }
-  ]
+  ],
+  "inviteLink": "https://google.com"
 }

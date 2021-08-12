@@ -110,7 +110,12 @@ function Article(props) {
                         </div>
                       </div>
                     )}
-                    <div className="article--content flex-grow-1">
+                    <div
+                      className={clsx(
+                        "article--content flex-grow-1",
+                        props.badge && "article-has-badge"
+                      )}
+                    >
                       <h2 className="article-title">
                         {props.headline.markdown ? (
                           <Markdown>{props.headline.markdown}</Markdown>

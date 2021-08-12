@@ -98,31 +98,6 @@
   flex-direction: column;
 }
 
-.network-list-item {
-  margin-bottom: 0px;
-  box-shadow: none;
-  min-height: 134px;
-}
-
-.network-list-item .article-img img {
-  width: 50px;
-  height: 50px;
-}
-
-.network-list-item .article-subheadlines {
-  max-width: 95%;
-}
-
-.network-list-item .article-subheadline {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.network-list-item .article-text {
-  // max-width: 95%;
-}
-
 @media (max-width: 768px) {
   .vendors--popular-topics {
     display: none;
