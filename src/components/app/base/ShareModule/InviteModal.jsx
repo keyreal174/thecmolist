@@ -1,4 +1,5 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
+import { connect } from "react-redux";
 import { Button, Form, Modal, Row, Col } from "react-bootstrap";
 import Close from "../icons/close.svg";
 import "./sharemodule.scss";
@@ -52,6 +53,7 @@ function InviteModal(props) {
     "Please join me on CMOlist, a new professional network that enables marketing leaders to support each other by sharing proven marketing stacks, best practices, and new insights."
   );
   const [collection, setCollection] = useState("");
+  const [inviteLink, setInviteLink] = useState("");
 
   let closeDialog = (e) => {
     let data = {
@@ -70,6 +72,25 @@ function InviteModal(props) {
       props.onHide();
     }
   };
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(inviteLink);
+  };
+
+  useEffect(() => {
+    const fetch = async () => {
+      await props.getProfileStats();
+    };
+
+    fetch();
+  }, []);
+
+  useEffect(() => {
+    if (props.profileStats) {
+      setInviteLink(props.profileStats.inviteLink || "");
+    }
+  }, [props.profileStats]);
+
   return (
     <>
       <Modal
@@ -142,27 +163,61 @@ function InviteModal(props) {
               )}
             </form>
           </Fragment>
+          <div className="btn-groups">
+            <Button
+              className="btn-white modal-secondary-button"
+              onClick={() => props.onHide()}
+              variant="outline-primary"
+            >
+              Cancel
+            </Button>
+            <Button
+              className="btn-white modal-primary-button"
+              variant="outline-primary"
+              form="invite-modal"
+              type="submit"
+            >
+              Send invitation
+            </Button>
+          </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button
-            className="btn-white modal-secondary-button"
-            onClick={() => props.onHide()}
-            variant="outline-primary"
-          >
-            Cancel
-          </Button>
-          <Button
-            className="btn-white modal-primary-button"
-            variant="outline-primary"
-            form="invite-modal"
-            type="submit"
-          >
-            Send invitation
-          </Button>
+          <div className="w-100">
+            <Form.Label>Send a Share Link</Form.Label>
+            <p>Invite marketing leaders to CMOlist using this Share Link</p>
+            <div className="d-flex invite-link-wrapper">
+              <Form.Control
+                type="input"
+                value={inviteLink}
+                required={true}
+                onChange={(e) => console.log(inviteLink)}
+                disabled
+              />
+              <Button
+                className="btn-white modal-primary-button"
+                variant="outline-primary"
+                onClick={copyToClipboard}
+              >
+                Copy
+              </Button>
+            </div>
+          </div>
         </Modal.Footer>
       </Modal>
     </>
   );
 }
 
-export default InviteModal;
+const mapState = (state) => {
+  return {
+    profileStats: state.profileModel.profileStats,
+  };
+};
+
+const mapDispatch = (dispatch) => {
+  return {
+    getProfileStats: dispatch.profileModel.getProfileStats,
+  };
+};
+
+export default connect(mapState, mapDispatch)(InviteModal);

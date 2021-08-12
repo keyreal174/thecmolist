@@ -180,6 +180,16 @@
   background: #fff !important;
 }
 
+.article--content {
+  margin: 0px !important;
+  padding: 0;
+  max-width: 100%;
+
+  &.article-has-badge {
+    max-width: calc(100% - 60px);
+  }
+}
+
 @media (max-width: 767px) {
   .article-image-add {
     height: 100%;

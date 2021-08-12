@@ -92,25 +92,12 @@ function Article(props) {
               <div>
                 <div className="article-body article-wrap">
                   <div className="d-flex">
-                    {props.image && props.image.length > 0 && (
-                      <div className="article--image mr-3">
-                        <div className="article-img">
-                          <a href={props.contentlink ? props.contentlink : ""}>
-                            <img
-                              src={props.image}
-                              alt=""
-                              className={
-                                props.imageDisplay &&
-                                props.imageDisplay === "square"
-                                  ? "article-img-square"
-                                  : ""
-                              }
-                            />
-                          </a>
-                        </div>
-                      </div>
-                    )}
-                    <div className="article--content flex-grow-1">
+                    <div
+                      className={clsx(
+                        "article--content flex-grow-1",
+                        props.badge && "article-has-badge"
+                      )}
+                    >
                       <h2 className="article-title">
                         {props.headline.markdown ? (
                           <Markdown>{props.headline.markdown}</Markdown>
