@@ -470,10 +470,6 @@
   margin-right: 22px;
 }
 
-.profile--feed {
-  margin-top: 25px;
-}
-
 .profile {
   &--follow-button {
     width: 130px;
@@ -499,9 +495,6 @@
 @media (max-width: 1200px) {
   .profile--popular-topics {
     display: none;
-  }
-  .profile--feed {
-    margin-top: 0;
   }
   .profile--more-button {
     position: absolute;
