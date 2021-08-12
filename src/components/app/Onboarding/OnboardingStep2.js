@@ -114,8 +114,8 @@ const OnboardingStep2 = ({
         showGetIntro
           ? "Finally..."
           : step === 1
-          ? "Share 3 (or more) of your favorite marketing tools or agencies with your peers"
-          : "One last step: Select topics you would like to learn more about from your peers"
+          ? "Select topics you would like to learn more about from your peers"
+          : "One last step: Share 3 (or more) of your favorite marketing tools or agencies with your peers"
       }
       subtitle={
         showGetIntro
@@ -200,13 +200,6 @@ const OnboardingStep2 = ({
           (step === 1 ? (
             <CustomCard className="onboarding--card fadeAndSlideElementInFast">
               <div className="p-4">
-                <AddVendors submitAfter={() => setStep(2)} />
-              </div>
-            </CustomCard>
-          ) : (
-            <CustomCard className="onboarding--card fadeAndSlideElementInFast">
-              <div className="p-4">
-                {/* <AddSkills submitAfter={() => setShowGetIntro(true)} /> */}
                 <AddTopics
                   value={value}
                   pils={pils}
@@ -214,8 +207,15 @@ const OnboardingStep2 = ({
                   handleChange={handleChange}
                   handleButtonClick={handleButtonClick}
                   handleAddTopicsSubmit={handleAddTopicsSubmit}
-                  submitAfter={() => handleSubmit()}
+                  submitAfter={() => setStep(2)}
                 />
+              </div>
+            </CustomCard>
+          ) : (
+            <CustomCard className="onboarding--card fadeAndSlideElementInFast">
+              <div className="p-4">
+                {/* <AddSkills submitAfter={() => handleSubmit()} /> */}
+                <AddVendors submitAfter={() => handleSubmit()} />
               </div>
             </CustomCard>
           ))}
@@ -237,7 +237,7 @@ const OnboardingStep2 = ({
                 className="mt-3 onboarding--button"
                 disabled={loading}
                 type="submit"
-                form={step === 1 ? "form-add-vendors" : "form-add-topics"}
+                form={step === 1 ? "form-add-topics" : "form-add-vendors"}
               >
                 Continue
               </Button>
