@@ -47,8 +47,6 @@ function InviteModal(props) {
   const [email, setEmail] = useState("");
   const [name1, setName1] = useState("");
   const [email1, setEmail1] = useState("");
-  const [name2, setName2] = useState("");
-  const [email2, setEmail2] = useState("");
   const [message, setMessage] = useState(
     "Please join me on CMOlist, a new professional network that enables marketing leaders to support each other by sharing proven marketing stacks, best practices, and new insights."
   );
@@ -61,7 +59,6 @@ function InviteModal(props) {
       info: [
         { name: name, email: email },
         { name: name1, email: email1 },
-        { name: name2, email: email2 },
       ],
       message,
       collection,
@@ -130,11 +127,6 @@ function InviteModal(props) {
                 setUserEmail={setEmail1}
                 required={false}
               />
-              <InfoRow
-                setUserName={setName2}
-                setUserEmail={setEmail2}
-                required={false}
-              />
               <Row>
                 <Col xs={12}>
                   <Form.Label>Message</Form.Label>
@@ -165,13 +157,6 @@ function InviteModal(props) {
             </form>
           </Fragment>
           <div className="btn-groups">
-            <Button
-              className="btn-white modal-secondary-button"
-              onClick={() => props.onHide()}
-              variant="outline-primary"
-            >
-              Cancel
-            </Button>
             <Button
               className="btn-white modal-primary-button"
               variant="outline-primary"
