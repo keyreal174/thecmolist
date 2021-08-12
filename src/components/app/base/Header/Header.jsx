@@ -252,13 +252,13 @@ function Header({
                 <div className="header--separator"></div>
               </Nav.Link>
               <Nav.Link as={NavLink} to="/network">
-                <img src={Group} alt="" />
-                <div>My Networks</div>
+                <img src={Group} alt="Members" />
+                <div>Members</div>
                 <div className="header--separator"></div>
               </Nav.Link>
               <Nav.Link as={NavLink} to="/vendors">
-                <img src={Apps} alt="" />
-                <div>Vendors</div>
+                <img src={Apps} alt="Stacks" />
+                <div>Stacks</div>
                 <div className="header--separator"></div>
               </Nav.Link>
               <Nav.Link as={NavLink} to="/notifications">
