@@ -152,6 +152,7 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
     setAdvisingNo(true);
   };
   const handleSubmit = (e) => {
+    e.preventDefault();
     setLoading(true);
     const formData = {
       title,

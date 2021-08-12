@@ -56,6 +56,7 @@ function InviteModal(props) {
   const [inviteLink, setInviteLink] = useState("");
 
   let closeDialog = (e) => {
+    e.preventDefault();
     let data = {
       info: [
         { name: name, email: email },

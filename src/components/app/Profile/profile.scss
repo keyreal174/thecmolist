@@ -93,6 +93,10 @@
   font-weight: 400;
   color: rgba(0, 0, 0, 0.9);
   padding-top: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 20px;
 }
 
 .overview-desc {

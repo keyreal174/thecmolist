@@ -40,13 +40,6 @@
   color: rgba(0, 0, 0, 0.9);
 }
 
-.overview-subheadline {
-  font-size: 18px;
-  line-height: 22px;
-  font-weight: 400;
-  color: rgba(0, 0, 0, 0.9);
-}
-
 .overview p {
   margin-bottom: 10px;
 }
