@@ -163,7 +163,7 @@ function InviteModal(props) {
               form="invite-modal"
               type="submit"
             >
-              Send invitation
+              Send
             </Button>
           </div>
         </Modal.Body>
