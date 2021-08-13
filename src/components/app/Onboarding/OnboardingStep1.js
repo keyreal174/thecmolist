@@ -34,13 +34,13 @@ const OnboardingWelcome = ({ loading, changeStep }) => {
           <img
             className="home--share-item-image"
             src={informedIcon}
-            alt="Knowlege icon"
+            alt="Knowledge icon"
           />
           <div className="home--share-item-title">
             Find and contribute marketing knowledge
           </div>
           <div className="home--share-item-subtitle">
-            Ask for advice and contribute your experise to building the
+            Ask for advice and contribute your expertise to building the
             definitive collection of marketing questions & answers
           </div>
         </Col>
