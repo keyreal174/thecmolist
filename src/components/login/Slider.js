@@ -30,13 +30,13 @@ const Slider = () => {
           <img
             className="carousel-section-icon"
             src={Icon3}
-            alt="Knowlege icon"
+            alt="Knowledge icon"
           />
           <h3 className="carousel-section-title">
             Find and contribute marketing knowledge
           </h3>
           <p className="carousel-section-content">
-            Ask for advice and contribute your experise to building the
+            Ask for advice and contribute your expertise to building the
             definitive collection of marketing questions & answers
           </p>
         </div>
