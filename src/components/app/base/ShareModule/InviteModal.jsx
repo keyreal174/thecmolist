@@ -111,10 +111,9 @@ function InviteModal(props) {
         <Modal.Body>
           <Fragment>
             <p className="modal-description">
-              Invite other <strong>trusted</strong> marketing leaders to learn
-              from their <strong>stacks</strong>, grow your marketing{" "}
-              <strong>knowledge network</strong>, and{" "}
-              <strong>unlock new capabilities</strong>.
+              Invite your <strong>trusted peers</strong> to view their{" "}
+              <strong>marketing stacks</strong> and learn from their{" "}
+              <strong>advice</strong>
             </p>
             <form id="invite-modal" onSubmit={closeDialog}>
               <InfoRow
