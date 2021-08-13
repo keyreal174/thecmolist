@@ -20,51 +20,51 @@ const OnboardingWelcome = ({ loading, changeStep }) => {
           <img
             className="home--share-item-image"
             src={knowledgeIcon}
-            alt="knowledge icon"
+            alt="Stack icon"
           />
           <div className="home--share-item-title">
-            View and share marketing stacks
+            View and share proven marketing stacks
           </div>
           <div className="home--share-item-subtitle">
-            Share, browse, and discover trusted marketing vendors from leading
-            startups and public companies
+            Browse trusted marketing tools, agencies, and contractors shared by
+            leading startups and public companies
           </div>
         </Col>
         <Col className="home--share-item" md="3" sm="12">
           <img
             className="home--share-item-image"
             src={informedIcon}
-            alt="informed icon"
+            alt="Knowlege icon"
           />
           <div className="home--share-item-title">
             Find and contribute marketing knowledge
           </div>
           <div className="home--share-item-subtitle">
-            Search, browse, and contribute answers to building the definitive
-            collection of marketing questions & answers
+            Ask for advice and contribute your experise to building the
+            definitive collection of marketing questions & answers
           </div>
         </Col>
         <Col className="home--share-item" md="3" sm="12">
           <img
             className="home--share-item-image"
             src={trustedIcon}
-            alt="trusted icon"
+            alt="Network icon"
           />
           <div className="home--share-item-title">
             Connect & collaborate with your peers
           </div>
           <div className="home--share-item-subtitle">
-            Create private spaces to manage and share marketing knowledge only
-            with your trusted peers or team members
+            Create private spaces to manage and share marketing knowledge with
+            your trusted peers or employees
           </div>
         </Col>
       </Row>
       <Row>
         <Col md="12" className="text-center no-solicitation">
           <p>
-            CMOlist is an open, <b>trusted</b> space for marketing leaders to
-            come together to support each other. Please do <b>not solicit</b>{" "}
-            other members or <b>share information</b> outside the network.
+            CMOlist is a <b>trusted</b> space for marketing leaders to come
+            together to support each other. Please do <b>not solicit</b> other
+            members or <b>share information</b> outside the network.
           </p>
         </Col>
         <Col
