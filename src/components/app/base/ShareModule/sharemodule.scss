@@ -74,12 +74,12 @@
   }
 
   .modal-body {
-    padding: 12px 24px;
+    padding: 22px 24px;
 
     .modal-description {
-      font-size: 20px;
-      line-height: 30px;
-      color: $text-1;
+      font-size: 24px;
+      line-height: 32px;
+      color: $text-2;
       margin-bottom: 14px;
     }
 
@@ -112,7 +112,7 @@
   }
 
   .modal-footer {
-    padding: 24px;
+    padding: 16px 24px 36px;
     justify-content: flex-start;
 
     .form-label {
