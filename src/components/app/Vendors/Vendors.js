@@ -226,7 +226,7 @@ const Vendors = (props) => {
                     onClick={() => (window.location.href = "/network")}
                     style={{ color: "#2962ff" }}
                   >
-                    <b>Follow more marketing leaders</b>
+                    <b>Follow marketing leaders</b>
                   </a>{" "}
                   to add their trusted tools, agencies and contractors to your
                   vendors directory
