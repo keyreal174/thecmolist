@@ -10,6 +10,7 @@ import Footer from "../base/Footer/Footer";
 import Filter from "../base/Filter/Filter";
 import Article from "../base/Article/Article";
 import InviteModal from "../base/ShareModule/InviteModal";
+import PostOnboarding from "../base/PostOnboarding/PostOnboarding";
 import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
 import ProfileStats from "../ProfileStats/ProfileStats";
 import AskQuestion from "../base/AskQuestion/AskQuestion";
@@ -245,10 +246,9 @@ function RenderDashboard(props) {
       </Col>
 
       <Col className="feed--feed" md="6">
-        {props.featuredStacks ? (
-          <FeaturedStacks
-            key={props.featuredStacks.length}
-            featuredStacks={props.featuredStacks}
+        {profileStats && profileStats.postOnboarding ? (
+          <PostOnboarding
+            postOnboarding={profileStats.postOnboarding}
             isAdminUser={isAdminUser}
           />
         ) : (

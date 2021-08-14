@@ -98,5 +98,36 @@
       "showInviteButton": true
     }
   ],
-  "inviteLink": "https://google.com"
+  "inviteLink": "https://google.com",
+  "postOnboarding": [
+    {
+      "checked": false,
+      "headline": "Step 1: Review your profile",
+      "subheadline": {
+        "markdown": "Update your [profile](/profile) to share your marketing experience with your peers "
+      }
+    },
+    {
+      "checked": false,
+      "headline": "Step 2: Review your profile",
+      "subheadline": {
+        "markdown": "Update your [profile](/profile) to share your marketing experience with your peers "
+      }
+    },
+    {
+      "checked": true,
+      "headline": "Step 3: Review your profile",
+      "subheadline": {
+        "markdown": "Update your [profile](/profile) to share your marketing experience with your peers "
+      }
+    },
+    {
+      "checked": false,
+      "headline": "Step 4: Review your profile",
+      "subheadline": {
+        "markdown": "Update your [profile](/profile) to share your marketing experience with your peers "
+      },
+      "showInviteButton": true
+    }
+  ]
 }
