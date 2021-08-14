@@ -218,7 +218,7 @@ const Vendors = (props) => {
                 />
               </div>
             )}
-            {isAffiliated && (
+            {!isAffiliated && (
               <div className="follow-members">
                 <Alert variant="info">
                   <span role="img" aria-label="Light bulb">
