@@ -68,6 +68,7 @@ const Vendors = (props) => {
           );
         } else {
           setIsAffiliated(false);
+          setShowFilters(false);
           newFilters = [
             { title: "My Network", slug: "my-network", enabled: true },
           ];
@@ -201,7 +202,7 @@ const Vendors = (props) => {
             onSubmit={props.inviteNewMember}
             show={showInviteModal}
           />
-          <div className="mb-4">
+          <div>
             {showFilters && (
               <div
                 className={clsx(
@@ -215,14 +216,6 @@ const Vendors = (props) => {
                   filters={filters}
                   onChange={(idx) => changeFilter(idx)}
                 />
-                <div
-                  className={clsx(
-                    "filter-btn-group flex-grow-1 text-right filter-add-vendor-btn desktop-add-vendor-button"
-                  )}
-                  style={{ minWidth: 150 }}
-                >
-                  <AddVendorButton />
-                </div>
               </div>
             )}
             {!isAffiliated && (
@@ -251,6 +244,7 @@ const Vendors = (props) => {
               getCategoryTitle={getCategoryTitle}
               handleInviteModal={toggleInviteModal}
               filterIdx={filterIdx}
+              showVendorBtn={true}
             />
           ) : (
             <Row className="vendors--feed--wrapper">

@@ -483,9 +483,9 @@ const Feed = (props) => {
           </CSSTransition>
 
           {!isTopic && (
-            <div style={{ width: "100%" }} className="position-relative">
+            <div style={{ width: "100%" }} className="mt-4 position-relative">
               <Filter
-                className={clsx("mt-4 feed--filters", mobileMenuOpen && "open")}
+                className={clsx("feed--filters", mobileMenuOpen && "open")}
                 filterIdx={filterIdx}
                 filters={filters}
                 onChange={(idx) => changeFilter(idx)}

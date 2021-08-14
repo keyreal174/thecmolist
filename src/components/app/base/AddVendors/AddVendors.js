@@ -258,7 +258,8 @@ const RenderVendorCategoryRow = ({
               as="textarea"
               className="profile--textarea vendor--profile--textarea fadeAndSlideElementInFast"
               rows="1"
-              placeholder={`Why did you select ${tool.name}?`}
+              autoFocus
+              placeholder={`Why did you select ${tool.name}? (120 characters max)`}
               onChange={(e) => onToolSumarize(e, tool)}
             />
           </Col>

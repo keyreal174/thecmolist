@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Badge, Row, Col, Button, Form } from "react-bootstrap";
+import clsx from "clsx";
 import FilterMobile from "./FilterMobile";
 import "./filter.scss";
 
@@ -12,19 +13,23 @@ function Filter(props) {
   }, [props]);
 
   let hasFilters = props.filters && props.filters.length > 0;
+  let hasMoreThanOneFilter = hasFilters && props.filters.length > 1;
   return (
     <>
       <Row
-        className={`filter filter-desktop ${
-          props.className ? props.className : "pt-3 pb-2"
-        }`}
+        className={clsx(
+          "filter",
+          "filter-desktop",
+          (props.className ? props.className : "pt-3 pb-2",
+          !hasMoreThanOneFilter && "hidden")
+        )}
       >
         <Row className="align-items-center">
           <Col md={props.sortable || props.children ? "9" : "12"}>
             <div className="filter-wrapper">
               {props.title && <h2 className="section-title">{props.title}</h2>}
               <div className="filter-btn-group" data-toggle="buttons">
-                {hasFilters ? (
+                {hasMoreThanOneFilter ? (
                   props.filters.map((filter, idx) => {
                     const active = idx === filterIdx;
                     let className = "filter--button";

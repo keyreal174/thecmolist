@@ -19,55 +19,52 @@ const OnboardingWelcome = ({ loading, changeStep }) => {
         <Col className="home--share-item" md="3" sm="12">
           <img
             className="home--share-item-image"
-            src={trustedIcon}
-            alt="trusted icon"
-          />
-          <div className="home--share-item-title">
-            Get trusted advice from your marketing peers
-          </div>
-          <div className="home--share-item-subtitle">
-            Exchange frank, private advice with your peers, trusted communities,
-            and industry experts
-          </div>
-        </Col>
-        <Col className="home--share-item" md="3" sm="12">
-          <img
-            className="home--share-item-image"
             src={knowledgeIcon}
-            alt="knowledge icon"
+            alt="Stack icon"
           />
           <div className="home--share-item-title">
-            View marketing stacks and playbooks
+            View and share proven marketing stacks
           </div>
           <div className="home--share-item-subtitle">
-            Browse proven marketing stacks and playbooks shared by your peers
-            and industry experts
+            Browse trusted marketing tools, agencies, and contractors shared by
+            leading startups and public companies
           </div>
         </Col>
         <Col className="home--share-item" md="3" sm="12">
           <img
             className="home--share-item-image"
             src={informedIcon}
-            alt="informed icon"
+            alt="Knowledge icon"
           />
           <div className="home--share-item-title">
-            Stay informed & learn from leading marketers
+            Find and contribute marketing knowledge
           </div>
           <div className="home--share-item-subtitle">
-            Network with your peers and follow marketing insights from industry
-            experts
+            Ask for advice and contribute your expertise to building the
+            definitive collection of marketing questions & answers
+          </div>
+        </Col>
+        <Col className="home--share-item" md="3" sm="12">
+          <img
+            className="home--share-item-image"
+            src={trustedIcon}
+            alt="Network icon"
+          />
+          <div className="home--share-item-title">
+            Connect & collaborate with your peers
+          </div>
+          <div className="home--share-item-subtitle">
+            Create private spaces to manage and share marketing knowledge with
+            your trusted peers or employees
           </div>
         </Col>
       </Row>
       <Row>
         <Col md="12" className="text-center no-solicitation">
           <p>
-            CMOlist is an open, <b>trusted</b> space for marketing leaders to
-            come together to support each other.
-          </p>
-          <p>
-            Please do <b>not solicit</b> other members or{" "}
-            <b>share information</b> outside the network.
+            CMOlist is a <b>trusted</b> space for marketing leaders to come
+            together to support each other. Please do <b>not solicit</b> other
+            members or <b>share information</b> outside the network.
           </p>
         </Col>
         <Col
