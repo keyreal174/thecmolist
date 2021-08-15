@@ -345,7 +345,7 @@ function AddPostModal({
                     />
                     <label htmlFor="public">
                       Public
-                      <span>(visible to all CMO list members)</span>
+                      <span>(visible to all CMOlist members)</span>
                     </label>
                   </div>
                   <div className="share-group-checkbox">

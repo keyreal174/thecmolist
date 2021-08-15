@@ -1,5 +1,5 @@
-## CMO List React
-React UI application for CMO list
+## CMOlist React
+React UI application for CMOlist
 
 ## Available Scripts
 
