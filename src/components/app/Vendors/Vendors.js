@@ -220,7 +220,10 @@ const Vendors = (props) => {
             )}
             {!isAffiliated && (
               <div className="follow-members">
-                <Alert variant="success">
+                <Alert variant="info">
+                  <span role="img" aria-label="Light bulb">
+                    💡
+                  </span>
                   <a
                     className="cursor-pointer"
                     onClick={() => (window.location.href = "/network")}
