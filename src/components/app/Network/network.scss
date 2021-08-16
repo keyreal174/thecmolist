@@ -131,18 +131,6 @@
   .network--simple-top-banner,
   .network-list-item {
     margin: 10px 17px !important;
-
-    .article-wrapper-container {
-      @media screen and (max-width: 767px) {
-        flex-direction: column;
-
-        & .article-badge {
-          width: fit-content;
-          margin-left: 80px;
-          margin-bottom: 10px;
-        }
-      }
-    }
   }
   .network--filter-wrapper {
     margin: 0 17px;
