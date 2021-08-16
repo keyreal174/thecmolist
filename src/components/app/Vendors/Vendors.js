@@ -227,7 +227,7 @@ const Vendors = (props) => {
                   <a
                     className="cursor-pointer"
                     onClick={() => (window.location.href = "/network")}
-                    style={{ color: "#2962ff" }}
+                    style={{ color: "#2962ff", marginLeft: "5px" }}
                   >
                     <b>Follow marketing leaders</b>
                   </a>{" "}

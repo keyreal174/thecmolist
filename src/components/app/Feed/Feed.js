@@ -373,6 +373,11 @@ const Feed = (props) => {
         ];
       }
     }
+
+    if (window.location.href.endsWith("#invite")) {
+      setInviteModalShow(true);
+    }
+
     if (!isTopicPage) {
       setFilters(newFilters);
       let groupIdx = -1;
