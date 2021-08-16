@@ -25,7 +25,6 @@ const Checkbox = ({ itemChecked, children }) => {
   const [checked, setChecked] = useState(itemChecked);
 
   const toggle = (event) => {
-    event.preventDefault();
     setChecked((value) => !value);
   };
 
