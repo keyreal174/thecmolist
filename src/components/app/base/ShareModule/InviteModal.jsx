@@ -74,7 +74,7 @@ function InviteModal(props) {
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(inviteLink);
-    setCopyButtonText("Copied");
+    setCopyButtonText("Copied ✓");
   };
 
   useEffect(() => {
