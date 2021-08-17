@@ -340,6 +340,7 @@ const Feed = (props) => {
       { title: "All", slug: "my-network", enabled: true },
       { title: "My Experts", slug: "my-peers", enabled: true },
     ];
+    const isGroupPage = window.location.href.includes("/group/");
     setGroupFilterStartIdx(newFilters.length);
     if (profileStats && profileStats.profile) {
       if (profileStats.profile.isAdminUser) {
@@ -365,7 +366,9 @@ const Feed = (props) => {
         newFilters = [
           { title: "My Network", slug: "my-network", enabled: true },
         ];
-        initSelector = subSelectors.findIndex((s) => s.slug === "question");
+        if (!isTopicPage && !isGroupPage) {
+          initSelector = subSelectors.findIndex((s) => s.slug === "question");
+        }
       }
     }
 
@@ -377,7 +380,7 @@ const Feed = (props) => {
     if (!isTopicPage) {
       setFilters(newFilters);
       let groupIdx = -1;
-      if (window.location.href.includes("/group/")) {
+      if (isGroupPage) {
         let groupSlug = Util.parsePath(window.location.href).trailingPath;
         groupIdx = newFilters.findIndex((f) => f.slug === groupSlug);
         setIsGroup(groupIdx > 0);
