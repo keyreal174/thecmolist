@@ -28,7 +28,12 @@ const PostOnboarding = ({ postOnboarding, isAdminUser }) => {
           postOnboarding.map((item, index) => {
             return (
               <div key={index}>
-                <Checkbox itemChecked={item.checked}>
+                <Checkbox
+                  itemChecked={item.checked}
+                  onChange={() => {
+                    if (item.link) window.location.href = item.link;
+                  }}
+                >
                   <h2 className="post-onboarding__headline text-left">
                     {item.headline.markdown ? (
                       <Markdown>{item.headline.markdown}</Markdown>

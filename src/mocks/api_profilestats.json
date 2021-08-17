@@ -105,7 +105,8 @@
       "headline": "Step 1: Review your profile",
       "subheadline": {
         "markdown": "Update your [profile](/profile) to share your marketing experience with your peers "
-      }
+      },
+      "link": "/vendors"
     },
     {
       "checked": false,

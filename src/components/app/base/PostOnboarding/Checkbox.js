@@ -21,10 +21,11 @@ const Styles = {
   },
 };
 
-const Checkbox = ({ itemChecked, children }) => {
+const Checkbox = ({ itemChecked, onChange, children }) => {
   const [checked, setChecked] = useState(itemChecked);
 
   const toggle = (event) => {
+    onChange && onChange(!checked);
     setChecked((value) => !value);
   };
 
