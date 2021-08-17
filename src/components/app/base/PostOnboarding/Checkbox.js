@@ -12,11 +12,11 @@ const Styles = {
     border: 0,
     outline: 0,
     padding: 0,
-    marginBottom: 15,
+    marginBottom: 30,
   },
 
   check: {
-    marginRight: 9,
+    marginRight: 23,
     marginTop: 2,
   },
 };

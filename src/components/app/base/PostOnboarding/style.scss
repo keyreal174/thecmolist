@@ -1,0 +1,31 @@
+@import "../../../../sass/globals.scss";
+
+.post-onboarding {
+  .custom-card {
+    &-header {
+      font-weight: bold;
+      font-size: 30px;
+      line-height: 39px;
+      padding: 18px 36px 12px;
+    }
+
+    &-body {
+      padding: 30px 36px;
+    }
+  }
+
+  &__headline {
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 20px;
+    color: $text-1;
+    margin-bottom: 5px;
+  }
+
+  &__subheadline {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+    color: $text-3;
+  }
+}
