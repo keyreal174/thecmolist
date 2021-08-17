@@ -52,6 +52,7 @@ function InviteModal(props) {
   );
   const [collection, setCollection] = useState("");
   const [inviteLink, setInviteLink] = useState("");
+  const [copyButtonText, setCopyButtonText] = useState("Copy");
 
   let closeDialog = (e) => {
     e.preventDefault();
@@ -73,6 +74,7 @@ function InviteModal(props) {
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(inviteLink);
+    setCopyButtonText("Copied");
   };
 
   useEffect(() => {
@@ -88,6 +90,12 @@ function InviteModal(props) {
       setInviteLink(props.profileStats.inviteLink || "");
     }
   }, [props.profileStats]);
+
+  useEffect(() => {
+    if (props.show) {
+      setCopyButtonText("Copy");
+    }
+  }, [props.show]);
 
   return (
     <>
@@ -183,7 +191,7 @@ function InviteModal(props) {
                 variant="outline-primary"
                 onClick={copyToClipboard}
               >
-                Copy
+                {copyButtonText}
               </Button>
             </div>
           </div>
