@@ -61,13 +61,6 @@ function RenderRightContainer({
             activeGroup={activeGroup}
             saveContent={saveContent}
           />
-          {buildYourNetworkItems && buildYourNetworkItems.length > 0 && (
-            <BuildYourNetwork
-              buildYourNetworkItems={buildYourNetworkItems}
-              saveUserInvite={saveUserInvite}
-              isAdminUser={isAdminUser}
-            />
-          )}
         </Fragment>
       ) : (
         <AboutSpace about={feedAbout} />
