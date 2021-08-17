@@ -85,7 +85,10 @@ const OnboardingStep2 = ({
               console.log("Unexpected - url not encoded: " + redirectUrl);
             }
           }
-          history.push(redirectUrl);
+          history.push({
+            pathname: redirectUrl,
+            state: { onboarded: true },
+          });
         });
       }
     }
