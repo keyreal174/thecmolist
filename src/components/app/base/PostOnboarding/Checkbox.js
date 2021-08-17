@@ -12,7 +12,7 @@ const Styles = {
     border: 0,
     outline: 0,
     padding: 0,
-    marginBottom: 30,
+    marginBottom: 20,
   },
 
   check: {
