@@ -11,7 +11,7 @@ const PostOnboarding = ({ postOnboarding, isAdminUser }) => {
   return (
     <CustomCard
       heading="Welcome 🎉 to CMOlist! Get started 🚀 in 4 quick steps:"
-      className="post-onboarding"
+      className="post-onboarding fadeAndSlideElementIn"
     >
       <div className="build-your-network">
         {postOnboarding &&
