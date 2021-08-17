@@ -285,6 +285,10 @@
 .feed-page-top-banner {
   .custom-card:first-child {
     flex: 1;
+    margin-bottom: 0px;
+  }
+  .custom-card.top-banner--right-column {
+    margin-bottom: 0px;
   }
 }
 
