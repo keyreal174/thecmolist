@@ -126,7 +126,8 @@ const TopBanner = ({
           </div>
         </CustomCard>
       </div>
-      <SearchBox placeholder={title} />
+      {/* Disable for now as in topic search isn't supported yet */}
+      {/* <SearchBox placeholder={title} /> */}
     </div>
   );
 };

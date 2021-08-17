@@ -205,9 +205,12 @@
 }
 
 .header-search > div > .rbt-input-main {
-  padding-left: 53px;
+  padding-left: 50px;
   padding-right: 7px;
-  background: $gray-6;
+  border-radius: 100px;
+  font-size: 16px;
+  line-height: 21px;
+  color: #9597ae;
 }
 
 .search-btn {
