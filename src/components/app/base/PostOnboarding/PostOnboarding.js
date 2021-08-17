@@ -7,7 +7,7 @@ import CustomCheckBox from "../CustomCheckBox/CustomCheckBox";
 import InviteButton from "../InviteButton/InviteButton";
 import Checkbox from "./Checkbox";
 import clsx from "clsx";
-import "./style.scss";
+import "./postonboarding.scss";
 
 const PostOnboarding = ({ postOnboarding, isAdminUser }) => {
   const location = useLocation();
