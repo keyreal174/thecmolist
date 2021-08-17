@@ -220,16 +220,19 @@ const Vendors = (props) => {
             )}
             {!isAffiliated && (
               <div className="follow-members">
-                <Alert variant="success">
+                <Alert variant="info">
+                  <span role="img" aria-label="Light bulb">
+                    💡
+                  </span>
                   <a
                     className="cursor-pointer"
                     onClick={() => (window.location.href = "/network")}
-                    style={{ color: "#2962ff" }}
+                    style={{ color: "#2962ff", marginLeft: "5px" }}
                   >
-                    <b>Follow more marketing leaders</b>
+                    <b>Follow marketing leaders</b>
                   </a>{" "}
-                  to add their trusted tools, agencies and contractors to your
-                  vendors directory
+                  to see new marketing tools, agencies and contractors they
+                  share in your feed
                 </Alert>
               </div>
             )}

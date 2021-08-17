@@ -345,7 +345,7 @@ function AddPostModal({
                     />
                     <label htmlFor="public">
                       Public
-                      <span>(visible to all CMO list members)</span>
+                      <span>(visible to all CMOlist members)</span>
                     </label>
                   </div>
                   <div className="share-group-checkbox">
@@ -507,7 +507,7 @@ function AddPostModal({
                         as="input"
                         className="modal-person-section-input"
                         onChange={(e) => setPerson(e.target.value)}
-                        placeholder="Chose a CMOList member"
+                        placeholder="Select a CMOlist member"
                         value={person}
                       />
                     </div>
@@ -545,7 +545,9 @@ function AddPostModal({
               </Row>
               <Row>
                 <Col>
-                  <div className="modal-section-title">#Topics</div>
+                  <div className="modal-section-title">
+                    #Topics and @Vendors
+                  </div>
                   <AsyncTypeahead
                     id="async-global-search"
                     isLoading={isTypeLoading}
@@ -570,7 +572,7 @@ function AddPostModal({
                     onChange={(selectedOption) => {
                       setTopics(selectedOption);
                     }}
-                    placeholder="Choose one or more #topics that describe what your campaign or update is about"
+                    placeholder="Choose one or more #topics or @vendors that describe what your question is about"
                     renderMenuItemChildren={(option) => (
                       <React.Fragment>
                         <span>{option.name}</span>

@@ -342,6 +342,7 @@ const Feed = (props) => {
   };
 
   const initFeedPage = (profileStats, isTopicPage) => {
+    let initSelector = activeSelector;
     let newFilters = [
       { title: "All", slug: "my-network", enabled: true },
       { title: "My Experts", slug: "my-peers", enabled: true },
@@ -371,8 +372,15 @@ const Feed = (props) => {
         newFilters = [
           { title: "My Network", slug: "my-network", enabled: true },
         ];
+        initSelector = subSelectors.findIndex((s) => s.slug === "question");
       }
     }
+
+    if (window.location.href.endsWith("#invite")) {
+      setInviteModalShow(true);
+    }
+
+    setActiveSelector(initSelector);
     if (!isTopicPage) {
       setFilters(newFilters);
       let groupIdx = -1;
@@ -387,7 +395,7 @@ const Feed = (props) => {
       setBannerImage(newFilters[idx].image || `${cdn}/directory.png`);
       changeDashboardFilter(
         newFilters[idx].slug,
-        subSelectors[activeSelector].slug
+        subSelectors[initSelector].slug
       );
     } else {
       // topics are a simple case. Just add one filter (the topic) and set it to 0
@@ -404,7 +412,7 @@ const Feed = (props) => {
       setBannerTitle(topicSlug);
 
       setBannerImage(`${cdn}/directory.png`);
-      changeDashboardFilter(topicSlug, subSelectors[activeSelector].slug);
+      changeDashboardFilter(topicSlug, subSelectors[initSelector].slug);
     }
   };
 
@@ -483,7 +491,13 @@ const Feed = (props) => {
           </CSSTransition>
 
           {!isTopic && (
-            <div style={{ width: "100%" }} className="mt-4 position-relative">
+            <div
+              style={{ width: "100%" }}
+              className={clsx(
+                filters && filters.length > 1 && "mt-4",
+                "position-relative"
+              )}
+            >
               <Filter
                 className={clsx("feed--filters", mobileMenuOpen && "open")}
                 filterIdx={filterIdx}
