@@ -62,9 +62,8 @@ const OnboardingWelcome = ({ loading, changeStep }) => {
       <Row>
         <Col md="12" className="text-center no-solicitation">
           <p>
-            CMOlist is a <b>trusted</b> space for marketing leaders to come
-            together to support each other. Please do <b>not solicit</b> other
-            members or <b>share information</b> outside the network.
+            CMOlist is a <b>trusted</b> space for marketing leaders - please do{" "}
+            <b>not solicit</b> other members.
           </p>
         </Col>
         <Col
@@ -171,7 +170,7 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
       title={
         <span
           className="layout--title"
-          style={{ textAlign: "left", display: "block" }}
+          style={{ textAlign: "center", display: "block" }}
         >
           {isWelcome
             ? !loading
@@ -256,7 +255,7 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
               </Col>
             </Row>
             <Row>
-              <Col md="12">
+              <Col md="12" className="onboarding--bio">
                 <Form.Label>Bio (optional)</Form.Label>
                 <Form.Control
                   as="textarea"

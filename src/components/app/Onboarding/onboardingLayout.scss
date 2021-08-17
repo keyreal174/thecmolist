@@ -54,6 +54,12 @@
   max-width: 900px;
 }
 
+@media (min-width: 1000px) {
+  .layout--header-logo {
+    margin-left: 50px;
+  }
+}
+
 @media (max-width: 768px) {
   .layout--title {
     margin-top: 15px;
@@ -66,12 +72,15 @@
 
 @media (max-width: 500px) {
   .layout--title {
-    font-size: 28px;
+    font-size: 26px;
     text-align: center !important;
+    line-height: 1.2;
   }
   .layout--subtitle {
     font-size: 18px;
     text-align: center;
+    line-height: 1.3;
+    margin-top: 10px;
   }
 }
 

@@ -46,7 +46,9 @@ const OnboardingLayout = ({ children, now, title, subtitle }) => {
         )}
       </Row>
       <Row className="layout--children">
-        <Col md="12">{children}</Col>
+        <Col md="12" style={{ paddingLeft: "0px", paddingRight: "0px" }}>
+          {children}
+        </Col>
       </Row>
     </Container>
   );

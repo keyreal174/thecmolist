@@ -115,7 +115,7 @@ const OnboardingStep2 = ({
           ? "Finally..."
           : step === 1
           ? "Select topics you would like to learn more about from your peers"
-          : "One last step: Share 3 (or more) of your favorite marketing tools or agencies with your peers"
+          : "One last step: Share 3 of your favorite marketing tools or agencies with your peers"
       }
       subtitle={
         showGetIntro
@@ -199,7 +199,7 @@ const OnboardingStep2 = ({
         {!showGetIntro &&
           (step === 1 ? (
             <CustomCard className="onboarding--card fadeAndSlideElementInFast">
-              <div className="p-4">
+              <div className="onboarding--card-content">
                 <AddTopics
                   value={value}
                   pils={pils}
@@ -213,7 +213,7 @@ const OnboardingStep2 = ({
             </CustomCard>
           ) : (
             <CustomCard className="onboarding--card fadeAndSlideElementInFast">
-              <div className="p-4">
+              <div className="onboarding--card-content p-4">
                 {/* <AddSkills submitAfter={() => handleSubmit()} /> */}
                 <AddVendors submitAfter={() => handleSubmit()} />
               </div>

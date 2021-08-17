@@ -21,6 +21,10 @@
   &--card {
     padding: 0;
     margin: 0;
+
+    &-content {
+      padding: 1.5rem;
+    }
     .custom-card-body {
       padding: 0;
     }
@@ -84,8 +88,27 @@
 @media (max-width: 768px) {
   .onboarding--pill {
     padding: 6px 12px;
+    margin-bottom: 20px !important;
+  }
+  .onboarding--pill-wrapper {
+    padding: 20px 20px;
+  }
+  .onboarding--pill-head {
+    padding-left: 20px;
+    padding-right: 20px;
+    line-height: 1.2;
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  .onboarding--pill-mid {
+    padding-left: 20px;
+    padding-right: 20px;
   }
   .onboarding--done-wrapper {
     justify-content: center !important;
+    margin-bottom: 30px;
+  }
+  .onboarding--card-content {
+    padding: 0px;
   }
 }

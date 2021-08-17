@@ -62,13 +62,24 @@
 
 @media (max-width: 768px) {
   .onboarding--form {
-    padding: 10px 17px;
+    padding: 35px 17px;
   }
   .onboarding--input {
     border-radius: 8px;
+    margin-bottom: 8px;
+  }
+  .onboarding--select {
+    margin-bottom: 8px;
   }
   .onboarding--button-wrapper {
     justify-content: center !important;
+    margin-bottom: 50px;
+  }
+  .onboarding--bio {
+    display: none;
+  }
+  .form-control {
+    font-size: 15px;
   }
 }
 
@@ -77,4 +88,9 @@
   line-height: 34px;
   color: $text-1;
   margin-top: 24px;
+
+  @media (max-width: 768px) {
+    font-size: 22px;
+    line-height: 1.3;
+  }
 }
