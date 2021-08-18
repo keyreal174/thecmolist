@@ -284,6 +284,29 @@
     .vendor-article-text {
       font-size: 15px;
     }
+
+    &-desktop {
+      display: flex;
+    }
+
+    &-mobile {
+      display: none;
+    }
+
+    @media screen and (max-width: 767px) {
+      &-desktop {
+        display: none;
+      }
+
+      &-mobile {
+        display: block;
+
+        .network-list-item {
+          margin-left: 0 !important;
+          margin-right: 0 !important;
+        }
+      }
+    }
   }
 
   .vendor-card-container {

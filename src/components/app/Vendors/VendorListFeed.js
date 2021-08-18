@@ -1,6 +1,9 @@
 import React from "react";
 import { useHistory } from "react-router";
 import { Button, Col, Row } from "react-bootstrap";
+import clsx from "clsx";
+import Article from "../base/Article/Article";
+import VendorConnections from "./VendorConnections";
 import VendorCard from "./VendorCard";
 import Arrow from "../base/icons/next_arrow.svg";
 import "./vendors.scss";
@@ -43,15 +46,36 @@ const VendorListFeed = ({ vendor, filterIdx }) => {
           <p>Trending Vendors</p>
         </div>
         <div className="vendor-list-vendors">
-          <Row>
+          <Row className="vendor-list-vendors-desktop">
             {vendor.vendors
               .filter((_, i) => i < 3)
               .map((item, index) => (
-                <Col xl={4} lg={6} md={12} key={index}>
+                <Col xl={4} lg={6} md={6} sm={12} key={index}>
                   <VendorCard item={item} />
                 </Col>
               ))}
           </Row>
+          <div className="vendor-list-vendors-mobile">
+            {vendor.vendors
+              .filter((_, i) => i < 3)
+              .map((item, index) => (
+                <Article
+                  key={index}
+                  className={clsx(
+                    index && "mt-3",
+                    "network-list-item",
+                    "vendors--feed-item"
+                  )}
+                  {...item}
+                >
+                  {item.connections &&
+                    item.connections.list &&
+                    item.connections.list.length > 0 && (
+                      <VendorConnections connections={item.connections.list} />
+                    )}
+                </Article>
+              ))}
+          </div>
         </div>
       </div>
     </>
