@@ -3,7 +3,8 @@ import { useHistory } from "react-router";
 import { Button, Form } from "react-bootstrap";
 import CustomCard from "../base/CustomCard/CustomCard";
 import AddPostModal from "../base/AddPostModal/AddPostModal";
-
+import AddVendorButton from "../base/AddVendors/AddVendorButton";
+import InviteButton from "../base/InviteButton/InviteButton";
 import Logo from "../base/icons/logo.svg";
 import Search from "../base/icons/search_blue.svg";
 
@@ -103,19 +104,16 @@ const TopBanner = ({
             >
               Ask Question
             </Button>
-            <Button
-              className="btn-white mb-2 top-banner-button"
-              onClick={() => handleShow("project")}
-            >
-              Share Playbook
-            </Button>
-            <Button
-              className="btn-white top-banner-button"
-              variant="outline-primary"
-              onClick={() => handleShow("article")}
-            >
-              Share Article
-            </Button>
+            <AddVendorButton
+              lightMode
+              text="Share Vendors"
+              className="w-100 mb-2 top-banner-button"
+            />
+            <InviteButton
+              lightMode
+              text="Invite Peers"
+              className="w-100 top-banner-button"
+            />
             <AddPostModal
               contentType={contentType}
               activeGroup={activeGroup}

@@ -1,18 +1,26 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import clsx from "clsx";
 import { Button } from "react-bootstrap";
 import InviteModal from "../ShareModule/InviteModal";
 import "./InviteButton.scss";
 
-const InviteButton = ({ saveUserInvite, lightMode, isAdminUser, text }) => {
+const InviteButton = ({
+  saveUserInvite,
+  lightMode,
+  isAdminUser,
+  text,
+  className,
+}) => {
   const [inviteModalShow, setInviteModalShow] = useState(false);
 
   return (
     <div>
       <Button
-        className={
-          lightMode ? "btn-white btn btn-primary invite-btn" : "invite-btn"
-        }
+        className={clsx(
+          lightMode ? "btn-white btn btn-primary invite-btn" : "invite-btn",
+          className && className
+        )}
         onClick={() => setInviteModalShow(true)}
       >
         {text ? text : "+ Invite"}

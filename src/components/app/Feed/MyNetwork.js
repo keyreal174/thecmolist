@@ -3,6 +3,8 @@ import { useHistory } from "react-router";
 import { Button } from "react-bootstrap";
 import CustomCard from "../base/CustomCard/CustomCard";
 import AddPostModal from "../base/AddPostModal/AddPostModal";
+import InviteButton from "../base/InviteButton/InviteButton";
+import AddVendorButton from "../base/AddVendors/AddVendorButton";
 
 import Logo from "../base/icons/logo.svg";
 
@@ -42,18 +44,12 @@ const MyNetwork = (props) => {
           >
             Ask Question
           </Button>
-          <Button
-            className="btn-white mb-2"
-            onClick={() => handleShow("project")}
-          >
-            Share Playbook
-          </Button>
-          <Button
-            className="btn-white mb-2"
-            onClick={() => handleShow("article")}
-          >
-            Share Article
-          </Button>
+          <AddVendorButton
+            lightMode
+            text="Share Vendors"
+            className="w-100 mb-2"
+          />
+          <InviteButton lightMode text="Invite Peers" className="w-100 mb-2" />
           <AddPostModal
             contentType={contentType}
             activeGroup={props.activeGroup}
