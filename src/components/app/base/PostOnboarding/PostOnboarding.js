@@ -31,7 +31,13 @@ const PostOnboarding = ({ postOnboarding, isAdminUser }) => {
                 <Checkbox
                   itemChecked={item.checked}
                   onChange={() => {
-                    if (item.link) window.location.href = item.link;
+                    if (item.link) {
+                      if (window.location.href.endsWith(item.link)) {
+                        window.location.reload();
+                      } else {
+                        window.location.href = item.link;
+                      }
+                    }
                   }}
                 >
                   <h2 className="post-onboarding__headline text-left">
