@@ -35,7 +35,12 @@ const Checkbox = ({ itemChecked, onChange, children }) => {
         {itemChecked ? <IconCheck /> : <IconUnchecked />}
       </div>
 
-      <div style={{ textDecoration: itemChecked ? "line-through" : "none" }}>
+      <div
+        style={{
+          textDecoration: itemChecked ? "line-through" : "none",
+          marginTop: "-3px",
+        }}
+      >
         {children}
       </div>
     </button>
