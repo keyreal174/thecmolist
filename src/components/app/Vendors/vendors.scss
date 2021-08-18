@@ -287,6 +287,9 @@
 
     &-desktop {
       display: flex;
+      .network-list-item {
+        min-height: 332px;
+      }
     }
 
     &-mobile {
