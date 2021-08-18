@@ -18,7 +18,37 @@
           ],
           "connections": {
             "num_connections": 12,
-            "markdown": "[@Jenifer Smith](/vendor/jenifer_smith), [@Hillary](/vendor/hillary), and [@Kyle](/vendor/kyle)"
+            "markdown": "[@Jenifer Smith](/vendor/jenifer_smith), [@Hillary](/vendor/hillary), and [@Kyle](/vendor/kyle)",
+            "list": [
+              {
+                "name": "Vas Swaminathan",
+                "role": "CMO at PagerDuty",
+                "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+                "text": "We look at many different CXM solutions, and Merkle cost half of original thing. We look at many different CXM solutions, and Merkle cost half of original thing.",
+                "link": "/profile/vas"
+              },
+              {
+                "name": "Vas Swaminathan",
+                "role": "CMO at PagerDuty",
+                "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+                "text": "We look at many different CXM solutions, and Merkle cost half of original thing. We look at many different CXM solutions, and Merkle cost half of original thing.",
+                "link": "/profile/vas"
+              },
+              {
+                "name": "Vas Swaminathan",
+                "role": "CMO at PagerDuty",
+                "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+                "text": "We look at many different CXM solutions, and Merkle cost half of original thing. We look at many different CXM solutions, and Merkle cost half of original thing.",
+                "link": "/profile/vas"
+              },
+              {
+                "name": "Vas Swaminathan",
+                "role": "CMO at PagerDuty",
+                "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+                "text": "We look at many different CXM solutions, and Merkle cost half of original thing. We look at many different CXM solutions, and Merkle cost half of original thing.",
+                "link": "/profile/vas"
+              }
+            ]
           },
           "name": "Hubspot",
           "username": "hubspot"
