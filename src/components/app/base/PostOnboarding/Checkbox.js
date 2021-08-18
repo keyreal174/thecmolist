@@ -25,14 +25,14 @@ const Checkbox = ({ itemChecked, onChange, children }) => {
   const [checked, setChecked] = useState(itemChecked);
 
   const toggle = (event) => {
+    event.preventDefault();
     onChange && onChange(!checked);
-    setChecked((value) => !value);
   };
 
   return (
     <button style={Styles.button} onClick={toggle}>
       <div style={Styles.check}>
-        {checked ? <IconCheck /> : <IconUnchecked />}
+        {itemChecked ? <IconCheck /> : <IconUnchecked />}
       </div>
 
       <div style={{ textDecoration: itemChecked ? "line-through" : "none" }}>

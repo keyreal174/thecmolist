@@ -412,6 +412,12 @@ const Feed = (props) => {
     }
   };
 
+  useEffect(() => {
+    if (window.location.href.endsWith("#invite")) {
+      setInviteModalShow(true);
+    }
+  }, [location]);
+
   // init whenever the isTopic prop changes
   useEffect(() => {
     let pageLocationIsTopic = props.isTopic || false;
