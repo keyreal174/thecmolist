@@ -52,11 +52,11 @@ function FollowUserModal(props) {
       >
         <Modal.Header>
           <Modal.Title>
-            Add{" "}
+            Follow{" "}
             <span className="text-capitalize">
               {props.firstname || props.username}
-            </span>{" "}
-            to your list of trusted <b>experts</b>
+            </span>
+            's Updates{" "}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
