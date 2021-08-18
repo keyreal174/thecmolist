@@ -16,6 +16,8 @@ import Logo from "./svgs/logo.svg";
 import Notification from "../icons/notification.svg";
 import Rectangle2 from "../icons/rectangle2.svg";
 import Search from "../icons/search.svg";
+import InviteButton from "../InviteButton/InviteButton";
+import AddVendorButton from "../AddVendors/AddVendorButton";
 
 function RenderSearch({
   className,
@@ -108,21 +110,24 @@ function RenderMobileDropdown({ saveContent, history, mobileMenuOpen }) {
         title="Post"
         id="basic-nav-dropdown"
       >
-        <NavDropdown.Item
-          onClick={handleNavDropdownItemClick.bind(this, "question")}
-        >
-          Ask Question
-        </NavDropdown.Item>
-        <NavDropdown.Item
-          onClick={handleNavDropdownItemClick.bind(this, "project")}
-        >
-          Share Playbook
-        </NavDropdown.Item>
-        <NavDropdown.Item
-          onClick={handleNavDropdownItemClick.bind(this, "article")}
-        >
-          Share Article
-        </NavDropdown.Item>
+        <div>
+          <Button
+            className="btn btn-white mb-2 w-100 mobile-navbar-button"
+            onClick={() => handleNavDropdownItemClick("question")}
+          >
+            Ask Question
+          </Button>
+          <AddVendorButton
+            lightMode
+            text="Share Vendors"
+            className="w-100 mb-2 mobile-navbar-button"
+          />
+          <InviteButton
+            lightMode
+            text="Invite Peers"
+            className="w-100 mobile-navbar-button"
+          />
+        </div>
       </NavDropdown>
       <AddPostModal
         contentType={contentType}
