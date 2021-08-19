@@ -62,7 +62,7 @@
       margin-top: -15px;
       padding: 10px;
       height: 45px;
-      color: $text-2;
+      color: $text-1;
       overflow: hidden;
     }
 
@@ -111,11 +111,11 @@
       input {
         margin: 10px 0 10px;
         padding-left: 10px !important;
-        color: $text-3;
+        color: $text-1;
       }
 
       input::placeholder {
-        color: $text-3;
+        color: $text-2;
       }
     }
   }
@@ -261,8 +261,16 @@
 .vendor--profile--textarea.form-control {
   padding: 6px 10px;
   height: 56px;
-  color: #656989;
+  color: $text-1;
   font-size: 14px;
   min-height: 34px;
   overflow: hidden;
+}
+
+.vendor--profile--textarea.form-control::placeholder {
+  color: $text-3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
 }
