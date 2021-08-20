@@ -376,6 +376,11 @@ const Feed = (props) => {
       setInviteModalShow(true);
     }
 
+    // if just came from onboarding, scroll to the top
+    if (location && location.state && location.state.onboarded) {
+      window.scrollTo(0, 0);
+    }
+
     setActiveSelector(initSelector);
     if (!isTopicPage) {
       setFilters(newFilters);
