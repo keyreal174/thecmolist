@@ -433,6 +433,10 @@
   margin-bottom: 2px;
 }
 
+.feed--ask-question {
+  margin-bottom: 5px;
+}
+
 @media (max-width: 767px) {
   .filter-btn-group {
     flex-wrap: nowrap;
@@ -458,7 +462,6 @@
     }
   }
   .feed--profile-stats,
-  .feed--ask-question,
   .feed-right-container,
   .top-banner--right-column {
     display: none;
