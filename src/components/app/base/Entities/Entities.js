@@ -4,9 +4,9 @@ import Avatar from "../Avatar/Avatar";
 import { Button } from "react-bootstrap";
 import "./Entities.scss";
 
-const Entities = ({ entities, isConnection }) => {
+const Entities = ({ entities, num_connections, isConnection }) => {
   const [showMore, setShowMore] = useState(false);
-
+  const numConnections = num_connections ? num_connections : entities.length;
   return (
     <>
       <div
@@ -17,10 +17,10 @@ const Entities = ({ entities, isConnection }) => {
       >
         {isConnection && (
           <p className="connections-wrapper-header">
-            {entities.length === 1
+            {numConnections === 1
               ? "1 connection"
-              : entities.length +
-                (entities.length > 3
+              : numConnections +
+                (numConnections > 3
                   ? " connections including"
                   : " connections")}{" "}
           </p>

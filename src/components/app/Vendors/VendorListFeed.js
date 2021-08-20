@@ -51,7 +51,20 @@ const VendorListFeed = ({ vendor, filterIdx }) => {
               .filter((_, i) => i < 3)
               .map((item, index) => (
                 <Col xl={4} lg={6} md={6} sm={12} key={index}>
-                  <VendorCard item={item} />
+                  <Article
+                    key={index}
+                    className={clsx("network-list-item", "vendors--feed-item")}
+                    {...item}
+                  >
+                    {item.connections &&
+                      item.connections.list &&
+                      item.connections.list.length > 0 && (
+                        <VendorConnections
+                          num_connections={item.connections.num_connections}
+                          connections={item.connections.list}
+                        />
+                      )}
+                  </Article>
                 </Col>
               ))}
           </Row>
@@ -71,7 +84,10 @@ const VendorListFeed = ({ vendor, filterIdx }) => {
                   {item.connections &&
                     item.connections.list &&
                     item.connections.list.length > 0 && (
-                      <VendorConnections connections={item.connections.list} />
+                      <VendorConnections
+                        num_connections={item.connections.num_connections}
+                        connections={item.connections.list}
+                      />
                     )}
                 </Article>
               ))}
