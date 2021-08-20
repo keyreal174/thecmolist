@@ -382,12 +382,20 @@ const Profile = (props) => {
 
   const XBadge = ({ feed }) => {
     return isMyProfile ? (
-      <span
-        className="cursor-pointer noselect"
-        onClick={() => showDeletePostModal(feed)}
-      >
-        ✖
-      </span>
+      <>
+        <span
+          className="cursor-pointer noselect desktop-delete"
+          onClick={() => showDeletePostModal(feed)}
+        >
+          ✖
+        </span>
+        <span
+          className="cursor-pointer noselect mobile-delete"
+          onClick={() => showDeletePostModal(feed)}
+        >
+          Delete
+        </span>
+      </>
     ) : null;
   };
 

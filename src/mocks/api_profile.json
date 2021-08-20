@@ -610,7 +610,7 @@
         "data": []
       }
     ],
-    "isMyProfile": false,
+    "isMyProfile": true,
     "isNewUser": true
   }
 }

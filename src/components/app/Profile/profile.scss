@@ -374,6 +374,27 @@
   user-select: none;
 }
 
+.desktop-delete {
+  display: block;
+}
+
+.mobile-delete {
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .desktop-delete {
+    display: none;
+  }
+
+  .mobile-delete {
+    display: block;
+    border: 1px solid;
+    padding: 5px 20px;
+    border-radius: 20px;
+  }
+}
+
 .profile--right-section,
 .profile--left-section {
   border-radius: $border-radius;
