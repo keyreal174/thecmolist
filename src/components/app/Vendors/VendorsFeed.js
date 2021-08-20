@@ -18,12 +18,20 @@ const VendorsFeed = ({
   const badge = (feed) => {
     return showCategoryListView ? (
       isMyProfile ? (
-        <span
-          className="cursor-pointer noselect"
-          onClick={() => showDeletePostModal(feed)}
-        >
-          ✖
-        </span>
+        <>
+          <span
+            className="cursor-pointer noselect desktop-delete"
+            onClick={() => showDeletePostModal(feed)}
+          >
+            ✖
+          </span>
+          <span
+            className="cursor-pointer noselect mobile-delete"
+            onClick={() => showDeletePostModal(feed)}
+          >
+            Delete
+          </span>
+        </>
       ) : (
         <a
           className="m-0 add-mystack-btn"
