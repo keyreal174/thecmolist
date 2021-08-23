@@ -4,12 +4,12 @@ export const postOnboardingStep1 = (data) => {
   return axios.post("/api/onboarding/step1", data);
 };
 
-export const postOnboardingStep2 = (data) => {
-  return axios.post("/api/onboarding/step2", data);
+export const postOnboardingTopics = (data) => {
+  return axios.post("/api/onboarding/topics", data);
 };
 
 export const getOnboardingCategories = () => {
-  return axios.get("/api/onboarding/step2");
+  return axios.get("/api/onboarding/topics");
 };
 
 export default {
@@ -33,9 +33,9 @@ export default {
         throw new Error("Could not post onboarding step 1");
       }
     },
-    async submitOnboardingStep2(formData) {
+    async submitOnboardingTopics(formData) {
       try {
-        await postOnboardingStep2(formData);
+        await postOnboardingTopics(formData);
       } catch (err) {
         throw new Error("Could not post onboarding step 2");
       }

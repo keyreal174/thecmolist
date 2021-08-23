@@ -1,7 +1,7 @@
 import { init } from "@rematch/core";
 import onboardingModel, {
   postOnboardingStep1,
-  postOnboardingStep2,
+  postOnboardingTopics,
 } from "./onboarding";
 
 const axios = require("axios");
@@ -37,17 +37,17 @@ describe("feedModel model", () => {
       Promise.reject(new Error(errorMessage))
     );
 
-    await expect(postOnboardingStep2()).rejects.toThrow(errorMessage);
+    await expect(postOnboardingTopics()).rejects.toThrow(errorMessage);
   });
 
-  it("effect: submitOnboardingStep2", async () => {
+  it("effect: submitOnboardingTopics", async () => {
     const errorMessage = "Could not submit step 2";
 
     axios.post.mockImplementationOnce(() =>
       Promise.reject(new Error(errorMessage))
     );
 
-    await expect(postOnboardingStep2()).rejects.toThrow(errorMessage);
+    await expect(postOnboardingTopics()).rejects.toThrow(errorMessage);
   });
 
   it("effect: getCategories", async () => {

@@ -13,7 +13,7 @@ import AddTopics from "../base/AddTopics/AddTopics";
 const OnboardingStep2 = ({
   categories,
   getCategories,
-  submitOnboardingStep2,
+  submitOnboardingTopics,
   getProfileStats,
   profileStats,
 }) => {
@@ -104,7 +104,7 @@ const OnboardingStep2 = ({
         userCategories.push(category[0].slug || category[0].value);
       }
     });
-    await submitOnboardingStep2({
+    await submitOnboardingTopics({
       categories: userCategories,
       intro: intro,
       options: selectedOptions,
@@ -264,7 +264,7 @@ const mapState = (state) => ({
 const mapDispatch = (dispatch) => {
   return {
     getCategories: dispatch.onboardingModel.getCategories,
-    submitOnboardingStep2: dispatch.onboardingModel.submitOnboardingStep2,
+    submitOnboardingTopics: dispatch.onboardingModel.submitOnboardingTopics,
     getProfileStats: dispatch.profileModel.getProfileStats,
   };
 };
