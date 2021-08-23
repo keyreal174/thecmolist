@@ -10,17 +10,9 @@ import AddVendors from "../base/AddVendors/AddVendors";
 import AddSkills from "../base/AddSkills/AddSkills";
 import AddTopics from "../base/AddTopics/AddTopics";
 
-const OnboardingStep2 = ({
-  categories,
-  getCategories,
-  submitOnboardingTopics,
-  getProfileStats,
-  profileStats,
-}) => {
-  const [value, setValue] = useState([]);
+const OnboardingStep2 = ({ getProfileStats, profileStats }) => {
   const [introError, setIntroError] = useState("");
   const [intro, setIntro] = useState("");
-  const [showMore, setShowMore] = useState(false);
   const [showGetIntro, setShowGetIntro] = useState(false);
   const [loading, setLoading] = useState(false);
   const [step, setStep] = useState(1);
@@ -36,26 +28,9 @@ const OnboardingStep2 = ({
   const history = useHistory();
 
   useEffect(() => {
-    const fetchCategories = async () => await getCategories();
-    fetchCategories();
     const fetchProfileStats = async () => await getProfileStats();
     fetchProfileStats();
   }, []);
-
-  useEffect(() => {
-    const selectedValues = categories
-      .filter((c) => c.selected)
-      .map((c) => c.value);
-    setValue(selectedValues);
-  }, [categories]);
-
-  const pils = categories.map((c) => c.value);
-
-  const handleButtonClick = () => {
-    setShowMore(!showMore);
-  };
-
-  const handleChange = (value) => setValue(value);
 
   const handleSubmit = (e) => {
     e && e.preventDefault();
@@ -93,22 +68,6 @@ const OnboardingStep2 = ({
         });
       }
     }
-  };
-
-  const handleAddTopicsSubmit = async () => {
-    // map value to slug
-    let userCategories = [];
-    value.forEach((v) => {
-      let category = categories.filter((c) => c.value === v);
-      if (category.length > 0) {
-        userCategories.push(category[0].slug || category[0].value);
-      }
-    });
-    await submitOnboardingTopics({
-      categories: userCategories,
-      intro: intro,
-      options: selectedOptions,
-    });
   };
 
   return (
@@ -204,15 +163,7 @@ const OnboardingStep2 = ({
           (step === 1 ? (
             <CustomCard className="onboarding--card fadeAndSlideElementInFast">
               <div className="onboarding--card-content">
-                <AddTopics
-                  value={value}
-                  pils={pils}
-                  showMore={showMore}
-                  handleChange={handleChange}
-                  handleButtonClick={handleButtonClick}
-                  handleAddTopicsSubmit={handleAddTopicsSubmit}
-                  submitAfter={() => setStep(2)}
-                />
+                <AddTopics submitAfter={() => setStep(2)} />
               </div>
             </CustomCard>
           ) : (
@@ -257,14 +208,11 @@ const OnboardingStep2 = ({
 };
 
 const mapState = (state) => ({
-  categories: state.onboardingModel.categories,
   profileStats: state.profileModel.profileStats,
 });
 
 const mapDispatch = (dispatch) => {
   return {
-    getCategories: dispatch.onboardingModel.getCategories,
-    submitOnboardingTopics: dispatch.onboardingModel.submitOnboardingTopics,
     getProfileStats: dispatch.profileModel.getProfileStats,
   };
 };
