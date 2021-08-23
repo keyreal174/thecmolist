@@ -270,6 +270,7 @@ const RenderVendorCategoryRow = ({
 };
 
 const AddVendors = ({
+  submitBefore,
   submitAfter,
   getVendorCategories,
   vendorCategories,
@@ -382,6 +383,7 @@ const AddVendors = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    submitBefore && submitBefore();
     await saveVendors(vendors);
     submitAfter && submitAfter();
   };

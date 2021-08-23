@@ -65,6 +65,7 @@ const OnboardingStep2 = ({
       profileStats.profile.groups &&
       profileStats.profile.groups.length > 0;
     let shouldShow = isAfilliated ? intro.length === 0 && !showGetIntro : false;
+    setLoading(false);
     if (shouldShow) {
       setShowGetIntro(true);
     } else {
@@ -218,7 +219,10 @@ const OnboardingStep2 = ({
             <CustomCard className="onboarding--card fadeAndSlideElementInFast">
               <div className="onboarding--card-content p-4">
                 {/* <AddSkills submitAfter={() => handleSubmit()} /> */}
-                <AddVendors submitAfter={() => handleSubmit()} />
+                <AddVendors
+                  submitBefore={() => setLoading(true)}
+                  submitAfter={() => handleSubmit()}
+                />
               </div>
             </CustomCard>
           ))}

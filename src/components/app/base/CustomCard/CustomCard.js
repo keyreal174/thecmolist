@@ -4,6 +4,7 @@ import "./CustomCard.scss";
 
 const CustomCard = ({
   heading,
+  subheading,
   customHeading,
   seeAllLink,
   className,
@@ -14,7 +15,17 @@ const CustomCard = ({
       {customHeading ? (
         <div className="custom-card-header">{customHeading}</div>
       ) : (
-        <>{heading && <div className="custom-card-header">{heading}</div>}</>
+        <>
+          {heading && (
+            <div className="custom-card-header">
+              {heading}
+
+              {subheading && (
+                <div className="custom-card-subheading">{subheading}</div>
+              )}
+            </div>
+          )}
+        </>
       )}
       <div className="custom-card-body">{children}</div>
       {seeAllLink && (

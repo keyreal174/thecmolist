@@ -239,18 +239,19 @@ function RenderDashboard(props) {
       </Col>
 
       <Col className="feed--feed" md="6">
-        {profileStats && profileStats.postOnboarding ? (
-          <PostOnboarding
-            postOnboarding={profileStats.postOnboarding}
-            isAdminUser={isAdminUser}
-          />
-        ) : (
+        <>
+          {profileStats && profileStats.postOnboarding && (
+            <PostOnboarding
+              postOnboarding={profileStats.postOnboarding}
+              isAdminUser={isAdminUser}
+            />
+          )}
           <AskQuestion
             className="feed--ask-question"
             activeGroup={props.activeGroup}
             saveContent={saveContent}
           />
-        )}
+        </>
         {feedLoading ? (
           <div className="mt-3 mb-5">
             <ActivityIndicator className="element-center feed-activity-indicator" />
@@ -374,6 +375,11 @@ const Feed = (props) => {
 
     if (window.location.href.endsWith("#invite")) {
       setInviteModalShow(true);
+    }
+
+    // if just came from onboarding, scroll to the top
+    if (location && location.state && location.state.onboarded) {
+      window.scrollTo(0, 0);
     }
 
     setActiveSelector(initSelector);

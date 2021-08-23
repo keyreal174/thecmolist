@@ -17,7 +17,8 @@ const PostOnboarding = ({ postOnboarding, isAdminUser }) => {
   }
   return (
     <CustomCard
-      heading="Welcome 🎉 to CMOlist! Get started 🚀 in 4 quick steps:"
+      heading="Welcome 🎉 to CMOlist!"
+      subheading="Get started 🚀 in 4 quick steps"
       className={clsx(
         "post-onboarding",
         showAnimation && "fadeAndSlideElementIn"
