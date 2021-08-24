@@ -8,6 +8,10 @@ export const postOnboardingTopics = (data) => {
   return axios.post("/api/onboarding/topics", data);
 };
 
+export const postOnboardingIntro = (data) => {
+  return axios.post("/api/onboarding/intro", data);
+};
+
 export const getOnboardingCategories = () => {
   return axios.get("/api/onboarding/topics");
 };
@@ -37,7 +41,14 @@ export default {
       try {
         await postOnboardingTopics(formData);
       } catch (err) {
-        throw new Error("Could not post onboarding step 2");
+        throw new Error("Could not post onboarding topics");
+      }
+    },
+    async submitOnboardingIntro(formData) {
+      try {
+        await postOnboardingIntro(formData);
+      } catch (err) {
+        throw new Error("Could not post onboarding intro");
       }
     },
     async getCategories() {

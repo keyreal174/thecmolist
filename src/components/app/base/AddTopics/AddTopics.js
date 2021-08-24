@@ -49,9 +49,9 @@ const AddTopics = ({
     setShowMore(!showMore);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    handleAddTopicsSubmit();
+    await handleAddTopicsSubmit();
     submitAfter();
   };
 
