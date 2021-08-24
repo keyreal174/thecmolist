@@ -1,8 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Button, Form, Modal, Row, Col } from "react-bootstrap";
-import Close from "../icons/close.svg";
-import "./sharemodule.scss";
+import "./Invite.scss";
 
 const InfoRow = ({ setUserName, setUserEmail, required }) => {
   const [name, setName] = useState("");
@@ -42,7 +41,7 @@ const InfoRow = ({ setUserName, setUserEmail, required }) => {
   );
 };
 
-function InviteModal(props) {
+function InviteForm(props) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [name1, setName1] = useState("");
@@ -98,106 +97,88 @@ function InviteModal(props) {
   }, [props.show]);
 
   return (
-    <>
-      <Modal
-        dialogClassName="invite-module-modal"
-        show={props.show}
-        backdrop="static"
-        keyboard={false}
-        onHide={props.onHide}
-        centered
-      >
-        <Modal.Header className="align-items-center">
-          <Modal.Title>Invite other marketing leaders</Modal.Title>
-          <img
-            src={Close}
-            alt="close"
-            className="cursor-pointer"
-            onClick={() => props.onHide()}
-          />
-        </Modal.Header>
-        <Modal.Body>
-          <Fragment>
-            <p className="modal-description">
-              Invite your <strong>trusted peers</strong> to view their{" "}
-              <strong>marketing stacks</strong> and learn from their{" "}
-              <strong>advice</strong>
-            </p>
-            <form id="invite-modal" onSubmit={closeDialog}>
-              <InfoRow
-                setUserName={setName}
-                setUserEmail={setEmail}
-                required={true}
-              />
-              <InfoRow
-                setUserName={setName1}
-                setUserEmail={setEmail1}
-                required={false}
-              />
+    <div className="invite-module">
+      <div>
+        <Fragment>
+          <p className="modal-description">
+            Invite your <strong>trusted peers</strong> to view their{" "}
+            <strong>marketing stacks</strong> and learn from their{" "}
+            <strong>advice</strong>
+          </p>
+          <form id="invite-modal" onSubmit={closeDialog}>
+            <InfoRow
+              setUserName={setName}
+              setUserEmail={setEmail}
+              required={true}
+            />
+            <InfoRow
+              setUserName={setName1}
+              setUserEmail={setEmail1}
+              required={false}
+            />
+            <Row>
+              <Col xs={12}>
+                <Form.Label>Message</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows="3"
+                  value={message}
+                  required={true}
+                  onChange={(e) => setMessage(e.target.value)}
+                />
+              </Col>
+            </Row>
+            {props.isAdminUser && (
               <Row>
                 <Col xs={12}>
-                  <Form.Label>Message</Form.Label>
+                  <Form.Label>Collections</Form.Label>
                   <Form.Control
                     as="textarea"
-                    rows="3"
-                    value={message}
-                    required={true}
-                    onChange={(e) => setMessage(e.target.value)}
+                    placeholder="Collections"
+                    rows="1"
+                    value={collection}
+                    required={false}
+                    onChange={(e) => setCollection(e.target.value)}
                   />
                 </Col>
               </Row>
-              {props.isAdminUser && (
-                <Row>
-                  <Col xs={12}>
-                    <Form.Label>Collections</Form.Label>
-                    <Form.Control
-                      as="textarea"
-                      placeholder="Collections"
-                      rows="1"
-                      value={collection}
-                      required={false}
-                      onChange={(e) => setCollection(e.target.value)}
-                    />
-                  </Col>
-                </Row>
-              )}
-            </form>
-          </Fragment>
-          <div className="btn-groups">
+            )}
+          </form>
+        </Fragment>
+        <div className="btn-groups">
+          <Button
+            className="btn-white modal-primary-button"
+            variant="outline-primary"
+            form="invite-modal"
+            type="submit"
+          >
+            Send
+          </Button>
+        </div>
+      </div>
+      <div className="invite-module-footer">
+        <div className="w-100">
+          <Form.Label>Send a Share Link</Form.Label>
+          <p>Invite marketing leaders to CMOlist using this Share Link</p>
+          <div className="d-flex invite-link-wrapper">
+            <Form.Control
+              type="input"
+              value={inviteLink}
+              required={true}
+              onChange={(e) => console.log(inviteLink)}
+              disabled
+            />
             <Button
               className="btn-white modal-primary-button"
               variant="outline-primary"
-              form="invite-modal"
-              type="submit"
+              onClick={copyToClipboard}
             >
-              Send
+              {copyButtonText}
             </Button>
           </div>
-        </Modal.Body>
-        <Modal.Footer>
-          <div className="w-100">
-            <Form.Label>Send a Share Link</Form.Label>
-            <p>Invite marketing leaders to CMOlist using this Share Link</p>
-            <div className="d-flex invite-link-wrapper">
-              <Form.Control
-                type="input"
-                value={inviteLink}
-                required={true}
-                onChange={(e) => console.log(inviteLink)}
-                disabled
-              />
-              <Button
-                className="btn-white modal-primary-button"
-                variant="outline-primary"
-                onClick={copyToClipboard}
-              >
-                {copyButtonText}
-              </Button>
-            </div>
-          </div>
-        </Modal.Footer>
-      </Modal>
-    </>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -213,4 +194,4 @@ const mapDispatch = (dispatch) => {
   };
 };
 
-export default connect(mapState, mapDispatch)(InviteModal);
+export default connect(mapState, mapDispatch)(InviteForm);

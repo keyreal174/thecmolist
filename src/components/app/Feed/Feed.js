@@ -9,7 +9,7 @@ import Header from "../base/Header/Header";
 import Footer from "../base/Footer/Footer";
 import Filter from "../base/Filter/Filter";
 import Article from "../base/Article/Article";
-import InviteModal from "../base/ShareModule/InviteModal";
+import InviteModal from "../base/Invite/InviteModal";
 import PostOnboarding from "../base/PostOnboarding/PostOnboarding";
 import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
 import ProfileStats from "../ProfileStats/ProfileStats";
