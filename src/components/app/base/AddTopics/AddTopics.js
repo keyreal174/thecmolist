@@ -55,7 +55,7 @@ const AddTopics = ({
     submitAfter();
   };
 
-  const minTopics = 21;
+  const minTopics = 30;
   const pils = categories.map((c) => c.value);
   return (
     <Form onSubmit={handleSubmit} id="form-add-topics">
@@ -82,13 +82,15 @@ const AddTopics = ({
       <Row className="position-relative">
         <Col md="12" className="d-flex justify-content-center">
           <div className="onboarding--divider"></div>
-          <Button
-            variant="link"
-            className="onboarding--show-more"
-            onClick={handleShowMoreButtonClick}
-          >
-            {showMore ? "Show Less" : "Show more"}
-          </Button>
+          {pils && pils.length > minTopics && (
+            <Button
+              variant="link"
+              className="onboarding--show-more"
+              onClick={handleShowMoreButtonClick}
+            >
+              {showMore ? "Show Less" : "Show more"}
+            </Button>
+          )}
         </Col>
       </Row>
     </Form>
