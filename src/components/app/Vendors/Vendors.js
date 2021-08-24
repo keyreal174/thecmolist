@@ -228,7 +228,10 @@ const Vendors = (props) => {
                   contractors shared by your peers (and return the favor by
                   <a
                     className="cursor-pointer"
-                    onClick={() => (window.location.href = "/profile")}
+                    onClick={(e) => {
+                      e && e.preventDefault();
+                      toggleAddVendorModal();
+                    }}
                     style={{ color: "#2962ff", marginLeft: "5px" }}
                   >
                     <b>sharing your vendors</b>
