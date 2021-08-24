@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import clsx from "clsx";
 import { Button } from "react-bootstrap";
-import InviteModal from "../ShareModule/InviteModal";
-import "./InviteButton.scss";
+import InviteModal from "./InviteModal";
+import "./Invite.scss";
 
 const InviteButton = ({
   saveUserInvite,

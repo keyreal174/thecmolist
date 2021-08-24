@@ -3,7 +3,7 @@ import { Button, Carousel } from "react-bootstrap";
 import CustomCard from "../base/CustomCard/CustomCard";
 import NextIcon from "../../login/icons/arrow-circle-right.svg";
 import PrevIcon from "../../login/icons/arrow-circle-left.svg";
-import InviteButton from "../base/InviteButton/InviteButton";
+import InviteButton from "../base/Invite/InviteButton";
 
 function useWindowSize() {
   // Initialize state with undefined width/height so server and client renders match

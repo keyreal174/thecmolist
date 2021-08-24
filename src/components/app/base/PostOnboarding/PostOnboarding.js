@@ -4,7 +4,7 @@ import { useLocation } from "react-router";
 import Markdown from "markdown-to-jsx";
 import CustomCard from "../CustomCard/CustomCard";
 import CustomCheckBox from "../CustomCheckBox/CustomCheckBox";
-import InviteButton from "../InviteButton/InviteButton";
+import InviteButton from "../Invite/InviteButton";
 import Checkbox from "./Checkbox";
 import clsx from "clsx";
 import "./postonboarding.scss";

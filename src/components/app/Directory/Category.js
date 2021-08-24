@@ -9,7 +9,7 @@ import Layout from "../base/Layout/Layout";
 import Footer from "../base/Footer/Footer";
 import Banner from "../base/Banner/Banner";
 import ShareModule from "../base/ShareModule/ShareModule";
-import InviteModal from "../base/ShareModule/InviteModal";
+import InviteModal from "../base/Invite/InviteModal";
 import Arrow from "../base/icons/arrow.svg";
 import RatingBadgeProfile from "../base/Rating/RatingBadgeProfile";
 import Util from "../../util/Util";

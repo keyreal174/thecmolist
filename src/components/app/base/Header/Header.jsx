@@ -16,7 +16,7 @@ import Logo from "./svgs/logo.svg";
 import Notification from "../icons/notification.svg";
 import Rectangle2 from "../icons/rectangle2.svg";
 import Search from "../icons/search.svg";
-import InviteButton from "../InviteButton/InviteButton";
+import InviteButton from "../Invite/InviteButton";
 import AddVendorButton from "../AddVendors/AddVendorButton";
 
 function RenderSearch({
@@ -265,7 +265,7 @@ function Header({
               </Nav.Link>
               <Nav.Link as={NavLink} to="/vendors">
                 <img src={Apps} alt="Stacks" />
-                <div>Stacks</div>
+                <div>Vendors</div>
                 <div className="header--separator"></div>
               </Nav.Link>
               <Nav.Link as={NavLink} to="/notifications">

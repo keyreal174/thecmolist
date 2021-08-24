@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import {
   Button,
@@ -10,21 +10,53 @@ import {
 } from "react-bootstrap";
 
 const AddTopics = ({
-  value,
-  pils,
-  showMore,
-  handleChange,
-  handleButtonClick,
+  categories,
+  getCategories,
+  submitOnboardingTopics,
   submitAfter,
-  handleAddTopicsSubmit,
 }) => {
-  const handleSubmit = (e) => {
+  const [showMore, setShowMore] = useState(false);
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const handleCategoriesChange = (value) => setSelectedCategories(value);
+
+  useEffect(() => {
+    const fetchCategories = async () => await getCategories();
+    fetchCategories();
+  }, []);
+
+  useEffect(() => {
+    const preSelectedCategories = categories
+      .filter((c) => c.selected)
+      .map((c) => c.value);
+    setSelectedCategories(preSelectedCategories);
+  }, [categories]);
+
+  const handleAddTopicsSubmit = async () => {
+    // map value to slug
+    let userCategories = [];
+    selectedCategories.forEach((v) => {
+      let category = categories.filter((c) => c.value === v);
+      if (category.length > 0) {
+        userCategories.push(category[0].slug || category[0].value);
+      }
+    });
+    await submitOnboardingTopics({
+      categories: userCategories,
+    });
+  };
+
+  const handleShowMoreButtonClick = (e) => {
+    setShowMore(!showMore);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    handleAddTopicsSubmit();
+    await handleAddTopicsSubmit();
     submitAfter();
   };
-  const minTopics = 21;
 
+  const minTopics = 21;
+  const pils = categories.map((c) => c.value);
   return (
     <Form onSubmit={handleSubmit} id="form-add-topics">
       <Row className="onboarding--pill-wrapper">
@@ -32,8 +64,8 @@ const AddTopics = ({
           <ToggleButtonGroup
             className="d-flex flex-wrap"
             type="checkbox"
-            value={value}
-            onChange={handleChange}
+            value={selectedCategories}
+            onChange={handleCategoriesChange}
           >
             {pils.map((p, index) => {
               if (index < minTopics || showMore) {
@@ -53,7 +85,7 @@ const AddTopics = ({
           <Button
             variant="link"
             className="onboarding--show-more"
-            onClick={handleButtonClick}
+            onClick={handleShowMoreButtonClick}
           >
             {showMore ? "Show Less" : "Show more"}
           </Button>
@@ -63,4 +95,17 @@ const AddTopics = ({
   );
 };
 
-export default AddTopics;
+const mapState = (state) => {
+  return {
+    categories: state.onboardingModel.categories,
+  };
+};
+
+const mapDispatch = (dispatch) => {
+  return {
+    getCategories: dispatch.onboardingModel.getCategories,
+    submitOnboardingTopics: dispatch.onboardingModel.submitOnboardingTopics,
+  };
+};
+
+export default connect(mapState, mapDispatch)(AddTopics);
