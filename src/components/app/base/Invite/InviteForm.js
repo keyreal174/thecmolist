@@ -66,6 +66,7 @@ function InviteForm(props) {
 
     if (Object.keys(data).length > 0) {
       props.onSuccess(data);
+      props.submitAfter && props.submitAfter();
     } else {
       props.onHide();
     }
@@ -100,11 +101,13 @@ function InviteForm(props) {
     <div className="invite-module">
       <div>
         <Fragment>
-          <p className="modal-description">
-            Invite your <strong>trusted peers</strong> to view their{" "}
-            <strong>marketing stacks</strong> and learn from their{" "}
-            <strong>advice</strong>
-          </p>
+          {!props.hideHeader && (
+            <p className="modal-description">
+              Invite your <strong>trusted peers</strong> to view their{" "}
+              <strong>marketing stacks</strong> and learn from their{" "}
+              <strong>advice</strong>
+            </p>
+          )}
           <form id="invite-modal" onSubmit={closeDialog}>
             <InfoRow
               setUserName={setName}
@@ -145,16 +148,18 @@ function InviteForm(props) {
             )}
           </form>
         </Fragment>
-        <div className="btn-groups">
-          <Button
-            className="btn-white modal-primary-button"
-            variant="outline-primary"
-            form="invite-modal"
-            type="submit"
-          >
-            Send
-          </Button>
-        </div>
+        {!props.hideSubmitButton && (
+          <div className="btn-groups">
+            <Button
+              className="btn-white modal-primary-button"
+              variant="outline-primary"
+              form="invite-modal"
+              type="submit"
+            >
+              Send
+            </Button>
+          </div>
+        )}
       </div>
       <div className="invite-module-footer">
         <div className="w-100">
@@ -169,7 +174,7 @@ function InviteForm(props) {
               disabled
             />
             <Button
-              className="btn-white modal-primary-button"
+              className="btn-white"
               variant="outline-primary"
               onClick={copyToClipboard}
             >

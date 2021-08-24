@@ -10,13 +10,46 @@ import AddVendors from "../base/AddVendors/AddVendors";
 import AddSkills from "../base/AddSkills/AddSkills";
 import AddTopics from "../base/AddTopics/AddTopics";
 import AddIntro from "../base/AddIntro/AddIntro";
+import InviteForm from "../base/Invite/InviteForm";
 
 const OnboardingStep2 = ({ getProfileStats, profileStats }) => {
   const [showFinalStep, setShowFinalStep] = useState(false);
   const [loading, setLoading] = useState(false);
   const [step, setStep] = useState(1);
-
   const history = useHistory();
+
+  const isAfilliated =
+    profileStats &&
+    profileStats.profile &&
+    profileStats.profile.groups &&
+    profileStats.profile.groups.length > 0;
+
+  const getTitle = () => {
+    if (showFinalStep) {
+      if (isAfilliated) {
+        return "Finally...";
+      } else {
+        return "Finally: please invite one other marketer whose advice you trust";
+      }
+    } else if (step === 1) {
+      return "Select topics you would like to learn more about from your peers";
+    } else if (step === 2) {
+      return "One last step: Share 3 of your favorite marketing tools or agencies with your peers";
+    }
+    return "";
+  };
+
+  const getSubTitle = () => {
+    if (showFinalStep) {
+      if (isAfilliated) {
+        return "";
+      } else {
+        return "Learn from their marketing stack and be able to ask them for advice";
+      }
+    } else {
+      return "You can also add or update this information later";
+    }
+  };
 
   useEffect(() => {
     const fetchProfileStats = async () => await getProfileStats();
@@ -47,33 +80,14 @@ const OnboardingStep2 = ({ getProfileStats, profileStats }) => {
   const finishFinalStep = (e) => {
     e && e.preventDefault();
     setLoading(false);
-    const isAfilliated =
-      profileStats &&
-      profileStats.profile &&
-      profileStats.profile.groups &&
-      profileStats.profile.groups.length > 0;
-    if (isAfilliated) {
-      setShowFinalStep(true);
-    } else {
-      finalizeOnboarding();
-    }
+    setShowFinalStep(true);
   };
 
   return (
     <OnboardingLayout
       now={step === 1 ? 75 : 100}
-      title={
-        showFinalStep
-          ? "Finally..."
-          : step === 1
-          ? "Select topics you would like to learn more about from your peers"
-          : "One last step: Share 3 of your favorite marketing tools or agencies with your peers"
-      }
-      subtitle={
-        showFinalStep
-          ? null
-          : "You can also add or update this information later"
-      }
+      title={getTitle()}
+      subtitle={getSubTitle()}
     >
       <>
         <CSSTransition
@@ -83,10 +97,21 @@ const OnboardingStep2 = ({ getProfileStats, profileStats }) => {
         >
           {showFinalStep ? (
             <CustomCard className="onboarding--card">
-              <AddIntro
-                submitBefore={() => setLoading(true)}
-                submitAfter={() => finalizeOnboarding()}
-              />
+              {isAfilliated ? (
+                <AddIntro
+                  submitBefore={() => setLoading(true)}
+                  submitAfter={() => finalizeOnboarding()}
+                />
+              ) : (
+                <div className="onboarding--card-invite">
+                  <InviteForm
+                    makeOptional
+                    hideHeader={true}
+                    hideSubmitButton={true}
+                    submitAfter={() => finalizeOnboarding()}
+                  />
+                </div>
+              )}
             </CustomCard>
           ) : (
             <div />
@@ -115,14 +140,23 @@ const OnboardingStep2 = ({ getProfileStats, profileStats }) => {
             className="onboarding--done-wrapper d-flex justify-content-end"
             md="12"
           >
+            {showFinalStep && !isAfilliated && (
+              <Button
+                className="mt-3 btn-white modal-cancel-button onboarding--button-skip"
+                onClick={() => finalizeOnboarding()}
+                style={{ marginRight: "10px" }}
+              >
+                Skip
+              </Button>
+            )}
             {showFinalStep ? (
               <Button
                 className="mt-3 onboarding--button"
                 disabled={loading}
                 type="submit"
-                form={"form-add-intro"}
+                form={isAfilliated ? "form-add-intro" : "invite-modal"}
               >
-                Done
+                {isAfilliated ? "Done" : "Invite"}
               </Button>
             ) : (
               <Button
