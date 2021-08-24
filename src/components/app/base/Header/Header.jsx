@@ -263,7 +263,7 @@ function Header({
               </Nav.Link>
               <Nav.Link as={NavLink} to="/vendors">
                 <img src={Apps} alt="Stacks" />
-                <div>Stacks</div>
+                <div>Vendors</div>
                 <div className="header--separator"></div>
               </Nav.Link>
               <Nav.Link as={NavLink} to="/notifications">
