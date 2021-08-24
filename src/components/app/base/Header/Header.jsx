@@ -56,15 +56,17 @@ function RenderSearch({
       placeholder="Search"
       renderMenuItemChildren={(option) => (
         <Fragment>
-          <img
-            alt="avatar"
-            src={option.avatar_url}
-            style={{
-              height: "24px",
-              marginRight: "10px",
-              width: "24px",
-            }}
-          />
+          {option.avatar_url && (
+            <img
+              alt="avatar"
+              src={option.avatar_url}
+              style={{
+                height: "24px",
+                marginRight: "10px",
+                width: "24px",
+              }}
+            />
+          )}
           <span>{option.name}</span>
         </Fragment>
       )}
