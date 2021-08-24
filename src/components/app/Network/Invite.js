@@ -1,6 +1,6 @@
 import React from "react";
 import CustomCard from "../base/CustomCard/CustomCard";
-import InviteButton from "../base/InviteButton/InviteButton";
+import InviteButton from "../base/Invite/InviteButton";
 
 const InviteCard = () => {
   return (

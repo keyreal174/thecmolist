@@ -3,7 +3,7 @@ import CustomCard from "../base/CustomCard/CustomCard";
 import CustomCheckBox from "../base/CustomCheckBox/CustomCheckBox";
 import AddVendorsModal from "../base/AddVendors/AddVendorsModal";
 import AddSkillsModal from "../base/AddSkills/AddSkillsModal";
-import InviteModal from "../base/ShareModule/InviteModal";
+import InviteModal from "../base/Invite/InviteModal";
 import { Button } from "react-bootstrap";
 
 const AddVendorButton = ({

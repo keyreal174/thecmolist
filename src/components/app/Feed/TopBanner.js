@@ -4,7 +4,7 @@ import { Button, Form } from "react-bootstrap";
 import CustomCard from "../base/CustomCard/CustomCard";
 import AddPostModal from "../base/AddPostModal/AddPostModal";
 import AddVendorButton from "../base/AddVendors/AddVendorButton";
-import InviteButton from "../base/InviteButton/InviteButton";
+import InviteButton from "../base/Invite/InviteButton";
 import Logo from "../base/icons/logo.svg";
 import Search from "../base/icons/search_blue.svg";
 

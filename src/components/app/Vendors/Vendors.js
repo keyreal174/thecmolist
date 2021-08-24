@@ -10,7 +10,7 @@ import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
 import SimpleTopBanner from "../base/SimpleTopBanner/SimpleTopBanner";
 import AddMemberModal from "../base/AddMemberModal/AddMemberModal";
 import AddVendorsModal from "../base/AddVendors/AddVendorsModal";
-import InviteModal from "../base/ShareModule/InviteModal";
+import InviteModal from "../base/Invite/InviteModal";
 import VendorList from "./VendorList";
 import VendorsDetail from "./VendorsDetail";
 import Util from "../../util/Util";

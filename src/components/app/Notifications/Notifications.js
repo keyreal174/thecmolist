@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Container, Form } from "react-bootstrap";
 import Layout from "../base/Layout/Layout";
 import Footer from "../base/Footer/Footer";
-import InviteModal from "../base/ShareModule/InviteModal";
+import InviteModal from "../base/Invite/InviteModal";
 import Article from "../base/Article/Article";
 import Analytics from "../../util/Analytics";
 import "./notifications.scss";

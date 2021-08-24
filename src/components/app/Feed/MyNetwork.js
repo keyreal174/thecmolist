@@ -3,10 +3,8 @@ import { useHistory } from "react-router";
 import { Button } from "react-bootstrap";
 import CustomCard from "../base/CustomCard/CustomCard";
 import AddPostModal from "../base/AddPostModal/AddPostModal";
-import InviteButton from "../base/InviteButton/InviteButton";
+import InviteButton from "../base/Invite/InviteButton";
 import AddVendorButton from "../base/AddVendors/AddVendorButton";
-
-import Logo from "../base/icons/logo.svg";
 
 const MyNetwork = (props) => {
   const history = useHistory();
