@@ -81,6 +81,7 @@ const OnboardingStep2 = ({ getProfileStats, profileStats }) => {
     e && e.preventDefault();
     setLoading(false);
     setShowFinalStep(true);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (

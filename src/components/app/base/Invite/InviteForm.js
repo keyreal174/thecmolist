@@ -14,7 +14,7 @@ const InfoRow = ({ setUserName, setUserEmail, required }) => {
         <Form.Control
           className="invite-module-input"
           type="text"
-          placeholder="First name, Last name"
+          placeholder="First name"
           value={name}
           required={required}
           onChange={(e) => {
