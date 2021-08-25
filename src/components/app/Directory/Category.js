@@ -484,10 +484,6 @@ class Category extends React.Component {
             <InviteModal
               show={this.state.inviteModalShow}
               onHide={() => this.setState({ inviteModalShow: false })}
-              onSuccess={(data) => {
-                this.sendUserInvite(data);
-                this.setState({ inviteModalShow: false });
-              }}
             />
 
             <Footer />

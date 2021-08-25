@@ -285,10 +285,6 @@ const Vendors = (props) => {
       <InviteModal
         show={inviteModalShow}
         onHide={() => setInviteModalShow(false)}
-        onSuccess={(data) => {
-          props.saveUserInvite(data);
-          setInviteModalShow(false);
-        }}
         isAdminUser={isAdminUser}
       />
     </Layout>

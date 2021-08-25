@@ -56,10 +56,6 @@ const Notifications = (props) => {
           <InviteModal
             show={inviteModalShow}
             onHide={() => setInviteModalShow(false)}
-            onSuccess={(data) => {
-              props.saveUserInvite(data);
-              setInviteModalShow(false);
-            }}
           />
 
           <Footer />

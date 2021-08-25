@@ -29,10 +29,6 @@ const InviteButton = ({
         show={inviteModalShow}
         onHide={() => setInviteModalShow(false)}
         isAdminUser={isAdminUser}
-        onSuccess={(data) => {
-          saveUserInvite(data);
-          setInviteModalShow(false);
-        }}
       />
     </div>
   );

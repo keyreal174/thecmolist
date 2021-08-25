@@ -93,10 +93,6 @@ const BuildYourNetwork = ({
         show={showInviteModal}
         isAdminUser={isAdminUser}
         onHide={() => setShowInviteModal(false)}
-        onSuccess={(data) => {
-          saveUserInvite(data);
-          setShowInviteModal(false);
-        }}
       />
     </CustomCard>
   );

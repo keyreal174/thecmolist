@@ -26,7 +26,7 @@ const InviteModal = (props) => {
           />
         </Modal.Header>
         <Modal.Body>
-          <InviteForm {...props} />
+          <InviteForm {...props} submitAfter={props.onHide} />
         </Modal.Body>
       </Modal>
     </>
