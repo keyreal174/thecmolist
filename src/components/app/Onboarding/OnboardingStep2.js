@@ -32,9 +32,9 @@ const OnboardingStep2 = ({ getProfileStats, profileStats }) => {
         return "Finally: please invite one other marketer whose advice you trust";
       }
     } else if (step === 1) {
-      return "Select topics you would like to learn more about from your peers";
+      return "Step 1 of 3: Select topics you would like to learn more about from your peers";
     } else if (step === 2) {
-      return "One last step: Share 3 of your favorite marketing tools or agencies with your peers";
+      return "Step 2 of 3: Share three of your favorite marketing tools or agencies with your peers";
     }
     return "";
   };

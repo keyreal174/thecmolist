@@ -93,7 +93,7 @@ function AddMemberModal({
                   <Form.Control
                     className="add-member-modal--input"
                     id="name"
-                    placeholder="First name, Last name"
+                    placeholder="First name"
                     onChange={(e) => setName(e.target.value)}
                     value={name}
                     required={true}
