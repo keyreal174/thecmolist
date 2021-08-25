@@ -34,7 +34,7 @@ const OnboardingStep2 = ({ getProfileStats, profileStats }) => {
     } else if (step === 1) {
       return "Select topics you would like to learn more about from your peers";
     } else if (step === 2) {
-      return "One last step: Share 3 of your favorite marketing tools or agencies with your peers";
+      return "One last step: Share three of your favorite marketing tools or agencies with your peers";
     }
     return "";
   };
@@ -44,7 +44,7 @@ const OnboardingStep2 = ({ getProfileStats, profileStats }) => {
       if (isAfilliated) {
         return "";
       } else {
-        return "Learn from their marketing stack and be able to ask them for advice";
+        return "Learn from their marketing stack and get access to their advice";
       }
     } else {
       return "You can also add or update this information later";
