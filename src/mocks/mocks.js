@@ -19,7 +19,7 @@ var MockAdapter,
   MockedApiSkillCategories,
   MockedApiReactionsByPost,
   MockedApiSuggestions,
-  MockedApiOnboarding;
+  MockedApiOnboardingTopics;
 if (process.env.NODE_ENV !== "production") {
   MockAdapter = require("axios-mock-adapter");
   MockedApiNetwork = require("./api_network.json");
@@ -41,7 +41,7 @@ if (process.env.NODE_ENV !== "production") {
   MockedApiSkillCategories = require("./api_skillcategories.json");
   MockedApiReactionsByPost = require("./api_reactions_by_post.json");
   MockedApiSuggestions = require("./api_suggestions.json");
-  MockedApiOnboarding = require("./api_onboarding.json");
+  MockedApiOnboardingTopics = require("./api_onboarding_topics.json");
 }
 function MockRequests() {
   if (process.env.NODE_ENV === "production") return;
@@ -125,9 +125,9 @@ function MockRequests() {
       response: MockedApiSuggestions,
     },
     {
-      path: /\/api\/onboarding\/step2.*/,
+      path: /\/api\/onboarding\/topics.*/,
       responseCode: 200,
-      response: MockedApiOnboarding,
+      response: MockedApiOnboardingTopics,
     },
     {
       path: /\/api\/lnkd_auth_url.*/,
@@ -346,7 +346,11 @@ function MockRequests() {
     return [200, { success: true, error: null }];
   });
 
-  mock.onPost(new RegExp("/api/onboarding/step2")).reply((data) => {
+  mock.onPost(new RegExp("/api/onboarding/topics")).reply((data) => {
+    return [200, { success: true, error: null }];
+  });
+
+  mock.onPost(new RegExp("/api/onboarding/intro")).reply((data) => {
     return [200, { success: true, error: null }];
   });
 

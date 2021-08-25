@@ -224,15 +224,19 @@ const Vendors = (props) => {
                   <span role="img" aria-label="Light bulb">
                     💡
                   </span>
+                  {"   "}Browse <b>trusted</b> marketing tools, agencies, and
+                  contractors shared by your peers (and return the favor by
                   <a
                     className="cursor-pointer"
-                    onClick={() => (window.location.href = "/network")}
+                    onClick={(e) => {
+                      e && e.preventDefault();
+                      toggleAddVendorModal();
+                    }}
                     style={{ color: "#2962ff", marginLeft: "5px" }}
                   >
-                    <b>Follow marketing leaders</b>
-                  </a>{" "}
-                  to see new marketing tools, agencies and contractors they
-                  share in your feed
+                    <b>sharing your vendors</b>
+                  </a>
+                  )
                 </Alert>
               </div>
             )}

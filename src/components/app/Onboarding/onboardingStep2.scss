@@ -28,6 +28,9 @@
     .custom-card-body {
       padding: 0;
     }
+    &-invite {
+      padding: 1.5rem;
+    }
   }
   &--pill {
     background: transparent;
@@ -81,6 +84,16 @@
     &:active,
     &:focus {
       background: $brand;
+    }
+  }
+  &--button {
+    &-skip,
+    &-skip:hover,
+    &-skip:focus,
+    &-skip:active {
+      border-color: $gray-2;
+      color: $gray-2;
+      min-width: 160px;
     }
   }
 }
