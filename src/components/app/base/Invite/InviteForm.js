@@ -65,11 +65,10 @@ function InviteForm(props) {
     };
 
     if (Object.keys(data).length > 0) {
-      props.onSuccess(data);
-      props.submitAfter && props.submitAfter();
-    } else {
-      props.onHide();
+      props.saveUserInvite(data);
     }
+
+    props.submitAfter && props.submitAfter();
   };
 
   const copyToClipboard = () => {
@@ -196,6 +195,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     getProfileStats: dispatch.profileModel.getProfileStats,
+    saveUserInvite: dispatch.userModel.saveInvite,
   };
 };
 
