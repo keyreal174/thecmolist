@@ -44,7 +44,7 @@ const OnboardingStep2 = ({ getProfileStats, profileStats }) => {
       if (isAfilliated) {
         return "";
       } else {
-        return "Learn from their marketing stack and be able to ask them for advice";
+        return "Learn from their marketing stack and get access to their advice";
       }
     } else {
       return "You can also add or update this information later";
