@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { useHistory } from "react-router";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
@@ -39,10 +40,10 @@ import PopularTopics from "../base/PopularTopics/PopularTopics";
 const RenderList = ({ arr }) => {
   return arr.map((item, index) => (
     <React.Fragment key={index}>
-      <a href={`/topic/${item.slug}`}>
+      <Link to={`/topic/${item.slug}`}>
         {item.name}
         {index < arr.length - 1 && ","}
-      </a>
+      </Link>
       {index < arr.length - 1 && <span> </span>}
     </React.Fragment>
   ));

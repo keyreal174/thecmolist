@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import CustomCard from "../base/CustomCard/CustomCard";
 import Avatar from "../base/Avatar/Avatar";
 
@@ -8,9 +9,9 @@ export const AllMembersList = ({ list }) => {
       {list.length > 0 &&
         list.map(({ image, name, role, link }, index) => {
           return (
-            <a href={link} key={index}>
+            <Link to={link} key={index}>
               <Avatar image={image} heading={name} subHeading={role} />
-            </a>
+            </Link>
           );
         })}
     </>

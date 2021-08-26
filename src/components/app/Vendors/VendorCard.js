@@ -8,7 +8,7 @@ const VendorCard = ({ item }) => {
   return (
     <CustomCard className="vendor-card-container">
       <div className="avatar-thumb text-center mr-0 mb-2">
-        <a href={item.contentlink ? item.contentlink : ""}>
+        <Link to={item.contentlink ? item.contentlink : ""}>
           <img
             className="rounded-circle"
             src={item.image}
@@ -16,7 +16,7 @@ const VendorCard = ({ item }) => {
             height="39"
             alt="avatar"
           />
-        </a>
+        </Link>
       </div>
       <h2 className="article-title text-center">
         {item.headline.markdown ? (

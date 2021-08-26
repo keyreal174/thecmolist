@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Badge } from "react-bootstrap";
 import CustomCard from "../base/CustomCard/CustomCard";
 import EditIcon from "./icons/edit_square.svg";
@@ -6,9 +7,9 @@ import EditIcon from "./icons/edit_square.svg";
 const SpaceItem = ({ space }) => {
   return (
     <div className="d-flex align-items-center py-1">
-      <a href={"/topic/" + space.slug} className="profile-stats__space-title">
+      <Link to={"/topic/" + space.slug} className="profile-stats__space-title">
         {space.name}
-      </a>
+      </Link>
       {space.count && (
         <Badge pill className="profile-stats__spaces-badge">
           {space.count}
@@ -22,9 +23,9 @@ const MyTopics = ({ profileStats }) => {
   return (
     <CustomCard heading="My Topics">
       <div className="profile-stats--edit">
-        <a href={"/topics"}>
+        <Link to={"/topics"}>
           <img alt="edit icon" src={EditIcon} />
-        </a>
+        </Link>
       </div>
       {profileStats.profile &&
       profileStats.profile.spaces &&

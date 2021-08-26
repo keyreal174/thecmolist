@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import clsx from "clsx";
 import { useHistory, useLocation } from "react-router";
@@ -51,10 +52,10 @@ const RenderList = ({ arr }) => {
   if (arr) {
     return arr.map((item, index) => (
       <React.Fragment key={index}>
-        <a href={`/topic/${item.slug}`}>
+        <Link to={`/topic/${item.slug}`}>
           {item.name}
           {index < arr.length - 1 && ","}
-        </a>
+        </Link>
         {index < arr.length - 1 && <span> </span>}
       </React.Fragment>
     ));

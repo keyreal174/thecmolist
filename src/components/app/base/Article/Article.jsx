@@ -58,22 +58,20 @@ function Article(props) {
             {props.header && (
               <div className="article-wrapper-header">
                 {props.header.image && (
-                  <a href={props.contentlink ? props.contentlink : ""}>
+                  <Link to={props.contentlink ? props.contentlink : ""}>
                     <img
-                      alt="profile"
+                      alt="image"
                       className="article-wrapper-image"
                       src={props.header.image}
                     />
-                  </a>
+                  </Link>
                 )}
                 <div>
                   <div className="article-wrapper-title">
                     {props.header.markdown ? (
                       <Markdown>{props.header.markdown}</Markdown>
                     ) : (
-                      <a href={props.header.link} className="mr-1 mb-1">
-                        {props.header.text}
-                      </a>
+                      <Link to={props.header.link}>{props.header.text}</Link>
                     )}
                   </div>
                   {props.header.subtext && (
@@ -95,7 +93,7 @@ function Article(props) {
                     {props.image && props.image.length > 0 && (
                       <div className="article--image mr-3">
                         <div className="article-img">
-                          <a href={props.contentlink ? props.contentlink : ""}>
+                          <Link to={props.contentlink ? props.contentlink : ""}>
                             <img
                               src={props.image}
                               alt=""
@@ -106,7 +104,7 @@ function Article(props) {
                                   : ""
                               }
                             />
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     )}
