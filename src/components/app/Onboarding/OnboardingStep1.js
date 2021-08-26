@@ -23,10 +23,10 @@ const OnboardingWelcome = ({ loading, changeStep }) => {
             alt="Stack icon"
           />
           <div className="home--share-item-title">
-            View and share proven marketing stacks
+            Browse proven marketing stacks
           </div>
           <div className="home--share-item-subtitle">
-            Browse trusted marketing tools, agencies, and contractors shared by
+            View trusted marketing tools, agencies, and contractors shared by
             leading startups and public companies
           </div>
         </Col>
@@ -37,11 +37,11 @@ const OnboardingWelcome = ({ loading, changeStep }) => {
             alt="Knowledge icon"
           />
           <div className="home--share-item-title">
-            Find and contribute marketing knowledge
+            Ask for advice and search knowledge
           </div>
           <div className="home--share-item-subtitle">
-            Ask for advice and contribute your expertise to building the
-            definitive collection of marketing questions & answers
+            Post questions and search answers shared by leaders from world-class
+            marketing organizations
           </div>
         </Col>
         <Col className="home--share-item" md="3" sm="12">
@@ -51,11 +51,11 @@ const OnboardingWelcome = ({ loading, changeStep }) => {
             alt="Network icon"
           />
           <div className="home--share-item-title">
-            Connect & collaborate with your peers
+            Contribute your expertise
           </div>
           <div className="home--share-item-subtitle">
-            Create private spaces to manage and share marketing knowledge with
-            your trusted peers or employees
+            Share your knowledge with your peers and help build the definitive
+            collection of marketing questions & answers
           </div>
         </Col>
       </Row>
