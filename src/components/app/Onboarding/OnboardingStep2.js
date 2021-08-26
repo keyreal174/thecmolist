@@ -61,7 +61,7 @@ const OnboardingStep2 = ({ getProfileStats, profileStats }) => {
     // refresh profile stats
     getProfileStats().then(() => {
       setLoading(false);
-      let redirectUrl = "/feed";
+      let redirectUrl = "/vendors";
       if (window.location.search) {
         redirectUrl = window.location.search.replace("?r=", "");
         try {
