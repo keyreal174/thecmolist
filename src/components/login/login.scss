@@ -1,5 +1,69 @@
 @import "../../sass/globals.scss";
 
+.btn-linkedin {
+  color: #fff;
+  background-color: $brand;
+
+  &:focus,
+  &.focus {
+    color: #fff;
+    background-color: #005983;
+  }
+
+  &:hover {
+    color: #fff;
+    background-color: #386af5;
+  }
+
+  &:active,
+  &.active {
+    color: #fff;
+    background-color: #386af5;
+    border-color: rgba(0, 0, 0, 0.2);
+    background-image: none;
+  }
+
+  &:active:hover,
+  &.active:hover,
+  &:active:focus,
+  &.active:focus,
+  &:active.focus,
+  &.active.focus {
+    color: #fff;
+    background-color: #00405f;
+    border-color: rgba(0, 0, 0, 0.2);
+  }
+
+  &.disabled:hover,
+  &[disabled]:hover,
+  &.disabled:focus,
+  &[disabled]:focus,
+  &.disabled.focus,
+  &[disabled].focus {
+    background-color: #386af5;
+    border-color: rgba(0, 0, 0, 0.2);
+  }
+
+  & .badge {
+    color: #386af5;
+    background-color: #fff;
+  }
+}
+
+.button-login {
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 48px;
+  text-align: center;
+  vertical-align: bottom;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 6px;
+}
+
 .form-signin {
   max-width: 480px;
   padding: 70px 20px 80px;
