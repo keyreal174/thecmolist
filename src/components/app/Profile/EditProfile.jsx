@@ -156,17 +156,6 @@ function EditProfile(props) {
                 />
               </Col>
             </Row>
-            <Row>
-              <Col>
-                <Form.Label>Headline (optional)</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  rows="3"
-                  value={headline}
-                  onChange={(e) => setHeadline(e.target.value)}
-                />
-              </Col>
-            </Row>
           </Form>
         </Modal.Body>
         <Modal.Footer>
