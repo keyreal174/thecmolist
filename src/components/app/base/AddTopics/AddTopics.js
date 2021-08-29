@@ -88,7 +88,7 @@ const AddTopics = ({
               className="onboarding--show-more"
               onClick={handleShowMoreButtonClick}
             >
-              {showMore ? "Show Less" : "Show more"}
+              {showMore ? "Show Less" : "Show More (30)"}
             </Button>
           )}
         </Col>
