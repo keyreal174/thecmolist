@@ -239,14 +239,3 @@
   font-weight: 500;
   border-radius: 6px;
 }
-
-@media (min-height: 1000px) {
-  html {
-    overflow-x: unset;
-    overflow-y: unset;
-  }
-  body {
-    overflow-y: unset;
-    overflow-x: unset;
-  }
-}
