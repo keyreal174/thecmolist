@@ -149,3 +149,15 @@
     }
   }
 }
+
+@media (max-width: 991px) {
+  .about .row {
+    padding: 20px 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .about .row {
+    padding: 15px 0px;
+  }
+}

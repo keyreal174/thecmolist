@@ -4,6 +4,12 @@
   min-height: 60px;
 }
 
+.footer__left {
+  display: flex;
+  align-items: flex-end;
+  white-space: nowrap;
+}
+
 .footer__menu {
   list-style: none;
   margin: 0;
@@ -51,12 +57,17 @@
   .footer__menu {
     flex-wrap: wrap;
     justify-content: center;
+
+    a {
+      margin: 0 10px;
+    }
   }
   .footer__left {
     text-align: center;
-  }
-  .footer__menu a {
-    margin: 0 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    margin-bottom: 40px;
   }
 }
 
