@@ -473,19 +473,6 @@ const ProfileEdit = (props) => {
                 <Separator className="card-separator" />
               </div>
               <Row className="profile--row mt-5">
-                <Col md="12" sm="12">
-                  <Form.Label>Headline (optional)</Form.Label>
-                  <Form.Control
-                    as="textarea"
-                    className="profile--textarea"
-                    rows="1"
-                    placeholder=""
-                    value={headline}
-                    onChange={(e) => setHeadline(e.target.value)}
-                  />
-                </Col>
-              </Row>
-              <Row className="profile--row mt-5">
                 <Col sm="12" md="12">
                   <Form.Label>Description (optional)</Form.Label>
                   <Form.Control
