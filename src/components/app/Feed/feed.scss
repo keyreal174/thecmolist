@@ -1,5 +1,24 @@
 @import "../../../sass/globals.scss";
 
+.button-as-link {
+  color: #2962ff;
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  font-weight: 600;
+  padding-left: 0px;
+  padding-right: 0px;
+
+  &:active,
+  &:hover,
+  &:focus,
+  &:visited {
+    border: none !important;
+    background-color: unset !important;
+    color: #2962ff !important;
+  }
+}
+
 .btn__nux_share {
   font-size: 14px;
   font-weight: 600;

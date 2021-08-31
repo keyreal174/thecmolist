@@ -145,22 +145,3 @@
   margin-left: auto;
   margin-right: auto;
 }
-
-.button-as-link {
-  color: #2962ff;
-  text-decoration: none;
-  background-color: transparent;
-  border: none;
-  font-weight: 600;
-  padding-left: 0px;
-  padding-right: 0px;
-}
-
-.button-as-link:active,
-.button-as-link:hover,
-.button-as-link:focus,
-.button-as-link:visited {
-  border: none !important;
-  background-color: unset !important;
-  color: #2962ff !important;
-}
