@@ -24,6 +24,14 @@ export const getProfileStatsRequest = () => {
   return axios.get(`/api/profilestats/`);
 };
 
+export const getFollowersRequest = (userName) => {
+  return axios.get(`/api/followers/${userName ? userName : ""}`);
+};
+
+export const getFollowingRequest = (userName) => {
+  return axios.get(`/api/following/${userName ? userName : ""}`);
+};
+
 export default {
   name: "profileModel",
   state: {
@@ -116,6 +124,24 @@ export default {
           this.subscribeList = null;
           throw new Error("Could not get profilestats");
         }
+      }
+    },
+
+    async fetchProfileFollowing(payload) {
+      try {
+        const response = await getFollowingRequest(payload.userName);
+        return response.data.following;
+      } catch (err) {
+        throw new Error("Could not get profile following");
+      }
+    },
+
+    async fetchProfileFollowers(payload) {
+      try {
+        const response = await getFollowersRequest(payload.userName);
+        return response.data.followers;
+      } catch (err) {
+        throw new Error("Could not get profile following");
       }
     },
   }),

@@ -47,6 +47,7 @@ import InsightfulCheckedIcon from "../base/icons/insightful_checked.svg";
 import ThanksIcon from "../base/icons/thanks.svg";
 import ThanksCheckedIcon from "../base/icons/thanks_checked.svg";
 import More from "./icons/more.svg";
+import AllMembersListModal from "../base/AllMembersListModal/AllMembersListModal";
 
 const RenderList = ({ arr }) => {
   if (arr) {
@@ -112,6 +113,10 @@ const Profile = (props) => {
   const [showCategoryListView, setShowCategoryListView] = useState(false);
   const [categoryTitle, setCategoryTitle] = useState("");
   const [limit, setLimit] = useState(null);
+
+  const [showMemberModal, setShowMemberModal] = useState(false);
+  const [statType, setStatType] = useState("");
+  const [followingList, setFollowingList] = useState([]);
 
   const userName = Util.parsePath(window.location.href).trailingPath;
 
@@ -418,6 +423,30 @@ const Profile = (props) => {
     }
   }
 
+  const getProfileFollowing = async (e) => {
+    e.preventDefault();
+    const response = await props.fetchProfileFollowing({
+      userName: Util.parsePath(window.location.href).trailingPath,
+    });
+    setShowMemberModal(true);
+    setStatType("Following");
+    setFollowingList(response);
+  };
+
+  const getProfileFollowers = async (e) => {
+    e.preventDefault();
+    const response = await props.fetchProfileFollowers({
+      userName: Util.parsePath(window.location.href).trailingPath,
+    });
+    setShowMemberModal(true);
+    setStatType("Followers");
+    setFollowingList(response);
+  };
+
+  const handleCloseMemberModal = () => {
+    setShowMemberModal((value) => !value);
+  };
+
   return (
     <Layout onToggle={handleToggle}>
       <Container className="height-100">
@@ -560,7 +589,7 @@ const Profile = (props) => {
                         alt="Mail"
                         src={Mail}
                       />
-                      <a href={profileWebsite}>
+                      <a href="#" onClick={getProfileFollowing}>
                         {profileNumFollowing} Following
                       </a>
                     </div>
@@ -572,7 +601,7 @@ const Profile = (props) => {
                         alt="Mail"
                         src={Mail}
                       />
-                      <a href={profileWebsite}>
+                      <a href="#" onClick={getProfileFollowers}>
                         {profileNumFollowers} Followers
                       </a>
                     </div>
@@ -892,6 +921,12 @@ const Profile = (props) => {
         limit={limit}
       />
       <AddSkillsModal show={showAddSkill} handleClose={toggleAddSkillModal} />
+      <AllMembersListModal
+        showStatModal={showMemberModal}
+        onHide={handleCloseMemberModal}
+        statType={statType}
+        list={followingList}
+      />
     </Layout>
   );
 };
@@ -911,6 +946,8 @@ const mapDispatch = (dispatch) => {
     disconnectUser: dispatch.userModel.disconnectUser,
     fetchProfile: dispatch.profileModel.fetchProfile,
     saveProfile: dispatch.profileModel.saveProfile,
+    fetchProfileFollowing: dispatch.profileModel.fetchProfileFollowing,
+    fetchProfileFollowers: dispatch.profileModel.fetchProfileFollowers,
   };
 };
 
