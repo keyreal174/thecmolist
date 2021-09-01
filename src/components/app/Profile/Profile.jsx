@@ -87,6 +87,8 @@ const Profile = (props) => {
   const [profileWebsite, setProfileWebsite] = useState("");
   const [profileMail, setProfileMail] = useState("");
   const [profileAbout, setProfileAbout] = useState([]);
+  const [profileNumFollowing, setProfileNumFollowing] = useState([]);
+  const [profileNumFollowers, setProfileNumFollowers] = useState([]);
   const [feedData, setFeedData] = useState([]);
   const [connectedUser, setConnectedUser] = useState(false);
   const [followedUser, setFollowedUser] = useState(false);
@@ -146,6 +148,8 @@ const Profile = (props) => {
       setFeedData(props.profile.feedData || []);
       setConnectedUser(props.profile.connectedUser);
       setFollowedUser(props.profile.followedUser);
+      setProfileNumFollowing(props.profile.num_following);
+      setProfileNumFollowers(props.profile.num_followers);
       props.profile.feedData && createSubfilters(props.profile.feedData);
 
       const profileFeedData = props.profile.feedData || [];
@@ -549,12 +553,36 @@ const Profile = (props) => {
                       <a href={profileWebsite}>Website</a>
                     </div>
                   )}
+                  {profileNumFollowing && (
+                    <div className="right-section--website right-section--item">
+                      <img
+                        className="right-section--item-img"
+                        alt="Mail"
+                        src={Mail}
+                      />
+                      <a href={profileWebsite}>
+                        {profileNumFollowing} Following
+                      </a>
+                    </div>
+                  )}
+                  {profileNumFollowers && (
+                    <div className="right-section--website right-section--item">
+                      <img
+                        className="right-section--item-img"
+                        alt="Mail"
+                        src={Mail}
+                      />
+                      <a href={profileWebsite}>
+                        {profileNumFollowers} Followers
+                      </a>
+                    </div>
+                  )}
                 </div>
               </CustomCard>
             </Col>
           </Row>
           {Object.keys(profileAbout).length > 0 && (
-            <CustomCard heading="About" className="profile-about mt-2">
+            <CustomCard heading="About" className="profile-about">
               <Row>
                 <Col md="12">
                   <div className="profile-about--content">
