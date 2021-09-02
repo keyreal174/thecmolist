@@ -17,11 +17,11 @@ const Slider = () => {
         <div className="text-center carousel-section">
           <img className="carousel-section-icon" src={Icon2} alt="Stack icon" />
           <h3 className="carousel-section-title">
-            View and share proven marketing stacks
+            Browse world-class marketing stacks
           </h3>
           <p className="carousel-section-content">
-            Browse trusted marketing tools, agencies, and contractors shared by
-            leading startups and public companies
+            View trusted & emerging marketing vendors shared by leading startups
+            and public companies
           </p>
         </div>
       </Carousel.Item>
@@ -33,11 +33,11 @@ const Slider = () => {
             alt="Knowledge icon"
           />
           <h3 className="carousel-section-title">
-            Find and contribute marketing knowledge
+            Ask for advice and search knowledge
           </h3>
           <p className="carousel-section-content">
-            Ask for advice and contribute your expertise to building the
-            definitive collection of marketing questions & answers
+            Post marketing questions and search answers shared by the world's
+            best marketers
           </p>
         </div>
       </Carousel.Item>
@@ -49,11 +49,11 @@ const Slider = () => {
             alt="Network icon"
           />
           <h3 className="carousel-section-title">
-            Connect & collaborate with your peers
+            Accelerate your marketing career
           </h3>
           <p className="carousel-section-content">
-            Create private spaces to manage and share marketing knowledge with
-            your trusted peers or employees
+            Network with other top marketers and find career, advisor, and board
+            opportunities
           </p>
         </div>
       </Carousel.Item>
