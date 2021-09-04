@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import Article from "../base/Article/Article";
 import CustomCard from "../base/CustomCard/CustomCard";
 import clsx from "clsx";
-import { Button, Col, Modal } from "react-bootstrap";
+import { Button, Col } from "react-bootstrap";
 import {
   getCheckedForEngagementType,
   getEngagementForId,
 } from "../base/EngagementButtons/EngagementButtons";
-import { AllMembersList } from "../Feed/AllMembers";
 import DiscussionComment from "../base/DiscussionComment/DiscussionComment";
 import Entities from "../base/Entities/Entities";
 import EditPostModal from "../base/EditPostModal/EditPostModal";
@@ -18,6 +17,7 @@ import InsightfulIcon from "../base/icons/insightful.svg";
 import InsightfulCheckedIcon from "../base/icons/insightful_checked.svg";
 import ThanksIcon from "../base/icons/thanks.svg";
 import ThanksCheckedIcon from "../base/icons/thanks_checked.svg";
+import AllMembersListModal from "../base/AllMembersListModal/AllMembersListModal";
 
 const ContentDetail = ({
   content,
@@ -213,20 +213,12 @@ const ContentDetail = ({
             <Entities entities={content.entities} />
           )}
         </Article>
-        <Modal
-          className="content-detail--modal"
-          show={showStatModal}
+        <AllMembersListModal
+          showStatModal={showStatModal}
           onHide={handleCloseButtonClick}
-        >
-          <Modal.Header closeButton>
-            <Modal.Title>{statType}</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <AllMembersList
-              list={getListOfStatById(selectedContentId, statType)}
-            />
-          </Modal.Body>
-        </Modal>
+          statType={statType}
+          list={getListOfStatById(selectedContentId, statType)}
+        />
         {content && content.replies && content.replies.length > 0 && (
           <div className="question-answer-section-replies">{`${numberOfReplies} answers`}</div>
         )}

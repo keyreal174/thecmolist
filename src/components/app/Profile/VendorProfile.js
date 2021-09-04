@@ -53,7 +53,7 @@ const ProfileAbout = ({ description, areasOfExpertise }) => {
   return (
     ((description && description.length > 0) ||
       (areasOfExpertise && areasOfExpertise.length > 0)) && (
-      <CustomCard heading="About" className="profile-about mt-2">
+      <CustomCard heading="About" className="profile-about">
         {description && (
           <Row>
             <Col md="12">

@@ -47,6 +47,7 @@ import InsightfulCheckedIcon from "../base/icons/insightful_checked.svg";
 import ThanksIcon from "../base/icons/thanks.svg";
 import ThanksCheckedIcon from "../base/icons/thanks_checked.svg";
 import More from "./icons/more.svg";
+import AllMembersListModal from "../base/AllMembersListModal/AllMembersListModal";
 
 const RenderList = ({ arr }) => {
   if (arr) {
@@ -87,6 +88,8 @@ const Profile = (props) => {
   const [profileWebsite, setProfileWebsite] = useState("");
   const [profileMail, setProfileMail] = useState("");
   const [profileAbout, setProfileAbout] = useState([]);
+  const [profileNumFollowing, setProfileNumFollowing] = useState([]);
+  const [profileNumFollowers, setProfileNumFollowers] = useState([]);
   const [feedData, setFeedData] = useState([]);
   const [connectedUser, setConnectedUser] = useState(false);
   const [followedUser, setFollowedUser] = useState(false);
@@ -110,6 +113,10 @@ const Profile = (props) => {
   const [showCategoryListView, setShowCategoryListView] = useState(false);
   const [categoryTitle, setCategoryTitle] = useState("");
   const [limit, setLimit] = useState(null);
+
+  const [showMemberModal, setShowMemberModal] = useState(false);
+  const [statType, setStatType] = useState("");
+  const [followingList, setFollowingList] = useState([]);
 
   const userName = Util.parsePath(window.location.href).trailingPath;
 
@@ -146,6 +153,8 @@ const Profile = (props) => {
       setFeedData(props.profile.feedData || []);
       setConnectedUser(props.profile.connectedUser);
       setFollowedUser(props.profile.followedUser);
+      setProfileNumFollowing(props.profile.num_following);
+      setProfileNumFollowers(props.profile.num_followers);
       props.profile.feedData && createSubfilters(props.profile.feedData);
 
       const profileFeedData = props.profile.feedData || [];
@@ -414,6 +423,30 @@ const Profile = (props) => {
     }
   }
 
+  const getProfileFollowing = async (e) => {
+    e.preventDefault();
+    const response = await props.fetchProfileFollowing({
+      userName: Util.parsePath(window.location.href).trailingPath,
+    });
+    setShowMemberModal(true);
+    setStatType("Following");
+    setFollowingList(response);
+  };
+
+  const getProfileFollowers = async (e) => {
+    e.preventDefault();
+    const response = await props.fetchProfileFollowers({
+      userName: Util.parsePath(window.location.href).trailingPath,
+    });
+    setShowMemberModal(true);
+    setStatType("Followers");
+    setFollowingList(response);
+  };
+
+  const handleCloseMemberModal = () => {
+    setShowMemberModal((value) => !value);
+  };
+
   return (
     <Layout onToggle={handleToggle}>
       <Container className="height-100">
@@ -549,12 +582,36 @@ const Profile = (props) => {
                       <a href={profileWebsite}>Website</a>
                     </div>
                   )}
+                  {profileNumFollowing && (
+                    <div className="right-section--website right-section--item">
+                      <img
+                        className="right-section--item-img"
+                        alt="Mail"
+                        src={Mail}
+                      />
+                      <a href="#" onClick={getProfileFollowing}>
+                        {profileNumFollowing} Following
+                      </a>
+                    </div>
+                  )}
+                  {profileNumFollowers && (
+                    <div className="right-section--website right-section--item">
+                      <img
+                        className="right-section--item-img"
+                        alt="Mail"
+                        src={Mail}
+                      />
+                      <a href="#" onClick={getProfileFollowers}>
+                        {profileNumFollowers} Followers
+                      </a>
+                    </div>
+                  )}
                 </div>
               </CustomCard>
             </Col>
           </Row>
           {Object.keys(profileAbout).length > 0 && (
-            <CustomCard heading="About" className="profile-about mt-2">
+            <CustomCard heading="About" className="profile-about">
               <Row>
                 <Col md="12">
                   <div className="profile-about--content">
@@ -864,6 +921,12 @@ const Profile = (props) => {
         limit={limit}
       />
       <AddSkillsModal show={showAddSkill} handleClose={toggleAddSkillModal} />
+      <AllMembersListModal
+        showStatModal={showMemberModal}
+        onHide={handleCloseMemberModal}
+        statType={statType}
+        list={followingList}
+      />
     </Layout>
   );
 };
@@ -883,6 +946,8 @@ const mapDispatch = (dispatch) => {
     disconnectUser: dispatch.userModel.disconnectUser,
     fetchProfile: dispatch.profileModel.fetchProfile,
     saveProfile: dispatch.profileModel.saveProfile,
+    fetchProfileFollowing: dispatch.profileModel.fetchProfileFollowing,
+    fetchProfileFollowers: dispatch.profileModel.fetchProfileFollowers,
   };
 };
 
