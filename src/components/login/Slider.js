@@ -17,10 +17,10 @@ const Slider = () => {
         <div className="text-center carousel-section">
           <img className="carousel-section-icon" src={Icon2} alt="Stack icon" />
           <h3 className="carousel-section-title">
-            Browse world-class marketing stacks
+            Find the best marketing tools and agencies
           </h3>
           <p className="carousel-section-content">
-            View trusted & emerging marketing vendors shared by leading startups
+            View proven & emerging marketing vendors shared by leading startups
             and public companies
           </p>
         </div>
