@@ -23,10 +23,10 @@ const OnboardingWelcome = ({ loading, changeStep }) => {
             alt="Stack icon"
           />
           <div className="home--share-item-title">
-            Browse world-class marketing stacks
+            Find the best marketing tools and agencies
           </div>
           <div className="home--share-item-subtitle">
-            View trusted & emerging marketing vendors shared by leading startups
+            View proven & emerging marketing vendors shared by leading startups
             and public companies
           </div>
         </Col>
