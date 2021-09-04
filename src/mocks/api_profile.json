@@ -611,6 +611,8 @@
       }
     ],
     "isMyProfile": true,
-    "isNewUser": true
+    "isNewUser": true,
+    "num_following": 10,
+    "num_followers": 20
   }
 }

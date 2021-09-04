@@ -1,0 +1,12 @@
+.content-detail--modal {
+  .modal-title {
+    text-transform: capitalize;
+    padding-left: 0px;
+  }
+  .modal-content {
+    .modal-body {
+      max-height: calc(100vh - 150px);
+      overflow: auto;
+    }
+  }
+}

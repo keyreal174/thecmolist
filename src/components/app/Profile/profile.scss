@@ -57,6 +57,23 @@
 
 .profile--wrapper {
   margin-top: $margin-top-header;
+
+  & > div {
+    margin-bottom: 20px;
+  }
+
+  .profile--right-section,
+  .profile--left-section {
+    border-radius: $border-radius;
+    border: $border-card;
+    background-color: $white;
+    height: 100%;
+    min-height: 350px;
+  }
+
+  .profile--right-section {
+    margin-bottom: 0;
+  }
 }
 
 .profile-section-title {
@@ -395,14 +412,6 @@
   }
 }
 
-.profile--right-section,
-.profile--left-section {
-  border-radius: $border-radius;
-  border: $border-card;
-  background-color: $white;
-  height: 350px;
-}
-
 .logo-wrapper {
   margin-top: -115px;
   margin-left: 24px;
@@ -533,9 +542,6 @@
   .profile--right-section {
     position: relative;
     height: unset;
-  }
-  .profile--right-section {
-    margin-top: 17px;
   }
   .profile--filters {
     .filter-btn-group {
