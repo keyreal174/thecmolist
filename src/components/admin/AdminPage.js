@@ -11,7 +11,19 @@ const adminPostRequest = (data) => {
   var postBody = {
     data: data,
   };
-  return axios.post("/api/adminpost", postBody);
+  return axios
+    .post("/api/adminpost", postBody)
+    .then(({ data }) => {
+      if (data.success) {
+        alert("success" + data.newId ? ` New ID: ${data.newId}` : "");
+      } else {
+        let errorMessage = data.error || "Unknown";
+        alert("An error occurred: " + errorMessage);
+      }
+    })
+    .catch(function (error) {
+      alert("An error occurred: " + error);
+    });
 };
 
 function AdminPage() {
@@ -25,23 +37,26 @@ function AdminPage() {
     console.log(method.value);
     console.log(id.value);
     console.log(json.value);
-
     adminPostRequest({
       method: method.value,
       id: id.value,
       json: json.value,
-    })
-      .then(({ data }) => {
-        if (data.success) {
-          alert("success" + data.newId ? ` New ID: ${data.newId}` : "");
-        } else {
-          let errorMessage = data.error || "Unknown";
-          alert("An error occurred: " + errorMessage);
-        }
-      })
-      .catch(function (error) {
-        alert("An error occurred: " + error);
-      });
+    });
+  };
+
+  const handlePromotePost = (e) => {
+    e.preventDefault();
+    const {
+      target: { elements },
+    } = e;
+    const { id, sendemail } = elements;
+    console.log(id.value);
+    console.log(sendemail.checked);
+    adminPostRequest({
+      method: "promotepost",
+      id: id.value,
+      json: { sendemail: sendemail.checked },
+    });
   };
 
   useEffect(() => {
@@ -65,13 +80,35 @@ function AdminPage() {
         <Col className="px-0" md="12">
           <div className="home--form-title">CMOlist Admin</div>
           <Row>
+            <Col md="12">
+              <Form style={{ height: "unset" }} onSubmit={handlePromotePost}>
+                <Form.Group>
+                  <Form.Label className="home--label">Promote post</Form.Label>
+                  <Form.Control
+                    style={{ width: "100%" }}
+                    className="home--input"
+                    name="id"
+                    type="number"
+                    placeholder="Post id (found at the end of the post e.g. /content/<id>)"
+                    required={true}
+                  />
+                  <Form.Check
+                    className="home--input"
+                    type="checkbox"
+                    name="sendemail"
+                    label="Send email for post"
+                  />
+                </Form.Group>
+                <Button className="btn__homepage" type="submit">
+                  Promote Post
+                </Button>
+              </Form>
+            </Col>
+          </Row>
+          <Row>
             {fields.map((f, idx) => (
               <Col md="12" idx={idx}>
-                <Form
-                  className="home--form-right"
-                  style={{ height: "unset" }}
-                  onSubmit={handleFormSubmit}
-                >
+                <Form style={{ height: "unset" }} onSubmit={handleFormSubmit}>
                   <Form.Group>
                     <Form.Label className="home--label">{f}</Form.Label>
                     <Form.Control

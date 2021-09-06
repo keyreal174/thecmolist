@@ -62,7 +62,7 @@ const EditPostModal = ({
       >
         <Modal.Header as="h4" closeButton>
           <Modal.Title className="edit-content-header">
-            Edit Content
+            Edit Content {contentId}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>

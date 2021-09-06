@@ -23,11 +23,11 @@ const OnboardingWelcome = ({ loading, changeStep }) => {
             alt="Stack icon"
           />
           <div className="home--share-item-title">
-            Browse proven marketing stacks
+            Find the best marketing tools and agencies
           </div>
           <div className="home--share-item-subtitle">
-            View trusted marketing tools, agencies, and contractors shared by
-            leading startups and public companies
+            View proven & emerging marketing vendors shared by leading startups
+            and public companies
           </div>
         </Col>
         <Col className="home--share-item" md="3" sm="12">
@@ -40,8 +40,8 @@ const OnboardingWelcome = ({ loading, changeStep }) => {
             Ask for advice and search knowledge
           </div>
           <div className="home--share-item-subtitle">
-            Post questions and search answers shared by leaders from world-class
-            marketing organizations
+            Post marketing questions and search answers shared by the world's
+            best marketers
           </div>
         </Col>
         <Col className="home--share-item" md="3" sm="12">
@@ -51,19 +51,19 @@ const OnboardingWelcome = ({ loading, changeStep }) => {
             alt="Network icon"
           />
           <div className="home--share-item-title">
-            Contribute your expertise
+            Accelerate your marketing career
           </div>
           <div className="home--share-item-subtitle">
-            Share your knowledge with your peers and help build the definitive
-            collection of marketing questions & answers
+            Network with other top marketers and find career, advisor, and board
+            opportunities
           </div>
         </Col>
       </Row>
       <Row>
         <Col md="12" className="text-center no-solicitation">
           <p>
-            CMOlist is a <b>trusted</b> space for marketing leaders - please do{" "}
-            <b>not solicit</b> other members.
+            CMOlist is a trusted space for marketing leaders, please do{" "}
+            <b>not</b> solicit other members.
           </p>
         </Col>
         <Col

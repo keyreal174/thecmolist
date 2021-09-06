@@ -106,20 +106,21 @@ function Homepage() {
 */}
                     <div className="desktop">
                       <span className="mr-2">
-                        The trusted network <br></br>
-                        for marketing leaders
+                        The private knowledge network<br></br>for the world’s
+                        top marketers
                       </span>
                     </div>
                     <div className="mobile">
                       <span className="mr-2">
-                        The trusted network <br></br>
-                        for marketing leaders
+                        The private knowledge network<br></br>for the world’s
+                        top marketers
                       </span>
                     </div>
                   </div>
                   <div className="home--description">
-                    Connect with your peers to find and vet the marketing tools,
-                    agencies, and contractors you need to succeed
+                    CMOlist is where leading marketers come together to find
+                    world-class marketing stacks, agencies and advice to
+                    accelerate their impact and careers
                   </div>
                   <div className="home--apply-button">
                     <Button
