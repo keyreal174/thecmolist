@@ -612,21 +612,23 @@ const Profile = (props) => {
           </Row>
           {Object.keys(profileAbout).length > 0 && (
             <CustomCard heading="About" className="profile-about">
-              <Row>
-                <Col md="12">
-                  <div className="profile-about--content">
-                    <ShowMoreText
-                      keepNewLines={true}
-                      lines={3}
-                      more="See more"
-                      less="See less"
-                      width={0}
-                    >
-                      {profileAbout.description}
-                    </ShowMoreText>
-                  </div>
-                </Col>
-              </Row>
+              {profileAbout.description && profileAbout.description.length > 0 && (
+                <Row>
+                  <Col md="12">
+                    <div className="profile-about--content">
+                      <ShowMoreText
+                        keepNewLines={true}
+                        lines={3}
+                        more="See more"
+                        less="See less"
+                        width={0}
+                      >
+                        {profileAbout.description}
+                      </ShowMoreText>
+                    </div>
+                  </Col>
+                </Row>
+              )}
               {(profileCompanyIndustry.length > 0 ||
                 profileCompanyStage.length > 0) && (
                 <Row className="profile-about--experience">
