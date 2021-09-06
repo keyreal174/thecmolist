@@ -153,7 +153,7 @@ class App extends React.Component {
             path="/profile"
             render={(props) =>
               this.state.authed ? (
-                <Profile />
+                <Profile key={new Date()} />
               ) : (
                 <Redirect
                   to={{ pathname: "/login", state: { from: props.location } }}

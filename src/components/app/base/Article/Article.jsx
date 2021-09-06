@@ -118,7 +118,9 @@ function Article(props) {
                         {props.headline.markdown ? (
                           <Markdown>{props.headline.markdown}</Markdown>
                         ) : (
-                          props.headline
+                          <Link to={props.headline.link}>
+                            {props.headline.text}
+                          </Link>
                         )}
                       </h2>
                       <div>

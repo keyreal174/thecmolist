@@ -71,6 +71,7 @@ export default {
   effects: (dispatch) => ({
     async fetchProfile(payload) {
       try {
+        dispatch.profileModel.updateProfile({ loading: true });
         const response = await profileRequest(payload.userName, payload.scope);
         const { profile } = response.data;
         dispatch.profileModel.updateProfile(profile);
