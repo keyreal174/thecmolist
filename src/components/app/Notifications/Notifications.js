@@ -3,13 +3,11 @@ import { connect } from "react-redux";
 import { Container, Form } from "react-bootstrap";
 import Layout from "../base/Layout/Layout";
 import Footer from "../base/Footer/Footer";
-import InviteModal from "../base/Invite/InviteModal";
 import Article from "../base/Article/Article";
 import Analytics from "../../util/Analytics";
 import "./notifications.scss";
 
 const Notifications = (props) => {
-  const [inviteModalShow, setInviteModalShow] = useState(false);
   const fetchData = async () => await props.fetchNotifications();
   useEffect(() => {
     fetchData();
@@ -52,12 +50,6 @@ const Notifications = (props) => {
               </div>
             </div>
           )}
-
-          <InviteModal
-            show={inviteModalShow}
-            onHide={() => setInviteModalShow(false)}
-          />
-
           <Footer />
         </div>
       </Container>

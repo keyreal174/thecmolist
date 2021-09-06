@@ -4,23 +4,14 @@ import clsx from "clsx";
 import { Button } from "react-bootstrap";
 import VendorListFeed from "./VendorListFeed";
 import BlockerText from "../base/BlockerText/BlockerText";
+import InviteButton from "../base/Invite/InviteButton";
 
 const VendorList = ({
   vendorList,
   vendorListBlockerText,
   handleInviteModal,
+  isAdminUser,
 }) => {
-  const AddInviteButton = () => (
-    <Button
-      className="filter--button filter--button-active active m-0"
-      onClick={() => {
-        handleInviteModal();
-      }}
-    >
-      + Invite
-    </Button>
-  );
-
   return (
     <>
       <div
@@ -31,7 +22,11 @@ const VendorList = ({
       >
         {vendorListBlockerText && (
           <BlockerText blockerText={vendorListBlockerText}>
-            <AddInviteButton />
+            <InviteButton
+              text="+ Invite"
+              className="filter--button filter--button-active active m-0"
+              isAdminUser={isAdminUser}
+            />
           </BlockerText>
         )}
         {vendorList &&

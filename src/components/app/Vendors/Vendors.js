@@ -29,7 +29,6 @@ const Vendors = (props) => {
   const [showAddVendor, setShowAddVendor] = useState(false);
   const [isDetail, setIsDetail] = useState(false);
   const [categoryTitle, setCategoryTitle] = useState("");
-  const [inviteModalShow, setInviteModalShow] = useState(false);
   const [isAffiliated, setIsAffiliated] = useState(true);
   const [isAdminUser, setIsAdminUser] = useState(false);
   const changeDashboardHeader = (idx) => {
@@ -153,10 +152,6 @@ const Vendors = (props) => {
     setShowAddVendor((value) => !value);
   };
 
-  const toggleInviteModal = () => {
-    setInviteModalShow((value) => !value);
-  };
-
   const AddVendorButton = () => (
     <Button
       className="filter--button filter--button-active active m-0"
@@ -249,9 +244,9 @@ const Vendors = (props) => {
               mobileMenuOpen={mobileMenuOpen}
               toggleAddVendorModal={toggleAddVendorModal}
               getCategoryTitle={getCategoryTitle}
-              handleInviteModal={toggleInviteModal}
               filterIdx={filterIdx}
               showVendorBtn={true}
+              isAdminUser={isAdminUser}
             />
           ) : (
             <Row className="vendors--feed--wrapper">
@@ -267,8 +262,8 @@ const Vendors = (props) => {
                   <VendorList
                     vendorList={props.vendorList}
                     vendorListBlockerText={props.vendorListBlockerText}
-                    handleInviteModal={toggleInviteModal}
                     filterIdx={filterIdx}
+                    isAdminUser={isAdminUser}
                   />
                 )}
               </Col>
@@ -285,11 +280,6 @@ const Vendors = (props) => {
         handleClose={toggleAddVendorModal}
         categoryTitle={categoryTitle}
         limit={0}
-      />
-      <InviteModal
-        show={inviteModalShow}
-        onHide={() => setInviteModalShow(false)}
-        isAdminUser={isAdminUser}
       />
     </Layout>
   );

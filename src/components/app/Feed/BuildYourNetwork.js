@@ -5,6 +5,7 @@ import AddVendorsModal from "../base/AddVendors/AddVendorsModal";
 import AddSkillsModal from "../base/AddSkills/AddSkillsModal";
 import InviteModal from "../base/Invite/InviteModal";
 import { Button } from "react-bootstrap";
+import InviteButton from "../base/Invite/InviteButton";
 
 const AddVendorButton = ({
   isVendor,
@@ -16,15 +17,6 @@ const AddVendorButton = ({
     onClick={() => (!isVendor ? toggleAddSkillModal() : toggleAddVendorModal())}
   >
     {!isVendor ? "+ Add Expertise" : "+ Add Vendor"}
-  </Button>
-);
-
-const AddInviteButton = ({ setShowInviteModal }) => (
-  <Button
-    className="btn-white btn btn-primary post-onboarding-btn"
-    onClick={() => setShowInviteModal(true)}
-  >
-    + Invite
   </Button>
 );
 
@@ -78,7 +70,10 @@ const BuildYourNetwork = ({
                   />
                 )}
                 {item.showInviteButton && (
-                  <AddInviteButton setShowInviteModal={setShowInviteModal} />
+                  <InviteButton
+                    text="+ Invite"
+                    className="lightMode post-onboarding-btn"
+                  />
                 )}
               </div>
             );
@@ -89,11 +84,6 @@ const BuildYourNetwork = ({
         handleClose={toggleAddVendorModal}
       />
       <AddSkillsModal show={showAddSkills} handleClose={toggleAddSkillModal} />
-      <InviteModal
-        show={showInviteModal}
-        isAdminUser={isAdminUser}
-        onHide={() => setShowInviteModal(false)}
-      />
     </CustomCard>
   );
 };

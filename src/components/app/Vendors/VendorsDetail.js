@@ -7,6 +7,7 @@ import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
 import BlockerText from "../base/BlockerText/BlockerText";
 import VendorsFeed from "./VendorsFeed";
 import AddVendorButton from "./VendorButton";
+import InviteButton from "../base/Invite/InviteButton";
 
 const Category = ({
   name,
@@ -49,22 +50,11 @@ const VendorsDetail = ({
   showCategoryListView,
   filterIdx,
   className,
-  handleInviteModal,
   isMyProfile,
   showDeletePostModal,
   showVendorBtn,
+  isAdminUser,
 }) => {
-  const AddInviteButton = () => (
-    <Button
-      className="filter--button filter--button-active active m-0"
-      onClick={() => {
-        handleInviteModal();
-      }}
-    >
-      + Invite
-    </Button>
-  );
-
   const history = useHistory();
   const changeSubFilter = (title) => {
     document.getElementById(title).scrollIntoView({ behavior: "smooth" });
@@ -129,7 +119,11 @@ const VendorsDetail = ({
               >
                 {vendorsDetail.blockerText && (
                   <BlockerText blockerText={vendorsDetail.blockerText}>
-                    <AddInviteButton />
+                    <InviteButton
+                      text="+ Invite"
+                      className="filter--button filter--button-active active m-0"
+                      isAdminUser={isAdminUser}
+                    />
                   </BlockerText>
                 )}
                 {vendorsDetail.categories &&
