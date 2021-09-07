@@ -173,7 +173,7 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
           style={{ textAlign: "center", display: "block" }}
         >
           {isWelcome
-            ? !loading
+            ? !loading && firstname && firstname.length > 0
               ? `Hello ${firstname}, welcome to CMOlist!`
               : ""
             : `Create your member profile`}
