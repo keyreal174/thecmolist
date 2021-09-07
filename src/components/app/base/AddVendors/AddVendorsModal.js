@@ -36,7 +36,7 @@ const AddVendorsModal = ({ show, handleClose, categoryTitle, limit }) => {
           <Button
             className="btn-white modal-cancel-button"
             variant="outline-primary"
-            onClick={handleClose}
+            onClick={() => handleClose(false)}
           >
             Cancel
           </Button>
