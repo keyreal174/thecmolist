@@ -179,7 +179,8 @@ const Profile = (props) => {
       location.state &&
       location.state.myStack &&
       props.profile &&
-      Object.keys(props.profile).length > 0
+      Object.keys(props.profile).length > 0 &&
+      props.profile.feedData
     ) {
       const id = props.profile.feedData.findIndex(
         (item) => item.title === "My Stack"
