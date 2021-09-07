@@ -47,7 +47,7 @@ import InsightfulCheckedIcon from "../base/icons/insightful_checked.svg";
 import ThanksIcon from "../base/icons/thanks.svg";
 import ThanksCheckedIcon from "../base/icons/thanks_checked.svg";
 import More from "./icons/more.svg";
-import AllMembersListModal from "../base/AllMembersListModal/AllMembersListModal";
+import AllMembersListModal from "../base/AllMembersList/AllMembersListModal";
 
 const RenderList = ({ arr }) => {
   if (arr) {

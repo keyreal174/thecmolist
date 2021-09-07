@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal } from "react-bootstrap";
-import { AllMembersList } from "../../Feed/AllMembers";
+import AllMembersList from "./AllMembersList";
 import "./AllMembersListModal.scss";
 
 const AllMembersListModal = ({ showStatModal, onHide, statType, list }) => {

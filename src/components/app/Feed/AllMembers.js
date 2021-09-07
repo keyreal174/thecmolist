@@ -1,22 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import AllMembersList from "../base/AllMembersList/AllMembersList";
 import CustomCard from "../base/CustomCard/CustomCard";
-import Avatar from "../base/Avatar/Avatar";
-
-export const AllMembersList = ({ list }) => {
-  return (
-    <>
-      {list.length > 0 &&
-        list.map(({ image, name, role, link }, index) => {
-          return (
-            <Link to={link} key={index}>
-              <Avatar image={image} heading={name} subHeading={role} />
-            </Link>
-          );
-        })}
-    </>
-  );
-};
 
 const AllMembers = ({ memberList }) => {
   let membersHeading = memberList.heading || "All Members";
