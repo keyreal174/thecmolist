@@ -14,7 +14,7 @@ const AddVendorsModal = ({ show, handleClose, categoryTitle, limit }) => {
         onHide={handleClose}
         size="lg"
       >
-        <div className="close-modal" onClick={handleClose}>
+        <div className="close-modal" onClick={() => handleClose(false)}>
           <span aria-hidden="true">×</span>
           <span className="sr-only">Close</span>
         </div>
