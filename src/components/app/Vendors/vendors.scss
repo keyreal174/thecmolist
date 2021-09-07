@@ -189,11 +189,21 @@
 
 // vendor list
 .vendor-list-divider {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
   position: relative;
   text-align: right;
   padding-top: 10px;
   padding-bottom: 14px;
   font-size: 15px;
+
+  .filter--button-active {
+    opacity: 0.8;
+    border-radius: 20px;
+    padding: 8px 22px;
+  }
 
   &::after {
     content: "";
@@ -239,6 +249,10 @@
     flex-direction: column;
   }
 
+  @media screen and (max-width: 767px) {
+    margin-top: 20px;
+  }
+
   .vendor-list-info {
     width: 380px;
     margin-right: 20px;
@@ -246,11 +260,16 @@
 
     @media screen and (max-width: 767px) {
       width: auto;
+      margin-right: 0;
+      margin-bottom: 0;
     }
 
     h1 {
       color: $text-1;
       font-size: 32px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
     }
 
     p {
@@ -258,11 +277,23 @@
       font-size: 16px;
       line-height: 22px;
       margin-bottom: 20px;
+
+      @media screen and (max-width: 767px) {
+        margin-bottom: 0;
+      }
     }
 
     button {
-      border-radius: 20px;
-      opacity: 0.8;
+      display: none !important;
+
+      @media screen and (max-width: 767px) {
+        display: flex !important;
+        opacity: 0.8;
+        border-radius: 20px;
+        padding: 8px 22px;
+        margin-left: auto !important;
+        margin-bottom: 20px !important;
+      }
     }
   }
 
