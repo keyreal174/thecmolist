@@ -90,10 +90,8 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
   const [title, setTitle] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [headline, setHeadline] = useState("");
-  const [networkingYes, setNetworkingYes] = useState("");
-  const [networkingNo, setNetworkingNo] = useState("");
-  const [advisingYes, setAdvisingYes] = useState("");
-  const [advisingNo, setAdvisingNo] = useState("");
+  const [networking, setNetworking] = useState(false);
+  const [advising, setAdvising] = useState(false);
   const [companyIndustry, setCompanyIndustry] = useState("");
   const [companyStage, setCompanyStage] = useState("");
   const [isWelcome, setIsWelcome] = useState(true);
@@ -111,11 +109,9 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
       setCompanyName(profile.company);
       setHeadline(profile.about ? profile.about.description : "");
       let networking = profile.about ? profile.about.networking : true;
-      setNetworkingYes(networking);
-      setNetworkingNo(!networking);
+      setNetworking(networking);
       let advising = profile.about ? profile.about.advising : true;
-      setAdvisingYes(advising);
-      setAdvisingNo(!advising);
+      setAdvising(advising);
     }
   }, [profile]);
 
@@ -131,22 +127,6 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
     const { value } = e.target;
     setHeadline(value);
   };
-  const handleNetworkingYesChange = () => {
-    setNetworkingYes(true);
-    setNetworkingNo(false);
-  };
-  const handleNetworkingNoChange = () => {
-    setNetworkingYes(false);
-    setNetworkingNo(true);
-  };
-  const handleAdvisingYesChange = () => {
-    setAdvisingYes(true);
-    setAdvisingNo(false);
-  };
-  const handleAdvisingNoChange = () => {
-    setAdvisingYes(false);
-    setAdvisingNo(true);
-  };
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
@@ -156,8 +136,8 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
       headline,
       companyIndustry,
       companyStage,
-      networking: networkingYes ? true : false,
-      advising: advisingYes ? true : false,
+      networking,
+      advising,
     };
     submitOnboardingStep1(formData);
     history.push("onboarding_step2" + window.location.search);
@@ -254,18 +234,52 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
                 </Form.Control>
               </Col>
             </Row>
-            <Row>
-              <Col md="12" className="onboarding--bio">
-                <Form.Label>Bio (optional)</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  className="onboarding--text-area"
-                  placeholder="E.g., professional marketing leader passionate about consumer Internet, SaaS, and disruptivemarketplaces. Industry expertise: mobile, consumer Internet, social media, enterprise software."
-                  rows={3}
-                  name="headline"
-                  onChange={handleHeadlineChange}
-                  value={headline}
-                />
+            <Row className="mt-4">
+              <Col md="6" sm="12">
+                <Form.Label>Open to networking</Form.Label>
+                <div>
+                  <Form.Check
+                    inline
+                    label="Yes"
+                    type="radio"
+                    name="networking"
+                    id="networking-radio-1"
+                    checked={networking}
+                    onChange={() => setNetworking(true)}
+                  />
+                  <Form.Check
+                    inline
+                    label="No"
+                    type="radio"
+                    name="networking"
+                    id="networking-radio-2"
+                    checked={!networking}
+                    onChange={() => setNetworking(false)}
+                  />
+                </div>
+              </Col>
+              <Col md="6" sm="12">
+                <Form.Label>Open to advising</Form.Label>
+                <div>
+                  <Form.Check
+                    inline
+                    label="Yes"
+                    type="radio"
+                    name="advising"
+                    id="advising-radio-1"
+                    checked={advising}
+                    onChange={() => setAdvising(true)}
+                  />
+                  <Form.Check
+                    inline
+                    label="No"
+                    type="radio"
+                    name="advising"
+                    id="advising-radio-2"
+                    checked={!advising}
+                    onChange={() => setAdvising(false)}
+                  />
+                </div>
               </Col>
             </Row>
           </form>
