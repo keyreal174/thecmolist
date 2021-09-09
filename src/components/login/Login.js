@@ -127,9 +127,7 @@ class Login extends React.Component {
                 <strong>OR</strong>
                 <br></br>
                 <strong>
-                  <a href="./signup" onClick={() => console.log("apply now")}>
-                    Sign in with Email
-                  </a>
+                  <a href="/signup">Sign in with Email</a>
                 </strong>
               </p>
 
@@ -192,7 +190,7 @@ class Login extends React.Component {
             <p className="login--signup">
               New to CMOlist ?{" "}
               <strong>
-                <a href="./signup" onClick={() => console.log("apply now")}>
+                <a href="/signup" onClick={() => console.log("apply now")}>
                   Apply now
                 </a>
               </strong>
