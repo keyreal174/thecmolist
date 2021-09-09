@@ -421,9 +421,9 @@ const VendorProfileEdit = (props) => {
                   />
                 </Col>
                 <Col md="4" sm="12">
-                  <Form.Label>Country</Form.Label>
+                  <Form.Label className="form-label-hidden">Country</Form.Label>
                   <Form.Control
-                    className="profile--input"
+                    className="profile--input-hidden"
                     placeholder=""
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
