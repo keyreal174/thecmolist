@@ -77,6 +77,9 @@
     border-radius: 35px;
     margin-bottom: 25px;
   }
+  &--input-hidden {
+    display: none;
+  }
   &--select {
     padding-left: 20px;
     border-radius: 35px;
@@ -109,6 +112,9 @@
     color: $text-1;
     font-size: 16px;
     font-weight: 500;
+  }
+  .form-label-hidden {
+    display: none;
   }
 }
 

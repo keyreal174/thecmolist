@@ -192,31 +192,15 @@ function Homepage() {
                   <div className="home--share-item-wrapper">
                     <img
                       className="home--share-item-image"
-                      src={trustedIcon}
-                      alt="trusted icon"
-                    />
-                    <div className="home--share-item-title">
-                      Get trusted advice from your marketing peers
-                    </div>
-                    <div className="home--share-item-subtitle">
-                      Exchange frank, private advice with your peers, trusted
-                      communities, and industry experts
-                    </div>
-                  </div>
-                </Col>
-                <Col className="home--share-item" md="3" sm="12">
-                  <div className="home--share-item-wrapper">
-                    <img
-                      className="home--share-item-image"
                       src={knowledgeIcon}
-                      alt="knowledge icon"
+                      alt="Stack icon"
                     />
                     <div className="home--share-item-title">
-                      View marketing stacks and playbooks
+                      Find the best marketing tools and agencies
                     </div>
                     <div className="home--share-item-subtitle">
-                      Browse proven marketing stacks and playbooks shared by
-                      your peers and industry experts
+                      View proven & emerging marketing vendors shared by leading
+                      startups and public companies
                     </div>
                   </div>
                 </Col>
@@ -225,14 +209,30 @@ function Homepage() {
                     <img
                       className="home--share-item-image"
                       src={informedIcon}
-                      alt="informed icon"
+                      alt="Knowledge icon"
                     />
                     <div className="home--share-item-title">
-                      Stay informed & learn from leading marketers
+                      Ask for advice and search knowledge
                     </div>
                     <div className="home--share-item-subtitle">
-                      Network with your peers and follow marketing insights from
-                      industry experts
+                      Post marketing questions and search answers shared by the
+                      world's best marketers
+                    </div>
+                  </div>
+                </Col>
+                <Col className="home--share-item" md="3" sm="12">
+                  <div className="home--share-item-wrapper">
+                    <img
+                      className="home--share-item-image"
+                      src={trustedIcon}
+                      alt="Network icon"
+                    />
+                    <div className="home--share-item-title">
+                      Accelerate your marketing career
+                    </div>
+                    <div className="home--share-item-subtitle">
+                      Network with other top marketers and find career, advisor,
+                      and board opportunities
                     </div>
                   </div>
                 </Col>

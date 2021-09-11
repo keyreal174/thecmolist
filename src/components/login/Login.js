@@ -122,6 +122,15 @@ class Login extends React.Component {
                 <img alt="LinkedIn Icon" src={LinkedInIcon} />
                 <span>Sign in with Linkedin</span>
               </a>
+
+              <p className="login--signup">
+                <strong>OR</strong>
+                <br></br>
+                <strong>
+                  <a href="/signup">Sign in with Email</a>
+                </strong>
+              </p>
+
               <p className="login--disclaimer">
                 By signing in, you agree to our{" "}
                 <a href={userPolicy}>User Agreement</a> and{" "}
@@ -181,7 +190,7 @@ class Login extends React.Component {
             <p className="login--signup">
               New to CMOlist ?{" "}
               <strong>
-                <a href="./signup" onClick={() => console.log("apply now")}>
+                <a href="/signup" onClick={() => console.log("apply now")}>
                   Apply now
                 </a>
               </strong>
