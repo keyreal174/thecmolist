@@ -11,7 +11,7 @@ import PopularTopics from "../base/PopularTopics/PopularTopics";
 import SimpleTopBanner from "../base/SimpleTopBanner/SimpleTopBanner";
 import AddMemberModal from "../base/AddMemberModal/AddMemberModal";
 import AddVendorsModal from "../base/AddVendors/AddVendorsModal";
-import VendorsFeed from "./VendorsFeed";
+import VendorsFlatListFeed from "./VendorsFlatListFeed";
 import Analytics from "../../util/Analytics";
 import { cdn } from "../../util/constants";
 import "./vendors.scss";
@@ -19,7 +19,7 @@ import "./vendors.scss";
 const VendorsFlatList = (props) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
-  const fetchData = async () => await props.fetchActiveVendors();
+  const fetchData = async () => await props.fetchActiveVendorsFlatList();
   const [filterIdx, setFilterIdx] = useState(0);
   const [filters, setFilters] = useState([]);
   const [showFilters, setShowFilters] = useState(true);
@@ -186,7 +186,7 @@ const VendorsFlatList = (props) => {
                   <ActivityIndicator className="element-center feed-activity-indicator" />
                 </div>
               ) : (
-                <VendorsFeed
+                <VendorsFlatListFeed
                   {...props}
                   fetchData={fetchData}
                   feedData={feedData}
@@ -219,7 +219,8 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    fetchActiveVendors: dispatch.vendorsModel.fetchActiveVendors,
+    fetchActiveVendorsFlatList:
+      dispatch.vendorsModel.fetchActiveVendorsFlatList,
     changeFilter: dispatch.vendorsModel.changeFilter,
     changeSubFilter: dispatch.vendorsModel.changeSubFilter,
     inviteNewMember: dispatch.vendorsModel.inviteNewMember,

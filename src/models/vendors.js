@@ -26,6 +26,33 @@ const vendorRequest = (sort, filter, subfilter, token) => {
   return axios.get(url, { headers });
 };
 
+// vendors flat list
+const vendorsFlatListRequest = (sort, filter, subfilter, token) => {
+  let headers = {
+    "timezone-offset": new Date().getTimezoneOffset(),
+  };
+  let url = "/api/vendors_flatlist?";
+  if (sort) {
+    url += `sort=${sort.toLowerCase()}`;
+  }
+  if (filter) {
+    if (sort) {
+      url += "&";
+    }
+    url += `filter=${filter}`;
+  }
+  if (subfilter) {
+    if (!filter) {
+      throw new Error("Cannot have a subfilter without a filter");
+    }
+    url += `&subfilter=${subfilter}`;
+  }
+  if (token) {
+    headers.token = token;
+  }
+  return axios.get(url, { headers });
+};
+
 const vendorListRequest = (sort, filter, subfilter, token) => {
   let headers = {
     "timezone-offset": new Date().getTimezoneOffset(),
@@ -214,6 +241,32 @@ export default {
         const dataForFilter = feedData[activeFilter];
         dispatch.vendorsModel.setLoading(true);
         const response = await vendorRequest(
+          sortOrder,
+          activeFilter,
+          activeSubFilter,
+          dataForFilter.token
+        );
+        let data = response.data;
+        data.sortOrder = sortOrder;
+        dispatch.vendorsModel.setFeedDataForKey(activeFilter, response.data);
+      } catch (error) {
+        console.log(error);
+        throw new Error("Can not fetch active network");
+      } finally {
+        dispatch.vendorsModel.setLoading(false);
+      }
+    },
+    async fetchActiveVendorsFlatList(_, rootState) {
+      try {
+        const {
+          activeFilter,
+          activeSubFilter,
+          sortOrder,
+          feedData,
+        } = rootState.vendorsModel;
+        const dataForFilter = feedData[activeFilter];
+        dispatch.vendorsModel.setLoading(true);
+        const response = await vendorsFlatListRequest(
           sortOrder,
           activeFilter,
           activeSubFilter,
