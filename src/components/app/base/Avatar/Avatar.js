@@ -1,26 +1,20 @@
 import React from "react";
-import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 import clsx from "clsx";
 import ShowMoreText from "react-show-more-text";
 import "./Avatar.scss";
 
 const Avatar = ({ image, heading, subHeading, text, isConnection, link }) => {
-  const history = useHistory();
-  const goStack = () => {
-    isConnection
-      ? history.push({
-          pathname: link,
-          state: {
-            myStack: true,
-          },
-        })
-      : history.push(link);
-  };
-
   return (
     <div className="avatar-wrapper">
       <div className="avatar-thumb">
-        <a onClick={goStack} className="cursor-pointer">
+        <Link
+          className="cursor-pointer"
+          to={{
+            pathname: link,
+            state: isConnection ? { myStack: true } : null,
+          }}
+        >
           <img
             className="rounded-circle"
             src={image}
@@ -28,19 +22,22 @@ const Avatar = ({ image, heading, subHeading, text, isConnection, link }) => {
             height="39"
             alt="avatar"
           />
-        </a>
+        </Link>
       </div>
       <div className="avatar-content">
         <div className={clsx(isConnection && "avatar-content-connections")}>
-          <a
-            onClick={goStack}
+          <Link
             className={clsx(
               "avatar-content-heading cursor-pointer",
               isConnection && "mr-1"
             )}
+            to={{
+              pathname: link,
+              state: isConnection ? { myStack: true } : null,
+            }}
           >
             <span className="ellipsis-line">{heading}</span>
-          </a>
+          </Link>
           <p
             className={clsx(
               "avatar-content-subheading ellipsis-line",
