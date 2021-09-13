@@ -27,7 +27,6 @@ import Util from "./components/util/Util";
 import VendorProfile from "./components/app/Profile/VendorProfile";
 import VendorProfileEdit from "./components/app/ProfileEdit/VendorProfileEdit";
 import Vendors from "./components/app/Vendors/Vendors";
-import VendorsFlatList from "./components/app/Vendors/VendorsFlatList";
 import AdminPage from "./components/admin/AdminPage";
 import Cookies from "js-cookie";
 import SetupMocks from "./mocks/mocks";
@@ -340,7 +339,7 @@ class App extends React.Component {
             path="/vendors"
             render={(props) =>
               this.state.authed ? (
-                <VendorsFlatList />
+                <Vendors />
               ) : (
                 <Redirect
                   to={{ pathname: "/login", state: { from: props.location } }}

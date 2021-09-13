@@ -34,6 +34,7 @@ const VendorsFlatList = (props) => {
     }
   };
   useEffect(() => {
+    fetchData();
     const getProfileStats = async () => props.getProfileStats();
     getProfileStats().then((profileStats) => {
       let newFilters = [

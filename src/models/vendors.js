@@ -168,6 +168,18 @@ export default {
       newState.activeFeed = currentFeed.data.slice();
       return newState;
     },
+    setFeedData: (oldState, filterKey, data) => {
+      let newState = {
+        ...oldState,
+        activeFilter: filterKey,
+        sortOrder: data.sortOrder,
+      };
+
+      newState.activeFeed = data.feedData;
+      newState.activeFeedSubFilters = data.filters;
+      newState.activeFeedHasMoreData = data.feedData.length > 5;
+      return newState;
+    },
     clearActiveFeedData: (oldState) => {
       let newState = {
         ...oldState,
@@ -270,11 +282,11 @@ export default {
           sortOrder,
           activeFilter,
           activeSubFilter,
-          dataForFilter.token
+          dataForFilter?.token
         );
         let data = response.data;
         data.sortOrder = sortOrder;
-        dispatch.vendorsModel.setFeedDataForKey(activeFilter, response.data);
+        dispatch.vendorsModel.setFeedData(activeFilter, data);
       } catch (error) {
         console.log(error);
         throw new Error("Can not fetch active network");
