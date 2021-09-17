@@ -203,7 +203,7 @@ class App extends React.Component {
             path="/topic"
             render={(props) =>
               this.state.authed ? (
-                <Feed isTopic={true} />
+                <Feed isTopic={true} key={new Date()} />
               ) : (
                 <Redirect
                   to={{ pathname: "/login", state: { from: props.location } }}
