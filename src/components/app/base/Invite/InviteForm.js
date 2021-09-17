@@ -47,7 +47,7 @@ function InviteForm(props) {
   const [name1, setName1] = useState("");
   const [email1, setEmail1] = useState("");
   const [message, setMessage] = useState(
-    "Hi, I joined CMOlist, the private knowledge network for the world’s top marketers. I thought you might be interested in checking it out and connecting with me—here is an invitation!"
+    "Hi, I joined CMOlist, the private knowledge network for the world’s top marketers. I thought you might be interested in checking it out and connecting with me — here is an invitation!"
   );
   const [collection, setCollection] = useState("");
   const [inviteLink, setInviteLink] = useState("");
