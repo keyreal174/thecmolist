@@ -21,7 +21,20 @@ const RenderMarkdownTruncated = ({ numLines, markdown }) => {
     markdownSanitized = markdownSanitized.replace(/\n\n/g, "<br />");
   }
   return expanded ? (
-    <Markdown>{markdown}</Markdown>
+    <Markdown
+      options={{
+        overrides: {
+          h1: {
+            component: ({ children, ...props }) => (
+              <p {...props}>#{children}</p>
+            ),
+            props: {},
+          },
+        },
+      }}
+    >
+      {markdown}
+    </Markdown>
   ) : (
     <ShowMoreText
       anchorClass="article-show-more"
@@ -31,7 +44,20 @@ const RenderMarkdownTruncated = ({ numLines, markdown }) => {
       width={0}
       onClick={() => setExpanded(true)}
     >
-      <Markdown>{markdownSanitized}</Markdown>
+      <Markdown
+        options={{
+          overrides: {
+            h1: {
+              component: ({ children, ...props }) => (
+                <p {...props}>#{children}</p>
+              ),
+              props: {},
+            },
+          },
+        }}
+      >
+        {markdownSanitized}
+      </Markdown>
     </ShowMoreText>
   );
 };
