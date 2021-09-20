@@ -517,7 +517,7 @@
       },
       {
         "title": "My Technologies",
-        "blockerText": "Please share at least five vendors to be able to view your peers' marketing stacks",
+        "blockerText": "Please share at least 1 vendor to be able to view your peers' marketing stacks",
         "blockerAddVendor": true,
         "enabled": true,
         "data": [

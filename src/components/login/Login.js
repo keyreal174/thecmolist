@@ -123,7 +123,7 @@ class Login extends React.Component {
                 <span>Sign in with Linkedin</span>
               </a>
 
-              <p className="login--signup">
+              <p className="login--email">
                 <strong>OR</strong>
                 <br></br>
                 <strong>

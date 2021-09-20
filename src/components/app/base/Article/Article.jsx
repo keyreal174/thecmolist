@@ -174,7 +174,20 @@ function Article(props) {
                               markdown={props.articletext.markdown}
                             />
                           ) : (
-                            <Markdown>{props.articletext.markdown}</Markdown>
+                            <Markdown
+                              options={{
+                                overrides: {
+                                  h1: {
+                                    component: ({ children, ...props }) => (
+                                      <p {...props}>#{children}</p>
+                                    ),
+                                    props: {},
+                                  },
+                                },
+                              }}
+                            >
+                              {props.articletext.markdown}
+                            </Markdown>
                           )}
                         </div>
                       )}
