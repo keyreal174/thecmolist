@@ -592,7 +592,11 @@ const Profile = (props) => {
                         src={Follows}
                       />
                       <a href="#" onClick={getProfileFollowing}>
-                        {profileNumFollowing} Following
+                        {Util.plural(
+                          profileNumFollowing,
+                          "Following",
+                          "Followings"
+                        )}
                       </a>
                     </div>
                   )}
@@ -604,7 +608,11 @@ const Profile = (props) => {
                         src={Follows}
                       />
                       <a href="#" onClick={getProfileFollowers}>
-                        {profileNumFollowers} Followers
+                        {Util.plural(
+                          profileNumFollowers,
+                          "Follower",
+                          "Followers"
+                        )}
                       </a>
                     </div>
                   )}

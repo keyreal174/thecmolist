@@ -20,6 +20,11 @@ export default class Util {
     };
   };
 
+  static plural = (cnt, single, plural) => {
+    if (cnt > 1) return cnt + " " + plural;
+    return cnt + " " + single;
+  };
+
   static getQueryVariable = (variable) => {
     let query = window.location.search.substring(1);
     let vars = query.split("&");
