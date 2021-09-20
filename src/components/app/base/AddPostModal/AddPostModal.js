@@ -100,6 +100,9 @@ function AddPostModal({
       photo,
       role,
     };
+    if (title.startsWith("http")) {
+      content.contentType = "article";
+    }
     if (groups) {
       content.groups = groups.filter((g) => g.checked).map((g) => g.slug);
     }
