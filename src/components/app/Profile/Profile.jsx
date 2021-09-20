@@ -36,6 +36,7 @@ import {
 import "./profile.scss";
 
 import AnswerIcon from "../base/icons/answer.svg";
+import Follows from "../base/icons/follows.svg";
 import LinkedIn from "./icons/linkedin.svg";
 import Website from "./icons/link.svg";
 import Mail from "./icons/mail.svg";
@@ -452,7 +453,7 @@ const Profile = (props) => {
     <Layout onToggle={handleToggle}>
       <Container className="height-100">
         <div className={clsx("wrapper", mobileMenuOpen && "open")}>
-          <Row className="profile--wrapper">
+          <Row className="profile--wrapper no-gutter">
             <Col xl="8" md="12" sm="12">
               <div className="profile--left-section">
                 <img
@@ -587,8 +588,8 @@ const Profile = (props) => {
                     <div className="right-section--website right-section--item">
                       <img
                         className="right-section--item-img"
-                        alt="Mail"
-                        src={Mail}
+                        alt="Follows"
+                        src={Follows}
                       />
                       <a href="#" onClick={getProfileFollowing}>
                         {profileNumFollowing} Following
@@ -599,8 +600,8 @@ const Profile = (props) => {
                     <div className="right-section--website right-section--item">
                       <img
                         className="right-section--item-img"
-                        alt="Mail"
-                        src={Mail}
+                        alt="Follows"
+                        src={Follows}
                       />
                       <a href="#" onClick={getProfileFollowers}>
                         {profileNumFollowers} Followers
@@ -787,7 +788,12 @@ const Profile = (props) => {
               })}
             </div>
           ) : (
-            <Row className={clsx("profile--feed", mobileMenuOpen && "open")}>
+            <Row
+              className={clsx(
+                "profile--feed no-gutter",
+                mobileMenuOpen && "open"
+              )}
+            >
               <Col xl="4" className="profile--popular-topics">
                 {topicList && topicList.length > 0 && (
                   <PopularTopics

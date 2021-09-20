@@ -205,7 +205,7 @@ function RenderFeed({
         </div>
       )}
       {feedMoreData && (
-        <div className="row">
+        <div className="row mx-auto">
           <div className="col-md-2 mt-2 mx-auto">
             <button
               className="btn btn__load-more invisible"

@@ -45,6 +45,10 @@
 }
 
 @media (max-width: 768px) {
+  .topics--simple-top-banner {
+    padding: 0 10px;
+  }
+
   .topics--item-wrapper {
     flex: 0 0 50%;
     max-width: 50%;
@@ -57,9 +61,8 @@
       display: none;
     }
   }
-  .simple-top-banner,
   .topics--wrapper {
-    margin: 10px 17px;
+    margin: 10px;
   }
   .topics--item-wrapper {
     padding: 0;
