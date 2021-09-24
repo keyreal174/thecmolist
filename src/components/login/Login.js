@@ -124,11 +124,10 @@ class Login extends React.Component {
               </a>
 
               <p className="login--email">
-                <strong>OR</strong>
+                If you have received an invitation, please log in using your
+                LinkedIn credentials. We will neven share your information or
+                post on your behalf.
                 <br></br>
-                <strong>
-                  <a href="/signup">Sign in with Email</a>
-                </strong>
               </p>
 
               <p className="login--disclaimer">
