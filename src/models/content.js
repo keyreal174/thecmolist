@@ -53,6 +53,27 @@ export default {
         content: data,
       };
     },
+    editContent: (oldState, data) => {
+      let existingContent = oldState.content;
+      let editedContent = data;
+      if (existingContent.content_id === editedContent.content_id) {
+        existingContent.content = editedContent.content;
+      } else if (
+        existingContent.replies &&
+        existingContent.replies.length > 0
+      ) {
+        let matchingReply = existingContent.replies.find(
+          (r) => r.content_id === editedContent.content_id
+        );
+        if (matchingReply) {
+          matchingReply.content = editedContent.content;
+        }
+      }
+      return {
+        ...oldState,
+        content: { ...existingContent },
+      };
+    },
     saveReply: (oldState, data) => {
       const { newAnswer } = data;
       const newState = {
@@ -176,13 +197,13 @@ export default {
         if (data) {
           const response = await postEditedContent(data);
           const content = response.data;
-          dispatch.contentModel.setContent(content);
+          dispatch.contentModel.editContent(content);
           return content.content_id;
         } else {
-          throw new Error("Could not save content without data");
+          throw new Error("Could not edit content without data");
         }
       } catch (error) {
-        throw new Error("Could not save content");
+        throw new Error("Could not edit content");
       }
     },
     async saveVendors(data) {
