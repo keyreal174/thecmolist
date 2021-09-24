@@ -125,7 +125,7 @@ class Login extends React.Component {
 
               <p className="login--email">
                 If you have received an invitation, please log in using your
-                LinkedIn credentials. We will neven share your information or
+                LinkedIn credentials. We will never share your information or
                 post on your behalf.
                 <br></br>
               </p>
