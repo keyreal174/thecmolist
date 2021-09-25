@@ -112,6 +112,10 @@
     }
   }
 
+  .vendors--feed-item.mt-3 {
+    margin-top: 4px !important;
+  }
+
   .vendors--filters {
     align-items: center;
     justify-content: space-between;
@@ -323,11 +327,6 @@
 
       &-mobile {
         display: block;
-
-        .network-list-item {
-          margin-left: 0 !important;
-          margin-right: 0 !important;
-        }
       }
     }
   }

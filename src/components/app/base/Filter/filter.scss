@@ -142,7 +142,8 @@
     display: none;
   }
   .filter-dropdown--wrapper {
-    display: flex;
+    display: block;
+    width: 100%;
 
     .navbar-dropdown.filter-dropdown {
       position: relative;
@@ -157,7 +158,6 @@
 
       .dropdown-menu {
         right: 0 !important;
-        width: fit-content;
 
         .filter-dropdown-item-enabled {
           background: $blue;
