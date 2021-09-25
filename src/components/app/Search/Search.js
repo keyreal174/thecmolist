@@ -108,7 +108,7 @@ const Search = (props) => {
 
   return (
     <Layout onToggle={handleToggle}>
-      <Container className="height-100">
+      <Container>
         <div className="wrapper">
           <div className={clsx("search--content", mobileMenuOpen && "open")}>
             <Filter

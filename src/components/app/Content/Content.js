@@ -47,7 +47,7 @@ const Content = ({
 
   return (
     <Layout onToggle={handleToggle}>
-      <Container className="height-100">
+      <Container>
         <div className="wrapper">
           {error && (
             <Row className={clsx("content--error", mobileMenuOpen && "open")}>

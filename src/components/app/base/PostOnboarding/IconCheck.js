@@ -17,8 +17,8 @@ const IconCheck = () => {
   };
 
   return (
-    <div class="position-relative" style={Styles.check}>
-      <img class="position-absolute" style={Styles.tick} src={Tick} />
+    <div className="position-relative" style={Styles.check}>
+      <img className="position-absolute" style={Styles.tick} src={Tick} />
     </div>
   );
 };

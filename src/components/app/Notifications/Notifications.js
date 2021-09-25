@@ -17,7 +17,7 @@ const Notifications = (props) => {
 
   return (
     <Layout>
-      <Container className="height-100">
+      <Container>
         <div className="wrapper">
           <div className="notifications--feed">
             {feedData &&

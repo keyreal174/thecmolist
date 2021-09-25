@@ -231,56 +231,58 @@ function RenderDashboard(props) {
     isAdminUser,
   } = props;
   return (
-    <Row className={className}>
-      <Col className="feed--profile-stats" md="3">
-        <div className="feed--sticky-content">
-          {profileStats && <ProfileStats profileStats={profileStats} />}
-        </div>
-      </Col>
+    <Container>
+      <Row className={className}>
+        <Col className="feed--profile-stats" md="3">
+          <div className="feed--sticky-content">
+            {profileStats && <ProfileStats profileStats={profileStats} />}
+          </div>
+        </Col>
 
-      <Col className="feed--feed" md="6">
-        <>
-          {profileStats && profileStats.postOnboarding && (
-            <PostOnboarding
-              postOnboarding={profileStats.postOnboarding}
-              isAdminUser={isAdminUser}
+        <Col className="feed--feed" md="6">
+          <>
+            {profileStats && profileStats.postOnboarding && (
+              <PostOnboarding
+                postOnboarding={profileStats.postOnboarding}
+                isAdminUser={isAdminUser}
+              />
+            )}
+            <AskQuestion
+              className="feed--ask-question"
+              activeGroup={props.activeGroup}
+              saveContent={saveContent}
+            />
+          </>
+          {feedLoading ? (
+            <div className="mt-3 mb-5">
+              <ActivityIndicator className="element-center feed-activity-indicator" />
+            </div>
+          ) : (
+            <RenderFeed
+              changeReaction={props.changeReaction}
+              feedData={props.feedData}
+              fetchActiveFeed={props.fetchActiveFeed}
+              feedLoading={props.feedLoading}
+              moreData={props.moreData}
+              profileStats={profileStats}
+              reactions={props.reactions}
             />
           )}
-          <AskQuestion
-            className="feed--ask-question"
-            activeGroup={props.activeGroup}
-            saveContent={saveContent}
-          />
-        </>
-        {feedLoading ? (
-          <div className="mt-3 mb-5">
-            <ActivityIndicator className="element-center feed-activity-indicator" />
-          </div>
-        ) : (
-          <RenderFeed
-            changeReaction={props.changeReaction}
-            feedData={props.feedData}
-            fetchActiveFeed={props.fetchActiveFeed}
-            feedLoading={props.feedLoading}
-            moreData={props.moreData}
-            profileStats={profileStats}
-            reactions={props.reactions}
-          />
-        )}
-      </Col>
-      <RenderRightContainer
-        feedTitle={props.feedTitle}
-        buildYourNetworkItems={profileStats.buildYourNetwork}
-        feedAbout={props.feedAbout}
-        memberList={props.memberList}
-        vendorList={props.vendorList}
-        activeGroup={props.activeGroup}
-        saveContent={props.saveContent}
-        isGroupOrTopic={props.isGroupOrTopic}
-        saveUserInvite={props.saveUserInvite}
-        isAdminUser={isAdminUser}
-      />
-    </Row>
+        </Col>
+        <RenderRightContainer
+          feedTitle={props.feedTitle}
+          buildYourNetworkItems={profileStats.buildYourNetwork}
+          feedAbout={props.feedAbout}
+          memberList={props.memberList}
+          vendorList={props.vendorList}
+          activeGroup={props.activeGroup}
+          saveContent={props.saveContent}
+          isGroupOrTopic={props.isGroupOrTopic}
+          saveUserInvite={props.saveUserInvite}
+          isAdminUser={isAdminUser}
+        />
+      </Row>
+    </Container>
   );
 }
 
@@ -478,8 +480,8 @@ const Feed = (props) => {
 
   return (
     <Layout onToggle={handleToggle}>
-      <Container className="height-100">
-        <div className="wrapper">
+      <div>
+        <Container className="wrapper">
           <CSSTransition in={isGroup} timeout={500} classNames="top-banner">
             <div>
               {(isGroup || isTopic) && (
@@ -574,10 +576,10 @@ const Feed = (props) => {
           />
 
           {/* wrapper */}
-        </div>
+        </Container>
 
         <Footer className={clsx("feed--footer", mobileMenuOpen && "open")} />
-      </Container>
+      </div>
     </Layout>
   );
 };

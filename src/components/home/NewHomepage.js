@@ -52,7 +52,7 @@ function Homepage() {
         </Container>
       </div>
       <div className="home--hero">
-        <Container className="home height-100">
+        <Container className="home">
           <Row>
             <Col sm="12">
               <Row>

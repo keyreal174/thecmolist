@@ -111,11 +111,6 @@
       display: none;
     }
   }
-  .vendors--simple-top-banner,
-  .vendors--feed-item,
-  .vendors--filters {
-    margin: 10px;
-  }
 
   .vendors--filters {
     align-items: center;
@@ -167,9 +162,6 @@
   }
 
   @media (max-width: 500px) {
-    margin-top: 16px;
-    margin-left: 16px;
-
     &.filter-btn-group {
       padding: 0;
     }
@@ -234,11 +226,6 @@
       position: sticky;
       top: 20px;
     }
-  }
-
-  @media screen and (max-width: 767px) {
-    margin-right: 0;
-    margin-left: 0;
   }
 }
 

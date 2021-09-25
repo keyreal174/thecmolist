@@ -177,7 +177,7 @@ class AgencyProfile extends React.Component {
 
     return (
       <Layout>
-        <Container className="height-100">
+        <Container>
           <div className="wrapper">
             <Banner>
               {this.state.agencyImage && (
