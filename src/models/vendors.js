@@ -242,32 +242,6 @@ export default {
     },
   },
   effects: (dispatch) => ({
-    async fetchActiveVendors(_, rootState) {
-      try {
-        const {
-          activeFilter,
-          activeSubFilter,
-          sortOrder,
-          feedData,
-        } = rootState.vendorsModel;
-        const dataForFilter = feedData[activeFilter];
-        dispatch.vendorsModel.setLoading(true);
-        const response = await vendorRequest(
-          sortOrder,
-          activeFilter,
-          activeSubFilter,
-          dataForFilter.token
-        );
-        let data = response.data;
-        data.sortOrder = sortOrder;
-        dispatch.vendorsModel.setFeedDataForKey(activeFilter, response.data);
-      } catch (error) {
-        console.log(error);
-        throw new Error("Can not fetch active network");
-      } finally {
-        dispatch.vendorsModel.setLoading(false);
-      }
-    },
     async fetchActiveVendorsFlatList(_, rootState) {
       try {
         const {
@@ -286,7 +260,7 @@ export default {
         );
         let data = response.data;
         data.sortOrder = sortOrder;
-        dispatch.vendorsModel.setFeedData(activeFilter, data);
+        dispatch.vendorsModel.setFeedDataForKey(activeFilter, response.data);
       } catch (error) {
         console.log(error);
         throw new Error("Can not fetch active network");
@@ -331,6 +305,45 @@ export default {
         }
       }
     },
+    async changeFilterFlatList(filterKey, rootState) {
+      const { activeFilter, activeSubFilter } = rootState.vendorsModel;
+      if (filterKey === activeFilter) {
+        // changing to the currently active filter
+        return;
+      }
+      if (activeSubFilter && activeSubFilter.length > 0) {
+        // if there's a subfilter active, then invalidate the previous feed
+        // the current subfilter will be removed on the new feed
+        dispatch.vendorsModel.clearActiveFeedData();
+      }
+      const filterExists = filterKey in rootState.vendorsModel.feedData;
+      if (
+        filterExists &&
+        rootState.vendorsModel.feedData[filterKey].token &&
+        rootState.vendorsModel.feedData[filterKey].token.length > 0
+      ) {
+        // the filter to change to exists, and has had a fetch attempted
+        // switch to it.
+        dispatch.vendorsModel.setActiveFilter(filterKey);
+      } else {
+        dispatch.vendorsModel.initFeedDataForKey(filterKey);
+        try {
+          dispatch.vendorsModel.setLoading(true);
+          const { sortOrder } = rootState.vendorsModel;
+          const response = await vendorsFlatListRequest(
+            sortOrder,
+            filterKey.toLowerCase(),
+            "",
+            null
+          );
+          let data = response.data;
+          data.sortOrder = sortOrder;
+          dispatch.vendorsModel.setFeedDataForKey(filterKey, data);
+        } finally {
+          dispatch.vendorsModel.setLoading(false);
+        }
+      }
+    },
     async changeSubFilter(subfilter, rootState) {
       try {
         const { activeSubFilter } = rootState.vendorsModel;
@@ -350,6 +363,33 @@ export default {
           null
         );
         dispatch.vendorsModel.setVendorList(response.data);
+      } catch (error) {
+        console.log(error);
+        throw new Error("Can not change sub filter");
+      } finally {
+        dispatch.vendorsModel.setLoading(false);
+      }
+    },
+    async changeSubFilterFlatList(subfilter, rootState) {
+      try {
+        const { activeSubFilter } = rootState.vendorsModel;
+        let subFilterToChangeTo = subfilter;
+        if (activeSubFilter === subfilter) {
+          // toggle
+          subFilterToChangeTo = "";
+        }
+        const { activeFilter, sortOrder } = rootState.vendorsModel;
+        dispatch.vendorsModel.clearActiveFeedData();
+        dispatch.vendorsModel.setActiveSubFilter(subFilterToChangeTo);
+        dispatch.vendorsModel.setLoading(true);
+        const response = await vendorsFlatListRequest(
+          sortOrder,
+          activeFilter,
+          subFilterToChangeTo,
+          null
+        );
+        let data = response.data;
+        dispatch.vendorsModel.setFeedDataForKey(activeFilter, data);
       } catch (error) {
         console.log(error);
         throw new Error("Can not change sub filter");

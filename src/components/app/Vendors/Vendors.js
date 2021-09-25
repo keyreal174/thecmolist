@@ -300,7 +300,6 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     fetchVendorsDetail: dispatch.vendorsModel.fetchVendorsDetail,
-    fetchActiveVendors: dispatch.vendorsModel.fetchActiveVendors,
     fetchVendorList: dispatch.vendorsModel.fetchVendorList,
     changeFilter: dispatch.vendorsModel.changeFilter,
     changeSubFilter: dispatch.vendorsModel.changeSubFilter,

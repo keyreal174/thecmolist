@@ -34,12 +34,11 @@ const VendorsFlatList = (props) => {
     }
   };
   useEffect(() => {
-    fetchData();
     const getProfileStats = async () => props.getProfileStats();
     getProfileStats().then((profileStats) => {
       let newFilters = [
         { title: "All", slug: "my-network", enabled: true },
-        { title: "My Peers", slug: "my-peers", enabled: true },
+        { title: "My Experts", slug: "my-peers", enabled: true },
       ];
       if (profileStats && profileStats.profile && profileStats.profile.groups) {
         newFilters = newFilters.concat(
@@ -81,14 +80,14 @@ const VendorsFlatList = (props) => {
       setBannerTitle(newFilters[idx].title);
       setBannerImage(newFilters[idx].image);
       setFilterIdx(idx);
-      props.changeFilter(newFilters[idx].slug);
+      props.changeFilterFlatList(newFilters[idx].slug);
       changeDashboardHeader(idx);
     });
   }, []);
 
   const changeFilter = (idx) => {
     setFilterIdx(idx);
-    props.changeFilter(filters[idx].slug);
+    props.changeFilterFlatList(filters[idx].slug);
     changeDashboardHeader(idx);
   };
 
@@ -167,7 +166,7 @@ const VendorsFlatList = (props) => {
                 <Col className="vendors--popular-topics" md="4">
                   <PopularTopics
                     onSubfilterChange={(f) => {
-                      props.changeSubFilter(f.slug || f.title);
+                      props.changeSubFilterFlatList(f.slug || f.title);
                     }}
                     topicList={props.activeFeedSubFilters}
                   />
@@ -222,8 +221,8 @@ const mapDispatch = (dispatch) => {
   return {
     fetchActiveVendorsFlatList:
       dispatch.vendorsModel.fetchActiveVendorsFlatList,
-    changeFilter: dispatch.vendorsModel.changeFilter,
-    changeSubFilter: dispatch.vendorsModel.changeSubFilter,
+    changeFilterFlatList: dispatch.vendorsModel.changeFilterFlatList,
+    changeSubFilterFlatList: dispatch.vendorsModel.changeSubFilterFlatList,
     inviteNewMember: dispatch.vendorsModel.inviteNewMember,
     getProfileStats: dispatch.profileModel.getProfileStats,
   };
