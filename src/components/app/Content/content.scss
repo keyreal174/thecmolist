@@ -53,7 +53,7 @@
 }
 
 .question-comments-section {
-  margin-left: 60px;
+  margin-left: 0px;
 }
 
 .question-activity-indicator {
@@ -61,7 +61,9 @@
 }
 
 .article__type-comment {
-  background: #f5f5f5;
+  background: $gray-6b;
+  margin-top: 8px;
+  margin-bottom: 0px;
 }
 
 .question-answer-section-wrapper {
@@ -76,7 +78,7 @@
   background: $white;
   border-radius: 20px;
   border: $border-card;
-  padding: 20px 0;
+  padding-top: 10px;
 
   &-text {
     padding-left: 30px;

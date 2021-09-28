@@ -73,6 +73,14 @@ function Article(props) {
   const engagementButtons = props.engagementButtons;
   const onEngagementButtonClick = props.onEngagementButtonClick;
   const withMargin = props.withMargin;
+  let hasTitle = false;
+  if (props && props.headline) {
+    if (props.headline.markdown) {
+      hasTitle = props.headline.markdown.length > 0;
+    } else if (props.headline.text) {
+      hasTitle = props.headline.text.length > 0;
+    }
+  }
 
   return (
     <div
@@ -193,7 +201,13 @@ function Article(props) {
                         <div className="article-subtitle">{props.subtitle}</div>
                       )}
                       {props.articletext && props.articletext.markdown && (
-                        <div className="article-text article-blue-link">
+                        <div
+                          className={clsx(
+                            "article-text",
+                            "article-blue-link",
+                            !hasTitle && "article-text-no-title"
+                          )}
+                        >
                           {props.articletextlines ? (
                             <RenderMarkdownTruncated
                               numLines={props.articletextlines}
@@ -218,7 +232,12 @@ function Article(props) {
                         </div>
                       )}
                       {props.articletext && props.articletext.length > 0 && (
-                        <div className="article-text">
+                        <div
+                          className={clsx(
+                            "article-text",
+                            !hasTitle && "article-text-no-title"
+                          )}
+                        >
                           <ShowMoreText
                             lines={
                               props.articletextlines
