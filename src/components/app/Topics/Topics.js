@@ -21,7 +21,7 @@ const Topics = (props) => {
 
   return (
     <Layout onToggle={handleToggle}>
-      <Container className="height-100">
+      <Container>
         <div className={clsx("wrapper", mobileMenuOpen && "open")}>
           <SimpleTopBanner
             className="topics--simple-top-banner"

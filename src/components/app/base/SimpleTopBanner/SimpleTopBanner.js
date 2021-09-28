@@ -14,7 +14,7 @@ const NetworkTopBanner = ({
   title,
 }) => {
   return (
-    <div className={`simple-top-banner simple-top-banner mt-3 ${className}`}>
+    <div className={`simple-top-banner mt-3 ${className}`}>
       <CustomCard className="simple-top-banner--wrapper mb-0">
         <div className="py-3 px-1">
           {image && image.length > 0 && (

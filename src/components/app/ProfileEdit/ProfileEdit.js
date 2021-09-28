@@ -207,7 +207,7 @@ const ProfileEdit = (props) => {
 
   return (
     <Layout onToggle={handleToggle}>
-      <Container className="profile height-100">
+      <Container>
         <Form
           className={clsx(
             "profile-edit--content",

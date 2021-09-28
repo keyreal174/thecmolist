@@ -368,17 +368,17 @@
     border: 1px solid $gray-3;
     position: absolute;
     right: 0px;
-    height: 38px;
+    height: 42px;
     text-align: left !important;
     padding-left: 0px;
     a {
       border-radius: 39px;
       color: $brand;
       margin-right: 10px;
-      padding: 5px 20px !important;
+      padding: 8px 20px !important;
       &:after {
         right: 10px;
-        top: 16px;
+        top: 19px;
         left: initial;
         padding: 0px;
       }

@@ -169,7 +169,7 @@ const VendorProfileEdit = (props) => {
 
   return (
     <Layout onToggle={handleToggle}>
-      <Container className="profile height-100">
+      <Container className="profile">
         <Form
           className={clsx(
             "mb-5",

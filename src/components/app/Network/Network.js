@@ -163,7 +163,7 @@ const Network = (props) => {
 
   return (
     <Layout onToggle={handleToggle}>
-      <Container className="height-100">
+      <Container>
         <div className="wrapper">
           <Row
             className={clsx(

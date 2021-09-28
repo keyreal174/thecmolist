@@ -16,9 +16,8 @@ function Filter(props) {
   let hasMoreThanOneFilter = hasFilters && props.filters.length > 1;
   return (
     <>
-      <Row
+      <div
         className={clsx(
-          "filter",
           "filter-desktop",
           (props.className ? props.className : "pt-3 pb-2",
           !hasMoreThanOneFilter && "hidden")
@@ -86,7 +85,7 @@ function Filter(props) {
           )}
           <Col md="3">{props.children}</Col>
         </Row>
-      </Row>
+      </div>
       <FilterMobile
         onChange={props.onChange}
         filterIdx={filterIdx}
