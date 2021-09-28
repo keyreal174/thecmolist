@@ -31,7 +31,7 @@ const VendorList = ({
         )}
         {vendorList &&
           vendorList.map((vendor, i) => (
-            <VendorListFeed key={i} vendor={vendor} />
+            <VendorListFeed key={i} vendor={vendor} index={i} />
           ))}
         {vendorList && vendorList.length === 0 && (
           <div className="wrapper article-wrapper no-feed-data-header">

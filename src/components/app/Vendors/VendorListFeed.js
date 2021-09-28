@@ -29,15 +29,12 @@ const SeeAllBtn = ({ vendor, filterIdx }) => {
   );
 };
 
-const VendorListFeed = ({ vendor, filterIdx }) => {
+const VendorListFeed = ({ vendor, filterIdx, index }) => {
   return (
     <>
-      <div className="vendor-list-divider">
-        <SeeAllBtn vendor={vendor} filterIdx={filterIdx} />
-      </div>
+      {index !== 0 && <div className="vendor-list-divider"></div>}
       <div className="vendor-list-container">
         <div className="vendor-list-info">
-          <SeeAllBtn vendor={vendor} filterIdx={filterIdx} />
           <h1>{vendor.name}</h1>
           <p>{vendor.description}</p>
         </div>
@@ -92,6 +89,9 @@ const VendorListFeed = ({ vendor, filterIdx }) => {
               ))}
           </div>
         </div>
+      </div>
+      <div className="vendor-list-button-wrapper">
+        <SeeAllBtn vendor={vendor} filterIdx={filterIdx} />
       </div>
     </>
   );

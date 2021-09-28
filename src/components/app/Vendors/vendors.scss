@@ -191,19 +191,13 @@
 
   position: relative;
   text-align: right;
-  padding-top: 10px;
+  padding-top: 40px;
   padding-bottom: 14px;
   font-size: 15px;
 
-  .filter--button-active {
-    opacity: 0.8;
-    border-radius: 20px;
-    padding: 8px 22px;
-  }
-
   &::after {
     content: "";
-    width: calc(100% - 140px);
+    width: 100%;
     border-bottom: solid 1px #c9ced1;
     position: absolute;
     left: 0;
@@ -220,6 +214,11 @@
 
     &.mobile {
       display: block;
+      padding-top: 10px;
+
+      &::after {
+        width: calc(100% - 140px);
+      }
     }
   }
 }
@@ -485,5 +484,24 @@
 
   @media screen and (max-width: 767px) {
     display: none;
+  }
+}
+
+.vendor-list-button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+
+  .filter--button-active {
+    opacity: 0.8;
+    border-radius: 20px;
+    padding: 8px 22px;
+  }
+
+  @media screen and (max-width: 767px) {
+    margin-top: 16px;
+
+    &:last-child {
+      margin-bottom: 40px;
+    }
   }
 }
