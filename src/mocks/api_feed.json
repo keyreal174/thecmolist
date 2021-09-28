@@ -1,407 +1,488 @@
 {
   "feedData": [
     {
-      "content_id": 12102948,
+      "content_id": 182,
+      "replyText": "Reply",
       "content": {
         "header": {
-          "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [Print Advertising](/directory/print-advertising)",
-          "subtext": "19 days ago"
+          "markdown": "[Michael Marcellin](/profile/michael-marcellin) CMO at Juniper Networks",
+          "subtext": {
+            "markdown": "[Created a post](/content/182) in [#marketingautomation](/topic/marketingautomation), [#mymarketingstack](/topic/mymarketingstack), [#websitetools](/topic/websitetools) "
+          },
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/1632750850829michael-marcellin.jpg"
         },
         "headline": {
-          "markdown": "[test a new agency](/agency/test-a-new-agency)"
+          "text": "Added new vendors to my marketing stack",
+          "link": "/content/182"
         },
-        "subtitle": "NY",
         "articletext": {
-          "markdown": "This is what I made using Draft.js mention plugin. [@Eckart Walther](/profile/eckart) [@Vas Swaminathan](/profile/vas)"
+          "markdown": "Added [@Oracle](/vendor/oracle) to [#marketingautomation](/topic/marketingautomation)\n\nAdded [@Adobe](/vendor/adobe) to [#websitetools](/topic/websitetools)\n\n​ \n\n​ [#mymarketingstack](/topic/mymarketingstack)"
         },
-        "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjg4NDEyNG1hZHMtLXByb2ZpbGUuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
-        "imageDisplay": "square",
-        "num_thanks": 5,
-        "num_insightful": 10
+        "contentlink": "/profile/michael-marcellin",
+        "collections": [
+          "#marketingautomation",
+          "#mymarketingstack",
+          "#websitetools"
+        ],
+        "author": "Michael",
+        "articletextlines": 3
       },
       "entities": [
         {
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5Ijoic210cGNvbS0tcHJvZmlsZS5zdmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEwMCwiaGVpZ2h0IjoxMDAsImZpdCI6ImNvdmVyIn19fQ==",
-          "name": "Hilary Orteta - 231",
-          "role": "CMO at Songbird",
-          "link": "/profile/hilary"
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYzMjc4NzE2NjM3N2EuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
+          "name": "Oracle Marketing",
+          "role": "Austin, TX",
+          "link": "/vendor/oracle"
         },
         {
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/default-agency-image.png",
-          "name": "John Smith",
-          "role": "CMO at Moder Media",
-          "link": "/profile/jhon"
-        },
-        {
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjg4NDEyNG1hZHMtLXByb2ZpbGUuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
-          "name": "John Smith",
-          "role": "CMO at Moder Media",
-          "link": "/profile/jhon"
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzY2Mzg3NzI2MEEucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+          "name": "Adobe",
+          "role": "San Jose, CA",
+          "link": "/vendor/adobe"
         }
-      ],
+      ]
+    },
+    {
+      "content_id": 181,
+      "replyText": "Reply",
+      "content": {
+        "header": {
+          "markdown": "[Marta Bulaich](/profile/marta-bulaich) Marketing Advisor at SignalFire",
+          "subtext": {
+            "markdown": "[Created a post](/content/181) in [#brand](/topic/brand), [#mymarketingstack](/topic/mymarketingstack), [#socialmediamarketing](/topic/socialmediamarketing), [#websitetools](/topic/websitetools) "
+          },
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/1632437432625marta-bulaich.jpg"
+        },
+        "headline": {
+          "text": "Added new vendors to my marketing stack",
+          "link": "/content/181"
+        },
+        "articletext": {
+          "markdown": "Added [@WordPress](/vendor/wordpress) to [#websitetools](/topic/websitetools)\n\nAdded [@Alembic](/vendor/alembic) to [#socialmediamarketing](/topic/socialmediamarketing)\n\nAdded [@BlueOcean.ai](/vendor/blueoceanai) to [#brand](/topic/brand)\n\n​ \n\n​ [#mymarketingstack](/topic/mymarketingstack)"
+        },
+        "contentlink": "/profile/marta-bulaich",
+        "collections": [
+          "#brand",
+          "#mymarketingstack",
+          "#socialmediamarketing",
+          "#websitetools"
+        ],
+        "author": "Marta",
+        "articletextlines": 3,
+        "num_thanks": 1
+      },
+      "entities": [
+        {
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYyMDg3NTE2OTMyNmEucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+          "name": "Wordpress",
+          "role": "San Francisco, CA",
+          "link": "/vendor/wordpress"
+        },
+        {
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYzMjQ0MTg1NzU0NmEuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
+          "name": "Alembic",
+          "role": "San Francisco, CA",
+          "link": "/vendor/alembic"
+        },
+        {
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYzMjQ0MTcwNTEzOGEuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
+          "name": "BlueOcean",
+          "role": "San Francisco, CA",
+          "link": "/vendor/blueoceanai"
+        }
+      ]
+    },
+    {
+      "parent_content_id": 179,
+      "content_id": 180,
+      "replyText": "Reply",
+      "content": {
+        "header": {
+          "markdown": "[Yujin Chung](/profile/yujin-chung) Managing Director & Head of Platform at SignalFire",
+          "subtext": {
+            "markdown": "[Replied to a question](/content/179) in [SignalFire Marketing Leaders](/group/signalfire-marketing) "
+          },
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/yujin-chung--profile.jpg"
+        },
+        "headline": {
+          "text": "",
+          "link": "/content/179"
+        },
+        "articletext": {
+          "markdown": "[@Marta Bulaich](/profile/marta-bulaich) :-)\n"
+        },
+        "contentlink": "/profile/yujin-chung",
+        "collections": ["SignalFire Marketing Leaders"],
+        "author": "Yujin",
+        "articletextlines": 3
+      },
       "parent_content": {
         "header": {
-          "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [Print Advertising](/directory/print-advertising)",
-          "subtext": "19 days ago"
+          "markdown": "[Yujin Chung](/profile/yujin-chung) Managing Director & Head of Platform at SignalFire",
+          "subtext": {
+            "markdown": "[Asked a question](/content/179) in [SignalFire Marketing Leaders](/group/signalfire-marketing) "
+          },
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/yujin-chung--profile.jpg"
         },
         "headline": {
-          "markdown": "[test a new agency](/agency/test-a-new-agency)"
+          "text": "iOS Marketing question",
+          "link": "/content/179"
         },
-        "subtitle": "NY",
-        "articletext": "zz",
-        "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjg4NDEyNG1hZHMtLXByb2ZpbGUuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
-        "imageDisplay": "square"
-      },
-      "reactions": [
-        {
-          "type": "thanks",
-          "checked": true
+        "articletext": {
+          "markdown": "I have a friendly relationship with Leonard Green Partners, a private equity fund with significant stakes in retail (JCrew, Lucky Jeans), and other consumer services companies.  They regularly get their CMO's / VP Marketing execs together, and the priority topic right now is IOS 15, specifically:   _with the upcoming release of iOS 15, how are companies adjusting to Apple’s new privacy changes in their native mail application? With no way to track open rates, how are companies managing deliverability and engagement?_\n\n​\n\nAnyone have advice/expertise on this topic?  [@Kelechi Nwadibia](/profile/kelechi-nwadibia) \n"
         },
-        {
-          "type": "insightful",
-          "checked": false
-        }
-      ]
-    },
-    {
-      "content_id": 12102300,
-      "content": {
-        "header": {
-          "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) edited their profile",
-          "subtext": "a month ago"
-        },
-        "headline": {
-          "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg)"
-        },
-        "articletext": "Seasoned engineering leader with 10+ years of experience.",
-        "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NTgxMDIzMjMwOWltYWdlLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
-        "num_thanks": 0,
-        "num_insightful": 0
+        "contentlink": "/profile/yujin-chung",
+        "author": "Yujin",
+        "articletextlines": 3
       },
       "entities": [
         {
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5Ijoic210cGNvbS0tcHJvZmlsZS5zdmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEwMCwiaGVpZ2h0IjoxMDAsImZpdCI6ImNvdmVyIn19fQ==",
-          "name": "Hilary Orteta - 231",
-          "role": "CMO at Songbird",
-          "link": "/profile/hilary"
-        },
-        {
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjg4NDEyNG1hZHMtLXByb2ZpbGUuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
-          "name": "John Smith",
-          "role": "CMO at Moder Media",
-          "link": "/profile/jhon"
-        }
-      ],
-      "reactions": [
-        {
-          "type": "thanks",
-          "checked": false
-        },
-        {
-          "type": "insightful",
-          "checked": false
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/1632437432625marta-bulaich.jpg",
+          "name": "Marta Bulaich",
+          "role": "Marketing Advisor at SignalFire",
+          "link": "/profile/marta-bulaich"
         }
       ]
     },
     {
-      "content_id": 12102941,
+      "parent_content_id": 175,
+      "content_id": 178,
+      "replyText": "Reply",
       "content": {
         "header": {
-          "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [TV Advertising](/directory/tv-advertising)",
-          "subtext": "a month ago"
+          "markdown": "[Atri Chatterjee](/profile/atri-chatterjee) CMO at ForgeRock",
+          "subtext": {
+            "markdown": "[Commented on an article](/content/175) in [#leadership](/topic/leadership), [#news](/topic/news) "
+          },
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/1619825893628atri-chatterjee.jpg"
         },
         "headline": {
-          "markdown": "[test1](/agency/test1)"
+          "text": "",
+          "link": "/content/175"
         },
-        "subtitle": "San Francisco, CA!!!",
-        "articletext": "cbx",
-        "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjgwODQyNnNhbGVlbC0tcHJvZmlsZS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
-        "imageDisplay": "square",
-        "num_thanks": 3,
-        "num_insightful": 10
+        "articletext": {
+          "markdown": "Thank you for your kind words [@Julie Herendeen](/profile/julie) and for your good advice when we were evaluating NASDAQ versus NYSE.  We were influenced by your expereince with the  NYSE and are now listed on the NYSE.\n"
+        },
+        "contentlink": "/profile/atri-chatterjee",
+        "collections": ["#leadership", "#news"],
+        "author": "Atri",
+        "articletextlines": 3,
+        "num_thanks": 1
       },
-      "reactions": [
-        {
-          "type": "thanks",
-          "checked": true
-        },
-        {
-          "type": "insightful",
-          "checked": false
-        }
-      ]
-    },
-    {
-      "content_id": 12102301,
-      "content": {
+      "parent_content": {
         "header": {
-          "markdown": "[Eric Mann, VP Marketing at Rally Health](/profile/eric) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) edited their profile",
-          "subtext": "a month ago"
+          "markdown": "[CMOlist News](/profile/andrea-frost) Editor at CMOlist",
+          "subtext": {
+            "markdown": "[Posted an article](/content/175) in [#leadership](/topic/leadership), [#news](/topic/news) "
+          },
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYzMjI3NDE0NTczMUNNT2xpc3QtQ2lyY2xlLUljb24ucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0="
         },
         "headline": {
-          "markdown": "[Eric Mann, VP Marketing at Rally Health](/profile/eric) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg)"
+          "text": "ForgeRock CEO Rosch On IPO: ‘This Is A Really Exciting Market’",
+          "link": "/content/175"
         },
-        "articletext": "Marketing executive with broad experience establishing the go-to-market strategy, building and leading teams, understanding the customer to develop positioning, messaging, demand, and influencer programs that drive sales and user growth results. \n\nStrengths include: product marketing, go-to-market, storytelling, channel partnerships, digital marketing & social media, mobile, demand generation, content marketing, brand strategy, customer development, and awareness.\n\nProduct Marketing & Go-To-Market: position & message to drive sales success, narrative, research & personas, sales plays, channel / ecosystem partnerships, customer lifecycle marketing, PR/AR, sales enablement, B2B, B2B2C, B2C\n\u0007 Digital Marketing: market creation and expansion, growth hacking, integrated digital and traditional marketing execution, campaigns, content strategy and development across channels (Social, Mobile, Web, SEM, SEO, Affiliate, Email, Events), & field marketing\n\u0007 Data-Driven Demand Generation: create & implement dashboards, deliver performance-based campaigns & programs, leverage analytics using integrated & automated, marketing systems to drive lead generation & conversion\n\u0007 Business Development: evaluate market & ecosystem, building relationships, cutting deals, managing & expanding relationships to drive revenue",
-        "image": "https://d3k6hg21rt7gsh.cloudfront.net/eric--profile.jpg",
-        "num_thanks": 0,
-        "num_insightful": 0
+        "articletext": {
+          "markdown": "**Congratulations to **[**Atri Chatterjee**](https://www.thecmolist.com/profile/atri-chatterjee)** on ForgeRock’s IPO. **While IPOs are often viewed as a financial event, CMOs have a huge role in making the IPO a success by setting the positioning, branding and communications leading up to the IPO and of course beyond the IPO to scale with public market expectations.\n\n​\n\n[View article at crn.com](https://www.crn.com/news/security/forgerock-ceo-rosch-on-ipo-this-is-a-really-exciting-market-)"
+        },
+        "contentlink": "/profile/andrea-frost",
+        "author": "CMOlist"
       },
-      "reactions": [
+      "entities": [
         {
-          "type": "thanks",
-          "checked": false
-        },
-        {
-          "type": "insightful",
-          "checked": false
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NjIxNDg1NDYzNmp1bGllLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
+          "name": "Julie Herendeen",
+          "role": "Former CMO at Pagerduty",
+          "link": "/profile/julie"
         }
       ]
     },
     {
-      "content_id": 12102940,
+      "content_id": 177,
+      "replyText": "Reply",
       "content": {
         "header": {
-          "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [Account-Based Advertising Software](/directory/account-based-advertising-software)",
-          "subtext": "a month ago"
+          "markdown": "[Julie Herendeen](/profile/julie) Former CMO at Pagerduty",
+          "subtext": {
+            "markdown": "[Posted an article](/content/177) in [#attribution](/topic/attribution), [#news](/topic/news) "
+          },
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NjIxNDg1NDYzNmp1bGllLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ=="
         },
         "headline": {
-          "markdown": "[SMTP.com](/technology/smtpcom)"
+          "text": "Adobe’s New Marketing AI Let Customer Cut Ad Spend 50% While Growing Sales 10%",
+          "link": "/content/177"
         },
-        "articletext": "xxv",
-        "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5Ijoic210cGNvbS0tcHJvZmlsZS5zdmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEwMCwiaGVpZ2h0IjoxMDAsImZpdCI6ImNvdmVyIn19fQ==",
-        "imageDisplay": "square",
-        "num_thanks": 2,
-        "num_insightful": 1
-      },
-      "reactions": [
-        {
-          "type": "thanks",
-          "checked": false
+        "articletext": {
+          "markdown": "**AI seems to be the product capability of the week**, but focused on large customers. [@Adobe](/vendor/adobe) announced AI capabilities to help marketers understand which parts of their marketing mix are delivering results. We all know this is a dark art that starts with a deep understanding of the customer journey, but for their largest customers, they both claim AI is saving them up to 50%.\n\n\n​\n\n[View article at forbes.com](https://www.forbes.com/sites/johnkoetsier/2021/09/20/adobes-new-marketing-ai-let-customer-cut-ad-spend-50-while-growing-sales-10)"
         },
-        {
-          "type": "insightful",
-          "checked": false
-        }
-      ]
-    },
-    {
-      "content_id": 12102302,
-      "content": {
-        "header": {
-          "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [Transactional Email](/directory/transactional-email)",
-          "subtext": "a month ago"
-        },
-        "headline": {
-          "markdown": "[testtech2](/technology/testtech2)"
-        },
-        "articletext": "zxvz",
-        "image": "https://d3k6hg21rt7gsh.cloudfront.net/default-agency-image.png",
-        "imageDisplay": "square",
-        "num_thanks": 0,
-        "num_insightful": 0
-      },
-      "reactions": [
-        {
-          "type": "thanks",
-          "checked": false
-        },
-        {
-          "type": "insightful",
-          "checked": false
-        }
-      ]
-    },
-    {
-      "content_id": 12102303,
-      "content": {
-        "header": {
-          "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [Lead Scoring Software](/directory/lead-scoring-software)",
-          "subtext": "a month ago"
-        },
-        "headline": {
-          "markdown": "[testtech2](/technology/testtech2)"
-        },
-        "articletext": "xzvz",
-        "image": "https://d3k6hg21rt7gsh.cloudfront.net/default-agency-image.png",
-        "imageDisplay": "square",
-        "num_thanks": 0,
-        "num_insightful": 0
-      },
-      "reactions": [
-        {
-          "type": "thanks",
-          "checked": false
-        },
-        {
-          "type": "insightful",
-          "checked": false
-        }
-      ]
-    },
-    {
-      "content_id": 12102304,
-      "content": {
-        "header": {
-          "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [Marketing Account Intelligence Software](/directory/marketing-account-intelligence-software)",
-          "subtext": "a month ago"
-        },
-        "headline": {
-          "markdown": "[testtech2](/technology/testtech2)"
-        },
-        "articletext": "zxvzx",
-        "image": "https://d3k6hg21rt7gsh.cloudfront.net/default-agency-image.png",
+        "contentlink": "/profile/julie",
+        "collections": ["#attribution", "#news"],
+        "author": "Julie",
+        "image": "https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F6148b7eac3b40db800811729%2F0x0.jpg",
         "imageDisplay": "square"
-      }
-    },
-    {
-      "content_id": 12102305,
-      "content": {
-        "header": {
-          "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [Out of Home Advertising](/directory/out-of-home-advertising)",
-          "subtext": "a month ago"
-        },
-        "headline": {
-          "markdown": "[testnew8](/agency/testnew8)"
-        },
-        "subtitle": "",
-        "articletext": "zz",
-        "image": "https://d3k6hg21rt7gsh.cloudfront.net/default-agency-image.png",
-        "imageDisplay": "square",
-        "num_thanks": 0,
-        "num_insightful": 0
       },
-      "reactions": [
+      "entities": [
         {
-          "type": "thanks",
-          "checked": false
-        },
-        {
-          "type": "insightful",
-          "checked": false
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzY2Mzg3NzI2MEEucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+          "name": "Adobe",
+          "role": "San Jose, CA",
+          "link": "/vendor/adobe"
         }
       ]
     },
     {
-      "content_id": 12102306,
+      "content_id": 175,
+      "replyText": "Reply",
       "content": {
         "header": {
-          "markdown": "[Vas Swaminathan, Engineering Leader at Uber](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg) posted a review to [Advertising](/directory/advertising)",
-          "subtext": "a month ago"
+          "markdown": "[CMOlist News](/profile/andrea-frost) Editor at CMOlist",
+          "subtext": {
+            "markdown": "[Posted an article](/content/175) in [#leadership](/topic/leadership), [#news](/topic/news) "
+          },
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYzMjI3NDE0NTczMUNNT2xpc3QtQ2lyY2xlLUljb24ucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0="
         },
         "headline": {
-          "markdown": "[testnew8](/agency/testnew8)"
+          "text": "ForgeRock CEO Rosch On IPO: ‘This Is A Really Exciting Market’",
+          "link": "/content/175"
         },
-        "subtitle": "",
-        "articletext": "xvz",
-        "image": "https://d3k6hg21rt7gsh.cloudfront.net/default-agency-image.png",
-        "imageDisplay": "square",
-        "num_thanks": 0,
-        "num_insightful": 0
+        "articletext": {
+          "markdown": "**Congratulations to **[**Atri Chatterjee**](https://www.thecmolist.com/profile/atri-chatterjee)** on ForgeRock’s IPO. **While IPOs are often viewed as a financial event, CMOs have a huge role in making the IPO a success by setting the positioning, branding and communications leading up to the IPO and of course beyond the IPO to scale with public market expectations.\n\n​\n\n[View article at crn.com](https://www.crn.com/news/security/forgerock-ceo-rosch-on-ipo-this-is-a-really-exciting-market-)"
+        },
+        "contentlink": "/profile/andrea-frost",
+        "collections": ["#leadership", "#news"],
+        "author": "CMOlist",
+        "image": "https://www.crn.com/resources/026d-1341b6db22df-fb45ab346bba-1000/forgerock-ceo-fran.jpg",
+        "imageDisplay": "square"
       },
-      "reactions": [
-        {
-          "type": "thanks",
-          "checked": false
+      "entities": []
+    },
+    {
+      "parent_content_id": 153,
+      "content_id": 174,
+      "replyText": "Reply",
+      "content": {
+        "header": {
+          "markdown": "[Sheila Joglekar Vashee](/profile/sheila-joglekar-vashee) Partner at Basis Set",
+          "subtext": {
+            "markdown": "[Replied to a question](/content/153) in [#crm](/topic/crm), [#marketinganalytics](/topic/marketinganalytics), [#marketingautomation](/topic/marketingautomation), [#martech](/topic/martech), [#mymarketingstack](/topic/mymarketingstack) "
+          },
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/1629491272214sheila-joglekar-vashee.jpg"
         },
-        {
-          "type": "insightful",
-          "checked": false
-        }
-      ]
+        "headline": {
+          "text": "",
+          "link": "/content/153"
+        },
+        "articletext": {
+          "markdown": "I recommend Iterable for early stage marketing automation. You can leverage it across channels and it's not expensive\n"
+        },
+        "contentlink": "/profile/sheila-joglekar-vashee",
+        "collections": [
+          "#crm",
+          "#marketinganalytics",
+          "#marketingautomation",
+          "#martech",
+          "#mymarketingstack"
+        ],
+        "author": "Sheila",
+        "articletextlines": 3,
+        "num_thanks": 1
+      },
+      "parent_content": {
+        "header": {
+          "markdown": "[Christina Patrick](/profile/christina-patrick) Head of Marketing  at Paid",
+          "subtext": {
+            "markdown": "[Asked a question](/content/153) in [#crm](/topic/crm), [#marketinganalytics](/topic/marketinganalytics), [#marketingautomation](/topic/marketingautomation), [#martech](/topic/martech), [#mymarketingstack](/topic/mymarketingstack) "
+          },
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/1631260508066christina-patrick.jpg"
+        },
+        "headline": {
+          "text": "Marketing stack for a startup",
+          "link": "/content/153"
+        },
+        "articletext": {
+          "markdown": "Hi Folks\n\nKeen to hear your thoughts on this, you are the first marketing hire for a start up that has received seed funding, but has a small marketing budget. What does your 'must have have' marketing tech stack look like?  In that same vein, if anyone uses hubspot, I'd love to hear how it's working for you.\n\n​\n\n​\n"
+        },
+        "contentlink": "/profile/christina-patrick",
+        "author": "Christina",
+        "articletextlines": 3
+      },
+      "entities": []
+    },
+    {
+      "parent_content_id": 172,
+      "content_id": 173,
+      "replyText": "Reply",
+      "content": {
+        "header": {
+          "markdown": "[Jamie Barnett](/profile/jamie-barnett) Advisor at Self-employed",
+          "subtext": {
+            "markdown": "[Commented on an article](/content/172) in [#brand](/topic/brand) "
+          },
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/1619825894163jamie-barnett.jpg"
+        },
+        "headline": {
+          "text": "",
+          "link": "/content/172"
+        },
+        "articletext": {
+          "markdown": "aw, thank you, julie!\n"
+        },
+        "contentlink": "/profile/jamie-barnett",
+        "collections": ["#brand"],
+        "author": "Jamie",
+        "articletextlines": 3,
+        "num_thanks": 1
+      },
+      "parent_content": {
+        "header": {
+          "markdown": "[Julie Herendeen](/profile/julie) CMO at Pagerduty",
+          "subtext": {
+            "markdown": "[Posted an article](/content/172) in [#brand](/topic/brand) "
+          },
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NjIxNDg1NDYzNmp1bGllLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ=="
+        },
+        "headline": {
+          "text": "Nail your next branding project: Here’s your 7-point checklist",
+          "link": "/content/172"
+        },
+        "articletext": {
+          "markdown": "[https://jamiecatherinebarnett.medium.com/nail-your-next-branding-project-heres-your-7-point-checklist-5f80ffe9ccc](https://jamiecatherinebarnett.medium.com/nail-your-next-branding-project-heres-your-7-point-checklist-5f80ffe9ccc)\n\n\n\n**Fantastic article by **[@Jamie Barnett](/profile/jamie-barnett)** on the 7 point checklist for Branding**. Thank you for helping Marketers distill the Branding process Jamie!\n"
+        },
+        "contentlink": "/profile/julie",
+        "author": "Julie"
+      },
+      "entities": []
     }
   ],
-  "token": "373fe76d8fbbc4986e65a810b0231a7bba271ad8edafc3e89562888a6ed92e3074f0f820075e4488f70e819989c819fd",
-  "showNux": true,
+  "token": "373fe76d8fbbc4986e65a810b0231a7b4dda11f5626d47cd778ee243b0893befe19e681db654a8ac37860ef7c37f4e91",
   "members": {
-    "link": "/network",
+    "link": "/network#my-network",
     "list": [
       {
-        "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5OTA2NzA1OTQ0NzAxNy1IZWFkc2hvdHMocHBfdzc2OF9oNjE0KS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
-        "name": "John Smith - 1,272",
-        "role": "CMO at Modern Media",
-        "link": "/profile/jhon"
+        "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NjIxNDg1NDYzNmp1bGllLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
+        "name": "Julie Herendeen",
+        "role": "Former CMO at Pagerduty",
+        "link": "/profile/julie"
       },
       {
-        "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjgwODQyNnNhbGVlbC0tcHJvZmlsZS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
-        "name": "Aya Nicola - 541",
-        "role": "BP Marketing at Pure Digital",
-        "link": "/profile/aya"
+        "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NjA4OTIzNzc3N2Rvd25sb2FkLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
+        "name": "Eckart Walther",
+        "role": "Founder at CMOlist",
+        "link": "/profile/eckart"
       },
       {
-        "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5Ijoic210cGNvbS0tcHJvZmlsZS5zdmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEwMCwiaGVpZ2h0IjoxMDAsImZpdCI6ImNvdmVyIn19fQ==",
-        "name": "Hilary Orteta - 231",
-        "role": "CMO at Songbird",
-        "link": "/profile/hilary"
+        "image": "https://d3k6hg21rt7gsh.cloudfront.net/1617649555493christy-huggins.jpg",
+        "name": "Christy Huggins",
+        "role": "Head of Marketing at OneSignal",
+        "link": "/profile/christy-huggins"
       },
       {
-        "image": "https://d3k6hg21rt7gsh.cloudfront.net/default-agency-image.png",
-        "name": "John Smith",
-        "role": "CMO at Moder Media",
-        "link": "/profile/jhon"
+        "image": "https://d3k6hg21rt7gsh.cloudfront.net/1617649681515terri-thatcher.jpg",
+        "name": "Terri Thatcher",
+        "role": "VP Marketing at Earnup",
+        "link": "/profile/terri-thatcher"
       },
       {
-        "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjg4NDEyNG1hZHMtLXByb2ZpbGUuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
-        "name": "John Smith",
-        "role": "CMO at Moder Media",
-        "link": "/profile/jhon"
+        "image": "https://d3k6hg21rt7gsh.cloudfront.net/1617649555905dario-ambrosini.jpg",
+        "name": "Dario Ambrosini",
+        "role": "CMO at Propel",
+        "link": "/profile/dario-ambrosini"
+      },
+      {
+        "image": "https://d3k6hg21rt7gsh.cloudfront.net/yujin-chung--profile.jpg",
+        "name": "Yujin Chung",
+        "role": "Managing Director & Head of Platform at SignalFire",
+        "link": "/profile/yujin-chung"
+      },
+      {
+        "image": "https://d3k6hg21rt7gsh.cloudfront.net/1628055552788alan-yates.jpg",
+        "name": "Alan Yates",
+        "role": "Chief Business Officer at Docugami",
+        "link": "/profile/alan-yates"
+      },
+      {
+        "image": "https://d3k6hg21rt7gsh.cloudfront.net/1623865139510jesse-noyes.jpg",
+        "name": "Jesse Noyes",
+        "role": "VP of Marketing at Unsupervised",
+        "link": "/profile/jesse-noyes"
+      },
+      {
+        "image": "https://d3k6hg21rt7gsh.cloudfront.net/1619825893628atri-chatterjee.jpg",
+        "name": "Atri Chatterjee",
+        "role": "CMO at ForgeRock",
+        "link": "/profile/atri-chatterjee"
+      },
+      {
+        "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYyMTI5OTE2ODA1MjE1ODMxNDY0ODc2MjEuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+        "name": "Vas Samarth",
+        "role": "CTO at CMOlist",
+        "link": "/profile/vas"
       }
     ]
   },
   "vendors": {
-    "link": "/network",
+    "link": "/vendors#my-network",
     "list": [
       {
-        "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5OTA2NzA1OTQ0NzAxNy1IZWFkc2hvdHMocHBfdzc2OF9oNjE0KS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
-        "name": "Mixpanel",
-        "link": "/vendor/mixpanel",
-        "role": "San Francisco, CA"
+        "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNjE4MjAzODkxMXNpZ25hbGZpcmUtbG9nby5qcGVnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+        "name": "SignalFire",
+        "role": "San Francisco, CA",
+        "link": "/vendor/signalfire"
       },
       {
-        "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjgwODQyNnNhbGVlbC0tcHJvZmlsZS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
-        "name": "Hubspot",
-        "role": "Buston, MA"
+        "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNjE4MjEyMTQ0OFNjcmVlbiBTaG90IDIwMjEtMDMtMTkgYXQgMTIuMDkuMzkgUE0ucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+        "name": "CMOlist",
+        "role": "San Francisco, CA",
+        "link": "/vendor/cmolist"
       },
       {
-        "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5Ijoic210cGNvbS0tcHJvZmlsZS5zdmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEwMCwiaGVpZ2h0IjoxMDAsImZpdCI6ImNvdmVyIn19fQ==",
+        "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNjM4NzgwNzcxME1jSy5qcGVnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+        "name": "McKinsey & Company",
+        "role": "New York, NY",
+        "link": "/vendor/mckinsey-company"
+      },
+      {
+        "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNjM4NzQ3MTA2MENvbGxpbnMucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+        "name": "Collins",
+        "role": "New York, NY",
+        "link": "/vendor/collins"
+      },
+      {
+        "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNjM4Nzk0Njg3OTcyLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
+        "name": "72andSunny",
+        "role": "",
+        "link": "/vendor/72-and-sunny"
+      },
+      {
+        "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNjM4ODE1NzM4MkRpdi5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
         "name": "Division of Labor",
-        "role": "Sausalito, CA"
+        "role": "San Francisco, CA",
+        "link": "/vendor/division-of-labor"
+      },
+      {
+        "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNjM4ODI4MzgwNE9XLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
+        "name": "Owen Jones",
+        "role": "Portland, OR",
+        "link": "/vendor/owen-jones"
+      },
+      {
+        "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNjYyMjUwMDYyMXl0LnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
+        "name": "YouTube",
+        "role": "San Bruno, CA",
+        "link": "/vendor/youtube"
+      },
+      {
+        "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNTA5NjQxNmh1YnNwb3QucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+        "name": "Hubspot",
+        "role": "Cambridge, MA",
+        "link": "/vendor/hubspot"
+      },
+      {
+        "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzIyNDk2OTU5OWdvbmcuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
+        "name": "Gong",
+        "role": "Palo Alto, CA",
+        "link": "/vendor/gong"
       }
     ]
   },
-  "about": {
-    "title": "About this space",
-    "text": "Community of marketing leaders form Modern Media. Please email: x@y.com or z@k.com if you have any questions or would like to invite other marketers to this space. Please treat all information. Community of marketing leaders form Modern Media."
-  },
-  "featured_stacks": [
-    {
-      "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjg4NDEyNG1hZHMtLXByb2ZpbGUuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
-      "name": "Hilary Orteta - 231",
-      "role": "CMO at Songbird",
-      "link": "/profile/hilary"
-    },
-    {
-      "image": "https://d3k6hg21rt7gsh.cloudfront.net/default-agency-image.png",
-      "name": "John Smith",
-      "role": "CMO at Moder Media",
-      "link": "/profile/jhon"
-    },
-    {
-      "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjg4NDEyNG1hZHMtLXByb2ZpbGUuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
-      "name": "John Smith",
-      "role": "CMO at Moder Media",
-      "link": "/profile/jhon"
-    },
-    {
-      "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjg4NDEyNG1hZHMtLXByb2ZpbGUuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
-      "name": "John Smith",
-      "role": "CMO at Moder Media",
-      "link": "/profile/jhon"
-    },
-    {
-      "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYwMDMwMjg4NDEyNG1hZHMtLXByb2ZpbGUuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
-      "name": "John Smith",
-      "role": "CMO at Moder Media",
-      "link": "/profile/jhon"
-    }
-  ]
+  "about": {}
 }

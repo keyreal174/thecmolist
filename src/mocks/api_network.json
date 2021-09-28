@@ -1,401 +1,207 @@
 {
   "feedData": [
     {
-      "headline": {
-        "markdown": "[Vas Swaminathan](/profile/vas) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg)"
-      },
-      "subheadlines": [
-        {
-          "markdown": "Engineering Leader at Uber"
-        }
-      ],
-      "articletext": "Seasoned engineering leader with 10+ years of experience.",
-      "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NTgxMDIzMjMwOWltYWdlLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
-      "subtext": [
-        {
-          "label": "Vendors:",
-          "text": {
-            "markdown": "[Agencies (76)](/profile/vas#agencies), [Technologies (59)](/profile/vas#technologies)"
-          }
-        }
-      ],
-      "username": "svas"
-    },
-    {
-      "headline": {
-        "markdown": "[Julie22 Herendeen1](/profile/julie) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg)"
-      },
-      "subheadlines": [
-        {
-          "markdown": "(blank)1 at (blank)1"
-        }
-      ],
-      "articletext": "(blank)1",
-      "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiZGVmYXVsdC1wcm9maWxlLWltYWdlLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
-      "subtext": [
-        {
-          "label": "Vendors:",
-          "text": {
-            "markdown": "[Agencies (10)](/profile/julie#agencies), [Technologies (3)](/profile/julie#technologies)"
-          }
-        }
-      ],
+      "headline": { "text": "Julie Herendeen", "link": "/profile/julie" },
+      "subheadlines": [{ "markdown": "Former CMO at Pagerduty" }],
+      "articletext": "Business leader, CMO and public Board Director with 25+ years of experience launching and scaling enduring technology brands, managing global businesses and building high-performance marketing and product teams.",
+      "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NjIxNDg1NDYzNmp1bGllLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
+      "contentlink": "/profile/julie",
+      "disableConnect": false,
+      "isConnected": true,
+      "isFollowed": false,
+      "firstname": "Julie",
       "username": "julie"
     },
     {
-      "headline": {
-        "markdown": "[undefined undefined](/profile/entry1) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg)"
-      },
-      "subheadlines": [
-        {
-          "markdown": "undefined at undefined"
-        }
-      ],
-      "articletext": "",
-      "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiZGVmYXVsdC1wcm9maWxlLWltYWdlLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
-      "subtext": [
-        {
-          "label": "Vendors:",
-          "text": {
-            "markdown": "[Agencies (0)](/profile/entry1#agencies), [Technologies (0)](/profile/entry1#technologies)"
-          }
-        }
-      ],
-      "username": "entry1"
+      "headline": { "text": "Eckart Walther", "link": "/profile/eckart" },
+      "subheadlines": [{ "markdown": "Founder at CMOlist" }],
+      "articletext": "Co-founder of CMOlist. Previously led AdTech products at Uber, commerce at Twitter and search at Yahoo. Please reach out with any questions or feedback: eckart@thecmolist.com",
+      "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NjA4OTIzNzc3N2Rvd25sb2FkLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
+      "contentlink": "/profile/eckart",
+      "disableConnect": false,
+      "isConnected": true,
+      "isFollowed": false,
+      "firstname": "Eckart",
+      "username": "eckart"
+    },
+    {
+      "headline": { "text": "Allison Munro", "link": "/profile/allison-munro" },
+      "subheadlines": [{ "markdown": "CMO at Vena " }],
+      "articletext": "As Chief Marketing Officer, Allison is responsible for leading a high-performance marketing team that drives brand, demand and experience.\n\nShe began her career as an entrepreneur and built her own experiential marketing agency, providing technology-based experience solutions for CPG and entertainment brands. She continued to apply her skills and experiences as she transitioned to senior marketing leadership roles working directly with tech providers, with companies that included Oracle Marketing Cloud, NexJ Systems and Piano Software.\n\nBringing over 15 years of leadership experience to her role at Vena, 10 of them spent leading go-to-market teams for cloud-based technology and service providers, she is now expanding Vena’s marketing efforts to support company goals worldwide. When not dreaming in marketing and tech, Allison loves to travel off the beaten path, swim in the ocean, cycle in the forest, listen to podcasts, and play video games with her son. ",
+      "image": "https://d3k6hg21rt7gsh.cloudfront.net/1628554029242allison-munro.jpg",
+      "contentlink": "/profile/allison-munro",
+      "disableConnect": false,
+      "isConnected": false,
+      "isFollowed": false,
+      "firstname": "Allison",
+      "username": "allison-munro"
     },
     {
       "headline": {
-        "markdown": "[undefined undefined](/profile/entry2) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg)"
+        "text": "Christy Huggins",
+        "link": "/profile/christy-huggins"
       },
+      "subheadlines": [{ "markdown": "Head of Marketing at OneSignal" }],
+      "articletext": "Head of Marketing at OneSignal, previously Director, Global Growth Marketing at Eventbrite and Head of Social Media for the New England Patriots\n",
+      "image": "https://d3k6hg21rt7gsh.cloudfront.net/1617649555493christy-huggins.jpg",
+      "contentlink": "/profile/christy-huggins",
+      "disableConnect": false,
+      "isConnected": false,
+      "isFollowed": false,
+      "firstname": "Christy",
+      "username": "christy-huggins"
+    },
+    {
+      "headline": { "text": "Yujin Chung", "link": "/profile/yujin-chung" },
       "subheadlines": [
-        {
-          "markdown": "undefined at undefined"
-        }
+        { "markdown": "Managing Director & Head of Platform at SignalFire" }
       ],
-      "articletext": "",
-      "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiZGVmYXVsdC1wcm9maWxlLWltYWdlLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
-      "subtext": [
-        {
-          "label": "Vendors:",
-          "text": {
-            "markdown": "[Agencies (0)](/profile/entry2#agencies), [Technologies (0)](/profile/entry2#technologies)"
-          }
-        }
-      ],
-      "username": "entry2"
+      "articletext": "SignalFire is a complete redesign of the modern venture firm based on six years of careful study and development by a team of world class investors and engineers trained at General Catalyst, KPCB, Andreessen Horowitz, Yahoo and Google. The end result is a radically different model that brings unparalleled firepower at the seed stage to solve the biggest entrepreneur pain points. Our distributed network approach provides expert advice from some of the world's best entrepreneurs, product & engineering leaders in virtually every key discipline and industry. We have developed a first of its kind centralized infrastructure to help with recruiting exceptional talent, business development, customer acquisition as well as educational & community events.\nMy role:\nA) Investing: We almost always lead our investment rounds as the first institutional investors in exceptional companies.\nB) Portfolio Platform: Help our companies grow in every possible way.\nC) Corporate Advisory: Using our data and access to provide a unique lens on what is happening in the Valley. If you're a senior executive at a major corporation, feel free to reach out - happy to share more.",
+      "image": "https://d3k6hg21rt7gsh.cloudfront.net/yujin-chung--profile.jpg",
+      "contentlink": "/profile/yujin-chung",
+      "disableConnect": false,
+      "isConnected": false,
+      "isFollowed": false,
+      "firstname": "Yujin",
+      "username": "yujin-chung"
     },
     {
       "headline": {
-        "markdown": "[undefined undefined](/profile/entry2) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg)"
+        "text": "Dario Ambrosini",
+        "link": "/profile/dario-ambrosini"
       },
-      "subheadlines": [
-        {
-          "markdown": "undefined at undefined"
-        }
-      ],
-      "articletext": "",
-      "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiZGVmYXVsdC1wcm9maWxlLWltYWdlLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
-      "subtext": [
-        {
-          "label": "Vendors:",
-          "text": {
-            "markdown": "[Agencies (0)](/profile/entry2#agencies), [Technologies (0)](/profile/entry2#technologies)"
-          }
-        }
-      ],
-      "username": "entry2"
+      "subheadlines": [{ "markdown": "CMO at Propel" }],
+      "articletext": "Head of marketing at Propel, a SaaS solution built on Salesforce that connects the people, process and technology needed to get the best products to market faster. My background includes B2B marketing, operations and business development roles in SMB through Enterprise. Over the past 10 years I have focused on Series A-C B2B SaaS providers in manufacturing, digital advertising, travel and financial services.",
+      "image": "https://d3k6hg21rt7gsh.cloudfront.net/1617649555905dario-ambrosini.jpg",
+      "contentlink": "/profile/dario-ambrosini",
+      "disableConnect": false,
+      "isConnected": false,
+      "isFollowed": false,
+      "firstname": "Dario",
+      "username": "dario-ambrosini"
     },
     {
       "headline": {
-        "markdown": "[undefined undefined](/profile/entry2) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg)"
+        "text": "Terri Thatcher",
+        "link": "/profile/terri-thatcher"
       },
-      "subheadlines": [
-        {
-          "markdown": "undefined at undefined"
-        }
-      ],
-      "articletext": "",
-      "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiZGVmYXVsdC1wcm9maWxlLWltYWdlLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
-      "subtext": [
-        {
-          "label": "Vendors:",
-          "text": {
-            "markdown": "[Agencies (0)](/profile/entry2#agencies), [Technologies (0)](/profile/entry2#technologies)"
-          }
-        }
-      ],
-      "username": "entry2"
+      "subheadlines": [{ "markdown": "VP Marketing at Earnup" }],
+      "articletext": "I love what I do. Over the years, I've had the opportunity to be a part of management teams that have taken three companies to acquisition, mentored many and have documented successes in integrated marketing management. Implementing CRM automation strategies, optimizing for SEO, and driving lead generation through targeted marketing, my skill set has been an integral component in analyzing data to drive traffic and revenue through increased customer engagement.\n\nWith demonstrated success in creating new marketing channels to drive sales throughout multiple verticals, I assist companies in ensuring clients have a customized experience through weekly content distribution, maximizing return traffic via targeted promotional and lifecycle email campaigns.\n\nConnect with me to identify areas where I am able to provide you with strategic win-win solutions to engage your customers and maximize web traffic. \n\n",
+      "image": "https://d3k6hg21rt7gsh.cloudfront.net/1617649681515terri-thatcher.jpg",
+      "contentlink": "/profile/terri-thatcher",
+      "disableConnect": false,
+      "isConnected": false,
+      "isFollowed": false,
+      "firstname": "Terri",
+      "username": "terri-thatcher"
     },
     {
       "headline": {
-        "markdown": "[undefined undefined](/profile/entry2) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg)"
+        "text": "Nick Bonfiglio",
+        "link": "/profile/nick-bonfiglio"
       },
-      "subheadlines": [
-        {
-          "markdown": "undefined at undefined"
-        }
-      ],
-      "articletext": "",
-      "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiZGVmYXVsdC1wcm9maWxlLWltYWdlLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
-      "subtext": [
-        {
-          "label": "Vendors:",
-          "text": {
-            "markdown": "[Agencies (0)](/profile/entry2#agencies), [Technologies (0)](/profile/entry2#technologies)"
-          }
-        }
-      ],
-      "username": "entry2"
+      "subheadlines": [{ "markdown": "CEO at Syncari" }],
+      "articletext": "For more than 25 years, I’ve been seeing problems and building products to solve them.\n\nCurrently I’m the CEO and Founder of Syncari, where we’re helping revenue teams solve costly data inconsistencies in their CRM and other platforms, through modern multidirectional synchronization of your SaaS applications. We intelligently clean, deduplicate, merge, and automate data across your tech stack, helping you make better decisions.\n\nThis is a pain I’ve felt before myself, as I helped raise the profile of Product-led GTM strategies, alongside sales and marketing motions: prior to Syncari, I was CEO and founder of Aptrinsic (now Gainsight PX). We raised a Series A, built initial team, developed industry-leading product, created thought leadership through authoring of a highly circulated book on Product Led GTM.\n\nBefore that, I was EVP of Product for Marketo and responsible for engineering, product management, cloud operations and technical support, including privacy services. While with Marketo, we grew from $2.5M to nearly $300M in ARR, experiencing private company growth, a public offering, and eventual sale to PE firm.\n\nHaving built products and gone to market alongside revenue leaders of all stripes - Product, Sales, Marketing, Operations - my goal now is to help you take control of your data, and use it to help your sellers spend less time selling, Increase the efficiency of your marketing spend, and increase knowledge of customers to better prevent churn.\n\nI want to help you gain back the hours you had been spending trying to get behavioral data in front of your sales team, so they can use it to intelligently engage prospects. The late evenings spent uploading and transferring data across Marketo, Zendesk, Salesforce, and all of the other pieces of your stack.\n",
+      "image": "https://d3k6hg21rt7gsh.cloudfront.net/1623865139363nick-bonfiglio.jpg",
+      "contentlink": "/profile/nick-bonfiglio",
+      "disableConnect": false,
+      "isConnected": false,
+      "isFollowed": false,
+      "firstname": "Nick",
+      "username": "nick-bonfiglio"
     },
     {
-      "headline": {
-        "markdown": "[undefined undefined](/profile/entry2) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg)"
-      },
-      "subheadlines": [
-        {
-          "markdown": "undefined at undefined"
-        }
-      ],
-      "articletext": "",
-      "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiZGVmYXVsdC1wcm9maWxlLWltYWdlLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
-      "subtext": [
-        {
-          "label": "Vendors:",
-          "text": {
-            "markdown": "[Agencies (0)](/profile/entry2#agencies), [Technologies (0)](/profile/entry2#technologies)"
-          }
-        }
-      ],
-      "username": "entry2"
+      "headline": { "text": "Jesse Noyes", "link": "/profile/jesse-noyes" },
+      "subheadlines": [{ "markdown": "VP of Marketing at Unsupervised" }],
+      "articletext": "Entrepreneur obsessed with driving growth through beautiful consumer experiences ",
+      "image": "https://d3k6hg21rt7gsh.cloudfront.net/1623865139510jesse-noyes.jpg",
+      "contentlink": "/profile/jesse-noyes",
+      "disableConnect": false,
+      "isConnected": false,
+      "isFollowed": false,
+      "firstname": "Jesse",
+      "username": "jesse-noyes"
     },
     {
-      "headline": {
-        "markdown": "[undefined undefined](/profile/entry2) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg)"
-      },
-      "subheadlines": [
-        {
-          "markdown": "undefined at undefined"
-        }
-      ],
+      "headline": { "text": "Alan Yates", "link": "/profile/alan-yates" },
+      "subheadlines": [{ "markdown": "Chief Business Officer at Docugami" }],
       "articletext": "",
-      "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiZGVmYXVsdC1wcm9maWxlLWltYWdlLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
-      "subtext": [
-        {
-          "label": "Vendors:",
-          "text": {
-            "markdown": "[Agencies (0)](/profile/entry2#agencies), [Technologies (0)](/profile/entry2#technologies)"
-          }
-        }
-      ],
-      "username": "entry2"
-    },
-    {
-      "headline": {
-        "markdown": "[undefined undefined](/profile/entry2) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg)"
-      },
-      "subheadlines": [
-        {
-          "markdown": "undefined at undefined"
-        }
-      ],
-      "articletext": "",
-      "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiZGVmYXVsdC1wcm9maWxlLWltYWdlLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
-      "subtext": [
-        {
-          "label": "Vendors:",
-          "text": {
-            "markdown": "[Agencies (0)](/profile/entry2#agencies), [Technologies (0)](/profile/entry2#technologies)"
-          }
-        }
-      ],
-      "username": "entry2"
-    },
-    {
-      "headline": {
-        "markdown": "[undefined undefined](/profile/entry2) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg)"
-      },
-      "subheadlines": [
-        {
-          "markdown": "undefined at undefined"
-        }
-      ],
-      "articletext": "",
-      "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiZGVmYXVsdC1wcm9maWxlLWltYWdlLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
-      "subtext": [
-        {
-          "label": "Vendors:",
-          "text": {
-            "markdown": "[Agencies (0)](/profile/entry2#agencies), [Technologies (0)](/profile/entry2#technologies)"
-          }
-        }
-      ],
-      "username": "entry2"
-    },
-    {
-      "headline": {
-        "markdown": "[undefined undefined](/profile/entry2) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg)"
-      },
-      "subheadlines": [
-        {
-          "markdown": "undefined at undefined"
-        }
-      ],
-      "articletext": "",
-      "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiZGVmYXVsdC1wcm9maWxlLWltYWdlLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
-      "subtext": [
-        {
-          "label": "Vendors:",
-          "text": {
-            "markdown": "[Agencies (0)](/profile/entry2#agencies), [Technologies (0)](/profile/entry2#technologies)"
-          }
-        }
-      ],
-      "username": "entry2"
-    },
-    {
-      "headline": {
-        "markdown": "[undefined undefined](/profile/entry2) ![verified](https://gist.githubusercontent.com/vas85/c1107d88985d68d48c46d99690f03561/raw/62ca45f5e60ad1c3045943b39ee17e6ed7073178/check-circle1x.svg)"
-      },
-      "subheadlines": [
-        {
-          "markdown": "undefined at undefined"
-        }
-      ],
-      "articletext": "",
-      "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiZGVmYXVsdC1wcm9maWxlLWltYWdlLnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
-      "subtext": [
-        {
-          "label": "Vendors:",
-          "text": {
-            "markdown": "[Agencies (0)](/profile/entry2#agencies), [Technologies (0)](/profile/entry2#technologies)"
-          }
-        }
-      ],
-      "username": "entry2"
+      "image": "https://d3k6hg21rt7gsh.cloudfront.net/1628055552788alan-yates.jpg",
+      "contentlink": "/profile/alan-yates",
+      "disableConnect": false,
+      "isConnected": false,
+      "isFollowed": false,
+      "firstname": "Alan",
+      "username": "alan-yates"
     }
   ],
-  "moreData": true,
-  "token": "e6a47504c76140880e6466f23eead514",
+  "token": "9b5e225d014af1da73432e8d2339cb054ab45195d8b728ebae4cf91d2d1fafad7ebd5a80b16bdfb870f1d9d2cadb969a3a9b16a07662bd434c94c428f2d0182c",
   "filters": [
+    { "title": "#leadership", "count": 48, "slug": "leadership" },
+    { "title": "#marketing", "count": 47, "slug": "marketing" },
+    { "title": "#strategy", "count": 1, "slug": "strategy" },
+    { "title": "#eventmarketing", "count": 1, "slug": "eventmarketing" },
+    { "title": "#brand", "count": 8, "slug": "brand" },
+    { "title": "#saas", "count": 1, "slug": "saas" },
+    { "title": "#social", "count": 2, "slug": "social" },
+    { "title": "#martech", "count": 9, "slug": "martech" },
+    { "title": "#contentmarketing", "count": 2, "slug": "contentmarketing" },
+    { "title": "#seo", "count": 1, "slug": "seo" },
     {
-      "title": "Baidu Advertising",
-      "count": 1
+      "title": "#affiliatemarketing",
+      "count": 1,
+      "slug": "affiliatemarketing"
+    },
+    { "title": "#management", "count": 2, "slug": "management" },
+    {
+      "title": "#communitymarketing",
+      "count": 2,
+      "slug": "communitymarketing"
+    },
+    { "title": "#crm", "count": 2, "slug": "crm" },
+    { "title": "#salesautomation", "count": 1, "slug": "salesautomation" },
+    { "title": "#sales", "count": 1, "slug": "sales" },
+    { "title": "#enterprise", "count": 4, "slug": "enterprise" },
+    {
+      "title": "#marketingautomation",
+      "count": 2,
+      "slug": "marketingautomation"
+    },
+    { "title": "#advertising", "count": 2, "slug": "advertising" },
+    {
+      "title": "#customerdataplatform",
+      "count": 1,
+      "slug": "customerdataplatform"
+    },
+    { "title": "#demandgeneration", "count": 3, "slug": "demandgeneration" },
+    { "title": "#b2b", "count": 1, "slug": "b2b" },
+    { "title": "#security", "count": 1, "slug": "security" },
+    { "title": "#revenuemarketing", "count": 1, "slug": "revenuemarketing" },
+    { "title": "#revenueoperations", "count": 1, "slug": "revenueoperations" },
+    { "title": "#growthmarketing", "count": 1, "slug": "growthmarketing" },
+    { "title": "#contentmanagement", "count": 1, "slug": "contentmanagement" },
+    {
+      "title": "#interactivecontent",
+      "count": 1,
+      "slug": "interactivecontent"
     },
     {
-      "title": "Packaging Design",
-      "count": 1
+      "title": "#performancemarketing",
+      "count": 4,
+      "slug": "performancemarketing"
     },
+    { "title": "#videoadvertising", "count": 1, "slug": "videoadvertising" },
+    { "title": "#webanalytics", "count": 1, "slug": "webanalytics" },
+    { "title": "#mediaplaning", "count": 1, "slug": "mediaplaning" },
+    { "title": "#consumer", "count": 1, "slug": "consumer" },
+    { "title": "#developer", "count": 1, "slug": "developer" },
     {
-      "title": "SEM",
-      "count": 2
+      "title": "#marketingoperations",
+      "count": 1,
+      "slug": "marketingoperations"
     },
-    {
-      "title": "Saas",
-      "count": 1
-    },
-    {
-      "title": "Latam",
-      "count": 3
-    },
-    {
-      "title": "TV Advertising",
-      "count": 4
-    },
-    {
-      "title": "Baidu Advertising",
-      "count": 1
-    },
-    {
-      "title": "Packaging Design",
-      "count": 1
-    },
-    {
-      "title": "SEM",
-      "count": 2
-    },
-    {
-      "title": "Saas",
-      "count": 1
-    },
-    {
-      "title": "Latam",
-      "count": 3
-    },
-    {
-      "title": "TV Advertising",
-      "count": 4
-    },
-    {
-      "title": "Baidu Advertising",
-      "count": 1
-    },
-    {
-      "title": "Packaging Design",
-      "count": 1
-    },
-    {
-      "title": "SEM",
-      "count": 2
-    },
-    {
-      "title": "Saas",
-      "count": 1
-    },
-    {
-      "title": "Latam",
-      "count": 3
-    },
-    {
-      "title": "TV Advertising",
-      "count": 4
-    },
-    {
-      "title": "Baidu Advertising",
-      "count": 1
-    },
-    {
-      "title": "Packaging Design",
-      "count": 1
-    },
-    {
-      "title": "SEM",
-      "count": 2
-    },
-    {
-      "title": "Saas",
-      "count": 1
-    },
-    {
-      "title": "Latam",
-      "count": 3
-    },
-    {
-      "title": "TV Advertising",
-      "count": 4
-    },
-    {
-      "title": "Baidu Advertising",
-      "count": 1
-    },
-    {
-      "title": "Packaging Design",
-      "count": 1
-    },
-    {
-      "title": "SEM",
-      "count": 2
-    },
-    {
-      "title": "Saas",
-      "count": 1
-    },
-    {
-      "title": "Latam",
-      "count": 3
-    },
-    {
-      "title": "TV Advertising",
-      "count": 4
-    }
+    { "title": "#marketingstrategy", "count": 1, "slug": "marketingstrategy" },
+    { "title": "#budgeting", "count": 1, "slug": "budgeting" },
+    { "title": "#digitalstrategy", "count": 1, "slug": "digitalstrategy" }
   ]
 }

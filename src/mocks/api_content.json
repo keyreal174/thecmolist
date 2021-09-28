@@ -8,10 +8,10 @@
       "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NTgxMDIzMjMwOWltYWdlLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ=="
     },
     "headline": {
-      "markdown": "Do you have any experience with deploying @HubSpot for a SaaS business with both a direct and self-serve model?"
+      "markdown": "Do you have any experience with deploying @HubSpot for a SaaS business with both a direct and self-serve model? #ac"
     },
     "articletext": {
-      "markdown": "This is what I made using Draft.js mention plugin. [@Eckart Walther](/profile/eckart) [@Vas Swaminathan](/profile/vas)"
+      "markdown": "This is what I made using Draft.js mention plugin. [@Eckart Walther](/profile/eckart) [@Vas Swaminathan](/profile/vas) \n\n#ac"
     },
     "num_pass": 0,
     "num_thanks": 5,
@@ -42,7 +42,7 @@
           "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NTgxMDIzMjMwOWltYWdlLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ=="
         },
         "headline": {
-          "markdown": " "
+          "markdown": ""
         },
         "articletext": "We have used Hubspot extensively for our business, and are generally very happy with them. We started with a custom solution, and it look us a month to swich. The results have been dramatic, and feel free to",
         "num_thanks": 2,
@@ -58,7 +58,7 @@
               "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NTgxMDIzMjMwOWltYWdlLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ=="
             },
             "headline": {
-              "markdown": " "
+              "markdown": ""
             },
             "articletext": "Comment 1"
           }
@@ -71,7 +71,7 @@
               "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NTgxMDIzMjMwOWltYWdlLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ=="
             },
             "headline": {
-              "markdown": " "
+              "markdown": ""
             },
             "articletext": "Comment 2"
           }
@@ -97,7 +97,7 @@
           "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NTgxMDIzMjMwOWltYWdlLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ=="
         },
         "headline": {
-          "markdown": " "
+          "markdown": ""
         },
         "articletext": "We have used Hubspot extensively for our businessm and are generally very happy with them. We started with a custom solution, and it took us a month to switch. The results have been dramatic, and feel free to",
         "num_thanks": 1,
