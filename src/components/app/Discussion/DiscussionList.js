@@ -67,7 +67,7 @@ class DiscussionList extends React.Component {
     let discussionData = this.state.discussionData;
     return (
       <Layout>
-        <Container className="height-100">
+        <Container>
           <div className="wrapper">
             {discussionListLoading ? (
               <div className="mt-3 mb-5">

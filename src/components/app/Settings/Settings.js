@@ -103,7 +103,7 @@ const Settings = ({ settings, saveSetting, getSetting }) => {
 
   return (
     <Layout onToggle={handleToggle}>
-      <Container className="height-100">
+      <Container>
         <div className={clsx("wrapper settings", mobileMenuOpen && "open")}>
           <h2 className="section-title pt-4 py-3">Settings</h2>
           <div className="account-settings mt-2">

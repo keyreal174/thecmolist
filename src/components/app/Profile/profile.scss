@@ -582,7 +582,6 @@
 
   @media (max-width: 576px) {
     .filter-btn-group {
-      padding: 0 17px 0;
       justify-content: flex-end;
 
       button {
@@ -600,12 +599,6 @@
 }
 
 @media (max-width: 767px) {
-  .profile--left-section,
-  .profile--right-section,
-  .profile-about,
-  .profile--article-item {
-    margin: 10px 17px;
-  }
   .profile--filters {
     margin: 20px 17px 0 17px !important;
   }

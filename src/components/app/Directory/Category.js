@@ -221,7 +221,7 @@ class Category extends React.Component {
     ); // define here to pass props down from parent -> child
     return (
       <Layout>
-        <Container className="height-100">
+        <Container>
           <div className="wrapper">
             <Banner>
               <div className="square-logo">

@@ -6,7 +6,7 @@ import "./signedup.scss";
 function Signedup() {
   return (
     <div className="container wrapper">
-      <div className="row no-gutters">
+      <div className="row">
         <div className="col-md-3"></div>
         <div className="col-md-6">
           <a className="nav__logo signedup--logo" href="/">

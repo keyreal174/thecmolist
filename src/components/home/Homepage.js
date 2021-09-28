@@ -119,7 +119,7 @@ function Homepage() {
   }, []);
 
   return (
-    <Container className="home height-100">
+    <Container className="home">
       <Row className="home--header">
         <div className="home--header-logo">
           <a className="nav__logo" href="/">

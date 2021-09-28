@@ -68,7 +68,7 @@ function AdminPage() {
   }, []);
 
   return (
-    <Container className="home height-100">
+    <Container className="home">
       <Row className="home--header">
         <div className="ml-5">
           <a className="nav__logo" href="/">

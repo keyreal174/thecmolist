@@ -431,9 +431,13 @@
   padding-right: 15px;
 }
 
-.feed-page-top-banner,
-.feed--dashboard {
+.feed-page-top-banner {
   margin: 10px 0 20px 0;
+}
+
+.feed--dashboard {
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .feed-divider {
@@ -464,7 +468,6 @@
     padding-bottom: 30px;
   }
   .filter--button {
-    margin-right: 22px !important;
     min-width: 193px;
   }
   .btn__load-more {
@@ -488,11 +491,6 @@
   .feed--feed {
     padding-right: 0;
     padding-left: 0;
-  }
-  .feed-page-top-banner,
-  .feed--filters,
-  .feed--dashboard {
-    margin: 10px 17px;
   }
   .feed-dashboard-cell .article-img img {
     height: 60px !important;

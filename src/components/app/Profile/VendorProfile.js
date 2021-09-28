@@ -475,7 +475,7 @@ const VendorProfile = (props) => {
 
   return (
     <Layout onToggle={handleToggle}>
-      <Container className="height-100">
+      <Container>
         <div className={clsx("wrapper", mobileMenuOpen && "open")}>
           <Row className="profile--wrapper">
             <ProfileOverview

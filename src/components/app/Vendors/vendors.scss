@@ -111,10 +111,9 @@
       display: none;
     }
   }
-  .vendors--simple-top-banner,
-  .vendors--feed-item,
-  .vendors--filters {
-    margin: 10px 17px;
+
+  .vendors--feed-item.mt-3 {
+    margin-top: 4px !important;
   }
 
   .vendors--filters {
@@ -167,9 +166,6 @@
   }
 
   @media (max-width: 500px) {
-    margin-top: 16px;
-    margin-left: 16px;
-
     &.filter-btn-group {
       padding: 0;
     }
@@ -234,11 +230,6 @@
       position: sticky;
       top: 20px;
     }
-  }
-
-  @media screen and (max-width: 767px) {
-    margin-right: 0;
-    margin-left: 0;
   }
 }
 
@@ -336,11 +327,6 @@
 
       &-mobile {
         display: block;
-
-        .network-list-item {
-          margin-left: 0 !important;
-          margin-right: 0 !important;
-        }
       }
     }
   }

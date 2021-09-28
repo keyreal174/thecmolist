@@ -7,7 +7,9 @@ const FilterMobile = (props) => {
   let hasMoreThanOneFilter = hasFilters && props.filters.length > 1;
   return (
     <div
-      className={hasMoreThanOneFilter ? "filter-dropdown--wrapper" : "hidden"}
+      className={
+        hasMoreThanOneFilter ? "filter-dropdown--wrapper mb-3 mr-3" : "hidden"
+      }
     >
       {hasMoreThanOneFilter && (
         <NavDropdown

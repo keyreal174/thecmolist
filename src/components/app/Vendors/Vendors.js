@@ -168,7 +168,7 @@ const Vendors = (props) => {
 
   return (
     <Layout onToggle={handleToggle}>
-      <Container className="height-100">
+      <Container>
         <div className="wrapper position-relative">
           <SimpleTopBanner
             // disable for now... buttonText="Invite"
