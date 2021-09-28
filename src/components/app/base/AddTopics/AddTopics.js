@@ -59,7 +59,7 @@ const AddTopics = ({
   const pils = categories.map((c) => c.value);
   return (
     <Form onSubmit={handleSubmit} id="form-add-topics">
-      <Row className="onboarding--pill-wrapper no-gutter">
+      <Row className="onboarding--pill-wrapper">
         <Col md="12">
           <ToggleButtonGroup
             className="d-flex flex-wrap"
@@ -79,7 +79,7 @@ const AddTopics = ({
           </ToggleButtonGroup>
         </Col>
       </Row>
-      <Row className="position-relative no-gutter">
+      <Row className="position-relative">
         <Col md="12" className="d-flex justify-content-center">
           <div className="onboarding--divider"></div>
           {pils && pils.length > minTopics && (

@@ -70,7 +70,7 @@ const AddIntro = ({ submitOnboardingIntro, submitBefore, submitAfter }) => {
             </Col>
           ))}
         </Row>
-        <Row className="onboarding--pill-wrapper no-gutter">
+        <Row className="onboarding--pill-wrapper">
           <Col>
             <Form.Label>Please introduce yourself to your peers</Form.Label>
             {introError && introError.length > 0 && (

@@ -592,11 +592,7 @@ const Profile = (props) => {
                         src={Follows}
                       />
                       <a href="#" onClick={getProfileFollowing}>
-                        {Util.plural(
-                          profileNumFollowing,
-                          "Following",
-                          "Followings"
-                        )}
+                        {profileNumFollowing} Following
                       </a>
                     </div>
                   )}

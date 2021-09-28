@@ -167,7 +167,7 @@ const Network = (props) => {
         <div className="wrapper">
           <Row
             className={clsx(
-              "network--simple-top-banner-wrapper no-gutter",
+              "network--simple-top-banner-wrapper",
               mobileMenuOpen && "open"
             )}
           >
@@ -224,7 +224,7 @@ const Network = (props) => {
               />
             </div>
           )}
-          <Row className="no-gutter">
+          <Row>
             {props.activeFeedSubFilters &&
               props.activeFeedSubFilters.length > 0 && (
                 <Col className="network--popular-topics" md="4">

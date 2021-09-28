@@ -64,7 +64,7 @@ const Content = ({
           )}
           <Row
             className={clsx(
-              "question-answer-section-wrapper no-gutter",
+              "question-answer-section-wrapper",
               "content--content",
               mobileMenuOpen && "open"
             )}
@@ -82,12 +82,7 @@ const Content = ({
               />
             )}
           </Row>
-          <Row
-            className={clsx(
-              "content--footer no-gutter",
-              mobileMenuOpen && "open"
-            )}
-          >
+          <Row className={clsx("content--footer", mobileMenuOpen && "open")}>
             <Col md="12">
               <Footer />
             </Col>
