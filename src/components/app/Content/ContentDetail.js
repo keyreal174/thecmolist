@@ -11,6 +11,7 @@ import DiscussionComment from "../base/DiscussionComment/DiscussionComment";
 import Entities from "../base/Entities/Entities";
 import EditPostModal from "../base/EditPostModal/EditPostModal";
 import { cdn } from "../../util/constants";
+import Util from "../../util/Util";
 
 import AnswerIcon from "../base/icons/answer.svg";
 import InsightfulIcon from "../base/icons/insightful.svg";
@@ -220,7 +221,9 @@ const ContentDetail = ({
           list={getListOfStatById(selectedContentId, statType)}
         />
         {content && content.replies && content.replies.length > 0 && (
-          <div className="question-answer-section-replies">{`${numberOfReplies} answers`}</div>
+          <div className="question-answer-section-replies">
+            {Util.plural(numberOfReplies, "answer", "answers")}
+          </div>
         )}
         <div className="question-answers">
           {content &&
