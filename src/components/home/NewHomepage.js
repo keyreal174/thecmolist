@@ -106,14 +106,14 @@ function Homepage() {
 */}
                     <div className="desktop">
                       <span className="mr-2">
-                        The private knowledge network<br></br>for the world’s
-                        top marketers
+                        The private knowledge network for the world’s top
+                        marketers
                       </span>
                     </div>
                     <div className="mobile">
                       <span className="mr-2">
-                        The private knowledge network<br></br>for the world’s
-                        top marketers
+                        The private knowledge network for the world’s top
+                        marketers
                       </span>
                     </div>
                   </div>
