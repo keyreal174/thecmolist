@@ -201,6 +201,17 @@
       color: $text-3;
     }
   }
+
+  @media screen and (max-width: 767px) {
+    label {
+      align-items: baseline;
+      flex-direction: column;
+
+      span {
+        margin-left: 0;
+      }
+    }
+  }
 }
 
 .network-checkbox-group {
