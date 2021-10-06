@@ -6,6 +6,7 @@ import { Button, Form } from "react-bootstrap";
 import { connect } from "react-redux";
 import { cdn } from "../../../util/constants";
 import Util from "../../../util/Util";
+import Send from "../../base/icons/send.svg";
 
 import "./discussionComment.scss";
 
@@ -143,21 +144,23 @@ const DiscussionComment = ({
                 <span className="modal-section-body-text">@Person</span>
               </div>
             </Button>
+            <Button
+              className="modal-section-body-content"
+              onClick={handleButtonClick}
+              size="sm"
+              variant="light"
+            >
+              <div>
+                <img
+                  alt="send icon"
+                  className="modal-section-body-image"
+                  src={Send}
+                />
+              </div>
+            </Button>
           </div>
         </div>
       )}
-      {
-        <Button
-          className={clsx(
-            "comment-button",
-            viewIsMobile ? "show" : show && "show"
-          )}
-          onClick={handleButtonClick}
-          variant="primary"
-        >
-          Reply
-        </Button>
-      }
     </div>
   );
 };

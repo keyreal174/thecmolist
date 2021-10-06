@@ -107,7 +107,10 @@
 @media (max-width: 575px) {
   .comment {
     &--buttons {
-      display: none;
+      button:nth-child(1),
+      button:nth-child(2) {
+        display: none;
+      }
     }
   }
 }
