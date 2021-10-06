@@ -619,114 +619,117 @@ const Profile = (props) => {
           </Row>
           {Object.keys(profileAbout).length > 0 && (
             <CustomCard heading="About" className="profile-about">
-              {profileAbout.description && profileAbout.description.length > 0 && (
-                <Row>
-                  <Col md="12">
-                    <div className="profile-about--content">
-                      <ShowMoreText
-                        keepNewLines={true}
-                        lines={3}
-                        more="See more"
-                        less="See less"
-                        width={0}
-                      >
-                        {profileAbout.description}
-                      </ShowMoreText>
-                    </div>
-                  </Col>
-                </Row>
-              )}
-              {(profileCompanyIndustry.length > 0 ||
-                profileCompanyStage.length > 0) && (
+              <div className="profile-about-wrapper">
+                {profileAbout.description &&
+                  profileAbout.description.length > 0 && (
+                    <Row>
+                      <Col md="12">
+                        <div className="profile-about--content">
+                          <ShowMoreText
+                            keepNewLines={true}
+                            lines={3}
+                            more="See more"
+                            less="See less"
+                            width={0}
+                          >
+                            {profileAbout.description}
+                          </ShowMoreText>
+                        </div>
+                      </Col>
+                    </Row>
+                  )}
+                {(profileCompanyIndustry.length > 0 ||
+                  profileCompanyStage.length > 0) && (
+                  <Row className="profile-about--experience">
+                    {profileCompanyIndustry && (
+                      <Col md="6">
+                        <Form.Label className="profile-about--experience-title">
+                          Company Industry
+                        </Form.Label>
+                        <div>
+                          <span>
+                            {
+                              companyIndustryOptions.find(
+                                (o) => o.slug === profileCompanyIndustry
+                              )?.description
+                            }
+                          </span>
+                        </div>
+                      </Col>
+                    )}
+                    {profileCompanyStage && (
+                      <Col md="6">
+                        <Form.Label className="profile-about--experience-title">
+                          Company Stage
+                        </Form.Label>
+                        <div>
+                          <span>
+                            {
+                              companyStageOptions.find(
+                                (o) => o.slug === profileCompanyStage
+                              )?.description
+                            }
+                          </span>
+                        </div>
+                      </Col>
+                    )}
+                  </Row>
+                )}
                 <Row className="profile-about--experience">
-                  {profileCompanyIndustry && (
+                  {profileAbout.areasOfExpertise && (
                     <Col md="6">
                       <Form.Label className="profile-about--experience-title">
-                        Company Industry
+                        Marketing expertise
                       </Form.Label>
                       <div>
-                        <span>
-                          {
-                            companyIndustryOptions.find(
-                              (o) => o.slug === profileCompanyIndustry
-                            )?.description
-                          }
-                        </span>
+                        {profileAbout.areasOfExpertise &&
+                        profileAbout.areasOfExpertise.length > 0 ? (
+                          <RenderList arr={profileAbout.areasOfExpertise} />
+                        ) : (
+                          <span>None shared</span>
+                        )}
                       </div>
                     </Col>
                   )}
-                  {profileCompanyStage && (
+                  {profileAbout.areasOfInterest && (
                     <Col md="6">
                       <Form.Label className="profile-about--experience-title">
-                        Company Stage
+                        Marketing interests
                       </Form.Label>
                       <div>
-                        <span>
-                          {
-                            companyStageOptions.find(
-                              (o) => o.slug === profileCompanyStage
-                            )?.description
-                          }
-                        </span>
+                        {profileAbout.areasOfInterest &&
+                        profileAbout.areasOfInterest.length > 0 ? (
+                          <RenderList arr={profileAbout.areasOfInterest} />
+                        ) : (
+                          <span>None shared</span>
+                        )}
                       </div>
                     </Col>
                   )}
                 </Row>
-              )}
-              <Row className="profile-about--experience">
-                {profileAbout.areasOfExpertise && (
+                <Row className="profile-about--open">
                   <Col md="6">
-                    <Form.Label className="profile-about--experience-title">
-                      Marketing expertise
+                    <Form.Label className="profile-about--open-title">
+                      Open to networking
                     </Form.Label>
                     <div>
-                      {profileAbout.areasOfExpertise &&
-                      profileAbout.areasOfExpertise.length > 0 ? (
-                        <RenderList arr={profileAbout.areasOfExpertise} />
-                      ) : (
-                        <span>None shared</span>
-                      )}
+                      <span className="profile-about--open-content">
+                        {profileAbout.networking ? "Yes" : "No"}
+                      </span>
                     </div>
                   </Col>
-                )}
-                {profileAbout.areasOfInterest && (
                   <Col md="6">
-                    <Form.Label className="profile-about--experience-title">
-                      Marketing interests
+                    <Form.Label className="profile-about--open-title">
+                      Open to advising
                     </Form.Label>
                     <div>
-                      {profileAbout.areasOfInterest &&
-                      profileAbout.areasOfInterest.length > 0 ? (
-                        <RenderList arr={profileAbout.areasOfInterest} />
-                      ) : (
-                        <span>None shared</span>
-                      )}
+                      <span className="profile-about--open-content">
+                        {profileAbout.advising ? "Yes" : "No"}
+                      </span>
                     </div>
                   </Col>
-                )}
-              </Row>
-              <Row className="profile-about--open">
-                <Col md="6">
-                  <Form.Label className="profile-about--open-title">
-                    Open to networking
-                  </Form.Label>
-                  <div>
-                    <span className="profile-about--open-content">
-                      {profileAbout.networking ? "Yes" : "No"}
-                    </span>
-                  </div>
-                </Col>
-                <Col md="6">
-                  <Form.Label className="profile-about--open-title">
-                    Open to advising
-                  </Form.Label>
-                  <div>
-                    <span className="profile-about--open-content">
-                      {profileAbout.advising ? "Yes" : "No"}
-                    </span>
-                  </div>
-                </Col>
-              </Row>
+                </Row>
+              </div>
             </CustomCard>
           )}
           <div className="vendor-profile-filter-and-addvendor">

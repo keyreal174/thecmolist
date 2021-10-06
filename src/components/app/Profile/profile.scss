@@ -15,16 +15,27 @@
   border-radius: $border-radius;
   border: $border-card;
 
+  &-wrapper {
+    padding: 20px 20px 0;
+
+    @media screen and (max-width: 767px) {
+      padding: 10px 10px 0;
+    }
+  }
+
   &--title {
     padding: 28px 0 5px 32px;
     border-bottom: $border-card;
   }
   &--content {
-    padding: 20px 28px;
+    margin-bottom: 20px;
+
+    @media screen and (max-width: 767px) {
+      margin-bottom: 10px;
+    }
   }
   &--experience,
   &--open {
-    padding: 0 28px;
     color: $gray-2;
   }
   &--experience-title {
