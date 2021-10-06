@@ -31,6 +31,9 @@ const Category = ({
           &nbsp;- {description}
         </span>
       </div>
+      <p className="vendor-detail-category--description text-capitalize mobile">
+        {description}
+      </p>
       {len && len > 0 && (isMyProfile || showVendorBtn) ? (
         <div className="add-vendor-button">
           <AddVendorButton getCategoryTitle={getCategoryTitle} />
@@ -63,7 +66,7 @@ const VendorsDetail = ({
   return (
     <>
       {vendorsDetail && (
-        <Container>
+        <>
           <Row className={clsx("vendors--feed--wrapper", className)}>
             {vendorsDetail.categories && vendorsDetail.categories.length > 0 && (
               <Col className="vendors--popular-topics" md="4">
@@ -161,7 +164,7 @@ const VendorsDetail = ({
               )}
             </Col>
           </Row>
-        </Container>
+        </>
       )}
     </>
   );
