@@ -46,7 +46,7 @@
 .comment-wrapper {
   background-color: #ffffff;
   border-radius: 2px;
-  padding: 20px 25px 20px 18px;
+  padding: 20px;
   width: 100%;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
@@ -75,12 +75,15 @@
       width: 40px;
       height: 40px;
     }
+
+    @media (max-width: 767px) {
+      display: none;
+    }
   }
 
   &--rich-editor {
     position: relative;
     width: 100%;
-    margin-right: 10px;
 
     .editor {
       min-height: 100px;
