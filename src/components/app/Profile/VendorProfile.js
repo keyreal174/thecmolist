@@ -54,35 +54,37 @@ const ProfileAbout = ({ description, areasOfExpertise }) => {
     ((description && description.length > 0) ||
       (areasOfExpertise && areasOfExpertise.length > 0)) && (
       <CustomCard heading="About" className="profile-about">
-        {description && (
-          <Row>
-            <Col md="12">
-              <div className="profile-about--content">
-                <ShowMoreText
-                  keepNewLines={true}
-                  lines={2}
-                  more="See more"
-                  less="See less"
-                  width={0}
-                >
-                  {description}
-                </ShowMoreText>
-              </div>
-            </Col>
-          </Row>
-        )}
-        {areasOfExpertise && areasOfExpertise.length > 0 && (
-          <Row className="profile-about--experience">
-            <Col md="6">
-              <Form.Label className="profile-about--experience-title">
-                Marketing expertise
-              </Form.Label>
-              <div>
-                <RenderList arr={areasOfExpertise} />
-              </div>
-            </Col>
-          </Row>
-        )}
+        <div className="profile-about-wrapper">
+          {description && (
+            <Row>
+              <Col md="12">
+                <div className="profile-about--content">
+                  <ShowMoreText
+                    keepNewLines={true}
+                    lines={2}
+                    more="See more"
+                    less="See less"
+                    width={0}
+                  >
+                    {description}
+                  </ShowMoreText>
+                </div>
+              </Col>
+            </Row>
+          )}
+          {areasOfExpertise && areasOfExpertise.length > 0 && (
+            <Row className="profile-about--experience">
+              <Col md="6">
+                <Form.Label className="profile-about--experience-title">
+                  Marketing expertise
+                </Form.Label>
+                <div>
+                  <RenderList arr={areasOfExpertise} />
+                </div>
+              </Col>
+            </Row>
+          )}
+        </div>
       </CustomCard>
     )
   );
