@@ -107,6 +107,15 @@
   }
 }
 
+.submit-button {
+  position: absolute;
+  right: 5px;
+  width: auto;
+  bottom: 5px;
+  background: transparent;
+  border: 0;
+}
+
 @media (max-width: 575px) {
   .comment {
     &--buttons {

@@ -765,6 +765,7 @@ const Profile = (props) => {
               (showCategoryListView ? (
                 <div
                   className={clsx(
+                    "container",
                     feedBlockerText &&
                       "add-vendor-blocker-wrapper profile-page-blocker-wrapper"
                   )}
