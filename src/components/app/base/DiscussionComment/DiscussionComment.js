@@ -144,21 +144,23 @@ const DiscussionComment = ({
                 <span className="modal-section-body-text">@Person</span>
               </div>
             </Button>
-            <Button
-              className="modal-section-body-content"
-              onClick={handleButtonClick}
-              size="sm"
-              variant="light"
-            >
-              <div>
-                <img
-                  alt="send icon"
-                  className="modal-section-body-image"
-                  src={Send}
-                />
-              </div>
-            </Button>
           </div>
+          <Button
+            className="submit-button"
+            onClick={handleButtonClick}
+            size="sm"
+            variant="light"
+          >
+            <div>
+              <img
+                alt="send icon"
+                className="submit-button-image"
+                src={Send}
+                width="20"
+                height="20"
+              />
+            </div>
+          </Button>
         </div>
       )}
     </div>
