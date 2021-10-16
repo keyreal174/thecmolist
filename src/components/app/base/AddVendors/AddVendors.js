@@ -238,6 +238,11 @@ const RenderVendorCategoryRow = ({
         <Col md={4}>
           {!skill && (
             <div className="vendor-category--popular-tools">
+              {cate && cate.tools && cate.tools.length > 0 && (
+                <p className="vendor-category--popular-tools--header">
+                  Popular Vendors
+                </p>
+              )}
               {cate &&
                 cate.tools.map((tool, ti) => (
                   <PopularTool

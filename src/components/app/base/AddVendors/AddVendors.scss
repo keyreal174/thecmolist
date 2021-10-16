@@ -213,6 +213,15 @@
     display: flex;
     flex-wrap: wrap;
 
+    &--header {
+      width: 100%;
+      font-weight: 700;
+      display: none;
+
+      @media screen and (max-width: 767px) {
+        display: block;
+      }
+    }
     &--tool {
       width: 44px;
       text-align: center;
