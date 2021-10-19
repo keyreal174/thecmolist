@@ -37,6 +37,7 @@ const TopBanner = ({
   saveContent,
   followTopic,
   topic,
+  isAdminUser,
 }) => {
   const history = useHistory();
   const [showContentModal, setShowContentModal] = useState(false);
@@ -112,6 +113,7 @@ const TopBanner = ({
             <InviteButton
               lightMode
               text="Invite Peers"
+              isAdminUser={isAdminUser}
               className="w-100 top-banner-button"
             />
             <AddPostModal

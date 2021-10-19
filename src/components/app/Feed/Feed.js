@@ -57,6 +57,7 @@ function RenderRightContainer({
       {!isGroupOrTopic ? (
         <Fragment>
           <MyNetwork
+            isAdminUser={isAdminUser}
             title={feedTitle && feedTitle.length > 0 ? feedTitle : "-"}
             activeGroup={activeGroup}
             saveContent={saveContent}
@@ -495,6 +496,7 @@ const Feed = (props) => {
                   saveContent={props.saveContent}
                   followTopic={handleTopicFollowClick}
                   topic={isTopic ? topic : null}
+                  isAdminUser={isAdminUser}
                 />
               )}
             </div>

@@ -73,6 +73,7 @@ const BuildYourNetwork = ({
                   <InviteButton
                     text="+ Invite"
                     className="lightMode post-onboarding-btn"
+                    isAdminUser={isAdminUser}
                   />
                 )}
               </div>

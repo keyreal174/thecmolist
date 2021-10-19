@@ -87,7 +87,12 @@ function RenderSearch({
   );
 }
 
-function RenderMobileDropdown({ saveContent, history, mobileMenuOpen }) {
+function RenderMobileDropdown({
+  saveContent,
+  history,
+  mobileMenuOpen,
+  isAdminUser,
+}) {
   const [showPostModal, setShowPostModal] = useState(false);
   const [contentType, setContentType] = useState("");
 
@@ -128,6 +133,7 @@ function RenderMobileDropdown({ saveContent, history, mobileMenuOpen }) {
             lightMode
             text="Invite Peers"
             className="w-100 mobile-navbar-button"
+            isAdminUser={isAdminUser}
           />
         </div>
       </NavDropdown>
@@ -151,6 +157,7 @@ function Header({
   onToggle,
   saveContent,
 }) {
+  const [isAdminUser, setIsAdminUser] = useState(false);
   const history = useHistory();
   useEffect(() => {
     const fetch = async () => await getProfileStats();
@@ -160,6 +167,7 @@ function Header({
   useEffect(() => {
     const profile = profileStats && profileStats.profile;
     if (profile) {
+      setIsAdminUser(!!profile.isAdminUser);
       if ("onboarded" in profile && !profile.onboarded) {
         window.location.href =
           "/onboarding_step1?r=" + window.btoa(window.location.pathname);
@@ -235,6 +243,7 @@ function Header({
               saveContent={saveContent}
               history={history}
               mobileMenuOpen={mobileMenuOpen}
+              isAdminUser={isAdminUser}
             />
           </div>
           <RenderSearch

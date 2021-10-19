@@ -47,7 +47,12 @@ const MyNetwork = (props) => {
             text="Share Vendors"
             className="w-100 mb-2"
           />
-          <InviteButton lightMode text="Invite Peers" className="w-100 mb-2" />
+          <InviteButton
+            lightMode
+            text="Invite Peers"
+            isAdminUser={props.isAdminUser}
+            className="w-100 mb-2"
+          />
           <AddPostModal
             contentType={contentType}
             activeGroup={props.activeGroup}
