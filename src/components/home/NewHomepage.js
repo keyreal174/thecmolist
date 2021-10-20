@@ -212,11 +212,11 @@ function Homepage() {
                       alt="Knowledge icon"
                     />
                     <div className="home--share-item-title">
-                      Ask for advice and search knowledge
+                      Ask for marketing advice and search answers
                     </div>
                     <div className="home--share-item-subtitle">
-                      Post marketing questions and search answers shared by the
-                      world's best marketers
+                      Post questions and search insights, playbooks, and best
+                      practices shared by the world's best marketers
                     </div>
                   </div>
                 </Col>

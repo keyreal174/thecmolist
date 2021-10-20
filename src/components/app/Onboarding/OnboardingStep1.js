@@ -23,11 +23,11 @@ const OnboardingWelcome = ({ loading, changeStep }) => {
             alt="Stack icon"
           />
           <div className="home--share-item-title">
-            Find the best marketing tools and agencies
+            Find proven talent and resources
           </div>
           <div className="home--share-item-subtitle">
-            View proven & emerging marketing vendors shared by leading startups
-            and public companies
+            Browse trusted marketing tools, agencies, and contractors shared by
+            your peers
           </div>
         </Col>
         <Col className="home--share-item" md="3" sm="12">
@@ -37,11 +37,11 @@ const OnboardingWelcome = ({ loading, changeStep }) => {
             alt="Knowledge icon"
           />
           <div className="home--share-item-title">
-            Ask for advice and search knowledge
+            Ask for advice and search answers
           </div>
           <div className="home--share-item-subtitle">
-            Post marketing questions and search answers shared by the world's
-            best marketers
+            Post questions and search marketing insights, playbooks, and best
+            practices
           </div>
         </Col>
         <Col className="home--share-item" md="3" sm="12">

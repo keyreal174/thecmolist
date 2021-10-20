@@ -33,11 +33,11 @@ const Slider = () => {
             alt="Knowledge icon"
           />
           <h3 className="carousel-section-title">
-            Ask for advice and search knowledge
+            Ask for marketing advice and search answers
           </h3>
           <p className="carousel-section-content">
-            Post marketing questions and search answers shared by the world's
-            best marketers
+            Post questions and search insights, playbooks, and best practices
+            shared by the world's best marketers
           </p>
         </div>
       </Carousel.Item>
