@@ -8,8 +8,8 @@
 .comment-input {
   background: $gray-6b;
   border-radius: 25px;
-  margin-right: 10px;
   padding-left: 20px;
+  padding-right: 35px;
   resize: none;
   width: 100%;
 }
@@ -109,11 +109,15 @@
 
 .submit-button {
   position: absolute;
-  right: 5px;
+  right: 25px;
   width: auto;
-  bottom: 5px;
+  bottom: 26px;
   background: transparent;
   border: 0;
+
+  &.comment-submit-button {
+    bottom: 28px;
+  }
 }
 
 @media (max-width: 575px) {

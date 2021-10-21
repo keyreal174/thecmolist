@@ -71,7 +71,7 @@ const DiscussionComment = ({
   return (
     <div
       className={clsx(
-        "comment-wrapper",
+        "comment-wrapper position-relative",
         className,
         props.withMargin && "comment-wrapper-with-margin"
       )}
@@ -145,24 +145,26 @@ const DiscussionComment = ({
               </div>
             </Button>
           </div>
-          <Button
-            className="submit-button"
-            onClick={handleButtonClick}
-            size="sm"
-            variant="light"
-          >
-            <div>
-              <img
-                alt="send icon"
-                className="submit-button-image"
-                src={Send}
-                width="20"
-                height="20"
-              />
-            </div>
-          </Button>
         </div>
       )}
+      <Button
+        className={clsx(
+          "submit-button",
+          !useRichEditor && "comment-submit-button"
+        )}
+        onClick={handleButtonClick}
+        size="sm"
+      >
+        <div>
+          <img
+            alt="send icon"
+            className="submit-button-image"
+            src={Send}
+            width="20"
+            height="20"
+          />
+        </div>
+      </Button>
     </div>
   );
 };
