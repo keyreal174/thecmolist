@@ -170,7 +170,8 @@ function Header({
       setIsAdminUser(!!profile.isAdminUser);
       if ("onboarded" in profile && !profile.onboarded) {
         window.location.href =
-          "/onboarding_step1?r=" + window.btoa(window.location.pathname);
+          "/onboarding_step1?r=" +
+          window.btoa(window.location.pathname + window.location.hash);
       }
     }
   }, [profileStats]);
