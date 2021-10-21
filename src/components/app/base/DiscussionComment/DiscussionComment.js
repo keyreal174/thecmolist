@@ -23,7 +23,7 @@ const DiscussionComment = ({
   ...props
 }) => {
   const [comment, setComment] = useState(value || "");
-  const [show, setShow] = useState("");
+  const [show, setShow] = useState(false);
   const [body, setBody] = useState("");
   const [reStateToggle, setReStateToggle] = useState(false);
   const [isPersonVendor, setIsPersonVendor] = useState(false);
@@ -150,7 +150,8 @@ const DiscussionComment = ({
       <Button
         className={clsx(
           "submit-button",
-          !useRichEditor && "comment-submit-button"
+          !useRichEditor && "comment-submit-button",
+          !useRichEditor && !show && "comment-submit-hide-button"
         )}
         onClick={handleButtonClick}
         size="sm"

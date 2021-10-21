@@ -12,6 +12,7 @@
   padding-right: 35px;
   resize: none;
   width: 100%;
+  height: 48px !important;
 }
 
 .comment-button {
@@ -111,12 +112,24 @@
   position: absolute;
   right: 25px;
   width: auto;
-  bottom: 26px;
+  bottom: 25px;
   background: transparent;
   border: 0;
 
+  &:hover,
+  &:focus,
+  &:active {
+    background: transparent !important;
+    border: 0 !important;
+  }
+
   &.comment-submit-button {
-    bottom: 28px;
+    bottom: 29px;
+    display: block;
+
+    &.comment-submit-hide-button {
+      display: none;
+    }
   }
 }
 
