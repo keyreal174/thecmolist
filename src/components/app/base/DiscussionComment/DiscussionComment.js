@@ -150,7 +150,8 @@ const DiscussionComment = ({
       <Button
         className={clsx(
           "submit-button",
-          !useRichEditor && "comment-submit-button"
+          !useRichEditor && "comment-submit-button",
+          !show && "hide-button"
         )}
         onClick={handleButtonClick}
         size="sm"

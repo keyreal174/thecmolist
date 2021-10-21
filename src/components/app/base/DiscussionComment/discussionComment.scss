@@ -118,6 +118,11 @@
 
   &.comment-submit-button {
     bottom: 28px;
+    display: block;
+
+    &.hide-button {
+      display: none;
+    }
   }
 }
 
