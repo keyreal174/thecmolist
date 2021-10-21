@@ -23,7 +23,7 @@ const DiscussionComment = ({
   ...props
 }) => {
   const [comment, setComment] = useState(value || "");
-  const [show, setShow] = useState("");
+  const [show, setShow] = useState(false);
   const [body, setBody] = useState("");
   const [reStateToggle, setReStateToggle] = useState(false);
   const [isPersonVendor, setIsPersonVendor] = useState(false);
