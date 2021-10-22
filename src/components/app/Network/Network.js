@@ -152,9 +152,10 @@ const Network = (props) => {
   };
 
   const onConnectClick = (payload) => {
-    setConnectName(payload.firstname || payload.username);
-    setConnectUsername(payload.username);
-    toggleFollowModal();
+    connectUser({
+      user: payload.username,
+      data: [],
+    });
   };
 
   const handleToggle = () => {
