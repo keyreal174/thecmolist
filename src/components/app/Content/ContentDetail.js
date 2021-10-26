@@ -10,6 +10,7 @@ import {
 import DiscussionComment from "../base/DiscussionComment/DiscussionComment";
 import Entities from "../base/Entities/Entities";
 import EditPostModal from "../base/EditPostModal/EditPostModal";
+import RichEditPostModal from "../base/RichEditPostModal/RichEditPostModal";
 import { cdn } from "../../util/constants";
 import Util from "../../util/Util";
 
@@ -351,7 +352,7 @@ const ContentDetail = ({
           </CustomCard>
         </Col>
       )}
-      <EditPostModal
+      <RichEditPostModal
         show={showEditPostModal}
         handleClose={toggleEditPostModal}
         contentId={selectedContentId}

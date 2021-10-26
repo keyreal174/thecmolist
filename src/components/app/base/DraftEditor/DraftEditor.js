@@ -102,6 +102,7 @@ const DraftEditor = forwardRef(
       handleChange,
       stateToggle,
       placeholder,
+      defaultValue,
       ...rest
     },
     ref
@@ -132,6 +133,12 @@ const DraftEditor = forwardRef(
         setEditorState(EditorState.createEmpty());
       }
     }, [stateToggle]);
+
+    useEffect(() => {
+      if (defaultValue) {
+        setEditorState(EditorState.createWithContent(defaultValue));
+      }
+    }, [defaultValue]);
 
     const { MentionSuggestions, plugins } = useMemo(() => {
       const mentionPlugin = createMentionPlugin({ mentionTrigger: ["@", "#"] });
@@ -482,21 +489,23 @@ const DraftEditor = forwardRef(
                 </Toolbar>
               </div>
             )}
-            <MentionSuggestions
-              open={open}
-              onOpenChange={onOpenChange}
-              suggestions={suggestions}
-              onSearchChange={onSearchChange}
-              onAddMention={(mention) => {
-                if (MentionLast.find((item) => item.name === mention.name)) {
-                  const isPerson = mention.name === MentionLast[0].name;
-                  isPerson ? setDefaultName("") : typedText();
-                  setSelectedMention(mention.name);
-                  setShow(isPerson ? "Person" : "Vendor");
-                }
-              }}
-              entryComponent={Entry}
-            />
+            {getSuggestions && (
+              <MentionSuggestions
+                open={open}
+                onOpenChange={onOpenChange}
+                suggestions={suggestions}
+                onSearchChange={onSearchChange}
+                onAddMention={(mention) => {
+                  if (MentionLast.find((item) => item.name === mention.name)) {
+                    const isPerson = mention.name === MentionLast[0].name;
+                    isPerson ? setDefaultName("") : typedText();
+                    setSelectedMention(mention.name);
+                    setShow(isPerson ? "Person" : "Vendor");
+                  }
+                }}
+                entryComponent={Entry}
+              />
+            )}
           </div>
         </div>
         <AddPersonModal
