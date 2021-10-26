@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Article from "../base/Article/Article";
 import CustomCard from "../base/CustomCard/CustomCard";
 import clsx from "clsx";
@@ -39,6 +39,13 @@ const ContentDetail = ({
   const [selectedContentId, setSelectedContentId] = useState(0);
   const [showEditPostModal, setShowEditPostModal] = useState(false);
   const [selectedContent, setSelectedContent] = useState(null);
+  const [isAdminUser, setIsAdminUser] = useState(false);
+
+  useEffect(() => {
+    if (profileStats && profileStats.profile) {
+      setIsAdminUser(profileStats.profile.isAdminUser);
+    }
+  }, [profileStats]);
 
   const focusError = () => {
     const errorSection = document.getElementById("error-section");
@@ -352,12 +359,21 @@ const ContentDetail = ({
           </CustomCard>
         </Col>
       )}
-      <RichEditPostModal
-        show={showEditPostModal}
-        handleClose={toggleEditPostModal}
-        contentId={selectedContentId}
-        content={selectedContent}
-      />
+      {isAdminUser ? (
+        <EditPostModal
+          show={showEditPostModal}
+          handleClose={toggleEditPostModal}
+          contentId={selectedContentId}
+          content={selectedContent}
+        />
+      ) : (
+        <RichEditPostModal
+          show={showEditPostModal}
+          handleClose={toggleEditPostModal}
+          contentId={selectedContentId}
+          content={selectedContent}
+        />
+      )}
     </>
   );
 };

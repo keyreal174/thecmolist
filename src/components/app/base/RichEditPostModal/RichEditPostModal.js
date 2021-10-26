@@ -80,12 +80,6 @@ const RichEditPostModal = ({
         </Modal.Header>
         <Modal.Body>
           <Container>
-            {/* <Form.Control
-              as="textarea"
-              rows={5}
-              value={contentDefault}
-              onChange={(e) => setContentDefault(e.target.value)}
-            /> */}
             <RichEditor
               setBody={setBody}
               defaultValue={draftContent}
@@ -130,9 +124,7 @@ const RichEditPostModal = ({
 };
 
 const mapState = (state) => {
-  return {
-    // content: state.contentModel.content,
-  };
+  return {};
 };
 
 const mapDispatch = (dispatch) => {

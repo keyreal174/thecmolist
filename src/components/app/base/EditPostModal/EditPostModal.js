@@ -112,9 +112,7 @@ const EditPostModal = ({
 };
 
 const mapState = (state) => {
-  return {
-    // content: state.contentModel.content,
-  };
+  return {};
 };
 
 const mapDispatch = (dispatch) => {
