@@ -13,6 +13,7 @@ const RichEditor = React.forwardRef(
       setIsPersonVendor,
       toolbar,
       placeholder,
+      defaultValue,
       ...rest
     },
     ref
@@ -30,6 +31,7 @@ const RichEditor = React.forwardRef(
             toolbar={toolbar}
             ref={ref}
             placeholder={placeholder}
+            defaultValue={defaultValue}
             {...rest}
           />
         </Suspense>
@@ -40,8 +42,6 @@ const RichEditor = React.forwardRef(
 
 RichEditor.propTypes = {
   setBody: PropTypes.func.isRequired,
-  getSuggestions: PropTypes.func.isRequired,
-  getTopicSuggestions: PropTypes.func.isRequired,
 };
 
 export default RichEditor;

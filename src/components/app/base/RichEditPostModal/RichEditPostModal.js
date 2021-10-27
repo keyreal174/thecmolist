@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Button, Container, Form, Modal } from "react-bootstrap";
 import Markdown from "markdown-to-jsx";
+import { stateFromMarkdown } from "draft-js-import-markdown";
 import clsx from "clsx";
-import "./EditPostModal.scss";
+import RichEditor from "../DraftEditor/RichEditor";
+import "./RichEditPostModal.scss";
 
-const EditPostModal = ({
+const RichEditPostModal = ({
   content,
   contentId,
   saveEditedContent,
@@ -13,13 +15,18 @@ const EditPostModal = ({
   show,
 }) => {
   const [contentDefault, setContentDefault] = useState("");
+  const [draftContent, setDraftContent] = useState();
   const [showPreview, setShowPreview] = useState(false);
 
   useEffect(() => {
     if (content && content.content) {
       if (content.content.articletext && content.content.articletext.markdown) {
+        const draft = stateFromMarkdown(content.content.articletext.markdown);
+        setDraftContent(draft);
         setContentDefault(content.content.articletext.markdown);
       } else if (content.content.articletext) {
+        const draft = stateFromMarkdown(content.content.articletext);
+        setDraftContent(draft);
         setContentDefault(content.content.articletext);
       }
     }
@@ -53,6 +60,12 @@ const EditPostModal = ({
     handleClose();
   };
 
+  const setBody = (data) => {
+    if (data.markdown) {
+      setContentDefault(data.markdown);
+    }
+  };
+
   return (
     <Modal show={show} onHide={handleClose} size="md">
       <Form
@@ -67,11 +80,10 @@ const EditPostModal = ({
         </Modal.Header>
         <Modal.Body>
           <Container>
-            <Form.Control
-              as="textarea"
-              rows={5}
-              value={contentDefault}
-              onChange={(e) => setContentDefault(e.target.value)}
+            <RichEditor
+              setBody={setBody}
+              defaultValue={draftContent}
+              toolbar={true}
             />
           </Container>
         </Modal.Body>
@@ -121,4 +133,4 @@ const mapDispatch = (dispatch) => {
   };
 };
 
-export default connect(mapState, mapDispatch)(EditPostModal);
+export default connect(mapState, mapDispatch)(RichEditPostModal);
