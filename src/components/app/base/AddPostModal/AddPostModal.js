@@ -58,6 +58,7 @@ function AddPostModal({
   const [secondButtonText, setSecondButtonText] = useState("Ask a question");
   const [isLoading, setIsLoading] = useState(false);
   const [isPersonVendor, setIsPersonVendor] = useState(false);
+  const [isLink, setIsLink] = useState(false);
 
   // Typeahead values for #topic
   const [options, setOptions] = useState([
@@ -295,6 +296,7 @@ function AddPostModal({
   const handlePersonVendor = (type) => {
     setIsPersonVendor(true);
   };
+
   return (
     <>
       <Modal
