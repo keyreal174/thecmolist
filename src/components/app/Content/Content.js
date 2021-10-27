@@ -27,6 +27,7 @@ const Content = ({
       try {
         setError("");
         await fetchContent(id);
+        window.scrollTo(0, 0);
       } catch (error) {
         setError(error.message);
       }
