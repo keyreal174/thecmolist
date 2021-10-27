@@ -35,7 +35,7 @@ import { stateToMarkdown } from "draft-js-export-markdown";
 import clsx from "clsx";
 import { Button } from "react-bootstrap";
 import AddPersonModal from "../AddPersonModal/AddPersonModal";
-import LinkIcon from "../icons/kisspng-hyperlink.png";
+import LinkIcon from "../../Profile/icons/link.svg";
 import "./DraftEditor.scss";
 
 const staticToolbarPlugin = createToolbarPlugin();
