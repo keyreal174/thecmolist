@@ -11,6 +11,8 @@ const Badge = ({ localConnectedUsers, feed, connectUser, disconnectUser }) => {
   const handleConnectButtonClick = () => {
     connectUser(feed);
   };
+  const ctaFollowingText = feed.isInvite ? "Invited" : "Following";
+  const ctaFollowText = feed.isInvite ? "Invite" : "Follow";
 
   const connect = !feed.disableConnect ? (
     isConnected ? (
@@ -19,7 +21,7 @@ const Badge = ({ localConnectedUsers, feed, connectUser, disconnectUser }) => {
         onClick={handleConnectedButtonClick}
         type="button"
       >
-        Following
+        {ctaFollowingText}
       </button>
     ) : (
       <button
@@ -27,7 +29,7 @@ const Badge = ({ localConnectedUsers, feed, connectUser, disconnectUser }) => {
         type="button"
         onClick={handleConnectButtonClick}
       >
-        Follow
+        {ctaFollowText}
       </button>
     )
   ) : null;
