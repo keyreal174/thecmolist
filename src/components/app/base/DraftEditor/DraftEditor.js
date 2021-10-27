@@ -33,8 +33,10 @@ import "@draft-js-plugins/mention/lib/plugin.css";
 import "@draft-js-plugins/static-toolbar/lib/plugin.css";
 import { stateToMarkdown } from "draft-js-export-markdown";
 import clsx from "clsx";
-import "./DraftEditor.scss";
+import { Button } from "react-bootstrap";
 import AddPersonModal from "../AddPersonModal/AddPersonModal";
+import LinkIcon from "../../Profile/icons/link.svg";
+import "./DraftEditor.scss";
 
 const staticToolbarPlugin = createToolbarPlugin();
 const { Toolbar } = staticToolbarPlugin;
@@ -119,6 +121,7 @@ const DraftEditor = forwardRef(
     const [isSharp, setIsSharp] = useState(false);
     const [defaultName, setDefaultName] = useState("");
     const [lastTrigger, setLastTrigger] = useState("");
+    const [isLink, setIsLink] = useState(false);
 
     // use this to expose a focus method to parent components. see
     // https://reactjs.org/docs/hooks-reference.html#useimperativehandle
@@ -153,6 +156,7 @@ const DraftEditor = forwardRef(
       _open ? removeBinding() : applyBinding();
       setOpen(_open);
     }, []);
+
     const onSearchChange = useCallback(({ trigger, value }) => {
       if (trigger === "@") {
         setIsSharp(true);
@@ -219,6 +223,7 @@ const DraftEditor = forwardRef(
               case "newcompany":
               case "newproduct":
               case "newcontractor":
+              case "link":
                 entityUrl = ensureLink(entityData.mention.link);
                 break;
               default:
@@ -351,6 +356,70 @@ const DraftEditor = forwardRef(
       }
     };
 
+    const handleLink = (mention = null) => {
+      const contentStateWithEntity = editorState
+        .getCurrentContent()
+        .createEntity("mention", "SEGMENTED", {
+          mention: {
+            name: mention ? mention.name : null,
+            link: mention ? ensureLink(mention.link) : null,
+            type: "link",
+          },
+        });
+      const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
+
+      const currentSelectionState = editorState.getSelection();
+      const { begin, end } = getSearchText(editorState, currentSelectionState, [
+        "",
+      ]);
+
+      const content = editorState.getCurrentContent();
+      const blockMap = content.getBlockMap();
+
+      const length = blockMap.last().getLength();
+
+      const mentionTextSelection = currentSelectionState.merge({
+        anchorOffset: end - selectedMention.length,
+        focusOffset: end,
+      });
+
+      let mentionReplacedContent = Modifier.replaceText(
+        editorState.getCurrentContent(),
+        mentionTextSelection,
+        mention ? mention.name : "",
+        undefined, // no inline style needed
+        entityKey
+      );
+
+      // If the mention is inserted at the end, a space is appended right after for
+      // a smooth writing experience.
+      const blockKey = mentionTextSelection.getAnchorKey();
+      const blockSize = editorState
+        .getCurrentContent()
+        .getBlockForKey(blockKey)
+        .getLength();
+      if (blockSize === end) {
+        mentionReplacedContent = Modifier.insertText(
+          mentionReplacedContent,
+          mentionReplacedContent.getSelectionAfter(),
+          // mention ? " " : ""
+          " "
+        );
+      }
+
+      const newEditorState = EditorState.push(
+        editorState,
+        mentionReplacedContent,
+        "insert-fragment"
+      );
+      const newState = EditorState.forceSelection(
+        newEditorState,
+        mentionReplacedContent.getSelectionAfter()
+      );
+
+      setEditorState(newState);
+    };
+
     const handlePeopleVendor = () => {
       editorRef.current && editorRef.current.focus();
 
@@ -436,8 +505,12 @@ const DraftEditor = forwardRef(
     };
 
     useEffect(() => {
-      if (!show) {
-        handleAddPeople(mention);
+      if (!show && mention) {
+        if (isLink) {
+          handleLink(mention);
+        } else {
+          handleAddPeople(mention);
+        }
       }
     }, [show]);
 
@@ -483,6 +556,20 @@ const DraftEditor = forwardRef(
                         {/* <UnderlineButton {...externalProps} /> */}
                         <UnorderedListButton {...externalProps} />
                         <OrderedListButton {...externalProps} />
+                        <div className="editor-toolbar-link-button">
+                          <Button
+                            size="sm"
+                            variant="light"
+                            onClick={() => {
+                              setShow(true);
+                              setIsLink(true);
+                            }}
+                          >
+                            <div>
+                              <img src={LinkIcon} alt="Link Icon" />
+                            </div>
+                          </Button>
+                        </div>
                       </div>
                     )
                   }
@@ -501,6 +588,7 @@ const DraftEditor = forwardRef(
                     isPerson ? setDefaultName("") : typedText();
                     setSelectedMention(mention.name);
                     setShow(isPerson ? "Person" : "Vendor");
+                    setIsLink(false);
                   }
                 }}
                 entryComponent={Entry}
@@ -510,7 +598,10 @@ const DraftEditor = forwardRef(
         </div>
         <AddPersonModal
           show={show}
-          handleClose={() => setShow(false)}
+          isLink={isLink}
+          handleClose={() => {
+            setShow(false);
+          }}
           setMention={(mention) => setMention(mention)}
           defaultName={defaultName}
         />
