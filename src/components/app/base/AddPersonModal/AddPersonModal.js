@@ -7,7 +7,13 @@ import clsx from "clsx";
 
 const VendorType = ["Product", "Company", "Contractor"];
 
-function AddPersonModal({ show, handleClose, setMention, defaultName }) {
+function AddPersonModal({
+  show,
+  isLink,
+  handleClose,
+  setMention,
+  defaultName,
+}) {
   const nameRef = useRef();
   const [name, setName] = useState(defaultName);
   const [link, setLink] = useState("");
@@ -37,7 +43,11 @@ function AddPersonModal({ show, handleClose, setMention, defaultName }) {
       const person = {
         name,
         link,
-        type: isPerson ? "person" : vendorType.toLocaleLowerCase(),
+        type: isLink
+          ? "link"
+          : isPerson
+          ? "person"
+          : vendorType.toLocaleLowerCase(),
       };
       setMention(person);
       reset();
@@ -72,7 +82,7 @@ function AddPersonModal({ show, handleClose, setMention, defaultName }) {
         <div>
           <div className="modal-header">
             <h4 className="modal-title">
-              {isPerson ? "New Person" : "New Vendor"}
+              {isLink ? "Add Link" : isPerson ? "New Person" : "New Vendor"}
             </h4>
           </div>
           <div className="modal-body">
@@ -81,7 +91,7 @@ function AddPersonModal({ show, handleClose, setMention, defaultName }) {
                 <Row>
                   <Col md="12">
                     <div>
-                      {!isPerson && (
+                      {!isPerson && !isLink && (
                         <div className="vendor-type-list">
                           <label>Vendor</label>
                           <div>
@@ -113,7 +123,9 @@ function AddPersonModal({ show, handleClose, setMention, defaultName }) {
                       )}
                       <div className="person-section">
                         <label>
-                          {isPerson
+                          {isLink
+                            ? "Please enter the link text"
+                            : isPerson
                             ? "Please enter the person's full name"
                             : vendorType === "Company"
                             ? "Agency name"
@@ -135,7 +147,9 @@ function AddPersonModal({ show, handleClose, setMention, defaultName }) {
                       </div>
                       <div className="person-section">
                         <label>
-                          {isPerson
+                          {isLink
+                            ? "Link URL"
+                            : isPerson
                             ? "Person's Linkedin URL"
                             : vendorType === "Company"
                             ? "Agency website"
@@ -149,7 +163,9 @@ function AddPersonModal({ show, handleClose, setMention, defaultName }) {
                           className="modal-person-section-input"
                           onChange={(e) => setLink(e.target.value)}
                           placeholder={
-                            isPerson
+                            isLink
+                              ? "https://linkedin.com/in/linkedin_ID"
+                              : isPerson
                               ? "https://linkedin.com/in/linkedin_ID"
                               : "URL"
                           }
