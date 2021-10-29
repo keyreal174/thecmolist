@@ -128,7 +128,7 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
     setHeadline(value);
   };
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e && e.preventDefault();
     setLoading(true);
     const formData = {
       title,
@@ -164,7 +164,14 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
       {isWelcome ? (
         <OnboardingWelcome
           loading={loading}
-          changeStep={() => setIsWelcome(false)}
+          changeStep={() => {
+            // For now as a test we are moving to collecting no user info
+            // upfront and just move on to the next step
+            // keeping this code alive in case we revert the test.
+            handleSubmit();
+
+            // setIsWelcome(false) // uncomment to enable collecting user info
+          }}
         />
       ) : (
         <>
