@@ -70,8 +70,14 @@ const OnboardingStep2 = ({ getProfileStats, profileStats }) => {
           console.log("Unexpected - url not encoded: " + redirectUrl);
         }
       }
+      const redirectUrlParsed = new URL(
+        redirectUrl,
+        `
+        ${window.location.protocol}//${window.location.host}`
+      );
       history.push({
-        pathname: redirectUrl,
+        pathname: redirectUrlParsed.pathname,
+        hash: redirectUrlParsed.hash,
         state: { onboarded: true },
       });
     });
