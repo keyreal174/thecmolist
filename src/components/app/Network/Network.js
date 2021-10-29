@@ -26,6 +26,7 @@ const Network = (props) => {
   const [showFilters, setShowFilters] = useState(true);
   const [bannerTitle, setBannerTitle] = useState("");
   const [bannerImage, setBannerImage] = useState("");
+  const [isAdminUser, setIsAdminUser] = useState(false);
   const feedData = props.feedData;
   const changeDashboardHeader = (idx) => {
     if (idx < filters.length) {
@@ -40,6 +41,10 @@ const Network = (props) => {
       { title: "My Experts", slug: "my-peers", enabled: true },
     ];
     if (profileStats && profileStats.profile) {
+      if (profileStats.profile.isAdminUser) {
+        setIsAdminUser(true);
+      }
+
       if (
         profileStats.profile.groups &&
         profileStats.profile.groups.length > 0
@@ -183,7 +188,13 @@ const Network = (props) => {
             </Col>
             <Col className="network--share-content" md="4">
               <div className="mt-3">
-                <InviteCard />
+                <MyNetwork
+                  saveContent={props.saveContent}
+                  isAdminUser={isAdminUser}
+                  activeGroup={
+                    filterIdx < filters.length ? filters[filterIdx].slug : null
+                  }
+                />
               </div>
             </Col>
           </Row>
