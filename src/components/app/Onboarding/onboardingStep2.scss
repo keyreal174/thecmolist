@@ -96,6 +96,10 @@
       min-width: 160px;
     }
   }
+  &--label {
+    font-size: 28px;
+    font-weight: 400;
+  }
 }
 
 @media (max-width: 768px) {

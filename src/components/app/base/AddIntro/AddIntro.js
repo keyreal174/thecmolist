@@ -43,7 +43,7 @@ const AddIntro = ({
       <Form onSubmit={handleSubmit} id="form-add-intro">
         <Row className="onboarding--pill-head">
           <Col>
-            <Form.Label>
+            <Form.Label className="onboarding--label">
               {groupName && groupName.length > 0
                 ? `How can the ${groupName} network help you be more successful?`
                 : "How can CMOlist help you be more successful?"}
@@ -79,7 +79,10 @@ const AddIntro = ({
         </Row>
         <Row className="onboarding--pill-wrapper">
           <Col>
-            <Form.Label>Please introduce yourself to your peers</Form.Label>
+            <Form.Label className="onboarding--label">
+              Please introduce yourself or share a project you are currently
+              working on
+            </Form.Label>
             {introError && introError.length > 0 && (
               <Alert className="mb-1 mt-1" variant="danger">
                 {introError}
