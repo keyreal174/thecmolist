@@ -24,7 +24,7 @@ const OnboardingStep2 = ({ getProfileStats, profileStats }) => {
     profileStats.profile &&
     profileStats.profile.groups &&
     profileStats.profile.groups.length > 0;
-  if (isAfilliated) {
+  if (isAfilliated && groupName.length === 0) {
     setGroupName(profileStats.profile.groups[0].name);
   }
 
@@ -54,11 +54,6 @@ const OnboardingStep2 = ({ getProfileStats, profileStats }) => {
       return "You can also add or update this information later";
     }
   };
-
-  useEffect(() => {
-    const fetchProfileStats = async () => await getProfileStats();
-    fetchProfileStats();
-  }, []);
 
   const finalizeOnboarding = (e) => {
     setLoading(true);

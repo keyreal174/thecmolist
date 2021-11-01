@@ -73,7 +73,7 @@ const OnboardingWelcome = ({ loading, changeStep }) => {
           <Button
             className="mt-3 onboarding--button onboarding--button-welcome"
             onClick={changeStep}
-            disable={loading}
+            disabled={loading}
           >
             Continue
           </Button>

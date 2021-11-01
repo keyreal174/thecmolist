@@ -70,7 +70,11 @@ const AddTopics = ({
             {pils.map((p, index) => {
               if (index < minTopics || showMore) {
                 return (
-                  <ToggleButton value={p} className="onboarding--pill">
+                  <ToggleButton
+                    key={index}
+                    value={p}
+                    className="onboarding--pill"
+                  >
                     {`#${p}`}
                   </ToggleButton>
                 );
