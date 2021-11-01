@@ -86,7 +86,7 @@ const Network = (props) => {
         );
         if (existingFilterIndex >= 0) {
           idx = existingFilterIndex;
-          setGroupName(newFilters[idx].name);
+          setGroupName(newFilters[idx].title);
         } else {
           newFilters = newFilters.concat({
             title: networkSlug,
@@ -246,7 +246,7 @@ const Network = (props) => {
                 <span role="img" aria-label="Light bulb">
                   💡
                 </span>
-                {"   "}Please <b>invite</b> other colleagues to the ${groupName}{" "}
+                {"   "}Please <b>invite</b> other colleagues to the {groupName}{" "}
                 network
               </Alert>
             </div>
