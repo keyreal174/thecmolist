@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Alert, Button, Form, Modal, Row, Col } from "react-bootstrap";
 
-const AddIntro = ({ submitOnboardingIntro, submitBefore, submitAfter }) => {
+const AddIntro = ({
+  groupName,
+  submitOnboardingIntro,
+  submitBefore,
+  submitAfter,
+}) => {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [intro, setIntro] = useState("");
   const [introError, setIntroError] = useState("");
@@ -39,7 +44,9 @@ const AddIntro = ({ submitOnboardingIntro, submitBefore, submitAfter }) => {
         <Row className="onboarding--pill-head">
           <Col>
             <Form.Label>
-              How can CMOlist help you be more successful?
+              {groupName && groupName.length > 0
+                ? `How can the ${groupName} network help you be more successful?`
+                : "How can CMOlist help you be more successful?"}
             </Form.Label>
           </Col>
         </Row>

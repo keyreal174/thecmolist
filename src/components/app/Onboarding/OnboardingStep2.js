@@ -16,6 +16,7 @@ const OnboardingStep2 = ({ getProfileStats, profileStats }) => {
   const [showFinalStep, setShowFinalStep] = useState(false);
   const [loading, setLoading] = useState(false);
   const [step, setStep] = useState(1);
+  const [groupName, setGroupName] = useState("");
   const history = useHistory();
 
   const isAfilliated =
@@ -23,6 +24,9 @@ const OnboardingStep2 = ({ getProfileStats, profileStats }) => {
     profileStats.profile &&
     profileStats.profile.groups &&
     profileStats.profile.groups.length > 0;
+  if (isAfilliated) {
+    setGroupName(profileStats.profile.groups[0].name);
+  }
 
   const getTitle = () => {
     if (showFinalStep) {
@@ -106,6 +110,7 @@ const OnboardingStep2 = ({ getProfileStats, profileStats }) => {
             <CustomCard className="onboarding--card">
               {isAfilliated ? (
                 <AddIntro
+                  groupName={groupName}
                   submitBefore={() => setLoading(true)}
                   submitAfter={() => finalizeOnboarding()}
                 />
@@ -128,7 +133,11 @@ const OnboardingStep2 = ({ getProfileStats, profileStats }) => {
           (step === 1 ? (
             <CustomCard className="onboarding--card fadeAndSlideElementInFast">
               <div className="onboarding--card-content">
-                <AddTopics submitAfter={() => setStep(2)} />
+                <AddTopics
+                  submitAfter={() =>
+                    isAfilliated ? finishFinalStep() : setStep(2)
+                  }
+                />
               </div>
             </CustomCard>
           ) : (

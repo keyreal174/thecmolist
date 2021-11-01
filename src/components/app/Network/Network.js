@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import { connect } from "react-redux";
-import { Col, Row, Container } from "react-bootstrap";
+import { Alert, Col, Row, Container } from "react-bootstrap";
 import clsx from "clsx";
 import Layout from "../base/Layout/Layout";
 import Footer from "../base/Footer/Footer";
@@ -27,6 +27,8 @@ const Network = (props) => {
   const [bannerTitle, setBannerTitle] = useState("");
   const [bannerImage, setBannerImage] = useState("");
   const [isAdminUser, setIsAdminUser] = useState(false);
+  const [isAffiliated, setIsAffiliated] = useState(false);
+  const [groupName, setGroupName] = useState("");
   const feedData = props.feedData;
   const changeDashboardHeader = (idx) => {
     if (idx < filters.length) {
@@ -49,6 +51,7 @@ const Network = (props) => {
         profileStats.profile.groups &&
         profileStats.profile.groups.length > 0
       ) {
+        setIsAffiliated(true);
         newFilters = newFilters.concat(
           profileStats.profile.groups.map((group) => {
             return {
@@ -83,6 +86,7 @@ const Network = (props) => {
         );
         if (existingFilterIndex >= 0) {
           idx = existingFilterIndex;
+          setGroupName(newFilters[idx].name);
         } else {
           newFilters = newFilters.concat({
             title: networkSlug,
@@ -234,6 +238,17 @@ const Network = (props) => {
                 filters={filters}
                 onChange={(idx) => changeFilter(idx)}
               />
+            </div>
+          )}
+          {isAffiliated && groupName && groupName.length > 0 && (
+            <div className="follow-members">
+              <Alert variant="info">
+                <span role="img" aria-label="Light bulb">
+                  💡
+                </span>
+                {"   "}Please <b>invite</b> other colleagues to the ${groupName}{" "}
+                network
+              </Alert>
             </div>
           )}
           <Row>
