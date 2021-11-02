@@ -246,8 +246,8 @@ const Network = (props) => {
                 <span role="img" aria-label="Light bulb">
                   💡
                 </span>
-                {"   "}Please <b>invite</b> other colleagues to the {groupName}{" "}
-                network
+                {"   "}Use the <b>invite</b> button to invite other {groupName}{" "}
+                colleagues
               </Alert>
             </div>
           )}
