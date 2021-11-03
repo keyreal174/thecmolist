@@ -73,7 +73,7 @@ const OnboardingWelcome = ({ loading, changeStep }) => {
           <Button
             className="mt-3 onboarding--button onboarding--button-welcome"
             onClick={changeStep}
-            disable={loading}
+            disabled={loading}
           >
             Continue
           </Button>
@@ -83,7 +83,25 @@ const OnboardingWelcome = ({ loading, changeStep }) => {
   );
 };
 
-const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
+const WelcomeMessage = ({ loading, firstname, groupName }) => {
+  let ready = !loading && firstname && firstname.length > 0;
+  if (!ready) {
+    return "";
+  }
+  if (groupName && groupName.length > 0) {
+    return `Hello ${firstname}, welcome to the ${groupName} network!`;
+  } else {
+    return `Hello ${firstname}, welcome to CMOlist!`;
+  }
+};
+
+const OnboardingStep1 = ({
+  profile,
+  fetchProfile,
+  profileStats,
+  getProfileStats,
+  submitOnboardingStep1,
+}) => {
   const history = useHistory();
   const [loading, setLoading] = useState(false);
   const [firstname, setFirstname] = useState("");
@@ -95,11 +113,17 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
   const [companyIndustry, setCompanyIndustry] = useState("");
   const [companyStage, setCompanyStage] = useState("");
   const [isWelcome, setIsWelcome] = useState(true);
+  const [groupName, setGroupName] = useState("");
 
   useEffect(() => {
     fetchProfile({
       userName: "",
     });
+  }, []);
+
+  useEffect(() => {
+    const fetchProfileStats = async () => await getProfileStats();
+    fetchProfileStats();
   }, []);
 
   useEffect(() => {
@@ -114,6 +138,17 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
       setAdvising(advising);
     }
   }, [profile]);
+
+  useEffect(() => {
+    if (
+      profileStats &&
+      profileStats.profile &&
+      profileStats.profile.groups &&
+      profileStats.profile.groups.length > 0
+    ) {
+      setGroupName(profileStats.profile.groups[0].name);
+    }
+  }, [profileStats]);
 
   const handleTitleChange = (e) => {
     const { value } = e.target;
@@ -152,11 +187,15 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
           className="layout--title"
           style={{ textAlign: "center", display: "block" }}
         >
-          {isWelcome
-            ? !loading && firstname && firstname.length > 0
-              ? `Hello ${firstname}, welcome to CMOlist!`
-              : ""
-            : `Create your member profile`}
+          {isWelcome ? (
+            <WelcomeMessage
+              loading={loading}
+              firstname={firstname}
+              groupName={groupName}
+            />
+          ) : (
+            `Create your member profile`
+          )}
         </span>
       }
       isWelcome={isWelcome}
@@ -313,11 +352,13 @@ const OnboardingStep1 = ({ profile, fetchProfile, submitOnboardingStep1 }) => {
 
 const mapState = (state) => ({
   profile: state.profileModel.profile,
+  profileStats: state.profileModel.profileStats,
 });
 
 const mapDispatch = (dispatch) => {
   return {
     fetchProfile: dispatch.profileModel.fetchProfile,
+    getProfileStats: dispatch.profileModel.getProfileStats,
     submitOnboardingStep1: dispatch.onboardingModel.submitOnboardingStep1,
   };
 };

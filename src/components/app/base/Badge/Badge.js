@@ -1,4 +1,5 @@
 import React from "react";
+import clsx from "clsx";
 import "./badge.scss";
 
 const Badge = ({ localConnectedUsers, feed, connectUser, disconnectUser }) => {
@@ -17,7 +18,10 @@ const Badge = ({ localConnectedUsers, feed, connectUser, disconnectUser }) => {
   const connect = !feed.disableConnect ? (
     isConnected ? (
       <button
-        className="btn badge--connected-button"
+        className={clsx(
+          "btn badge--connected-button",
+          feed.isInvite && "invitebtn"
+        )}
         onClick={handleConnectedButtonClick}
         type="button"
       >
@@ -25,7 +29,10 @@ const Badge = ({ localConnectedUsers, feed, connectUser, disconnectUser }) => {
       </button>
     ) : (
       <button
-        className="btn badge--connect-button"
+        className={clsx(
+          "btn badge--connect-button",
+          feed.isInvite && "invitebtn"
+        )}
         type="button"
         onClick={handleConnectButtonClick}
       >

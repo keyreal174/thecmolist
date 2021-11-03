@@ -15,6 +15,11 @@
     margin-top: 0 !important;
     min-width: 120px;
     padding: 6px 12px;
+
+    &.invitebtn {
+      border-color: #28a745;
+      color: #28a745;
+    }
   }
 
   &--connected-button {
@@ -31,6 +36,11 @@
 
     &:hover {
       color: $white;
+    }
+
+    &.invitebtn {
+      border-color: #28a745;
+      background-color: #28a745;
     }
   }
 }
