@@ -26,8 +26,59 @@ const adminPostRequest = (data) => {
     });
 };
 
+function DigestWidget({ formattedDigest, handleDigestSubmit }) {
+  if (formattedDigest && formattedDigest.length > 0) {
+    return (
+      <Form style={{ height: "unset" }}>
+        <Form.Group>
+          <Form.Label className="home--label">Formatted digest</Form.Label>
+          <Form.Control
+            style={{ width: "100%" }}
+            className="home--input"
+            name="content"
+            as="textarea"
+            rows="10"
+            value={formattedDigest}
+            readonly
+          />
+          <Form.Label>Preview</Form.Label>
+          <div>
+            <iframe
+              width="1000px"
+              height="500px"
+              srcdoc={formattedDigest}
+            ></iframe>
+          </div>
+        </Form.Group>
+      </Form>
+    );
+  } else {
+    return (
+      <Form style={{ height: "unset" }} onSubmit={handleDigestSubmit}>
+        <Form.Group>
+          <Form.Label className="home--label">Format digest</Form.Label>
+          <Form.Label className="home--form-subtitle"></Form.Label>
+          <Form.Control
+            style={{ width: "100%" }}
+            className="home--input"
+            name="content"
+            as="textarea"
+            rows="10"
+            placeholder="Expect tab separated list (copy/paste from Google sheets) with 4 columns: MEMBERS, NEWS_RESOURCES, QUESTIONS_ANSWERS, JOBS)"
+            required={true}
+          />
+        </Form.Group>
+        <Button className="btn__homepage" type="submit">
+          Format digest
+        </Button>
+      </Form>
+    );
+  }
+}
+
 function AdminPage() {
   const [fields, setFields] = useState([]);
+  const [formattedDigest, setFormattedDigest] = useState("");
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const {
@@ -57,6 +108,35 @@ function AdminPage() {
       id: id.value,
       json: { sendemail: sendemail.checked },
     });
+  };
+
+  const handleDigestSubmit = (e) => {
+    e.preventDefault();
+    const {
+      target: { elements },
+    } = e;
+    const { content } = elements;
+    setFormattedDigest("Loading...");
+    axios
+      .post("/api/adminpost", {
+        data: {
+          method: "formatdigest",
+          id: 0,
+          json: { content: content.value },
+        },
+      })
+      .then(({ data }) => {
+        if (data.success) {
+          setFormattedDigest(data.content);
+        } else {
+          let errorMessage = data.error || "Unknown";
+          alert("An error occurred: " + errorMessage);
+        }
+      })
+      .catch(function (error) {
+        setFormattedDigest("");
+        alert("An error occurred: " + error);
+      });
   };
 
   useEffect(() => {
@@ -103,6 +183,14 @@ function AdminPage() {
                   Promote Post
                 </Button>
               </Form>
+            </Col>
+          </Row>
+          <Row>
+            <Col md="12">
+              <DigestWidget
+                formattedDigest={formattedDigest}
+                handleDigestSubmit={handleDigestSubmit}
+              />
             </Col>
           </Row>
           <Row>
