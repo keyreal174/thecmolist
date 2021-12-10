@@ -11,6 +11,7 @@ import Login from "./components/login/Login";
 import Logout from "./components/login/Logout";
 import Network from "./components/app/Network/Network";
 import Notifications from "./components/app/Notifications/Notifications";
+import Guides from "./components/app/Guides/Guides";
 import OnboardingStep1 from "./components/app/Onboarding/OnboardingStep1.js";
 import OnboardingStep2 from "./components/app/Onboarding/OnboardingStep2.js";
 import Profile from "./components/app/Profile/Profile";
@@ -293,6 +294,19 @@ class App extends React.Component {
             render={(props) =>
               this.state.authed ? (
                 <Notifications />
+              ) : (
+                <Redirect
+                  to={{ pathname: "/login", state: { from: props.location } }}
+                />
+              )
+            }
+          />
+          <Route
+            exact
+            path="/guides"
+            render={(props) =>
+              this.state.authed ? (
+                <Guides />
               ) : (
                 <Redirect
                   to={{ pathname: "/login", state: { from: props.location } }}
