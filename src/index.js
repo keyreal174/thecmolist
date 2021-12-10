@@ -22,6 +22,7 @@ import vendorModel from "./models/vendor";
 import vendorsModel from "./models/vendors";
 import fileModel from "./models/file";
 import suggestionsModel from "./models/suggestions";
+import guidesModel from "./models/guides";
 import Util from "./components/util/Util";
 
 const store = init({
@@ -41,6 +42,7 @@ const store = init({
     vendorsModel,
     suggestionsModel,
     fileModel,
+    guidesModel,
   },
 });
 
