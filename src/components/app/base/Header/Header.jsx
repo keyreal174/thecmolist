@@ -13,7 +13,9 @@ import Apps from "../icons/apps.svg";
 import Group from "../icons/group.svg";
 import HomeIcon from "../icons/home.svg";
 import Logo from "./svgs/logo.svg";
-import Notification from "../icons/notification.svg";
+import Guide from "../icons/guide.svg";
+import Martecth from "../icons/martech.svg";
+import Contractor from "../icons/contractor.svg";
 import Rectangle2 from "../icons/rectangle2.svg";
 import Search from "../icons/search.svg";
 import InviteButton from "../Invite/InviteButton";
@@ -273,27 +275,30 @@ function Header({
                 <div>Members</div>
                 <div className="header--separator"></div>
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/vendors">
-                <img src={Apps} alt="Stacks" />
-                <div>Vendors</div>
-                <div className="header--separator"></div>
-              </Nav.Link>
-              <Nav.Link as={NavLink} to="/notifications">
-                <img src={Notification} alt="" />
-                <div>Notifications</div>
+              <Nav.Link as={NavLink} to="/guides">
+                <img src={Guide} alt="" />
+                <div>Guides</div>
                 <div className="header--separator"></div>
                 {notificationCount > 0 && (
                   <div className="notifications--wrapper">
-                    <img
-                      className="notifications--rectangle"
-                      src={Rectangle2}
-                      alt="Amount rectangle"
-                    />
-                    <span className="notifications--number">
-                      {notificationCount}
-                    </span>
+                    {notificationCount}
                   </div>
                 )}
+              </Nav.Link>
+              <Nav.Link as={NavLink} to="/vendors">
+                <img src={Martecth} alt="Stacks" />
+                <div>Martech</div>
+                <div className="header--separator"></div>
+              </Nav.Link>
+              <Nav.Link as={NavLink} to="/vendors">
+                <img src={Apps} alt="Stacks" />
+                <div>Agencies</div>
+                <div className="header--separator"></div>
+              </Nav.Link>
+              <Nav.Link as={NavLink} to="/vendors">
+                <img src={Contractor} alt="Stacks" />
+                <div>Contractors</div>
+                <div className="header--separator"></div>
               </Nav.Link>
 
               <NavDropdown
