@@ -161,6 +161,7 @@ function Header({
 }) {
   const [isAdminUser, setIsAdminUser] = useState(false);
   const history = useHistory();
+
   useEffect(() => {
     const fetch = async () => await getProfileStats();
 
@@ -285,17 +286,17 @@ function Header({
                   </div>
                 )}
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/vendors">
+              <Nav.Link as={NavLink} to="/vendors?type=martech">
                 <img src={Martecth} alt="Stacks" />
                 <div>Martech</div>
                 <div className="header--separator"></div>
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/vendors">
+              <Nav.Link as={NavLink} to="/vendors?type=agencies">
                 <img src={Apps} alt="Stacks" />
                 <div>Agencies</div>
                 <div className="header--separator"></div>
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/vendors">
+              <Nav.Link as={NavLink} to="/vendors?type=contractors">
                 <img src={Contractor} alt="Stacks" />
                 <div>Contractors</div>
                 <div className="header--separator"></div>

@@ -31,6 +31,7 @@ const Vendors = (props) => {
   const [categoryTitle, setCategoryTitle] = useState("");
   const [isAffiliated, setIsAffiliated] = useState(true);
   const [isAdminUser, setIsAdminUser] = useState(false);
+  const [vendorType, setVendorType] = useState("");
   const changeDashboardHeader = (idx) => {
     if (idx < filters.length) {
       setBannerTitle(filters[idx].title);
@@ -38,6 +39,13 @@ const Vendors = (props) => {
     }
   };
   useEffect(() => {
+    const { search, state } = location;
+    const type = search
+      ? search.replace("?type=", "")
+      : state && state.type
+      ? state.type
+      : "";
+    setVendorType(type);
     const getProfileStats = async () => props.getProfileStats();
     getProfileStats().then((profileStats) => {
       let newFilters = [
@@ -112,9 +120,13 @@ const Vendors = (props) => {
         props.fetchVendorsDetail({
           slug: path,
           filter: newFilters[idx].slug,
+          type,
         });
       } else {
-        props.fetchVendorList(newFilters[idx].slug);
+        props.fetchVendorList({
+          filterKey: newFilters[idx].slug,
+          type,
+        });
         setIsDetail(false);
       }
       changeDashboardHeader(idx);
@@ -128,9 +140,13 @@ const Vendors = (props) => {
       props.fetchVendorsDetail({
         slug: path,
         filter: filters[idx].slug,
+        type: vendorType,
       });
     } else {
-      props.changeFilter(filters[idx].slug);
+      props.changeFilter({
+        filterKey: filters[idx].slug,
+        type: vendorType,
+      });
     }
     changeDashboardHeader(idx);
   };
@@ -238,7 +254,6 @@ const Vendors = (props) => {
           </div>
           {isDetail ? (
             <VendorsDetail
-              changeSubFilter={props.changeSubFilter}
               vendorsDetail={props.vendorsDetail}
               loadingVendors={props.loadingVendors}
               mobileMenuOpen={mobileMenuOpen}
@@ -264,6 +279,7 @@ const Vendors = (props) => {
                     vendorListBlockerText={props.vendorListBlockerText}
                     filterIdx={filterIdx}
                     isAdminUser={isAdminUser}
+                    type={vendorType}
                   />
                 )}
               </Col>

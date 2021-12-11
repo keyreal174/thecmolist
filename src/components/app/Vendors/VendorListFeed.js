@@ -8,7 +8,7 @@ import VendorCard from "./VendorCard";
 import Arrow from "../base/icons/next_arrow.svg";
 import "./vendors.scss";
 
-const SeeAllBtn = ({ vendor, filterIdx }) => {
+const SeeAllBtn = ({ vendor, filterIdx, type }) => {
   const history = useHistory();
 
   return (
@@ -18,7 +18,8 @@ const SeeAllBtn = ({ vendor, filterIdx }) => {
         history.push({
           pathname: vendor.link,
           state: {
-            filterIdx: filterIdx,
+            filterIdx,
+            type,
           },
         });
       }}
@@ -29,7 +30,7 @@ const SeeAllBtn = ({ vendor, filterIdx }) => {
   );
 };
 
-const VendorListFeed = ({ vendor, filterIdx, index }) => {
+const VendorListFeed = ({ vendor, filterIdx, index, type }) => {
   return (
     <>
       {index !== 0 && <div className="vendor-list-divider"></div>}
@@ -91,7 +92,7 @@ const VendorListFeed = ({ vendor, filterIdx, index }) => {
         </div>
       </div>
       <div className="vendor-list-button-wrapper">
-        <SeeAllBtn vendor={vendor} filterIdx={filterIdx} />
+        <SeeAllBtn vendor={vendor} filterIdx={filterIdx} type={type} />
       </div>
     </>
   );
