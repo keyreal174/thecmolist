@@ -22,7 +22,8 @@ var MockAdapter,
   MockedApiSuggestions,
   MockedApiFollowersList,
   MockedApiFollowingList,
-  MockedApiOnboardingTopics;
+  MockedApiOnboardingTopics,
+  MockedApiGuideList;
 if (process.env.NODE_ENV !== "production") {
   MockAdapter = require("axios-mock-adapter");
   MockedApiNetwork = require("./api_network.json");
@@ -48,6 +49,7 @@ if (process.env.NODE_ENV !== "production") {
   MockedApiOnboardingTopics = require("./api_onboarding_topics.json");
   MockedApiFollowersList = require("./api_followers.json");
   MockedApiFollowingList = require("./api_following.json");
+  MockedApiGuideList = require("./api_guides.json");
 }
 function MockRequests() {
   if (process.env.NODE_ENV === "production") return;
@@ -159,6 +161,11 @@ function MockRequests() {
       path: /\/api\/following.*/,
       responseCode: 200,
       response: MockedApiFollowingList,
+    },
+    {
+      path: /\/api\/guides.*/,
+      responseCode: 200,
+      response: MockedApiGuideList,
     },
   ];
 

@@ -1,0 +1,482 @@
+{
+  "guideList": [
+    {
+      "name": "audiencedata",
+      "description": "Audience Data",
+      "content": [
+        {
+          "content_id": 182,
+          "replyText": "Reply",
+          "content": {
+            "header": {
+              "markdown": "[Michael Marcellin](/profile/michael-marcellin) CMO at Juniper Networks",
+              "subtext": {
+                "markdown": "[Created a post](/content/182) in [#marketingautomation](/topic/marketingautomation), [#mymarketingstack](/topic/mymarketingstack), [#websitetools](/topic/websitetools) "
+              },
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/1632750850829michael-marcellin.jpg"
+            },
+            "headline": {
+              "text": "Added new vendors to my marketing stack",
+              "link": "/content/182"
+            },
+            "articletext": {
+              "markdown": "Added [@Oracle](/vendor/oracle) to [#marketingautomation](/topic/marketingautomation)\n\nAdded [@Adobe](/vendor/adobe) to [#websitetools](/topic/websitetools)\n\n​ \n\n​ [#mymarketingstack](/topic/mymarketingstack)"
+            },
+            "contentlink": "/profile/michael-marcellin",
+            "collections": [
+              "#marketingautomation",
+              "#mymarketingstack",
+              "#websitetools"
+            ],
+            "author": "Michael",
+            "articletextlines": 3
+          },
+          "entities": [
+            {
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYzMjc4NzE2NjM3N2EuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
+              "name": "Oracle Marketing",
+              "role": "Austin, TX",
+              "link": "/vendor/oracle"
+            },
+            {
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzY2Mzg3NzI2MEEucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+              "name": "Adobe",
+              "role": "San Jose, CA",
+              "link": "/vendor/adobe"
+            }
+          ]
+        },
+        {
+          "content_id": 182,
+          "replyText": "Reply",
+          "content": {
+            "header": {
+              "markdown": "[Michael Marcellin](/profile/michael-marcellin) CMO at Juniper Networks",
+              "subtext": {
+                "markdown": "[Created a post](/content/182) in [#marketingautomation](/topic/marketingautomation), [#mymarketingstack](/topic/mymarketingstack), [#websitetools](/topic/websitetools) "
+              },
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/1632750850829michael-marcellin.jpg"
+            },
+            "headline": {
+              "text": "Added new vendors to my marketing stack",
+              "link": "/content/182"
+            },
+            "articletext": {
+              "markdown": "Added [@Oracle](/vendor/oracle) to [#marketingautomation](/topic/marketingautomation)\n\nAdded [@Adobe](/vendor/adobe) to [#websitetools](/topic/websitetools)\n\n​ \n\n​ [#mymarketingstack](/topic/mymarketingstack)"
+            },
+            "contentlink": "/profile/michael-marcellin",
+            "collections": [
+              "#marketingautomation",
+              "#mymarketingstack",
+              "#websitetools"
+            ],
+            "author": "Michael",
+            "articletextlines": 3
+          },
+          "entities": [
+            {
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYzMjc4NzE2NjM3N2EuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
+              "name": "Oracle Marketing",
+              "role": "Austin, TX",
+              "link": "/vendor/oracle"
+            },
+            {
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzY2Mzg3NzI2MEEucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+              "name": "Adobe",
+              "role": "San Jose, CA",
+              "link": "/vendor/adobe"
+            }
+          ]
+        },
+        {
+          "content_id": 182,
+          "replyText": "Reply",
+          "content": {
+            "header": {
+              "markdown": "[Michael Marcellin](/profile/michael-marcellin) CMO at Juniper Networks",
+              "subtext": {
+                "markdown": "[Created a post](/content/182) in [#marketingautomation](/topic/marketingautomation), [#mymarketingstack](/topic/mymarketingstack), [#websitetools](/topic/websitetools) "
+              },
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/1632750850829michael-marcellin.jpg"
+            },
+            "headline": {
+              "text": "Added new vendors to my marketing stack",
+              "link": "/content/182"
+            },
+            "articletext": {
+              "markdown": "Added [@Oracle](/vendor/oracle) to [#marketingautomation](/topic/marketingautomation)\n\nAdded [@Adobe](/vendor/adobe) to [#websitetools](/topic/websitetools)\n\n​ \n\n​ [#mymarketingstack](/topic/mymarketingstack)"
+            },
+            "contentlink": "/profile/michael-marcellin",
+            "collections": [
+              "#marketingautomation",
+              "#mymarketingstack",
+              "#websitetools"
+            ],
+            "author": "Michael",
+            "articletextlines": 3
+          },
+          "entities": [
+            {
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYzMjc4NzE2NjM3N2EuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
+              "name": "Oracle Marketing",
+              "role": "Austin, TX",
+              "link": "/vendor/oracle"
+            },
+            {
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzY2Mzg3NzI2MEEucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+              "name": "Adobe",
+              "role": "San Jose, CA",
+              "link": "/vendor/adobe"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "brandmarketing",
+      "description": "Brand Marketing",
+      "content": [
+        {
+          "parent_content_id": 175,
+          "content_id": 178,
+          "replyText": "Reply",
+          "content": {
+            "header": {
+              "markdown": "[Atri Chatterjee](/profile/atri-chatterjee) CMO at ForgeRock",
+              "subtext": {
+                "markdown": "[Commented on an article](/content/175) in [#leadership](/topic/leadership), [#news](/topic/news) "
+              },
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/1619825893628atri-chatterjee.jpg"
+            },
+            "headline": {
+              "text": "",
+              "link": "/content/175"
+            },
+            "articletext": {
+              "markdown": "Thank you for your kind words [@Julie Herendeen](/profile/julie) and for your good advice when we were evaluating NASDAQ versus NYSE.  We were influenced by your expereince with the  NYSE and are now listed on the NYSE.\n"
+            },
+            "contentlink": "/profile/atri-chatterjee",
+            "collections": ["#leadership", "#news"],
+            "author": "Atri",
+            "articletextlines": 3,
+            "num_thanks": 1
+          },
+          "parent_content": {
+            "header": {
+              "markdown": "[CMOlist News](/profile/andrea-frost) Editor at CMOlist",
+              "subtext": {
+                "markdown": "[Posted an article](/content/175) in [#leadership](/topic/leadership), [#news](/topic/news) "
+              },
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYzMjI3NDE0NTczMUNNT2xpc3QtQ2lyY2xlLUljb24ucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0="
+            },
+            "headline": {
+              "text": "ForgeRock CEO Rosch On IPO: ‘This Is A Really Exciting Market’",
+              "link": "/content/175"
+            },
+            "articletext": {
+              "markdown": "**Congratulations to **[**Atri Chatterjee**](https://www.thecmolist.com/profile/atri-chatterjee)** on ForgeRock’s IPO. **While IPOs are often viewed as a financial event, CMOs have a huge role in making the IPO a success by setting the positioning, branding and communications leading up to the IPO and of course beyond the IPO to scale with public market expectations.\n\n​\n\n[View article at crn.com](https://www.crn.com/news/security/forgerock-ceo-rosch-on-ipo-this-is-a-really-exciting-market-)"
+            },
+            "contentlink": "/profile/andrea-frost",
+            "author": "CMOlist"
+          },
+          "entities": [
+            {
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NjIxNDg1NDYzNmp1bGllLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
+              "name": "Julie Herendeen",
+              "role": "Former CMO at Pagerduty",
+              "link": "/profile/julie"
+            }
+          ]
+        },
+        {
+          "content_id": 177,
+          "replyText": "Reply",
+          "content": {
+            "header": {
+              "markdown": "[Julie Herendeen](/profile/julie) Former CMO at Pagerduty",
+              "subtext": {
+                "markdown": "[Posted an article](/content/177) in [#attribution](/topic/attribution), [#news](/topic/news) "
+              },
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NjIxNDg1NDYzNmp1bGllLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ=="
+            },
+            "headline": {
+              "text": "Adobe’s New Marketing AI Let Customer Cut Ad Spend 50% While Growing Sales 10%",
+              "link": "/content/177"
+            },
+            "articletext": {
+              "markdown": "**AI seems to be the product capability of the week**, but focused on large customers. [@Adobe](/vendor/adobe) announced AI capabilities to help marketers understand which parts of their marketing mix are delivering results. We all know this is a dark art that starts with a deep understanding of the customer journey, but for their largest customers, they both claim AI is saving them up to 50%.\n\n\n​\n\n[View article at forbes.com](https://www.forbes.com/sites/johnkoetsier/2021/09/20/adobes-new-marketing-ai-let-customer-cut-ad-spend-50-while-growing-sales-10)"
+            },
+            "contentlink": "/profile/julie",
+            "collections": ["#attribution", "#news"],
+            "author": "Julie",
+            "image": "https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F6148b7eac3b40db800811729%2F0x0.jpg",
+            "imageDisplay": "square"
+          },
+          "entities": [
+            {
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzY2Mzg3NzI2MEEucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+              "name": "Adobe",
+              "role": "San Jose, CA",
+              "link": "/vendor/adobe"
+            }
+          ]
+        },
+        {
+          "content_id": 175,
+          "replyText": "Reply",
+          "content": {
+            "header": {
+              "markdown": "[CMOlist News](/profile/andrea-frost) Editor at CMOlist",
+              "subtext": {
+                "markdown": "[Posted an article](/content/175) in [#leadership](/topic/leadership), [#news](/topic/news) "
+              },
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYzMjI3NDE0NTczMUNNT2xpc3QtQ2lyY2xlLUljb24ucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0="
+            },
+            "headline": {
+              "text": "ForgeRock CEO Rosch On IPO: ‘This Is A Really Exciting Market’",
+              "link": "/content/175"
+            },
+            "articletext": {
+              "markdown": "**Congratulations to **[**Atri Chatterjee**](https://www.thecmolist.com/profile/atri-chatterjee)** on ForgeRock’s IPO. **While IPOs are often viewed as a financial event, CMOs have a huge role in making the IPO a success by setting the positioning, branding and communications leading up to the IPO and of course beyond the IPO to scale with public market expectations.\n\n​\n\n[View article at crn.com](https://www.crn.com/news/security/forgerock-ceo-rosch-on-ipo-this-is-a-really-exciting-market-)"
+            },
+            "contentlink": "/profile/andrea-frost",
+            "collections": ["#leadership", "#news"],
+            "author": "CMOlist",
+            "image": "https://www.crn.com/resources/026d-1341b6db22df-fb45ab346bba-1000/forgerock-ceo-fran.jpg",
+            "imageDisplay": "square"
+          },
+          "entities": []
+        },
+        {
+          "parent_content_id": 153,
+          "content_id": 174,
+          "replyText": "Reply",
+          "content": {
+            "header": {
+              "markdown": "[Sheila Joglekar Vashee](/profile/sheila-joglekar-vashee) Partner at Basis Set",
+              "subtext": {
+                "markdown": "[Replied to a question](/content/153) in [#crm](/topic/crm), [#marketinganalytics](/topic/marketinganalytics), [#marketingautomation](/topic/marketingautomation), [#martech](/topic/martech), [#mymarketingstack](/topic/mymarketingstack) "
+              },
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/1629491272214sheila-joglekar-vashee.jpg"
+            },
+            "headline": {
+              "text": "",
+              "link": "/content/153"
+            },
+            "articletext": {
+              "markdown": "I recommend Iterable for early stage marketing automation. You can leverage it across channels and it's not expensive\n"
+            },
+            "contentlink": "/profile/sheila-joglekar-vashee",
+            "collections": [
+              "#crm",
+              "#marketinganalytics",
+              "#marketingautomation",
+              "#martech",
+              "#mymarketingstack"
+            ],
+            "author": "Sheila",
+            "articletextlines": 3,
+            "num_thanks": 1
+          },
+          "parent_content": {
+            "header": {
+              "markdown": "[Christina Patrick](/profile/christina-patrick) Head of Marketing  at Paid",
+              "subtext": {
+                "markdown": "[Asked a question](/content/153) in [#crm](/topic/crm), [#marketinganalytics](/topic/marketinganalytics), [#marketingautomation](/topic/marketingautomation), [#martech](/topic/martech), [#mymarketingstack](/topic/mymarketingstack) "
+              },
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/1631260508066christina-patrick.jpg"
+            },
+            "headline": {
+              "text": "Marketing stack for a startup",
+              "link": "/content/153"
+            },
+            "articletext": {
+              "markdown": "Hi Folks\n\nKeen to hear your thoughts on this, you are the first marketing hire for a start up that has received seed funding, but has a small marketing budget. What does your 'must have have' marketing tech stack look like?  In that same vein, if anyone uses hubspot, I'd love to hear how it's working for you.\n\n​\n\n​\n"
+            },
+            "contentlink": "/profile/christina-patrick",
+            "author": "Christina",
+            "articletextlines": 3
+          },
+          "entities": []
+        },
+        {
+          "parent_content_id": 172,
+          "content_id": 173,
+          "replyText": "Reply",
+          "content": {
+            "header": {
+              "markdown": "[Jamie Barnett](/profile/jamie-barnett) Advisor at Self-employed",
+              "subtext": {
+                "markdown": "[Commented on an article](/content/172) in [#brand](/topic/brand) "
+              },
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/1619825894163jamie-barnett.jpg"
+            },
+            "headline": {
+              "text": "",
+              "link": "/content/172"
+            },
+            "articletext": {
+              "markdown": "aw, thank you, julie!\n"
+            },
+            "contentlink": "/profile/jamie-barnett",
+            "collections": ["#brand"],
+            "author": "Jamie",
+            "articletextlines": 3,
+            "num_thanks": 1
+          },
+          "parent_content": {
+            "header": {
+              "markdown": "[Julie Herendeen](/profile/julie) CMO at Pagerduty",
+              "subtext": {
+                "markdown": "[Posted an article](/content/172) in [#brand](/topic/brand) "
+              },
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NjIxNDg1NDYzNmp1bGllLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ=="
+            },
+            "headline": {
+              "text": "Nail your next branding project: Here’s your 7-point checklist",
+              "link": "/content/172"
+            },
+            "articletext": {
+              "markdown": "[https://jamiecatherinebarnett.medium.com/nail-your-next-branding-project-heres-your-7-point-checklist-5f80ffe9ccc](https://jamiecatherinebarnett.medium.com/nail-your-next-branding-project-heres-your-7-point-checklist-5f80ffe9ccc)\n\n\n\n**Fantastic article by **[@Jamie Barnett](/profile/jamie-barnett)** on the 7 point checklist for Branding**. Thank you for helping Marketers distill the Branding process Jamie!\n"
+            },
+            "contentlink": "/profile/julie",
+            "author": "Julie"
+          },
+          "entities": []
+        }
+      ]
+    },
+    {
+      "name": "videomarketing",
+      "description": "Video Marketing",
+      "content": [
+        {
+          "content_id": 182,
+          "replyText": "Reply",
+          "content": {
+            "header": {
+              "markdown": "[Michael Marcellin](/profile/michael-marcellin) CMO at Juniper Networks",
+              "subtext": {
+                "markdown": "[Created a post](/content/182) in [#marketingautomation](/topic/marketingautomation), [#mymarketingstack](/topic/mymarketingstack), [#websitetools](/topic/websitetools) "
+              },
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/1632750850829michael-marcellin.jpg"
+            },
+            "headline": {
+              "text": "Added new vendors to my marketing stack",
+              "link": "/content/182"
+            },
+            "articletext": {
+              "markdown": "Added [@Oracle](/vendor/oracle) to [#marketingautomation](/topic/marketingautomation)\n\nAdded [@Adobe](/vendor/adobe) to [#websitetools](/topic/websitetools)\n\n​ \n\n​ [#mymarketingstack](/topic/mymarketingstack)"
+            },
+            "contentlink": "/profile/michael-marcellin",
+            "collections": [
+              "#marketingautomation",
+              "#mymarketingstack",
+              "#websitetools"
+            ],
+            "author": "Michael",
+            "articletextlines": 3
+          },
+          "entities": [
+            {
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYzMjc4NzE2NjM3N2EuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
+              "name": "Oracle Marketing",
+              "role": "Austin, TX",
+              "link": "/vendor/oracle"
+            },
+            {
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzY2Mzg3NzI2MEEucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+              "name": "Adobe",
+              "role": "San Jose, CA",
+              "link": "/vendor/adobe"
+            }
+          ]
+        },
+        {
+          "content_id": 182,
+          "replyText": "Reply",
+          "content": {
+            "header": {
+              "markdown": "[Michael Marcellin](/profile/michael-marcellin) CMO at Juniper Networks",
+              "subtext": {
+                "markdown": "[Created a post](/content/182) in [#marketingautomation](/topic/marketingautomation), [#mymarketingstack](/topic/mymarketingstack), [#websitetools](/topic/websitetools) "
+              },
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/1632750850829michael-marcellin.jpg"
+            },
+            "headline": {
+              "text": "Added new vendors to my marketing stack",
+              "link": "/content/182"
+            },
+            "articletext": {
+              "markdown": "Added [@Oracle](/vendor/oracle) to [#marketingautomation](/topic/marketingautomation)\n\nAdded [@Adobe](/vendor/adobe) to [#websitetools](/topic/websitetools)\n\n​ \n\n​ [#mymarketingstack](/topic/mymarketingstack)"
+            },
+            "contentlink": "/profile/michael-marcellin",
+            "collections": [
+              "#marketingautomation",
+              "#mymarketingstack",
+              "#websitetools"
+            ],
+            "author": "Michael",
+            "articletextlines": 3
+          },
+          "entities": [
+            {
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYzMjc4NzE2NjM3N2EuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
+              "name": "Oracle Marketing",
+              "role": "Austin, TX",
+              "link": "/vendor/oracle"
+            },
+            {
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzY2Mzg3NzI2MEEucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+              "name": "Adobe",
+              "role": "San Jose, CA",
+              "link": "/vendor/adobe"
+            }
+          ]
+        },
+        {
+          "content_id": 182,
+          "replyText": "Reply",
+          "content": {
+            "header": {
+              "markdown": "[Michael Marcellin](/profile/michael-marcellin) CMO at Juniper Networks",
+              "subtext": {
+                "markdown": "[Created a post](/content/182) in [#marketingautomation](/topic/marketingautomation), [#mymarketingstack](/topic/mymarketingstack), [#websitetools](/topic/websitetools) "
+              },
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/1632750850829michael-marcellin.jpg"
+            },
+            "headline": {
+              "text": "Added new vendors to my marketing stack",
+              "link": "/content/182"
+            },
+            "articletext": {
+              "markdown": "Added [@Oracle](/vendor/oracle) to [#marketingautomation](/topic/marketingautomation)\n\nAdded [@Adobe](/vendor/adobe) to [#websitetools](/topic/websitetools)\n\n​ \n\n​ [#mymarketingstack](/topic/mymarketingstack)"
+            },
+            "contentlink": "/profile/michael-marcellin",
+            "collections": [
+              "#marketingautomation",
+              "#mymarketingstack",
+              "#websitetools"
+            ],
+            "author": "Michael",
+            "articletextlines": 3
+          },
+          "entities": [
+            {
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYzMjc4NzE2NjM3N2EuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
+              "name": "Oracle Marketing",
+              "role": "Austin, TX",
+              "link": "/vendor/oracle"
+            },
+            {
+              "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzY2Mzg3NzI2MEEucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
+              "name": "Adobe",
+              "role": "San Jose, CA",
+              "link": "/vendor/adobe"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
