@@ -14,7 +14,7 @@ import Group from "../icons/group.svg";
 import HomeIcon from "../icons/home.svg";
 import Logo from "./svgs/logo.svg";
 import Guide from "../icons/guide.svg";
-import Martecth from "../icons/martech.svg";
+import Martech from "../icons/martech.svg";
 import Contractor from "../icons/contractor.svg";
 import Rectangle2 from "../icons/rectangle2.svg";
 import Search from "../icons/search.svg";
@@ -286,7 +286,7 @@ function Header({
                 )}
               </Nav.Link>
               <Nav.Link as={NavLink} to="/vendors">
-                <img src={Martecth} alt="Stacks" />
+                <img src={Martech} alt="Stacks" />
                 <div>Martech</div>
                 <div className="header--separator"></div>
               </Nav.Link>
