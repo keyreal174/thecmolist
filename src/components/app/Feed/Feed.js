@@ -11,6 +11,7 @@ import Filter from "../base/Filter/Filter";
 import Article from "../base/Article/Article";
 import InviteModal from "../base/Invite/InviteModal";
 import PostOnboarding from "../base/PostOnboarding/PostOnboarding";
+import FeaturedContent from "../base/FeaturedContent/FeaturedContent";
 import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
 import ProfileStats from "../ProfileStats/ProfileStats";
 import AskQuestion from "../base/AskQuestion/AskQuestion";
@@ -230,6 +231,7 @@ function RenderDashboard(props) {
     profileStats,
     saveContent,
     isAdminUser,
+    featuredContent,
   } = props;
   return (
     <Container>
@@ -247,6 +249,9 @@ function RenderDashboard(props) {
                 postOnboarding={profileStats.postOnboarding}
                 isAdminUser={isAdminUser}
               />
+            )}
+            {featuredContent && (
+              <FeaturedContent featuredContent={featuredContent} />
             )}
             <AskQuestion
               className="feed--ask-question"
@@ -560,6 +565,7 @@ const Feed = (props) => {
             memberList={props.activeFeedMembers}
             vendorList={props.activeFeedVendors}
             featuredStacks={props.activeFeedFeaturedStacks}
+            featuredContent={props.activeFeedFeaturedContent}
             activeGroup={
               filterIdx < filters.length ? filters[filterIdx].slug : null
             }
@@ -594,6 +600,7 @@ const mapState = (state) => {
     activeFeedMembers: state.feedModel.activeFeedMembers,
     activeFeedVendors: state.feedModel.activeFeedVendors,
     activeFeedFeaturedStacks: state.feedModel.activeFeedFeaturedStacks,
+    activeFeedFeaturedContent: state.feedModel.activeFeedFeaturedContent,
     feedLoading: state.feedModel.feedLoading,
     filterIdx: state.feedModel.filterIdx,
     profileStats: state.profileModel.profileStats,
