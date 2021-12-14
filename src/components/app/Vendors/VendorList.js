@@ -11,6 +11,7 @@ const VendorList = ({
   vendorListBlockerText,
   handleInviteModal,
   isAdminUser,
+  type,
 }) => {
   return (
     <>
@@ -31,7 +32,7 @@ const VendorList = ({
         )}
         {vendorList &&
           vendorList.map((vendor, i) => (
-            <VendorListFeed key={i} vendor={vendor} index={i} />
+            <VendorListFeed key={i} vendor={vendor} index={i} type={type} />
           ))}
         {vendorList && vendorList.length === 0 && (
           <div className="wrapper article-wrapper no-feed-data-header">

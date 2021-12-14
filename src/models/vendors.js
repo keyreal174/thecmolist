@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const vendorRequest = (sort, filter, subfilter, token) => {
+const vendorRequest = (sort, filter, subfilter, type, token) => {
   let headers = {
     "timezone-offset": new Date().getTimezoneOffset(),
   };
@@ -20,6 +20,10 @@ const vendorRequest = (sort, filter, subfilter, token) => {
     }
     url += `&subfilter=${subfilter}`;
   }
+
+  if (type) {
+    url += `&type=${type}`;
+  }
   if (token) {
     headers.token = token;
   }
@@ -27,7 +31,7 @@ const vendorRequest = (sort, filter, subfilter, token) => {
 };
 
 // vendors flat list
-const vendorsFlatListRequest = (sort, filter, subfilter, token) => {
+const vendorsFlatListRequest = (sort, filter, subfilter, type, token) => {
   let headers = {
     "timezone-offset": new Date().getTimezoneOffset(),
   };
@@ -47,13 +51,16 @@ const vendorsFlatListRequest = (sort, filter, subfilter, token) => {
     }
     url += `&subfilter=${subfilter}`;
   }
+  if (type) {
+    url += `&type=${type}`;
+  }
   if (token) {
     headers.token = token;
   }
   return axios.get(url, { headers });
 };
 
-const vendorListRequest = (sort, filter, subfilter, token) => {
+const vendorListRequest = (sort, filter, subfilter, type, token) => {
   let headers = {
     "timezone-offset": new Date().getTimezoneOffset(),
   };
@@ -73,17 +80,20 @@ const vendorListRequest = (sort, filter, subfilter, token) => {
     }
     url += `&subfilter=${subfilter}`;
   }
+  if (type) {
+    url += `&type=${type}`;
+  }
   if (token) {
     headers.token = token;
   }
   return axios.get(url, { headers });
 };
 
-const vendorsDetailRequest = (name, filter, token) => {
+const vendorsDetailRequest = (name, filter, type, token) => {
   let headers = {
     "timezone-offset": new Date().getTimezoneOffset(),
   };
-  let url = `/api/vendor_detail/${name}?filter=${filter}`;
+  let url = `/api/vendor_detail/${name}?filter=${filter}&type=${type}`;
   if (token) {
     headers.token = token;
   }
@@ -242,7 +252,7 @@ export default {
     },
   },
   effects: (dispatch) => ({
-    async fetchActiveVendorsFlatList(_, rootState) {
+    async fetchActiveVendorsFlatList(type, rootState) {
       try {
         const {
           activeFilter,
@@ -256,6 +266,7 @@ export default {
           sortOrder,
           activeFilter,
           activeSubFilter,
+          type,
           dataForFilter?.token
         );
         let data = response.data;
@@ -268,7 +279,8 @@ export default {
         dispatch.vendorsModel.setLoading(false);
       }
     },
-    async changeFilter(filterKey, rootState) {
+    async changeFilter(data, rootState) {
+      const { filterKey, type } = data;
       const { activeFilter, activeSubFilter } = rootState.vendorsModel;
       if (filterKey === activeFilter) {
         // changing to the currently active filter
@@ -297,6 +309,7 @@ export default {
             sortOrder,
             filterKey.toLowerCase(),
             "",
+            type,
             null
           );
           dispatch.vendorsModel.setVendorList(response.data);
@@ -305,7 +318,8 @@ export default {
         }
       }
     },
-    async changeFilterFlatList(filterKey, rootState) {
+    async changeFilterFlatList(data, rootState) {
+      const { filterKey, type } = data;
       const { activeFilter, activeSubFilter } = rootState.vendorsModel;
       if (filterKey === activeFilter) {
         // changing to the currently active filter
@@ -334,6 +348,7 @@ export default {
             sortOrder,
             filterKey.toLowerCase(),
             "",
+            type,
             null
           );
           let data = response.data;
@@ -344,8 +359,9 @@ export default {
         }
       }
     },
-    async changeSubFilter(subfilter, rootState) {
+    async changeSubFilter(data, rootState) {
       try {
+        const { subfilter, type } = data;
         const { activeSubFilter } = rootState.vendorsModel;
         let subFilterToChangeTo = subfilter;
         if (activeSubFilter === subfilter) {
@@ -360,6 +376,7 @@ export default {
           sortOrder,
           activeFilter,
           subFilterToChangeTo,
+          type,
           null
         );
         dispatch.vendorsModel.setVendorList(response.data);
@@ -370,8 +387,9 @@ export default {
         dispatch.vendorsModel.setLoading(false);
       }
     },
-    async changeSubFilterFlatList(subfilter, rootState) {
+    async changeSubFilterFlatList(data, rootState) {
       try {
+        const { subfilter, type } = data;
         const { activeSubFilter } = rootState.vendorsModel;
         let subFilterToChangeTo = subfilter;
         if (activeSubFilter === subfilter) {
@@ -386,6 +404,7 @@ export default {
           sortOrder,
           activeFilter,
           subFilterToChangeTo,
+          type,
           null
         );
         let data = response.data;
@@ -424,14 +443,23 @@ export default {
         throw new Error("Can not get skill categories.");
       }
     },
-    async fetchVendorList(filterKey, rootState) {
+    async fetchVendorList(data, rootState) {
       try {
+        const { filterKey, type } = data;
+
         const { sortOrder } = rootState.vendorsModel;
         dispatch.vendorsModel.setLoading(true);
 
-        const response = await vendorListRequest(sortOrder, filterKey, "", "");
+        const response = await vendorListRequest(
+          sortOrder,
+          filterKey,
+          "",
+          type,
+          ""
+        );
         dispatch.vendorsModel.setVendorList(response.data);
       } catch (error) {
+        console.log(error);
         throw new Error("Can not fetch vendor list");
       } finally {
         dispatch.vendorsModel.setLoading(false);
@@ -439,9 +467,9 @@ export default {
     },
     async fetchVendorsDetail(data) {
       try {
-        let { slug, filter } = data;
+        let { slug, filter, type } = data;
         dispatch.vendorsModel.setLoading(true);
-        const response = await vendorsDetailRequest(slug, filter);
+        const response = await vendorsDetailRequest(slug, filter, type);
         dispatch.vendorsModel.setVendorsDetail(response.data);
       } catch (error) {
         throw new Error("Can not fetch vendor detail");

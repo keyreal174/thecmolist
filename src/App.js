@@ -351,10 +351,34 @@ class App extends React.Component {
             }
           />
           <Route
-            path="/vendors"
+            path="/vendors_martech"
             render={(props) =>
               this.state.authed ? (
-                <Vendors />
+                <Vendors type="martech" />
+              ) : (
+                <Redirect
+                  to={{ pathname: "/login", state: { from: props.location } }}
+                />
+              )
+            }
+          />
+          <Route
+            path="/vendors_agencies"
+            render={(props) =>
+              this.state.authed ? (
+                <Vendors type="agencies" />
+              ) : (
+                <Redirect
+                  to={{ pathname: "/login", state: { from: props.location } }}
+                />
+              )
+            }
+          />
+          <Route
+            path="/vendors_contractors"
+            render={(props) =>
+              this.state.authed ? (
+                <Vendors type="contractors" />
               ) : (
                 <Redirect
                   to={{ pathname: "/login", state: { from: props.location } }}

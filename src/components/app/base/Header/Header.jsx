@@ -6,7 +6,7 @@ import { AsyncTypeahead, TypeaheadMenu } from "react-bootstrap-typeahead";
 import { connect } from "react-redux";
 import { Navbar, Nav, NavDropdown, Button, Container } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import { useHistory } from "react-router";
+import { useHistory, useLocation } from "react-router";
 import PersonHeader from "../PersonHeader/PersonHeader";
 
 import Apps from "../icons/apps.svg";
@@ -16,6 +16,7 @@ import Logo from "./svgs/logo.svg";
 import Guide from "../icons/guide.svg";
 import Martech from "../icons/martech.svg";
 import Contractor from "../icons/contractor.svg";
+import Agency from "../icons/agency.svg";
 import Rectangle2 from "../icons/rectangle2.svg";
 import Search from "../icons/search.svg";
 import InviteButton from "../Invite/InviteButton";
@@ -161,6 +162,7 @@ function Header({
 }) {
   const [isAdminUser, setIsAdminUser] = useState(false);
   const history = useHistory();
+
   useEffect(() => {
     const fetch = async () => await getProfileStats();
 
@@ -285,17 +287,17 @@ function Header({
                   </div>
                 )}
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/vendors">
+              <Nav.Link as={NavLink} to="/vendors_martech">
                 <img src={Martech} alt="Stacks" />
                 <div>Martech</div>
                 <div className="header--separator"></div>
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/vendors">
-                <img src={Apps} alt="Stacks" />
+              <Nav.Link as={NavLink} to="/vendors_agencies">
+                <img src={Agency} alt="Stacks" />
                 <div>Agencies</div>
                 <div className="header--separator"></div>
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/vendors">
+              <Nav.Link as={NavLink} to="vendors_contractors">
                 <img src={Contractor} alt="Stacks" />
                 <div>Contractors</div>
                 <div className="header--separator"></div>
