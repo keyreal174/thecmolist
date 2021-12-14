@@ -10,8 +10,49 @@ import PopularTopics from "../base/PopularTopics/PopularTopics";
 import ActivityIndicator from "../base/ActivityIndicator/ActivityIndicator";
 import RenderGuides from "./RenderGuides";
 
-const Category = ({ name, description, len, isMyProfile, showVendorBtn }) => {
+const Category = ({
+  name,
+  description,
+  profileStats,
+  followTopic,
+  getProfileStats,
+}) => {
   const history = useHistory();
+  const [topicFollowed, setTopicFollowed] = useState(false);
+  const [topic, setTopic] = useState({});
+
+  useEffect(() => {
+    let auxTopic =
+      profileStats &&
+      profileStats.profile &&
+      profileStats.profile.spaces &&
+      profileStats.profile.spaces.find((t) => t.slug === name);
+
+    if (auxTopic) {
+      auxTopic.followed = true;
+      setTopicFollowed(true);
+    } else {
+      setTopicFollowed(false);
+      auxTopic = {
+        name: `#${name}`,
+        slug: name,
+      };
+      auxTopic.followed = false;
+    }
+    setTopic(auxTopic);
+  }, [profileStats]);
+
+  const handleTopicFollowClick = async () => {
+    const newFollowed = !topicFollowed;
+    setTopicFollowed(newFollowed);
+    setTopic({
+      ...topic,
+      followed: newFollowed,
+    });
+    await followTopic(name);
+    await getProfileStats();
+  };
+
   return (
     <div className="vendor-detail-category d-flex align-items-center justify-content-between">
       <div className="d-flex align-items-center vendor-detail-category-content">
@@ -28,20 +69,30 @@ const Category = ({ name, description, len, isMyProfile, showVendorBtn }) => {
       <p className="vendor-detail-category--description text-capitalize mobile">
         {description}
       </p>
-      {len && len > 0 && (isMyProfile || showVendorBtn) ? (
-        <div className="add-vendor-button">
-          <Button className="btn btn-white btn-primary bg-transparent">
-            {"+ Following"}
+      {topic &&
+        (topic.followed ? (
+          <Button
+            className="btn-blue modal-primary-button btn_followed"
+            variant="outline-primary"
+            onClick={handleTopicFollowClick}
+          >
+            + Following
           </Button>
-        </div>
-      ) : null}
+        ) : (
+          <Button
+            className="btn-white btn_following bg-transparent"
+            variant="outline-primary"
+            onClick={handleTopicFollowClick}
+          >
+            + Follow
+          </Button>
+        ))}
     </div>
   );
 };
 
 const Guides = (props) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [showInviteModal, setShowInviteModal] = useState(false);
   const [isAdminUser, setIsAdminUser] = useState(false);
 
   const handleToggle = () => {
@@ -56,6 +107,10 @@ const Guides = (props) => {
     }
   };
 
+  const changeSubFilter = (title) => {
+    document.getElementById(title).scrollIntoView({ behavior: "smooth" });
+  };
+
   useEffect(() => {
     props.fetchGuides();
 
@@ -68,10 +123,6 @@ const Guides = (props) => {
       initPage(props.profileStats);
     }
   }, []);
-
-  const changeSubFilter = (title) => {
-    document.getElementById(title).scrollIntoView({ behavior: "smooth" });
-  };
 
   return (
     <Layout onToggle={handleToggle}>
@@ -100,7 +151,7 @@ const Guides = (props) => {
         </Row>
         <Row>
           {props.guideList && props.guideList.length > 0 && (
-            <Col Col className="network--popular-topics" md="4">
+            <Col className="network--popular-topics" md="4">
               <PopularTopics
                 heading={""}
                 onSubfilterChange={(f) => {
@@ -131,9 +182,9 @@ const Guides = (props) => {
                       <Category
                         name={guide.name}
                         description={guide.description}
-                        len={guide.content?.length || 0}
-                        isMyProfile={false}
-                        showVendorBtn={true}
+                        profileStats={props.profileStats}
+                        getProfileStats={props.getProfileStats}
+                        followTopic={props.followTopic}
                       />
                       <RenderGuides
                         feedData={guide.content}
@@ -167,6 +218,7 @@ const mapDispatch = (dispatch) => {
     getProfileStats: dispatch.profileModel.getProfileStats,
     saveContent: dispatch.contentModel.saveContent,
     changeReaction: dispatch.reactionModel.changeReaction,
+    followTopic: dispatch.topicsModel.followTopic,
   };
 };
 

@@ -31,7 +31,6 @@ const Vendors = (props) => {
   const [categoryTitle, setCategoryTitle] = useState("");
   const [isAffiliated, setIsAffiliated] = useState(true);
   const [isAdminUser, setIsAdminUser] = useState(false);
-  const [vendorType, setVendorType] = useState("");
   const changeDashboardHeader = (idx) => {
     if (idx < filters.length) {
       setBannerTitle(filters[idx].title);
@@ -39,13 +38,7 @@ const Vendors = (props) => {
     }
   };
   useEffect(() => {
-    const { search, state } = location;
-    const type = search
-      ? search.replace("?type=", "")
-      : state && state.type
-      ? state.type
-      : "";
-    setVendorType(type);
+    const { type } = props;
     const getProfileStats = async () => props.getProfileStats();
     getProfileStats().then((profileStats) => {
       let newFilters = [
@@ -140,12 +133,12 @@ const Vendors = (props) => {
       props.fetchVendorsDetail({
         slug: path,
         filter: filters[idx].slug,
-        type: vendorType,
+        type: props.type,
       });
     } else {
       props.changeFilter({
         filterKey: filters[idx].slug,
-        type: vendorType,
+        type: props.type,
       });
     }
     changeDashboardHeader(idx);
@@ -279,7 +272,7 @@ const Vendors = (props) => {
                     vendorListBlockerText={props.vendorListBlockerText}
                     filterIdx={filterIdx}
                     isAdminUser={isAdminUser}
-                    type={vendorType}
+                    type={props.type}
                   />
                 )}
               </Col>

@@ -14,7 +14,7 @@ import Group from "../icons/group.svg";
 import HomeIcon from "../icons/home.svg";
 import Logo from "./svgs/logo.svg";
 import Guide from "../icons/guide.svg";
-import Martecth from "../icons/martech.svg";
+import Martech from "../icons/martech.svg";
 import Contractor from "../icons/contractor.svg";
 import Agency from "../icons/agency.svg";
 import Rectangle2 from "../icons/rectangle2.svg";
@@ -162,36 +162,6 @@ function Header({
 }) {
   const [isAdminUser, setIsAdminUser] = useState(false);
   const history = useHistory();
-  const location = useLocation();
-
-  useEffect(() => {
-    if (location) {
-      const { pathname, search } = location;
-      if (search && pathname === "/vendors") {
-        [...document.querySelectorAll(".nav-link.active")].map(
-          (element, index, array) => {
-            element.classList.remove("active");
-          }
-        );
-        switch (search) {
-          case "?type=martech":
-            document.getElementById("Martech").classList.add("active");
-            break;
-
-          case "?type=agencies":
-            document.getElementById("Agencies").classList.add("active");
-            break;
-
-          case "?type=contractors":
-            document.getElementById("Contractors").classList.add("active");
-            break;
-
-          default:
-            break;
-        }
-      }
-    }
-  }, [location]);
 
   useEffect(() => {
     const fetch = async () => await getProfileStats();
@@ -317,21 +287,17 @@ function Header({
                   </div>
                 )}
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/vendors?type=martech" id="Martech">
-                <img src={Martecth} alt="Stacks" />
+              <Nav.Link as={NavLink} to="/vendors_martech">
+                <img src={Martech} alt="Stacks" />
                 <div>Martech</div>
                 <div className="header--separator"></div>
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/vendors?type=agencies" id="Agencies">
+              <Nav.Link as={NavLink} to="/vendors_agencies">
                 <img src={Agency} alt="Stacks" />
                 <div>Agencies</div>
                 <div className="header--separator"></div>
               </Nav.Link>
-              <Nav.Link
-                as={NavLink}
-                to="/vendors?type=contractors"
-                id="Contractors"
-              >
+              <Nav.Link as={NavLink} to="vendors_contractors">
                 <img src={Contractor} alt="Stacks" />
                 <div>Contractors</div>
                 <div className="header--separator"></div>
