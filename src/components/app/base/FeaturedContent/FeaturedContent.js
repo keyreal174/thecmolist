@@ -22,13 +22,19 @@ const FeaturedContent = (props) => {
               <div className="featured-content-list">
                 <div className="featured-content-list__marker"></div>
                 <div className="featured-content-list-item" key="index">
-                  <p className="featured-content-list-item__title">
-                    {item.title}
-                  </p>
+                  <Link
+                    to={item.link}
+                    onClick={() => {
+                      window.location.href = item.link;
+                    }}
+                  >
+                    <p className="featured-content-list-item__title">
+                      {item.title}
+                    </p>
+                  </Link>
                   <Link
                     className="featured-content-list-item__link"
                     to={item.entity.link}
-                    key={index}
                     onClick={() => {
                       window.location.href = item.entity.link;
                     }}
