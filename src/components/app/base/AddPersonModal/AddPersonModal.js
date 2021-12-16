@@ -137,7 +137,7 @@ function AddPersonModal({
                           as="input"
                           className="modal-person-section-input"
                           onChange={(e) => setName(e.target.value)}
-                          placeholder="Full name"
+                          placeholder={isLink ? "Text to display" : "Full name"}
                           value={name}
                           ref={nameRef}
                         />
@@ -164,7 +164,7 @@ function AddPersonModal({
                           onChange={(e) => setLink(e.target.value)}
                           placeholder={
                             isLink
-                              ? "https://linkedin.com/in/linkedin_ID"
+                              ? "https://"
                               : isPerson
                               ? "https://linkedin.com/in/linkedin_ID"
                               : "URL"
