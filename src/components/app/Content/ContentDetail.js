@@ -252,6 +252,7 @@ const ContentDetail = ({
 
               return (
                 <Article
+                  id={`article-${replyId}`}
                   {...reply.content}
                   className="question-answers--item"
                   key={index}

@@ -84,6 +84,7 @@ function Article(props) {
 
   return (
     <div
+      id={props.id}
       className={`article-wrapper ${props.className ? props.className : ""}`}
     >
       <div>

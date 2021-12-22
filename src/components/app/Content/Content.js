@@ -14,6 +14,7 @@ const Content = ({
   match,
   getProfileStats,
   getReactionsById,
+  content,
   ...rest
 }) => {
   const [error, setError] = useState("");
@@ -27,7 +28,6 @@ const Content = ({
       try {
         setError("");
         await fetchContent(id);
-        window.scrollTo(0, 0);
       } catch (error) {
         setError(error.message);
       }
@@ -38,9 +38,32 @@ const Content = ({
 
   useEffect(() => {
     const fetch = async () => await getProfileStats();
-
     fetch();
   }, []);
+
+  useEffect(() => {
+    window.addEventListener("load", handleLoad);
+
+    return () => {
+      window.removeEventListener("load", handleLoad);
+    };
+  }, [content]);
+
+  const handleLoad = () => {
+    const {
+      params: { id },
+    } = match;
+    if (content && Object.keys(content).length > 0) {
+      if (content.content_id === id) {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      } else if (document.getElementById(`article-${id}`)) {
+        document.getElementById(`article-${id}`).scrollIntoView();
+      }
+    }
+  };
 
   const handleToggle = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -77,6 +100,7 @@ const Content = ({
             ) : (
               <ContentDetail
                 {...rest}
+                content={content}
                 mobileMenuOpen={mobileMenuOpen}
                 setError={setError}
                 getReactionsById={getReactionsById}

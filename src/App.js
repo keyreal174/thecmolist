@@ -63,6 +63,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
+    window.history.scrollRestoration = "manual";
+
     let authTokenExists =
       document.cookie && document.cookie.includes("ipipeauth");
     this.state = {
