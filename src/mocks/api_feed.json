@@ -1,426 +1,416 @@
 {
   "feedData": [
     {
-      "content_id": 182,
+      "content_id": 447,
       "replyText": "Reply",
       "content": {
         "header": {
-          "markdown": "[Michael Marcellin](/profile/michael-marcellin) CMO at Juniper Networks",
+          "markdown": "[Eckart Walther](/profile/eckart) VP Sales & Marketing at CMOlist",
           "subtext": {
-            "markdown": "[Created a post](/content/182) in [#marketingautomation](/topic/marketingautomation), [#mymarketingstack](/topic/mymarketingstack), [#websitetools](/topic/websitetools) "
+            "markdown": "[Created a post](/content/447) in [CMOlist Advisors](/group/cmolist-advisors), [CMOlist Team](/group/cmolist-team), [Dropbox Marketing](/group/dropbox-marketing), [SignalFire Marketing Leaders](/group/signalfire-marketing), [#marketingautomation](/topic/marketingautomation), [#mymarketingstack](/topic/mymarketingstack) "
           },
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/1632750850829michael-marcellin.jpg"
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NjA4OTIzNzc3N2Rvd25sb2FkLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ=="
         },
         "headline": {
           "text": "Added new vendors to my marketing stack",
-          "link": "/content/182"
+          "link": "/content/447"
         },
         "articletext": {
-          "markdown": "Added [@Oracle](/vendor/oracle) to [#marketingautomation](/topic/marketingautomation)\n\nAdded [@Adobe](/vendor/adobe) to [#websitetools](/topic/websitetools)\n\n​ \n\n​ [#mymarketingstack](/topic/mymarketingstack)"
+          "markdown": "Added [@foo.com](/vendor/foocom) to [#marketingautomation](/topic/marketingautomation)\n\n​ \n\n​ [#mymarketingstack](/topic/mymarketingstack)"
         },
-        "contentlink": "/profile/michael-marcellin",
+        "contentlink": "/profile/eckart",
         "collections": [
+          "CMOlist Advisors",
+          "CMOlist Team",
+          "Dropbox Marketing",
+          "SignalFire Marketing Leaders",
           "#marketingautomation",
-          "#mymarketingstack",
-          "#websitetools"
-        ],
-        "author": "Michael",
-        "articletextlines": 3
-      },
-      "entities": [
-        {
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYzMjc4NzE2NjM3N2EuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
-          "name": "Oracle Marketing",
-          "role": "Austin, TX",
-          "link": "/vendor/oracle"
-        },
-        {
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzY2Mzg3NzI2MEEucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
-          "name": "Adobe",
-          "role": "San Jose, CA",
-          "link": "/vendor/adobe"
-        }
-      ]
-    },
-    {
-      "content_id": 181,
-      "replyText": "Reply",
-      "content": {
-        "header": {
-          "markdown": "[Marta Bulaich](/profile/marta-bulaich) Marketing Advisor at SignalFire",
-          "subtext": {
-            "markdown": "[Created a post](/content/181) in [#brand](/topic/brand), [#mymarketingstack](/topic/mymarketingstack), [#socialmediamarketing](/topic/socialmediamarketing), [#websitetools](/topic/websitetools) "
-          },
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/1632437432625marta-bulaich.jpg"
-        },
-        "headline": {
-          "text": "Added new vendors to my marketing stack",
-          "link": "/content/181"
-        },
-        "articletext": {
-          "markdown": "Added [@WordPress](/vendor/wordpress) to [#websitetools](/topic/websitetools)\n\nAdded [@Alembic](/vendor/alembic) to [#socialmediamarketing](/topic/socialmediamarketing)\n\nAdded [@BlueOcean.ai](/vendor/blueoceanai) to [#brand](/topic/brand)\n\n​ \n\n​ [#mymarketingstack](/topic/mymarketingstack)"
-        },
-        "contentlink": "/profile/marta-bulaich",
-        "collections": [
-          "#brand",
-          "#mymarketingstack",
-          "#socialmediamarketing",
-          "#websitetools"
-        ],
-        "author": "Marta",
-        "articletextlines": 3,
-        "num_thanks": 1
-      },
-      "entities": [
-        {
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYyMDg3NTE2OTMyNmEucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
-          "name": "Wordpress",
-          "role": "San Francisco, CA",
-          "link": "/vendor/wordpress"
-        },
-        {
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYzMjQ0MTg1NzU0NmEuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
-          "name": "Alembic",
-          "role": "San Francisco, CA",
-          "link": "/vendor/alembic"
-        },
-        {
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYzMjQ0MTcwNTEzOGEuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
-          "name": "BlueOcean",
-          "role": "San Francisco, CA",
-          "link": "/vendor/blueoceanai"
-        }
-      ]
-    },
-    {
-      "parent_content_id": 179,
-      "content_id": 180,
-      "replyText": "Reply",
-      "content": {
-        "header": {
-          "markdown": "[Yujin Chung](/profile/yujin-chung) Managing Director & Head of Platform at SignalFire",
-          "subtext": {
-            "markdown": "[Replied to a question](/content/179) in [SignalFire Marketing Leaders](/group/signalfire-marketing) "
-          },
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/yujin-chung--profile.jpg"
-        },
-        "headline": {
-          "text": "",
-          "link": "/content/179"
-        },
-        "articletext": {
-          "markdown": "[@Marta Bulaich](/profile/marta-bulaich) :-)\n"
-        },
-        "contentlink": "/profile/yujin-chung",
-        "collections": ["SignalFire Marketing Leaders"],
-        "author": "Yujin",
-        "articletextlines": 3
-      },
-      "parent_content": {
-        "header": {
-          "markdown": "[Yujin Chung](/profile/yujin-chung) Managing Director & Head of Platform at SignalFire",
-          "subtext": {
-            "markdown": "[Asked a question](/content/179) in [SignalFire Marketing Leaders](/group/signalfire-marketing) "
-          },
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/yujin-chung--profile.jpg"
-        },
-        "headline": {
-          "text": "iOS Marketing question",
-          "link": "/content/179"
-        },
-        "articletext": {
-          "markdown": "I have a friendly relationship with Leonard Green Partners, a private equity fund with significant stakes in retail (JCrew, Lucky Jeans), and other consumer services companies.  They regularly get their CMO's / VP Marketing execs together, and the priority topic right now is IOS 15, specifically:   _with the upcoming release of iOS 15, how are companies adjusting to Apple’s new privacy changes in their native mail application? With no way to track open rates, how are companies managing deliverability and engagement?_\n\n​\n\nAnyone have advice/expertise on this topic?  [@Kelechi Nwadibia](/profile/kelechi-nwadibia) \n"
-        },
-        "contentlink": "/profile/yujin-chung",
-        "author": "Yujin",
-        "articletextlines": 3
-      },
-      "entities": [
-        {
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/1632437432625marta-bulaich.jpg",
-          "name": "Marta Bulaich",
-          "role": "Marketing Advisor at SignalFire",
-          "link": "/profile/marta-bulaich"
-        }
-      ]
-    },
-    {
-      "parent_content_id": 175,
-      "content_id": 178,
-      "replyText": "Reply",
-      "content": {
-        "header": {
-          "markdown": "[Atri Chatterjee](/profile/atri-chatterjee) CMO at ForgeRock",
-          "subtext": {
-            "markdown": "[Commented on an article](/content/175) in [#leadership](/topic/leadership), [#news](/topic/news) "
-          },
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/1619825893628atri-chatterjee.jpg"
-        },
-        "headline": {
-          "text": "",
-          "link": "/content/175"
-        },
-        "articletext": {
-          "markdown": "Thank you for your kind words [@Julie Herendeen](/profile/julie) and for your good advice when we were evaluating NASDAQ versus NYSE.  We were influenced by your expereince with the  NYSE and are now listed on the NYSE.\n"
-        },
-        "contentlink": "/profile/atri-chatterjee",
-        "collections": ["#leadership", "#news"],
-        "author": "Atri",
-        "articletextlines": 3,
-        "num_thanks": 1
-      },
-      "parent_content": {
-        "header": {
-          "markdown": "[CMOlist News](/profile/andrea-frost) Editor at CMOlist",
-          "subtext": {
-            "markdown": "[Posted an article](/content/175) in [#leadership](/topic/leadership), [#news](/topic/news) "
-          },
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYzMjI3NDE0NTczMUNNT2xpc3QtQ2lyY2xlLUljb24ucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0="
-        },
-        "headline": {
-          "text": "ForgeRock CEO Rosch On IPO: ‘This Is A Really Exciting Market’",
-          "link": "/content/175"
-        },
-        "articletext": {
-          "markdown": "**Congratulations to **[**Atri Chatterjee**](https://www.thecmolist.com/profile/atri-chatterjee)** on ForgeRock’s IPO. **While IPOs are often viewed as a financial event, CMOs have a huge role in making the IPO a success by setting the positioning, branding and communications leading up to the IPO and of course beyond the IPO to scale with public market expectations.\n\n​\n\n[View article at crn.com](https://www.crn.com/news/security/forgerock-ceo-rosch-on-ipo-this-is-a-really-exciting-market-)"
-        },
-        "contentlink": "/profile/andrea-frost",
-        "author": "CMOlist"
-      },
-      "entities": [
-        {
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NjIxNDg1NDYzNmp1bGllLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
-          "name": "Julie Herendeen",
-          "role": "Former CMO at Pagerduty",
-          "link": "/profile/julie"
-        }
-      ]
-    },
-    {
-      "content_id": 177,
-      "replyText": "Reply",
-      "content": {
-        "header": {
-          "markdown": "[Julie Herendeen](/profile/julie) Former CMO at Pagerduty",
-          "subtext": {
-            "markdown": "[Posted an article](/content/177) in [#attribution](/topic/attribution), [#news](/topic/news) "
-          },
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NjIxNDg1NDYzNmp1bGllLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ=="
-        },
-        "headline": {
-          "text": "Adobe’s New Marketing AI Let Customer Cut Ad Spend 50% While Growing Sales 10%",
-          "link": "/content/177"
-        },
-        "articletext": {
-          "markdown": "**AI seems to be the product capability of the week**, but focused on large customers. [@Adobe](/vendor/adobe) announced AI capabilities to help marketers understand which parts of their marketing mix are delivering results. We all know this is a dark art that starts with a deep understanding of the customer journey, but for their largest customers, they both claim AI is saving them up to 50%.\n\n\n​\n\n[View article at forbes.com](https://www.forbes.com/sites/johnkoetsier/2021/09/20/adobes-new-marketing-ai-let-customer-cut-ad-spend-50-while-growing-sales-10)"
-        },
-        "contentlink": "/profile/julie",
-        "collections": ["#attribution", "#news"],
-        "author": "Julie",
-        "image": "https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F6148b7eac3b40db800811729%2F0x0.jpg",
-        "imageDisplay": "square"
-      },
-      "entities": [
-        {
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNzY2Mzg3NzI2MEEucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
-          "name": "Adobe",
-          "role": "San Jose, CA",
-          "link": "/vendor/adobe"
-        }
-      ]
-    },
-    {
-      "content_id": 175,
-      "replyText": "Reply",
-      "content": {
-        "header": {
-          "markdown": "[CMOlist News](/profile/andrea-frost) Editor at CMOlist",
-          "subtext": {
-            "markdown": "[Posted an article](/content/175) in [#leadership](/topic/leadership), [#news](/topic/news) "
-          },
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYzMjI3NDE0NTczMUNNT2xpc3QtQ2lyY2xlLUljb24ucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0="
-        },
-        "headline": {
-          "text": "ForgeRock CEO Rosch On IPO: ‘This Is A Really Exciting Market’",
-          "link": "/content/175"
-        },
-        "articletext": {
-          "markdown": "**Congratulations to **[**Atri Chatterjee**](https://www.thecmolist.com/profile/atri-chatterjee)** on ForgeRock’s IPO. **While IPOs are often viewed as a financial event, CMOs have a huge role in making the IPO a success by setting the positioning, branding and communications leading up to the IPO and of course beyond the IPO to scale with public market expectations.\n\n​\n\n[View article at crn.com](https://www.crn.com/news/security/forgerock-ceo-rosch-on-ipo-this-is-a-really-exciting-market-)"
-        },
-        "contentlink": "/profile/andrea-frost",
-        "collections": ["#leadership", "#news"],
-        "author": "CMOlist",
-        "image": "https://www.crn.com/resources/026d-1341b6db22df-fb45ab346bba-1000/forgerock-ceo-fran.jpg",
-        "imageDisplay": "square"
-      },
-      "entities": []
-    },
-    {
-      "parent_content_id": 153,
-      "content_id": 174,
-      "replyText": "Reply",
-      "content": {
-        "header": {
-          "markdown": "[Sheila Joglekar Vashee](/profile/sheila-joglekar-vashee) Partner at Basis Set",
-          "subtext": {
-            "markdown": "[Replied to a question](/content/153) in [#crm](/topic/crm), [#marketinganalytics](/topic/marketinganalytics), [#marketingautomation](/topic/marketingautomation), [#martech](/topic/martech), [#mymarketingstack](/topic/mymarketingstack) "
-          },
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/1629491272214sheila-joglekar-vashee.jpg"
-        },
-        "headline": {
-          "text": "",
-          "link": "/content/153"
-        },
-        "articletext": {
-          "markdown": "I recommend Iterable for early stage marketing automation. You can leverage it across channels and it's not expensive\n"
-        },
-        "contentlink": "/profile/sheila-joglekar-vashee",
-        "collections": [
-          "#crm",
-          "#marketinganalytics",
-          "#marketingautomation",
-          "#martech",
           "#mymarketingstack"
         ],
-        "author": "Sheila",
-        "articletextlines": 3,
-        "num_thanks": 1
+        "author": "Eckart",
+        "articletextlines": 3
+      },
+      "entities": [
+        {
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png",
+          "name": "foo.com",
+          "role": "",
+          "link": "/vendor/foocom"
+        }
+      ]
+    },
+    {
+      "content_id": 446,
+      "replyText": "Reply",
+      "content": {
+        "header": {
+          "markdown": "[Eckart Walther](/profile/eckart) VP Sales & Marketing at CMOlist",
+          "subtext": {
+            "markdown": "[Created a post](/content/446) in [CMOlist Advisors](/group/cmolist-advisors), [CMOlist Team](/group/cmolist-team), [Dropbox Marketing](/group/dropbox-marketing), [SignalFire Marketing Leaders](/group/signalfire-marketing), [#marketingautomation](/topic/marketingautomation), [#mymarketingstack](/topic/mymarketingstack) "
+          },
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NjA4OTIzNzc3N2Rvd25sb2FkLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ=="
+        },
+        "headline": {
+          "text": "Added new vendors to my marketing stack",
+          "link": "/content/446"
+        },
+        "articletext": {
+          "markdown": "Added [@toprank.com](/vendor/toprankcom) to [#marketingautomation](/topic/marketingautomation)\n\n​ \n\n​ [#mymarketingstack](/topic/mymarketingstack)"
+        },
+        "contentlink": "/profile/eckart",
+        "collections": [
+          "CMOlist Advisors",
+          "CMOlist Team",
+          "Dropbox Marketing",
+          "SignalFire Marketing Leaders",
+          "#marketingautomation",
+          "#mymarketingstack"
+        ],
+        "author": "Eckart",
+        "articletextlines": 3
+      },
+      "entities": [
+        {
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png",
+          "name": "toprank.com",
+          "role": "",
+          "link": "/vendor/toprankcom"
+        }
+      ]
+    },
+    {
+      "content_id": 445,
+      "replyText": "Reply",
+      "content": {
+        "header": {
+          "markdown": "[Eckart Walther](/profile/eckart) VP Sales & Marketing at CMOlist",
+          "subtext": {
+            "markdown": "[Asked a question](/content/445) in [CMOlist Advisors](/group/cmolist-advisors), [CMOlist Team](/group/cmolist-team), [Dropbox Marketing](/group/dropbox-marketing), [SignalFire Marketing Leaders](/group/signalfire-marketing) "
+          },
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NjA4OTIzNzc3N2Rvd25sb2FkLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ=="
+        },
+        "headline": {
+          "text": "this is a test post",
+          "link": "/content/445"
+        },
+        "articletext": {
+          "markdown": "Hello [@topHatrank.com](/vendor/tophatrankcom) \n"
+        },
+        "contentlink": "/profile/eckart",
+        "collections": [
+          "CMOlist Advisors",
+          "CMOlist Team",
+          "Dropbox Marketing",
+          "SignalFire Marketing Leaders"
+        ],
+        "author": "Eckart",
+        "articletextlines": 3
+      },
+      "entities": [
+        {
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/icons/vendor-default.png",
+          "name": "topHatrank.com",
+          "role": "",
+          "link": "/vendor/tophatrankcom"
+        }
+      ]
+    },
+    {
+      "content_id": 444,
+      "replyText": "Reply",
+      "content": {
+        "header": {
+          "markdown": "[Eckart Walther](/profile/eckart) VP Sales & Marketing at CMOlist",
+          "subtext": {
+            "markdown": "[Posted an article](/content/444) in [CMOlist Advisors](/group/cmolist-advisors), [CMOlist Team](/group/cmolist-team), [Dropbox Marketing](/group/dropbox-marketing), [SignalFire Marketing Leaders](/group/signalfire-marketing), [#leadership](/topic/leadership), [#marketing](/topic/marketing), [#martech](/topic/martech) "
+          },
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NjA4OTIzNzc3N2Rvd25sb2FkLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ=="
+        },
+        "headline": {
+          "text": "19 digital marketing predictions for 2022",
+          "link": "/content/444"
+        },
+        "articletext": {
+          "markdown": "In this hefty industry round-up featuring marketing leaders, industry experts, agency thought leaders, adtech and martech vendors, CMO explores what's in store for digital marketing in the post-Covid era.\n\r\n\r\n​\r\n\r\n[View article at cmo.com.au](https://www.cmo.com.au/article/693898/19-digital-marketing-predictions-2022/)"
+        },
+        "contentlink": "/profile/eckart",
+        "collections": [
+          "CMOlist Advisors",
+          "CMOlist Team",
+          "Dropbox Marketing",
+          "SignalFire Marketing Leaders",
+          "#leadership",
+          "#marketing",
+          "#martech"
+        ],
+        "author": "Eckart",
+        "image": "https://d1902livswy8rb.cloudfront.net/dimg/800x800/dimg/xxl_236113372-predictions-2022-resized.jpg",
+        "imageDisplay": "square"
+      },
+      "entities": []
+    },
+    {
+      "content_id": 443,
+      "replyText": "Reply",
+      "content": {
+        "header": {
+          "markdown": "[Eckart Walther](/profile/eckart) VP Sales & Marketing at CMOlist",
+          "subtext": {
+            "markdown": "[Posted an article](/content/443) in [CMOlist Team](/group/cmolist-team), [#social](/topic/social) "
+          },
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NjA4OTIzNzc3N2Rvd25sb2FkLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ=="
+        },
+        "headline": {
+          "text": "Hootsuite Outlines Key Social Media Marketing Trends for 2022, Based on 18k Responses [Infographic]",
+          "link": "/content/443"
+        },
+        "articletext": {
+          "markdown": "[@Hootsuite](/vendor/hootsuite) recently surveyed more than 18k people to get their thoughts on what’s coming next, and what you should be preparing for in your strategy.The full Hootsuite 2022 Social Trends Report includes in-depth overviews on each trend, and recommendations on how you should take action to prepare.\n\r\n\r\n​\r\n\r\n[View article at socialmediatoday.com](https://www.socialmediatoday.com/news/hootsuite-outlines-key-social-media-marketing-trends-for-2022-based-on-18k/610309/)"
+        },
+        "contentlink": "/profile/eckart",
+        "collections": ["CMOlist Team", "#social"],
+        "author": "Eckart",
+        "image": "https://www.socialmediatoday.com/user_media/cache/2a/69/2a69a5c8bb03a5cc4d536af83b98b3ef.jpg",
+        "imageDisplay": "square"
+      },
+      "entities": [
+        {
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYyMTM2MTgyNjUzMWEuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MjAwLCJoZWlnaHQiOjIwMCwiZml0IjoiY292ZXIifX19",
+          "name": "Hootsuite",
+          "role": "Vancouver, BC",
+          "link": "/vendor/hootsuite"
+        }
+      ]
+    },
+    {
+      "parent_content_id": 439,
+      "content_id": 442,
+      "replyText": "Reply",
+      "content": {
+        "header": {
+          "markdown": "[Eckart Walther](/profile/eckart) VP Sales & Marketing at CMOlist",
+          "subtext": {
+            "markdown": "[Commented on a post](/content/439) in [Dropbox Marketing](/group/dropbox-marketing) "
+          },
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NjA4OTIzNzc3N2Rvd25sb2FkLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ=="
+        },
+        "headline": {
+          "text": "",
+          "link": "/content/439"
+        },
+        "articletext": {
+          "markdown": "this is areahfds afdsiofew fdsowfehiofeww431421pr313r123hr3 2f3r3 f\n\n​\n\nfdsafdsjhfd\n\n​\n\n![Techmeme](https://www.techmeme.com/img/techmeme135.png)\n\nDecember 14, 2021, 4:25 PM\n\n[HOME](https://www.techmeme.com/ \"Techmeme main page\") [RIVER](https://www.techmeme.com/river \"Techmeme in pure reverse chronological order\") [LEADERBOARDS](https://www.techmeme.com/lb \"Techmeme's top authors and sources\") [ABOUT](https://www.techmeme.com/about \"Our mission, origins, and team\") [SPONSOR](https://www.techmeme.com/sponsor \"Information on sponsoring Techmeme\") [EVENTS](https://www.techmeme.com/events \"Full list of tech events\") [NEWSLETTER](https://www.techmeme.com/newsletter?from=tmd \"Sign up for Techmeme's newsletter\")![](https://www.techmeme.com/img/mg16.png) MEDIAGAZER ![](https://www.techmeme.com/img/mo16.png) MEMEORANDUM ![](https://www.techmeme.com/img/ws16.png) WESMIRCH\n\n## Top News\n\n**Tal Eisner / **[**Check Point Software**](https://blog.checkpoint.com/)**:**\n\n![](https://www.techmeme.com/211214/i22.jpg)[**Analysis: Log4j attacks rose from a few thousand on December 10 to 800K+ within 72 hours; exploits have been attempted on ~44% of corporate networks globally**](https://blog.checkpoint.com/2021/12/13/the-numbers-behind-a-cyber-pandemic-detailed-dive/)  —  Precisely one year after the SolarWinds Hack, the groundbreaking supply chain attack the world experienced, and while organizations …\n\n**More:** [ZDNet](https://www.zdnet.com/article/second-log4j-vulnerability-found-apache-log4j-2-16-0-released/), [Cybersecurity Dive](https://www.cybersecuritydive.com/news/log4j-exploit-cisa-threat/611489/), [The Hill](https://thehill.com/policy/cybersecurity/585643-cyber-experts-express-growing-alarm-over-apache-vulnerability), [ComputerWeekly.com](https://www.computerweekly.com/news/252510939/Almost-half-of-networks-probed-for-Log4Shell-weaknesses), [CNET](https://www.cnet.com/tech/services-and-software/the-log4j-software-bug-could-put-your-favorite-sites-at-risk-what-you-need-to-know/), [tools.cisco.com](https://tools.cisco.com/security/center/resources/prod_svc_info_log4j.html), and [Microsoft Security …](https://msrc-blog.microsoft.com/2021/12/11/microsofts-response-to-cve-2021-44228-apache-log4j2/).  **Tweets:** [@pkedrosky](https://twitter.com/pkedrosky/status/1470762260993691656)\n\n[**Bloomberg**](https://www.bloomberg.com/)**:**\n\n![](https://www.techmeme.com/211213/i32.jpg)[**Documents and interviews reveal Apache developers' efforts to patch the Log4j vulnerability, after an Alibaba employee alerted them of the flaw on November 24**](https://www.bloomberg.com/news/articles/2021-12-13/how-apache-raced-to-fix-a-potentially-disastrous-software-flaw)  —  At 2:51 p.m. on Nov. 24, members of an open-source software project received an alarming email.\n\n**More:** [The Cloudflare Blog](https://blog.cloudflare.com/log4j-cloudflare-logs-mitigation/), [The New Stack](https://thenewstack.io/log4shell-we-are-in-so-much-trouble/), [Security Boulevard](https://securityboulevard.com/2021/12/log4j-the-facts-behind-the-latest-zero-day-internet-vulnerability/), [Search Engine Roundtable](https://www.seroundtable.com/google-ads-apache-log4j-2-vulnerability-32591.html), [WeLiveSecurity](https://www.welivesecurity.com/2021/12/13/log4shell-vulnerability-what-we-know-so-far/), [ZDNet](https://www.zdnet.com/article/log4j-flaw-puts-hundreds-of-millions-of-devices-at-risk-says-us-cybersecurity-agency/), [The Verge](https://www.theverge.com/2021/12/13/22832552/iphone-tesla-sms-log4shell-log4j-exploit-researchers-test?scrolla=5eb6d68b7fedc32c19ef33b4), [TNW](https://thenextweb.com/news/log4j-bug-internet-open-source-contributors-analysis), and [The Record](https://therecord.media/log4shell-attacks-began-two-weeks-ago-cisco-and-cloudflare-say/)\n\n**Tweets:** [@eastdakota](https://twitter.com/eastdakota/status/1469800951351427073), [@gossithedog](https://twitter.com/gossithedog/status/1470515603362529292), [@soychicka](https://twitter.com/soychicka/status/1470584599873048580), [@techjournalist](https://twitter.com/techjournalist/status/1470739725187231751), [@rover829](https://twitter.com/rover829/status/1470560322218045440), [@williamturton](https://twitter.com/williamturton/status/1470542641452441603), [@jamietarabay](https://twitter.com/jamietarabay/status/1470568507829997568), and [@seldo](https://twitter.com/seldo/status/1470537529434673153)\n\n**Tim Starks / **[**CyberScoop**](https://www.cyberscoop.com/)**:**\n\n[**CISA Director Jen Easterly says the Log4j flaw likely affects hundreds of millions of devices and may be the most serious bug she has seen in her career**](https://www.cyberscoop.com/log4j-cisa-easterly-most-serious/)\n\n**More:** [Wired](https://www.wired.com/story/log4j-log4shell), [Business Insights …](https://businessinsights.bitdefender.com/technical-advisory-zero-day-critical-vulnerability-in-log4j2-exploited-in-the-wild), [Financial Times](https://t.co/zQPWuSTMPK), [HotHardware.com News](https://hothardware.com/news/why-log4j-has-cisa-pressing-the-panic-button), [BleepingComputer](https://www.bleepingcomputer.com/news/security/log4j-list-of-vulnerable-products-and-vendor-advisories/), [360](https://blog.netlab.360.com/ten-families-of-malicious-samples-are-spreading-using-the-log4j2-vulnerability-now/), [SecurityWeek](https://www.securityweek.com/ransomware-trojans-ddos-malware-and-crypto-miners-delivered-log4shell-attacks), [TechRadar](https://www.techradar.com/news/log4j-could-be-the-most-serious-threat-ever-seen-cisa-head-warns/), [The Record](https://therecord.media/first-log4shell-attacks-spreading-ransomware-have-been-spotted/), [Livemint](https://www.livemint.com/technology/tech-news/log4j-vulnerability-puts-41-of-indian-corporates-at-risk-of-hacks-11639503090170.html), [CNN](https://www.cnn.com/2021/12/13/politics/us-warning-software-vulnerability/), [Threatpost](https://threatpost.com/patching-time-log4j-exploits-vaccine/177017/), [ZDNet](https://www.zdnet.com/article/log4j-flaw-nearly-half-of-corporate-networks-have-been-targeted-by-attackers-trying-to-use-this-vulnerability/), [Check Point Software](https://blog.checkpoint.com/2021/12/11/protecting-against-cve-2021-44228-apache-log4j2-versions-2-14-1/), [Ars Technica](https://arstechnica.com/information-technology/2021/12/the-log4shell-zeroday-4-days-on-what-is-it-and-how-bad-is-it-really/), [Sophos News](https://news.sophos.com/en-us/2021/12/12/log4shell-hell-anatomy-of-an-exploit-outbreak/), [WinBuzzer](https://winbuzzer.com/2021/12/14/microsoft-security-investigating-log4shell-exploit-which-could-affect-hundreds-of-millions-of-devices-xcxwbn/), [The Hacker News](https://thehackernews.com/2021/12/hackers-exploit-log4j-vulnerability-to.html), [FedScoop](https://www.fedscoop.com/log4shell-cisa-response-federal-agencies/), [SiliconANGLE](https://siliconangle.com/2021/12/13/ransomware-strikes-workflow-solutions-provider-kronos-via-suspected-log4shell-exploit/), [PYMNTS.com](https://www.pymnts.com/cybersecurity/2021/payroll-service-kronos-offline-after-ransomware-attack/), [Dark Reading](https://www.darkreading.com/application-security/40-of-corporate-networks-targeted-by-attackers-seeking-to-exploit-log4j), [AppleInsider](https://appleinsider.com/articles/21/12/13/log4j-may-be-the-worst-vulnerability-yet-says-department-of-homeland-security), [Tech Monitor](https://techmonitor.ai/technology/cybersecurity/log4j-vulnerability-cyber-crime), [Nextgov](https://www.nextgov.com/cybersecurity/2021/12/agencies-must-fix-newly-cataloged-vulnerabilities-christmas-eve/359715/), [IBM PSIRT](https://www.ibm.com/blogs/psirt/an-update-on-the-apache-log4j-cve-2021-44228-vulnerability/), [Tom's Guide](https://www.tomsguide.com/news/log4shell-flaw-explained), [TechRepublic](https://www.techrepublic.com/article/critical-log4shell-security-flaw-lets-hackers-compromise-vulnerable-servers/), [BBC](https://www.bbc.com/news/technology-59638308), [Ars Technica](https://arstechnica.com/information-technology/2021/12/as-log4shell-wreaks-havoc-payroll-service-reports-ransomware-attack/), and [BleepingComputer](https://www.bleepingcomputer.com/news/security/hackers-start-pushing-malware-in-worldwide-log4shell-attacks/)\n\n**Tweets:** [@marcioalm](https://twitter.com/marcioalm/status/1470361495405875200), [@tomanthonyseo](https://twitter.com/tomanthonyseo/status/1470374984749133825), [@nicoleperlroth](https://twitter.com/nicoleperlroth/status/1470810150407602176), [@checkpointsw](https://twitter.com/checkpointsw/status/1470776552933707781), [@eastdakota](https://twitter.com/eastdakota/status/1470705081003614218), [@jhaddix](https://twitter.com/jhaddix/status/1470749696855470082), [@nicoleperlroth](https://twitter.com/nicoleperlroth/status/1470764364265263104), [@tinkersec](https://twitter.com/tinkersec/status/1470760062159360008), [@eastdakota](https://twitter.com/eastdakota/status/1470766638681276422), [@matthew\\_d\\_green](https://twitter.com/matthew_d_green/status/1470521135494279173), [@chriseng](https://twitter.com/chriseng/status/1470392994138312710), [@ldignan](https://twitter.com/ldignan/status/1470513573340270605), [@matthew\\_d\\_green](https://twitter.com/matthew_d_green/status/1470504921086758930), [@timstarks](https://twitter.com/timstarks/status/1470480464041422858), [@tonyajoriley](https://twitter.com/tonyajoriley/status/1470482666655002636), [@gossithedog](https://twitter.com/gossithedog/status/1470447301567074316), [@bushidotoken](https://twitter.com/bushidotoken/status/1469633126603411459), [@girlgerms](https://twitter.com/girlgerms/status/1470165326784466945), [@p\\_malynin](https://twitter.com/p_malynin/status/1469866520939429889), and [@tha\\_rami](https://twitter.com/tha_rami/status/1470158816490790919)\n\n**Sam Byford / **[**The Verge**](https://www.theverge.com/)**:**\n\n![](https://www.techmeme.com/211214/i8.jpg)[**Oppo unveils Air Glass, a 30g “assisted reality” wearable that projects 2D info into the user's FoV with a claimed three-hours usage, coming to China in Q1 2022**](https://www.theverge.com/2021/12/14/22833796/oppo-air-glass-ar-glasses-announced-china-release-date?scrolla=5eb6d68b7fedc32c19ef33b4)  —  Coming to China early next year  —  Oppo has announced the Air Glass, an AR device that'll go on sale early next year.\n\n**More:** [YouTube](https://www.youtube.com/watch?v=DMQUDSk_4B0), [OPPO](https://www.oppo.com/en/newsroom/press/oppo-air-glass/), [XDA Developers](https://www.xda-developers.com/oppo-air-glass-preview/), [PCMag](https://www.pcmag.com/news/oppo-has-a-new-pair-of-smart-glasses-but-you-probably-cant-get-them), [SiliconANGLE](https://siliconangle.com/2021/12/14/oppo-unveils-air-glass-assisted-reality-monocle-device/), [TechCrunch](https://techcrunch.com/2021/12/14/oppos-first-self-developed-chip-is-all-about-imaging-performance/), [Android Beat](https://www.androidbeat.com/2021/12/oppo-unveils-air-glass-assisted-reality-wearable/), [TechEBlog](https://www.techeblog.com/oppo-air-glass-eyepiece-extended-reality/), [KnowTechie](https://knowtechie.com/oppos-new-air-glass-projector-will-put-notifications-directly-onto-your-glasses/), [GSMArena.com](https://www.gsmarena.com/oppo_announces_the_marisilicon_x_npu_the_find_x_series_are_first_to_adopt_it-news-52264.php), [Phandroid](https://phandroid.com/2021/12/14/oppo-air-glass-takes-a-different-approach-on-the-future-of-smart-glasses/), [Liliputing](https://liliputing.com/2021/12/oppo-air-glass-is-an-inobtrusive-head-up-display.html), [SPARROWS NEWS](https://sparrowsnews.com/2021/12/14/oppo-ar-glass-official-now/), [Digital Trends](https://www.digitaltrends.com/mobile/oppo-air-glass-news-features-release-date/), [TechRadar](https://www.techradar.com/news/oppos-new-smart-glasses-have-two-features-the-apple-glasses-need/), [ntmbulo.com](https://roshanr.substack.com/p/oppo-reveals-its-first-chip-designed), [TechRadar](https://www.techradar.com/news/oppo-find-x4-could-be-one-of-the-best-camera-phones-thanks-to-this-new-chip/), [TNW](https://thenextweb.com/news/oppo-air-glass-ar-launch-analysis), [NextPit](https://www.nextpit.com/oppo-air-glass-ar-glasses-released), [Livemint](https://www.livemint.com/technology/oppo-announces-air-glass-know-its-advanced-features-and-what-all-it-can-do-11639475044884.html), [Android Authority](https://www.androidauthority.com/oppo-air-glass-3073120/), [Android Police](https://www.androidpolice.com/oppos-ar-glasses-look-like-what-the-google-glass-would-have-been-in-2021/?scrolla=5eb6d68b7fedc32c19ef33b4), [Android Central](https://www.androidcentral.com/oppo-marisilicon-x-imaging-chip), [Android Central](https://www.androidcentral.com/oppo-air-glass-announce), and [XDA Developers](https://www.xda-developers.com/oppo-marisilicon-x-preview/).  **Tweets:** [@epro](https://twitter.com/epro/status/1470829151854620672)\n\n**Vlad Savov / **[**Bloomberg**](https://www.bloomberg.com/)**:**\n\n[**Oppo unveils the MariSilicon X, a 6nm smartphone chip produced by TSMC that it says can process real-time RAW images, debuting in its flagship phones in Q1 2022**](https://www.bloomberg.com/news/articles/2021-12-14/china-s-oppo-touts-mobile-photography-breakthrough-with-new-chip)\n\n**More:** [OPPO](https://www.oppo.com/en/newsroom/press/oppo-imaging-npu-marisilicon-x/), [Tech Advisor](https://www.techadvisor.com/news/mobile-phone/oppo-marisilicon-x-npu-camera-announced-3811718/), [South China Morning Post](https://www.scmp.com/tech/tech-trends/article/3159677/smartphone-giant-oppo-launches-its-first-chip-joining-chinese), [Pocketnow](https://pocketnow.com/oppo-unveils-its-own-marisilicon-x-npu-6nm-coming-early-next-year), [Trusted Reviews](https://www.trustedreviews.com/news/oppo-is-taking-image-processing-into-its-own-hands-with-the-marisilicon-x-4190768), [Digital Trends](https://www.digitaltrends.com/android/oppo-marisilicon-x-npu-news-features/), and [Digit](https://www.digit.in/news/mobile-phones/oppo-introduces-marisilicon-x-imaging-npu-at-inno-day-event-62221.html).  **Tweets:** [@oppo](https://twitter.com/oppo/status/1470672407241412609)\n\n**Salvador Rodriguez / **[**CNBC**](http://www.cnbc.com/)**:**\n\n![](https://www.techmeme.com/211214/i30.jpg)[**Sources: Instagram passed 2B monthly active users this fall, up from 1B in June 2018, the last time it publicly disclosed the metric**](https://www.cnbc.com/2021/12/14/instagram-surpasses-2-billion-monthly-users.html)  —  - Instagram now has more than 2 billion monthly active users worldwide, according to employees with knowledge of the key metric.\n\n**More:** [Fortune](https://fortune.com/2021/12/14/uk-antitrust-regulation-apple-google-microsoft/), [iPhone Hacks](https://www.iphonehacks.com/2021/12/instagram-now-has-over-2-billion-monthly-users-dodging-tiktok-and-legislators.html), and [iPhone in Canada Blog](https://www.iphoneincanada.ca/news/instagram-2-billion-monthly-active-users/)\n\n**Tweets:** [@epro](https://twitter.com/epro/status/1470849504253386755), [@cnbc](https://twitter.com/cnbc/status/1470790000027516929), [@jenn\\_elias](https://twitter.com/jenn_elias/status/1470791110259888128), [@stevekovach](https://twitter.com/stevekovach/status/1470789851331051529), and [@jyarow](https://twitter.com/jyarow/status/1470793400496570373).  **Thanks:**[@sal19](https://twitter.com/sal19/status/1470789420676751362)\n\n**Jay Peters / **[**The Verge**](https://www.theverge.com/)**:**\n\n![](https://www.techmeme.com/211214/i24.jpg)[**LogMeIn plans to spin out password management tool LastPass; LogMeIn acquired LastPass, now used by 30M people and 85K businesses, for $125M in 2015**](https://www.theverge.com/2021/12/14/22833319/lastpass-independent-company-logmein?scrolla=5eb6d68b7fedc32c19ef33b4)  —  LastPass has more than 30 million users  —  LogMeIn plans to spin out password management tool LastPass as a standalone company, it announced Tuesday.\n\n**More:** [LogMeIn Remote Access](https://www.logmein.com/newsroom/press-release/2021/logmein-set-to-establish-lastpass-as-an-independent-cloud-security-company-amid-strong-market-demand), [The LastPass Blog](https://blog.lastpass.com/2021/12/lastpass-investing-even-more-in-your-password-security-in-2022/), [ZDNet](https://www.zdnet.com/article/logmein-announces-plan-to-spin-off-lastpass-into-its-own-company/), [9to5Google](https://9to5google.com/2021/12/14/lastpass-working-on-a-delightful-mobile-app-as-it-becomes-an-independent-company/), [The Register](https://www.theregister.com/2021/12/14/lastpass_spinout/), [TechSpot](https://www.techspot.com/news/92632-logmein-spin-out-password-management-tool-lastpass.html), [PCMag](https://www.pcmag.com/news/lastpass-becomes-independent-firm-but-its-still-owned-by-private-equity), [infosecurity-magazine.com](https://www.infosecurity-magazine.com/news/lastpass-to-become-standalone/), [Liliputing](https://liliputing.com/2021/12/logmein-is-spinning-off-lastpass-making-the-password-manager-a-standalone-company-again.html), and [Forbes](https://www.forbes.com/sites/iainmartin/2021/12/14/private-equity-firms-to-spin-out-password-manager-lastpass/)\n\n**Brian Krebs / **[**Krebs on Security**](https://krebsonsecurity.com/)**:**\n\n![](https://www.techmeme.com/211214/i29.jpg)[**PwC report details the ransomware attack on Ireland's public health system in May 2021 and finds that IT admins failed to respond to multiple warning signs**](https://krebsonsecurity.com/2021/12/inside-irelands-public-healthcare-ransomware-scare/)  —  The consulting firm PricewaterhouseCoopers recently published lessons learned from the disruptive and costly ransomware attack in May 2021 on Ireland's public health system.\n\n**Source:** [HSE](https://www.hse.ie/eng/services/publications/conti-cyber-attack-on-the-hse-full-report.pdf).  **More:** [ZDNet](https://www.zdnet.com/article/billion-dollar-natural-gas-supplier-superior-plus-hit-with-ransomware/), [Numlock News](https://numlock.substack.com/p/numlock-news-december-14-2021-rocket), [The Irish Times](https://www.irishtimes.com/news/crime-and-law/opening-of-email-attachment-led-to-hse-cyber-attack-report-finds-1.4752043), and [GovInfoSecurity](https://www.govinfosecurity.com/report-dissects-conti-ransomware-attack-on-irelands-hse-a-18102)\n\n**Annie Palmer / **[**CNBC**](http://www.cnbc.com/)**:**\n\n![](https://www.techmeme.com/211214/i5.jpg)[**US OSHA is investigating the collapse of an Amazon warehouse in Illinois caused by a tornado, where six workers died, one was injured, and 45 were rescued**](https://www.cnbc.com/2021/12/13/osha-opens-probe-into-deadly-amazon-warehouse-collapse-in-illinois.html)  —  - OSHA is investigating a collapse at an Amazon warehouse in Edwardsville, Illinois.  — The facility collapsed Friday as a tornado rolled through, killing six employees.\n\n**More:** [The Intercept](https://theintercept.com/2021/12/13/amazon-illinois-tornado-safety-protocols/), [Reuters](https://www.cnn.com/2021/12/11/business/amazon-deaths-warehouse-tornado/), [BBC](https://www.bbc.com/news/business-59641784), [Washington Post](https://www.washingtonpost.com/technology/2021/12/13/osha-investigating-amazon-warehouse/), [New York Times](https://www.nytimes.com/2021/12/13/technology/osha-amazon-warehouse-collapse-investigation.html), [Engadget](https://www.engadget.com/amazon-tornado-edwardsville-illinois-deaths-climate-220437155.html), [The Guardian](https://www.theguardian.com/technology/2021/dec/13/amazon-warehouse-collapse-safety-illinois), [Ars Technica](https://arstechnica.com/tech-policy/2021/12/osha-investigates-amazon-after-6-die-in-warehouse-struck-by-tornado/), [Bloomberg](https://www.bloomberg.com/news/articles/2021-12-13/amazon-s-fatal-warehouse-collapse-is-being-investigated-by-osha), [Forbes](https://www.forbes.com/sites/edwardsegal/2021/12/13/osha-launches-investigation-into-amazon-warehouse-hit-by-tornado/), [CNN](https://www.cnn.com/2021/12/13/business/amazon-warehouse-workers-deaths-tornado-osha/), [The Independent](https://www.independent.co.uk/news/amazon-illinois-americans-national-weather-service-carnegie-mellon-university-b1975445.html), [The Verge](https://www.theverge.com/2021/12/13/22833012/amazon-fatal-warehouse-collapse-osha-investigation-illinois-tornado?scrolla=5eb6d68b7fedc32c19ef33b4), [The Register](https://www.theregister.com/2021/12/13/deadly_midwest_storms_destroy_amazon_warehouse/), [Slashdot](https://news.slashdot.org/story/21/12/14/1646240/us-opens-probe-into-amazon-warehouse-fatal-collapse-in-illinois), and [Hell World](https://luke.substack.com/p/i-asked-to-leave-and-they-told-me)\n\n**Tweets:** [@moreperfectus](https://twitter.com/moreperfectus/status/1470513075489054720), [@amazonlabor](https://twitter.com/amazonlabor/status/1470596617355108361), [@kenklippenstein](https://twitter.com/kenklippenstein/status/1470802489394044936), [@mannyfidel](https://twitter.com/mannyfidel/status/1470776692268539919), and [@shiloh1950](https://twitter.com/shiloh1950/status/1470779797726969856)\n\n[**Bloomberg**](https://www.bloomberg.com/)**:**\n\n![](https://www.techmeme.com/211214/i11.jpg)[**Sources: the NSO Group is considering shuttering its Pegasus unit and selling the company, amid US restrictions and the danger of defaulting on $450M in debt**](https://www.bloomberg.com/news/articles/2021-12-13/spyware-firm-nso-mulls-shutdown-of-pegasus-unit-sale-of-company)  —  - Moelis tapped to advise on talks with investment funds  — One plan would repurpose product for strictly defensive use\n\n**More:** [Financial Times](https://t.co/KySWw86fQ7), [AppleInsider](https://appleinsider.com/articles/21/12/14/nso-considering-killing-pegasus-spyware-under-financial-lawsuit-pressure), [Beyond Search](http://arnoldit.com/wordpress/2021/12/14/nso-group-how-about-that-debt/), [Silicon Republic](https://www.siliconrepublic.com/enterprise/nso-pegasus-spyware-sale-shut-down), and [Gizmodo](https://gizmodo.com/this-could-be-the-end-for-surveillance-giant-nso-group-1848207928?scrolla=5eb6d68b7fedc32c19ef33b4)\n\n**Tweets:** [@runasand](https://twitter.com/runasand/status/1470475112793128962), [@malwarejake](https://twitter.com/malwarejake/status/1470541261392297990), [@glcarlstrom](https://twitter.com/glcarlstrom/status/1470639591241793542), and [@jsrailton](https://twitter.com/jsrailton/status/1470477234653773824)\n\n**Ben Thompson / **[**Stratechery**](https://stratechery.com/)**:**\n\n![](https://www.techmeme.com/211214/i34.jpg)[**A look back at tech's three eras, from Bell Labs to Facebook, and why the metaverse is the fourth, defined by its bifurcation with the physical world**](https://stratechery.com/2021/the-great-bifurcation/)  —  For the first several years of Stratechery I would write a year end article about “The State of Consumer Technology”; the last one I wrote …\n\n**More:** [Marvinâ€™s Newsletter](https://marvinvista.com/p/right-now-you-are-in-the-metaverse).  **Tweets:** [@rjcc](https://twitter.com/rjcc/status/1470827382458171392), [@bryanmenegus](https://twitter.com/bryanmenegus/status/1470827091306455046), [@stratechery](https://twitter.com/stratechery/status/1470755454770835456), [@ntaylor963](https://twitter.com/ntaylor963/status/1470804730225954830), [@dkthomp](https://twitter.com/dkthomp/status/1470756289760399365), [@akberzins](https://twitter.com/akberzins/status/1470763076186255364), [@jamcnn](https://twitter.com/jamcnn/status/1470753130292088843), [@dkthomp](https://twitter.com/dkthomp/status/1470757172946604039), and [@mdudas](https://twitter.com/mdudas/status/1470775266511405068)\n\n**Natasha Lomas / **[**TechCrunch**](http://techcrunch.com/)**:**\n\n![](https://www.techmeme.com/211214/i35.jpg)[**The UK's CMA issues an interim report voicing concerns over Apple and Google's “vice-like grip” on the mobile ecosystem, hinting at future antitrust action**](https://techcrunch.com/2021/12/14/cma-mobile-ecosystem-market-study/)  —  The UK's antitrust watchdog has given the clearest signal yet that interventions under an upcoming reform …\n\n**More:** [GamesRadar](https://www.gamesradar.com/henry-cavill-mass-effect-series-interview/), [GOV.UK](https://www.gov.uk/government/publications/mobile-ecosystems-market-study-interim-report), [PYMNTS.com](https://www.pymnts.com/antitrust/2021/uk-regulator-advocates-change-to-google-apples-vice-like-grip-on-mobile-app-ecosystems/), [Reuters](https://www.reuters.com/technology/uk-regulator-says-google-apple-have-vice-like-grip-2021-12-14/), [9to5Google](https://9to5google.com/2021/12/14/uk-google-apple-duopoly-report/), [9to5Mac](https://9to5mac.com/2021/12/14/apple-and-google-accused-of-duopoly-could-face-antitrust-action-in-the-uk/), [Pocket Gamer.biz](http://www.pocketgamer.biz/news/77748/apple-and-google-vice-like-grip-on-uk-consumers-says-competition-regulator/), [The Guardian](https://www.theguardian.com/business/2021/dec/14/google-and-apple-have-vice-like-grip-on-uk-mobiles-warns-regulator), [Patently Apple](https://www.patentlyapple.com/patently-apple/2021/12/the-uk-market-authority-finds-that-apple-and-google-have-a-vice-like-grip-on-the-app-store-market-and-proposes-market-changes.html), [iPhone in Canada Blog](https://www.iphoneincanada.ca/news/apple-google-cma/), [cybernews.com](https://cybernews.com/news/uk-regulator-users-are-losing-out-because-of-apple-and-googles-duopoly/), [TechRadar](https://www.techradar.com/news/apple-and-google-have-vice-like-grip-on-uk-smartphone-users/), [Digital Trends](https://www.digitaltrends.com/mobile/competition-markets-authority-apple-google-duopoly/), [The Independent](https://www.independent.co.uk/life-style/gadgets-and-tech/apple-google-iphone-app-store-cma-regulators-b1975668.html), and [iPhone Hacks](https://www.iphonehacks.com/2021/12/uk-market-watchdogs-latest-report-accuses-apple-google-duopoly.html)\n\n**Tweets:** [@eric\\_seufert](https://twitter.com/eric_seufert/status/1470771153946005508), [@benedictevans](https://twitter.com/benedictevans/status/1470705304669200384), [@benedictevans](https://twitter.com/benedictevans/status/1470705306485284865), [@benedictevans](https://twitter.com/benedictevans/status/1470705307957567492), and [@benedictevans](https://twitter.com/benedictevans/status/1470705303100477443)\n\n[**CoinDesk**](http://www.coindesk.com/)**:**\n\n![](https://www.techmeme.com/211214/i31.jpg)[**Institutional bitcoin broker and custody services provider NYDIG raises $1B led by WestCap, valuing the startup at $7B+**](https://www.coindesk.com/business/2021/12/14/institutional-bitcoin-broker-nydig-valued-at-7b-in-whopping-1b-funding-round/)  —  NYDIG said Tuesday it raised a stunning $1 billion in a funding round that will value the firm at over $7 billion - and potentially expand bitcoin's reach into …\n\n**More:** [PR Newswire](https://www.prnewswire.com/news-releases/nydig-announces-1-billion-funding-round-301444063.html), [Bloomberg](https://www.bloomberg.com/news/articles/2021-12-14/morgan-stanley-backed-bitcoin-firm-nydig-raises-1-billion), [Blockworks](https://blockworks.co/nydig-closes-1b-funding-round-raising-valuation-above-7b/), [TheBitTimes.Comâ€™s Newsletter](https://thebittimes.substack.com/p/nydig-raises-1b-in-funding-valuation), [Crypto Briefing](https://cryptobriefing.com/nydig-raises-1-billion-expand-institutional-bitcoin-services/), [Bitcoin Magazine](https://bitcoinmagazine.com/business/bitcoin-company-nydig-raises-1-billion-at-7-billion-valuation), [The Block](https://www.theblockcrypto.com/linked/127450/nydig-announces-1-billion-funding-round-valuing-company-at-7-billion), and [CryptoPotato](https://cryptopotato.com/westcap-leads-a-1-billion-funding-round-for-nydig-values-the-company-at-7b/)\n\n**Tweets:** [@fintechfrank](https://twitter.com/fintechfrank/status/1470755715027542019) and [@kr00ney](https://twitter.com/kr00ney/status/1470793116626169866)\n\n**Lucas Matney / **[**TechCrunch**](http://techcrunch.com/)**:**\n\n![](https://www.techmeme.com/211213/i29.jpg)[**Nike acquires RTFKT, an NFT studio founded in 2020, for an undisclosed sum; RTFKT raised an $8M seed in May led by a16z at a $33.3M valuation**](https://techcrunch.com/2021/12/13/nike-acquires-nft-collectibles-studio-rtfkt/)  —  Nike is taking a plunge deeper into the world of crypto collectibles, announcing that they're acquiring the NFT studio RTFKT (pronounced “artifact\").\n\n**More:** [NIKE NEWS](https://news.nike.com/news/nike-acquires-rtfkt), [Marketing Dive](https://www.marketingdive.com/news/nike-acquires-studio-known-for-digital-sneaker-drops-in-latest-metaverse-be/611467/), [PCMag](https://www.pcmag.com/news/nike-acquires-rtfkt-to-make-virtual-sneakers-for-the-metaverse), [CNBC](https://www.cnbc.com/2021/12/14/bored-ape-nft-accidentally-sells-for-3000-instead-of-300000.html), [Newser](https://www.newser.com/story/314487/he-tried-to-sell-an-nft-for-300k-it-didnt-end-well.html), [Insider](https://www.businessinsider.com/nike-acquires-rtfkt-as-it-accelerates-metaverse-play-2021-12?op=1&scrolla=5eb6d68b7fedc32c19ef33b4), [BitcoinExchangeGuide](https://bitcoinexchangeguide.com/nike-expands-into-metaverse-with-the-acquisition-of-virtual-sneaker-company/), [Engadget](https://www.engadget.com/nike-acquires-virtual-sneaker-crypto-collectibles-startup-rtfkt-064837247.html), [Crypto Bulls and Bears](https://cryptobullsbears.substack.com/p/nike-acquires-nft-collectibles-studio), [thegamer.com](https://www.thegamer.com/monkey-nft-typo-loses-297000/), [Bloomberg](https://www.bloomberg.com/news/articles/2021-12-14/bored-ape-nft-sells-for-hundredth-of-300-000-by-mistake-cnet), [The Market Herald Fancy](https://themarketherald.com.au/fancy/nike-expands-into-the-metamarket-with-rtfkt-acquisition/), [Complex](https://www.complex.com/sneakers/nike-acquires-nft-brand-rtfkt), [CoinDesk](https://www.coindesk.com/business/2021/12/13/sportswear-giant-nike-purchases-nft-fashion-and-collectibles-startup-rtfkt/), [Bloomberg](https://www.bloomberg.com/news/articles/2021-12-13/nike-acquires-virtual-sneaker-maker-in-expanding-metaverse-push), [HYPEBEAST](https://hypebeast.com/2021/12/nike-acquires-rtfkt-sneakers-nfts-digital-collectibles), [Reuters](https://www.reuters.com/markets/deals/nike-buys-virtual-sneaker-maker-rtkft-metaverse-push-2021-12-13/), [Crypto Briefing](https://cryptobriefing.com/nike-acquires-non-fungible-sneaker-studio-rtfkt/), [Benzinga](https://www.benzinga.com/m-a/21/12/24584277/nike-buys-digital-sneaker-and-fashion-brand-rtfkt-what-investors-should-know), and [Forbes](https://www.forbes.com/sites/martyswant/2021/12/13/nike-moves-deeper-into-the-metaverse-by-acquiring-virtual-sneaker-designer-rtfkt/)\n\n**Tweets:** [@rtfktstudios](https://twitter.com/rtfktstudios/status/1470502799498792963), [@zaptio](https://twitter.com/zaptio/status/1470502750068908034), [@rtfktstudios](https://twitter.com/rtfktstudios/status/1470502806868140037), [@jowyang](https://twitter.com/jowyang/status/1470719182782091266), [@carnage4life](https://twitter.com/carnage4life/status/1470726020093210627), [@deray](https://twitter.com/deray/status/1470572305520726019), [@lucasmtny](https://twitter.com/lucasmtny/status/1470589950219358208), and [@cdixon](https://twitter.com/cdixon/status/1470585817756323846)\n\n**Mia Sato / **[**The Verge**](https://www.theverge.com/)**:**\n\n![](https://www.techmeme.com/211214/i33.jpg)[**Snap launches a preview of Story Studio, a standalone video editing app for iOS, aimed at users who make more professional content, like Spotlight creators**](https://www.theverge.com/2021/12/14/22834234/snap-story-studio-video-editing-app-mobile?scrolla=5eb6d68b7fedc32c19ef33b4)  —  The app is for users wanting to make more professional content, like Spotlight creators  —  Snap has launched a standalone video …\n\n**More:** [9to5Mac](https://9to5mac.com/2021/12/14/snap-launches-standalone-story-studio-video-editor-for-iphone-users/) and [App Store](https://apps.apple.com/us/app/story-studio/id1566585014)\n\n**Todd Spangler / **[**Variety**](http://www.variety.com/)**:**\n\n[**Snap says it paid out over $250M to more than 12,000 creators through its Snapchat Spotlight programs in 2021, after dialing back its $1M+ per day pace**](https://variety.com/2021/digital/news/snapchat-creator-payout-250-million-1235132541/)\n\n**More:** [TechCrunch](https://techcrunch.com/2021/12/14/snap-paid-250-million-to-creators-on-its-tiktok-clone-this-year/)\n\n**Sami Fathi / **[**MacRumors**](http://www.macrumors.com/)**:**\n\n![](https://www.techmeme.com/211214/i12.jpg)[**Apple delays macOS Monterey's Universal Control until spring 2022, after already delaying it to “later this fall”**](https://www.macrumors.com/2021/12/13/apple-delays-universal-control/?scrolla=5eb6d68b7fedc32c19ef33b4)  —  Apple has officially delayed Universal Control, a hallmark feature of macOS Monterey and iPadOS 15 announced in June, until Spring 2022.\n\n**More:** [Thurrott](https://www.thurrott.com/apple/260231/apple-delays-universal-control-for-mac-ipad-to-2022), [PCMag](https://www.pcmag.com/news/apple-delays-universal-control-feature-in-macos-monterey-until-the-spring), [9to5Mac](https://9to5mac.com/2021/12/14/comment-will-universal-control-meet-the-same-fate-as-airpower/), [iPhone in Canada Blog](https://www.iphoneincanada.ca/mac/apple-delays-universal-control-macos-monterey-feature-to-spring-2022/), [XDA Developers](https://www.xda-developers.com/apple-delays-universal-control-spring/), [MacDailyNews](https://macdailynews.com/2021/12/14/apples-universal-control-wont-arrive-in-macos-monterey-until-this-spring/), [Six Colors](https://sixcolors.com/link/2021/12/apple-delays-universal-control-to-spring-2022/), [AppleTrack](https://appletrack.com/apple-delays-universal-control-feature-until-2022/), [SlashGear](https://www.slashgear.com/apples-universal-control-for-mac-and-ipad-isnt-coming-this-year-13702402/), [The Verge](https://www.theverge.com/2021/12/13/22832765/universal-control-apple-macos-monterey-ipad-delay-spring?scrolla=5eb6d68b7fedc32c19ef33b4), [The Eclectic Light Company](https://eclecticlight.co/2021/12/14/what-has-changed-in-monterey-12-1/), [Digital Trends](https://www.digitaltrends.com/apple/apple-macos-monterey-universal-control-spring-2022-delay/), [CNET](https://www.cnet.com/tech/services-and-software/apple-quietly-delays-universal-control-until-spring/), [iDownloadBlog.com](https://www.idownloadblog.com/2021/12/13/apple-delays-universal-control-2022/), [iThinkDifferent](https://www.ithinkdiff.com/macos-monterey-universal-control-delayed-spring-2022/), [AppleInsider](https://appleinsider.com/articles/21/12/13/apple-delays-release-of-universal-control-for-macos-ipados-until-2022), and [iClarified](https://www.iclarified.com/83800/apple-delays-universal-control-until-spring-2022)\n\n**Tweets:** [@kirathetechie](https://twitter.com/kirathetechie/status/1470470343701807110) and [@samifathi\\_](https://twitter.com/samifathi_/status/1470467653621977092)\n\n**Eva Dou / **[**Washington Post**](https://www.washingtonpost.com/)**:**\n\n![](https://www.techmeme.com/211214/i21.jpg)[**Internal Huawei marketing slides show a broader role in surveilling China's population than it has admitted to, including using voice ID and tracking shoppers**](https://www.washingtonpost.com/world/2021/12/14/huawei-surveillance-china/)  —  The Chinese tech giant Huawei Technologies has long brushed off questions about its role in China's state surveillance, saying it just sells general-purpose networking gear.\n\n**More:** [The Hill](https://thehill.com/policy/international/585699-presentations-point-to-greater-huawei-role-in-china-surveillance-than).  **Tweets:** [@tedcruz](https://twitter.com/tedcruz/status/1470802135809941505), [@lilkuo](https://twitter.com/lilkuo/status/1470686069850923008), [@benpershing](https://twitter.com/benpershing/status/1470785285944483847), [@kevincarrico](https://twitter.com/kevincarrico/status/1470731320284221442), [@jordanschnyc](https://twitter.com/jordanschnyc/status/1470787449370599434), [@kylecmatthews](https://twitter.com/kylecmatthews/status/1470742758344335361), [@laurelchor](https://twitter.com/laurelchor/status/1470691495325827074), and [@jerrydunleavy](https://twitter.com/jerrydunleavy/status/1470730890317905920)\n\n**Janko Roettgers / **[**Protocol**](https://www.protocol.com/)**:**\n\n![](https://www.techmeme.com/211214/i23.jpg)[**VR meeting startup Spatial pivots to NFTs, letting users host galleries and events, and raises $25M, bringing its total funding to $50M**](https://www.protocol.com/spatial-enterprise-vr-pivot-nft)  —  Just a few months after Meta unveiled its own VR meeting platform, a startup known for a similar product is hitting the brakes: Spatial …\n\n**More:** [SiliconANGLE](https://siliconangle.com/2021/12/14/spatial-looks-metaverse-nfts-25m-new-funding/), [Forbes](https://www.forbes.com/sites/charliefink/2021/12/14/spatial-raises-25-million-pivots-to-nfts/), and [VentureBeat](https://venturebeat.com/2021/12/14/spatial-raises-25m-and-pivots-to-nft-art-and-metaverse-events/).  **Tweets:** [@apollozac](https://twitter.com/apollozac/status/1470762626389000197)\n\n**Daniel Rubino / **[**Windows Central**](https://www.windowscentral.com/)**:**\n\n![](https://www.techmeme.com/211213/i27.jpg)[**Microsoft and iFixit partner to let approved independent repairers buy official Microsoft service tools for Surface devices from iFixit.com**](https://www.windowscentral.com/microsoft-teams-ifixit-bring-official-repairability-tools-pros)  —  Authorized and independent technicians can new repair select Surface devices thanks to iFixit and Microsoft  —  What you need to know\n\n**More:** [iFixit News](https://www.ifixit.com/News/56078/ifixit-works-with-microsoft-to-manufacture-service-tools-for-repair-techs), [Thurrott](https://www.thurrott.com/mobile/microsoft-surface/260260/ifixit-partners-with-microsoft-on-surface-repair-tools), [PCMag](https://www.pcmag.com/news/ifixit-is-making-official-microsoft-surface-repair-tools), [ExtremeTech](https://www.extremetech.com/computing/329740-microsoft-teams-up-with-ifixit-to-offer-repair-tools-for-its-surface-pcs), [Engadget](https://www.engadget.com/ifixit-microsoft-repair-tools-partnership-170115725.html), [Pocketnow](https://pocketnow.com/microsoft-teams-ifixit-manufacture-repair-tools-surface-devices), [WinBuzzer](https://winbuzzer.com/2021/12/14/microsoft-surface-teams-with-ifixit-to-provide-device-reparation-tools-xcxwbn/), [Pureinfotech](https://pureinfotech.com/surface-official-repair-tools/), and [MSPoweruser](https://mspoweruser.com/microsoft-offers-official-surface-repair-tools-via-ifixit/)\n\n**Tweets:** [@marypcbuk](https://twitter.com/marypcbuk/status/1470834005188743186), [@tomwarren](https://twitter.com/tomwarren/status/1470782891097563142), and [@benbajarin](https://twitter.com/benbajarin/status/1470783717773877272)\n\n**Louise Matsakis / **[**The Atlantic**](http://www.theatlantic.com/)**:**\n\n![](https://www.techmeme.com/211214/i14.jpg)[**Investors have poured $1B+ into startups looking to turn mom-and-pop stores into digital retailers and mini-tech hubs, especially in South and Southeast Asia**](https://www.theatlantic.com/technology/archive/2021/12/tech-companies-winning-over-corner-stores/620964/?scrolla=5eb6d68b7fedc32c19ef33b4)  —  Corner stores don't look like much.  Maybe the one nearest to you has dusty shelves lined with bags of chips and cookies …\n\n**Tweets:** [@lemonsand](https://twitter.com/lemonsand/status/1470410831506640900), [@paulbisceglio](https://twitter.com/paulbisceglio/status/1470416445762945038), [@lmatsakis](https://twitter.com/lmatsakis/status/1470407291774013440), [@bcmerchant](https://twitter.com/bcmerchant/status/1470466164325191681), and [@cengizyar](https://twitter.com/cengizyar/status/1470513679472996362)\n\n[**BBC**](http://www.bbc.com/news/)**:**\n\n![](https://www.techmeme.com/211213/i31.jpg)[**UK MPs propose changes to the UK's Online Safety Bill, including adding more offenses and fines, mandating tech firms appoint a “safety controller”, and more**](https://www.bbc.com/news/technology-59638569)  —  New criminal offences and major changes have been proposed in the UK's landmark Online Safety Bill, which seeks to regulate social media and tech giants.\n\n**More:** [UK Parliament](https://publications.parliament.uk/pa/jt5802/jtselect/jtonlinesafety/129/12902.htm), [Gizmodo](https://gizmodo.com/uks-online-safety-bill-suggests-locking-up-tech-execs-f-1848212616?scrolla=5eb6d68b7fedc32c19ef33b4), [Forbes](https://www.forbes.com/sites/emmawoollacott/2021/12/14/uk-increases-pressure-on-big-tech-with-online-safety-bill/amp/), [Insider](https://www.businessinsider.com/unsolicited-dick-pics-illegal-online-safety-bill-2021-12?op=1&scrolla=5eb6d68b7fedc32c19ef33b4), [Euractiv](https://www.euractiv.com/section/digital/news/uk-lawmakers-call-for-strengthened-online-safety-bill/), [The Guardian](https://www.theguardian.com/technology/2021/dec/14/mps-call-for-online-safety-bill-overhaul-to-protect-children-and-penalise-tech-firms), [Committees](https://committees.parliament.uk/committee/534/draft-online-safety-bill-joint-committee/news/159784/no-longer-the-land-of-the-lawless-joint-committee-reports/), [CapX](https://capx.co/the-online-safety-bill-promises-an-unholy-trinity-of-bad-regulation/), [TechCrunch](https://techcrunch.com/2021/12/14/uk-joint-committee-report-online-safety-bill/), [ComputerWeekly.com](https://www.computerweekly.com/news/252510934/Joint-committee-publishes-report-on-improving-Online-Safety-Bill), [UK Parliament](https://ukparliament.shorthandstories.com/draft-online-safety-bill-joint-committee-report/index.html), [The Register](https://www.theregister.com/2021/12/14/online_safety_bill_report/), [CNBC](https://www.cnbc.com/2021/12/13/uk-lawmakers-urge-government-to-enforce-stricter-rules-on-big-tech.html), [The Times](https://www.thetimes.co.uk/article/online-safety-bill-to-outlaw-financial-scams-and-cyberflashing-6td72pvsh), [Lexology](https://www.lexology.com/library/detail.aspx?g=316a492e-154c-4557-8e52-0f9b8ad9c141), [politicshome.com](https://www.politicshome.com/thehouse/article/online-safety-bill-joint-committee-baroness-kidron), and [Richmond and Twickenham Times](https://www.richmondandtwickenhamtimes.co.uk/news/national/19782154.online-safety-bill-needs-major-changes-hold-tech-firms-account/)\n\n**Tweets:** [@onlinesafetycom](https://twitter.com/onlinesafetycom/status/1470546074121166849), [@webdevlaw](https://twitter.com/webdevlaw/status/1470652199290216449), [@nadinedorries](https://twitter.com/nadinedorries/status/1470679347770052611), [@mattnavarra](https://twitter.com/mattnavarra/status/1470666271050158081), [@ellenejudson](https://twitter.com/ellenejudson/status/1470568611660058626), [@willperrin](https://twitter.com/willperrin/status/1470659263051841540), [@ellenejudson](https://twitter.com/ellenejudson/status/1470568622951219206), [@joetidy](https://twitter.com/joetidy/status/1470693522747670531), [@ellenejudson](https://twitter.com/ellenejudson/status/1470554526751117312), [@ellenejudson](https://twitter.com/ellenejudson/status/1470568608430538760), [@ellenejudson](https://twitter.com/ellenejudson/status/1470568603770671107), [@nadinedorries](https://twitter.com/nadinedorries/status/1470679345886859265), [@ellenejudson](https://twitter.com/ellenejudson/status/1470568616181571586), [@s8mb](https://twitter.com/s8mb/status/1470743203267686407), [@markscott82](https://twitter.com/markscott82/status/1470690273013473280), [@edinarl](https://twitter.com/edinarl/status/1470546074313969665), [@edinarl](https://twitter.com/edinarl/status/1470544564658356226), [@martinslewis](https://twitter.com/martinslewis/status/1470556129713434626), and [@marktaber\\_fii](https://twitter.com/marktaber_fii/status/1470548459698761731)\n\n**Hannah Miller / **[**The Information**](http://www.theinformation.com/)**:**\n\n![](https://www.techmeme.com/211214/i37.jpg)[**A look at Solana's early backers including 500 Startups, Slow Ventures, Multicoin Capital, and angels David Quiec and Chris McCann, who have $1B+ stakes**](https://www.theinformation.com/articles/solana-generates-1-billion-in-returns-for-early-backers)  —  When Solana Labs CEO Anatoly Yakovenko tried to raise money in 2018 to develop his idea for a faster blockchain for financial transactions …\n\n**Tweets:** [@brianmcc](https://twitter.com/brianmcc/status/1470864621615693825), [@bob\\_wins](https://twitter.com/bob_wins/status/1470531852456763395), [@amir](https://twitter.com/amir/status/1470527011567255552), and [@theinformation](https://twitter.com/theinformation/status/1470540522137735175)\n\n**Charmaine D'Silva / **[**The Keyword**](https://blog.google/)**:**\n\n![](https://www.techmeme.com/211214/i36.jpg)[**Google details Android 12 Go edition, coming to low-end phones in 2022 with faster app launches, longer battery life, better sharing, and more privacy controls**](https://blog.google/products/android/introducing-android-12-go-edition/)  —  Android (Go edition) launched in 2017 with the goal to help more people access the best of Android and Google through affordable, entry-level phones.\n\n**More:** [CNET](https://www.cnet.com/tech/mobile/android-12-go-edition-brings-new-speed-battery-privacy-features-to-lower-end-phones/), [9to5Google](https://9to5google.com/2021/12/14/android-12-go-edition/), [Gizmodo](https://gizmodo.com/google-brings-android-12-features-to-low-end-android-go-1848209984?scrolla=5eb6d68b7fedc32c19ef33b4), [The Verge](https://www.theverge.com/2021/12/14/22833932/android-go-edition-200-million-daily-users-12-update?scrolla=5eb6d68b7fedc32c19ef33b4), [Engadget](https://www.engadget.com/android-12-go-edition-annoucement-180049295.html), [XDA Developers](https://www.xda-developers.com/android-12-go-edition-announced/), [Android Police](https://www.androidpolice.com/android-12-go-is-coming-in-2022-with-all-the-biggest-features-of-its-full-fat-sibling/?scrolla=5eb6d68b7fedc32c19ef33b4), [Phandroid](https://phandroid.com/2021/12/14/android-12-go-edition-announced-offering-much-faster-experience-and-more/), [Droid Life](https://www.droid-life.com/2021/12/14/heres-everything-new-in-android-12-go-edition-coming-in-2022/), [MSPoweruser](https://mspoweruser.com/google-new-features-android-12-go-edition/), [Liliputing](https://liliputing.com/2021/12/android-12-go-edition-will-bring-a-speed-boost-to-budget-phones-in-2022.html), [SlashGear](https://www.slashgear.com/these-are-android-12-go-editions-headline-features-for-cheaper-phones-14702526/), [Android Headlines](https://www.androidheadlines.com/2021/12/new-go-edition-brings-the-best-of-android-12-on-a-budget.html), [Android Central](https://www.androidcentral.com/android-12-go-edition-announced), and [Slashdot](https://mobile.slashdot.org/story/21/12/14/1848213/android-12-go-edition-brings-new-speed-battery-privacy-features-to-lower-end-phones)\n\n**Kyle Alspach / **[**VentureBeat**](https://venturebeat.com/)**:**\n\n![](https://www.techmeme.com/211214/i25.jpg)[**Cloud security remediation startup Dazz raises a $50M Series A and a $10M seed from investors including Insight Partners, Greylock Partners, and Index Ventures**](https://venturebeat.com/2021/12/14/dazz-from-ex-microsoft-team-gets-60m-to-automate-cloud-security/)  —  Cloud security remediation startup Dazz, which today announced it has raised $60 million in funding, said it plans to launch …\n\n**More:** [SiliconANGLE](https://siliconangle.com/2021/12/14/secretive-security-startup-dazz-reveals-60-million-funding/) and [WinBuzzer](https://winbuzzer.com/2021/12/14/former-microsoft-cloud-exec-scores-funding-for-dazz-startup-xcxwbn/)\n\n[**Climate Draft**](https://www.techmeme.com/r2/www.climatedraft.org__utm_source_techmeme_utm_campaign_tm1-rOsbfYPu-_inf_.htm)**:**\n\n![](https://www.techmeme.com/simg/climatedraft_100px.png)[**Join, advise, or invest in climate startups in 2022**](https://www.techmeme.com/r2/www.climatedraft.org__utm_source_techmeme_utm_campaign_tm1-rOsbfYPu-_inf_.htm)  —  We're mobilizing top tech talent to work with leading climate startups.  Sign up to be the first to know about future Climate Drafts and how you can participate.\n\nSPONSOR POST\n\n**Ingrid Lunden / **[**TechCrunch**](http://techcrunch.com/)**:**\n\n[**Tel Aviv-based Guardio, whose cybersecurity browser extension has 1M active users, raises $47M led by Tiger Global**](https://techcrunch.com/2021/12/14/cybersecurity-startup-guardio-now-with-1m-users-of-its-browser-extension-raises-its-first-funding-47m-led-by-tiger-global/)  —  Some say that antivirus software that you install on your PC may have run its course when it comes to the next generation of computing in the cloud.\n\n**More:** [VentureBeat](https://venturebeat.com/2021/12/14/guardio-nabs-47m-for-an-ai-powered-browser-extension-that-protects-from-cyberthreats/), [SiliconANGLE](https://siliconangle.com/2021/12/14/browser-cybersecurity-startup-guardio-raises-47m/), and [CTech](https://www.calcalistech.com/ctech/articles/0,7340,L-3925009,00.html)\n\n[**Financial Times**](http://www.ft.com/)**:**\n\n![](https://www.techmeme.com/211214/i7.jpg)[**Letter: the US Department of Labor is investigating Apple over Ashley Gjøvik's claims that she was fired under a false pretext after retaliation complaints**](https://t.co/ZplosLxM91)  —  US labour department inquiry follows claims by ex-senior engineering program manager  —  The US Department of Labor …\n\n**More:** [Washington Post](https://www.washingtonpost.com/politics/2021/12/14/facebooks-latest-defense-social-media-doesnt-hurt-people-people-hurt-people/), [Insider](https://www.businessinsider.com/osha-investigating-apple-over-employees-nyt-ft-reports-2021-12?op=1&scrolla=5eb6d68b7fedc32c19ef33b4), [New York Times](https://www.nytimes.com/2021/12/13/technology/apple-department-of-labor-investigation.html), [CNET](https://www.cnet.com/tech/mobile/apple-becomes-subject-of-labor-department-investigation/), [PhoneArena](https://www.phonearena.com/news/apple-labor-department-investigation-harassment-complaint_id137155), [9to5Mac](https://9to5mac.com/2021/12/14/ashley-gjovik-complaint-against-apple-investigated/), [iMore](https://www.imore.com/labor-department-opens-investigation-apples-treatment-employees), [TheStreet](https://www.thestreet.com/investing/apple-staffer-claim-of-retaliation-investigated-by-labor-dept), [MacRumors](https://www.macrumors.com/2021/12/13/us-labor-department-apple-investigation/?scrolla=5eb6d68b7fedc32c19ef33b4), [iThinkDifferent](https://www.ithinkdiff.com/apple-probed-u-s-labor-department/), and [AppleInsider](https://appleinsider.com/articles/21/12/14/labor-department-investigating-apple-over-appletoo-employee-complaints)\n\n**Tweets:** [@patrickmcgee\\_](https://twitter.com/patrickmcgee_/status/1470487184172109833), [@ashleygjovik](https://twitter.com/ashleygjovik/status/1470492739146067974), [@ashleygjovik](https://twitter.com/ashleygjovik/status/1470487031218425866), [@eriksherman](https://twitter.com/eriksherman/status/1470507948862586880), [@ashleygjovik](https://twitter.com/ashleygjovik/status/1470508968887869443), [@eriksherman](https://twitter.com/eriksherman/status/1470506310294716419), [@eriksherman](https://twitter.com/eriksherman/status/1470504733655900176), [@ashleygjovik](https://twitter.com/ashleygjovik/status/1470505649662480384), and [@ashleygjovik](https://twitter.com/ashleygjovik/status/1470506500112146445)\n\n**Romain Dillet / **[**TechCrunch**](http://techcrunch.com/)**:**\n\n![](https://www.techmeme.com/211214/i20.jpg)[**Carto, which helps visualize data on interactive maps, raises a $61M Series C led by Insight Partners, bringing its total funding to $92M**](https://techcrunch.com/2021/12/14/carto-raises-61-million-to-help-you-visualize-data-on-maps/)  —  Spatial analysis platform Carto has raised a $61 million Series C round.  Many companies collect a ton of data with some location element tied to it.\n\n**More:** [VentureBeat](https://venturebeat.com/2021/12/14/location-intelligence-platform-carto-raises-61m-to-bring-businesses-big-data-insights/) and [SiliconANGLE](https://siliconangle.com/2021/12/14/spatial-analytics-startup-carto-raises-61m-funding/)\n\n## Sponsor Posts\n\n[**Tribe AI**](https://www.techmeme.com/r2/www.tribe.ai_-ZMslslis.htm)**:**\n\n![](https://www.techmeme.com/simg/tribeai_272px.png)[**“Tribe optimized our core models by over 30%.  This is a game changer for our customers.”**](https://www.techmeme.com/r2/www.tribe.ai_-ZMslslis.htm)  —  See how Tribe helps companies see real ROI on their machine learning initiatives.\n\n[**Zoho**](https://www.techmeme.com/r2/www.zoho.com_blog-OOqiKhIh.htm)**:**\n\n![](https://www.techmeme.com/simg/zoho_246px.png)[**The next stop on the experience express - Zoho CRM Winter '21**](https://www.techmeme.com/r2/www.zoho.com_blog_crm_the-next-stop-on-the-experience-express-zoho-crm-winter-21.html-7YBiaGfa.htm)  —  Experience has been at the core of Zoho CRM since its inception in 2005, and every update improves experience for both our end users and their customers.\n\n[**Climate Draft**](https://www.techmeme.com/r2/www.climatedraft.org__utm_source_techmeme_utm_campaign_tm1-rOsbfYPu.htm)**:**\n\n![](https://www.techmeme.com/simg/climatedraft_100px.png)[**Join, advise, or invest in climate startups in 2022**](https://www.techmeme.com/r2/www.climatedraft.org__utm_source_techmeme_utm_campaign_tm1-rOsbfYPu.htm)  —  We're mobilizing top tech talent to work with leading climate startups.  Sign up to be the first to know about future Climate Drafts and how you can participate.\n\n[**Plaid**](https://www.techmeme.com/r2/plaid.com_finrise_-7r8ukJHg.htm)**:**\n\n![](https://www.techmeme.com/simg/plaid_280px.png)[**Apply to the Plaid FinRise program!**](https://www.techmeme.com/r2/plaid.com_finrise_-7r8ukJHg.htm)  —  Plaid FinRise is a program sponsored by Plaid that supports founders that are Black, Indigenous, or People of Color, by providing resources to launch and grow early-stage businesses.\n\n[Sponsor Techmeme](https://www.techmeme.com/sponsor)\n\n## Who's Hiring In Tech?\n\n![](https://www.techmeme.com/simg/jobfav/aws-GiCDSF2D.png)** AWS**: Be curious. Take risks. Learn a lot.\n\n![](https://www.techmeme.com/simg/jobfav/asana-nxlC5Mbr.png)** Asana**: Build the future of teamwork.\n\n![](https://www.techmeme.com/simg/jobfav/clarifai-hUM939cl.png)** Clarifai**: The World’s AI.\n\n![](https://www.techmeme.com/simg/jobfav/nuro-ZvuZFzsl.png)** Nuro**: Bettering everyday life through robotics.\n\n![](https://www.techmeme.com/simg/jobfav/taxbit-qgFPyPqP.png)** TaxBit**: Tax & Accounting for the Web3 Economy.\n\n![](https://www.techmeme.com/simg/jobfav/cloudbeds-8kPzqkng.png)** Cloudbeds**: More reservations. Happier guests.™\n\n![](https://www.techmeme.com/simg/jobfav/uniswap_labs-Xcplk2cp.png)** Uniswap Labs**: Leading DeFi in Web3.\n\n![](https://www.techmeme.com/simg/jobfav/fox_tech-ynvgRVoN.png)** FOX Tech**: Join our forward leaning tech team.\n\n![](https://www.techmeme.com/simg/jobfav/backblaze-vwtgbIL5.png)** Backblaze**: Building the Cloud You Dream About.\n\n![](https://www.techmeme.com/simg/jobfav/automattic-pfZlaqfI.png)** Automattic**: 43% down, 57% to go. WordPress.\n\n![](https://www.techmeme.com/simg/jobfav/atob-mgoDslsJ.png)** AtoB**: Rebuild global transportation payments.\n\n![](https://www.techmeme.com/simg/jobfav/stripe-z9HplyIf.png)** Stripe**: Help us build universal payments.\n\n![](https://www.techmeme.com/simg/jobfav/kodiak-S0M6sFrg.png)** Kodiak**: Autonomous trucking technology leader.\n\n![](https://www.techmeme.com/simg/jobfav/cerebras-EifkBzHm.png)** Cerebras**: Revolutionizing AI Compute.\n\n![](https://www.techmeme.com/simg/jobfav/tiktok-RvkuqFhp.png)** TikTok**: Inspire creativity and bring joy.\n\n[Add your company here](http://www.techmeme.com/add_jobs)\n\n## Recommended Newsletters\n\n[**CB Insights Newsletter**](https://www.techmeme.com/r2/www.cbinsights.com_newsletter_utm_source_techmeme-g9TDrb6a.htm)\n\n![](https://i.imgur.com/NdkbTw9.png)724,948 subscribers get our free newsletter to stay a step ahead on technology trends, venture capital, startups, and the industries of tomorrow.\n\n[**The Node**](https://www.techmeme.com/r2/www.coindesk.com_newsletters_the-node_-9pcvPHVp.htm)\n\n![](https://i.imgur.com/IawVfjK.png)CoinDesk's flagship daily newsletter brings you the biggest crypto news and ideas of the day.\n\n[**Newcomer **_— by Eric Newcomer_](https://www.techmeme.com/r2/www.newcomer.co_-oPXtf4e4.htm)\n\n![](https://i.imgur.com/AxjJn4F.png)Where technology and venture capital intersect: A deeply reported newsletter on the inner workings of the startup industry.\n\n[**Techmeme's Daily Newsletter**](https://techmeme.com/newsletter?from=tmrn)\n\n![](https://pbs.twimg.com/profile_images/1191943129823399936/ZvfTRAlg_400x400.jpg)The news and commentary we've posted throughout the past 24 hours, so you won't miss a big story. Delivered Sunday through Friday.\n\n[Add your newsletter here](https://twitter.com/gaberivera/status/1465810278256283649)\n\n![](https://www.techmeme.com/simg/techmeme_ride_home_216px.jpg)\n\n[Techmeme Ride Home:](https://www.ridehome.info/show/techmeme-ride-home/)\n\n[**Tue. 12/14 - Is Log4j The Worst Bug Of All Time?**](https://www.ridehome.info/show/techmeme-ride-home/#gid%3A%2F%2Fart19-episode-locator%2FV0%2FIAWBSkmzY3w8675t_gt7QX9WAQrjQts3ooI0BQf0mO0)\n\nThe day's tech news, every day at 5pm ET. Fifteen minutes and you're up to date.\n\nSubscribe via [Apple Podcasts](https://techmeme.com/techmeme-ride-home-itunes), [Spotify](https://techmeme.com/techmeme-ride-home-spotify), or [RSS](https://techmeme.com/techmeme-ride-home-feed).\n\n[Sponsor this podcast](https://www.techmeme.com/sponsor#pjump)\n\n## Newest\n\n**Hannah Miller / The Information:**\n\n[A look at Solana's early backers including 500 Startups, Slow Ventures, Multicoin Capital, and angels David Quiec and Chris McCann, who have $1B+ stakes](https://www.theinformation.com/articles/solana-generates-1-billion-in-returns-for-early-backers)[Find](https://www.techmeme.com/#a211214p37)\n\n20 minutes ago\n\n**Charmaine D'Silva / The Keyword:**\n\n[Google details Android 12 Go edition, coming to low-end phones in 2022 with faster app launches, longer battery life, better sharing, and more privacy](https://blog.google/products/android/introducing-android-12-go-edition/)\n"
+        },
+        "contentlink": "/profile/eckart",
+        "collections": ["Dropbox Marketing"],
+        "author": "Eckart",
+        "articletextlines": 3
       },
       "parent_content": {
         "header": {
-          "markdown": "[Christina Patrick](/profile/christina-patrick) Head of Marketing  at Paid",
+          "markdown": "[Andrea Frost](/profile/andrea-frost)  at ",
           "subtext": {
-            "markdown": "[Asked a question](/content/153) in [#crm](/topic/crm), [#marketinganalytics](/topic/marketinganalytics), [#marketingautomation](/topic/marketingautomation), [#martech](/topic/martech), [#mymarketingstack](/topic/mymarketingstack) "
+            "markdown": "[Created a post](/content/439) in [Dropbox Marketing](/group/dropbox-marketing) "
           },
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/1631260508066christina-patrick.jpg"
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/1635814273405andrea-frost.jpg"
         },
         "headline": {
-          "text": "Marketing stack for a startup",
-          "link": "/content/153"
+          "text": "Joining CMOlist",
+          "link": "/content/439"
         },
         "articletext": {
-          "markdown": "Hi Folks\n\nKeen to hear your thoughts on this, you are the first marketing hire for a start up that has received seed funding, but has a small marketing budget. What does your 'must have have' marketing tech stack look like?  In that same vein, if anyone uses hubspot, I'd love to hear how it's working for you.\n\n​\n\n​\n"
+          "markdown": "Hello team!"
         },
-        "contentlink": "/profile/christina-patrick",
-        "author": "Christina",
+        "contentlink": "/profile/andrea-frost",
+        "author": "Andrea",
         "articletextlines": 3
       },
       "entities": []
     },
     {
-      "parent_content_id": 172,
-      "content_id": 173,
+      "parent_content_id": 439,
+      "content_id": 441,
       "replyText": "Reply",
       "content": {
         "header": {
-          "markdown": "[Jamie Barnett](/profile/jamie-barnett) Advisor at Self-employed",
+          "markdown": "[Vas Samarth](/profile/vas) CTO at CMOlist",
           "subtext": {
-            "markdown": "[Commented on an article](/content/172) in [#brand](/topic/brand) "
+            "markdown": "[Commented on a post](/content/439) in [Dropbox Marketing](/group/dropbox-marketing) "
           },
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/1619825894163jamie-barnett.jpg"
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYyMTI5OTE2ODA1MjE1ODMxNDY0ODc2MjEuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0="
         },
         "headline": {
           "text": "",
-          "link": "/content/172"
+          "link": "/content/439"
         },
         "articletext": {
-          "markdown": "aw, thank you, julie!\n"
+          "markdown": "[\n"
         },
-        "contentlink": "/profile/jamie-barnett",
-        "collections": ["#brand"],
-        "author": "Jamie",
-        "articletextlines": 3,
-        "num_thanks": 1
+        "contentlink": "/profile/vas",
+        "collections": ["Dropbox Marketing"],
+        "author": "Vas",
+        "articletextlines": 3
       },
       "parent_content": {
         "header": {
-          "markdown": "[Julie Herendeen](/profile/julie) CMO at Pagerduty",
+          "markdown": "[Andrea Frost](/profile/andrea-frost)  at ",
           "subtext": {
-            "markdown": "[Posted an article](/content/172) in [#brand](/topic/brand) "
+            "markdown": "[Created a post](/content/439) in [Dropbox Marketing](/group/dropbox-marketing) "
           },
-          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NjIxNDg1NDYzNmp1bGllLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ=="
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/1635814273405andrea-frost.jpg"
         },
         "headline": {
-          "text": "Nail your next branding project: Here’s your 7-point checklist",
-          "link": "/content/172"
+          "text": "Joining CMOlist",
+          "link": "/content/439"
         },
         "articletext": {
-          "markdown": "[https://jamiecatherinebarnett.medium.com/nail-your-next-branding-project-heres-your-7-point-checklist-5f80ffe9ccc](https://jamiecatherinebarnett.medium.com/nail-your-next-branding-project-heres-your-7-point-checklist-5f80ffe9ccc)\n\n\n\n**Fantastic article by **[@Jamie Barnett](/profile/jamie-barnett)** on the 7 point checklist for Branding**. Thank you for helping Marketers distill the Branding process Jamie!\n"
+          "markdown": "Hello team!"
         },
-        "contentlink": "/profile/julie",
-        "author": "Julie"
+        "contentlink": "/profile/andrea-frost",
+        "author": "Andrea",
+        "articletextlines": 3
+      },
+      "entities": []
+    },
+    {
+      "parent_content_id": 439,
+      "content_id": 440,
+      "replyText": "Reply",
+      "content": {
+        "header": {
+          "markdown": "[Vas Samarth](/profile/vas) CTO at CMOlist",
+          "subtext": {
+            "markdown": "[Commented on a post](/content/439) in [Dropbox Marketing](/group/dropbox-marketing) "
+          },
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYyMTI5OTE2ODA1MjE1ODMxNDY0ODc2MjEuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0="
+        },
+        "headline": {
+          "text": "",
+          "link": "/content/439"
+        },
+        "articletext": {
+          "markdown": "​\n"
+        },
+        "contentlink": "/profile/vas",
+        "collections": ["Dropbox Marketing"],
+        "author": "Vas",
+        "articletextlines": 3
+      },
+      "parent_content": {
+        "header": {
+          "markdown": "[Andrea Frost](/profile/andrea-frost)  at ",
+          "subtext": {
+            "markdown": "[Created a post](/content/439) in [Dropbox Marketing](/group/dropbox-marketing) "
+          },
+          "image": "https://d3k6hg21rt7gsh.cloudfront.net/1635814273405andrea-frost.jpg"
+        },
+        "headline": {
+          "text": "Joining CMOlist",
+          "link": "/content/439"
+        },
+        "articletext": {
+          "markdown": "Hello team!"
+        },
+        "contentlink": "/profile/andrea-frost",
+        "author": "Andrea",
+        "articletextlines": 3
+      },
+      "entities": []
+    },
+    {
+      "content_id": 436,
+      "replyText": "Reply",
+      "content": {
+        "header": {
+          "markdown": "[Sid S](/profile/sid-s)  at ",
+          "subtext": {
+            "markdown": "[Created a post](/content/436) in [Dropbox Marketing](/group/dropbox-marketing) "
+          },
+          "image": ""
+        },
+        "headline": {
+          "text": "Joining CMOlist",
+          "link": "/content/436"
+        },
+        "articletext": {
+          "markdown": "a"
+        },
+        "contentlink": "/profile/sid-s",
+        "collections": ["Dropbox Marketing"],
+        "author": "Sid",
+        "articletextlines": 3
       },
       "entities": []
     }
   ],
-  "token": "373fe76d8fbbc4986e65a810b0231a7b4dda11f5626d47cd778ee243b0893befe19e681db654a8ac37860ef7c37f4e91",
+  "token": "373fe76d8fbbc4986e65a810b0231a7b649a6c11b45860d8261d7510386c3671a0df32b121fb912439c6afd7dd029bfa",
   "members": {
     "link": "/network#my-network",
     "list": [
       {
-        "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NjIxNDg1NDYzNmp1bGllLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
-        "name": "Julie Herendeen",
-        "role": "Former CMO at Pagerduty",
-        "link": "/profile/julie"
-      },
-      {
         "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NjA4OTIzNzc3N2Rvd25sb2FkLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
         "name": "Eckart Walther",
-        "role": "Founder at CMOlist",
+        "role": "VP Sales & Marketing at CMOlist",
         "link": "/profile/eckart"
       },
       {
-        "image": "https://d3k6hg21rt7gsh.cloudfront.net/1617649555493christy-huggins.jpg",
-        "name": "Christy Huggins",
-        "role": "Head of Marketing at OneSignal",
-        "link": "/profile/christy-huggins"
+        "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NjIxNDg1NDYzNmp1bGllLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
+        "name": "Julie Herendeen",
+        "role": "Tes CMO at Test PagerDuty",
+        "link": "/profile/julie"
       },
       {
-        "image": "https://d3k6hg21rt7gsh.cloudfront.net/1617649681515terri-thatcher.jpg",
-        "name": "Terri Thatcher",
-        "role": "VP Marketing at Earnup",
-        "link": "/profile/terri-thatcher"
-      },
-      {
-        "image": "https://d3k6hg21rt7gsh.cloudfront.net/1617649555905dario-ambrosini.jpg",
-        "name": "Dario Ambrosini",
-        "role": "CMO at Propel",
-        "link": "/profile/dario-ambrosini"
-      },
-      {
-        "image": "https://d3k6hg21rt7gsh.cloudfront.net/yujin-chung--profile.jpg",
-        "name": "Yujin Chung",
-        "role": "Managing Director & Head of Platform at SignalFire",
-        "link": "/profile/yujin-chung"
-      },
-      {
-        "image": "https://d3k6hg21rt7gsh.cloudfront.net/1628055552788alan-yates.jpg",
-        "name": "Alan Yates",
-        "role": "Chief Business Officer at Docugami",
-        "link": "/profile/alan-yates"
-      },
-      {
-        "image": "https://d3k6hg21rt7gsh.cloudfront.net/1623865139510jesse-noyes.jpg",
-        "name": "Jesse Noyes",
-        "role": "VP of Marketing at Unsupervised",
-        "link": "/profile/jesse-noyes"
-      },
-      {
-        "image": "https://d3k6hg21rt7gsh.cloudfront.net/1619825893628atri-chatterjee.jpg",
-        "name": "Atri Chatterjee",
-        "role": "CMO at ForgeRock",
-        "link": "/profile/atri-chatterjee"
+        "image": "https://d3k6hg21rt7gsh.cloudfront.net/michael-martin--profile.jpg",
+        "name": "Michael Martin",
+        "role": "Director, Network Development at SignalFire",
+        "link": "/profile/michael-martin"
       },
       {
         "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYyMTI5OTE2ODA1MjE1ODMxNDY0ODc2MjEuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
         "name": "Vas Samarth",
         "role": "CTO at CMOlist",
         "link": "/profile/vas"
+      },
+      {
+        "image": "https://d3k6hg21rt7gsh.cloudfront.net/1623865139363nick-bonfiglio.jpg",
+        "name": "Nick Bonfiglio",
+        "role": "CEO at Syncari",
+        "link": "/profile/nick-bonfiglio"
+      },
+      {
+        "image": "https://d3k6hg21rt7gsh.cloudfront.net/1620850063642elaine-zelby.jpg",
+        "name": "Elaine Zelby",
+        "role": "Partner at SignalFire",
+        "link": "/profile/elaine-zelby"
+      },
+      {
+        "image": "https://d3k6hg21rt7gsh.cloudfront.net/1617649555332ari-myers.jpg",
+        "name": "Ari Myers",
+        "role": "SVP Revenue at EarnUp",
+        "link": "/profile/ari-myers"
+      },
+      {
+        "image": "https://d3k6hg21rt7gsh.cloudfront.net/shannon-mooney--profile.jpg",
+        "name": "Shannon Mooney",
+        "role": "Network Program Manager at SignalFire",
+        "link": "/profile/shannon-mooney"
+      },
+      {
+        "image": "https://d3k6hg21rt7gsh.cloudfront.net/1619825893849craig-battin.jpg",
+        "name": "Craig Battin",
+        "role": "CMO at Earnest",
+        "link": "/profile/craig-battin"
+      },
+      {
+        "image": "https://d3k6hg21rt7gsh.cloudfront.net/1619825893628atri-chatterjee.jpg",
+        "name": "Atri Chatterjee",
+        "role": "CMO at ForgeRock",
+        "link": "/profile/atri-chatterjee"
       }
     ]
   },
   "vendors": {
-    "link": "/vendors#my-network",
+    "link": "/vendors_list#my-network",
     "list": [
       {
         "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTYxNjE4MjAzODkxMXNpZ25hbGZpcmUtbG9nby5qcGVnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoyMDAsImhlaWdodCI6MjAwLCJmaXQiOiJjb3ZlciJ9fX0=",
@@ -484,57 +474,5 @@
       }
     ]
   },
-  "about": {},
-  "featuredContent": [
-    {
-      "title": "Resources & Guides",
-      "contentList": [
-        {
-          "title": "Best practices for presenting marketing plans and updates to late stage / public boards. This sentence is clipped to 2 lines clipped to 2 lines clipped to 2 lines clipped to 2 linesclipped to 2 lines clipped to 2 lines",
-          "link": "/content/1",
-          "entity": {
-            "image": "https://d3k6hg21rt7gsh.cloudfront.net/1632437432625marta-bulaich.jpg",
-            "name": "Dianne Russell",
-            "role": "Web Strategy at Pilot.com",
-            "link": "vendor/oracle"
-          }
-        },
-        {
-          "title": "Best practices for presenting marketing plans and updates to late stage / public boards. This sentence is clipped to 2 lines clipped to 2 lines clipped to 2 lines clipped to 2 linesclipped to 2 lines clipped to 2 lines",
-          "link": "/content/1",
-          "entity": {
-            "image": "https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F6148b7eac3b40db800811729%2F0x0.jpg",
-            "name": "Eleanor Pena",
-            "role": "Web Strategy at Pilot.com",
-            "link": "vendor/oracle"
-          }
-        }
-      ]
-    },
-    {
-      "title": "#leadership",
-      "contentList": [
-        {
-          "title": "Best practices for presenting marketing plans and updates to late stage / public boards. This sentence is clipped to 2 lines clipped to 2 lines clipped to 2 lines clipped to 2 linesclipped to 2 lines clipped to 2 lines",
-          "link": "/content/1",
-          "entity": {
-            "image": "https://d3k6hg21rt7gsh.cloudfront.net/1619825893628atri-chatterjee.jpg",
-            "name": "Devon Lane",
-            "role": "Web Strategy at Pilot.com",
-            "link": "vendor/oracle"
-          }
-        },
-        {
-          "title": "Best practices for presenting marketing plans and updates to late stage / public boards. This sentence is clipped to 2 lines clipped to 2 lines clipped to 2 lines clipped to 2 linesclipped to 2 lines clipped to 2 lines",
-          "link": "/content/1",
-          "entity": {
-            "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NjIxNDg1NDYzNmp1bGllLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
-            "name": "Guy Hawkins",
-            "role": "Web Strategy at Pilot.com",
-            "link": "vendor/oracle"
-          }
-        }
-      ]
-    }
-  ]
+  "about": {}
 }
