@@ -10,7 +10,7 @@ const FeaturedContent = (props) => {
 
   return (
     <div
-      class={clsx(
+      className={clsx(
         "featured-content",
         featuredContent && featuredContent.length > 1 && "multi-content"
       )}
@@ -19,9 +19,9 @@ const FeaturedContent = (props) => {
         <CustomCard heading={content.title} key={i}>
           {content.contentList &&
             content.contentList.map((item, index) => (
-              <div className="featured-content-list">
+              <div className="featured-content-list" key={i + "-" + index}>
                 <div className="featured-content-list__marker"></div>
-                <div className="featured-content-list-item" key="index">
+                <div className="featured-content-list-item">
                   <Link
                     to={item.link}
                     onClick={() => {
