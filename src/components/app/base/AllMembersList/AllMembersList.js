@@ -8,15 +8,13 @@ const AllMembersList = ({ list }) => {
       {list.length > 0 &&
         list.map(({ image, name, role, link }, index) => {
           return (
-            <Link
-              to={link}
+            <Avatar
               key={index}
-              onClick={() => {
-                window.location.href = link;
-              }}
-            >
-              <Avatar image={image} heading={name} subHeading={role} />
-            </Link>
+              image={image}
+              heading={name}
+              subHeading={role}
+              link={link}
+            />
           );
         })}
     </>

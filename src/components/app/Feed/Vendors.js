@@ -12,14 +12,13 @@ const Vendors = ({ vendorList }) => {
         {list &&
           list.map(({ image, name, role, link }, index) => {
             return (
-              <Link to={link} key={index}>
-                <Avatar
-                  key={index}
-                  image={image}
-                  heading={name}
-                  subHeading={role}
-                />
-              </Link>
+              <Avatar
+                key={index}
+                image={image}
+                heading={name}
+                subHeading={role}
+                link={link}
+              />
             );
           })}
       </div>

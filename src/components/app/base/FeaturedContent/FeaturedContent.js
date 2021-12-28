@@ -32,19 +32,13 @@ const FeaturedContent = (props) => {
                       {item.title}
                     </p>
                   </Link>
-                  <Link
+                  <Avatar
                     className="featured-content-list-item__link"
-                    to={item.entity.link}
-                    onClick={() => {
-                      window.location.href = item.entity.link;
-                    }}
-                  >
-                    <Avatar
-                      image={item.entity.image}
-                      heading={item.entity.name}
-                      subHeading={item.entity.role}
-                    />
-                  </Link>
+                    image={item.entity.image}
+                    heading={item.entity.name}
+                    subHeading={item.entity.role}
+                    link={item.entity.link}
+                  />
                 </div>
               </div>
             ))}
