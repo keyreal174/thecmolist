@@ -474,5 +474,57 @@
       }
     ]
   },
-  "about": {}
+  "about": {},
+  "featuredContent": [
+    {
+      "title": "Resources & Guides",
+      "contentList": [
+        {
+          "title": "Best practices for presenting marketing plans and updates to late stage / public boards. This sentence is clipped to 2 lines clipped to 2 lines clipped to 2 lines clipped to 2 linesclipped to 2 lines clipped to 2 lines",
+          "link": "/content/1",
+          "entity": {
+            "image": "https://d3k6hg21rt7gsh.cloudfront.net/1632437432625marta-bulaich.jpg",
+            "name": "Dianne Russell",
+            "role": "Web Strategy at Pilot.com",
+            "link": "vendor/oracle"
+          }
+        },
+        {
+          "title": "Best practices for presenting marketing plans and updates to late stage / public boards. This sentence is clipped to 2 lines clipped to 2 lines clipped to 2 lines clipped to 2 linesclipped to 2 lines clipped to 2 lines",
+          "link": "/content/1",
+          "entity": {
+            "image": "https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F6148b7eac3b40db800811729%2F0x0.jpg",
+            "name": "Eleanor Pena",
+            "role": "Web Strategy at Pilot.com",
+            "link": "vendor/oracle"
+          }
+        }
+      ]
+    },
+    {
+      "title": "#leadership",
+      "contentList": [
+        {
+          "title": "Best practices for presenting marketing plans and updates to late stage / public boards. This sentence is clipped to 2 lines clipped to 2 lines clipped to 2 lines clipped to 2 linesclipped to 2 lines clipped to 2 lines",
+          "link": "/content/1",
+          "entity": {
+            "image": "https://d3k6hg21rt7gsh.cloudfront.net/1619825893628atri-chatterjee.jpg",
+            "name": "Devon Lane",
+            "role": "Web Strategy at Pilot.com",
+            "link": "vendor/oracle"
+          }
+        },
+        {
+          "title": "Best practices for presenting marketing plans and updates to late stage / public boards. This sentence is clipped to 2 lines clipped to 2 lines clipped to 2 lines clipped to 2 linesclipped to 2 lines clipped to 2 lines",
+          "link": "/content/1",
+          "entity": {
+            "image": "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NjIxNDg1NDYzNmp1bGllLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
+            "name": "Guy Hawkins",
+            "role": "Web Strategy at Pilot.com",
+            "link": "vendor/oracle"
+          }
+        }
+      ]
+    }
+  ]
 }
