@@ -3,6 +3,7 @@ import { Container, Col, ProgressBar, Row } from "react-bootstrap";
 import Logo from "../base/Header/svgs/logo.svg";
 import "./onboardingLayout.scss";
 import clsx from "clsx";
+import FeaturedMembers from "../base/FeaturedMembers/FeaturedMembers";
 
 const OnboardingLayout = ({ children, now, title, subtitle }) => {
   return (
@@ -48,6 +49,11 @@ const OnboardingLayout = ({ children, now, title, subtitle }) => {
       <Row className="layout--children">
         <Col md="12" style={{ paddingLeft: "0px", paddingRight: "0px" }}>
           {children}
+        </Col>
+      </Row>
+      <Row className="layout--children">
+        <Col md="12" style={{ paddingLeft: "0px", paddingRight: "0px" }}>
+          <FeaturedMembers />
         </Col>
       </Row>
     </Container>
