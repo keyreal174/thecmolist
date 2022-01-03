@@ -129,9 +129,20 @@ const OnboardingStep2 = ({ getProfileStats, profileStats }) => {
             <CustomCard className="onboarding--card fadeAndSlideElementInFast">
               <div className="onboarding--card-content">
                 <AddTopics
-                  submitAfter={() =>
-                    isAfilliated ? finishFinalStep() : setStep(2)
-                  }
+                  submitAfter={() => {
+                    // we are running a test now where we skip showing
+                    // add vendors during onboarding
+                    const isTreatedForSkipAddVendorsTest = true;
+                    if (isTreatedForSkipAddVendorsTest) {
+                      finishFinalStep();
+                    } else {
+                      if (isAfilliated) {
+                        finishFinalStep();
+                      } else {
+                        setStep(2);
+                      }
+                    }
+                  }}
                 />
               </div>
             </CustomCard>

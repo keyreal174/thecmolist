@@ -342,15 +342,23 @@ class App extends React.Component {
           />
           <Route
             path="/vendors/:id"
-            render={(props) =>
-              this.state.authed ? (
-                <Vendors />
+            render={(props) => {
+              let vendorsType;
+              if (
+                props.location &&
+                props.location.state &&
+                props.location.state.type
+              ) {
+                vendorsType = props.location.state.type;
+              }
+              return this.state.authed ? (
+                <Vendors type={vendorsType} />
               ) : (
                 <Redirect
                   to={{ pathname: "/login", state: { from: props.location } }}
                 />
-              )
-            }
+              );
+            }}
           />
           <Route
             path="/vendors_martech"
