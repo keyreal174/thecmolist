@@ -122,6 +122,7 @@ export default {
           const data = response.data;
           dispatch.contentModel.setContent(data);
           dispatch.reactionModel.setReactions(data);
+          return data;
         } else {
           throw new Error("Id not provided.");
         }

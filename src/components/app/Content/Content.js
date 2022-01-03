@@ -27,7 +27,17 @@ const Content = ({
     const fetch = async () => {
       try {
         setError("");
-        await fetchContent(id);
+        const contentData = await fetchContent(id);
+        if (contentData && Object.keys(contentData).length > 0) {
+          if (contentData.content_id === id) {
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            });
+          } else if (document.getElementById(`article-${id}`)) {
+            document.getElementById(`article-${id}`).scrollIntoView();
+          }
+        }
       } catch (error) {
         setError(error.message);
       }
@@ -40,30 +50,6 @@ const Content = ({
     const fetch = async () => await getProfileStats();
     fetch();
   }, []);
-
-  useEffect(() => {
-    window.addEventListener("load", handleLoad);
-
-    return () => {
-      window.removeEventListener("load", handleLoad);
-    };
-  }, [content]);
-
-  const handleLoad = () => {
-    const {
-      params: { id },
-    } = match;
-    if (content && Object.keys(content).length > 0) {
-      if (content.content_id === id) {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-      } else if (document.getElementById(`article-${id}`)) {
-        document.getElementById(`article-${id}`).scrollIntoView();
-      }
-    }
-  };
 
   const handleToggle = () => {
     setMobileMenuOpen(!mobileMenuOpen);
