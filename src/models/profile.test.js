@@ -144,7 +144,7 @@ const data = {
         ],
       },
       {
-        title: "My Contractors",
+        title: "My Consultants",
         enabled: false,
         data: [],
       },
@@ -255,7 +255,7 @@ const deletedData = {
         ],
       },
       {
-        title: "My Contractors",
+        title: "My Consultants",
         enabled: false,
         data: [],
       },
