@@ -38,7 +38,7 @@ const OnboardingStep2 = ({ getProfileStats, profileStats }) => {
     } else if (step === 1) {
       return "Select topics you would like to learn more about from your peers";
     } else if (step === 2) {
-      return "One last step: Share your favorite marketing tools, agencies, or contractors with your peers";
+      return "One last step: Share your favorite marketing tools, agencies, or consultants with your peers";
     }
     return "";
   };

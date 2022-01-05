@@ -104,7 +104,7 @@ function AddPersonModal({
                                       ? "Agency"
                                       : vendor === "Product"
                                       ? "Tool"
-                                      : "Contractor"
+                                      : "Consultant"
                                   }
                                   //                                 label={vendor}
                                   name="vendortype"
@@ -131,7 +131,7 @@ function AddPersonModal({
                             ? "Agency name"
                             : vendorType === "Product"
                             ? "Tool name"
-                            : "Contractor name"}
+                            : "Consultant name"}
                         </label>
                         <Form.Control
                           as="input"

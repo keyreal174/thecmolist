@@ -299,7 +299,7 @@ function Header({
               </Nav.Link>
               <Nav.Link as={NavLink} to="vendors_contractors">
                 <img src={Contractor} alt="Stacks" />
-                <div>Contractors</div>
+                <div>Consultants</div>
                 <div className="header--separator"></div>
               </Nav.Link>
 
