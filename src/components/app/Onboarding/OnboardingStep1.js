@@ -26,7 +26,7 @@ const OnboardingWelcome = ({ loading, changeStep }) => {
             Find proven talent and resources
           </div>
           <div className="home--share-item-subtitle">
-            Browse trusted marketing tools, agencies, and contractors shared by
+            Browse trusted marketing tools, agencies, and consultants shared by
             your peers
           </div>
         </Col>

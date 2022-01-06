@@ -229,7 +229,7 @@ const Vendors = (props) => {
                     💡
                   </span>
                   {"   "}Browse <b>trusted</b> marketing tools, agencies, and
-                  contractors shared by your peers (and return the favor by
+                  consultants shared by your peers (and return the favor by
                   <a
                     className="cursor-pointer"
                     onClick={(e) => {

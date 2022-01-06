@@ -230,7 +230,7 @@ const ProfileOverview = ({
                   ? "Agency"
                   : profileTitle === "Product"
                   ? "Tool"
-                  : "Contractor")}
+                  : "Consultant")}
             </div>
           </div>
         )}

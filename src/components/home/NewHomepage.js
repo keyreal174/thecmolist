@@ -69,7 +69,7 @@ function Homepage() {
                             "advice",
                             "tools",
                             "agencies",
-                            "contractors",
+                            "consultants",
                             "playbooks",
                             "news",
                           ]}
@@ -88,7 +88,7 @@ function Homepage() {
                             "advice",
                             "tools",
                             "agencies",
-                            "contractors",
+                            "consultants",
                             "playbooks",
                             "news",
                           ]}
