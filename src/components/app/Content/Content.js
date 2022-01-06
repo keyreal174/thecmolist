@@ -14,6 +14,7 @@ const Content = ({
   match,
   getProfileStats,
   getReactionsById,
+  content,
   ...rest
 }) => {
   const [error, setError] = useState("");
@@ -26,8 +27,17 @@ const Content = ({
     const fetch = async () => {
       try {
         setError("");
-        await fetchContent(id);
-        window.scrollTo(0, 0);
+        const contentData = await fetchContent(id);
+        if (contentData && Object.keys(contentData).length > 0) {
+          if (contentData.content_id === id) {
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            });
+          } else if (document.getElementById(`article-${id}`)) {
+            document.getElementById(`article-${id}`).scrollIntoView();
+          }
+        }
       } catch (error) {
         setError(error.message);
       }
@@ -38,7 +48,6 @@ const Content = ({
 
   useEffect(() => {
     const fetch = async () => await getProfileStats();
-
     fetch();
   }, []);
 
@@ -77,6 +86,7 @@ const Content = ({
             ) : (
               <ContentDetail
                 {...rest}
+                content={content}
                 mobileMenuOpen={mobileMenuOpen}
                 setError={setError}
                 getReactionsById={getReactionsById}
