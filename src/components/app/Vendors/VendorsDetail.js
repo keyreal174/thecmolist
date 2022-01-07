@@ -57,10 +57,17 @@ const VendorsDetail = ({
   showDeletePostModal,
   showVendorBtn,
   isAdminUser,
+  vendorType,
 }) => {
   const history = useHistory();
   const changeSubFilter = (title) => {
     document.getElementById(title).scrollIntoView({ behavior: "smooth" });
+  };
+
+  const links = {
+    martech: "/vendors_martech",
+    agencies: "/vendors_agencies",
+    contractors: "/vendors_contractors",
   };
 
   return (
@@ -87,7 +94,7 @@ const VendorsDetail = ({
                         <a
                           onClick={() =>
                             history.push({
-                              pathname: "/vendors",
+                              pathname: vendorType ? links[vendorType] : "",
                               state: { filterIdx },
                             })
                           }
