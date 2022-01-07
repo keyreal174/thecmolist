@@ -255,6 +255,7 @@ const Vendors = (props) => {
               filterIdx={filterIdx}
               showVendorBtn={true}
               isAdminUser={isAdminUser}
+              vendorType={props.type}
             />
           ) : (
             <Row className="vendors--feed--wrapper">

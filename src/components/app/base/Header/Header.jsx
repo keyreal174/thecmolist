@@ -162,6 +162,7 @@ function Header({
 }) {
   const [isAdminUser, setIsAdminUser] = useState(false);
   const history = useHistory();
+  const location = useLocation();
 
   useEffect(() => {
     const fetch = async () => await getProfileStats();
@@ -287,17 +288,35 @@ function Header({
                   </div>
                 )}
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/vendors_martech">
+              <Nav.Link
+                as={NavLink}
+                to="/vendors_martech"
+                className={clsx(
+                  location?.state?.type === "martech" && "active"
+                )}
+              >
                 <img src={Martech} alt="Stacks" />
                 <div>Martech</div>
                 <div className="header--separator"></div>
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/vendors_agencies">
+              <Nav.Link
+                as={NavLink}
+                to="/vendors_agencies"
+                className={clsx(
+                  location?.state?.type === "agencies" && "active"
+                )}
+              >
                 <img src={Agency} alt="Stacks" />
                 <div>Agencies</div>
                 <div className="header--separator"></div>
               </Nav.Link>
-              <Nav.Link as={NavLink} to="vendors_contractors">
+              <Nav.Link
+                as={NavLink}
+                to="vendors_contractors"
+                className={clsx(
+                  location?.state?.type === "contractors" && "active"
+                )}
+              >
                 <img src={Contractor} alt="Stacks" />
                 <div>Consultants</div>
                 <div className="header--separator"></div>
