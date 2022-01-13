@@ -6,30 +6,30 @@ import "./FeaturedMember.scss";
 const MEMBERS = [
   {
     image:
-      "https://d3k6hg21rt7gsh.cloudfront.net/1632437432625marta-bulaich.jpg",
-    name: "Dianne Russell",
-    role: "Web Strategy at Pilot.com",
-    link: "vendor/oracle",
-  },
-  {
-    image:
-      "https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F6148b7eac3b40db800811729%2F0x0.jpg",
-    name: "Eleanor Pena",
-    role: "Web Strategy at Pilot.com",
-    link: "vendor/oracle",
-  },
-  {
-    image:
-      "https://d3k6hg21rt7gsh.cloudfront.net/1619825893628atri-chatterjee.jpg",
-    name: "Devon Lane",
-    role: "Web Strategy at Pilot.com",
+      "https://d3k6hg21rt7gsh.cloudfront.net/1636584687523carly-brantz.jpg",
+    name: "Carly Brantz",
+    role: "CMO at DigitalOcean",
     link: "vendor/oracle",
   },
   {
     image:
       "https://d3k6hg21rt7gsh.cloudfront.net/eyJidWNrZXQiOiJjbW9saXN0aW1hZ2VzIiwia2V5IjoiMTU5NjIxNDg1NDYzNmp1bGllLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjIwMCwiaGVpZ2h0IjoyMDAsImZpdCI6ImNvdmVyIn19fQ==",
-    name: "Guy Hawkins",
-    role: "Web Strategy at Pilot.com",
+    name: "Julie Herendeen",
+    role: "Former CMO at Pagerduty",
+    link: "vendor/oracle",
+  },
+  {
+    image:
+      "https://d3k6hg21rt7gsh.cloudfront.net/1619825893628atri-chatterjee.jpg",
+    name: "Atri Chatterjee",
+    role: "CMO at ForgeRock",
+    link: "vendor/oracle",
+  },
+  {
+    image:
+      "https://d3k6hg21rt7gsh.cloudfront.net/1634662920561maryam-banikarim.jpg",
+    name: "Maryam Banikarim",
+    role: "Head of Marketing at Nextdoor",
     link: "vendor/oracle",
   },
 ];
