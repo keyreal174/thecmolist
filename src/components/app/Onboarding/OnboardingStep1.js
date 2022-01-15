@@ -62,8 +62,9 @@ const OnboardingWelcome = ({ loading, changeStep }) => {
       <Row>
         <Col md="12" className="text-center no-solicitation">
           <p>
-            CMOlist is a trusted space for marketing leaders, please do{" "}
-            <b>not</b> solicit other members.
+            <strong>Confidentiality:</strong> By joining, you are pledging
+            confidentially to the network. By keeping what’s discussed here
+            confidential, everyone is able to share honestly & openly.
           </p>
         </Col>
         <Col
@@ -89,9 +90,9 @@ const WelcomeMessage = ({ loading, firstname, groupName }) => {
     return "";
   }
   if (groupName && groupName.length > 0) {
-    return `Hello ${firstname}, welcome to the ${groupName} network!`;
+    return `Welcome to the ${groupName} family, ${firstname}`;
   } else {
-    return `Hello ${firstname}, welcome to CMOlist!`;
+    return `Welcome to the CMOlist family, ${firstname}`;
   }
 };
 
