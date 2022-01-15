@@ -17,7 +17,7 @@ const InviteModal = (props) => {
         centered
       >
         <Modal.Header className="align-items-center">
-          <Modal.Title>Invite other marketing leaders</Modal.Title>
+          <Modal.Title>Nominate CMO for Membership</Modal.Title>
           <img
             src={Close}
             alt="close"

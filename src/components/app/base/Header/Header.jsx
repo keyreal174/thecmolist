@@ -134,7 +134,7 @@ function RenderMobileDropdown({
           />
           <InviteButton
             lightMode
-            text="Invite Peers"
+            text="Nominate CMO"
             className="w-100 mobile-navbar-button"
             isAdminUser={isAdminUser}
           />

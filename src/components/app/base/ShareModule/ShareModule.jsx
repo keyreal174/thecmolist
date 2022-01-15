@@ -20,8 +20,7 @@ function ShareModule(props) {
           <th>
             <div className="share-module-heading">
               <span>
-                {props.sponsorHeading ||
-                  "Sponsor and invite other marketing leaders"}
+                {props.sponsorHeading || "Nominate and invite other CMOs"}
               </span>
             </div>
           </th>

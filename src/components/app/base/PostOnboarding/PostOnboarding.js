@@ -61,7 +61,7 @@ const PostOnboarding = ({ postOnboarding, isAdminUser }) => {
                     <InviteButton
                       isAdminUser={isAdminUser}
                       lightMode={true}
-                      text="+ Invite Peers"
+                      text="+ Nominate CMO"
                     />
                   )}
                 </div>

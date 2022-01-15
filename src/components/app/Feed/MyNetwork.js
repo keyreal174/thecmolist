@@ -49,7 +49,7 @@ const MyNetwork = (props) => {
           />
           <InviteButton
             lightMode
-            text="Invite Peers"
+            text="Nominate CMO"
             isAdminUser={props.isAdminUser}
             className="w-100 mb-2"
           />
