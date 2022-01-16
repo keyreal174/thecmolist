@@ -32,7 +32,7 @@ const AddIntro = ({
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (intro.length === 0) {
-      setIntroError("Please enter an introduction");
+      setIntroError("Please share a priority");
     } else {
       submitBefore && submitBefore();
       await handleAddIntroSubmit();
