@@ -20,10 +20,10 @@ const OnboardingLayout = ({ children, now, title, subtitle }) => {
           <Col md="12">
             <div className="d-flex justify-content-around progress-bar-header">
               <div className={`${now >= 50 ? "font-weight-bold" : ""}`}>
-                Create your profile
+                Step 1: Personalize your experience
               </div>
               <div className={`${now === 100 ? "font-weight-bold" : ""}`}>
-                Personalize your experience
+                Step 2: Join the community
               </div>
             </div>
             <div className="d-flex align-items-center">

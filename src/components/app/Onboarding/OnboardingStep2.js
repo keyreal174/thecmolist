@@ -31,12 +31,12 @@ const OnboardingStep2 = ({ getProfileStats, profileStats }) => {
   const getTitle = () => {
     if (showFinalStep) {
       if (isAfilliated) {
-        return "Finally...";
+        return "Learn what other leading companies are doing, share some wisdom, or innovate with fellow CMOs";
       } else {
         return "Finally: please invite one other marketer whose advice you trust";
       }
     } else if (step === 1) {
-      return "Select topics you would like to learn more about from your peers";
+      return "Select topics you would like to learn more about or discuss with other CMOs";
     } else if (step === 2) {
       return "One last step: Share your favorite marketing tools, agencies, or consultants with your peers";
     }

@@ -12,12 +12,14 @@ const AddIntro = ({
   const [intro, setIntro] = useState("");
   const [introError, setIntroError] = useState("");
   const introOptions = [
-    "Get marketing advice",
-    "Build my marketing network",
-    "Stay in touch with my peers",
-    "Share my expertise",
-    "Learn about new marketing trends",
-    "Find advisor or board roles",
+    "Ask and answer marketing leadership questions",
+    "Benchmark against what your peer companies are doing",
+    "View and share strategic marketing guides/playbooks",
+    "Join or host AMA sessions",
+    "Find and share trusted consultants",
+    "Find and share trusted agencies and tech vendors",
+    "Meet and network with other CMOs in your industry",
+    "Get and give career advice, find advisor/board roles",
   ];
 
   const handleAddIntroSubmit = async () => {
@@ -30,7 +32,7 @@ const AddIntro = ({
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (intro.length === 0) {
-      setIntroError("Please enter an introduction");
+      setIntroError("Please share a priority");
     } else {
       submitBefore && submitBefore();
       await handleAddIntroSubmit();
@@ -45,8 +47,8 @@ const AddIntro = ({
           <Col>
             <Form.Label className="onboarding--label">
               {groupName && groupName.length > 0
-                ? `How can the ${groupName} network help you be more successful?`
-                : "How can CMOlist help you be more successful?"}
+                ? `How can other ${groupName} members help you be more successful and learn from you?`
+                : "How can other CMOlist members help you be more successful and learn from you?"}
             </Form.Label>
           </Col>
         </Row>
@@ -80,8 +82,7 @@ const AddIntro = ({
         <Row className="onboarding--pill-wrapper">
           <Col>
             <Form.Label className="onboarding--label">
-              Please introduce yourself or share a project you are currently
-              working on
+              Share one of your top priorities for the year with your peers
             </Form.Label>
             {introError && introError.length > 0 && (
               <Alert className="mb-1 mt-1" variant="danger">
