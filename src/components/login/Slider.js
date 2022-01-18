@@ -15,13 +15,17 @@ const Slider = () => {
     <Carousel nextIcon={NextButton} prevIcon={PrevButton}>
       <Carousel.Item>
         <div className="text-center carousel-section">
-          <img className="carousel-section-icon" src={Icon2} alt="Stack icon" />
+          <img
+            className="carousel-section-icon"
+            src={Icon1}
+            alt="Network icon"
+          />
           <h3 className="carousel-section-title">
-            Find the best marketing tools and agencies
+            World-class network of CMOs
           </h3>
           <p className="carousel-section-content">
-            View proven & emerging marketing vendors shared by leading startups
-            and public companies
+            Only Chief Marketing Officers/heads of marketing from hyper-growth
+            companies, every member is carefully vetted
           </p>
         </div>
       </Carousel.Item>
@@ -33,27 +37,23 @@ const Slider = () => {
             alt="Knowledge icon"
           />
           <h3 className="carousel-section-title">
-            Ask for marketing advice and search answers
+            Strategic guides and playbooks
           </h3>
           <p className="carousel-section-content">
-            Post questions and search insights, playbooks, and best practices
-            shared by the world's best marketers
+            Access best practices shared by your peers, ranging from strategic
+            planning to creating your operating cadence and preparing for an IPO
           </p>
         </div>
       </Carousel.Item>
       <Carousel.Item>
         <div className="text-center carousel-section">
-          <img
-            className="carousel-section-icon"
-            src={Icon1}
-            alt="Network icon"
-          />
+          <img className="carousel-section-icon" src={Icon2} alt="Stack icon" />
           <h3 className="carousel-section-title">
-            Accelerate your marketing career
+            Shared directory of trusted vendors
           </h3>
           <p className="carousel-section-content">
-            Network with other top marketers and find career, advisor, and board
-            opportunities
+            Browse & search 1000s of proven consultants, agencies, and
+            technology vendors in 80 categories, recommended by other CMOs
           </p>
         </div>
       </Carousel.Item>

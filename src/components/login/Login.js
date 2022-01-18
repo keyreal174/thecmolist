@@ -113,7 +113,11 @@ class Login extends React.Component {
               className="login--form form-signin form-group position-relative"
               onSubmit={this.handleSubmit.bind(this)}
             >
-              <h2 className="login--title">Sign into CMOlist</h2>
+              <h2 className="login--title">
+                The private network for the world’s top CMOs to learn from each
+                other
+              </h2>
+
               <a
                 className="login--linkedIn btn btn-block btn-linkedin button-login"
                 href={this.state.linkedInUrl}

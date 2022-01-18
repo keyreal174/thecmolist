@@ -106,21 +106,20 @@ function Homepage() {
 */}
                     <div className="desktop">
                       <span className="mr-2">
-                        The private knowledge network for the world’s top
-                        marketers
+                        The private network for the world’s top CMOs to learn
+                        from each other
                       </span>
                     </div>
                     <div className="mobile">
                       <span className="mr-2">
-                        The private knowledge network for the world’s top
-                        marketers
+                        The private network for the world’s top CMOs to learn
+                        from each other
                       </span>
                     </div>
                   </div>
                   <div className="home--description">
-                    CMOlist is where leading marketers come together to find
-                    world-class marketing stacks, agencies and advice to
-                    accelerate their impact and careers
+                    APPLICATION ONLY. LIMITED TO ONE CMO/HEAD OF MARKETING PER
+                    COMPANY.
                   </div>
                   <div className="home--apply-button">
                     <Button
@@ -150,7 +149,8 @@ function Homepage() {
             <Col className="px-0" md="12" sm="12">
               <div className="home--leaders-section">
                 <div className="home--leaders-section-title">
-                  Developed in collaboration with leading marketers from
+                  Developed in collaboration with marketing executives from
+                  world-class companies including
                 </div>
                 <div className="home--leaders-section-items-wrapper">
                   {marketingLeaders.map(({ img }, index) => (
@@ -185,22 +185,23 @@ function Homepage() {
           <Row>
             <Col md="12">
               <div className="home--share-title">
-                Manage and share marketing knowledge with your trusted peers
+                Learn what other leading companies are doing, share some wisdom,
+                and innovate with fellow CMOs
               </div>
               <Row className="home--share-items-wrapper">
                 <Col className="home--share-item" md="3" sm="12">
                   <div className="home--share-item-wrapper">
                     <img
                       className="home--share-item-image"
-                      src={knowledgeIcon}
-                      alt="Stack icon"
+                      src={trustedIcon}
+                      alt="Network icon"
                     />
                     <div className="home--share-item-title">
-                      Find the best marketing tools and agencies
+                      World-class network of CMOs
                     </div>
                     <div className="home--share-item-subtitle">
-                      View proven & emerging marketing vendors shared by leading
-                      startups and public companies
+                      Only Chief Marketing Officers/heads of marketing from
+                      hyper-growth companies, every member is carefully vetted
                     </div>
                   </div>
                 </Col>
@@ -212,11 +213,12 @@ function Homepage() {
                       alt="Knowledge icon"
                     />
                     <div className="home--share-item-title">
-                      Ask for marketing advice and search answers
+                      Strategic guides and playbooks
                     </div>
                     <div className="home--share-item-subtitle">
-                      Post questions and search insights, playbooks, and best
-                      practices shared by the world's best marketers
+                      Access best practices shared by your peers, ranging from
+                      strategic planning to creating your operating cadence and
+                      preparing for an IPO
                     </div>
                   </div>
                 </Col>
@@ -224,15 +226,16 @@ function Homepage() {
                   <div className="home--share-item-wrapper">
                     <img
                       className="home--share-item-image"
-                      src={trustedIcon}
-                      alt="Network icon"
+                      src={knowledgeIcon}
+                      alt="Stack icon"
                     />
                     <div className="home--share-item-title">
-                      Accelerate your marketing career
+                      Shared directory of trusted vendors
                     </div>
                     <div className="home--share-item-subtitle">
-                      Network with other top marketers and find career, advisor,
-                      and board opportunities
+                      Browse & search 1000s of proven consultants, agencies, and
+                      technology vendors in 80 categories, recommended by other
+                      CMOs
                     </div>
                   </div>
                 </Col>
