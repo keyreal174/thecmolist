@@ -55,6 +55,14 @@ const FormGroup = ({ name, type, placeholder }) => {
   );
 };
 
+/* Old field value
+              <CustomRadioButton
+                label="Marketing contractor, agency, or technology vendor"
+                name="role"
+                value="agency_or_technology_firm"
+                id="agency_or_technology_firm"
+              />
+*/
 function Signup() {
   return (
     <div className="signup--wrapper container wrapper">
@@ -72,27 +80,21 @@ function Signup() {
             <div className="form-group">
               <h2 className="signup--header">Apply to join CMOlist as a </h2>
               <CustomRadioButton
-                label="Marketing leader"
+                label="CMO or Head of Marketing"
                 name="role"
                 value="marketing_leader"
                 id="marketing_leader"
                 checked="checked"
               />
-              <CustomRadioButton
-                label="Marketing vendor"
-                name="role"
-                value="agency_or_technology_firm"
-                id="agency_or_technology_firm"
-              />
             </div>
             <hr style={{ "margin-top": "30px" }} />
             <div className="form-group">
               <h2 className="signup--header signup--header-beta">
-                Apply for free Membership
+                Join CMOlist
               </h2>
               <span className="signup-attn">
-                Membership to CMOlist is limited to marketing leaders and
-                experts. Please fill out the information below to apply.
+                Limited to one CMO/head of marketing per company. Please fill
+                out the information below to apply.
               </span>
             </div>
             <div className="form-inputs-group">
@@ -108,7 +110,7 @@ function Signup() {
                   type="submit"
                   className="btn__homepage btn__homepage-blue signup--form-apply"
                 >
-                  Apply
+                  Join for Free
                 </button>
               </div>
             </div>

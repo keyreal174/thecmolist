@@ -19,15 +19,15 @@ const OnboardingWelcome = ({ loading, changeStep }) => {
         <Col className="home--share-item" md="3" sm="12">
           <img
             className="home--share-item-image"
-            src={knowledgeIcon}
-            alt="Stack icon"
+            src={trustedIcon}
+            alt="Network icon"
           />
           <div className="home--share-item-title">
-            Find proven talent and resources
+            World-class network of CMOs
           </div>
           <div className="home--share-item-subtitle">
-            Browse trusted marketing tools, agencies, and consultants shared by
-            your peers
+            Only Chief Marketing Officers/heads of marketing from hyper-growth
+            companies, every member is carefully vetted
           </div>
         </Col>
         <Col className="home--share-item" md="3" sm="12">
@@ -37,25 +37,25 @@ const OnboardingWelcome = ({ loading, changeStep }) => {
             alt="Knowledge icon"
           />
           <div className="home--share-item-title">
-            Ask for advice and search answers
+            Strategic guides and playbooks
           </div>
           <div className="home--share-item-subtitle">
-            Post questions and search marketing insights, playbooks, and best
-            practices
+            Access best practices shared by your peers, ranging from strategic
+            planning to creating your operating cadence and preparing for an IPO
           </div>
         </Col>
         <Col className="home--share-item" md="3" sm="12">
           <img
             className="home--share-item-image"
-            src={trustedIcon}
-            alt="Network icon"
+            src={knowledgeIcon}
+            alt="Stack icon"
           />
           <div className="home--share-item-title">
-            Accelerate your marketing career
+            Shared directory of trusted vendors
           </div>
           <div className="home--share-item-subtitle">
-            Network with other top marketers and find career, advisor, and board
-            opportunities
+            Browse & search 1000s of proven consultants, agencies, and
+            technology vendors in 80 categories, recommended by other CMOs
           </div>
         </Col>
       </Row>
