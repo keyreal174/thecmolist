@@ -102,9 +102,8 @@ function InviteForm(props) {
         <Fragment>
           {!props.hideHeader && (
             <p className="modal-description">
-              Invite your <strong>trusted peers</strong> to view their{" "}
-              <strong>marketing stacks</strong> and learn from their{" "}
-              <strong>advice</strong>
+              Invite other leading CMOs or heads of marketing. Membership is
+              limited to one marketing executive per company.
             </p>
           )}
           <form id="invite-modal" onSubmit={closeDialog}>
@@ -163,7 +162,10 @@ function InviteForm(props) {
       <div className="invite-module-footer">
         <div className="w-100">
           <Form.Label>Send a Share Link</Form.Label>
-          <p>Invite marketing leaders to CMOlist using this Share Link</p>
+          <p>
+            Invite other leading CMOs or heads of marketing by emailing them and
+            including this Share Link
+          </p>
           <div className="d-flex invite-link-wrapper">
             <Form.Control
               type="input"

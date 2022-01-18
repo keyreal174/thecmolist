@@ -112,7 +112,7 @@ const TopBanner = ({
             />
             <InviteButton
               lightMode
-              text="Invite Peers"
+              text="Nominate CMO"
               isAdminUser={isAdminUser}
               className="w-100 top-banner-button"
             />
