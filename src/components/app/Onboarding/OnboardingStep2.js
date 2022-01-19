@@ -31,9 +31,9 @@ const OnboardingStep2 = ({ getProfileStats, profileStats }) => {
   const getTitle = () => {
     if (showFinalStep) {
       if (isAfilliated) {
-        return "Learn what other leading companies are doing, share some wisdom, or innovate with fellow CMOs";
+        return "Connect with your fellow CMOs";
       } else {
-        return "Learn what other leading companies are doing, share some wisdom, or innovate with fellow CMOs";
+        return "Connect with your fellow CMOs";
       }
     } else if (step === 1) {
       return "Select topics you would like to learn more about or discuss with other CMOs";
