@@ -103,22 +103,11 @@ const OnboardingStep2 = ({ getProfileStats, profileStats }) => {
         >
           {showFinalStep ? (
             <CustomCard className="onboarding--card">
-              {isAfilliated ? (
-                <AddIntro
-                  groupName={groupName}
-                  submitBefore={() => setLoading(true)}
-                  submitAfter={() => finalizeOnboarding()}
-                />
-              ) : (
-                <div className="onboarding--card-invite">
-                  <InviteForm
-                    makeOptional
-                    hideHeader={true}
-                    hideSubmitButton={true}
-                    submitAfter={() => finalizeOnboarding()}
-                  />
-                </div>
-              )}
+              <AddIntro
+                groupName={groupName}
+                submitBefore={() => setLoading(true)}
+                submitAfter={() => finalizeOnboarding()}
+              />
             </CustomCard>
           ) : (
             <div />
@@ -162,23 +151,14 @@ const OnboardingStep2 = ({ getProfileStats, profileStats }) => {
             className="onboarding--done-wrapper d-flex justify-content-end"
             md="12"
           >
-            {showFinalStep && !isAfilliated && (
-              <Button
-                className="mt-3 btn-white modal-cancel-button onboarding--button-skip"
-                onClick={() => finalizeOnboarding()}
-                style={{ marginRight: "10px" }}
-              >
-                Skip
-              </Button>
-            )}
             {showFinalStep ? (
               <Button
                 className="mt-3 onboarding--button"
                 disabled={loading}
                 type="submit"
-                form={isAfilliated ? "form-add-intro" : "invite-modal"}
+                form={"form-add-intro"}
               >
-                {isAfilliated ? "Done" : "Invite"}
+                Done
               </Button>
             ) : (
               <Button

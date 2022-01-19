@@ -18,7 +18,7 @@ const InviteButton = ({
     <div>
       <Button
         className={clsx(
-          lightMode ? "btn btn-white btn-primary invite-btn" : "invite-btn",
+          lightMode && "btn btn-white btn-primary",
           className && className
         )}
         onClick={() => setInviteModalShow(true)}
