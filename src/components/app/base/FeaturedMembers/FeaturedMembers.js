@@ -110,11 +110,14 @@ const Feature = ({ image, name, role, link, color }) => {
   );
 };
 
-const FeaturedMembers = () => {
+const FeaturedMembers = ({ offset, limit }) => {
   return (
     <CustomCard heading="Featured Members">
       <div className="d-flex items-center featured-members">
-        {MEMBERS.map((item, index) => (
+        {MEMBERS.filter(
+          (item, index) =>
+            index >= (offset - 1) * limit && index < offset * limit
+        ).map((item, index) => (
           <Feature key={index} {...item} color={index} />
         ))}
       </div>

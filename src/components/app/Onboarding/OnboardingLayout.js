@@ -5,7 +5,7 @@ import "./onboardingLayout.scss";
 import clsx from "clsx";
 import FeaturedMembers from "../base/FeaturedMembers/FeaturedMembers";
 
-const OnboardingLayout = ({ children, now, title, subtitle }) => {
+const OnboardingLayout = ({ children, now, title, step, subtitle }) => {
   return (
     <Container>
       <Row className={clsx("layout--header", !now && "layout--header-welcome")}>
@@ -53,7 +53,9 @@ const OnboardingLayout = ({ children, now, title, subtitle }) => {
       </Row>
       <Row className="layout--children">
         <Col md="12" style={{ paddingLeft: "0px", paddingRight: "0px" }}>
-          <FeaturedMembers />
+          <div className={clsx(step === 1 && "welcome-featured-members")}>
+            <FeaturedMembers offset={step} limit={4} />
+          </div>
         </Col>
       </Row>
     </Container>

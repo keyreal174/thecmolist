@@ -146,3 +146,32 @@
     display: none !important;
   }
 }
+
+.welcome-featured-members {
+  max-width: 1074px;
+  margin: 0 auto;
+
+  @media screen and (max-width: 1440px) {
+    max-width: 874px;
+  }
+
+  @media screen and (max-width: 1200px) {
+    max-width: 740px;
+  }
+
+  @media screen and (max-width: 992px) {
+    max-width: 560px;
+  }
+
+  @media screen and (max-width: 856px) {
+    max-width: 364px;
+
+    .featured-members-item {
+      flex: 1 1;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    max-width: 300px;
+  }
+}

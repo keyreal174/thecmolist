@@ -94,6 +94,7 @@ const OnboardingStep2 = ({ getProfileStats, profileStats }) => {
       now={step === 1 ? 75 : 100}
       title={getTitle()}
       subtitle={getSubTitle()}
+      step={showFinalStep ? 3 : 2}
     >
       <>
         <CSSTransition

@@ -201,6 +201,7 @@ const OnboardingStep1 = ({
         </span>
       }
       isWelcome={isWelcome}
+      step={1}
     >
       {isWelcome ? (
         <OnboardingWelcome
