@@ -26,8 +26,8 @@ const OnboardingWelcome = ({ loading, changeStep }) => {
             World-class network of CMOs
           </div>
           <div className="home--share-item-subtitle">
-            Only Chief Marketing Officers/heads of marketing from hyper-growth
-            companies, every member is carefully vetted
+            Only for heads of marketing from hyper-growth companies. Every
+            member is carefully vetted.
           </div>
         </Col>
         <Col className="home--share-item" md="3" sm="12">
@@ -41,7 +41,8 @@ const OnboardingWelcome = ({ loading, changeStep }) => {
           </div>
           <div className="home--share-item-subtitle">
             Access best practices shared by your peers, ranging from strategic
-            planning to creating your operating cadence and preparing for an IPO
+            planning to creating your operating cadence and preparing for an
+            IPO.
           </div>
         </Col>
         <Col className="home--share-item" md="3" sm="12">
@@ -55,7 +56,7 @@ const OnboardingWelcome = ({ loading, changeStep }) => {
           </div>
           <div className="home--share-item-subtitle">
             Browse & search 1000s of proven consultants, agencies, and
-            technology vendors in 80 categories, recommended by other CMOs
+            technology vendors in 80 categories, recommended by other CMOs.
           </div>
         </Col>
       </Row>

@@ -24,8 +24,8 @@ const Slider = () => {
             World-class network of CMOs
           </h3>
           <p className="carousel-section-content">
-            Only Chief Marketing Officers/heads of marketing from hyper-growth
-            companies, every member is carefully vetted
+            Only for heads of marketing from hyper-growth companies. Every
+            member is carefully vetted.
           </p>
         </div>
       </Carousel.Item>
@@ -41,7 +41,8 @@ const Slider = () => {
           </h3>
           <p className="carousel-section-content">
             Access best practices shared by your peers, ranging from strategic
-            planning to creating your operating cadence and preparing for an IPO
+            planning to creating your operating cadence and preparing for an
+            IPO.
           </p>
         </div>
       </Carousel.Item>
@@ -53,7 +54,7 @@ const Slider = () => {
           </h3>
           <p className="carousel-section-content">
             Browse & search 1000s of proven consultants, agencies, and
-            technology vendors in 80 categories, recommended by other CMOs
+            technology vendors in 80 categories, recommended by other CMOs.
           </p>
         </div>
       </Carousel.Item>

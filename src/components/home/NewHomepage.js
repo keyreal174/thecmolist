@@ -200,8 +200,8 @@ function Homepage() {
                       World-class network of CMOs
                     </div>
                     <div className="home--share-item-subtitle">
-                      Only Chief Marketing Officers/heads of marketing from
-                      hyper-growth companies, every member is carefully vetted
+                      Only for heads of marketing from hyper-growth companies.
+                      Every member is carefully vetted.
                     </div>
                   </div>
                 </Col>
@@ -218,7 +218,7 @@ function Homepage() {
                     <div className="home--share-item-subtitle">
                       Access best practices shared by your peers, ranging from
                       strategic planning to creating your operating cadence and
-                      preparing for an IPO
+                      preparing for an IPO.
                     </div>
                   </div>
                 </Col>
@@ -235,7 +235,7 @@ function Homepage() {
                     <div className="home--share-item-subtitle">
                       Browse & search 1000s of proven consultants, agencies, and
                       technology vendors in 80 categories, recommended by other
-                      CMOs
+                      CMOs.
                     </div>
                   </div>
                 </Col>
