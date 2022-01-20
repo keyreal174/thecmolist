@@ -21,7 +21,9 @@ const AddTopics = ({
 
   useEffect(() => {
     const fetchCategories = async () => await getCategories();
-    fetchCategories();
+    fetchCategories().then(() =>
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    );
   }, []);
 
   useEffect(() => {
