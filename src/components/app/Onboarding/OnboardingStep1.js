@@ -176,9 +176,10 @@ const OnboardingStep1 = ({
       networking,
       advising,
     };
-    submitOnboardingStep1(formData);
-    history.push("onboarding_step2" + window.location.search);
-    setLoading(false);
+    submitOnboardingStep1(formData).then(() => {
+      history.push("onboarding_step2" + window.location.search);
+      setLoading(false);
+    });
   };
 
   return (
@@ -207,6 +208,7 @@ const OnboardingStep1 = ({
         <OnboardingWelcome
           loading={loading}
           changeStep={() => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
             // For now as a test we are moving to collecting no user info
             // upfront and just move on to the next step
             // keeping this code alive in case we revert the test.
