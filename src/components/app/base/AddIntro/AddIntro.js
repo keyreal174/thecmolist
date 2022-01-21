@@ -75,7 +75,7 @@ const AddIntro = ({
                   }}
                 />
               </div>
-              <span>{o}</span>
+              <span className="mt-1">{o}</span>
             </Col>
           ))}
         </Row>
