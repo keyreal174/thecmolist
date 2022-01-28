@@ -47,7 +47,7 @@ const store = init({
 });
 
 if (Util.inProduction()) {
-  ReactGA.initialize("UA-194054031-1");
+  ReactGA.initialize("UA-xxxxxxxxx-1");
 }
 
 ReactDOM.render(

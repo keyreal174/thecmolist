@@ -71,24 +71,6 @@ class App extends React.Component {
       authed:
         Util.inLocalDevelopment() || Util.inTestContainer() || authTokenExists,
     };
-
-    let hjid, hjsv;
-    if (window.location.hostname === "cmo-list-staging.herokuapp.com") {
-      hjid = 2527605;
-      hjsv = 6;
-    } else if (
-      window.location.hostname === "thecmolist.com" ||
-      window.location.hostname.endsWith("thecmolist.com")
-    ) {
-      hjid = 2527592;
-      hjsv = 6;
-    }
-    if (hjid) {
-      hotjar.initialize(hjid, hjsv);
-      if (authTokenExists) {
-        hotjar.identify("USER_ID", { userProperty: Cookies.get("ipipeauth") });
-      }
-    }
   }
 
   render() {
